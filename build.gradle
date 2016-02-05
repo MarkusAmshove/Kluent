@@ -1,3 +1,14 @@
+buildscript {
+    ext.kotlin_version = '1.0.0-rc-1036'
+    ext.spek_version   = "0.1.+"
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
 group 'org.amshove.kluent'
 version '1.0-SNAPSHOT'
 
@@ -6,24 +17,19 @@ apply plugin: 'idea'
 
 repositories {
 	jcenter()
+    maven {
+        url = 'http://repository.jetbrains.com/all'
+    }
 }
 
 dependencies {
     compile 'junit:junit:4.11'
-    testCompile 'junit:junit:4.11'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    testCompile 'junit:junit:4.11'
+    testCompile "org.jetbrains.spek:spek:$spek_version"
 }
 
 sourceSets {
     main.kotlin.srcDirs += 'src/main/kotlin'
     test.kotlin.srcDirs += 'src/test/kotlin'
-}
-buildscript {
-    ext.kotlin_version = '1.0.0-rc-1036'
-    repositories {
-    	jcenter()
-    }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
 }
