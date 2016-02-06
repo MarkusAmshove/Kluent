@@ -1,4 +1,4 @@
-package org.amshove.kluent.tests.helpclasses
+package org.amshove.kluent.tests
 
 import org.amshove.kluent.`should throw`
 import org.jetbrains.spek.api.Spek
@@ -16,7 +16,7 @@ class ShouldThrowTests: Spek() {
             on("expection another exception") {
                 it("should fail") {
                     val func = { throw IndexOutOfBoundsException() }
-                    assertFails({func `should throw` IllegalArgumentException::class})
+                    assertFails({ func `should throw` IllegalArgumentException::class })
                 }
             }
         }

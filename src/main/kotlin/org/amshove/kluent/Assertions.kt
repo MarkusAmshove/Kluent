@@ -22,7 +22,19 @@ infix fun <T: Exception> (() -> Nothing).`should throw`(expectedException: KClas
         } else throw ComparisonFailure("Expected ${expectedException.javaObjectType} to be thrown", "${expectedException.javaObjectType}", "${e.javaClass}")
     }
 }
-
+infix fun <T: Exception> (() -> Nothing).`should throw the Exception`(expectedException: KClass<T>) : ExceptionResult {
+    try {
+        this.invoke()
+        fail("There was an Exception expected to be thrown, but nothing was thrown", "$expectedException", "None")
+    } catch (e: Exception) {
+        if (e.javaClass == expectedException.javaObjectType) {
+            return ExceptionResult(e)
+        } else throw ComparisonFailure("Expected ${expectedException.javaObjectType} to be thrown", "${expectedException.javaObjectType}", "${e.javaClass}")
+    }
+}
+infix fun ExceptionResult.`with message`(theMessage: String) {
+    this.exceptionMessage `should equal` theMessage
+}
 
 private fun fail(message: String, expected: String, actual: String): Nothing = throw ComparisonFailure(message, expected, actual)
 private fun <T> join(theArray: Array<T>) : String = theArray.joinToString(", ")
