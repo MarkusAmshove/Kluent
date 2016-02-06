@@ -5,6 +5,7 @@ import kotlin.reflect.KClass
 
 
 infix fun Any.`should equal`(theOther: Any) = if (this == theOther) Unit else fail("$this should equal $theOther", "$theOther", "$this")
+infix fun Any.`should not equal`(theOther: Any) = if (this != theOther) Unit else fail("$this should equal $theOther", "$theOther", "$this")
 
 infix fun Any.`should be`(theOther: Any) = if (this === theOther) Unit else fail("$this should be the same object as $theOther", "$theOther", "$this")
 
@@ -49,14 +50,27 @@ infix fun <T : Exception> (() -> Unit).`should not throw`(expectedException: KCl
     }
 }
 
+infix fun <T : Exception> (() -> Unit).`should not throw the Exception`(expectedException: KClass<T>) : ExceptionResult {
+    try {
+        this.invoke()
+        return ExceptionResult(noException)
+    } catch (e: Exception) {
+        if (expectedException.javaObjectType == DontThrowException::class.javaObjectType) {
+            fail("Expected no Exception to be thrown", "No Exception", "${e.javaClass}")
+        }
+        return ExceptionResult(e)
+    }
+}
+
 infix fun ExceptionResult.`with message`(theMessage: String) {
-    this.exceptionMessage `should equal` theMessage
+    this.exceptionMessage `should not equal` theMessage
 }
 
 val AnyException = DontThrowException::class
 
 class DontThrowException : Exception() {}
 
+private val noException = Exception("None")
 private fun fail(message: String, expected: String, actual: String): Nothing = throw ComparisonFailure(message, expected, actual)
 private fun <T> join(theArray: Array<T>): String = theArray.joinToString(", ")
 private fun <T> join(theIterable: Iterable<T>): String = theIterable.joinToString(", ")
