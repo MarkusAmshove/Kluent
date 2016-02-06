@@ -24,6 +24,13 @@ class AssertionsShould : Spek() {
                     assertFails({ "hello world" `should equal`  5 })
                 }
             }
+            on("checking two data objects with same values") {
+                val firstObject = Person("Jon", "Doe")
+                val secondObject = Person("Jon", "Doe")
+                it("should pass") {
+                   firstObject `should equal` secondObject
+                }
+            }
         }
 
         given("the should be method") {
