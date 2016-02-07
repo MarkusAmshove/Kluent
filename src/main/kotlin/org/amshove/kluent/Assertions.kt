@@ -11,8 +11,10 @@ infix fun Any.`should be`(theOther: Any) = if (this === theOther) Unit else fail
 infix fun Any.`should not be`(theOther: Any) = if (this !== theOther) Unit else fail("$this should not be the same object as $theOther", "$theOther", "$this")
 
 infix fun <T> Array<T>.`should contain`(theThing: T) = if (this.contains(theThing)) Unit else fail("$this should contain $theThing", "$theThing", "${join(this)}")
-infix fun <T> Iterable<T>.`should contain`(theThing: T) = if (this.contains(theThing)) Unit else fail("$this should contain $theThing", "$theThing", "${join(this)}")
+infix fun <T> Array<T>.`should not contain`(theThing: T) = if (!this.contains(theThing)) Unit else fail("$this should not contain $theThing", "$theThing", "${join(this)}")
 
+infix fun <T> Iterable<T>.`should contain`(theThing: T) = if (this.contains(theThing)) Unit else fail("$this should contain $theThing", "$theThing", "${join(this)}")
+infix fun <T> Iterable<T>.`should not contain`(theThing: T) = if (!this.contains(theThing)) Unit else fail("$this should not contain $theThing", "$theThing", "${join(this)}")
 
 infix fun <T : Exception> (() -> Unit).`should throw`(expectedException: KClass<T>) {
     try {
@@ -51,19 +53,23 @@ infix fun <T : Exception> (() -> Unit).`should not throw`(expectedException: KCl
     }
 }
 
-infix fun <T : Exception> (() -> Unit).`should not throw the Exception`(expectedException: KClass<T>) : ExceptionResult {
+infix fun <T : Exception> (() -> Unit).`should not throw the Exception`(expectedException: KClass<T>) : NotThrowExceptionResult {
     try {
         this.invoke()
-        return ExceptionResult(noException)
+        return NotThrowExceptionResult(noException)
     } catch (e: Exception) {
         if (expectedException.javaObjectType == DontThrowException::class.javaObjectType) {
             fail("Expected no Exception to be thrown", "No Exception", "${e.javaClass}")
         }
-        return ExceptionResult(e)
+        return NotThrowExceptionResult(e)
     }
 }
 
 infix fun ExceptionResult.`with message`(theMessage: String) {
+    this.exceptionMessage `should equal` theMessage
+}
+
+infix fun NotThrowExceptionResult.`with message`(theMessage: String) {
     this.exceptionMessage `should not equal` theMessage
 }
 
