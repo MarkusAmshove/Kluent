@@ -5,9 +5,10 @@ import kotlin.reflect.KClass
 
 
 infix fun Any.`should equal`(theOther: Any) = if (this == theOther) Unit else fail("$this should equal $theOther", "$theOther", "$this")
-infix fun Any.`should not equal`(theOther: Any) = if (this != theOther) Unit else fail("$this should equal $theOther", "$theOther", "$this")
+infix fun Any.`should not equal`(theOther: Any) = if (this != theOther) Unit else fail("$this should not equal $theOther", "$theOther", "$this")
 
 infix fun Any.`should be`(theOther: Any) = if (this === theOther) Unit else fail("$this should be the same object as $theOther", "$theOther", "$this")
+infix fun Any.`should not be`(theOther: Any) = if (this !== theOther) Unit else fail("$this should be the same object as $theOther", "$theOther", "$this")
 
 infix fun <T> Array<T>.`should contain`(theThing: T) = if (this.contains(theThing)) Unit else fail("$this should contain $theThing", "$theThing", "${join(this)}")
 infix fun <T> Iterable<T>.`should contain`(theThing: T) = if (this.contains(theThing)) Unit else fail("$this should contain $theThing", "$theThing", "${join(this)}")
