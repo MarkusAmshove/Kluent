@@ -21,6 +21,9 @@ infix fun <T : Exception> (() -> Unit).`should throw`(expectedException: KClass<
         this.invoke()
         fail("There was an Exception expected to be thrown, but nothing was thrown", "$expectedException", "None")
     } catch (e: Exception) {
+        if (expectedException.javaObjectType == AnyException::class.javaObjectType) {
+            return
+        }
         if (e.javaClass == expectedException.javaObjectType) {
             Unit
         } else throw ComparisonFailure("Expected ${expectedException.javaObjectType} to be thrown", "${expectedException.javaObjectType}", "${e.javaClass}")
@@ -43,7 +46,7 @@ infix fun <T : Exception> (() -> Unit).`should not throw`(expectedException: KCl
         this.invoke()
         Unit
     } catch (e: Exception) {
-        if (expectedException.javaObjectType == DontThrowException::class.javaObjectType) {
+        if (expectedException.javaObjectType == AnyException::class.javaObjectType) {
             fail("Expected no Exception to be thrown", "No Exception", "${e.javaClass}")
         }
         if (e.javaClass == expectedException.javaObjectType) {
@@ -58,7 +61,7 @@ infix fun <T : Exception> (() -> Unit).`should not throw the Exception`(expected
         this.invoke()
         return NotThrowExceptionResult(noException)
     } catch (e: Exception) {
-        if (expectedException.javaObjectType == DontThrowException::class.javaObjectType) {
+        if (expectedException.javaObjectType == AnyException::class.javaObjectType) {
             fail("Expected no Exception to be thrown", "No Exception", "${e.javaClass}")
         }
         return NotThrowExceptionResult(e)
@@ -73,9 +76,9 @@ infix fun NotThrowExceptionResult.`with message`(theMessage: String) {
     this.exceptionMessage `should not equal` theMessage
 }
 
-val AnyException = DontThrowException::class
+val AnyException = AnyException::class
 
-class DontThrowException : Exception() {}
+class AnyException : Exception() {}
 
 private val noException = Exception("None")
 private fun fail(message: String, expected: String, actual: String): Nothing = throw ComparisonFailure(message, expected, actual)

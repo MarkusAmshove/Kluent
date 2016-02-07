@@ -1,5 +1,6 @@
 package org.amshove.kluent.tests
 
+import org.amshove.kluent.AnyException
 import org.amshove.kluent.`should throw the Exception`
 import org.amshove.kluent.`should throw`
 import org.amshove.kluent.`with message`
@@ -25,6 +26,18 @@ class ShouldThrowTheExceptionTests : Spek() {
                 it("should fail") {
                     val func = { throw IllegalArgumentException() }
                     assertFails({ func `should throw` IndexOutOfBoundsException::class })
+                }
+            }
+            on("expecting any exception when any exception is thrown") {
+                it("should pass") {
+                    val func = { throw Exception() }
+                    func `should throw` AnyException
+                }
+            }
+            on("expecting any exception when no exception is thrown") {
+                it("should fail") {
+                    val func = { Unit }
+                    assertFails({ func `should throw` AnyException })
                 }
             }
         }
