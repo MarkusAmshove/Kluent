@@ -11,7 +11,7 @@ buildscript {
 }
 
 group 'org.amshove.kluent'
-version '1.1'
+version '1.0'
 
 apply plugin: 'kotlin'
 apply plugin: 'idea'
@@ -38,10 +38,20 @@ sourceSets {
     test.kotlin.srcDirs += 'src/test/kotlin'
 }
 
+task sourcesJar(type: Jar, dependsOn: classes) {
+	classifier = 'sources'
+	from sourceSets.main.allSource
+}
+
+artifacts {
+	archives sourcesJar
+}
+
 bintray {
 	user = System.getenv('BINTRAY_USER')
 	key = System.getenv('BINTRAY_KEY')
 	publications = ['PublishKluent']
+	configurations = ['archives']
 	pkg {
         repo = "maven"
         name = "Kluent"
