@@ -11,7 +11,7 @@ buildscript {
 }
 
 group 'org.amshove.kluent'
-version '1.0'
+version '1.2'
 
 apply plugin: 'kotlin'
 apply plugin: 'idea'
@@ -65,7 +65,7 @@ publishing {
 			from components.java
 			groupId 'org.amshove.kluent'
 			artifactId 'kluent'
-			version '1.0'
+			version '1.2'
 		}
 	}
 }
