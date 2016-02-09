@@ -24,6 +24,7 @@ Kluent is hosted in [jCenter](https://bintray.com/markusamshove/maven/Kluent/vie
     </dependency>
 
 # Examples
+All examples contain the infixNotation as well as the \`backtick Notation`\.
 All examples can also be seen in Kluent's tests.
 
 ## assertEquals ##
