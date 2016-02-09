@@ -77,6 +77,8 @@ Kluent:
     val alice = Person("Alice", "Bob")
     val jon = Person("Jon", "Doe")
     val list = listOf(alice, jon)
+    list shouldContain jon
+    OR
     list `should contain` jon
 
 ## Assert that an Array/Iterable doesn't contain something ##
@@ -84,7 +86,7 @@ Kluent:
     val alice = Person("Alice", "Bob")
     val jon = Person("Jon", "Doe")
     val list = listOf(alice, jon)
-    list shouldNotContain
+    list shouldNotContain alice
     OR
     list `should not contain` alice
 
@@ -98,7 +100,7 @@ Kluent:
 ## Assert that something throws an Exception with a specific message ##
 
     val func = { throw Exception("Hello World!") }
-    func `shouldThrowTheException` Exception::class withMessage "Hello World!"
+    func shouldThrowTheException Exception::class withMessage "Hello World!"
     OR
     func `should throw the Exception` Exception::class `with message` "Hello World!"
 
