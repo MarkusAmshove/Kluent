@@ -1,4 +1,4 @@
-package org.amshove.kluent.tests
+package org.amshove.kluent.tests.backtickassertions
 
 import org.amshove.kluent.AnyException
 import org.amshove.kluent.`should throw the Exception`

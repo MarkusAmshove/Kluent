@@ -1,37 +1,36 @@
-package org.amshove.kluent.tests
+package org.amshove.kluent.tests.assertions
 
 import org.amshove.kluent.AnyException
-import org.amshove.kluent.`should not throw the Exception`
-import org.amshove.kluent.`should not throw`
-import org.amshove.kluent.`with message`
+import org.amshove.kluent.withMessage
+import org.amshove.kluent.shouldNotThrowTheException
 import org.jetbrains.spek.api.Spek
 import kotlin.test.assertFails
 
 class ShouldNotThrowTheExceptionTests : Spek() {
     init {
-        given("the should not throw the exception method") {
+        given("the shouldNotThrow the exception method") {
             on("providing a function that throws Exception A and shouldn't throw B") {
                 it("should pass") {
                     val func = { throw IllegalArgumentException() }
-                    func `should not throw the Exception` ArrayIndexOutOfBoundsException::class
+                    func shouldNotThrowTheException ArrayIndexOutOfBoundsException::class
                 }
             }
             on("providing a function that doesn't throw an exception") {
                 it("should pass") {
                     val func = { Unit }
-                    func `should not throw the Exception` AnyException
+                    func shouldNotThrowTheException AnyException
                 }
             }
             on("providing a function that does throw an exception without the expected message") {
                 it("should pass") {
                     val func = { throw Exception("Hello!") }
-                    func `should not throw the Exception` Exception::class `with message` "Another message"
+                    func shouldNotThrowTheException Exception::class withMessage "Another message"
                 }
             }
             on("providing a function that does throw an exception with the expected message") {
                 it("should pass") {
                     val func = { throw Exception("The Message") }
-                    assertFails({func `should not throw the Exception` Exception::class `with message` "The Message"})
+                    assertFails({ func shouldNotThrowTheException Exception::class withMessage "The Message" })
                 }
             }
         }

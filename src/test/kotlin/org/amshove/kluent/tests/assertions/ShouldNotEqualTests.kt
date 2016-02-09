@@ -1,33 +1,33 @@
-package org.amshove.kluent.tests
+package org.amshove.kluent.tests.assertions
 
-import org.amshove.kluent.`should equal`
+import org.amshove.kluent.shouldNotEqual
 import org.amshove.kluent.tests.helpclasses.Person
 import org.jetbrains.spek.api.Spek
 import kotlin.test.assertFails
 
-class ShouldEqualTests : Spek() {
+class ShouldNotEqualTests : Spek() {
     init {
-        given("the should equal method") {
+        given("the shouldEqual method") {
             on("checking equality of two equal strings") {
-                it("should pass") {
-                    "hello world" `should equal` "hello world"
+                it("should fail") {
+                    assertFails({ "hello world" shouldNotEqual "hello world" })
                 }
             }
             on("checking equality of two strings with unequal values") {
-                it("should fail") {
-                    assertFails({ "hello word!" `should equal` "hello" })
+                it("should pass") {
+                    "hello word!" shouldNotEqual "hello"
                 }
             }
             on("checking different types") {
-                it("should fail") {
-                    assertFails({ "hello world" `should equal`  5 })
+                it("should pass") {
+                    "hello world" shouldNotEqual  5
                 }
             }
             on("checking two data objects with same values") {
                 val firstObject = Person("Jon", "Doe")
                 val secondObject = Person("Jon", "Doe")
-                it("should pass") {
-                    firstObject `should equal` secondObject
+                it("should fail") {
+                    assertFails({ firstObject shouldNotEqual secondObject })
                 }
             }
         }
