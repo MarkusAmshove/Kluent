@@ -33,6 +33,8 @@ JUnit:
 
 Kluent:
 
+    "hello" shouldEqual "hello"
+    OR
     "hello" `should equal` "hello"
 
 ## assertNotEquals ##
@@ -42,7 +44,9 @@ JUnit:
 
 Kluent:
 
-	"hello" `should not equal` "world"
+    "hello" shouldNotEqual "world"
+    OR
+    "hello" `should not equal` "world"
 
 ## assertSame ##
 JUnit:
@@ -51,6 +55,8 @@ JUnit:
 
 Kluent:
 
+    firstObject shouldBe secondObject
+    OR
     firstObject `should be` secondObject;
 
 ## assertNotSame ##
@@ -60,6 +66,8 @@ JUnit:
 
 Kluent:
 
+    firstObject shouldNotBe secondObject
+    OR
     firstObject `should not be` secondObject
 
 ## Assert that an Array/Iterable contains something ##
@@ -74,34 +82,48 @@ Kluent:
     val alice = Person("Alice", "Bob")
     val jon = Person("Jon", "Doe")
     val list = listOf(alice, jon)
+    list shouldNotContain
+    OR
     list `should not contain` alice
 
 ## Assert that something throws an Exception ##
 
     val func = { throw IndexOutOfBoundsException() }
+    func shouldThrow IndexOutOfBoundsException::class
+    OR
     func `should throw` IndexOutOfBoundsException::class
 
 ## Assert that something throws an Exception with a specific message ##
 
     val func = { throw Exception("Hello World!") }
+    func `shouldThrowTheException` Exception::class withMessage "Hello World!"
+    OR
     func `should throw the Exception` Exception::class `with message` "Hello World!"
 
 ## Assert that something throws any Exception (we don't care about the type) ##
 
     val func = { throw Exception("Hello World!") }
+    func shouldThrow AnyException
+    OR
     func `should throw` AnyException
 
 ## Assert that something doesn't throw an Exception of given type ##
 
     val func = { throw Exception("Hello World!") }
+    func shouldNotThrow IndexOutOfBoundsException::class
+    OR
     func `should not throw` IndexOutOfBoundsException::class
 
 ## Assert that something doesn't throw an Exception with a specific message ##
 
     val func = { throw Exception("Hello World!") }
+    func shouldNotThrowTheException IndexOutOfBoundsException::class withMessage "Nothing here"
+    OR
     func `should not throw the Exception` IndexOutOfBoundsException::class `with message` "Nothing here"
 
 ## Assert that something doesn't throw any Exception of any type ##
 
     val func = { Unit }
+    func shouldNotThrow AnyException
+    OR
     func `should not throw` AnyException
