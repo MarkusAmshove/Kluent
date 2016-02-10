@@ -3,9 +3,13 @@ package org.amshove.kluent
 import org.junit.ComparisonFailure
 import kotlin.reflect.KClass
 import org.junit.Assert.*
+import java.util.*
 
 infix fun Any.`should equal`(theOther: Any) = assertEquals(theOther, this)
 infix fun Any.`should not equal`(theOther: Any) = assertNotEquals(theOther, this)
+
+infix fun <T> Array<T>.`should equal`(theOther: Array<T>) = assertArrayEquals(theOther, this)
+infix fun <T> Iterable<T>.`should equal`(theOther: Iterable<T>) = assertEquals(theOther, this)
 
 infix fun Any.`should be`(theOther: Any) = assertSame(theOther, this)
 infix fun Any.`should not be`(theOther: Any) = assertNotSame(theOther, this)
@@ -56,7 +60,7 @@ infix fun <T : Exception> (() -> Unit).`should not throw`(expectedException: KCl
     }
 }
 
-infix fun <T : Exception> (() -> Unit).`should not throw the Exception`(expectedException: KClass<T>) : NotThrowExceptionResult {
+infix fun <T : Exception> (() -> Unit).`should not throw the Exception`(expectedException: KClass<T>): NotThrowExceptionResult {
     try {
         this.invoke()
         return NotThrowExceptionResult(noException)

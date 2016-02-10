@@ -30,6 +30,34 @@ class ShouldEqualTests : Spek() {
                     firstObject shouldEqual secondObject
                 }
             }
+            on("checking two equal arrays") {
+                val firstArray = arrayOf(1, 2, 3)
+                val secondArray = arrayOf(1, 2, 3)
+                it("should pass") {
+                    firstArray shouldEqual secondArray
+                }
+            }
+            on("checking two different arrays") {
+                val firstArray = arrayOf(1, 2, 3)
+                val secondArray = arrayOf(4, 5, 6)
+                it("should fail") {
+                    assertFails({ firstArray shouldEqual secondArray })
+                }
+            }
+            on("checking two equal iterables") {
+                val firstIterable = listOf(Person("Tom", "Guy"), Person("Alice", "Bob"), Person("Jon", "Doe"))
+                val secondIterable = listOf(Person("Tom", "Guy"), Person("Alice", "Bob"), Person("Jon", "Doe"))
+                it("should pass") {
+                    firstIterable shouldEqual secondIterable
+                }
+            }
+            on("checking two different iterables") {
+                val firstIterable = listOf(Person("Tom", "Guy"), Person("Jon", "Doe"), Person("Peter", "Meyer"))
+                val secondIterable = listOf(Person("Tom", "Guy"), Person("Alice", "Bob"), Person("Jon", "Doe"))
+                it("should fail") {
+                    assertFails({ firstIterable shouldEqual secondIterable })
+                }
+            }
         }
     }
 }

@@ -5,7 +5,7 @@ import org.amshove.kluent.tests.helpclasses.Person
 import org.jetbrains.spek.api.Spek
 import kotlin.test.assertFails
 
-class ShouldEqualTests : Spek() {
+class ShouldequalTests : Spek() {
     init {
         given("the should equal method") {
             on("checking equality of two equal strings") {
@@ -28,6 +28,34 @@ class ShouldEqualTests : Spek() {
                 val secondObject = Person("Jon", "Doe")
                 it("should pass") {
                     firstObject `should equal` secondObject
+                }
+            }
+            on("checking two equal arrays") {
+                val firstArray = arrayOf(1, 2, 3)
+                val secondArray = arrayOf(1, 2, 3)
+                it("should pass") {
+                    firstArray `should equal` secondArray
+                }
+            }
+            on("checking two different arrays") {
+                val firstArray = arrayOf(1, 2, 3)
+                val secondArray = arrayOf(4, 5, 6)
+                it("should fail") {
+                    assertFails({ firstArray `should equal` secondArray })
+                }
+            }
+            on("checking two equal iterables") {
+                val firstIterable = listOf(Person("Tom", "Guy"), Person("Alice", "Bob"), Person("Jon", "Doe"))
+                val secondIterable = listOf(Person("Tom", "Guy"), Person("Alice", "Bob"), Person("Jon", "Doe"))
+                it("should pass") {
+                    firstIterable `should equal` secondIterable
+                }
+            }
+            on("checking two different iterables") {
+                val firstIterable = listOf(Person("Tom", "Guy"), Person("Jon", "Doe"), Person("Peter", "Meyer"))
+                val secondIterable = listOf(Person("Tom", "Guy"), Person("Alice", "Bob"), Person("Jon", "Doe"))
+                it("should fail") {
+                    assertFails({ firstIterable `should equal` secondIterable })
                 }
             }
         }
