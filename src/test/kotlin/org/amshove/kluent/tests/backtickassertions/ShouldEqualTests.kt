@@ -5,7 +5,7 @@ import org.amshove.kluent.tests.helpclasses.Person
 import org.jetbrains.spek.api.Spek
 import kotlin.test.assertFails
 
-class ShouldequalTests : Spek() {
+class ShouldEqualTests : Spek() {
     init {
         given("the should equal method") {
             on("checking equality of two equal strings") {
