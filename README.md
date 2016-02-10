@@ -12,14 +12,14 @@ Kluent is hosted in [jCenter](https://bintray.com/markusamshove/maven/Kluent/vie
 
 ## Gradle
     dependencies {
-        testCompile 'org.amshove.kluent:kluent:1.1'
+        testCompile 'org.amshove.kluent:kluent:1.3'
     }
-    
+
 ## Maven
     <dependency> 
         <groupId>org.amshove.kluent</groupId>
         <artifactId>kluent</artifactId>
-        <version>1.1</version>
+        <version>1.3</version>
         <type>pom</type>
     </dependency>
 
@@ -71,6 +71,24 @@ Kluent:
     firstObject shouldNotBe secondObject
     OR
     firstObject `should not be` secondObject
+
+## Assert that Arrays are equal ##
+JUnit:
+
+     assertArrayEquals(firstArray, secondArray);
+
+Kluent:
+
+    firstArray shouldEqual secondArray
+    OR
+    firstArray `should equal` secondArray
+
+## Assert that Iterables are equal ##
+Kluent:
+
+    firstIterable shouldEqual secondIterable
+    OR
+    firstIterable `should equal` secondIterable
 
 ## Assert that an Array/Iterable contains something ##
 
@@ -131,3 +149,4 @@ Kluent:
     func shouldNotThrow AnyException
     OR
     func `should not throw` AnyException
+
