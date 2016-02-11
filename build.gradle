@@ -29,8 +29,10 @@ repositories {
 dependencies {
     compile 'junit:junit:4.11'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+	compile 'org.mockito:mockito-all:1.9.5'
     testCompile 'junit:junit:4.11'
     testCompile "org.jetbrains.spek:spek:$spek_version"
+	testCompile 'org.mockito:mockito-all:1.9.5'
 }
 
 sourceSets {
