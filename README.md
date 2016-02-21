@@ -6,31 +6,37 @@ It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.ht
 
  [ ![Download](https://api.bintray.com/packages/markusamshove/maven/Kluent/images/download.svg) ](https://bintray.com/markusamshove/maven/Kluent/_latestVersion) [![Build Status](https://travis-ci.org/MarkusAmshove/Kluent.svg?branch=master)](https://travis-ci.org/MarkusAmshove/Kluent)
 
+
+----------
+
 # Examples
 
 More examples can be seen in the [Wiki](https://github.com/MarkusAmshove/Kluent/wiki) or [tests](https://github.com/MarkusAmshove/Kluent/tree/master/src/test/kotlin/org/amshove/kluent/tests).
 
-## assertEquals ##
+### assertEquals ##
 
     "hello" shouldEqual "hello"
 
-## assertNotEquals ##
+### assertNotEquals ##
 
     "hello" shouldNotEqual "world"
 
-## Assert that an Array/Iterable contains something ##
+### Assert that an Array/Iterable contains something ##
 
     val alice = Person("Alice", "Bob")
     val jon = Person("Jon", "Doe")
     val list = listOf(alice, jon)
     list shouldContain jon
     
-## Stubbing
+### Stubbing
 
     val stub = mock(Database::class)
     val bob = Person("Bob", "Guy")
     When calling stub.getPerson() itReturns bob
 
+
+
+----------
 
 # Include it via gradle/maven
 
