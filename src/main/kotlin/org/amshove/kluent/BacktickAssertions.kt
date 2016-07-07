@@ -4,14 +4,14 @@ import org.junit.Assert.*
 import org.junit.ComparisonFailure
 import kotlin.reflect.KClass
 
-infix fun Any.`should equal`(theOther: Any) = assertEquals(theOther, this)
-infix fun Any.`should not equal`(theOther: Any) = assertNotEquals(theOther, this)
+infix fun Any?.`should equal`(theOther: Any?) = assertEquals(theOther, this)
+infix fun Any?.`should not equal`(theOther: Any?) = assertNotEquals(theOther, this)
 
-infix fun <T> Array<T>.`should equal`(theOther: Array<T>) = assertArrayEquals(theOther, this)
-infix fun <T> Iterable<T>.`should equal`(theOther: Iterable<T>) = assertEquals(theOther, this)
+infix fun <T> Array<T>?.`should equal`(theOther: Array<T>?) = assertArrayEquals(theOther, this)
+infix fun <T> Iterable<T>?.`should equal`(theOther: Iterable<T>?) = assertEquals(theOther, this)
 
-infix fun Any.`should be`(theOther: Any) = assertSame(theOther, this)
-infix fun Any.`should not be`(theOther: Any) = assertNotSame(theOther, this)
+infix fun Any?.`should be`(theOther: Any?) = assertSame(theOther, this)
+infix fun Any?.`should not be`(theOther: Any?) = assertNotSame(theOther, this)
 
 infix fun <T> Array<T>.`should contain`(theThing: T) = if (this.contains(theThing)) Unit else fail("$this should contain $theThing", "$theThing", "${join(this)}")
 infix fun <T> Array<T>.`should not contain`(theThing: T) = if (!this.contains(theThing)) Unit else fail("$this should not contain $theThing", "$theThing", "${join(this)}")
@@ -77,9 +77,9 @@ infix fun NotThrowExceptionResult.`with message`(theMessage: String) {
     this.exceptionMessage `should not equal` theMessage
 }
 
-val AnyException = AnyException::class
+val AnyException = AnyExceptionType::class
 
-class AnyException : Exception() {}
+class AnyExceptionType : Exception() {}
 
 private val noException = Exception("None")
 private fun <T : Exception> KClass<T>.isAnyException() = this.javaObjectType == AnyException.javaObjectType

@@ -3,14 +3,14 @@ package org.amshove.kluent
 import kotlin.reflect.KClass
 
 
-infix fun Any.shouldEqual(theOther: Any) = this `should equal` theOther
-infix fun Any.shouldNotEqual(theOther: Any) = this `should not equal` theOther
+infix fun Any?.shouldEqual(theOther: Any?) = this `should equal` theOther
+infix fun Any?.shouldNotEqual(theOther: Any?) = this `should not equal` theOther
 
-infix fun <T> Array<T>.shouldEqual(theOther: Array<T>) = this `should equal` theOther
-infix fun <T> Iterable<T>.shouldEqual(theOther: Iterable<T>) = this `should equal` theOther
+infix fun <T> Array<T>?.shouldEqual(theOther: Array<T>?) = this `should equal` theOther
+infix fun <T> Iterable<T>?.shouldEqual(theOther: Iterable<T>?) = this `should equal` theOther
 
-infix fun Any.shouldBe(theOther: Any) = this `should be` theOther
-infix fun Any.shouldNotBe(theOther: Any) = this `should not be` theOther
+infix fun Any?.shouldBe(theOther: Any?) = this `should be` theOther
+infix fun Any?.shouldNotBe(theOther: Any?) = this `should not be` theOther
 
 infix fun <T> Array<T>.shouldContain(theThing: T) = this `should contain` theThing
 infix fun <T> Array<T>.shouldNotContain(theThing: T) = this `should not contain` theThing
