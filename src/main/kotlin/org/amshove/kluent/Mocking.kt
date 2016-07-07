@@ -30,7 +30,7 @@ val Verify = VerifyKeyword()
 val called = CalledKeyword()
 val VerifyNoInteractions = VerifyNoInteractionsKeyword()
 val `Verify no interactions` = VerifyNoInteractions
-val VerifyNoFurtherInteractions = VerifyNoInteractionsKeyword()
+val VerifyNoFurtherInteractions = VerifyNoFurtherInteractionsKeyword()
 val `Verify no further interactions` = VerifyNoFurtherInteractions
 
 class VerifyKeyword internal constructor() {}
