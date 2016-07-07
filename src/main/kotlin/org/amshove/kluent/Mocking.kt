@@ -17,8 +17,11 @@ infix fun <T> T.was(n: CalledKeyword) = n
 fun <T : Any> any(kClass: KClass<T>): T = any(kClass.javaObjectType)
 
 infix fun <T> OngoingStubbing<T>.itReturns(value: T): OngoingStubbing<T> = this.thenReturn(value)
+infix fun <T> OngoingStubbing<T>.`it returns`(value: T): OngoingStubbing<T> = this.thenReturn(value)
 infix fun <T> OngoingStubbing<T>.itThrows(value: RuntimeException): OngoingStubbing<T> = this.thenThrow(value)
+infix fun <T> OngoingStubbing<T>.`it throws`(value: RuntimeException): OngoingStubbing<T> = this.thenThrow(value)
 infix fun <T> OngoingStubbing<T>.itAnswers(value: (InvocationOnMock) -> T): OngoingStubbing<T> = this.thenAnswer(value)
+infix fun <T> OngoingStubbing<T>.`it answers`(value: (InvocationOnMock) -> T): OngoingStubbing<T> = this.thenAnswer(value)
 infix fun <T> WhenKeyword.calling(methodCall: T): OngoingStubbing<T> = `when`(methodCall)
 
 
@@ -26,7 +29,9 @@ val When = WhenKeyword()
 val Verify = VerifyKeyword()
 val called = CalledKeyword()
 val VerifyNoInteractions = VerifyNoInteractionsKeyword()
+val `Verify no interactions` = VerifyNoInteractions
 val VerifyNoFurtherInteractions = VerifyNoInteractionsKeyword()
+val `Verify no further interactions` = VerifyNoFurtherInteractions
 
 class VerifyKeyword internal constructor() {}
 class CalledKeyword internal constructor() {}
