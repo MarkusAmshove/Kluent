@@ -1,6 +1,5 @@
 package org.amshove.kluent.tests.backtickassertions
 
-import org.amshove.kluent.`should be in`
 import org.amshove.kluent.`should not be in`
 import org.amshove.kluent.tests.helpclasses.Person
 import org.jetbrains.spek.api.Spek
@@ -8,7 +7,7 @@ import kotlin.test.assertFails
 
 class ShouldNotBeInTests : Spek() {
   init {
-    given("the shouldNotBeIn method") {
+    given("the `should not be in` method") {
       on("checking object not in Array") {
         val person = Person("Jon", "Doe")
         val array = arrayOf(Person("Foo", "Bar"), Person("Foo", "Bar"))

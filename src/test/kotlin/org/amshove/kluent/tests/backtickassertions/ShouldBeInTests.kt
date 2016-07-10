@@ -1,14 +1,13 @@
 package org.amshove.kluent.tests.backtickassertions
 
 import org.amshove.kluent.`should be in`
-import org.amshove.kluent.shouldBeIn
 import org.amshove.kluent.tests.helpclasses.Person
 import org.jetbrains.spek.api.Spek
 import kotlin.test.assertFails
 
 class ShouldBeInTests : Spek() {
   init {
-    given("the shouldBeIn method") {
+    given("the `should be in` method") {
       on("checking object in Array") {
         val person = Person("Jon", "Doe")
         val array = arrayOf(Person("Jon", "Doe"), Person("Foo", "Bar"))

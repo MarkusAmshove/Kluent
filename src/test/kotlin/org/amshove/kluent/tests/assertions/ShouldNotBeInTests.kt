@@ -1,6 +1,5 @@
 package org.amshove.kluent.tests.assertions
 
-import org.amshove.kluent.shouldBeIn
 import org.amshove.kluent.shouldNotBeIn
 import org.amshove.kluent.tests.helpclasses.Person
 import org.jetbrains.spek.api.Spek
