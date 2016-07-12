@@ -34,7 +34,19 @@ More examples can be seen in the [Wiki](https://github.com/MarkusAmshove/Kluent/
     val bob = Person("Bob", "Guy")
     When calling stub.getPerson() itReturns bob
 
+## Using backticks
 
+Every method that is included in Kluent also has a "backtick version", to make it feel more like a describing sentence.
+
+Some examples:
+
+### assertEquals ##
+
+    "hello" `should equal` "hello"
+
+### assertNotEquals ##
+
+    "hello" `should not equal` "world"
 
 ----------
 
@@ -44,14 +56,14 @@ Kluent is hosted in [jCenter](https://bintray.com/markusamshove/maven/Kluent/vie
 
 ## Gradle
     dependencies {
-        testCompile 'org.amshove.kluent:kluent:1.5'
+        testCompile 'org.amshove.kluent:kluent:1.6'
     }
 
 ## Maven
     <dependency>
         <groupId>org.amshove.kluent</groupId>
         <artifactId>kluent</artifactId>
-        <version>1.5</version>
+        <version>1.6</version>
         <type>pom</type>
     </dependency>
 
