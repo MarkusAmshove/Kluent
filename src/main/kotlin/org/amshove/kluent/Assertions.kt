@@ -18,6 +18,12 @@ infix fun <T> Array<T>.shouldNotContain(theThing: T) = this `should not contain`
 infix fun <T> Iterable<T>.shouldContain(theThing: T) = this `should contain` theThing
 infix fun <T> Iterable<T>.shouldNotContain(theThing: T) = this `should not contain` theThing
 
+infix fun <T> Any?.shouldBeIn(array: Array<T>) = this `should be in` array
+infix fun <T> Any?.shouldNotBeIn(array: Array<T>) = this `should not be in` array
+
+infix fun <T> Any?.shouldBeIn(iterable: Iterable<T>) = this `should be in` iterable
+infix fun <T> Any?.shouldNotBeIn(iterable: Iterable<T>) = this `should not be in` iterable
+
 infix fun <T: Exception> (() -> Unit).shouldThrow(expectedException: KClass<T>) = this `should throw` expectedException
 infix fun <T: Exception> (() -> Unit).shouldNotThrow(expectedException: KClass<T>) = this `should not throw` expectedException
 

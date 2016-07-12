@@ -19,6 +19,12 @@ infix fun <T> Array<T>.`should not contain`(theThing: T) = if (!this.contains(th
 infix fun <T> Iterable<T>.`should contain`(theThing: T) = if (this.contains(theThing)) Unit else fail("$this should contain $theThing", "$theThing", "${join(this)}")
 infix fun <T> Iterable<T>.`should not contain`(theThing: T) = if (!this.contains(theThing)) Unit else fail("$this should not contain $theThing", "$theThing", "${join(this)}")
 
+infix fun <T> Any?.`should be in`(array: Array<T>) = if (array.contains(this)) Unit else fail("$this should be in $array", "$this", "${join(array)}")
+infix fun <T> Any?.`should not be in`(array: Array<T>) = if (!array.contains(this)) Unit else fail("$this should not be in $array", "$this", "${join(array)}")
+
+infix fun <T> Any?.`should be in`(iterable: Iterable<T>) = if (iterable.contains(this)) Unit else fail("$this should be in $iterable", "$this", "${join(iterable)}")
+infix fun <T> Any?.`should not be in`(iterable: Iterable<T>) = if (!iterable.contains(this)) Unit else fail("$this should not be in $iterable", "$this", "${join(iterable)}")
+
 infix fun <T : Exception> (() -> Unit).`should throw`(expectedException: KClass<T>) {
     try {
         this.invoke()
