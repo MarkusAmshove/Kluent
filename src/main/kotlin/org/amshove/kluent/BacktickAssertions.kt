@@ -18,6 +18,15 @@ infix fun <T : Float> T?.`should equal to`(theOther: T?) = assertEquals(theOther
 infix fun <T : Double> T?.`should equal to`(theOther: T?) = assertEquals(theOther, this)
 infix fun <T : String> T?.`should equal to`(theOther: T?) = assertEquals(theOther, this)
 
+infix fun <T : Boolean> T?.`should not equal to`(theOther: T?) = assertNotEquals(theOther, this)
+infix fun <T : Byte> T?.`should not equal to`(theOther: T?) = assertNotEquals(theOther, this)
+infix fun <T : Short> T?.`should not equal to`(theOther: T?) = assertNotEquals(theOther, this)
+infix fun <T : Int> T?.`should not equal to`(theOther: T?) = assertNotEquals(theOther, this)
+infix fun <T : Long> T?.`should not equal to`(theOther: T?) = assertNotEquals(theOther, this)
+infix fun <T : Float> T?.`should not equal to`(theOther: T?) = assertNotEquals(theOther, this)
+infix fun <T : Double> T?.`should not equal to`(theOther: T?) = assertNotEquals(theOther, this)
+infix fun <T : String> T?.`should not equal to`(theOther: T?) = assertNotEquals(theOther, this)
+
 infix fun <T> Array<T>?.`should equal`(theOther: Array<T>?) = assertArrayEquals(theOther, this)
 infix fun <T> Iterable<T>?.`should equal`(theOther: Iterable<T>?) = assertEquals(theOther, this)
 

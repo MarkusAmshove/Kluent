@@ -17,6 +17,15 @@ infix fun <T : Float> T?.shouldEqualTo(theOther: T?) = this `should equal to` th
 infix fun <T : Double> T?.shouldEqualTo(theOther: T?) = this `should equal to` theOther
 infix fun <T : String> T?.shouldEqualTo(theOther: T?) = this `should equal to` theOther
 
+infix fun <T : Boolean> T?.shouldNotEqualTo(theOther: T?) = this `should not equal to` theOther
+infix fun <T : Byte> T?.shouldNotEqualTo(theOther: T?) = this `should not equal to` theOther
+infix fun <T : Short> T?.shouldNotEqualTo(theOther: T?) = this `should not equal to` theOther
+infix fun <T : Int> T?.shouldNotEqualTo(theOther: T?) = this `should not equal to` theOther
+infix fun <T : Long> T?.shouldNotEqualTo(theOther: T?) = this `should not equal to` theOther
+infix fun <T : Float> T?.shouldNotEqualTo(theOther: T?) = this `should not equal to` theOther
+infix fun <T : Double> T?.shouldNotEqualTo(theOther: T?) = this `should not equal to` theOther
+infix fun <T : String> T?.shouldNotEqualTo(theOther: T?) = this `should not equal to` theOther
+
 infix fun <T> Array<T>?.shouldEqual(theOther: Array<T>?) = this `should equal` theOther
 infix fun <T> Iterable<T>?.shouldEqual(theOther: Iterable<T>?) = this `should equal` theOther
 
