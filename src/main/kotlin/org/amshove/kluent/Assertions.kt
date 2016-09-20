@@ -1,3 +1,5 @@
+@file:Suppress("FINAL_UPPER_BOUND")
+
 package org.amshove.kluent
 
 import kotlin.reflect.KClass
@@ -5,6 +7,15 @@ import kotlin.reflect.KClass
 
 infix fun Any?.shouldEqual(theOther: Any?) = this `should equal` theOther
 infix fun Any?.shouldNotEqual(theOther: Any?) = this `should not equal` theOther
+
+infix fun <T : Boolean> T?.shouldEqualTo(theOther: T?) = this `should equal to` theOther
+infix fun <T : Byte> T?.shouldEqualTo(theOther: T?) = this `should equal to` theOther
+infix fun <T : Short> T?.shouldEqualTo(theOther: T?) = this `should equal to` theOther
+infix fun <T : Int> T?.shouldEqualTo(theOther: T?) = this `should equal to` theOther
+infix fun <T : Long> T?.shouldEqualTo(theOther: T?) = this `should equal to` theOther
+infix fun <T : Float> T?.shouldEqualTo(theOther: T?) = this `should equal to` theOther
+infix fun <T : Double> T?.shouldEqualTo(theOther: T?) = this `should equal to` theOther
+infix fun <T : String> T?.shouldEqualTo(theOther: T?) = this `should equal to` theOther
 
 infix fun <T> Array<T>?.shouldEqual(theOther: Array<T>?) = this `should equal` theOther
 infix fun <T> Iterable<T>?.shouldEqual(theOther: Iterable<T>?) = this `should equal` theOther

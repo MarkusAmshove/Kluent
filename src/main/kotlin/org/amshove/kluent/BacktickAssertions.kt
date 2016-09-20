@@ -1,3 +1,5 @@
+@file:Suppress("FINAL_UPPER_BOUND")
+
 package org.amshove.kluent
 
 import org.junit.Assert.*
@@ -6,6 +8,15 @@ import kotlin.reflect.KClass
 
 infix fun Any?.`should equal`(theOther: Any?) = assertEquals(theOther, this)
 infix fun Any?.`should not equal`(theOther: Any?) = assertNotEquals(theOther, this)
+
+infix fun <T : Boolean> T?.`should equal to`(theOther: T?) = assertEquals(theOther, this)
+infix fun <T : Byte> T?.`should equal to`(theOther: T?) = assertEquals(theOther, this)
+infix fun <T : Short> T?.`should equal to`(theOther: T?) = assertEquals(theOther, this)
+infix fun <T : Int> T?.`should equal to`(theOther: T?) = assertEquals(theOther, this)
+infix fun <T : Long> T?.`should equal to`(theOther: T?) = assertEquals(theOther, this)
+infix fun <T : Float> T?.`should equal to`(theOther: T?) = assertEquals(theOther, this)
+infix fun <T : Double> T?.`should equal to`(theOther: T?) = assertEquals(theOther, this)
+infix fun <T : String> T?.`should equal to`(theOther: T?) = assertEquals(theOther, this)
 
 infix fun <T> Array<T>?.`should equal`(theOther: Array<T>?) = assertArrayEquals(theOther, this)
 infix fun <T> Iterable<T>?.`should equal`(theOther: Iterable<T>?) = assertEquals(theOther, this)
