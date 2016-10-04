@@ -7,8 +7,7 @@ import org.jetbrains.spek.api.Spek
 import kotlin.test.assertEquals
 import kotlin.test.assertFails
 
-class ShouldContainTests : Spek() {
-    init {
+class ShouldContainTests : Spek({
         given("the shouldContain method") {
             on("checking an array with the value") {
                 val array = arrayOf("Hello", "World", "Wide", "Web")
@@ -47,6 +46,5 @@ class ShouldContainTests : Spek() {
                 }
             }
         }
-    }
-}
+})
 
