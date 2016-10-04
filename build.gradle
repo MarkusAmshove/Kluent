@@ -1,6 +1,6 @@
 buildscript {
-    ext.kotlin_version = '1.0.0'
-    ext.spek_version   = "1.0.+"
+    ext.kotlin_version = '1.0.4'
+    ext.spek_version = "1.0.+"
     repositories {
         jcenter()
     }
@@ -21,7 +21,7 @@ apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
 
 repositories {
-	jcenter()
+    jcenter()
     maven {
         url = 'http://repository.jetbrains.com/all'
     }
@@ -42,35 +42,35 @@ sourceSets {
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
-	classifier = 'sources'
-	from sourceSets.main.allSource
+    classifier = 'sources'
+    from sourceSets.main.allSource
 }
 
 artifacts {
-	archives sourcesJar
+    archives sourcesJar
 }
 
 bintrayUpload.dependsOn install
 
 bintray {
-	user = System.getenv('BINTRAY_USER')
-	key = System.getenv('BINTRAY_KEY')
-	publications = ['PublishKluent']
-	configurations = ['archives']
-	pkg {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    publications = ['PublishKluent']
+    configurations = ['archives']
+    pkg {
         repo = "maven"
         name = "Kluent"
-		licenses = [ 'MIT' ]
-		vcsUrl = 'https://github.com/MarkusAmshove/Kluent'
-	}
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/MarkusAmshove/Kluent'
+    }
 }
 publishing {
-	publications {
-		PublishKluent(MavenPublication) {
-			from components.java
-			groupId 'org.amshove.kluent'
-			artifactId 'kluent'
-			version project.version
-		}
-	}
+    publications {
+        PublishKluent(MavenPublication) {
+            from components.java
+            groupId 'org.amshove.kluent'
+            artifactId 'kluent'
+            version project.version
+        }
+    }
 }
