@@ -18,5 +18,12 @@ class ShouldThrowTests: Spek({
                 assertFails({ func shouldThrow IllegalArgumentException::class })
             }
         }
+
+        on("throwing illegalstateException") {
+            val func = { throw IllegalStateException() }
+            it("should pass a shouldThrow RuntimeException") {
+                func shouldThrow RuntimeException::class
+            }
+        }
     }
 })
