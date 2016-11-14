@@ -45,7 +45,7 @@ infix fun <T> Any?.`should not be in`(array: Array<T>) = if (!array.contains(thi
 infix fun <T> Any?.`should be in`(iterable: Iterable<T>) = if (iterable.contains(this)) Unit else fail("$this should be in $iterable", "$this", "${join(iterable)}")
 infix fun <T> Any?.`should not be in`(iterable: Iterable<T>) = if (!iterable.contains(this)) Unit else fail("$this should not be in $iterable", "$this", "${join(iterable)}")
 
-infix fun <T : Exception> (() -> Unit).`should throw`(expectedException: KClass<T>) {
+infix fun <T : Exception> (() -> Any).`should throw`(expectedException: KClass<T>) {
     try {
         this.invoke()
         fail("There was an Exception expected to be thrown, but nothing was thrown", "$expectedException", "None")
@@ -59,7 +59,7 @@ infix fun <T : Exception> (() -> Unit).`should throw`(expectedException: KClass<
     }
 }
 
-infix fun <T : Exception> (() -> Unit).`should throw the Exception`(expectedException: KClass<T>): ExceptionResult {
+infix fun <T : Exception> (() -> Any).`should throw the Exception`(expectedException: KClass<T>): ExceptionResult {
     try {
         this.invoke()
         fail("There was an Exception expected to be thrown, but nothing was thrown", "$expectedException", "None")
@@ -70,7 +70,7 @@ infix fun <T : Exception> (() -> Unit).`should throw the Exception`(expectedExce
     }
 }
 
-infix fun <T : Exception> (() -> Unit).`should not throw`(expectedException: KClass<T>) {
+infix fun <T : Exception> (() -> Any).`should not throw`(expectedException: KClass<T>) {
     try {
         this.invoke()
     } catch (e: Exception) {
@@ -83,7 +83,7 @@ infix fun <T : Exception> (() -> Unit).`should not throw`(expectedException: KCl
     }
 }
 
-infix fun <T : Exception> (() -> Unit).`should not throw the Exception`(expectedException: KClass<T>): NotThrowExceptionResult {
+infix fun <T : Exception> (() -> Any).`should not throw the Exception`(expectedException: KClass<T>): NotThrowExceptionResult {
     try {
         this.invoke()
         return NotThrowExceptionResult(noException)
