@@ -26,9 +26,9 @@ class ShouldThrowTests : Spek({
                 funcWithReturn shouldThrow ArrayIndexOutOfBoundsException::class
             }
         }
-        on("throwing illegalstateException") {
+        on("throwing subtype of an exception") {
             val func = { throw IllegalStateException() }
-            it("should pass a shouldThrow RuntimeException") {
+            it("should pass a shouldThrow with expected super type") {
                 func shouldThrow RuntimeException::class
             }
         }
