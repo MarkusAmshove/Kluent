@@ -27,7 +27,7 @@ More examples can be seen in the [Wiki](https://github.com/MarkusAmshove/Kluent/
     val jon = Person("Jon", "Doe")
     val list = listOf(alice, jon)
     list shouldContain jon
-    
+
 ### Stubbing
 
     val stub = mock(Database::class)
@@ -56,14 +56,14 @@ Kluent is hosted in [jCenter](https://bintray.com/markusamshove/maven/Kluent/vie
 
 ## Gradle
     dependencies {
-        testCompile 'org.amshove.kluent:kluent:1.8'
+        testCompile 'org.amshove.kluent:kluent:1.9'
     }
 
 ## Maven
     <dependency>
         <groupId>org.amshove.kluent</groupId>
         <artifactId>kluent</artifactId>
-        <version>1.8</version>
+        <version>1.9</version>
         <type>pom</type>
     </dependency>
 
