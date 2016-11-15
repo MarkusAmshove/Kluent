@@ -5,7 +5,7 @@ import org.jetbrains.spek.api.Spek
 import java.util.*
 import kotlin.test.assertFails
 
-class ShouldThrowTests: Spek({
+class ShouldThrowTests : Spek({
     given("the shouldThrow method") {
         on("expecting the thrown exception") {
             it("should pass") {
@@ -24,6 +24,12 @@ class ShouldThrowTests: Spek({
             val funcWithReturn = { ArrayList<String>().get(-1) }
             it("should pass a failing test") {
                 funcWithReturn shouldThrow ArrayIndexOutOfBoundsException::class
+            }
+        }
+        on("throwing illegalstateException") {
+            val func = { throw IllegalStateException() }
+            it("should pass a shouldThrow RuntimeException") {
+                func shouldThrow RuntimeException::class
             }
         }
     }
