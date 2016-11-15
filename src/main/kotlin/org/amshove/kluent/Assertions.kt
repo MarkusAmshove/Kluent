@@ -44,11 +44,11 @@ infix fun <T> Any?.shouldNotBeIn(array: Array<T>) = this `should not be in` arra
 infix fun <T> Any?.shouldBeIn(iterable: Iterable<T>) = this `should be in` iterable
 infix fun <T> Any?.shouldNotBeIn(iterable: Iterable<T>) = this `should not be in` iterable
 
-infix fun <T: Exception> (() -> Unit).shouldThrow(expectedException: KClass<T>) = this `should throw` expectedException
-infix fun <T: Exception> (() -> Unit).shouldNotThrow(expectedException: KClass<T>) = this `should not throw` expectedException
+infix fun <T: Exception> (() -> Any).shouldThrow(expectedException: KClass<T>) = this `should throw` expectedException
+infix fun <T: Exception> (() -> Any).shouldNotThrow(expectedException: KClass<T>) = this `should not throw` expectedException
 
-infix fun <T: Exception> (() -> Unit).shouldThrowTheException(expectedException: KClass<T>) : ExceptionResult = this `should throw the Exception` expectedException
-infix fun <T: Exception> (() -> Unit).shouldNotThrowTheException(expectedException: KClass<T>) : NotThrowExceptionResult = this `should not throw the Exception` expectedException
+infix fun <T: Exception> (() -> Any).shouldThrowTheException(expectedException: KClass<T>) : ExceptionResult = this `should throw the Exception` expectedException
+infix fun <T: Exception> (() -> Any).shouldNotThrowTheException(expectedException: KClass<T>) : NotThrowExceptionResult = this `should not throw the Exception` expectedException
 
 infix fun ExceptionResult.withMessage(theMessage: String) = this `with message` theMessage
 infix fun NotThrowExceptionResult.withMessage(theMessage: String) = this `with message` theMessage
