@@ -50,12 +50,8 @@ infix fun <T : Exception> (() -> Any).`should throw`(expectedException: KClass<T
         this.invoke()
         fail("There was an Exception expected to be thrown, but nothing was thrown", "$expectedException", "None")
     } catch (e: Exception) {
-        if (expectedException.isAnyException()) {
-            return
-        }
-        if (e.javaClass !== expectedException.javaObjectType) {
+        if (!e.isA(expectedException))
             throw ComparisonFailure("Expected ${expectedException.javaObjectType} to be thrown", "${expectedException.javaObjectType}", "${e.javaClass}")
-        }
     }
 }
 
@@ -64,9 +60,8 @@ infix fun <T : Exception> (() -> Any).`should throw the Exception`(expectedExcep
         this.invoke()
         fail("There was an Exception expected to be thrown, but nothing was thrown", "$expectedException", "None")
     } catch (e: Exception) {
-        if (e.javaClass == expectedException.javaObjectType) {
-            return ExceptionResult(e)
-        } else throw ComparisonFailure("Expected ${expectedException.javaObjectType} to be thrown", "${expectedException.javaObjectType}", "${e.javaClass}")
+        if (e.isA(expectedException)) return ExceptionResult(e)
+        else throw ComparisonFailure("Expected ${expectedException.javaObjectType} to be thrown", "${expectedException.javaObjectType}", "${e.javaClass}")
     }
 }
 
@@ -77,9 +72,8 @@ infix fun <T : Exception> (() -> Any).`should not throw`(expectedException: KCla
         if (expectedException.isAnyException()) {
             fail("Expected no Exception to be thrown", "No Exception", "${e.javaClass}")
         }
-        if (e.javaClass == expectedException.javaObjectType) {
+        if (e.isA(expectedException))
             fail("Expected ${expectedException.javaObjectType} to not be thrown", "${e.javaClass}", "${expectedException.javaObjectType}")
-        }
     }
 }
 
@@ -105,9 +99,10 @@ infix fun NotThrowExceptionResult.`with message`(theMessage: String) {
 
 val AnyException = AnyExceptionType::class
 
-class AnyExceptionType : Exception() {}
+class AnyExceptionType : Exception()
 
 private val noException = Exception("None")
+private fun Exception.isA(expected: KClass<out Exception>) = expected.isAnyException() || expected.java.isAssignableFrom(this.javaClass)
 private fun <T : Exception> KClass<T>.isAnyException() = this.javaObjectType == AnyException.javaObjectType
 private fun fail(message: String, expected: String, actual: String): Nothing = throw ComparisonFailure(message, expected, actual)
 private fun <T> join(theArray: Array<T>): String = theArray.joinToString(", ")
