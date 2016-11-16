@@ -38,17 +38,20 @@ infix fun <T> Array<T>.shouldNotContain(theThing: T) = this `should not contain`
 infix fun <T> Iterable<T>.shouldContain(theThing: T) = this `should contain` theThing
 infix fun <T> Iterable<T>.shouldNotContain(theThing: T) = this `should not contain` theThing
 
+infix fun <R, T> Map<R, T>.shouldHaveKey(theKey: R) = this `should have key` theKey
+infix fun <R, T> Map<R, T>.shouldNotHaveKey(theKey: R) = this `should not have key` theKey
+
 infix fun <T> Any?.shouldBeIn(array: Array<T>) = this `should be in` array
 infix fun <T> Any?.shouldNotBeIn(array: Array<T>) = this `should not be in` array
 
 infix fun <T> Any?.shouldBeIn(iterable: Iterable<T>) = this `should be in` iterable
 infix fun <T> Any?.shouldNotBeIn(iterable: Iterable<T>) = this `should not be in` iterable
 
-infix fun <T: Exception> (() -> Any).shouldThrow(expectedException: KClass<T>) = this `should throw` expectedException
-infix fun <T: Exception> (() -> Any).shouldNotThrow(expectedException: KClass<T>) = this `should not throw` expectedException
+infix fun <T : Exception> (() -> Any).shouldThrow(expectedException: KClass<T>) = this `should throw` expectedException
+infix fun <T : Exception> (() -> Any).shouldNotThrow(expectedException: KClass<T>) = this `should not throw` expectedException
 
-infix fun <T: Exception> (() -> Any).shouldThrowTheException(expectedException: KClass<T>) : ExceptionResult = this `should throw the Exception` expectedException
-infix fun <T: Exception> (() -> Any).shouldNotThrowTheException(expectedException: KClass<T>) : NotThrowExceptionResult = this `should not throw the Exception` expectedException
+infix fun <T : Exception> (() -> Any).shouldThrowTheException(expectedException: KClass<T>): ExceptionResult = this `should throw the Exception` expectedException
+infix fun <T : Exception> (() -> Any).shouldNotThrowTheException(expectedException: KClass<T>): NotThrowExceptionResult = this `should not throw the Exception` expectedException
 
 infix fun ExceptionResult.withMessage(theMessage: String) = this `with message` theMessage
 infix fun NotThrowExceptionResult.withMessage(theMessage: String) = this `with message` theMessage
