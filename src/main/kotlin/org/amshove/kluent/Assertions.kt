@@ -48,6 +48,9 @@ infix fun <R, T> Map<R, T>.shouldNotHaveKey(theKey: R) = this `should not have k
 infix fun <R, T> Map<R, T>.shouldHaveValue(theValue: T) = this `should have value` theValue
 infix fun <R, T> Map<R, T>.shouldNotHaveValue(theValue: T) = this `should not have value` theValue
 
+infix fun <R, T> Map<R, T>.shouldContain(thePair: Pair<R, T>) = this `should contain` thePair
+infix fun <R, T> Map<R, T>.shouldNotContain(thePair: Pair<R, T>) = this `should not contain` thePair
+
 infix fun <T> Any?.shouldBeIn(array: Array<T>) = this `should be in` array
 infix fun <T> Any?.shouldNotBeIn(array: Array<T>) = this `should not be in` array
 

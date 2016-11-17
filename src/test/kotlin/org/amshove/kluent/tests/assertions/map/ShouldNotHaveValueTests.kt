@@ -1,7 +1,6 @@
-package org.amshove.kluent.tests.backtickassertions
+package org.amshove.kluent.tests.assertions.map
 
-
-import org.amshove.kluent.`should not have value`
+import org.amshove.kluent.shouldNotHaveValue
 import org.amshove.kluent.tests.getFailure
 import org.amshove.kluent.tests.helpclasses.Person
 import org.jetbrains.spek.api.Spek
@@ -16,16 +15,16 @@ class ShouldNotHaveValueTests : Spek({
         on("checking a Map with the value") {
             val map = mapOf("First" to 1, "Second" to 2)
             it("should fail") {
-                assertFails { map `should not have value` 1 }
+                assertFails { map shouldNotHaveValue 1 }
             }
         }
         on("checking a Map without the value") {
             val map = mapOf("first" to 1, "second" to 2)
             it("should pass") {
-                map `should not have value` 3
+                map shouldNotHaveValue 3
             }
             it("should format the values") {
-                val theFailure = getFailure { map `should not have value` 2 }
+                val theFailure = getFailure { map shouldNotHaveValue 2 }
                 Assert.assertEquals("1, 2", theFailure.actual)
             }
         }
@@ -35,7 +34,7 @@ class ShouldNotHaveValueTests : Spek({
             val jon = Person("Jon", "Grey")
             val map = mapOf(alice to bob, bob to jon)
             it("should fail") {
-                assertFails { map `should not have value` bob }
+                assertFails { map shouldNotHaveValue bob }
             }
         }
         on("checking any Map for an object which isn't contained") {
@@ -44,10 +43,10 @@ class ShouldNotHaveValueTests : Spek({
             val jon = Person("Jon", "Grey")
             val map = mapOf(alice to bob)
             it("should pass") {
-                map `should not have value` jon
+                map shouldNotHaveValue jon
             }
             it("should format the output") {
-                val failure = getFailure { map `should not have value` bob }
+                val failure = getFailure { map shouldNotHaveValue bob }
                 Assert.assertEquals("Person(name=Bob, surname=Blue)", failure.actual)
             }
         }
