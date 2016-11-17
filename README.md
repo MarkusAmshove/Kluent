@@ -7,7 +7,8 @@ It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.ht
  [ ![Download](https://api.bintray.com/packages/markusamshove/maven/Kluent/images/download.svg) ](https://bintray.com/markusamshove/maven/Kluent/_latestVersion) [![Build Status](https://travis-ci.org/MarkusAmshove/Kluent.svg?branch=master)](https://travis-ci.org/MarkusAmshove/Kluent)
 
 
-----------
+# [Changelog](https://github.com/MarkusAmshove/Kluent/wiki/Changelog)
+
 
 # Examples
 
