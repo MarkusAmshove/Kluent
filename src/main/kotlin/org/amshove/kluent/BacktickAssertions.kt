@@ -19,6 +19,7 @@ infix fun <T : Double> T?.`should equal to`(theOther: T?) = assertEquals(theOthe
 infix fun <T : String> T?.`should equal to`(theOther: T?) = assertEquals(theOther, this)
 infix fun CharSequence.`should start with`(theOther: CharSequence) = assertTrue("Expected the CharSequence $this to start with $theOther", this.startsWith(theOther))
 infix fun CharSequence.`should end with`(theOther: CharSequence) = assertTrue("Expected the CharSequence $this to end with $theOther", this.endsWith(theOther))
+infix fun CharSequence.`should contain`(theOther: CharSequence) = assertTrue("Expected the CharSequence $this to contain $theOther", this.contains(theOther))
 
 infix fun <T : Boolean> T?.`should not equal to`(theOther: T?) = assertNotEquals(theOther, this)
 infix fun <T : Byte> T?.`should not equal to`(theOther: T?) = assertNotEquals(theOther, this)
@@ -30,6 +31,7 @@ infix fun <T : Double> T?.`should not equal to`(theOther: T?) = assertNotEquals(
 infix fun <T : String> T?.`should not equal to`(theOther: T?) = assertNotEquals(theOther, this)
 infix fun CharSequence.`should not start with`(theOther: CharSequence) = assertFalse("Expected the CharSequence $this to not start with $theOther", this.startsWith(theOther))
 infix fun CharSequence.`should not end with`(theOther: CharSequence) = assertFalse("Expected the CharSequence $this to not end with $theOther", this.endsWith(theOther))
+infix fun CharSequence.`should not contain`(theOther: CharSequence) = assertFalse("Expected the CharSequence $this to not contain $theOther", this.contains(theOther))
 
 infix fun <T> Array<T>?.`should equal`(theOther: Array<T>?) = assertArrayEquals(theOther, this)
 infix fun <T> Iterable<T>?.`should equal`(theOther: Iterable<T>?) = assertEquals(theOther, this)
