@@ -17,6 +17,7 @@ infix fun <T : Float> T?.shouldEqualTo(theOther: T?) = this `should equal to` th
 infix fun <T : Double> T?.shouldEqualTo(theOther: T?) = this `should equal to` theOther
 infix fun <T : String> T?.shouldEqualTo(theOther: T?) = this `should equal to` theOther
 infix fun CharSequence.shouldStartWith(theOther: CharSequence) = this `should start with` theOther
+infix fun CharSequence.shouldEndWith(theOther: CharSequence) = this `should end with` theOther
 
 infix fun <T : Boolean> T?.shouldNotEqualTo(theOther: T?) = this `should not equal to` theOther
 infix fun <T : Byte> T?.shouldNotEqualTo(theOther: T?) = this `should not equal to` theOther
@@ -27,6 +28,7 @@ infix fun <T : Float> T?.shouldNotEqualTo(theOther: T?) = this `should not equal
 infix fun <T : Double> T?.shouldNotEqualTo(theOther: T?) = this `should not equal to` theOther
 infix fun <T : String> T?.shouldNotEqualTo(theOther: T?) = this `should not equal to` theOther
 infix fun CharSequence.shouldNotStartWith(theOther: CharSequence) = this `should not start with` theOther
+infix fun CharSequence.shouldNotEndWith(theOther: CharSequence) = this `should not end with` theOther
 
 infix fun <T> Array<T>?.shouldEqual(theOther: Array<T>?) = this `should equal` theOther
 infix fun <T> Iterable<T>?.shouldEqual(theOther: Iterable<T>?) = this `should equal` theOther
