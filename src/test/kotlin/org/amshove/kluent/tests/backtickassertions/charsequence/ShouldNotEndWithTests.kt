@@ -9,7 +9,7 @@ class ShouldNotEndWithTests : Spek({
     given("the should not end with method") {
         on("checking a string which ends with a substring") {
             it("should fail") {
-                assertFails( {"Hello" `should not end with` "llo" })
+                assertFails({ "Hello" `should not end with` "llo" })
             }
         }
         on("checking for a string which doesn't end with a substring") {

@@ -14,7 +14,7 @@ class ShouldNotContainTests : Spek({
         }
         on("checking a string which does contain a substring") {
             it("should fail") {
-                assertFails( { "Bye".shouldNotContain("ye") })
+                assertFails({ "Bye".shouldNotContain("ye") })
             }
         }
     }

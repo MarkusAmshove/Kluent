@@ -14,7 +14,7 @@ class ShouldStartWithTests : Spek({
         }
         on("checking for a string which doesn't start with a substring") {
             it("should fail") {
-                assertFails( { "Bye".shouldStartWith("H") })
+                assertFails({ "Bye".shouldStartWith("H") })
             }
         }
     }

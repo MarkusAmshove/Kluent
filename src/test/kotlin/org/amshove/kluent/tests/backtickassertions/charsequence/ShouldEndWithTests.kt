@@ -1,7 +1,6 @@
 package org.amshove.kluent.tests.backtickassertions.charsequence
 
 import org.amshove.kluent.`should end with`
-import org.amshove.kluent.`should start with`
 import org.jetbrains.spek.api.Spek
 import kotlin.test.assertFails
 
@@ -15,7 +14,7 @@ class ShouldEndWithTests : Spek({
         }
         on("checking for a string which doesn't end with a substring") {
             it("should fail") {
-                assertFails( { "Bye" `should end with` "ay" })
+                assertFails({ "Bye" `should end with` "ay" })
             }
         }
     }

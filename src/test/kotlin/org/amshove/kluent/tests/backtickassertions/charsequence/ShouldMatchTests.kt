@@ -4,7 +4,7 @@ import org.amshove.kluent.`should match`
 import org.jetbrains.spek.api.Spek
 import kotlin.test.assertFails
 
-class ShouldMatchTests: Spek({
+class ShouldMatchTests : Spek({
     given("the should match method") {
         on("checking if a correct string matches a regex represented by a pattern") {
             it("should pass") {
