@@ -57,14 +57,14 @@ Kluent is hosted in [jCenter](https://bintray.com/markusamshove/maven/Kluent/vie
 
 ## Gradle
     dependencies {
-        testCompile 'org.amshove.kluent:kluent:1.10'
+        testCompile 'org.amshove.kluent:kluent:1.11'
     }
 
 ## Maven
     <dependency>
         <groupId>org.amshove.kluent</groupId>
         <artifactId>kluent</artifactId>
-        <version>1.10</version>
+        <version>1.11</version>
         <type>pom</type>
     </dependency>
 
