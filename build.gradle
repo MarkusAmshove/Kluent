@@ -11,7 +11,7 @@ buildscript {
 }
 
 group 'org.amshove.kluent'
-version '1.11'
+version '1.12'
 
 apply plugin: 'kotlin'
 apply plugin: 'idea'
