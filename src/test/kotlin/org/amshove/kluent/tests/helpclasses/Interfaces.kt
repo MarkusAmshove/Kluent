@@ -6,3 +6,7 @@ interface Database {
     fun getPerson(id: Int): Person
 }
 
+interface Shape {
+    fun getArea(): Double
+}
+

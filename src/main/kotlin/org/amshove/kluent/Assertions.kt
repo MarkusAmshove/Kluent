@@ -48,6 +48,9 @@ infix fun <T> Array<T>.shouldNotContain(theThing: T) = this `should not contain`
 infix fun <T> Iterable<T>.shouldContain(theThing: T) = this `should contain` theThing
 infix fun <T> Iterable<T>.shouldNotContain(theThing: T) = this `should not contain` theThing
 
+infix fun Any?.shouldBeInstanceOf(className: Class<*>) = this `should be instance of` className
+infix fun Any?.shouldNotBeInstanceOf(className: Class<*>) = this `should not be instance of` className
+
 /*
 Map
  */
