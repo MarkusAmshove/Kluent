@@ -43,8 +43,8 @@ infix fun <T> Iterable<T>?.`should equal`(theOther: Iterable<T>?) = assertEquals
 infix fun Any?.`should be`(theOther: Any?) = assertSame(theOther, this)
 infix fun Any?.`should not be`(theOther: Any?) = assertNotSame(theOther, this)
 
-infix fun Any?.`should be instance of`(className: Class<*>) = assertTrue(className.isInstance(this))
-infix fun Any?.`should not be instance of`(className: Class<*>) = assertFalse(className.isInstance(this))
+infix fun Any?.`should be instance of`(className: Class<*>) = assertTrue("Expected $this to be an instance of $className", className.isInstance(this))
+infix fun Any?.`should not be instance of`(className: Class<*>) = assertFalse("Expected $this to not be an instance of $className", className.isInstance(this))
 
 infix fun <T> Array<T>.`should contain`(theThing: T) = if (this.contains(theThing)) Unit else fail("$this should contain $theThing", "$theThing", join(this))
 infix fun <T> Array<T>.`should not contain`(theThing: T) = if (!this.contains(theThing)) Unit else fail("$this should not contain $theThing", "$theThing", join(this))
