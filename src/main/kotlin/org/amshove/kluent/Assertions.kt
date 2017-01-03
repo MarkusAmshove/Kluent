@@ -64,6 +64,34 @@ infix fun Long.shouldNotBeGreaterOrEqualTo(theOther: Long) = this `should not be
 infix fun Float.shouldNotBeGreaterOrEqualTo(theOther: Float) = this `should not be greater or equal to` theOther
 infix fun Double.shouldNotBeGreaterOrEqualTo(theOther: Double) = this `should not be greater or equal to` theOther
 
+infix fun Byte.shouldBeLessThan(theOther: Byte) = this `should be less than` theOther
+infix fun Short.shouldBeLessThan(theOther: Short) = this `should be less than` theOther
+infix fun Int.shouldBeLessThan(theOther: Int) = this `should be less than` theOther
+infix fun Long.shouldBeLessThan(theOther: Long) = this `should be less than` theOther
+infix fun Float.shouldBeLessThan(theOther: Float) = this `should be less than` theOther
+infix fun Double.shouldBeLessThan(theOther: Double) = this `should be less than` theOther
+
+infix fun Byte.shouldNotBeLessThan(theOther: Byte) = this `should not be less than` theOther
+infix fun Short.shouldNotBeLessThan(theOther: Short) = this `should not be less than` theOther
+infix fun Int.shouldNotBeLessThan(theOther: Int) = this `should not be less than` theOther
+infix fun Long.shouldNotBeLessThan(theOther: Long) = this `should not be less than` theOther
+infix fun Float.shouldNotBeLessThan(theOther: Float) = this `should not be less than` theOther
+infix fun Double.shouldNotBeLessThan(theOther: Double) = this `should not be less than` theOther
+
+infix fun Byte.shouldBeLessOrEqualTo(theOther: Byte) = this `should be less or equal to` theOther
+infix fun Short.shouldBeLessOrEqualTo(theOther: Short) = this `should be less or equal to` theOther
+infix fun Int.shouldBeLessOrEqualTo(theOther: Int) = this `should be less or equal to` theOther
+infix fun Long.shouldBeLessOrEqualTo(theOther: Long) = this `should be less or equal to` theOther
+infix fun Float.shouldBeLessOrEqualTo(theOther: Float) = this `should be less or equal to` theOther
+infix fun Double.shouldBeLessOrEqualTo(theOther: Double) = this `should be less or equal to` theOther
+
+infix fun Byte.shouldNotBeLessOrEqualTo(theOther: Byte) = this `should not be less or equal to` theOther
+infix fun Short.shouldNotBeLessOrEqualTo(theOther: Short) = this `should not be less or equal to` theOther
+infix fun Int.shouldNotBeLessOrEqualTo(theOther: Int) = this `should not be less or equal to` theOther
+infix fun Long.shouldNotBeLessOrEqualTo(theOther: Long) = this `should not be less or equal to` theOther
+infix fun Float.shouldNotBeLessOrEqualTo(theOther: Float) = this `should not be less or equal to` theOther
+infix fun Double.shouldNotBeLessOrEqualTo(theOther: Double) = this `should not be less or equal to` theOther
+
 infix fun <T> Array<T>?.shouldEqual(theOther: Array<T>?) = this `should equal` theOther
 infix fun <T> Iterable<T>?.shouldEqual(theOther: Iterable<T>?) = this `should equal` theOther
 

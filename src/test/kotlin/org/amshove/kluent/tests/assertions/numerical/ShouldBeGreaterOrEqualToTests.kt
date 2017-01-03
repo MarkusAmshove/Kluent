@@ -5,7 +5,7 @@ import org.jetbrains.spek.api.Spek
 import kotlin.test.assertFails
 
 class ShouldBeGreaterOrEqualToTests : Spek({
-    given("the `should be greater or equal than` method") {
+    given("the should be greater or equal to method") {
         on("passing a greater value") {
             it("should pass") {
                 5.shouldBeGreaterOrEqualTo(2)
