@@ -37,6 +37,35 @@ infix fun CharSequence.`should not contain`(theOther: CharSequence) = assertFals
 infix fun CharSequence.`should not match`(regex: String) = assertFalse("Expected $this to not match $regex", this.matches(Regex(regex)))
 infix fun CharSequence.`should not match`(regex: Regex) = assertFalse("Expected $this to not match ${regex.pattern}", this.matches(regex))
 
+infix fun Byte.`should be greater than`(theOther: Byte) = assertTrue("Expected $this to be greater than $theOther", this > theOther)
+infix fun Short.`should be greater than`(theOther: Short) = assertTrue("Expected $this to be greater than $theOther", this > theOther)
+infix fun Int.`should be greater than`(theOther: Int) = assertTrue("Expected $this to be greater than $theOther", this > theOther)
+infix fun Long.`should be greater than`(theOther: Long) = assertTrue("Expected $this to be greater than $theOther", this > theOther)
+infix fun Float.`should be greater than`(theOther: Float) = assertTrue("Expected $this to be greater than $theOther", this > theOther)
+infix fun Double.`should be greater than`(theOther: Double) = assertTrue("Expected $this to be greater than $theOther", this > theOther)
+
+infix fun Byte.`should not be greater than`(theOther: Byte) = assertTrue("Expected $this to not be greater than $theOther", this < theOther)
+infix fun Short.`should not be greater than`(theOther: Short) = assertTrue("Expected $this to not be greater than $theOther", this < theOther)
+infix fun Int.`should not be greater than`(theOther: Int) = assertTrue("Expected $this to not be greater than $theOther", this < theOther)
+infix fun Long.`should not be greater than`(theOther: Long) = assertTrue("Expected $this to not be greater than $theOther", this < theOther)
+infix fun Float.`should not be greater than`(theOther: Float) = assertTrue("Expected $this to not be greater than $theOther", this < theOther)
+infix fun Double.`should not be greater than`(theOther: Double) = assertTrue("Expected $this to not be greater than $theOther", this < theOther)
+
+infix fun Byte.`should be greater than or equal to`(theOther: Byte) = assertTrue("Expected $this to be greater or equal than $theOther", this >= theOther)
+infix fun Short.`should be greater than or equal to`(theOther: Short) = assertTrue("Expected $this to be greater or equal than $theOther", this >= theOther)
+infix fun Int.`should be greater than or equal to`(theOther: Int) = assertTrue("Expected $this to be greater or equal than $theOther", this >= theOther)
+infix fun Long.`should be greater than or equal to`(theOther: Long) = assertTrue("Expected $this to be greater or equal than $theOther", this >= theOther)
+infix fun Float.`should be greater than or equal to`(theOther: Float) = assertTrue("Expected $this to be greater or equal than $theOther", this >= theOther)
+infix fun Double.`should be greater than or equal to`(theOther: Double) = assertTrue("Expected $this to be greater or equal than $theOther", this >= theOther)
+
+infix fun Byte.`should not be greater than or equal to`(theOther: Byte) = assertTrue("Expected $this to be greater than $theOther", this < theOther)
+infix fun Short.`should not be greater than or equal to`(theOther: Short) = assertTrue("Expected $this to be greater than $theOther", this < theOther)
+infix fun Int.`should not be greater than or equal to`(theOther: Int) = assertTrue("Expected $this to be greater than $theOther", this < theOther)
+infix fun Long.`should not be greater than or equal to`(theOther: Long) = assertTrue("Expected $this to be greater than $theOther", this < theOther)
+infix fun Float.`should not be greater than or equal to`(theOther: Float) = assertTrue("Expected $this to be greater than $theOther", this < theOther)
+infix fun Double.`should not be greater than or equal to`(theOther: Double) = assertTrue("Expected $this to be greater than $theOther", this < theOther)
+
+
 infix fun <T> Array<T>?.`should equal`(theOther: Array<T>?) = assertArrayEquals(theOther, this)
 infix fun <T> Iterable<T>?.`should equal`(theOther: Iterable<T>?) = assertEquals(theOther, this)
 
