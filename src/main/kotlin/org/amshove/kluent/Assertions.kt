@@ -36,6 +36,34 @@ infix fun CharSequence.shouldNotContain(theOther: CharSequence) = this `should n
 infix fun CharSequence.shouldNotMatch(regex: String) = this `should not match` regex
 infix fun CharSequence.shouldNotMatch(regex: Regex) = this `should not match` regex
 
+infix fun Byte.shouldBeGreaterThan(theOther: Byte) = this `should be greater than` theOther
+infix fun Short.shouldBeGreaterThan(theOther: Short) = this `should be greater than` theOther
+infix fun Int.shouldBeGreaterThan(theOther: Int) = this `should be greater than` theOther
+infix fun Long.shouldBeGreaterThan(theOther: Long) = this `should be greater than` theOther
+infix fun Float.shouldBeGreaterThan(theOther: Float) = this `should be greater than` theOther
+infix fun Double.shouldBeGreaterThan(theOther: Double) = this `should be greater than` theOther
+
+infix fun Byte.shouldNotBeGreaterThan(theOther: Byte) = this `should not be greater than` theOther
+infix fun Short.shouldNotBeGreaterThan(theOther: Short) = this `should not be greater than` theOther
+infix fun Int.shouldNotBeGreaterThan(theOther: Int) = this `should not be greater than` theOther
+infix fun Long.shouldNotBeGreaterThan(theOther: Long) = this `should not be greater than` theOther
+infix fun Float.shouldNotBeGreaterThan(theOther: Float) = this `should not be greater than` theOther
+infix fun Double.shouldNotBeGreaterThan(theOther: Double) = this `should not be greater than` theOther
+
+infix fun Byte.shouldBeGreaterOrEqualTo(theOther: Byte) = this `should be greater or equal to` theOther
+infix fun Short.shouldBeGreaterOrEqualTo(theOther: Short) = this `should be greater or equal to` theOther
+infix fun Int.shouldBeGreaterOrEqualTo(theOther: Int) = this `should be greater or equal to` theOther
+infix fun Long.shouldBeGreaterOrEqualTo(theOther: Long) = this `should be greater or equal to` theOther
+infix fun Float.shouldBeGreaterOrEqualTo(theOther: Float) = this `should be greater or equal to` theOther
+infix fun Double.shouldBeGreaterOrEqualTo(theOther: Double) = this `should be greater or equal to` theOther
+
+infix fun Byte.shouldNotBeGreaterOrEqualTo(theOther: Byte) = this `should not be greater or equal to` theOther
+infix fun Short.shouldNotBeGreaterOrEqualTo(theOther: Short) = this `should not be greater or equal to` theOther
+infix fun Int.shouldNotBeGreaterOrEqualTo(theOther: Int) = this `should not be greater or equal to` theOther
+infix fun Long.shouldNotBeGreaterOrEqualTo(theOther: Long) = this `should not be greater or equal to` theOther
+infix fun Float.shouldNotBeGreaterOrEqualTo(theOther: Float) = this `should not be greater or equal to` theOther
+infix fun Double.shouldNotBeGreaterOrEqualTo(theOther: Double) = this `should not be greater or equal to` theOther
+
 infix fun <T> Array<T>?.shouldEqual(theOther: Array<T>?) = this `should equal` theOther
 infix fun <T> Iterable<T>?.shouldEqual(theOther: Iterable<T>?) = this `should equal` theOther
 
