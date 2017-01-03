@@ -6,17 +6,17 @@ import kotlin.test.assertFails
 
 class ShouldBeGreaterThanTests : Spek({
     given("the should be greater than method") {
-        on("passing a greater value") {
+        on("checking a greater value") {
             it("should pass") {
                 5.shouldBeGreaterThan(2)
             }
         }
-        on("passing an equal value") {
+        on("checking an equal value") {
             it("should fail") {
                 assertFails({ 5.shouldBeGreaterThan(5) })
             }
         }
-        on("passing a lesser value") {
+        on("checking a lesser value") {
             it("should fail") {
                 assertFails({ 2.shouldBeGreaterThan(5) })
             }
