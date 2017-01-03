@@ -92,6 +92,13 @@ infix fun Long.shouldNotBeLessOrEqualTo(theOther: Long) = this `should not be le
 infix fun Float.shouldNotBeLessOrEqualTo(theOther: Float) = this `should not be less or equal to` theOther
 infix fun Double.shouldNotBeLessOrEqualTo(theOther: Double) = this `should not be less or equal to` theOther
 
+fun Byte.shouldBePositive() = this.`should be positive`()
+fun Short.shouldBePositive() = this.`should be positive`()
+fun Int.shouldBePositive() = this.`should be positive`()
+fun Long.shouldBePositive() = this.`should be positive`()
+fun Float.shouldBePositive() = this.`should be positive`()
+fun Double.shouldBePositive() = this.`should be positive`()
+
 infix fun <T> Array<T>?.shouldEqual(theOther: Array<T>?) = this `should equal` theOther
 infix fun <T> Iterable<T>?.shouldEqual(theOther: Iterable<T>?) = this `should equal` theOther
 

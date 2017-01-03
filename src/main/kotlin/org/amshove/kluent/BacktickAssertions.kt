@@ -93,6 +93,13 @@ infix fun Long.`should not be less or equal to`(theOther: Long) = assertTrue("Ex
 infix fun Float.`should not be less or equal to`(theOther: Float) = assertTrue("Expected $this to not be less or equal to $theOther", this > theOther)
 infix fun Double.`should not be less or equal to`(theOther: Double) = assertTrue("Expected $this to not be less or equal to $theOther", this > theOther)
 
+fun Byte.`should be positive`() = assertTrue("Expected $this to be positive", this > 0)
+fun Short.`should be positive`() = assertTrue("Expected $this to be positive", this > 0)
+fun Int.`should be positive`() = assertTrue("Expected $this to be positive", this > 0)
+fun Long.`should be positive`() = assertTrue("Expected $this to be positive", this > 0)
+fun Float.`should be positive`() = assertTrue("Expected $this to be positive", this > 0)
+fun Double.`should be positive`() = assertTrue("Expected $this to be positive", this > 0)
+
 infix fun <T> Array<T>?.`should equal`(theOther: Array<T>?) = assertArrayEquals(theOther, this)
 infix fun <T> Iterable<T>?.`should equal`(theOther: Iterable<T>?) = assertEquals(theOther, this)
 
