@@ -1,6 +1,5 @@
 package org.amshove.kluent.tests.assertions.map
 
-import org.amshove.kluent.`should contain`
 import org.amshove.kluent.shouldContain
 import org.amshove.kluent.tests.getFailure
 import org.amshove.kluent.tests.helpclasses.Person
@@ -48,7 +47,7 @@ class ShouldContainTests : Spek({
                 assertFails({ map shouldContain (alice to bob) })
             }
             it("should format the output") {
-                val failure = getFailure { map shouldContain (alice to bob)}
+                val failure = getFailure { map shouldContain (alice to bob) }
                 assertEquals("Person(name=Alice, surname=Bob)=Person(name=Jon, surname=Doe)", failure.actual)
             }
         }

@@ -47,7 +47,7 @@ class ShouldContainTests : Spek({
                 assertFails({ map `should contain` (alice to bob) })
             }
             it("should format the output") {
-                val failure = getFailure { map `should contain` (alice to bob)}
+                val failure = getFailure { map `should contain` (alice to bob) }
                 assertEquals("Person(name=Alice, surname=Bob)=Person(name=Jon, surname=Doe)", failure.actual)
             }
         }

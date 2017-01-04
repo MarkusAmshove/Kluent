@@ -13,17 +13,17 @@ class ShouldNotBeInRangeTests : Spek({
         }
         on("checking a value within the range") {
             it("should fail") {
-                assertFails{ 7.`should not be in range`(0, 10) }
+                assertFails { 7.`should not be in range`(0, 10) }
             }
         }
         on("checking a value which is the lower bound") {
             it("should fail") {
-                assertFails{ 5.`should not be in range`(5, 6) }
+                assertFails { 5.`should not be in range`(5, 6) }
             }
         }
         on("checking a value which is the upper bound") {
             it("should fail") {
-                assertFails{ 5.`should not be in range`(2, 5) }
+                assertFails { 5.`should not be in range`(2, 5) }
             }
         }
     }

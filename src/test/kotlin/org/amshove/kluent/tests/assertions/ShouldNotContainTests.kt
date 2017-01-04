@@ -1,6 +1,5 @@
 package org.amshove.kluent.tests.assertions
 
-import org.amshove.kluent.`should contain`
 import org.amshove.kluent.shouldNotContain
 import org.amshove.kluent.tests.getFailure
 import org.amshove.kluent.tests.helpclasses.Person

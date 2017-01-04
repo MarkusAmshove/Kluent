@@ -23,7 +23,7 @@ class ShouldBeInRangeTests : Spek({
         }
         on("checking a value which is not in range") {
             it("should fail") {
-                assertFails{ 5.shouldBeInRange(6, 9) }
+                assertFails { 5.shouldBeInRange(6, 9) }
             }
         }
     }
