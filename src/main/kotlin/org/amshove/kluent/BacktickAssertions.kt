@@ -100,6 +100,13 @@ fun Long.`should be positive`() = assertTrue("Expected $this to be positive", th
 fun Float.`should be positive`() = assertTrue("Expected $this to be positive", this > 0)
 fun Double.`should be positive`() = assertTrue("Expected $this to be positive", this > 0)
 
+fun Byte.`should be negative`() = assertTrue("Expected $this to be negative", this < 0)
+fun Short.`should be negative`() = assertTrue("Expected $this to be negative", this < 0)
+fun Int.`should be negative`() = assertTrue("Expected $this to be negative", this < 0)
+fun Long.`should be negative`() = assertTrue("Expected $this to be negative", this < 0)
+fun Float.`should be negative`() = assertTrue("Expected $this to be negative", this < 0)
+fun Double.`should be negative`() = assertTrue("Expected $this to be negative", this < 0)
+
 infix fun <T> Array<T>?.`should equal`(theOther: Array<T>?) = assertArrayEquals(theOther, this)
 infix fun <T> Iterable<T>?.`should equal`(theOther: Iterable<T>?) = assertEquals(theOther, this)
 

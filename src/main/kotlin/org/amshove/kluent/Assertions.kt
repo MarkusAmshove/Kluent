@@ -99,6 +99,13 @@ fun Long.shouldBePositive() = this.`should be positive`()
 fun Float.shouldBePositive() = this.`should be positive`()
 fun Double.shouldBePositive() = this.`should be positive`()
 
+fun Byte.shouldBeNegative() = this.`should be negative`()
+fun Short.shouldBeNegative() = this.`should be negative`()
+fun Int.shouldBeNegative() = this.`should be negative`()
+fun Long.shouldBeNegative() = this.`should be negative`()
+fun Float.shouldBeNegative() = this.`should be negative`()
+fun Double.shouldBeNegative() = this.`should be negative`()
+
 infix fun <T> Array<T>?.shouldEqual(theOther: Array<T>?) = this `should equal` theOther
 infix fun <T> Iterable<T>?.shouldEqual(theOther: Iterable<T>?) = this `should equal` theOther
 
