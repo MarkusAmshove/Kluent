@@ -107,6 +107,20 @@ fun Long.`should be negative`() = assertTrue("Expected $this to be negative", th
 fun Float.`should be negative`() = assertTrue("Expected $this to be negative", this < 0)
 fun Double.`should be negative`() = assertTrue("Expected $this to be negative", this < 0)
 
+fun Byte.`should be in range`(lowerBound: Byte, upperBound: Byte) = assertTrue("Expected $this to be between (and including) $lowerBound and $upperBound", this >= lowerBound && this <= upperBound)
+fun Short.`should be in range`(lowerBound: Short, upperBound: Short) = assertTrue("Expected $this to be between (and including) $lowerBound and $upperBound", this >= lowerBound && this <= upperBound)
+fun Int.`should be in range`(lowerBound: Int, upperBound: Int) = assertTrue("Expected $this to be between (and including) $lowerBound and $upperBound", this >= lowerBound && this <= upperBound)
+fun Long.`should be in range`(lowerBound: Long, upperBound: Long) = assertTrue("Expected $this to be between (and including) $lowerBound and $upperBound", this >= lowerBound && this <= upperBound)
+fun Float.`should be in range`(lowerBound: Float, upperBound: Float) = assertTrue("Expected $this to be between (and including) $lowerBound and $upperBound", this >= lowerBound && this <= upperBound)
+fun Double.`should be in range`(lowerBound: Double, upperBound: Double) = assertTrue("Expected $this to be between (and including) $lowerBound and $upperBound", this >= lowerBound && this <= upperBound)
+
+fun Byte.`should not be in range`(lowerBound: Byte, upperBound: Byte) = assertTrue("Expected $this to not be between (and including) $lowerBound and $upperBound", this < lowerBound || this > upperBound)
+fun Short.`should not be in range`(lowerBound: Short, upperBound: Short) = assertTrue("Expected $this to not be between (and including) $lowerBound and $upperBound", this < lowerBound || this > upperBound)
+fun Int.`should not be in range`(lowerBound: Int, upperBound: Int) = assertTrue("Expected $this to not be between (and including) $lowerBound and $upperBound", this < lowerBound || this > upperBound)
+fun Long.`should not be in range`(lowerBound: Long, upperBound: Long) = assertTrue("Expected $this to not be between (and including) $lowerBound and $upperBound", this < lowerBound || this > upperBound)
+fun Float.`should not be in range`(lowerBound: Float, upperBound: Float) = assertTrue("Expected $this to not be between (and including) $lowerBound and $upperBound", this < lowerBound || this > upperBound)
+fun Double.`should not be in range`(lowerBound: Double, upperBound: Double) = assertTrue("Expected $this to not be between (and including) $lowerBound and $upperBound", this < lowerBound || this > upperBound)
+
 infix fun <T> Array<T>?.`should equal`(theOther: Array<T>?) = assertArrayEquals(theOther, this)
 infix fun <T> Iterable<T>?.`should equal`(theOther: Iterable<T>?) = assertEquals(theOther, this)
 

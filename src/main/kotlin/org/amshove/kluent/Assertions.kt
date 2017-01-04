@@ -106,6 +106,20 @@ fun Long.shouldBeNegative() = this.`should be negative`()
 fun Float.shouldBeNegative() = this.`should be negative`()
 fun Double.shouldBeNegative() = this.`should be negative`()
 
+fun Byte.shouldBeInRange(lowerBound: Byte, upperBound: Byte) = this.`should be in range`(lowerBound, upperBound)
+fun Short.shouldBeInRange(lowerBound: Short, upperBound: Short) = this.`should be in range`(lowerBound, upperBound)
+fun Int.shouldBeInRange(lowerBound: Int, upperBound: Int) = this.`should be in range`(lowerBound, upperBound)
+fun Long.shouldBeInRange(lowerBound: Long, upperBound: Long) = this.`should be in range`(lowerBound, upperBound)
+fun Float.shouldBeInRange(lowerBound: Float, upperBound: Float) = this.`should be in range`(lowerBound, upperBound)
+fun Double.shouldBeInRange(lowerBound: Double, upperBound: Double) = this.`should be in range`(lowerBound, upperBound)
+
+fun Byte.shouldNotBeInRange(lowerBound: Byte, upperBound: Byte) = this.`should not be in range`(lowerBound, upperBound)
+fun Short.shouldNotBeInRange(lowerBound: Short, upperBound: Short) = this.`should not be in range`(lowerBound, upperBound)
+fun Int.shouldNotBeInRange(lowerBound: Int, upperBound: Int) = this.`should not be in range`(lowerBound, upperBound)
+fun Long.shouldNotBeInRange(lowerBound: Long, upperBound: Long) = this.`should not be in range`(lowerBound, upperBound)
+fun Float.shouldNotBeInRange(lowerBound: Float, upperBound: Float) = this.`should not be in range`(lowerBound, upperBound)
+fun Double.shouldNotBeInRange(lowerBound: Double, upperBound: Double) = this.`should not be in range`(lowerBound, upperBound)
+
 infix fun <T> Array<T>?.shouldEqual(theOther: Array<T>?) = this `should equal` theOther
 infix fun <T> Iterable<T>?.shouldEqual(theOther: Iterable<T>?) = this `should equal` theOther
 
