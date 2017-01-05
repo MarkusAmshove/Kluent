@@ -38,5 +38,21 @@ class ShouldBeInRangeTests : Spek({
                 assertFails { 5.`should be in range`(6..9) }
             }
         }
+        on("checking a long value which is in a range") {
+            it("should pass with lower and upper bound") {
+                0L.`should be in range`(Long.MIN_VALUE, Long.MAX_VALUE)
+            }
+            it("should pass with lower a LongRange") {
+                0L.`should be in range`(Long.MIN_VALUE..Long.MAX_VALUE)
+            }
+        }
+        on("checking a long value which is not in a range") {
+            it("should fail with lower and upper bound") {
+                assertFails { Long.MIN_VALUE.`should be in range`(0L, Long.MAX_VALUE) }
+            }
+            it("should fail with a LongRange") {
+                assertFails { Long.MIN_VALUE.`should be in range`(0L..Long.MAX_VALUE) }
+            }
+        }
     }
 })
