@@ -121,13 +121,13 @@ fun Long.`should not be in range`(lowerBound: Long, upperBound: Long) = assertTr
 fun Float.`should not be in range`(lowerBound: Float, upperBound: Float) = assertTrue("Expected $this to not be between (and including) $lowerBound and $upperBound", this < lowerBound || this > upperBound)
 fun Double.`should not be in range`(lowerBound: Double, upperBound: Double) = assertTrue("Expected $this to not be between (and including) $lowerBound and $upperBound", this < lowerBound || this > upperBound)
 
-infix fun Byte.`should be in range`(range: IntRange) = (this as Int).`should be in range`(range)
-infix fun Short.`should be in range`(range: IntRange) = (this as Int).`should be in range`(range)
+infix fun Byte.`should be in range`(range: IntRange) = (this.toInt()).`should be in range`(range)
+infix fun Short.`should be in range`(range: IntRange) = (this.toInt()).`should be in range`(range)
 infix fun Int.`should be in range`(range: IntRange) = this.`should be in range`(range.first, range.last)
 infix fun Long.`should be in range`(range: LongRange) = this.`should be in range`(range.first, range.last)
 
-infix fun Byte.`should not be in range`(range: IntRange) = (this as Int).`should not be in range`(range)
-infix fun Short.`should not be in range`(range: IntRange) = (this as Int).`should not be in range`(range)
+infix fun Byte.`should not be in range`(range: IntRange) = (this.toInt()).`should not be in range`(range)
+infix fun Short.`should not be in range`(range: IntRange) = (this.toInt()).`should not be in range`(range)
 infix fun Int.`should not be in range`(range: IntRange) = this.`should not be in range`(range.first, range.last)
 infix fun Long.`should not be in range`(range: LongRange) = this.`should not be in range`(range.first, range.last)
 
