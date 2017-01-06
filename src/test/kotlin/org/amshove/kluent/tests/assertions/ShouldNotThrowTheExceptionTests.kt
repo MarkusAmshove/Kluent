@@ -1,8 +1,8 @@
 package org.amshove.kluent.tests.assertions
 
 import org.amshove.kluent.AnyException
-import org.amshove.kluent.withMessage
 import org.amshove.kluent.shouldNotThrowTheException
+import org.amshove.kluent.withMessage
 import org.jetbrains.spek.api.Spek
 import kotlin.test.assertFails
 
