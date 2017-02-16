@@ -1,50 +1,48 @@
-@file:Suppress("FINAL_UPPER_BOUND")
-
 package org.amshove.kluent
 
 import org.junit.Assert.*
 
-infix fun <T : Boolean> T?.`should equal to`(theOther: T?) = assertEquals(theOther, this)
-infix fun <T : Boolean> T?.shouldEqualTo(theOther: T?) = this `should equal to` theOther
+infix fun Boolean.`should equal to`(theOther: Boolean) = assertEquals(theOther, this)
+infix fun Boolean.shouldEqualTo(theOther: Boolean) = this `should equal to` theOther
 
-infix fun <T : Byte> T?.`should equal to`(theOther: T?) = assertEquals(theOther, this)
-infix fun <T : Byte> T?.shouldEqualTo(theOther: T?) = this `should equal to` theOther
+infix fun Byte.`should equal to`(theOther: Byte) = assertEquals(theOther, this)
+infix fun Byte.shouldEqualTo(theOther: Byte) = this `should equal to` theOther
 
-infix fun <T : Short> T?.`should equal to`(theOther: T?) = assertEquals(theOther, this)
-infix fun <T : Short> T?.shouldEqualTo(theOther: T?) = this `should equal to` theOther
+infix fun Short.`should equal to`(theOther: Short) = assertEquals(theOther, this)
+infix fun Short.shouldEqualTo(theOther: Short) = this `should equal to` theOther
 
-infix fun <T : Int> T?.`should equal to`(theOther: T?) = assertEquals(theOther, this)
-infix fun <T : Int> T?.shouldEqualTo(theOther: T?) = this `should equal to` theOther
+infix fun Int.`should equal to`(theOther: Int) = assertEquals(theOther, this)
+infix fun Int.shouldEqualTo(theOther: Int) = this `should equal to` theOther
 
-infix fun <T : Long> T?.`should equal to`(theOther: T?) = assertEquals(theOther, this)
-infix fun <T : Long> T?.shouldEqualTo(theOther: T?) = this `should equal to` theOther
+infix fun Long.`should equal to`(theOther: Long) = assertEquals(theOther, this)
+infix fun Long.shouldEqualTo(theOther: Long) = this `should equal to` theOther
 
-infix fun <T : Float> T?.`should equal to`(theOther: T?) = assertEquals(theOther, this)
-infix fun <T : Float> T?.shouldEqualTo(theOther: T?) = this `should equal to` theOther
+infix fun Float.`should equal to`(theOther: Float) = assertEquals(theOther, this, 0f)
+infix fun Float.shouldEqualTo(theOther: Float) = this `should equal to` theOther
 
-infix fun <T : Double> T?.`should equal to`(theOther: T?) = assertEquals(theOther, this)
-infix fun <T : Double> T?.shouldEqualTo(theOther: T?) = this `should equal to` theOther
+infix fun Double.`should equal to`(theOther: Double) = assertEquals(theOther, this, 0.0)
+infix fun Double.shouldEqualTo(theOther: Double) = this `should equal to` theOther
 
-infix fun <T : Boolean> T?.`should not equal to`(theOther: T?) = assertNotEquals(theOther, this)
-infix fun <T : Boolean> T?.shouldNotEqualTo(theOther: T?) = this `should not equal to` theOther
+infix fun Boolean.`should not equal to`(theOther: Boolean) = assertNotEquals(theOther, this)
+infix fun Boolean.shouldNotEqualTo(theOther: Boolean) = this `should not equal to` theOther
 
-infix fun <T : Byte> T?.`should not equal to`(theOther: T?) = assertNotEquals(theOther, this)
-infix fun <T : Byte> T?.shouldNotEqualTo(theOther: T?) = this `should not equal to` theOther
+infix fun Byte.`should not equal to`(theOther: Byte) = assertNotEquals(theOther, this)
+infix fun Byte.shouldNotEqualTo(theOther: Byte) = this `should not equal to` theOther
 
-infix fun <T : Short> T?.`should not equal to`(theOther: T?) = assertNotEquals(theOther, this)
-infix fun <T : Short> T?.shouldNotEqualTo(theOther: T?) = this `should not equal to` theOther
+infix fun Short.`should not equal to`(theOther: Short) = assertNotEquals(theOther, this)
+infix fun Short.shouldNotEqualTo(theOther: Short) = this `should not equal to` theOther
 
-infix fun <T : Int> T?.`should not equal to`(theOther: T?) = assertNotEquals(theOther, this)
-infix fun <T : Int> T?.shouldNotEqualTo(theOther: T?) = this `should not equal to` theOther
+infix fun Int.`should not equal to`(theOther: Int) = assertNotEquals(theOther, this)
+infix fun Int.shouldNotEqualTo(theOther: Int) = this `should not equal to` theOther
 
-infix fun <T : Long> T?.`should not equal to`(theOther: T?) = assertNotEquals(theOther, this)
-infix fun <T : Long> T?.shouldNotEqualTo(theOther: T?) = this `should not equal to` theOther
+infix fun Long.`should not equal to`(theOther: Long) = assertNotEquals(theOther, this)
+infix fun Long.shouldNotEqualTo(theOther: Long) = this `should not equal to` theOther
 
-infix fun <T : Float> T?.`should not equal to`(theOther: T?) = assertNotEquals(theOther, this)
-infix fun <T : Float> T?.shouldNotEqualTo(theOther: T?) = this `should not equal to` theOther
+infix fun Float.`should not equal to`(theOther: Float) = assertNotEquals(theOther, this)
+infix fun Float.shouldNotEqualTo(theOther: Float) = this `should not equal to` theOther
 
-infix fun <T : Double> T?.`should not equal to`(theOther: T?) = assertNotEquals(theOther, this)
-infix fun <T : Double> T?.shouldNotEqualTo(theOther: T?) = this `should not equal to` theOther
+infix fun Double.`should not equal to`(theOther: Double) = assertNotEquals(theOther, this)
+infix fun Double.shouldNotEqualTo(theOther: Double) = this `should not equal to` theOther
 
 infix fun Byte.`should be greater than`(theOther: Byte) = assertTrue("Expected $this to be greater than $theOther", this > theOther)
 infix fun Byte.shouldBeGreaterThan(theOther: Byte) = this `should be greater than` theOther
