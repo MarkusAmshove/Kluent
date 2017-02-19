@@ -26,4 +26,8 @@ fun Any?.shouldBeNull() = this.`should be null`()
 fun Any?.`should not be null`() = assertNotNull(this)
 fun Any?.shouldNotBeNull() = this.`should not be null`()
 
+fun Boolean.`should be true`() = assertTrue(this)
+fun Boolean.shouldBeTrue() = this.`should be true`()
 
+fun Boolean.`should be false`() = assertFalse(this)
+fun Boolean.shouldBeFalse() = this.`should be false`()
