@@ -1,7 +1,8 @@
 # 1.15 (WIP)
 * Rework failure messages of shouldNotContain assertions ([Issue](https://github.com/MarkusAmshove/Kluent/issues/20))
 * Extract assertions into different files
-* Add ([Issue](https://github.com/MarkusAmshove/Kluent/issues/24) | [PR](https://github.com/MarkusAmshove/Kluent/pull/25) | thanks to [@okkero](https://github.com/okkero))
+* Add withCause for Exception-Assertions ([Issue](https://github.com/MarkusAmshove/Kluent/issues/24) | [PR](https://github.com/MarkusAmshove/Kluent/pull/25) | thanks to [@okkero](https://github.com/okkero))
+* Add common non infix assertions ([Issue](https://github.com/MarkusAmshove/Kluent/issues/21) | [PR](https://github.com/MarkusAmshove/Kluent/pull/26))
 
 # 1.14
 * Introduce numerical operations ([Issue](https://github.com/MarkusAmshove/Kluent/issues/17) | [PR](https://github.com/MarkusAmshove/Kluent/pull/18))
