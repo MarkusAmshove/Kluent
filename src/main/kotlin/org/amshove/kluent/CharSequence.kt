@@ -20,6 +20,9 @@ infix fun CharSequence.shouldMatch(regex: Regex) = this `should match` regex
 fun CharSequence.`should be empty`() = assertTrue("Expected the CharSequence to be empty, but was $this", this.isEmpty())
 fun CharSequence.shouldBeEmpty() = this.`should be empty`()
 
+fun CharSequence?.`should be null or empty`() = assertTrue("Expected $this to be null or empty", this == null || this.isEmpty())
+fun CharSequence?.shouldBeNullOrEmpty() = this.`should be null or empty`()
+
 fun CharSequence.`should be blank`() = assertTrue("Expected the CharSequence to be blank, but was $this", this.isBlank())
 fun CharSequence.shouldBeBlank() = this.`should be blank`()
 
@@ -46,6 +49,12 @@ infix fun CharSequence.shouldNotMatch(regex: Regex) = this `should not match` re
 
 fun CharSequence.`should not be empty`() = assertTrue("Expected the CharSequence to not be empty", this.isNotEmpty())
 fun CharSequence.shouldNotBeEmpty() = this.`should not be empty`()
+
+fun CharSequence?.`should not be null or empty`() {
+    this.`should not be null`()
+    this!!.`should not be empty`()
+}
+fun CharSequence?.shouldNotBeNullOrEmpty() = this.`should not be null or empty`()
 
 fun CharSequence.`should not be blank`() = assertTrue("Expected the CharSequence to not be blank", this.isNotBlank())
 fun CharSequence.shouldNotBeBlank() = this.`should not be blank`()
