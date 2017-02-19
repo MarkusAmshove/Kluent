@@ -31,3 +31,9 @@ fun Boolean.shouldBeTrue() = this.`should be true`()
 
 fun Boolean.`should be false`() = assertFalse(this)
 fun Boolean.shouldBeFalse() = this.`should be false`()
+
+fun Boolean.`should not be true`() = this.`should be false`()
+fun Boolean.shouldNotBeTrue() = this.`should not be true`()
+
+fun Boolean.`should not be false`() = this.`should be true`()
+fun Boolean.shouldNotBeFalse() = this.`should not be false`()
