@@ -17,6 +17,9 @@ infix fun CharSequence.shouldMatch(regex: String) = this `should match` regex
 infix fun CharSequence.`should match`(regex: Regex) = assertTrue("Expected $this to match ${regex.pattern}", this.matches(regex))
 infix fun CharSequence.shouldMatch(regex: Regex) = this `should match` regex
 
+fun CharSequence.`should be empty`() = assertTrue("Expected the CharSequence to be empty, but was $this", this.isEmpty())
+fun CharSequence.shouldBeEmpty() = this.`should be empty`()
+
 infix fun String.`should equal to`(theOther: String) = assertEquals(theOther, this)
 infix fun String.shouldEqualTo(theOther: String) = this `should equal to` theOther
 
@@ -38,3 +41,5 @@ infix fun CharSequence.shouldNotMatch(regex: String) = this `should not match` r
 infix fun CharSequence.`should not match`(regex: Regex) = assertFalse("Expected $this to not match ${regex.pattern}", this.matches(regex))
 infix fun CharSequence.shouldNotMatch(regex: Regex) = this `should not match` regex
 
+fun CharSequence.`should not be empty`() = assertTrue("Expected the CharSequence to not be empty", this.isNotEmpty())
+fun CharSequence.shouldNotBeEmpty() = this.`should not be empty`()
