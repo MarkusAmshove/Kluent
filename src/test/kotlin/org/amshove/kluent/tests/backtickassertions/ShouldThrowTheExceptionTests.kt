@@ -3,8 +3,10 @@ package org.amshove.kluent.tests.backtickassertions
 import org.amshove.kluent.AnyException
 import org.amshove.kluent.`should throw the Exception`
 import org.amshove.kluent.`should throw`
+import org.amshove.kluent.`with cause`
 import org.amshove.kluent.`with message`
 import org.jetbrains.spek.api.Spek
+import java.io.IOException
 import kotlin.test.assertFails
 
 class ShouldThrowTheExceptionTests : Spek({
@@ -19,6 +21,18 @@ class ShouldThrowTheExceptionTests : Spek({
             it("should fail") {
                 val func = { throw Exception("Hello World!") }
                 assertFails({ func `should throw the Exception` Exception::class `with message` "Hello" })
+            }
+        }
+        on("throwing an exception with a cause") {
+            it("should pass") {
+                val func = { throw Exception(RuntimeException()) }
+                func `should throw the Exception` Exception::class `with cause` RuntimeException::class
+            }
+        }
+        on("throwing an exception with a wrong cause") {
+            it("should fail") {
+                val func = { throw Exception(RuntimeException()) }
+                assertFails({ func `should throw the Exception` Exception::class `with cause` IOException::class })
             }
         }
         on("throwing another exception") {
