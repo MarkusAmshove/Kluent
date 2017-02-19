@@ -72,6 +72,21 @@ infix fun NotThrowExceptionResult.`with message`(theMessage: String) {
 
 infix fun NotThrowExceptionResult.withMessage(theMessage: String) = this `with message` theMessage
 
+
+infix fun ExceptionResult.`with cause`(expectedCause: KClass<out Exception>) {
+    this.exceptionCause `should be instance of` expectedCause.java
+}
+
+infix fun ExceptionResult.withCause(expectedCause: KClass<out Exception>) = this `with cause` expectedCause
+
+
+infix fun NotThrowExceptionResult.`with cause`(expectedCause: KClass<out Exception>) {
+    this.exceptionCause `should not be instance of` expectedCause.java
+}
+
+infix fun NotThrowExceptionResult.withCause(expectedCause: KClass<out Exception>) = this `with cause` expectedCause
+
+
 val AnyException = AnyExceptionType::class
 
 class AnyExceptionType : Exception()
