@@ -1,6 +1,10 @@
 The changelogs are written in non-backtick methodstyle for simplicity.
 Every method that is added is still added in both styles.
 
+# 1.16
+* Update Kotlin to 1.1.0
+* Correct assertion message for `Collection.shouldBeEmpty` ([Issue](https://github.com/MarkusAmshove/Kluent/issues/27))
+
 # 1.15
 * Rework failure messages of shouldNotContain assertions ([Issue](https://github.com/MarkusAmshove/Kluent/issues/20))
 * Extract assertions into different files

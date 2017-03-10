@@ -69,4 +69,4 @@ infix fun <T> Any?.`should be in`(array: Array<T>) = if (array.contains(this)) U
 infix fun <T> Any?.shouldBeIn(array: Array<T>) = this `should be in` array
 
 private fun <T> assertEmpty(iterable: Iterable<T>, collectionType: String) = assertTrue("Expected the $collectionType to be empty, but has ${iterable.count()} elements", iterable.count() == 0)
-private fun <T> assertNotEmpty(iterable: Iterable<T>, collectionType: String) = assertTrue("Expected the $collectionType to contain no elements", iterable.count() > 0)
+private fun <T> assertNotEmpty(iterable: Iterable<T>, collectionType: String) = assertTrue("Expected the $collectionType to contain elements, but is empty", iterable.count() > 0)
