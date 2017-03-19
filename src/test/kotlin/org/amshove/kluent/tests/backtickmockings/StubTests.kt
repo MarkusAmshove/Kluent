@@ -37,14 +37,14 @@ class StubTests : Spek({
             it("should answer when called") {
                 val mock = mock(Database::class)
                 var counter = 0
-                When calling mock.getPerson() `it answers` { a -> counter++; alice }
+                When calling mock.getPerson() `it answers` { counter++; alice }
                 mock.getPerson()
                 assertEquals(1, counter)
             }
             it("should not answer when not called") {
                 val mock = mock(Database::class)
                 var counter = 0
-                When calling mock.getPerson() `it answers` { a -> counter++; alice }
+                When calling mock.getPerson() `it answers` { counter++; alice }
                 assertEquals(0, counter)
             }
         }

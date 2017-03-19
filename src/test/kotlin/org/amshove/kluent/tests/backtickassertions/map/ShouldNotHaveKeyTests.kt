@@ -1,10 +1,10 @@
 package org.amshove.kluent.tests.backtickassertions.map
 
-import junit.framework.Assert.assertEquals
 import org.amshove.kluent.`should not have key`
 import org.amshove.kluent.tests.getFailure
 import org.amshove.kluent.tests.helpclasses.Person
 import org.jetbrains.spek.api.Spek
+import org.junit.Assert.assertEquals
 import kotlin.test.assertFails
 
 /**
