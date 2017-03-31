@@ -24,7 +24,7 @@ infix fun <T : Exception> (() -> Any).`should not throw`(expectedException: KCla
             fail("Expected no Exception to be thrown", "No Exception", "${e.javaClass}")
         }
         if (e.isA(expectedException))
-            fail("Expected ${expectedException.javaObjectType} to not be thrown", "${e.javaClass}", "${expectedException.javaObjectType}")
+            fail("Expected ${expectedException.javaObjectType} to not be thrown", "${expectedException.javaObjectType}", "${e.javaClass}")
     }
 }
 
