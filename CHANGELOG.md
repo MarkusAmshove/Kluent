@@ -6,6 +6,7 @@ Every method that is added is still added in both styles.
 * Update Gradle to 3.4.1 ([PR](https://github.com/MarkusAmshove/Kluent/pull/29) | thanks to [@Egorand](https://github.com/Egorand))
 * Fix compiler warnings in tests ([PR](https://github.com/MarkusAmshove/Kluent/pull/30) | thanks to [@Egorand](https://github.com/Egorand))
 * Update JUnit and Mockito ([Issue](https://github.com/MarkusAmshove/Kluent/issues/31) | thanks to [@Jeevuz](https://github.com/Jeevuz))
+* Fix reversed message in ShouldNotThrow ([Issue](https://github.com/MarkusAmshove/Kluent/issues/33) | [PR](https://github.com/MarkusAmshove/Kluent/pull/34) | thanks to [@goreRatzete](https://github.com/goreRatzete))
 
 # 1.16
 * Update Kotlin to 1.1.0
