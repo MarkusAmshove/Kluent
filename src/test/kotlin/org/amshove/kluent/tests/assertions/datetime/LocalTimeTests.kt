@@ -66,6 +66,48 @@ class LocalTimeTests : Spek({
             }
         }
     }
+    given("the shouldBeAtMost before method") {
+        val orderTime = LocalTime.of(10, 10)
+        on("passing a time matching exactly at most 5 minutes before") {
+            val loginTime = LocalTime.of(10, 5)
+            it("should pass") {
+                loginTime shouldBeAtMost 5.minutes() before orderTime
+            }
+        }
+        on("passing a time within 5 minutes before") {
+            val loginTime = LocalTime.of(10, 8)
+            it("should pass") {
+                loginTime shouldBeAtMost 5.minutes() before orderTime
+            }
+        }
+        on("passing a time more than 5 minutes before") {
+            val loginTime = LocalTime.of(10, 0)
+            it("should fail") {
+                assertFails { loginTime shouldBeAtMost 5.minutes() before orderTime }
+            }
+        }
+    }
+    given("the shouldBeAtMost after method") {
+        val loginTime = LocalTime.of(10, 10)
+        on("passing a time matching exactly at most 5 minutes after") {
+            val orderTime = LocalTime.of(10, 15)
+            it("should pass") {
+                orderTime shouldBeAtMost 5.minutes() after loginTime
+            }
+        }
+        on("passing a time within 5 minutes before") {
+            val orderTime = LocalTime.of(10, 12)
+            it("should pass") {
+                orderTime shouldBeAtMost 5.minutes() after loginTime
+            }
+        }
+        on("passing a time more than 5 minutes before") {
+            val orderTime = LocalTime.of(10, 20)
+            it("should fail") {
+                assertFails { orderTime shouldBeAtMost 5.minutes() after loginTime }
+            }
+        }
+    }
     given("the Int.hours() extension") {
         val loginTime = LocalTime.of(10, 0)
         val orderTime = LocalTime.of(11, 0)

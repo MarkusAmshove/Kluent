@@ -2,7 +2,6 @@ package org.amshove.kluent
 
 import org.junit.Assert.assertTrue
 import java.time.*
-import kotlin.reflect.jvm.internal.impl.descriptors.EffectiveVisibility
 
 infix fun LocalDateTime.`should be after`(theOther: LocalDateTime) = assertTrue("Expected $this to be after $theOther", this > theOther)
 infix fun LocalDateTime.shouldBeAfter(theOther: LocalDateTime) = this `should be after` theOther
@@ -58,42 +57,55 @@ infix fun LocalTime.shouldBe(timeComparator: TimeComparator) = this `should be` 
 
 infix fun LocalTime.`should be at least`(timeComparator: TimeComparator): TimeComparator {
     timeComparator.startTime = this
-    timeComparator.submittedAtLeast = true
+    timeComparator.timeComparatorType = TimeComparatorType.AtLeast
     return timeComparator
 }
 infix fun LocalTime.shouldBeAtLeast(timeComparator: TimeComparator) = this `should be at least` timeComparator
+
+infix fun LocalTime.`should be at most`(timeComparator: TimeComparator): TimeComparator {
+    timeComparator.startTime = this
+    timeComparator.timeComparatorType = TimeComparatorType.AtMost
+    return timeComparator
+}
+infix fun LocalTime.shouldBeAtMost(timeComparator: TimeComparator) = this `should be at most` timeComparator
+
 
 infix fun TimeComparator.after(theOther: LocalTime) = this.assertAfter(theOther)
 infix fun TimeComparator.before(theOther: LocalTime) = this.assertBefore(theOther)
 
 class TimeComparator(internal val addedHours: Int = 0, internal val addedMinutes: Int = 0, internal val addedSeconds: Int = 0) {
     internal lateinit var startTime: LocalTime
-    internal var submittedAtLeast = false
+    internal var timeComparatorType = TimeComparatorType.Exactly
 
-    internal fun assertAfter(theOther: LocalTime) {
-        when (submittedAtLeast) {
-            true -> assertAtLeastAfter(theOther)
-            false -> assertExactlyAfter(theOther)
-        }
-    }
+    internal fun assertAfter(theOther: LocalTime) =
+            when (timeComparatorType) {
+                TimeComparatorType.AtLeast -> assertAtLeastAfter(theOther)
+                TimeComparatorType.Exactly -> assertExactlyAfter(theOther)
+                TimeComparatorType.AtMost -> assertAtMostAfter(theOther)
+            }
 
-    internal fun assertBefore(theOther: LocalTime) {
-        when (submittedAtLeast) {
-            true -> assertAtLeastBefore(theOther)
-            false -> assertExactlyBefore(theOther)
-        }
-    }
+
+    internal fun assertBefore(theOther: LocalTime) =
+            when (timeComparatorType) {
+                TimeComparatorType.AtLeast -> assertAtLeastBefore(theOther)
+                TimeComparatorType.Exactly -> assertExactlyBefore(theOther)
+                TimeComparatorType.AtMost -> assertAtMostBefore(theOther)
+            }
 
     private fun assertAtLeastAfter(theOther: LocalTime) {
         val comparedTime = calculateComparedTime(theOther)
         assertTrue("Expected $startTime to be at least { $addedHours hours, $addedMinutes minutes, $addedSeconds seconds } after $theOther", startTime >= comparedTime)
     }
 
+    private fun assertAtMostAfter(theOther: LocalTime) {
+        val comparedTime = calculateComparedTime(theOther)
+        assertTrue("Expected $startTime to be at most { $addedHours hours, $addedMinutes minutes, $addedSeconds seconds } after $theOther", startTime <= comparedTime)
+    }
+
     private fun assertExactlyAfter(theOther: LocalTime) {
         val comparedTime = calculateComparedTime(theOther)
         assertTrue("Expected $startTime to be { $addedHours hours, $addedMinutes minutes, $addedSeconds seconds } after $theOther", startTime == comparedTime)
     }
-
 
     private fun assertExactlyBefore(theOther: LocalTime) {
         val comparedTime = calculateComparedTime(theOther, -1)
@@ -102,7 +114,12 @@ class TimeComparator(internal val addedHours: Int = 0, internal val addedMinutes
 
     private fun assertAtLeastBefore(theOther: LocalTime) {
         val comparedTime = calculateComparedTime(theOther, -1)
-        assertTrue("Expected $startTime to be atleast { $addedHours hours, $addedMinutes minutes, $addedSeconds seconds } before $theOther", startTime <= comparedTime)
+        assertTrue("Expected $startTime to be at least { $addedHours hours, $addedMinutes minutes, $addedSeconds seconds } before $theOther", startTime <= comparedTime)
+    }
+
+    private fun assertAtMostBefore(theOther: LocalTime) {
+        val comparedTime = calculateComparedTime(theOther, -1)
+        assertTrue("Expected $startTime to be at most { $addedHours hours, $addedMinutes minutes, $addedSeconds seconds } before $theOther", startTime >= comparedTime)
     }
 
     private fun calculateComparedTime(time: LocalTime, multiplier: Int = 1) =
@@ -110,4 +127,10 @@ class TimeComparator(internal val addedHours: Int = 0, internal val addedMinutes
                     .plusMinutes(addedMinutes.toLong() * multiplier)
                     .plusSeconds(addedSeconds.toLong() * multiplier)
 
+}
+
+internal enum class TimeComparatorType {
+    AtMost,
+    AtLeast,
+    Exactly
 }
