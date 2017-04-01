@@ -7,6 +7,7 @@ Every method that is added is still added in both styles.
 * Fix compiler warnings in tests ([PR](https://github.com/MarkusAmshove/Kluent/pull/30) | thanks to [@Egorand](https://github.com/Egorand))
 * Update JUnit and Mockito ([Issue](https://github.com/MarkusAmshove/Kluent/issues/31) | thanks to [@Jeevuz](https://github.com/Jeevuz))
 * Fix reversed message in ShouldNotThrow ([Issue](https://github.com/MarkusAmshove/Kluent/issues/33) | [PR](https://github.com/MarkusAmshove/Kluent/pull/34) | thanks to [@goreRatzete](https://github.com/goreRatzete))
+* Use mockito-kotlin for mocking ([Issue](https://github.com/MarkusAmshove/Kluent/issues/32) | [PR](https://github.com/MarkusAmshove/Kluent/pull/35) | thanks to [@fishb6nes](https://github.com/fishb6nes))
 
 # 1.16
 * Update Kotlin to 1.1.0

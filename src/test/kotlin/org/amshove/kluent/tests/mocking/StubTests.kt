@@ -5,6 +5,7 @@ import org.amshove.kluent.tests.helpclasses.Database
 import org.amshove.kluent.tests.helpclasses.Person
 import org.jetbrains.spek.api.Spek
 import org.junit.Assert.assertSame
+import org.mockito.exceptions.misusing.InvalidUseOfMatchersException
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
@@ -46,6 +47,14 @@ class StubTests : Spek({
                 var counter = 0
                 When calling mock.getPerson() itAnswers { counter++; alice }
                 assertEquals(0, counter)
+            }
+        }
+        on("telling it to return any") {
+            it("should throw an exception") {
+                val mock = mock(Database::class)
+                When calling mock.getPerson() itReturns any()
+                val func = { mock.getPerson() }
+                func shouldThrow InvalidUseOfMatchersException::class
             }
         }
     }

@@ -1,25 +1,29 @@
 package org.amshove.kluent
 
-import org.mockito.Mockito.*
+import kotlin.reflect.KClass
+import com.nhaarman.mockito_kotlin.*
+import org.mockito.Mockito.`when`
 import org.mockito.invocation.InvocationOnMock
 import org.mockito.stubbing.OngoingStubbing
-import kotlin.reflect.KClass
 
-fun <T : Any> mock(targetClass: KClass<T>): T {
-    return mock(targetClass.javaObjectType)
-}
+@Suppress("UNUSED_PARAMETER") // Backward compatibility
+inline fun <reified T : Any> mock(targetClass: KClass<out T>): T = mock()
+
+inline fun <reified T : Any> mock(): T = com.nhaarman.mockito_kotlin.mock()
 
 infix fun <T> VerifyKeyword.on(mock: T) = verify(mock)
 
 infix fun <T> T.that(mock: T): T = this.apply { mock.run { Unit } }
 
-infix fun <T> VerifyNoInteractionsKeyword.on(mock: T) = verifyZeroInteractions(mock)
+infix fun <T : Any> VerifyNoInteractionsKeyword.on(mock: T) = verifyZeroInteractions(mock)
 
 infix fun <T> VerifyNoFurtherInteractionsKeyword.on(mock: T) = verifyNoMoreInteractions(mock)
 
 infix fun <T> T.was(n: CalledKeyword) = n
 
-fun <T : Any> any(kClass: KClass<T>): T = any(kClass.javaObjectType)
+@Suppress("UNUSED_PARAMETER") // Backward compatibility
+inline fun <reified T : Any> any(kClass: KClass<T>): T = any()
+inline fun <reified T : Any> any(): T = com.nhaarman.mockito_kotlin.any()
 
 infix fun <T> OngoingStubbing<T>.`it returns`(value: T): OngoingStubbing<T> = this.thenReturn(value)
 infix fun <T> OngoingStubbing<T>.itReturns(value: T): OngoingStubbing<T> = this `it returns` value
