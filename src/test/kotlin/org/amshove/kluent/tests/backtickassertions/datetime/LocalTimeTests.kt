@@ -155,6 +155,19 @@ class LocalTimeTests : Spek({
             }
         }
     }
+    given("the `should not be in hour` method") {
+        val loginTime = LocalTime.of(15, 40)
+        on("passing a time within the hour") {
+            it("should fail") {
+                assertFails { loginTime `should not be in hour` 15 }
+            }
+        }
+        on("passing a time outside of the hour") {
+            it("should pass") {
+                loginTime `should not be in hour` 14
+            }
+        }
+    }
     given("the `should be in minute` method") {
         val loginTime = LocalTime.of(15, 40)
         on("passing a time within the minute") {
@@ -168,6 +181,19 @@ class LocalTimeTests : Spek({
             }
         }
     }
+    given("the `should not be in minute` method") {
+        val loginTime = LocalTime.of(15, 40)
+        on("passing a time within the minute") {
+            it("should fail") {
+                assertFails { loginTime `should not be in minute` 40 }
+            }
+        }
+        on("passing a time outside of the minute") {
+            it("should pass") {
+                loginTime `should not be in minute` 14
+            }
+        }
+    }
     given("the `should be in second` method") {
         val loginTime = LocalTime.of(15, 40)
         on("passing a time within the second") {
@@ -178,6 +204,19 @@ class LocalTimeTests : Spek({
         on("passing a time outside of the second") {
             it("should fail") {
                 assertFails { loginTime `should be in second` 14 }
+            }
+        }
+    }
+    given("the `should not be in second` method") {
+        val loginTime = LocalTime.of(15, 40)
+        on("passing a time within the second") {
+            it("should fail") {
+                assertFails { loginTime `should not be in second` 0 }
+            }
+        }
+        on("passing a time outside of the second") {
+            it("should pass") {
+                loginTime `should not be in second` 14
             }
         }
     }

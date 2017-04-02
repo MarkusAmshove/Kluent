@@ -155,6 +155,19 @@ class LocalTimeTests : Spek({
             }
         }
     }
+    given("the shouldNotBeInHour method") {
+        val loginTime = LocalTime.of(15, 40)
+        on("passing a time within the hour") {
+            it("should fail") {
+                assertFails { loginTime shouldNotBeInHour 15 }
+            }
+        }
+        on("passing a time outside of the hour") {
+            it("should pass") {
+                loginTime shouldNotBeInHour 14
+            }
+        }
+    }
     given("the shouldBeInMinute method") {
         val loginTime = LocalTime.of(15, 40)
         on("passing a time within the minute") {
@@ -168,6 +181,19 @@ class LocalTimeTests : Spek({
             }
         }
     }
+    given("the shouldNotBeInMinute method") {
+        val loginTime = LocalTime.of(15, 40)
+        on("passing a time within the minute") {
+            it("should fail") {
+                assertFails { loginTime shouldNotBeInMinute 40 }
+            }
+        }
+        on("passing a time outside of the minute") {
+            it("should pass") {
+                loginTime shouldNotBeInMinute 14
+            }
+        }
+    }
     given("the shouldBeInSecond method") {
         val loginTime = LocalTime.of(15, 40)
         on("passing a time within the second") {
@@ -178,6 +204,19 @@ class LocalTimeTests : Spek({
         on("passing a time outside of the second") {
             it("should fail") {
                 assertFails { loginTime shouldBeInSecond 14 }
+            }
+        }
+    }
+    given("the shouldNotBeInSecond method") {
+        val loginTime = LocalTime.of(15, 40)
+        on("passing a time within the second") {
+            it("should fail") {
+                assertFails { loginTime shouldNotBeInSecond 0 }
+            }
+        }
+        on("passing a time outside of the second") {
+            it("should pass") {
+                loginTime shouldNotBeInSecond 14
             }
         }
     }

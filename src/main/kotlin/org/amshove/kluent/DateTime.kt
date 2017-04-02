@@ -79,11 +79,20 @@ infix fun LocalTime.shouldBeAtMost(timeComparator: TimeComparator) = this `shoul
 infix fun LocalTime.`should be in hour`(theHour: Int) = assertTrue("Expected $this to be in hour $theHour", this.hour == theHour)
 infix fun LocalTime.shouldBeInHour(theHour: Int) = this `should be in hour` theHour
 
+infix fun LocalTime.`should not be in hour`(theHour: Int) = assertTrue("Expected $this to not be in hour $theHour", this.hour != theHour)
+infix fun LocalTime.shouldNotBeInHour(theHour: Int) = this `should not be in hour` theHour
+
 infix fun LocalTime.`should be in minute`(theMinute: Int) = assertTrue("Expected $this to be in minute $theMinute", this.minute == theMinute)
 infix fun LocalTime.shouldBeInMinute(theMinute: Int) = this `should be in minute` theMinute
 
+infix fun LocalTime.`should not be in minute`(theMinute: Int) = assertTrue("Expected $this to not be in minute $theMinute", this.minute != theMinute)
+infix fun LocalTime.shouldNotBeInMinute(theMinute: Int) = this `should not be in minute` theMinute
+
 infix fun LocalTime.`should be in second`(theSecond: Int) = assertTrue("Expected $this to be in second $theSecond", this.second == theSecond)
 infix fun LocalTime.shouldBeInSecond(theSecond: Int) = this `should be in second` theSecond
+
+infix fun LocalTime.`should not be in second`(theSecond: Int) = assertTrue("Expected $this to not be in second $theSecond", this.second != theSecond)
+infix fun LocalTime.shouldNotBeInSecond(theSecond: Int) = this `should not be in second` theSecond
 
 infix fun TimeComparator.after(theOther: LocalTime) = this.assertAfter(theOther)
 infix fun TimeComparator.before(theOther: LocalTime) = this.assertBefore(theOther)
