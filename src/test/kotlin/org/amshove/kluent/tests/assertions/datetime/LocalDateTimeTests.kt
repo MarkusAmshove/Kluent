@@ -260,9 +260,9 @@ class LocalDateTimeTests : Spek({
             }
         }
         on("passing a date which is less than x days before") {
-            val shippingDate = LocalDateTime.of(2017, 6, 7, 10, 0)
-            it("should fail") {
-                assertFails { shippingDate shouldBeAtMost 5.days() before orderDate }
+            val shippingDate = LocalDateTime.of(2017, 6, 12, 10, 0)
+            it("should pass") {
+                shippingDate shouldBeAtMost 5.days() before orderDate
             }
         }
     }
