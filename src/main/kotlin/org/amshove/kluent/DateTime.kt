@@ -45,35 +45,38 @@ infix fun LocalDate.shouldBeIn(theMonth: Month) = this `should be in` theMonth
 infix fun LocalDate.`should be in year`(theYear: Int) = assertTrue("Expected $this to be in $theYear, but was ${this.year}", this.year == theYear)
 infix fun LocalDate.shouldBeInYear(theYear: Int) = this `should be in year` theYear
 
-fun Int.hours() = LocalTimeComparator(addedHours = this)
-fun Int.minutes() = LocalTimeComparator(addedMinutes = this)
-fun Int.seconds() = LocalTimeComparator(addedSeconds = this)
+fun Int.hours() = TimeComparator(addedHours = this)
+fun Int.minutes() = TimeComparator(addedMinutes = this)
+fun Int.seconds() = TimeComparator(addedSeconds = this)
+fun Int.years() = DateComparator(addedYears = this)
+fun Int.months() = DateComparator(addedMonths = this)
+fun Int.days() = DateComparator(addedDays = this)
 
-infix fun LocalTime.`should be`(localTimeComparator: LocalTimeComparator): LocalTimeComparator {
-    localTimeComparator.startTime = this
-    return localTimeComparator
-}
-infix fun LocalTime.shouldBe(localTimeComparator: LocalTimeComparator) = this `should be` localTimeComparator
+infix fun LocalTime.`should be`(timeComparator: TimeComparator) = timeComparator.withStartTime(this)
+infix fun LocalTime.shouldBe(timeComparator: TimeComparator) = this `should be` timeComparator
 
-infix fun LocalTime.`should be at least`(localTimeComparator: LocalTimeComparator): LocalTimeComparator {
-    localTimeComparator.startTime = this
-    localTimeComparator.timeComparatorType = TimeComparatorType.AtLeast
-    return localTimeComparator
-}
-infix fun LocalTime.shouldBeAtLeast(localTimeComparator: LocalTimeComparator) = this `should be at least` localTimeComparator
+infix fun LocalTime.`should be at least`(timeComparator: TimeComparator) = timeComparator.withStartTime(this).withComparatorType(ComparatorType.AtLeast)
+infix fun LocalTime.shouldBeAtLeast(timeComparator: TimeComparator) = this `should be at least` timeComparator
 
-infix fun LocalTime.`should be at most`(localTimeComparator: LocalTimeComparator): LocalTimeComparator {
-    localTimeComparator.startTime = this
-    localTimeComparator.timeComparatorType = TimeComparatorType.AtMost
-    return localTimeComparator
-}
-infix fun LocalTime.shouldBeAtMost(localTimeComparator: LocalTimeComparator) = this `should be at most` localTimeComparator
+infix fun LocalTime.`should be at most`(timeComparator: TimeComparator) = timeComparator.withStartTime(this).withComparatorType(ComparatorType.AtMost)
+infix fun LocalTime.shouldBeAtMost(timeComparator: TimeComparator) = this `should be at most` timeComparator
 
+infix fun TimeComparator.after(theOther: LocalTime) = this.assertAfter(theOther)
+infix fun TimeComparator.before(theOther: LocalTime) = this.assertBefore(theOther)
 
-infix fun LocalTimeComparator.after(theOther: LocalTime) = this.assertAfter(theOther)
-infix fun LocalTimeComparator.before(theOther: LocalTime) = this.assertBefore(theOther)
+infix fun LocalDate.`should be`(dateComparator: DateComparator) = dateComparator.withStartDate(this)
+infix fun LocalDate.shouldBe(dateComparator: DateComparator) = this `should be` dateComparator
 
-internal enum class TimeComparatorType {
+infix fun LocalDate.`should be at least`(dateComparator: DateComparator) = dateComparator.withStartDate(this).withComparatorType(ComparatorType.AtLeast)
+infix fun LocalDate.shouldBeAtLeast(dateComparator: DateComparator) = this `should be at least` dateComparator
+
+infix fun LocalDate.`should be at most`(dateComparator: DateComparator) = dateComparator.withStartDate(this).withComparatorType(ComparatorType.AtMost)
+infix fun LocalDate.shouldBeAtMost(dateComparator: DateComparator) = this `should be at most` dateComparator
+
+infix fun DateComparator.after(theOther: LocalDate) = this.assertAfter(theOther)
+infix fun DateComparator.before(theOther: LocalDate) = this.assertBefore(theOther)
+
+internal enum class ComparatorType {
     AtMost,
     AtLeast,
     Exactly

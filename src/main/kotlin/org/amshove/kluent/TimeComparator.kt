@@ -3,24 +3,34 @@ package org.amshove.kluent
 import org.junit.Assert.assertTrue
 import java.time.LocalTime
 
-class LocalTimeComparator(internal val addedHours: Int = 0, internal val addedMinutes: Int = 0, internal val addedSeconds: Int = 0) {
+class TimeComparator(internal val addedHours: Int = 0, internal val addedMinutes: Int = 0, internal val addedSeconds: Int = 0) {
     internal lateinit var startTime: LocalTime
-    internal var timeComparatorType = TimeComparatorType.Exactly
+    internal var comparatorType = ComparatorType.Exactly
 
     internal fun assertAfter(theOther: LocalTime) =
-            when (timeComparatorType) {
-                TimeComparatorType.AtLeast -> assertAtLeastAfter(theOther)
-                TimeComparatorType.Exactly -> assertExactlyAfter(theOther)
-                TimeComparatorType.AtMost -> assertAtMostAfter(theOther)
+            when (comparatorType) {
+                ComparatorType.AtLeast -> assertAtLeastAfter(theOther)
+                ComparatorType.Exactly -> assertExactlyAfter(theOther)
+                ComparatorType.AtMost -> assertAtMostAfter(theOther)
             }
 
 
     internal fun assertBefore(theOther: LocalTime) =
-            when (timeComparatorType) {
-                TimeComparatorType.AtLeast -> assertAtLeastBefore(theOther)
-                TimeComparatorType.Exactly -> assertExactlyBefore(theOther)
-                TimeComparatorType.AtMost -> assertAtMostBefore(theOther)
+            when (comparatorType) {
+                ComparatorType.AtLeast -> assertAtLeastBefore(theOther)
+                ComparatorType.Exactly -> assertExactlyBefore(theOther)
+                ComparatorType.AtMost -> assertAtMostBefore(theOther)
             }
+
+    internal fun withStartTime(startTime: LocalTime): TimeComparator {
+        this.startTime = startTime
+        return this
+    }
+
+    internal fun withComparatorType(comparatorType: ComparatorType): TimeComparator {
+        this.comparatorType = comparatorType
+        return this
+    }
 
     private fun assertAtLeastAfter(theOther: LocalTime) {
         val comparedTime = calculateComparedTime(theOther)

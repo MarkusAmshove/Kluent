@@ -142,5 +142,131 @@ class LocalDateTests : Spek({
             }
         }
     }
+    given("the shouldBe x.days after method") {
+        val orderDate = LocalDate.of(2017, 6, 5)
+        on("passing a date which is exactly x days after") {
+            val shippingDate = LocalDate.of(2017, 6, 10)
+            it("should pass") {
+                shippingDate shouldBe 5.days() after orderDate
+            }
+        }
+        on("passing a date which is more than x days after") {
+            val shippingDate = LocalDate.of(2017, 6, 15)
+            it("should fail") {
+                assertFails { shippingDate shouldBe 5.days() after orderDate }
+            }
+        }
+        on("passing a date which is less than x days after") {
+            val shippingDate = LocalDate.of(2017, 6, 7)
+            it("should fail") {
+                assertFails { shippingDate shouldBe 5.days() after orderDate }
+            }
+        }
+    }
+    given("the shouldBeAtLeast x.days after method") {
+        val orderDate = LocalDate.of(2017, 6, 5)
+        on("passing a date which is exactly x days after") {
+            val shippingDate = LocalDate.of(2017, 6, 10)
+            it("should pass") {
+                shippingDate shouldBeAtLeast 5.days() after orderDate
+            }
+        }
+        on("passing a date which is more than x days after") {
+            val shippingDate = LocalDate.of(2017, 6, 15)
+            it("should pass") {
+                shippingDate shouldBeAtLeast 5.days() after orderDate
+            }
+        }
+        on("passing a date which is less than x days after") {
+            val shippingDate = LocalDate.of(2017, 6, 7)
+            it("should fail") {
+                assertFails { shippingDate shouldBeAtLeast 5.days() after orderDate }
+            }
+        }
+    }
+    given("the shouldBeAtMost x.days after method") {
+        val orderDate = LocalDate.of(2017, 6, 5)
+        on("passing a date which is exactly x days after") {
+            val shippingDate = LocalDate.of(2017, 6, 10)
+            it("should pass") {
+                shippingDate shouldBeAtMost 5.days() after orderDate
+            }
+        }
+        on("passing a date which is more than x days after") {
+            val shippingDate = LocalDate.of(2017, 6, 15)
+            it("should fail") {
+                assertFails { shippingDate shouldBeAtMost 5.days() after orderDate }
+            }
+        }
+        on("passing a date which is less than x days after") {
+            val shippingDate = LocalDate.of(2017, 6, 7)
+            it("should pass") {
+                shippingDate shouldBeAtMost 5.days() after orderDate
+            }
+        }
+    }
+    given("the shouldBe x.days before method") {
+        val orderDate = LocalDate.of(2017, 6, 15)
+        on("passing a date which is exactly x days before") {
+            val shippingDate = LocalDate.of(2017, 6, 10)
+            it("should pass") {
+                shippingDate shouldBe 5.days() before orderDate
+            }
+        }
+        on("passing a date which is more than x days before") {
+            val shippingDate = LocalDate.of(2017, 6, 9)
+            it("should fail") {
+                assertFails { shippingDate shouldBe 5.days() before orderDate }
+            }
+        }
+        on("passing a date which is less than x days before") {
+            val shippingDate = LocalDate.of(2017, 6, 12)
+            it("should fail") {
+                assertFails { shippingDate shouldBe 5.days() before orderDate }
+            }
+        }
+    }
+    given("the shouldBeAtLeast x.days before method") {
+        val orderDate = LocalDate.of(2017, 6, 15)
+        on("passing a date which is exactly x before after") {
+            val shippingDate = LocalDate.of(2017, 6, 10)
+            it("should pass") {
+                shippingDate shouldBeAtLeast 5.days() before orderDate
+            }
+        }
+        on("passing a date which is more than x days before") {
+            val shippingDate = LocalDate.of(2017, 6, 9)
+            it("should pass") {
+                shippingDate shouldBeAtLeast 5.days() before orderDate
+            }
+        }
+        on("passing a date which is less than x days before") {
+            val shippingDate = LocalDate.of(2017, 6, 12)
+            it("should fail") {
+                assertFails { shippingDate shouldBeAtLeast 5.days() before orderDate }
+            }
+        }
+    }
+    given("the shouldBeAtMost x.days before method") {
+        val orderDate = LocalDate.of(2017, 6, 15)
+        on("passing a date which is exactly x days before") {
+            val shippingDate = LocalDate.of(2017, 6, 10)
+            it("should pass") {
+                shippingDate shouldBeAtMost 5.days() before orderDate
+            }
+        }
+        on("passing a date which is more than x days before") {
+            val shippingDate = LocalDate.of(2017, 6, 5)
+            it("should fail") {
+                assertFails { shippingDate shouldBeAtMost 5.days() before orderDate }
+            }
+        }
+        on("passing a date which is less than x days before") {
+            val shippingDate = LocalDate.of(2017, 6, 7)
+            it("should fail") {
+                assertFails { shippingDate shouldBeAtMost 5.days() before orderDate }
+            }
+        }
+    }
 })
 
