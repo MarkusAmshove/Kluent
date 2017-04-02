@@ -42,11 +42,20 @@ infix fun LocalDateTime.shouldBeOnOrBefore(theDate: LocalDateTime) = this `shoul
 infix fun LocalDateTime.`should be on`(theDay: DayOfWeek) = assertTrue("Expected $this to be a $theDay, but was ${this.dayOfWeek}", this.dayOfWeek == theDay)
 infix fun LocalDateTime.shouldBeOn(theDay: DayOfWeek) = this `should be on` theDay
 
+infix fun LocalDateTime.`should not be on`(theDay: DayOfWeek) = this.toLocalDate() `should not be on` theDay
+infix fun LocalDateTime.shouldNotBeOn(theDay: DayOfWeek) = this `should not be on` theDay
+
 infix fun LocalDateTime.`should be in`(theMonth: Month) = assertTrue("Expected $this to be in $theMonth, but was ${this.month}", this.month == theMonth)
 infix fun LocalDateTime.shouldBeIn(theMonth: Month) = this `should be in` theMonth
 
+infix fun LocalDateTime.`should not be in`(theMonth: Month) = this.toLocalDate() `should not be in` theMonth
+infix fun LocalDateTime.shouldNotBeIn(theMonth: Month) = this `should not be in` theMonth
+
 infix fun LocalDateTime.`should be in year`(theYear: Int) = assertTrue("Expected $this to be in $theYear, but was ${this.year}", this.year == theYear)
 infix fun LocalDateTime.shouldBeInYear(theYear: Int) = this `should be in year` theYear
+
+infix fun LocalDateTime.`should not be in year`(theYear: Int) = this.toLocalDate() `should not be in year` theYear
+infix fun LocalDateTime.shouldNotBeInYear(theYear: Int) = this `should not be in year` theYear
 
 infix fun LocalDate.`should be after`(theOther: LocalDate) = assertTrue("Expected $this to be after $theOther", this > theOther)
 infix fun LocalDate.shouldBeAfter(theOther: LocalDate) = this `should be after` theOther
@@ -63,11 +72,20 @@ infix fun LocalDate.shouldBeOnOrBefore(theDate: LocalDate) = this `should be on 
 infix fun LocalDate.`should be on`(theDay: DayOfWeek) = assertTrue("Expected $this to be a $theDay, but was ${this.dayOfWeek}", this.dayOfWeek == theDay)
 infix fun LocalDate.shouldBeOn(theDay: DayOfWeek) = this `should be on` theDay
 
+infix fun LocalDate.`should not be on`(theDay: DayOfWeek) = assertTrue("Expected $this to not be a $theDay, but was ${this.dayOfWeek}", this.dayOfWeek != theDay)
+infix fun LocalDate.shouldNotBeOn(theDay: DayOfWeek) = this `should not be on` theDay
+
 infix fun LocalDate.`should be in`(theMonth: Month) = assertTrue("Expected $this to be in $theMonth, but was ${this.month}", this.month == theMonth)
 infix fun LocalDate.shouldBeIn(theMonth: Month) = this `should be in` theMonth
 
+infix fun LocalDate.`should not be in`(theMonth: Month) = assertTrue("Expected $this to not be in $theMonth, but was ${this.month}", this.month != theMonth)
+infix fun LocalDate.shouldNotBeIn(theMonth: Month) = this `should not be in` theMonth
+
 infix fun LocalDate.`should be in year`(theYear: Int) = assertTrue("Expected $this to be in $theYear, but was ${this.year}", this.year == theYear)
 infix fun LocalDate.shouldBeInYear(theYear: Int) = this `should be in year` theYear
+
+infix fun LocalDate.`should not be in year`(theYear: Int) = assertTrue("Expected $this to not be in $theYear, but was ${this.year}", this.year != theYear)
+infix fun LocalDate.shouldNotBeInYear(theYear: Int) = this `should not be in year` theYear
 
 fun Int.hours() = TimeComparator(addedHours = this)
 fun Int.minutes() = TimeComparator(addedMinutes = this)

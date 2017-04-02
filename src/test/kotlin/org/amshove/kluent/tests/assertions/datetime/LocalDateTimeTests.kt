@@ -108,6 +108,22 @@ class LocalDateTimeTests : Spek({
             }
         }
     }
+    given("the shouldNotBeOn method") {
+        on("passing a day it is not on") {
+            it("should pass") {
+                val dateToTest = LocalDateTime.of(2017, 3, 1, 10, 0)
+
+                dateToTest shouldNotBeOn DayOfWeek.THURSDAY
+            }
+        }
+        on("passing the day it is on") {
+            it("should fail") {
+                val dateToTest = LocalDateTime.of(2017, 3, 1, 5, 0)
+
+                assertFails { dateToTest shouldNotBeOn DayOfWeek.WEDNESDAY }
+            }
+        }
+    }
     given("the shouldBeIn method") {
         on("passing the correct month") {
             it("should pass") {
@@ -124,6 +140,22 @@ class LocalDateTimeTests : Spek({
             }
         }
     }
+    given("the shouldNotBeIn method") {
+        on("passing a month it is not in") {
+            it("should pass") {
+                val dateToTest = LocalDateTime.of(2017, 3, 1, 10, 0)
+
+                dateToTest shouldNotBeIn Month.APRIL
+            }
+        }
+        on("passing the month it is in") {
+            it("should fail") {
+                val dateToTest = LocalDateTime.of(2017, 3, 1, 10, 0)
+
+                assertFails { dateToTest shouldNotBeIn Month.MARCH }
+            }
+        }
+    }
     given("the shouldBeInYear method") {
         on("passing the correct year") {
             it("should pass") {
@@ -137,6 +169,22 @@ class LocalDateTimeTests : Spek({
                 val dateToTest = LocalDateTime.of(2017, 3, 1, 10, 0)
 
                 assertFails { dateToTest shouldBeInYear 2018 }
+            }
+        }
+    }
+    given("the shouldNotBeInYear method") {
+        on("passing a year it is not in") {
+            it("should pass") {
+                val dateToTest = LocalDateTime.of(2017, 3, 1, 10, 0)
+
+                dateToTest shouldNotBeInYear 2015
+            }
+        }
+        on("passing the year it is in") {
+            it("should fail") {
+                val dateToTest = LocalDateTime.of(2017, 3, 1, 10, 0)
+
+                assertFails { dateToTest shouldNotBeInYear 2017 }
             }
         }
     }
