@@ -18,11 +18,20 @@ infix fun LocalDateTime.shouldBeBefore(theTime: LocalTime) = this `should be bef
 infix fun LocalDateTime.`should be in hour`(theHour: Int) = this.toLocalTime() `should be in hour` theHour
 infix fun LocalDateTime.shouldBeInHour(theHour: Int) = this `should be in hour` theHour
 
+infix fun LocalDateTime.`should not be in hour`(theHour: Int) = this.toLocalTime() `should not be in hour` theHour
+infix fun LocalDateTime.shouldNotBeInHour(theHour: Int) = this `should not be in hour` theHour
+
 infix fun LocalDateTime.`should be in minute`(theMinute: Int) = this.toLocalTime() `should be in minute` theMinute
 infix fun LocalDateTime.shouldBeInMinute(theMinute: Int) = this `should be in minute` theMinute
 
+infix fun LocalDateTime.`should not be in minute`(theMinute: Int) = this.toLocalTime() `should not be in minute` theMinute
+infix fun LocalDateTime.shouldNotBeInMinute(theMinute: Int) = this `should not be in minute` theMinute
+
 infix fun LocalDateTime.`should be in second`(theSecond: Int) = this.toLocalTime() `should be in second` theSecond
 infix fun LocalDateTime.shouldBeInSecond(theSecond: Int) = this `should be in second` theSecond
+
+infix fun LocalDateTime.`should not be in second`(theSecond: Int) = this.toLocalTime() `should not be in second` theSecond
+infix fun LocalDateTime.shouldNotBeInSecond(theSecond: Int) = this `should not be in second` theSecond
 
 infix fun LocalDateTime.`should be on or after`(theDate: LocalDateTime) = assertTrue("Expected $this to be on or after $theDate", this >= theDate)
 infix fun LocalDateTime.shouldBeOnOrAfter(theDate: LocalDateTime) = this `should be on or after` theDate
