@@ -6,8 +6,23 @@ import java.time.*
 infix fun LocalDateTime.`should be after`(theOther: LocalDateTime) = assertTrue("Expected $this to be after $theOther", this > theOther)
 infix fun LocalDateTime.shouldBeAfter(theOther: LocalDateTime) = this `should be after` theOther
 
+infix fun LocalDateTime.`should be after`(theTime: LocalTime) = assertTrue("Expected $this to be after $theTime", this.toLocalTime() > theTime)
+infix fun LocalDateTime.shouldBeAfter(theTime: LocalTime) = this `should be after` theTime
+
 infix fun LocalDateTime.`should be before`(theOther: LocalDateTime) = assertTrue("Expected $this to be before $theOther", this < theOther)
 infix fun LocalDateTime.shouldBeBefore(theOther: LocalDateTime) = this `should be before` theOther
+
+infix fun LocalDateTime.`should be before`(theTime: LocalTime) = assertTrue("Expected $this to be before $theTime", this.toLocalTime() < theTime)
+infix fun LocalDateTime.shouldBeBefore(theTime: LocalTime) = this `should be before` theTime
+
+infix fun LocalDateTime.`should be in hour`(theHour: Int) = this.toLocalTime() `should be in hour` theHour
+infix fun LocalDateTime.shouldBeInHour(theHour: Int) = this `should be in hour` theHour
+
+infix fun LocalDateTime.`should be in minute`(theMinute: Int) = this.toLocalTime() `should be in minute` theMinute
+infix fun LocalDateTime.shouldBeInMinute(theMinute: Int) = this `should be in minute` theMinute
+
+infix fun LocalDateTime.`should be in second`(theSecond: Int) = this.toLocalTime() `should be in second` theSecond
+infix fun LocalDateTime.shouldBeInSecond(theSecond: Int) = this `should be in second` theSecond
 
 infix fun LocalDateTime.`should be on or after`(theDate: LocalDateTime) = assertTrue("Expected $this to be on or after $theDate", this >= theDate)
 infix fun LocalDateTime.shouldBeOnOrAfter(theDate: LocalDateTime) = this `should be on or after` theDate
@@ -61,6 +76,15 @@ infix fun LocalTime.shouldBeAtLeast(timeComparator: TimeComparator) = this `shou
 infix fun LocalTime.`should be at most`(timeComparator: TimeComparator) = timeComparator.withStartTime(this).withComparatorType(ComparatorType.AtMost)
 infix fun LocalTime.shouldBeAtMost(timeComparator: TimeComparator) = this `should be at most` timeComparator
 
+infix fun LocalTime.`should be in hour`(theHour: Int) = assertTrue("Expected $this to be in hour $theHour", this.hour == theHour)
+infix fun LocalTime.shouldBeInHour(theHour: Int) = this `should be in hour` theHour
+
+infix fun LocalTime.`should be in minute`(theMinute: Int) = assertTrue("Expected $this to be in minute $theMinute", this.minute == theMinute)
+infix fun LocalTime.shouldBeInMinute(theMinute: Int) = this `should be in minute` theMinute
+
+infix fun LocalTime.`should be in second`(theSecond: Int) = assertTrue("Expected $this to be in second $theSecond", this.second == theSecond)
+infix fun LocalTime.shouldBeInSecond(theSecond: Int) = this `should be in second` theSecond
+
 infix fun TimeComparator.after(theOther: LocalTime) = this.assertAfter(theOther)
 infix fun TimeComparator.before(theOther: LocalTime) = this.assertBefore(theOther)
 
@@ -98,6 +122,11 @@ infix fun LocalDateTime.shouldBeAtMost(timeComparator: TimeComparator) = this `s
 infix fun DateTimeComparator.after(theOther: LocalDateTime) = this.assertAfter(theOther)
 infix fun DateTimeComparator.before(theOther: LocalDateTime) = this.assertBefore(theOther)
 
+infix fun DateTimeComparator.after(theDate: LocalDate) = this.assertAfter(theDate)
+infix fun DateTimeComparator.before(theDate: LocalDate) = this.assertBefore(theDate)
+
+infix fun DateTimeComparator.after(theTime: LocalTime) = this.assertAfter(theTime)
+infix fun DateTimeComparator.before(theTime: LocalTime) = this.assertBefore(theTime)
 
 internal enum class ComparatorType {
     AtMost,

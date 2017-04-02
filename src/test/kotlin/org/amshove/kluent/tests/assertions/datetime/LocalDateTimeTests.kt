@@ -2,9 +2,7 @@ package org.amshove.kluent.tests.assertions.datetime
 
 import org.amshove.kluent.*
 import org.jetbrains.spek.api.Spek
-import java.time.DayOfWeek
-import java.time.LocalDateTime
-import java.time.Month
+import java.time.*
 import kotlin.test.assertFails
 
 class LocalDateTimeTests : Spek({
@@ -401,6 +399,75 @@ class LocalDateTimeTests : Spek({
             it("should pass given the correct seconds") {
                 val logoutTime = LocalDateTime.of(2017, 1, 10, 10, 1, 15)
                 logoutTime shouldBe 45.seconds() after loginTime
+            }
+        }
+    }
+    given("a LocalDateTime") {
+        val loginTime = LocalDateTime.of(2017, 2, 27, 23, 55)
+        on("checking if it is before a LocalTime which is later") {
+            val midnight = LocalTime.of(0, 0)
+            it("should pass") {
+                loginTime shouldBe 5.minutes() before midnight
+            }
+        }
+        on("checking if it is before a LocalTime which is earlier") {
+            val theTime = LocalTime.of(23, 50)
+            it("should fail") {
+                assertFails { loginTime shouldBe 5.minutes() before theTime }
+            }
+        }
+        on("checking if it is after a LocalTime which is earlier") {
+            val midday = LocalTime.of(12, 0)
+            it("should pass") {
+                loginTime shouldBeAfter midday
+            }
+        }
+        on("checking if it is after a LocalDate which is later") {
+            val twentyEighths = LocalDate.of(2017, 2, 28)
+            it("should fail") {
+                assertFails { loginTime shouldBe 1.days() after twentyEighths }
+            }
+        }
+        on("checking if it is before a LocalDate which is later") {
+            val twentyEighths = LocalDate.of(2017, 2, 28)
+            it("should pass") {
+                loginTime shouldBe 1.days() before twentyEighths
+            }
+        }
+        on("checking if it is before a LocalDate which is earlier") {
+            val twentySixths = LocalDate.of(2017, 2, 26)
+            it("should fail") {
+                assertFails { loginTime shouldBe 1.days() before twentySixths }
+            }
+        }
+        on("checking if it is in an hour which it is in") {
+            it("should pass") {
+                loginTime shouldBeInHour 23
+            }
+        }
+        on("checking if it is in an hour which it is not in") {
+            it("should fail") {
+                assertFails { loginTime shouldBeInHour 22 }
+            }
+        }
+        on("checking if it is in a minute which it is in") {
+            it("should pass") {
+                loginTime shouldBeInMinute 55
+            }
+        }
+        on("checking if it is in a minute which it is not in") {
+            it("should fail") {
+                assertFails { loginTime shouldBeInMinute 22 }
+            }
+        }
+        on("checking if it is in a second which it is in") {
+            it("should pass") {
+                loginTime shouldBeInSecond 0
+            }
+        }
+        on("checking if it is in a second which it is not in") {
+            it("should fail") {
+                assertFails { loginTime shouldBeInSecond 22 }
             }
         }
     }

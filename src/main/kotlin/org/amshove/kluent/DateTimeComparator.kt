@@ -1,7 +1,9 @@
 package org.amshove.kluent
 
 import org.junit.Assert.assertTrue
+import java.time.LocalDate
 import java.time.LocalDateTime
+import java.time.LocalTime
 
 class DateTimeComparator(internal var dateComparator: DateComparator? = null, internal var timeComparator: TimeComparator? = null) {
     internal lateinit var startDate: LocalDateTime
@@ -31,6 +33,11 @@ class DateTimeComparator(internal var dateComparator: DateComparator? = null, in
         this.comparatorType = comparatorType
         return this
     }
+
+    internal fun assertAfter(theDate: LocalDate) = dateComparator!!.withStartDate(startDate.toLocalDate()).withComparatorType(comparatorType).assertAfter(theDate)
+    internal fun assertBefore(theDate: LocalDate) = dateComparator!!.withStartDate(startDate.toLocalDate()).withComparatorType(comparatorType).assertBefore(theDate)
+    internal fun assertAfter(theTime: LocalTime) = timeComparator!!.withStartTime(startDate.toLocalTime()).withComparatorType(comparatorType).assertAfter(theTime)
+    internal fun assertBefore(theTime: LocalTime) = timeComparator!!.withStartTime(startDate.toLocalTime()).withComparatorType(comparatorType).assertBefore(theTime)
 
     private fun getExpectedOffset() = "${dateComparator?.getExpectedOffset()} ${timeComparator?.getExpectedOffset()}".trim()
 
@@ -71,6 +78,5 @@ class DateTimeComparator(internal var dateComparator: DateComparator? = null, in
                     .plusHours((timeComparator?.addedHours?.toLong() ?: 0) * multiplier)
                     .plusMinutes((timeComparator?.addedMinutes?.toLong() ?: 0) * multiplier)
                     .plusSeconds((timeComparator?.addedSeconds?.toLong() ?: 0) * multiplier)
-
 
 }
