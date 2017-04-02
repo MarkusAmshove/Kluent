@@ -32,34 +32,36 @@ class TimeComparator(internal val addedHours: Int = 0, internal val addedMinutes
         return this
     }
 
+    internal fun getExpectedOffset() = "$addedHours hours, $addedMinutes minutes, $addedSeconds seconds"
+
     private fun assertAtLeastAfter(theOther: LocalTime) {
         val comparedTime = calculateComparedTime(theOther)
-        assertTrue("Expected $startTime to be at least { $addedHours hours, $addedMinutes minutes, $addedSeconds seconds } after $theOther", startTime >= comparedTime)
+        assertTrue("Expected $startTime to be at least { ${getExpectedOffset()} } after $theOther", startTime >= comparedTime)
     }
 
     private fun assertAtMostAfter(theOther: LocalTime) {
         val comparedTime = calculateComparedTime(theOther)
-        assertTrue("Expected $startTime to be at most { $addedHours hours, $addedMinutes minutes, $addedSeconds seconds } after $theOther", startTime <= comparedTime)
+        assertTrue("Expected $startTime to be at most { ${getExpectedOffset()} } after $theOther", startTime <= comparedTime)
     }
 
     private fun assertExactlyAfter(theOther: LocalTime) {
         val comparedTime = calculateComparedTime(theOther)
-        assertTrue("Expected $startTime to be { $addedHours hours, $addedMinutes minutes, $addedSeconds seconds } after $theOther", startTime == comparedTime)
+        assertTrue("Expected $startTime to be { ${getExpectedOffset()} } after $theOther", startTime == comparedTime)
     }
 
     private fun assertExactlyBefore(theOther: LocalTime) {
         val comparedTime = calculateComparedTime(theOther, -1)
-        assertTrue("Expected $startTime to be { $addedHours hours, $addedMinutes minutes, $addedSeconds seconds } before $theOther", startTime == comparedTime)
+        assertTrue("Expected $startTime to be { ${getExpectedOffset()} } before $theOther", startTime == comparedTime)
     }
 
     private fun assertAtLeastBefore(theOther: LocalTime) {
         val comparedTime = calculateComparedTime(theOther, -1)
-        assertTrue("Expected $startTime to be at least { $addedHours hours, $addedMinutes minutes, $addedSeconds seconds } before $theOther", startTime <= comparedTime)
+        assertTrue("Expected $startTime to be at least { ${getExpectedOffset()} } before $theOther", startTime <= comparedTime)
     }
 
     private fun assertAtMostBefore(theOther: LocalTime) {
         val comparedTime = calculateComparedTime(theOther, -1)
-        assertTrue("Expected $startTime to be at most { $addedHours hours, $addedMinutes minutes, $addedSeconds seconds } before $theOther", startTime >= comparedTime)
+        assertTrue("Expected $startTime to be at most { ${getExpectedOffset()} } before $theOther", startTime >= comparedTime)
     }
 
     private fun calculateComparedTime(time: LocalTime, multiplier: Int = 1) =

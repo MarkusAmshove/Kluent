@@ -76,6 +76,29 @@ infix fun LocalDate.shouldBeAtMost(dateComparator: DateComparator) = this `shoul
 infix fun DateComparator.after(theOther: LocalDate) = this.assertAfter(theOther)
 infix fun DateComparator.before(theOther: LocalDate) = this.assertBefore(theOther)
 
+
+infix fun LocalDateTime.`should be`(dateComparator: DateComparator) = DateTimeComparator(dateComparator).withStartDate(this)
+infix fun LocalDateTime.shouldBe(dateComparator: DateComparator) = this `should be` dateComparator
+
+infix fun LocalDateTime.`should be at least`(dateComparator: DateComparator) = DateTimeComparator(dateComparator).withStartDate(this).withComparatorType(ComparatorType.AtLeast)
+infix fun LocalDateTime.shouldBeAtLeast(dateComparator: DateComparator) = this `should be at least` dateComparator
+
+infix fun LocalDateTime.`should be at most`(dateComparator: DateComparator) = DateTimeComparator(dateComparator).withStartDate(this).withComparatorType(ComparatorType.AtMost)
+infix fun LocalDateTime.shouldBeAtMost(dateComparator: DateComparator) = this `should be at most` dateComparator
+
+infix fun LocalDateTime.`should be`(timeComparator: TimeComparator) = DateTimeComparator(timeComparator = timeComparator).withStartDate(this)
+infix fun LocalDateTime.shouldBe(timeComparator: TimeComparator) = this `should be` timeComparator
+
+infix fun LocalDateTime.`should be at least`(timeComparator: TimeComparator) = DateTimeComparator(timeComparator = timeComparator).withStartDate(this).withComparatorType(ComparatorType.AtLeast)
+infix fun LocalDateTime.shouldBeAtLeast(timeComparator: TimeComparator) = this `should be at least` timeComparator
+
+infix fun LocalDateTime.`should be at most`(timeComparator: TimeComparator) = DateTimeComparator(timeComparator = timeComparator).withStartDate(this).withComparatorType(ComparatorType.AtMost)
+infix fun LocalDateTime.shouldBeAtMost(timeComparator: TimeComparator) = this `should be at most` timeComparator
+
+infix fun DateTimeComparator.after(theOther: LocalDateTime) = this.assertAfter(theOther)
+infix fun DateTimeComparator.before(theOther: LocalDateTime) = this.assertBefore(theOther)
+
+
 internal enum class ComparatorType {
     AtMost,
     AtLeast,

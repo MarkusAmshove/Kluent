@@ -142,5 +142,267 @@ class LocalDateTimeTests : Spek({
             }
         }
     }
+    given("the `should be` x.days after method") {
+        val orderDate = LocalDateTime.of(2017, 6, 5, 10, 0)
+        on("passing a date which is exactly x days after") {
+            val shippingDate = LocalDateTime.of(2017, 6, 10, 10, 0)
+            it("should pass") {
+                shippingDate `should be` 5.days() after orderDate
+            }
+        }
+        on("passing a date which is more than x days after") {
+            val shippingDate = LocalDateTime.of(2017, 6, 15, 10, 0)
+            it("should fail") {
+                assertFails { shippingDate `should be` 5.days() after orderDate }
+            }
+        }
+        on("passing a date which is less than x days after") {
+            val shippingDate = LocalDateTime.of(2017, 6, 7, 10, 0)
+            it("should fail") {
+                assertFails { shippingDate `should be` 5.days() after orderDate }
+            }
+        }
+    }
+    given("the `should be at least` x.days after method") {
+        val orderDate = LocalDateTime.of(2017, 6, 5, 10, 0)
+        on("passing a date which is exactly x days after") {
+            val shippingDate = LocalDateTime.of(2017, 6, 10, 10, 0)
+            it("should pass") {
+                shippingDate `should be at least` 5.days() after orderDate
+            }
+        }
+        on("passing a date which is more than x days after") {
+            val shippingDate = LocalDateTime.of(2017, 6, 15, 10, 0)
+            it("should pass") {
+                shippingDate `should be at least` 5.days() after orderDate
+            }
+        }
+        on("passing a date which is less than x days after") {
+            val shippingDate = LocalDateTime.of(2017, 6, 7, 10, 0)
+            it("should fail") {
+                assertFails { shippingDate `should be at least` 5.days() after orderDate }
+            }
+        }
+    }
+    given("the `should be at most` x.days after method") {
+        val orderDate = LocalDateTime.of(2017, 6, 5, 10, 0)
+        on("passing a date which is exactly x days after") {
+            val shippingDate = LocalDateTime.of(2017, 6, 10, 10, 0)
+            it("should pass") {
+                shippingDate `should be at most` 5.days() after orderDate
+            }
+        }
+        on("passing a date which is more than x days after") {
+            val shippingDate = LocalDateTime.of(2017, 6, 15, 10, 0)
+            it("should fail") {
+                assertFails { shippingDate `should be at most` 5.days() after orderDate }
+            }
+        }
+        on("passing a date which is less than x days after") {
+            val shippingDate = LocalDateTime.of(2017, 6, 7, 10, 0)
+            it("should pass") {
+                shippingDate `should be at most` 5.days() after orderDate
+            }
+        }
+    }
+    given("the `should be` x.days before method") {
+        val orderDate = LocalDateTime.of(2017, 6, 15, 10, 0)
+        on("passing a date which is exactly x days before") {
+            val shippingDate = LocalDateTime.of(2017, 6, 10, 10, 0)
+            it("should pass") {
+                shippingDate `should be` 5.days() before orderDate
+            }
+        }
+        on("passing a date which is more than x days before") {
+            val shippingDate = LocalDateTime.of(2017, 6, 9, 10, 0)
+            it("should fail") {
+                assertFails { shippingDate `should be` 5.days() before orderDate }
+            }
+        }
+        on("passing a date which is less than x days before") {
+            val shippingDate = LocalDateTime.of(2017, 6, 12, 10, 0)
+            it("should fail") {
+                assertFails { shippingDate `should be` 5.days() before orderDate }
+            }
+        }
+    }
+    given("the `should be at least` x.days before method") {
+        val orderDate = LocalDateTime.of(2017, 6, 15, 10, 0)
+        on("passing a date which is exactly x before after") {
+            val shippingDate = LocalDateTime.of(2017, 6, 10, 10, 0)
+            it("should pass") {
+                shippingDate `should be at least` 5.days() before orderDate
+            }
+        }
+        on("passing a date which is more than x days before") {
+            val shippingDate = LocalDateTime.of(2017, 6, 9, 10, 0)
+            it("should pass") {
+                shippingDate `should be at least` 5.days() before orderDate
+            }
+        }
+        on("passing a date which is less than x days before") {
+            val shippingDate = LocalDateTime.of(2017, 6, 12, 10, 0)
+            it("should fail") {
+                assertFails { shippingDate `should be at least` 5.days() before orderDate }
+            }
+        }
+    }
+    given("the `should be at most` x.days before method") {
+        val orderDate = LocalDateTime.of(2017, 6, 15, 10, 0)
+        on("passing a date which is exactly x days before") {
+            val shippingDate = LocalDateTime.of(2017, 6, 10, 10, 0)
+            it("should pass") {
+                shippingDate `should be at most` 5.days() before orderDate
+            }
+        }
+        on("passing a date which is more than x days before") {
+            val shippingDate = LocalDateTime.of(2017, 6, 5, 10, 0)
+            it("should fail") {
+                assertFails { shippingDate `should be at most` 5.days() before orderDate }
+            }
+        }
+        on("passing a date which is less than x days before") {
+            val shippingDate = LocalDateTime.of(2017, 6, 7, 10, 0)
+            it("should fail") {
+                assertFails { shippingDate `should be at most` 5.days() before orderDate }
+            }
+        }
+    }
+    given("the `should be` after method") {
+        val loginTime = LocalDateTime.of(2017, 1, 10, 10, 59)
+        on("passing a time 5 minutes after") {
+            val orderTime = LocalDateTime.of(2017, 1, 10, 11, 4)
+            it("should pass") {
+                orderTime `should be` 5.minutes() after loginTime
+            }
+        }
+        on("passing a time 6 minutes after") {
+            val orderTime = LocalDateTime.of(2017, 1, 10, 11, 5)
+            it("should fail") {
+                assertFails { orderTime `should be` 5.minutes() after loginTime }
+            }
+        }
+    }
+    given("the `should be` before method") {
+        val loginTime = LocalDateTime.of(2017, 1, 10, 10, 59)
+        on("passing a time 5 minutes before") {
+            val orderTime = LocalDateTime.of(2017, 1, 10, 10, 54)
+            it("should pass") {
+                orderTime `should be` 5.minutes() before loginTime
+            }
+        }
+        on("passing a time 6 minutes before") {
+            val orderTime = LocalDateTime.of(2017, 1, 10, 10, 53)
+            it("should fail") {
+                assertFails { orderTime `should be` 5.minutes() before loginTime }
+            }
+        }
+    }
+    given("the `should be at least` after method") {
+        val loginTime = LocalDateTime.of(2017, 1, 10, 10, 59)
+        on("passing a time 5 minutes after") {
+            val orderTime = LocalDateTime.of(2017, 1, 10, 11, 4)
+            it("should pass testing for at least 3 minutes") {
+                orderTime `should be at least` 3.minutes() after loginTime
+            }
+        }
+        on("passing a time 5 minutes after") {
+            val orderTime = LocalDateTime.of(2017, 1, 10, 11, 4)
+            it("should fail testing for at least 6 minutes") {
+                assertFails { orderTime `should be at least` 6.minutes() after loginTime }
+            }
+        }
+    }
+    given("the `should be at least` before method") {
+        val loginTime = LocalDateTime.of(2017, 1, 10, 10, 54)
+        on("passing a time 5 minutes before") {
+            val orderTime = LocalDateTime.of(2017, 1, 10, 10, 59)
+            it("should pass testing for at least 3 minutes") {
+                loginTime `should be at least` 3.minutes() before orderTime
+            }
+        }
+        on("passing a time 6 minutes before") {
+            val orderTime = LocalDateTime.of(2017, 1, 10, 10, 53)
+            it("should fail testing for at least 7 minutes") {
+                assertFails { loginTime `should be at least` 7.minutes() before orderTime }
+            }
+        }
+    }
+    given("the `should be at most` before method") {
+        val orderTime = LocalDateTime.of(2017, 1, 10, 10, 10)
+        on("passing a time matching exactly at most 5 minutes before") {
+            val loginTime = LocalDateTime.of(2017, 1, 10, 10, 5)
+            it("should pass") {
+                loginTime `should be at most` 5.minutes() before orderTime
+            }
+        }
+        on("passing a time within 5 minutes before") {
+            val loginTime = LocalDateTime.of(2017, 1, 10, 10, 8)
+            it("should pass") {
+                loginTime `should be at most` 5.minutes() before orderTime
+            }
+        }
+        on("passing a time more than 5 minutes before") {
+            val loginTime = LocalDateTime.of(2017, 1, 10, 10, 0)
+            it("should fail") {
+                assertFails { loginTime `should be at most` 5.minutes() before orderTime }
+            }
+        }
+    }
+    given("the `should be at most` after method") {
+        val loginTime = LocalDateTime.of(2017, 1, 10, 10, 10)
+        on("passing a time matching exactly at most 5 minutes after") {
+            val orderTime = LocalDateTime.of(2017, 1, 10, 10, 15)
+            it("should pass") {
+                orderTime `should be at most` 5.minutes() after loginTime
+            }
+        }
+        on("passing a time within 5 minutes before") {
+            val orderTime = LocalDateTime.of(2017, 1, 10, 10, 12)
+            it("should pass") {
+                orderTime `should be at most` 5.minutes() after loginTime
+            }
+        }
+        on("passing a time more than 5 minutes before") {
+            val orderTime = LocalDateTime.of(2017, 1, 10, 10, 20)
+            it("should fail") {
+                assertFails { orderTime `should be at most` 5.minutes() after loginTime }
+            }
+        }
+    }
+    given("the Int.hours() extension") {
+        val loginTime = LocalDateTime.of(2017, 1, 10, 10, 0)
+        val orderTime = LocalDateTime.of(2017, 1, 10, 11, 0)
+        on("testing for 1 hour after") {
+            it("should pass") {
+                orderTime `should be` 1.hours() after loginTime
+            }
+        }
+        on("testing for 2 hours after") {
+            it("should fail") {
+                assertFails { orderTime `should be` 2.hours() after loginTime }
+            }
+        }
+    }
+    given("the Int.seconds() extension") {
+        val loginTime = LocalDateTime.of(2017, 1, 10, 10, 0, 30)
+        val orderTime = LocalDateTime.of(2017, 1, 10, 10, 0, 45)
+        on("testing for 15 seconds after") {
+            it("should pass") {
+                orderTime `should be` 15.seconds() after loginTime
+            }
+        }
+        on("testing for 30 seconds after") {
+            it("should fail") {
+                assertFails { orderTime `should be` 30.seconds() after loginTime }
+            }
+        }
+        on("checking a time with minute overlay") {
+            it("should pass given the correct seconds") {
+                val logoutTime = LocalDateTime.of(2017, 1, 10, 10, 1, 15)
+                logoutTime `should be` 45.seconds() after loginTime
+            }
+        }
+    }
 })
 

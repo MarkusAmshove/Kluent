@@ -32,34 +32,36 @@ class DateComparator(internal val addedYears: Int = 0, internal val addedMonths:
         return this
     }
 
+    internal fun getExpectedOffset() = "$addedYears years, $addedMonths months, $addedDays days"
+
     private fun assertAtLeastAfter(theOther: LocalDate) {
         val comparedTime = calculateComparedTime(theOther)
-        assertTrue("Expected $startDate to be at least { $addedYears years, $addedMonths months, $addedDays days } after $theOther", startDate >= comparedTime)
+        assertTrue("Expected $startDate to be at least { ${getExpectedOffset()} } after $theOther", startDate >= comparedTime)
     }
 
     private fun assertAtMostAfter(theOther: LocalDate) {
         val comparedTime = calculateComparedTime(theOther)
-        assertTrue("Expected $startDate to be at most { $addedYears years, $addedMonths months, $addedDays days } after $theOther", startDate <= comparedTime)
+        assertTrue("Expected $startDate to be at most { ${getExpectedOffset()} } after $theOther", startDate <= comparedTime)
     }
 
     private fun assertExactlyAfter(theOther: LocalDate) {
         val comparedTime = calculateComparedTime(theOther)
-        assertTrue("Expected $startDate to be { $addedYears years, $addedMonths months, $addedDays days } after $theOther", startDate == comparedTime)
+        assertTrue("Expected $startDate to be { ${getExpectedOffset()} } after $theOther", startDate == comparedTime)
     }
 
     private fun assertExactlyBefore(theOther: LocalDate) {
         val comparedTime = calculateComparedTime(theOther, -1)
-        assertTrue("Expected $startDate to be { $addedYears years, $addedMonths months, $addedDays days } before $theOther", startDate == comparedTime)
+        assertTrue("Expected $startDate to be { ${getExpectedOffset()} } before $theOther", startDate == comparedTime)
     }
 
     private fun assertAtLeastBefore(theOther: LocalDate) {
         val comparedTime = calculateComparedTime(theOther, -1)
-        assertTrue("Expected $startDate to be at least { $addedYears years, $addedMonths months, $addedDays days } before $theOther", startDate <= comparedTime)
+        assertTrue("Expected $startDate to be at least { ${getExpectedOffset()} } before $theOther", startDate <= comparedTime)
     }
 
     private fun assertAtMostBefore(theOther: LocalDate) {
         val comparedTime = calculateComparedTime(theOther, -1)
-        assertTrue("Expected $startDate to be at most { $addedYears years, $addedMonths months, $addedDays days } before $theOther", startDate >= comparedTime)
+        assertTrue("Expected $startDate to be at most { ${getExpectedOffset()} } before $theOther", startDate >= comparedTime)
     }
 
     private fun calculateComparedTime(time: LocalDate, multiplier: Int = 1) =
