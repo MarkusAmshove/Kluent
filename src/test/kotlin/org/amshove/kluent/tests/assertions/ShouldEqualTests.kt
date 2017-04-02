@@ -3,6 +3,7 @@ package org.amshove.kluent.tests.assertions
 import org.amshove.kluent.shouldEqual
 import org.amshove.kluent.tests.helpclasses.Person
 import org.jetbrains.spek.api.Spek
+import java.time.Duration
 import kotlin.test.assertFails
 
 class ShouldEqualTests : Spek({
