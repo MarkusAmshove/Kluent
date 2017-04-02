@@ -50,13 +50,13 @@ Some examples:
 
 # 1.16
 * Update Kotlin to 1.1.0
-* Correct assertion message for `Collection.shouldBeEmpty` ([Issue](https://github.com/MarkusAmshove/Kluent/issues/27))
+* Correct assertion message for `Collection.shouldBeEmpty` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/27)
 
 # 1.15
-* Rework failure messages of shouldNotContain assertions ([Issue](https://github.com/MarkusAmshove/Kluent/issues/20))
+* Rework failure messages of shouldNotContain assertions | [Issue](https://github.com/MarkusAmshove/Kluent/issues/20)
 * Extract assertions into different files
-* Add withCause for Exception-Assertions ([Issue](https://github.com/MarkusAmshove/Kluent/issues/24) | [PR](https://github.com/MarkusAmshove/Kluent/pull/25) | thanks to [@okkero](https://github.com/okkero))
-* Add common non infix assertions ([Issue](https://github.com/MarkusAmshove/Kluent/issues/21) | [PR](https://github.com/MarkusAmshove/Kluent/pull/26))
+* Add withCause for Exception-Assertions | [Issue](https://github.com/MarkusAmshove/Kluent/issues/24) | [PR](https://github.com/MarkusAmshove/Kluent/pull/25) | thanks to [@okkero](https://github.com/okkero)
+* Add common non infix assertions | [Issue](https://github.com/MarkusAmshove/Kluent/issues/21) | [PR](https://github.com/MarkusAmshove/Kluent/pull/26)
 
 ## Collections
 
@@ -102,7 +102,7 @@ Some examples:
 
 
 # 1.14
-* Introduce numerical operations ([Issue](https://github.com/MarkusAmshove/Kluent/issues/17) | [PR](https://github.com/MarkusAmshove/Kluent/pull/18))
+* Introduce numerical operations | [Issue](https://github.com/MarkusAmshove/Kluent/issues/17) | [PR](https://github.com/MarkusAmshove/Kluent/pull/18)
 
     shouldBeGreaterOrEqualTo
 
@@ -119,17 +119,17 @@ Some examples:
     shouldBeInRange
 
 # 1.13
-* Provide methods to check if an object is a given instance ([PR](https://github.com/MarkusAmshove/Kluent/pull/16) | thanks to [@GAumala](https://github.com/GAumala))
+* Provide methods to check if an object is a given instance | [PR](https://github.com/MarkusAmshove/Kluent/pull/16) | thanks to [@GAumala](https://github.com/GAumala)
 
     shouldBeInstanceOf
 
     shouldNotBeInstanceOf
 
 # 1.12
-* Update Kotlin to 1.0.6 ([Issue](https://github.com/MarkusAmshove/Kluent/issues/14) | [PR](https://github.com/MarkusAmshove/Kluent/pull/15))
+* Update Kotlin to 1.0.6 | [Issue](https://github.com/MarkusAmshove/Kluent/issues/14) | [PR](https://github.com/MarkusAmshove/Kluent/pull/15)
 
 # 1.11
-* Provide methods for common String operations ([Issue](https://github.com/MarkusAmshove/Kluent/issues/12) | [PR](https://github.com/MarkusAmshove/Kluent/pull/13) | thanks to [@goreRatzeze](https://github.com/goreRatzete)):
+* Provide methods for common String operations | [Issue](https://github.com/MarkusAmshove/Kluent/issues/12) | [PR](https://github.com/MarkusAmshove/Kluent/pull/13) | thanks to [@goreRatzeze](https://github.com/goreRatzete)
 
     shouldStartWith
 
@@ -149,7 +149,7 @@ Some examples:
 
 # 1.10
 
-* Provide methods to test maps ([Issue](https://github.com/MarkusAmshove/Kluent/issues/10) | [PR](https://github.com/MarkusAmshove/Kluent/pull/11) | thanks to [@goreRatzeze](https://github.com/goreRatzete)):
+* Provide methods to test maps | [Issue](https://github.com/MarkusAmshove/Kluent/issues/10) | [PR](https://github.com/MarkusAmshove/Kluent/pull/11) | thanks to [@goreRatzeze](https://github.com/goreRatzete)
 
     shouldHaveKey
     
@@ -166,5 +166,5 @@ Some examples:
 
 # 1.9
 
-* Allow subtyping of exceptions ([Issue](https://github.com/MarkusAmshove/Kluent/issues/7) | [PR](https://github.com/MarkusAmshove/Kluent/pull/8) | thanks to [@neyb](https://github.com/neyb))
+* Allow subtyping of exceptions | [Issue](https://github.com/MarkusAmshove/Kluent/issues/7) | [PR](https://github.com/MarkusAmshove/Kluent/pull/8) | thanks to [@neyb](https://github.com/neyb)
 
