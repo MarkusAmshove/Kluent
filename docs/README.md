@@ -12,7 +12,7 @@ It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.ht
 
 # Examples
 
-More examples can be seen in the [Wiki](https://github.com/MarkusAmshove/Kluent/wiki) or [tests](https://github.com/MarkusAmshove/Kluent/tree/master/src/test/kotlin/org/amshove/kluent/tests).
+[Assertions](Assertions.md)
 
 ### assertEquals ##
 
