@@ -8,6 +8,7 @@ It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.ht
 
 
 # [Changelog](https://markusamshove.github.io/Kluent/)
+# [Documentation](https://markusamshove.github.io/Kluent/)
 
 ----------
 

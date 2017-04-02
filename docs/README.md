@@ -40,13 +40,13 @@ Some examples:
 # Changelog
 
 # 1.17 (WIP)
-* Update Kotlin to 1.1.1 ([PR](https://github.com/MarkusAmshove/Kluent/pull/28) | thanks to [@Egorand](https://github.com/Egorand))
-* Update Gradle to 3.4.1 ([PR](https://github.com/MarkusAmshove/Kluent/pull/29) | thanks to [@Egorand](https://github.com/Egorand))
-* Fix compiler warnings in tests ([PR](https://github.com/MarkusAmshove/Kluent/pull/30) | thanks to [@Egorand](https://github.com/Egorand))
-* Update JUnit and Mockito ([Issue](https://github.com/MarkusAmshove/Kluent/issues/31) | thanks to [@Jeevuz](https://github.com/Jeevuz))
-* Fix reversed message in ShouldNotThrow ([Issue](https://github.com/MarkusAmshove/Kluent/issues/33) | [PR](https://github.com/MarkusAmshove/Kluent/pull/34) | thanks to [@goreRatzete](https://github.com/goreRatzete))
-* Use mockito-kotlin for mocking ([Issue](https://github.com/MarkusAmshove/Kluent/issues/32) | [PR](https://github.com/MarkusAmshove/Kluent/pull/35) | thanks to [@fishb6nes](https://github.com/fishb6nes))
-* Add Assertions for LocalDateTime, LocalTime, LocalDate ([PR](https://github.com/MarkusAmshove/Kluent/pull/36))
+* Update Kotlin to 1.1.1 | [PR](https://github.com/MarkusAmshove/Kluent/pull/28) | thanks to [@Egorand](https://github.com/Egorand)
+* Update Gradle to 3.4.1 | [PR](https://github.com/MarkusAmshove/Kluent/pull/29) | thanks to [@Egorand](https://github.com/Egorand)
+* Fix compiler warnings in tests | [PR](https://github.com/MarkusAmshove/Kluent/pull/30) | thanks to [@Egorand](https://github.com/Egorand)
+* Update JUnit and Mockito | [Issue](https://github.com/MarkusAmshove/Kluent/issues/31) | thanks to [@Jeevuz](https://github.com/Jeevuz))
+* Fix reversed message in ShouldNotThrow | [Issue](https://github.com/MarkusAmshove/Kluent/issues/33) | [PR](https://github.com/MarkusAmshove/Kluent/pull/34) | thanks to [@goreRatzete](https://github.com/goreRatzete)
+* Use mockito-kotlin for mocking | [Issue](https://github.com/MarkusAmshove/Kluent/issues/32) | [PR](https://github.com/MarkusAmshove/Kluent/pull/35) | thanks to [@fishb6nes](https://github.com/fishb6nes)
+* Add Assertions for LocalDateTime, LocalTime, LocalDate | [PR](https://github.com/MarkusAmshove/Kluent/pull/36)
 
 # 1.16
 * Update Kotlin to 1.1.0
