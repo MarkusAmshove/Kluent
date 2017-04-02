@@ -10,11 +10,32 @@ It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.ht
 # Guide
 
 [Basic Assertions](BasicAssertions.md)
+
 [Numerical Assertions](NumericalAssertions.md)
+
 [CharSequence Assertions](CharSequenceAssertions.md)
+
 [Collection Assertions](CollectionAssertions.md)
+
 [Exception handling](Exceptions.md)
+
 [Mocking](Mocking.md)
+
+[java.time Assertions](JavaTime.md)
+
+## Using backticks
+
+Every method that is included in Kluent also has a "backtick version", to make it feel more like a describing sentence.
+
+Some examples:
+
+### assertEquals ##
+    "hello" shouldEqual "hello"
+    "hello" `should equal` "hello"
+
+### assertNotEquals ##
+    "hello" shouldNotEqual "world"
+    "hello" `should not equal` "world"
 
 # Changelog
 
@@ -25,6 +46,7 @@ It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.ht
 * Update JUnit and Mockito ([Issue](https://github.com/MarkusAmshove/Kluent/issues/31) | thanks to [@Jeevuz](https://github.com/Jeevuz))
 * Fix reversed message in ShouldNotThrow ([Issue](https://github.com/MarkusAmshove/Kluent/issues/33) | [PR](https://github.com/MarkusAmshove/Kluent/pull/34) | thanks to [@goreRatzete](https://github.com/goreRatzete))
 * Use mockito-kotlin for mocking ([Issue](https://github.com/MarkusAmshove/Kluent/issues/32) | [PR](https://github.com/MarkusAmshove/Kluent/pull/35) | thanks to [@fishb6nes](https://github.com/fishb6nes))
+* Add Assertions for LocalDateTime, LocalTime, LocalDate ([PR](https://github.com/MarkusAmshove/Kluent/pull/36))
 
 # 1.16
 * Update Kotlin to 1.1.0

@@ -13,7 +13,7 @@ It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.ht
 
 # Include it via gradle/maven
 
-Kluent is hosted in [jcenter](https://bintray.com/markusamshove/maven/Kluent/view# "jCenter")
+Kluent is hosted at [jcenter](https://bintray.com/markusamshove/maven/Kluent/view# "jCenter")
 
 ## Gradle
     dependencies {
