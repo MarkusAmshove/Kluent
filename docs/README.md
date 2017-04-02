@@ -1,5 +1,22 @@
-The changelogs are written in non-backtick methodstyle for simplicity.
-Every method that is added is still added in both styles.
+# Kluent
+
+Kluent is a "Fluent Assertions" library written specifically for Kotlin.
+
+It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.html#infix-notation "Infix-Notation") and [Extension Functions](https://kotlinlang.org/docs/reference/extensions.html#extension-functions "Extension Functions") of Kotlin to provide a fluent wrapper around JUnit-Asserts and Mockito.
+
+ [ ![Download](https://api.bintray.com/packages/markusamshove/maven/Kluent/images/download.svg) ](https://bintray.com/markusamshove/maven/Kluent/_latestVersion) [![Build Status](https://travis-ci.org/MarkusAmshove/Kluent.svg?branch=master)](https://travis-ci.org/MarkusAmshove/Kluent)
+
+
+# Guide
+
+[Basic Assertions](BasicAssertions.md)
+[Numerical Assertions](NumericalAssertions.md)
+[CharSequence Assertions](CharSequenceAssertions.md)
+[Collection Assertions](CollectionAssertions.md)
+[Exception handling](Exceptions.md)
+[Mocking](Mocking.md)
+
+# Changelog
 
 # 1.17 (WIP)
 * Update Kotlin to 1.1.1 ([PR](https://github.com/MarkusAmshove/Kluent/pull/28) | thanks to [@Egorand](https://github.com/Egorand))
@@ -129,3 +146,4 @@ Every method that is added is still added in both styles.
 # 1.9
 
 * Allow subtyping of exceptions ([Issue](https://github.com/MarkusAmshove/Kluent/issues/7) | [PR](https://github.com/MarkusAmshove/Kluent/pull/8) | thanks to [@neyb](https://github.com/neyb))
+
