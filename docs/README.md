@@ -7,6 +7,15 @@ It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.ht
  [ ![Download](https://api.bintray.com/packages/markusamshove/maven/Kluent/images/download.svg) ](https://bintray.com/markusamshove/maven/Kluent/_latestVersion) [![Build Status](https://travis-ci.org/MarkusAmshove/Kluent.svg?branch=master)](https://travis-ci.org/MarkusAmshove/Kluent)
 
 
+# Guide
+
+[Basic Assertions](BasicAssertions.md)
+[Numerical Assertions](NumericalAssertions.md)
+[CharSequence Assertions](CharSequenceAssertions.md)
+[Collection Assertions](CollectionAssertions.md)
+[Exception handling](Exceptions.md)
+[Mocking](Mocking.md)
+
 # Changelog
 
 # 1.17 (WIP)
