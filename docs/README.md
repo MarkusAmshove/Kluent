@@ -21,6 +21,8 @@ It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.ht
 
 [Mocking](Mocking.md)
 
+[java.time Assertions](JavaTime.md)
+
 ## Using backticks
 
 Every method that is included in Kluent also has a "backtick version", to make it feel more like a describing sentence.
