@@ -2,7 +2,7 @@
 
 The following documentation is a overview around the assertions for `java.time.LocalDateTime`, `java.time.LocalDate` and `java.time.LocalTime`
 
-Not all cases are covered, but all methods work as appropriate to the tested datetype.
+Not all cases are covered, but all methods work as appropriate to the tested datetype. All examples can be found in the [testsuites](https://github.com/MarkusAmshove/Kluent/tree/master/src/test/kotlin/org/amshove/kluent/tests/assertions/datetime).
 
 There are extension functions for x.years(), x.months(), x.days(), x.hours(), x.minutes() and x.seconds().
 
