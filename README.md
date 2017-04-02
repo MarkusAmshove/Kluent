@@ -1,18 +1,39 @@
 # Kluent
 
-Kluent is a "Fluent Assertions" library written specifically for Kotlin.
+[Kluent](https://markusamshove.github.io/Kluent/) is a "Fluent Assertions" library written specifically for Kotlin.
 
 It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.html#infix-notation "Infix-Notation") and [Extension Functions](https://kotlinlang.org/docs/reference/extensions.html#extension-functions "Extension Functions") of Kotlin to provide a fluent wrapper around the JUnit-Asserts and Mockito.
 
  [ ![Download](https://api.bintray.com/packages/markusamshove/maven/Kluent/images/download.svg) ](https://bintray.com/markusamshove/maven/Kluent/_latestVersion) [![Build Status](https://travis-ci.org/MarkusAmshove/Kluent.svg?branch=master)](https://travis-ci.org/MarkusAmshove/Kluent)
 
 
-# [Changelog](https://github.com/MarkusAmshove/Kluent/blob/master/CHANGELOG.md)
+# [Changelog](https://markusamshove.github.io/Kluent/)
 
+----------
+
+# Include it via gradle/maven
+
+Kluent is hosted in [jcenter](https://bintray.com/markusamshove/maven/Kluent/view# "jCenter")
+
+## Gradle
+    dependencies {
+        testCompile 'org.amshove.kluent:kluent:1.16'
+    }
+
+## Maven
+    <dependency>
+        <groupId>org.amshove.kluent</groupId>
+        <artifactId>kluent</artifactId>
+        <version>1.16</version>
+        <type>pom</type>
+    </dependency>
+
+
+----------
 
 # Examples
 
-More examples can be seen in the [Wiki](https://github.com/MarkusAmshove/Kluent/wiki) or [tests](https://github.com/MarkusAmshove/Kluent/tree/master/src/test/kotlin/org/amshove/kluent/tests).
+More examples can be seen on the [Site](https://markusamshove.github.io/Kluent/) or in the [tests](https://github.com/MarkusAmshove/Kluent/tree/master/src/test/kotlin/org/amshove/kluent/tests).
 
 ### assertEquals ##
 
@@ -48,25 +69,6 @@ Some examples:
 ### assertNotEquals ##
 
     "hello" `should not equal` "world"
-
-----------
-
-# Include it via gradle/maven
-
-Kluent is hosted in [jCenter](https://bintray.com/markusamshove/maven/Kluent/view# "jCenter")
-
-## Gradle
-    dependencies {
-        testCompile 'org.amshove.kluent:kluent:1.14'
-    }
-
-## Maven
-    <dependency>
-        <groupId>org.amshove.kluent</groupId>
-        <artifactId>kluent</artifactId>
-        <version>1.14</version>
-        <type>pom</type>
-    </dependency>
 
 
 
