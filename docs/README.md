@@ -39,7 +39,7 @@ Some examples:
 
 # Changelog
 
-# 1.17 (WIP)
+# 1.17
 * Update Kotlin to 1.1.1 | [PR](https://github.com/MarkusAmshove/Kluent/pull/28) | thanks to [@Egorand](https://github.com/Egorand)
 * Update Gradle to 3.4.1 | [PR](https://github.com/MarkusAmshove/Kluent/pull/29) | thanks to [@Egorand](https://github.com/Egorand)
 * Fix compiler warnings in tests | [PR](https://github.com/MarkusAmshove/Kluent/pull/30) | thanks to [@Egorand](https://github.com/Egorand)
