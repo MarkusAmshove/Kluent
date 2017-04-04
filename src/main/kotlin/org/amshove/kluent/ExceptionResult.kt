@@ -1,6 +1,6 @@
 package org.amshove.kluent
 
-class ExceptionResult(val exception: Exception) {
+class ExceptionResult<out T : Exception>(val exception: T) {
     val exceptionMessage = exception.message ?: ""
     val exceptionCause = exception.cause
 }
