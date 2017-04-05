@@ -12,7 +12,7 @@ buildscript {
 }
 
 group 'org.amshove.kluent'
-version '1.17'
+version '1.18'
 
 apply plugin: 'kotlin'
 apply plugin: 'idea'
@@ -73,6 +73,24 @@ publishing {
             groupId 'org.amshove.kluent'
             artifactId 'kluent'
             version project.version
+
+            // http://stackoverflow.com/a/32353697/6556970
+            pom.withXml {
+                Map resolvedVersionMap = [:]
+                Set<ResolvedArtifact> resolvedArtifacts = configurations.compile.getResolvedConfiguration().getResolvedArtifacts()
+                resolvedArtifacts.addAll(configurations.testCompile.getResolvedConfiguration().getResolvedArtifacts())
+                resolvedArtifacts.each {
+                    ModuleVersionIdentifier mvi = it.getModuleVersion().getId();
+                    resolvedVersionMap.put("${mvi.getGroup()}:${mvi.getName()}", mvi.getVersion())
+                }
+
+                asNode().dependencies.first().each {
+                    def groupId = it.get("groupId").first().value().first()
+                    def artifactId = it.get("artifactId").first().value().first()
+                    it.get("version").first().value = resolvedVersionMap.get("${groupId}:${artifactId}")
+                }
+            }
         }
     }
 }
+
