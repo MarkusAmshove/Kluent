@@ -39,7 +39,7 @@ Some examples:
 
 # Changelog
 
-# 1.19 (WIP)
+# 1.19
 * ExceptionResult is now Typed and withCause and withMessage are now fluent | [PR](https://github.com/MarkusAmshove/Kluent/pull/38) | thanks to [@vjames19](https://github.com/vjames19)
 
 # 1.18

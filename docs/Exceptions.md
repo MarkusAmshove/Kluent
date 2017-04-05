@@ -24,4 +24,8 @@ theFunction shouldNotThrowTheException RuntimeException::class withMessage "oops
 // Expect a specific type of cause
 theFunction shouldThrowTheException RuntimeException::class withCause IllegalArgumentException::class
 theFunction shouldNotThrowTheException RuntimeException::class withCause IllegalArgumentException::class
+
+// Expecting a specific type and message can be chained
+val func = { throw IllegalArgumentException("hello", IOException()) }
+func shouldThrowTheException IllegalArgumentException::class withCause IOException::class withMessage "hello"
 ```
