@@ -39,6 +39,12 @@ Some examples:
 
 # Changelog
 
+# 1.19 (WIP)
+* ExceptionResult is now Typed and withCause and withMessage are now fluent | [PR](https://github.com/MarkusAmshove/Kluent/pull/38) | thanks to [@vjames19](https://github.com/vjames19)
+
+# 1.18
+* Fix generation of maven poms | [Issue](https://github.com/MarkusAmshove/Kluent/issues/37) | thanks to [@binkley](https://github.com/binkley)
+
 # 1.17
 * Update Kotlin to 1.1.1 | [PR](https://github.com/MarkusAmshove/Kluent/pull/28) | thanks to [@Egorand](https://github.com/Egorand)
 * Update Gradle to 3.4.1 | [PR](https://github.com/MarkusAmshove/Kluent/pull/29) | thanks to [@Egorand](https://github.com/Egorand)
