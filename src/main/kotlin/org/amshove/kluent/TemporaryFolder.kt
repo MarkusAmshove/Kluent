@@ -29,21 +29,21 @@ class TemporaryFolderBuilder(private val temporaryFolder: TemporaryFolder) {
         return fileBuilder
     }
 
-    private fun createFolder(name: String) : File {
-        if(name.contains("/")) {
+    private fun createFolder(name: String): File {
+        if (name.contains("/")) {
             var currentPath = temporaryFolder.root.toPath()
             var lastFile = File(currentPath.toUri())
+            lastFile.mkdir()
             name.split("/").forEach {
-                lastFile.mkdir()
-                currentPath = Paths.get(currentPath.toString(), it)
-                lastFile = File(currentPath.toUri())
+                if (!it.isEmpty()) {
+                    currentPath = Paths.get(currentPath.toString(), it)
+                    lastFile = File(currentPath.toUri())
+                    lastFile.mkdir()
+                }
             }
 
-            lastFile.mkdir()
-            lastFile.mkdir()
             return lastFile
-        }
-        else {
+        } else {
             return temporaryFolder.newFolder(name)
         }
     }

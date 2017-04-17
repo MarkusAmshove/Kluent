@@ -1,5 +1,6 @@
 package org.amshove.kluent.tests.builder
 
+import org.amshove.kluent.shouldBe
 import org.amshove.kluent.shouldBeTrue
 import org.amshove.kluent.shouldEqual
 import org.amshove.kluent.temporaryFolder
@@ -108,6 +109,18 @@ class TemporaryFolderTests : Spek({
 
             it("should contain the trimmed content") {
                 File(testFolder!!.root.absolutePath, "src/Main.Java").readText().shouldEqual("""public static void main(String[] args) { System.out.println("Hello World!"); }""")
+            }
+        }
+        on("building a hierarchy with trailing slash") {
+            beforeEach {
+                testFolder = temporaryFolder {
+                    dir("src/main/") {}
+                }
+            }
+
+            it("should ignore the empty last segment") {
+                File(testFolder!!.root.absolutePath, "src/main").exists().shouldBeTrue()
+                File(testFolder!!.root.absolutePath, "src/main").list().size shouldBe 0
             }
         }
     }
