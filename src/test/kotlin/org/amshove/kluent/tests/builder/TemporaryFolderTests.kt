@@ -62,11 +62,11 @@ class TemporaryFolderTests : Spek({
             }
 
             it("should exist") {
-                File(testFolder!!.root.absolutePath, "src/main/java/Main.Java").exists().shouldBeTrue()
+                File(testFolder!!.root.absolutePath, "src/main/java/Main.java").exists().shouldBeTrue()
             }
 
             it("should contain the content") {
-                File(testFolder!!.root.absolutePath, "src/main/java/Main.Java").readText().shouldEqual("Hello World!")
+                File(testFolder!!.root.absolutePath, "src/main/java/Main.java").readText().shouldEqual("Hello World!")
             }
         }
         on("building a file within a folder hierarchy") {
