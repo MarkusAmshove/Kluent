@@ -81,11 +81,11 @@ class TemporaryFolderTests : Spek({
             }
 
             it("should exist") {
-                File(testFolder!!.root.absolutePath, "src/main/java/Main.Java").exists().shouldBeTrue()
+                File(testFolder!!.root.absolutePath, "src/main/java/Main.java").exists().shouldBeTrue()
             }
 
             it("should contain the content") {
-                File(testFolder!!.root.absolutePath, "src/main/java/Main.Java").readText().shouldEqual("Hello World!")
+                File(testFolder!!.root.absolutePath, "src/main/java/Main.java").readText().shouldEqual("Hello World!")
             }
         }
         on("building a file with trimmed indent") {
@@ -104,11 +104,11 @@ class TemporaryFolderTests : Spek({
             }
 
             it("should exist") {
-                File(testFolder!!.root.absolutePath, "src/Main.Java").exists().shouldBeTrue()
+                File(testFolder!!.root.absolutePath, "src/Main.java").exists().shouldBeTrue()
             }
 
             it("should contain the trimmed content") {
-                File(testFolder!!.root.absolutePath, "src/Main.Java").readText().shouldEqual("""public static void main(String[] args) { System.out.println("Hello World!"); }""")
+                File(testFolder!!.root.absolutePath, "src/Main.java").readText().shouldEqual("""public static void main(String[] args) { System.out.println("Hello World!"); }""")
             }
         }
         on("building a hierarchy with trailing slash") {
