@@ -39,6 +39,9 @@ Some examples:
 
 # Changelog
 
+# 1.20 (WIP)
+* Use `Throwable` instead of `Exception` as base type for asserts on `Exception`s | [Issue](https://github.com/MarkusAmshove/Kluent/issues/40) | [PR](https://github.com/MarkusAmshove/Kluent/pull/41) | thanks to [@westonal](https://github.com/westonal)
+
 # 1.19
 * ExceptionResult is now Typed and withCause and withMessage are now fluent | [PR](https://github.com/MarkusAmshove/Kluent/pull/38) | thanks to [@vjames19](https://github.com/vjames19)
 
