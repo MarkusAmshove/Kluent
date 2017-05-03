@@ -14,10 +14,10 @@ fun temporaryFolder(init: TemporaryFolderBuilder.() -> Unit): TemporaryFolder {
 }
 
 class TemporaryFolderBuilder(private val temporaryFolder: TemporaryFolder) {
-    fun dir(name: String, init: FolderBuilder.() -> Unit): FolderBuilder {
+    fun dir(name: String, init: (FolderBuilder.() -> Unit)? = null): FolderBuilder {
         val folder = createFolder(name)
         val folderBuilder = FolderBuilder(folder)
-        init(folderBuilder)
+        init?.invoke(folderBuilder)
         return folderBuilder
     }
 
@@ -58,11 +58,11 @@ class FolderBuilder(private val folder: File) {
         return folderBuilder
     }
 
-    fun file(name: String, init: FileBuilder.() -> Unit): FileBuilder {
+    fun file(name: String, init: (FileBuilder.() -> Unit)? = null): FileBuilder {
         val file = File(folder, name)
         val fileBuilder = FileBuilder(file)
         file.createNewFile()
-        init(fileBuilder)
+        init?.invoke(fileBuilder)
         return fileBuilder
     }
 }
