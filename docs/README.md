@@ -39,6 +39,9 @@ Some examples:
 
 # Changelog
 
+# 1.21
+* Support primitive Arrays | [Issue](https://github.com/MarkusAmshove/Kluent/issues/42) | thanks to [@Tapchicoma](https://github.com/Tapchicoma)
+
 # 1.20
 * Use `Throwable` instead of `Exception` as base type for asserts on `Exception`s | [Issue](https://github.com/MarkusAmshove/Kluent/issues/40) | [PR](https://github.com/MarkusAmshove/Kluent/pull/41) | thanks to [@westonal](https://github.com/westonal)
 

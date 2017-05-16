@@ -17,11 +17,8 @@ fun <T> Array<T>.shouldBeEmpty() = this.`should be empty`()
 fun <T> Array<T>.`should not be empty`() = assertNotEmpty(this.toList(), "Array")
 fun <T> Array<T>.shouldNotBeEmpty() = this.`should not be empty`()
 
-infix fun IntArray.`should equal`(theOther: IntArray) = this.toTypedArray() `should equal` theOther.toTypedArray()
+infix fun IntArray.`should equal`(theOther: IntArray) = assertArrayEquals(this, theOther)
 infix fun IntArray.shouldEqual(theOther: IntArray) = this `should equal` theOther
-
-infix fun IntArray.`should not equal`(theOther: IntArray) = this.toTypedArray() `should not equal` theOther.toTypedArray()
-infix fun IntArray.shouldNotEqual(theOther: IntArray) = this `should not equal` theOther
 
 fun IntArray.`should be empty`() = this.toTypedArray().`should be empty`()
 fun IntArray.shouldBeEmpty() = this.`should be empty`()
@@ -41,11 +38,8 @@ infix fun Int.shouldBeIn(theArray: IntArray) = this `should be in` theArray
 infix fun Int.`should not be in`(theArray: IntArray) = this `should not be in` theArray.toTypedArray()
 infix fun Int.shouldNotBeIn(theArray: IntArray) = this `should not be in` theArray
 
-infix fun BooleanArray.`should equal`(theOther: BooleanArray) = this.toTypedArray() `should equal` theOther.toTypedArray()
+infix fun BooleanArray.`should equal`(theOther: BooleanArray) = assertArrayEquals(this, theOther)
 infix fun BooleanArray.shouldEqual(theOther: BooleanArray) = this `should equal` theOther
-
-infix fun BooleanArray.`should not equal`(theOther: BooleanArray) = this.toTypedArray() `should not equal` theOther.toTypedArray()
-infix fun BooleanArray.shouldNotEqual(theOther: BooleanArray) = this `should not equal` theOther
 
 fun BooleanArray.`should be empty`() = this.toTypedArray().`should be empty`()
 fun BooleanArray.shouldBeEmpty() = this.`should be empty`()
@@ -65,11 +59,8 @@ infix fun Boolean.shouldBeIn(theArray: BooleanArray) = this `should be in` theAr
 infix fun Boolean.`should not be in`(theArray: BooleanArray) = this `should not be in` theArray.toTypedArray()
 infix fun Boolean.shouldNotBeIn(theArray: BooleanArray) = this `should not be in` theArray
 
-infix fun ByteArray.`should equal`(theOther: ByteArray) = this.toTypedArray() `should equal` theOther.toTypedArray()
+infix fun ByteArray.`should equal`(theOther: ByteArray) = assertArrayEquals(this, theOther)
 infix fun ByteArray.shouldEqual(theOther: ByteArray) = this `should equal` theOther
-
-infix fun ByteArray.`should not equal`(theOther: ByteArray) = this.toTypedArray() `should not equal` theOther.toTypedArray()
-infix fun ByteArray.shouldNotEqual(theOther: ByteArray) = this `should not equal` theOther
 
 fun ByteArray.`should be empty`() = this.toTypedArray().`should be empty`()
 fun ByteArray.shouldBeEmpty() = this.`should be empty`()
@@ -89,7 +80,7 @@ infix fun Byte.shouldBeIn(theArray: ByteArray) = this `should be in` theArray
 infix fun Byte.`should not be in`(theArray: ByteArray) = this `should not be in` theArray.toTypedArray()
 infix fun Byte.shouldNotBeIn(theArray: ByteArray) = this `should not be in` theArray
 
-infix fun CharArray.`should equal`(theOther: CharArray) = this.toTypedArray() `should equal` theOther.toTypedArray()
+infix fun CharArray.`should equal`(theOther: CharArray) = assertArrayEquals(this, theOther)
 infix fun CharArray.shouldEqual(theOther: CharArray) = this `should equal` theOther
 
 infix fun CharArray.`should not equal`(theOther: CharArray) = this.toTypedArray() `should not equal` theOther.toTypedArray()
@@ -113,11 +104,8 @@ infix fun Char.shouldBeIn(theArray: CharArray) = this `should be in` theArray
 infix fun Char.`should not be in`(theArray: CharArray) = this `should not be in` theArray.toTypedArray()
 infix fun Char.shouldNotBeIn(theArray: CharArray) = this `should not be in` theArray
 
-infix fun DoubleArray.`should equal`(theOther: DoubleArray) = this.toTypedArray() `should equal` theOther.toTypedArray()
+infix fun DoubleArray.`should equal`(theOther: DoubleArray) = assertArrayEquals(this.toTypedArray(), theOther.toTypedArray())
 infix fun DoubleArray.shouldEqual(theOther: DoubleArray) = this `should equal` theOther
-
-infix fun DoubleArray.`should not equal`(theOther: DoubleArray) = this.toTypedArray() `should not equal` theOther.toTypedArray()
-infix fun DoubleArray.shouldNotEqual(theOther: DoubleArray) = this `should not equal` theOther
 
 fun DoubleArray.`should be empty`() = this.toTypedArray().`should be empty`()
 fun DoubleArray.shouldBeEmpty() = this.`should be empty`()
@@ -137,11 +125,8 @@ infix fun Double.shouldBeIn(theArray: DoubleArray) = this `should be in` theArra
 infix fun Double.`should not be in`(theArray: DoubleArray) = this `should not be in` theArray.toTypedArray()
 infix fun Double.shouldNotBeIn(theArray: DoubleArray) = this `should not be in` theArray
 
-infix fun FloatArray.`should equal`(theOther: FloatArray) = this.toTypedArray() `should equal` theOther.toTypedArray()
+infix fun FloatArray.`should equal`(theOther: FloatArray) = assertArrayEquals(this.toTypedArray(), theOther.toTypedArray())
 infix fun FloatArray.shouldEqual(theOther: FloatArray) = this `should equal` theOther
-
-infix fun FloatArray.`should not equal`(theOther: FloatArray) = this.toTypedArray() `should not equal` theOther.toTypedArray()
-infix fun FloatArray.shouldNotEqual(theOther: FloatArray) = this `should not equal` theOther
 
 fun FloatArray.`should be empty`() = this.toTypedArray().`should be empty`()
 fun FloatArray.shouldBeEmpty() = this.`should be empty`()
@@ -161,11 +146,8 @@ infix fun Float.shouldBeIn(theArray: FloatArray) = this `should be in` theArray
 infix fun Float.`should not be in`(theArray: FloatArray) = this `should not be in` theArray.toTypedArray()
 infix fun Float.shouldNotBeIn(theArray: FloatArray) = this `should not be in` theArray
 
-infix fun LongArray.`should equal`(theOther: LongArray) = this.toTypedArray() `should equal` theOther.toTypedArray()
+infix fun LongArray.`should equal`(theOther: LongArray) = assertArrayEquals(this, theOther)
 infix fun LongArray.shouldEqual(theOther: LongArray) = this `should equal` theOther
-
-infix fun LongArray.`should not equal`(theOther: LongArray) = this.toTypedArray() `should not equal` theOther.toTypedArray()
-infix fun LongArray.shouldNotEqual(theOther: LongArray) = this `should not equal` theOther
 
 fun LongArray.`should be empty`() = this.toTypedArray().`should be empty`()
 fun LongArray.shouldBeEmpty() = this.`should be empty`()
@@ -185,11 +167,8 @@ infix fun Long.shouldBeIn(theArray: LongArray) = this `should be in` theArray
 infix fun Long.`should not be in`(theArray: LongArray) = this `should not be in` theArray.toTypedArray()
 infix fun Long.shouldNotBeIn(theArray: LongArray) = this `should not be in` theArray
 
-infix fun ShortArray.`should equal`(theOther: ShortArray) = this.toTypedArray() `should equal` theOther.toTypedArray()
+infix fun ShortArray.`should equal`(theOther: ShortArray) = assertArrayEquals(this, theOther)
 infix fun ShortArray.shouldEqual(theOther: ShortArray) = this `should equal` theOther
-
-infix fun ShortArray.`should not equal`(theOther: ShortArray) = this.toTypedArray() `should not equal` theOther.toTypedArray()
-infix fun ShortArray.shouldNotEqual(theOther: ShortArray) = this `should not equal` theOther
 
 fun ShortArray.`should be empty`() = this.toTypedArray().`should be empty`()
 fun ShortArray.shouldBeEmpty() = this.`should be empty`()
