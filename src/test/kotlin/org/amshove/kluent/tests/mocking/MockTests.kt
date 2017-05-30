@@ -59,5 +59,18 @@ class MockTests : Spek({
                 assertFails({ VerifyNoFurtherInteractions on mock })
             }
         }
+        on("telling it to verify that no interactions with method was called") {
+            it("should pass if method wasn't called") {
+                val mock = mock(Database::class)
+                mock.getPerson(1)
+                Verify on mock that mock.getPerson(1) was called
+                VerifyNotCalled on mock that mock.getPerson(5)
+            }
+            it("should fail pass if method was called") {
+                val mock = mock(Database::class)
+                mock.getPerson(1)
+                assertFails({ VerifyNotCalled on mock that mock.getPerson(1) })
+            }
+        }
     }
 })
