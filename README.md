@@ -17,15 +17,19 @@ It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.ht
 Kluent is hosted at [jcenter](https://bintray.com/markusamshove/maven/Kluent/view# "jCenter")
 
 ## Gradle
+Replace {version} with the current version
+
     dependencies {
-        testCompile 'org.amshove.kluent:kluent:1.20'
+        testCompile 'org.amshove.kluent:kluent:{version}'
     }
 
 ## Maven
+Replace {version} with the current version
+
     <dependency>
         <groupId>org.amshove.kluent</groupId>
         <artifactId>kluent</artifactId>
-        <version>1.20</version>
+        <version>{version}</version>
         <type>pom</type>
     </dependency>
 

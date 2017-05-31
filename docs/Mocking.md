@@ -15,6 +15,11 @@ val mock = mock(Database::class)
 mock.getPerson(5)
 Verify on mock that mock.getPerson() was called
 
+// Verify that a method was not called
+val mock = mock(Database::class)
+mock.getPerson(1)
+VerifyNotCalled on mock that mock.getPerson(5)
+
 // Verify that a method with any parameter was called
 val mock = mock(Database::class)
 mock.getPerson(200)

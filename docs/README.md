@@ -39,6 +39,9 @@ Some examples:
 
 # Changelog
 
+# 1.22
+* Verify that a method was not called | [PR](https://github.com/MarkusAmshove/Kluent/pull/43) | thanks to [@miszmaniac](https://github.com/miszmaniac)
+
 # 1.21
 * Support primitive Arrays | [Issue](https://github.com/MarkusAmshove/Kluent/issues/42) | thanks to [@Tapchicoma](https://github.com/Tapchicoma)
 
