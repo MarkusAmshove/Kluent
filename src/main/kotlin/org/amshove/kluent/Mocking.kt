@@ -13,6 +13,8 @@ inline fun <reified T : Any> mock(): T = com.nhaarman.mockito_kotlin.mock()
 
 infix fun <T> VerifyKeyword.on(mock: T) = verify(mock)
 
+infix fun <T> VerifyNotCalledKeyword.on(mock: T) = verify(mock, never())
+
 infix fun <T> T.that(mock: T): T = this.apply { mock.run { Unit } }
 
 infix fun <T : Any> VerifyNoInteractionsKeyword.on(mock: T) = verifyZeroInteractions(mock)
@@ -39,6 +41,7 @@ infix fun <T> WhenKeyword.calling(methodCall: T): OngoingStubbing<T> = `when`(me
 
 val When = WhenKeyword()
 val Verify = VerifyKeyword()
+val VerifyNotCalled = VerifyNotCalledKeyword()
 val called = CalledKeyword()
 val VerifyNoInteractions = VerifyNoInteractionsKeyword()
 val `Verify no interactions` = VerifyNoInteractions
@@ -46,6 +49,7 @@ val VerifyNoFurtherInteractions = VerifyNoFurtherInteractionsKeyword()
 val `Verify no further interactions` = VerifyNoFurtherInteractions
 
 class VerifyKeyword internal constructor() {}
+class VerifyNotCalledKeyword internal constructor()
 class CalledKeyword internal constructor() {}
 class WhenKeyword internal constructor() {}
 class VerifyNoInteractionsKeyword internal constructor() {}
