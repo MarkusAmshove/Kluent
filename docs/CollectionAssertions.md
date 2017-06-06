@@ -16,6 +16,9 @@ theIntArray.shouldNotBeEmpty()
 
 2 shouldBeIn arrayOf(1, 2, 3)
 2 shouldNotBeIn arrayOf(4, 5, 6)
+
+listOf(10, 15, 20) shouldContainAll listOf(10, 15, 20)
+listOf(10, 15, 20) shouldNotContainAny listOf(5, 7)
 ```
 
 ## Maps

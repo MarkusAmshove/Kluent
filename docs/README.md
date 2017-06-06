@@ -39,6 +39,9 @@ Some examples:
 
 # Changelog
 
+# 1.23
+* Add shouldContainAll and shouldNotContainAny assertions | [PR](https://github.com/MarkusAmshove/Kluent/pull/44) | thanks to [@Egorand](https://github.com/Egorand)
+
 # 1.22
 * Verify that a method was not called | [PR](https://github.com/MarkusAmshove/Kluent/pull/43) | thanks to [@miszmaniac](https://github.com/miszmaniac)
 
