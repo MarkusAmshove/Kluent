@@ -23,6 +23,8 @@ It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.ht
 
 [java.time Assertions](JavaTime.md)
 
+[FileSystem](FileSystem.md)
+
 ## Using backticks
 
 Every method that is included in Kluent also has a "backtick version", to make it feel more like a describing sentence.
@@ -38,6 +40,9 @@ Some examples:
     "hello" `should not equal` "world"
 
 # Changelog
+
+# 1.24
+* Add assertions for `java.io.File` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/47) | [PR](https://github.com/MarkusAmshove/Kluent/pull/48) | thanks to [@goreRatzete](https://github.com/goreRatzete)
 
 # 1.23
 * Add shouldContainAll and shouldNotContainAny assertions | [PR](https://github.com/MarkusAmshove/Kluent/pull/44) | thanks to [@Egorand](https://github.com/Egorand)
