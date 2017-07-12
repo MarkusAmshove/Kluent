@@ -34,6 +34,13 @@ class StubTests : Spek({
                 assertFailsWith(RuntimeException::class, { mock.getPerson() })
             }
         }
+        on("telling it to throw an error") {
+            it("should throw an error") {
+                val mock = mock(Database::class)
+                When calling mock.getPerson() itThrows Error("An exception")
+                assertFailsWith(Error::class, { mock.getPerson() })
+            }
+        }
         on("telling it to answer") {
             it("should answer when called") {
                 val mock = mock(Database::class)
