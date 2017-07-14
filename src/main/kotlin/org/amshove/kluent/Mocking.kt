@@ -33,6 +33,9 @@ infix fun <T> OngoingStubbing<T>.itReturns(value: T): OngoingStubbing<T> = this 
 infix fun <T> OngoingStubbing<T>.`it throws`(value: RuntimeException): OngoingStubbing<T> = this.thenThrow(value)
 infix fun <T> OngoingStubbing<T>.itThrows(value: RuntimeException): OngoingStubbing<T> = this `it throws` value
 
+infix fun <T> OngoingStubbing<T>.`it throws`(value: Error): OngoingStubbing<T> = this.thenThrow(value)
+infix fun <T> OngoingStubbing<T>.itThrows(value: Error): OngoingStubbing<T> = this `it throws` value
+
 infix fun <T> OngoingStubbing<T>.`it answers`(value: (InvocationOnMock) -> T): OngoingStubbing<T> = this.thenAnswer(value)
 infix fun <T> OngoingStubbing<T>.itAnswers(value: (InvocationOnMock) -> T): OngoingStubbing<T> = this `it answers` value
 
