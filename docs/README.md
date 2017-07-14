@@ -41,6 +41,9 @@ Some examples:
 
 # Changelog
 
+# 1.25
+* Allow Errors to be thrown from a stub  | [PR](https://github.com/MarkusAmshove/Kluent/pull/50) | thanks to [@guenhter](https://github.com/guenhter)
+
 # 1.24
 * Add assertions for `java.io.File` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/47) | [PR](https://github.com/MarkusAmshove/Kluent/pull/48) | thanks to [@goreRatzete](https://github.com/goreRatzete)
 
