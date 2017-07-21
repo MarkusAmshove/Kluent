@@ -62,22 +62,22 @@ infix fun Float.shouldBeGreaterThan(theOther: Float) = this `should be greater t
 infix fun Double.`should be greater than`(theOther: Double) = assertTrue("Expected $this to be greater than $theOther", this > theOther)
 infix fun Double.shouldBeGreaterThan(theOther: Double) = this `should be greater than` theOther
 
-infix fun Byte.`should not be greater than`(theOther: Byte) = assertTrue("Expected $this to not be greater than $theOther", this < theOther)
+infix fun Byte.`should not be greater than`(theOther: Byte) = assertTrue("Expected $this to not be greater than $theOther", this <= theOther)
 infix fun Byte.shouldNotBeGreaterThan(theOther: Byte) = this `should not be greater than` theOther
 
-infix fun Short.`should not be greater than`(theOther: Short) = assertTrue("Expected $this to not be greater than $theOther", this < theOther)
+infix fun Short.`should not be greater than`(theOther: Short) = assertTrue("Expected $this to not be greater than $theOther", this <= theOther)
 infix fun Short.shouldNotBeGreaterThan(theOther: Short) = this `should not be greater than` theOther
 
-infix fun Int.`should not be greater than`(theOther: Int) = assertTrue("Expected $this to not be greater than $theOther", this < theOther)
+infix fun Int.`should not be greater than`(theOther: Int) = assertTrue("Expected $this to not be greater than $theOther", this <= theOther)
 infix fun Int.shouldNotBeGreaterThan(theOther: Int) = this `should not be greater than` theOther
 
-infix fun Long.`should not be greater than`(theOther: Long) = assertTrue("Expected $this to not be greater than $theOther", this < theOther)
+infix fun Long.`should not be greater than`(theOther: Long) = assertTrue("Expected $this to not be greater than $theOther", this <= theOther)
 infix fun Long.shouldNotBeGreaterThan(theOther: Long) = this `should not be greater than` theOther
 
-infix fun Float.`should not be greater than`(theOther: Float) = assertTrue("Expected $this to not be greater than $theOther", this < theOther)
+infix fun Float.`should not be greater than`(theOther: Float) = assertTrue("Expected $this to not be greater than $theOther", this <= theOther)
 infix fun Float.shouldNotBeGreaterThan(theOther: Float) = this `should not be greater than` theOther
 
-infix fun Double.`should not be greater than`(theOther: Double) = assertTrue("Expected $this to not be greater than $theOther", this < theOther)
+infix fun Double.`should not be greater than`(theOther: Double) = assertTrue("Expected $this to not be greater than $theOther", this <= theOther)
 infix fun Double.shouldNotBeGreaterThan(theOther: Double) = this `should not be greater than` theOther
 
 infix fun Byte.`should be greater or equal to`(theOther: Byte) = assertTrue("Expected $this to be greater or equal to $theOther", this >= theOther)
