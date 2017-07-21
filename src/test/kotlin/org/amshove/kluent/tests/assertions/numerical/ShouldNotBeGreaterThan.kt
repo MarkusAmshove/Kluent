@@ -16,5 +16,15 @@ class ShouldNotBeGreaterThan : Spek({
                 assertFails({ 5.shouldNotBeGreaterThan(2) })
             }
         }
+        on("checking an equal value") {
+            it("should pass") {
+                5.shouldNotBeGreaterThan(5)
+                5.toByte().shouldNotBeGreaterThan(5)
+                5.toShort().shouldNotBeGreaterThan(5)
+                5L.shouldNotBeGreaterThan(5)
+                5.0.shouldNotBeGreaterThan(5.0)
+                5.0f.shouldNotBeGreaterThan(5.0f)
+            }
+        }
     }
 })
