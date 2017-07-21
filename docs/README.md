@@ -40,6 +40,8 @@ Some examples:
     "hello" `should not equal` "world"
 
 # Changelog
+# 1.26
+* Fix wrong assertion in `shouldNotBeGreaterThan` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/51) | [PR](https://github.com/MarkusAmshove/Kluent/pull/52) | thanks to [@goreRatzete](https://github.com/goreRatzete) and [@guenhter](https://github.com/guenhter)
 
 # 1.25
 * Allow Errors to be thrown from a stub  | [PR](https://github.com/MarkusAmshove/Kluent/pull/50) | thanks to [@guenhter](https://github.com/guenhter)
