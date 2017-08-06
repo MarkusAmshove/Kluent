@@ -6,29 +6,29 @@ import java.io.IOException
 import kotlin.test.assertFails
 
 class ShouldThrowTheExceptionTests : Spek({
-    given("the shouldThrowTheException method") {
+    given("the shouldThrow method") {
         on("throwing an exception with a message") {
             it("should pass") {
                 val func = { throw Exception("Hello World!") }
-                func shouldThrowTheException Exception::class withMessage "Hello World!"
+                func shouldThrow Exception::class withMessage "Hello World!"
             }
         }
         on("throwing an exception with a wrong message") {
             it("should fail") {
                 val func = { throw Exception("Hello World!") }
-                assertFails({ func shouldThrowTheException Exception::class withMessage "Hello" })
+                assertFails({ func shouldThrow Exception::class withMessage "Hello" })
             }
         }
         on("throwing an exception with a cause") {
             it("should pass") {
                 val func = { throw Exception(RuntimeException()) }
-                func shouldThrowTheException Exception::class withCause RuntimeException::class
+                func shouldThrow Exception::class withCause RuntimeException::class
             }
         }
         on("throwing an exception with a wrong cause") {
             it("should fail") {
                 val func = { throw Exception(RuntimeException()) }
-                assertFails({ func shouldThrowTheException Exception::class withCause IOException::class })
+                assertFails({ func shouldThrow Exception::class withCause IOException::class })
             }
         }
         on("throwing another exception") {
@@ -53,14 +53,14 @@ class ShouldThrowTheExceptionTests : Spek({
             on("both the message and cause being right") {
                 it("should pass") {
                     val func = { throw IllegalArgumentException("hello", IOException()) }
-                    func shouldThrowTheException IllegalArgumentException::class withCause IOException::class withMessage "hello"
+                    func shouldThrow IllegalArgumentException::class withCause IOException::class withMessage "hello"
                 }
             }
 
             on("on the message being wrong") {
                 it("should fail") {
                     val func = { throw IllegalArgumentException("not hello", IOException()) }
-                    assertFails { func shouldThrowTheException IllegalArgumentException::class withCause IOException::class withMessage "hello" }
+                    assertFails { func shouldThrow IllegalArgumentException::class withCause IOException::class withMessage "hello" }
                 }
             }
         }
@@ -73,13 +73,13 @@ class ShouldThrowTheExceptionTests : Spek({
 
                     val func = { throw CustomException(10) }
 
-                    func.shouldThrowTheException(CustomException::class).exception.code.shouldEqualTo(10)
+                    func.shouldThrow(CustomException::class).exception.code.shouldEqualTo(10)
                 }
             }
             on("throwing an exception of the wrong type") {
                 it("should fail") {
                     val func = { throw IllegalArgumentException() }
-                    assertFails { func.shouldThrowTheException(CustomException::class).exception.code.shouldEqualTo(10) }
+                    assertFails { func.shouldThrow(CustomException::class).exception.code.shouldEqualTo(10) }
                 }
             }
         }
