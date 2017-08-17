@@ -36,7 +36,7 @@ infix fun <T : Throwable> (() -> Any).shouldNotThrow(expectedException: KClass<T
 infix fun <T : Throwable> (() -> Any).`should throw the Exception`(expectedException: KClass<T>): ExceptionResult<T>
         = this `should throw` expectedException
 
-@Deprecated("User shouldThrow instead", ReplaceWith("x shouldThrow expectedException"))
+@Deprecated("Use shouldThrow instead", ReplaceWith("x shouldThrow expectedException"))
 infix fun <T : Throwable> (() -> Any).shouldThrowTheException(expectedException: KClass<T>): ExceptionResult<T> = this shouldThrow expectedException
 
 infix fun <T : Throwable> (() -> Any).`should not throw the Exception`(expectedException: KClass<T>): NotThrowExceptionResult {
