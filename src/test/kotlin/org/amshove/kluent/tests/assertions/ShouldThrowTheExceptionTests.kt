@@ -6,7 +6,7 @@ import java.io.IOException
 import kotlin.test.assertFails
 
 class ShouldThrowTheExceptionTests : Spek({
-    given("the shouldThrowTheException method") {
+    given("the shouldThrow method") {
         on("throwing an exception with a message") {
             it("should pass") {
                 val func = { throw Exception("Hello World!") }
@@ -34,19 +34,19 @@ class ShouldThrowTheExceptionTests : Spek({
         on("throwing another exception") {
             it("should fail") {
                 val func = { throw IllegalArgumentException() }
-                assertFails({ func shouldThrow IndexOutOfBoundsException::class })
+                assertFails({ func shouldThrowTheException IndexOutOfBoundsException::class })
             }
         }
         on("expecting any exception when any exception is thrown") {
             it("should pass") {
                 val func = { throw Exception() }
-                func shouldThrow AnyException
+                func shouldThrowTheException AnyException
             }
         }
         on("expecting any exception when no exception is thrown") {
             it("should fail") {
                 val func = { Unit }
-                assertFails({ func shouldThrow AnyException })
+                assertFails({ func shouldThrowTheException AnyException })
             }
         }
         on("being fluent asserting both a cause and a message") {
@@ -83,7 +83,6 @@ class ShouldThrowTheExceptionTests : Spek({
                 }
             }
         }
-
     }
 })
 

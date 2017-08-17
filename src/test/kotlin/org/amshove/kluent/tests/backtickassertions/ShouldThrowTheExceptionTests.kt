@@ -34,33 +34,33 @@ class ShouldThrowTheExceptionTests : Spek({
         on("throwing another exception") {
             it("should fail") {
                 val func = { throw IllegalArgumentException() }
-                assertFails({ func `should throw` IndexOutOfBoundsException::class })
+                assertFails({ func `should throw the Exception` IndexOutOfBoundsException::class })
             }
         }
         on("expecting any exception when any exception is thrown") {
             it("should pass") {
                 val func = { throw Exception() }
-                func `should throw` AnyException
+                func `should throw the Exception` AnyException
             }
         }
         on("expecting any exception when no exception is thrown") {
             it("should fail") {
                 val func = { Unit }
-                assertFails({ func `should throw` AnyException })
+                assertFails({ func `should throw the Exception` AnyException })
             }
         }
         on("being fluent asserting both a cause and a message") {
             on("both the message and cause being right") {
                 it("should pass") {
                     val func = { throw IllegalArgumentException("hello", IOException()) }
-                    func `should throw the Exception` IllegalArgumentException::class `with cause` IOException::class `with message`  "hello"
+                    func `should throw the Exception` IllegalArgumentException::class `with cause` IOException::class `with message` "hello"
                 }
             }
 
             on("on the message being wrong") {
                 it("should fail") {
                     val func = { throw IllegalArgumentException("not hello", IOException()) }
-                    assertFails { func `should throw the Exception`  IllegalArgumentException::class `with cause`  IOException::class `with message`  "hello" }
+                    assertFails { func `should throw the Exception` IllegalArgumentException::class `with cause` IOException::class `with message` "hello" }
                 }
             }
         }
