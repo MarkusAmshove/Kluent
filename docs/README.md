@@ -42,6 +42,7 @@ Some examples:
 # Changelog
 # 1.27
 * Deprecate `shouldThrowTheException` for `shouldThrow` | [PR](https://github.com/MarkusAmshove/Kluent/pull/54) | thanks to [@goreRatzete](https://github.com/goreRatzete)
+* Update `mockito-kotlin` to 1.5.0
 
 # 1.26
 * Fix wrong assertion in `shouldNotBeGreaterThan` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/51) | [PR](https://github.com/MarkusAmshove/Kluent/pull/52) | thanks to [@goreRatzete](https://github.com/goreRatzete) and [@guenhter](https://github.com/guenhter)
