@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package org.amshove.kluent.tests.assertions
 
 import org.amshove.kluent.*

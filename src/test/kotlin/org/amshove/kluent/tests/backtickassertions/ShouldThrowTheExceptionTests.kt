@@ -1,3 +1,4 @@
+@file:Suppress("DEPRECATION")
 package org.amshove.kluent.tests.backtickassertions
 
 import org.amshove.kluent.*
