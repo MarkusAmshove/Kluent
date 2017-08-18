@@ -1,7 +1,7 @@
 buildscript {
     ext.kotlin_version = '1.1.+'
     ext.spek_version = "1.0.+"
-    ext.mockito_version = "1.3.+"
+    ext.mockito_version = "1.5.+"
     repositories {
         jcenter()
     }
