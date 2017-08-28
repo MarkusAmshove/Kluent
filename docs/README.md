@@ -40,6 +40,9 @@ Some examples:
     "hello" `should not equal` "world"
 
 # Changelog
+# 1.28
+* Fix order of arguments to assertArrayEquals() calls | [PR](https://github.com/MarkusAmshove/Kluent/pull/56) | thanks to [@cketti](https://github.com/cketti)
+
 # 1.27
 * Deprecate `shouldThrowTheException` for `shouldThrow` | [PR](https://github.com/MarkusAmshove/Kluent/pull/54) | thanks to [@goreRatzete](https://github.com/goreRatzete)
 * Update `mockito-kotlin` to 1.5.0
