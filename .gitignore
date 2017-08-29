@@ -9,3 +9,4 @@ out/
 .project
 bin/
 .settings/
+local.properties
