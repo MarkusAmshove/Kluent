@@ -3,44 +3,30 @@ package org.amshove.kluent
 import org.junit.Assert.*
 import kotlin.reflect.KClass
 
-infix fun Any?.`should equal`(theOther: Any?) = assertEquals(theOther, this)
-infix fun Any?.shouldEqual(theOther: Any?) = this `should equal` theOther
+infix fun Any?.shouldEqual(theOther: Any?) = assertEquals(theOther, this)
 
-infix fun Any?.`should not equal`(theOther: Any?) = assertNotEquals(theOther, this)
-infix fun Any?.shouldNotEqual(theOther: Any?) = this `should not equal` theOther
+infix fun Any?.shouldNotEqual(theOther: Any?) =  assertNotEquals(theOther, this)
 
-infix fun Any?.`should be`(theOther: Any?) = assertSame(theOther, this)
-infix fun Any?.shouldBe(theOther: Any?) = this `should be` theOther
+infix fun Any?.shouldBe(theOther: Any?) = assertSame(theOther, this)
 
-infix fun Any?.`should not be`(theOther: Any?) = assertNotSame(theOther, this)
-infix fun Any?.shouldNotBe(theOther: Any?) = this `should not be` theOther
+infix fun Any?.shouldNotBe(theOther: Any?) = assertNotSame(theOther, this)
 
-infix fun Any?.`should be instance of`(className: Class<*>) = assertTrue("Expected $this to be an instance of $className", className.isInstance(this))
-infix fun Any?.shouldBeInstanceOf(className: Class<*>) = this `should be instance of` className
+infix fun Any?.shouldBeInstanceOf(className: Class<*>) = assertTrue("Expected $this to be an instance of $className", className.isInstance(this))
 
-infix fun Any?.`should be instance of`(className: KClass<*>) = assertTrue("Expected $this to be an instance of $className", className.isInstance(this))
-infix fun Any?.shouldBeInstanceOf(className: KClass<*>) = this `should be instance of` className
+infix fun Any?.shouldBeInstanceOf(className: KClass<*>) = assertTrue("Expected $this to be an instance of $className", className.isInstance(this))
 
-infix fun Any?.`should not be instance of`(className: Class<*>) = assertFalse("Expected $this to not be an instance of $className", className.isInstance(this))
-infix fun Any?.shouldNotBeInstanceOf(className: Class<*>) = this `should not be instance of` className
+infix fun Any?.shouldNotBeInstanceOf(className: Class<*>) = assertFalse("Expected $this to not be an instance of $className", className.isInstance(this))
 
-infix fun Any?.`should not be instance of`(className: KClass<*>) = assertFalse("Expected $this to not be an instance of $className", className.isInstance(this))
-infix fun Any?.shouldNotBeInstanceOf(className: KClass<*>) = this `should not be instance of` className
+infix fun Any?.shouldNotBeInstanceOf(className: KClass<*>) = assertFalse("Expected $this to not be an instance of $className", className.isInstance(this))
 
-fun Any?.`should be null`() = assertNull(this)
-fun Any?.shouldBeNull() = this.`should be null`()
+fun Any?.shouldBeNull() = assertNull(this)
 
-fun Any?.`should not be null`() = assertNotNull(this)
-fun Any?.shouldNotBeNull() = this.`should not be null`()
+fun Any?.shouldNotBeNull() = assertNotNull(this)
 
-fun Boolean.`should be true`() = assertTrue(this)
-fun Boolean.shouldBeTrue() = this.`should be true`()
+fun Boolean.shouldBeTrue() = assertTrue(this)
 
-fun Boolean.`should be false`() = assertFalse(this)
-fun Boolean.shouldBeFalse() = this.`should be false`()
+fun Boolean.shouldBeFalse() =  assertFalse(this)
 
-fun Boolean.`should not be true`() = this.`should be false`()
-fun Boolean.shouldNotBeTrue() = this.`should not be true`()
+fun Boolean.shouldNotBeTrue() = this.shouldBeFalse()
 
-fun Boolean.`should not be false`() = this.`should be true`()
-fun Boolean.shouldNotBeFalse() = this.`should not be false`()
+fun Boolean.shouldNotBeFalse() = this.shouldBeTrue()

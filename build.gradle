@@ -21,6 +21,8 @@ apply plugin: 'maven'
 apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
 
+def isAndroid = project.rootProject.hasProperty("ANDROID")
+
 repositories {
     jcenter()
     maven {
@@ -39,8 +41,24 @@ dependencies {
 }
 
 sourceSets {
-    main.kotlin.srcDirs += 'src/main/kotlin'
-    test.kotlin.srcDirs += 'src/test/kotlin'
+    main {
+        kotlin {
+            srcDirs += 'src/main/kotlin'
+
+            if(isAndroid) {
+                exclude '**/*Backtick.kt'
+            }
+        }
+    }
+    test {
+        kotlin {
+            srcDirs += 'src/test/kotlin'
+
+            if(isAndroid) {
+                exclude '**/backtick*/**'
+            }
+        }
+    }
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
@@ -71,7 +89,7 @@ publishing {
         PublishKluent(MavenPublication) {
             from components.java
             groupId 'org.amshove.kluent'
-            artifactId 'kluent'
+            artifactId isAndroid ? 'kluent-android' : 'kluent'
             version project.version
 
             // http://stackoverflow.com/a/32353697/6556970

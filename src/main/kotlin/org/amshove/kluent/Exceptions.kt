@@ -3,7 +3,7 @@ package org.amshove.kluent
 import org.junit.ComparisonFailure
 import kotlin.reflect.KClass
 
-infix fun <T : Throwable> (() -> Any).`should throw`(expectedException: KClass<T>): ExceptionResult<T> {
+infix fun <T : Throwable> (() -> Any).shouldThrow(expectedException: KClass<T>): ExceptionResult<T> {
     try {
         this.invoke()
         fail("There was an Exception expected to be thrown, but nothing was thrown", "$expectedException", "None")
@@ -15,10 +15,7 @@ infix fun <T : Throwable> (() -> Any).`should throw`(expectedException: KClass<T
     }
 }
 
-infix fun <T : Throwable> (() -> Any).shouldThrow(expectedException: KClass<T>) = this `should throw` expectedException
-
-
-infix fun <T : Throwable> (() -> Any).`should not throw`(expectedException: KClass<T>) {
+infix fun <T : Throwable> (() -> Any).shouldNotThrow(expectedException: KClass<T>) {
     try {
         this.invoke()
     } catch (e: Throwable) {
@@ -30,16 +27,10 @@ infix fun <T : Throwable> (() -> Any).`should not throw`(expectedException: KCla
     }
 }
 
-infix fun <T : Throwable> (() -> Any).shouldNotThrow(expectedException: KClass<T>) = this `should not throw` expectedException
-
-@Deprecated("Use `should throw` instead", ReplaceWith("x `should throw` expectedException"))
-infix fun <T : Throwable> (() -> Any).`should throw the Exception`(expectedException: KClass<T>): ExceptionResult<T>
-        = this `should throw` expectedException
-
 @Deprecated("Use shouldThrow instead", ReplaceWith("x shouldThrow expectedException"))
 infix fun <T : Throwable> (() -> Any).shouldThrowTheException(expectedException: KClass<T>): ExceptionResult<T> = this shouldThrow expectedException
 
-infix fun <T : Throwable> (() -> Any).`should not throw the Exception`(expectedException: KClass<T>): NotThrowExceptionResult {
+infix fun <T : Throwable> (() -> Any).shouldNotThrowTheException(expectedException: KClass<T>): NotThrowExceptionResult {
     try {
         this.invoke()
         return NotThrowExceptionResult(noException)
@@ -51,40 +42,25 @@ infix fun <T : Throwable> (() -> Any).`should not throw the Exception`(expectedE
     }
 }
 
-infix fun <T : Throwable> (() -> Any).shouldNotThrowTheException(expectedException: KClass<T>): NotThrowExceptionResult = this `should not throw the Exception` expectedException
-
-
-infix fun <T : Throwable> ExceptionResult<T>.`with message`(theMessage: String): ExceptionResult<T> {
-    this.exceptionMessage `should equal` theMessage
+infix fun <T : Throwable> ExceptionResult<T>.withMessage(theMessage: String): ExceptionResult<T> {
+    this.exceptionMessage shouldEqual theMessage
     return this
 }
 
-infix fun <T : Throwable> ExceptionResult<T>.withMessage(theMessage: String) = this `with message` theMessage
-
-
-infix fun NotThrowExceptionResult.`with message`(theMessage: String): NotThrowExceptionResult {
-    this.exceptionMessage `should not equal` theMessage
+infix fun NotThrowExceptionResult.withMessage(theMessage: String): NotThrowExceptionResult {
+    this.exceptionMessage shouldNotEqual theMessage
     return this;
 }
 
-infix fun NotThrowExceptionResult.withMessage(theMessage: String) = this `with message` theMessage
-
-
-infix fun <T : Throwable> ExceptionResult<T>.`with cause`(expectedCause: KClass<out Throwable>): ExceptionResult<T> {
-    this.exceptionCause `should be instance of` expectedCause.java
+infix fun <T : Throwable> ExceptionResult<T>.withCause(expectedCause: KClass<out Throwable>): ExceptionResult<T> {
+    this.exceptionCause shouldBeInstanceOf expectedCause.java
     return this
 }
 
-infix fun <T : Throwable> ExceptionResult<T>.withCause(expectedCause: KClass<out Throwable>) = this `with cause` expectedCause
-
-
-infix fun NotThrowExceptionResult.`with cause`(expectedCause: KClass<out Throwable>): NotThrowExceptionResult {
-    this.exceptionCause `should not be instance of` expectedCause.java
+infix fun NotThrowExceptionResult.withCause(expectedCause: KClass<out Throwable>): NotThrowExceptionResult {
+    this.exceptionCause shouldNotBeInstanceOf expectedCause.java
     return this
 }
-
-infix fun NotThrowExceptionResult.withCause(expectedCause: KClass<out Throwable>) = this `with cause` expectedCause
-
 
 val AnyException = AnyExceptionType::class
 

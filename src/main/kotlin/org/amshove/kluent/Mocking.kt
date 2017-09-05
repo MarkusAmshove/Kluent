@@ -1,10 +1,13 @@
 package org.amshove.kluent
 
-import kotlin.reflect.KClass
-import com.nhaarman.mockito_kotlin.*
+import com.nhaarman.mockito_kotlin.never
+import com.nhaarman.mockito_kotlin.verify
+import com.nhaarman.mockito_kotlin.verifyNoMoreInteractions
+import com.nhaarman.mockito_kotlin.verifyZeroInteractions
 import org.mockito.Mockito.`when`
 import org.mockito.invocation.InvocationOnMock
 import org.mockito.stubbing.OngoingStubbing
+import kotlin.reflect.KClass
 
 @Suppress("UNUSED_PARAMETER") // Backward compatibility
 inline fun <reified T : Any> mock(targetClass: KClass<out T>): T = mock()
@@ -27,17 +30,13 @@ infix fun <T> T.was(n: CalledKeyword) = n
 inline fun <reified T : Any> any(kClass: KClass<T>): T = any()
 inline fun <reified T : Any> any(): T = com.nhaarman.mockito_kotlin.any()
 
-infix fun <T> OngoingStubbing<T>.`it returns`(value: T): OngoingStubbing<T> = this.thenReturn(value)
-infix fun <T> OngoingStubbing<T>.itReturns(value: T): OngoingStubbing<T> = this `it returns` value
+infix fun <T> OngoingStubbing<T>.itReturns(value: T): OngoingStubbing<T> = this.thenReturn(value)
 
-infix fun <T> OngoingStubbing<T>.`it throws`(value: RuntimeException): OngoingStubbing<T> = this.thenThrow(value)
-infix fun <T> OngoingStubbing<T>.itThrows(value: RuntimeException): OngoingStubbing<T> = this `it throws` value
+infix fun <T> OngoingStubbing<T>.itThrows(value: RuntimeException): OngoingStubbing<T> = this.thenThrow(value)
 
-infix fun <T> OngoingStubbing<T>.`it throws`(value: Error): OngoingStubbing<T> = this.thenThrow(value)
-infix fun <T> OngoingStubbing<T>.itThrows(value: Error): OngoingStubbing<T> = this `it throws` value
+infix fun <T> OngoingStubbing<T>.itThrows(value: Error): OngoingStubbing<T> = this.thenThrow(value)
 
-infix fun <T> OngoingStubbing<T>.`it answers`(value: (InvocationOnMock) -> T): OngoingStubbing<T> = this.thenAnswer(value)
-infix fun <T> OngoingStubbing<T>.itAnswers(value: (InvocationOnMock) -> T): OngoingStubbing<T> = this `it answers` value
+infix fun <T> OngoingStubbing<T>.itAnswers(value: (InvocationOnMock) -> T): OngoingStubbing<T> = this.thenAnswer(value)
 
 infix fun <T> WhenKeyword.calling(methodCall: T): OngoingStubbing<T> = `when`(methodCall)
 
@@ -47,9 +46,7 @@ val Verify = VerifyKeyword()
 val VerifyNotCalled = VerifyNotCalledKeyword()
 val called = CalledKeyword()
 val VerifyNoInteractions = VerifyNoInteractionsKeyword()
-val `Verify no interactions` = VerifyNoInteractions
 val VerifyNoFurtherInteractions = VerifyNoFurtherInteractionsKeyword()
-val `Verify no further interactions` = VerifyNoFurtherInteractions
 
 class VerifyKeyword internal constructor() {}
 class VerifyNotCalledKeyword internal constructor()
