@@ -14,13 +14,18 @@ It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.ht
 
 # Include it via gradle/maven
 
-Kluent is hosted at [jcenter](https://bintray.com/markusamshove/maven/Kluent/view# "jCenter")
+Kluent is hosted [here at jcenter](https://bintray.com/markusamshove/maven/Kluent/view# "jCenter")
+
+Kluent-Android is hosted [here at jcenter](https://bintray.com/markusamshove/maven/Kluent-Android/view# "jCenter")
 
 ## Gradle
 Replace {version} with the current version
 
     dependencies {
         testCompile 'org.amshove.kluent:kluent:{version}'
+
+        // for Android:
+        testImplementation 'org.amshove.kluent:kluent-android:{version}'
     }
 
 ## Maven

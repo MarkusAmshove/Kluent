@@ -41,6 +41,7 @@ Some examples:
 
 # Changelog
 # 1.28
+* Starting with this version, Kluent is now available for Android! Thanks to [@eburke](https://github.com/eburke56) for making this possible! | [PR](https://github.com/MarkusAmshove/Kluent/pull/58) | thanks to [@eburke](https://github.com/eburke56)
 * Fix order of arguments to assertArrayEquals() calls | [PR](https://github.com/MarkusAmshove/Kluent/pull/56) | thanks to [@cketti](https://github.com/cketti)
 
 # 1.27
