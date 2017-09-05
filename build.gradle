@@ -22,6 +22,7 @@ apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
 
 def isAndroid = project.rootProject.hasProperty("ANDROID")
+archivesBaseName = isAndroid ? "kluent-android" : "kluent"
 
 repositories {
     jcenter()
@@ -79,11 +80,12 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "maven"
-        name = "Kluent"
+        name = isAndroid ? "Kluent-Android" : "Kluent"
         licenses = ['MIT']
         vcsUrl = 'https://github.com/MarkusAmshove/Kluent'
     }
 }
+
 publishing {
     publications {
         PublishKluent(MavenPublication) {
@@ -111,4 +113,3 @@ publishing {
         }
     }
 }
-
