@@ -6,7 +6,13 @@ infix fun CharSequence.shouldStartWith(theOther: CharSequence) = assertTrue("Exp
 
 infix fun CharSequence.shouldEndWith(theOther: CharSequence) = assertTrue("Expected the CharSequence $this to end with $theOther", this.endsWith(theOther))
 
+infix fun CharSequence.shouldContainSome(things: Iterable<CharSequence>) = assertTrue("Expected '$this' to contain at least one of $things", things.any { this.contains(it) })
+
+infix fun CharSequence.shouldContainNone(things: Iterable<CharSequence>) = assertTrue("Expected '$this' to not contain any of $things", things.none { this.contains(it) })
+
 infix fun CharSequence.shouldContain(theOther: CharSequence) = assertTrue("Expected the CharSequence $this to contain $theOther", this.contains(theOther))
+
+infix fun CharSequence.shouldNotContainAny(things: Iterable<CharSequence>) = this shouldContainNone things
 
 infix fun CharSequence.shouldMatch(regex: String) = assertTrue("Expected $this to match $regex", this.matches(Regex(regex)))
 
@@ -24,7 +30,7 @@ infix fun String.shouldEqualTo(theOther: String) = assertEquals(theOther, this)
 
 infix fun String.shouldNotEqualTo(theOther: String) = assertNotEquals(theOther, this)
 
-infix fun CharSequence.shouldNotStartWith(theOther: CharSequence) =assertFalse("Expected the CharSequence $this to not start with $theOther", this.startsWith(theOther))
+infix fun CharSequence.shouldNotStartWith(theOther: CharSequence) = assertFalse("Expected the CharSequence $this to not start with $theOther", this.startsWith(theOther))
 
 infix fun CharSequence.shouldNotEndWith(theOther: CharSequence) = assertFalse("Expected the CharSequence $this to not end with $theOther", this.endsWith(theOther))
 
