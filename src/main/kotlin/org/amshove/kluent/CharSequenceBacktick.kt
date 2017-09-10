@@ -4,7 +4,13 @@ infix fun CharSequence.`should start with`(theOther: CharSequence) = this.should
 
 infix fun CharSequence.`should end with`(theOther: CharSequence) = this.shouldEndWith(theOther)
 
+infix fun CharSequence.`should contain some`(things: Iterable<CharSequence>) = this.shouldContainSome(things)
+
+infix fun CharSequence.`should contain none`(things: Iterable<CharSequence>) = this.shouldContainNone(things)
+
 infix fun CharSequence.`should contain`(theOther: CharSequence) = this.shouldContain(theOther)
+
+infix fun CharSequence.`should not contain any`(things: Iterable<CharSequence>) = this.shouldNotContainAny(things)
 
 infix fun CharSequence.`should match`(regex: String) = this.shouldMatch(regex)
 
