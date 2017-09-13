@@ -40,6 +40,9 @@ Some examples:
     "hello" `should not equal` "world"
 
 # Changelog
+# 1.29
+* Add shouldContainSome and shouldContainNone to collections | [Issue](https://github.com/MarkusAmshove/Kluent/issues/59) | [PR](https://github.com/MarkusAmshove/Kluent/pull/60)
+
 # 1.28
 * Starting with this version, Kluent is now available for Android! Thanks to [@eburke](https://github.com/eburke56) for making this possible! | [PR](https://github.com/MarkusAmshove/Kluent/pull/58) | thanks to [@eburke](https://github.com/eburke56)
 * Fix order of arguments to assertArrayEquals() calls | [PR](https://github.com/MarkusAmshove/Kluent/pull/56) | thanks to [@cketti](https://github.com/cketti)
