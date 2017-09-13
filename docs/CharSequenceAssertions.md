@@ -15,6 +15,9 @@ The following assertions work with every subtype of `CharSequence` (e.g. `Sring`
 "name" shouldContain "am"
 "name" shouldNotContain "abc"
 
+"I like fluent assertions" shouldContainSome listOf("fluent", "not", "test")
+"I like fluent assertions" shouldContainNone listOf("test, "compile")
+
 "name" shouldMatch "\\w+"
 "name" shouldNotMatch "\\d+"
 

@@ -4,6 +4,10 @@ import org.junit.Assert.*
 
 infix fun <T> Array<T>.shouldContain(theThing: T) = if (this.contains(theThing)) Unit else fail("$this should contain $theThing", "$theThing", join(this))
 
+infix fun <T> Array<T>.shouldContainSome(things: Array<T>) = assertTrue("Expected $this to contain at least one of $things", this.any { things.contains(it) })
+
+infix fun <T> Array<T>.shouldContainNone(things: Array<T>) = assertTrue("Expected $this to contain none of $things", this.none { things.contains(it) })
+
 infix fun <T> Array<T>.shouldContainAll(things: Array<T>) = things.forEach { shouldContain(it) }
 
 infix fun <T> Array<T>.shouldNotContain(theThing: T) = if (!this.contains(theThing)) Unit else fail("$this should not contain $theThing", "the Array to not contain $theThing", join(this))
@@ -24,6 +28,10 @@ fun IntArray.shouldNotBeEmpty() = this.toTypedArray().shouldNotBeEmpty()
 
 infix fun IntArray.shouldContain(theThing: Int) = this.toTypedArray() shouldContain theThing
 
+infix fun IntArray.shouldContainSome(things: IntArray) = this.toTypedArray().shouldContainSome(things.toTypedArray())
+
+infix fun IntArray.shouldContainNone(things: IntArray) = this.toTypedArray().shouldContainNone(things.toTypedArray())
+
 infix fun IntArray.shouldContainAll(things: IntArray) = things.forEach { shouldContain(it) }
 
 infix fun IntArray.shouldNotContain(theThing: Int) = this.toTypedArray() shouldNotContain theThing
@@ -42,6 +50,10 @@ fun BooleanArray.shouldNotBeEmpty() = this.toTypedArray().shouldNotBeEmpty()
 
 infix fun BooleanArray.shouldContain(theThing: Boolean) = this.toTypedArray() shouldContain theThing
 
+infix fun BooleanArray.shouldContainSome(things: BooleanArray) = this.toTypedArray().shouldContainSome(things.toTypedArray())
+
+infix fun BooleanArray.shouldContainNone(things: BooleanArray) = this.toTypedArray().shouldContainNone(things.toTypedArray())
+
 infix fun BooleanArray.shouldContainAll(things: BooleanArray) = things.forEach { shouldContain(it) }
 
 infix fun BooleanArray.shouldNotContain(theThing: Boolean) = this.toTypedArray() shouldNotContain theThing
@@ -59,6 +71,10 @@ fun ByteArray.shouldBeEmpty() = this.toTypedArray().shouldBeEmpty()
 fun ByteArray.shouldNotBeEmpty() = this.toTypedArray().shouldNotBeEmpty()
 
 infix fun ByteArray.shouldContain(theThing: Byte) = this.toTypedArray() shouldContain theThing
+
+infix fun ByteArray.shouldContainSome(things: ByteArray) = this.toTypedArray().shouldContainSome(things.toTypedArray())
+
+infix fun ByteArray.shouldContainNone(things: ByteArray) = this.toTypedArray().shouldContainNone(things.toTypedArray())
 
 infix fun ByteArray.shouldContainAll(things: ByteArray) = things.forEach { shouldContain(it) }
 
@@ -80,6 +96,10 @@ fun CharArray.shouldNotBeEmpty() = this.toTypedArray().shouldNotBeEmpty()
 
 infix fun CharArray.shouldContain(theThing: Char) = this.toTypedArray() shouldContain theThing
 
+infix fun CharArray.shouldContainSome(things: CharArray) = this.toTypedArray().shouldContainSome(things.toTypedArray())
+
+infix fun CharArray.shouldContainNone(things: CharArray) = this.toTypedArray().shouldContainNone(things.toTypedArray())
+
 infix fun CharArray.shouldContainAll(things: CharArray) = things.forEach { shouldContain(it) }
 
 infix fun CharArray.shouldNotContain(theThing: Char) = this.toTypedArray() shouldNotContain theThing
@@ -97,6 +117,10 @@ fun DoubleArray.shouldBeEmpty() = this.toTypedArray().shouldBeEmpty()
 fun DoubleArray.shouldNotBeEmpty() = this.toTypedArray().shouldNotBeEmpty()
 
 infix fun DoubleArray.shouldContain(theThing: Double) = this.toTypedArray() shouldContain theThing
+
+infix fun DoubleArray.shouldContainSome(things: DoubleArray) = this.toTypedArray().shouldContainSome(things.toTypedArray())
+
+infix fun DoubleArray.shouldContainNone(things: DoubleArray) = this.toTypedArray().shouldContainNone(things.toTypedArray())
 
 infix fun DoubleArray.shouldContainAll(things: DoubleArray) = things.forEach { shouldContain(it) }
 
@@ -116,6 +140,10 @@ fun FloatArray.shouldNotBeEmpty() = this.toTypedArray().shouldNotBeEmpty()
 
 infix fun FloatArray.shouldContain(theThing: Float) = this.toTypedArray() shouldContain theThing
 
+infix fun FloatArray.shouldContainSome(things: FloatArray) = this.toTypedArray().shouldContainSome(things.toTypedArray())
+
+infix fun FloatArray.shouldContainNone(things: FloatArray) = this.toTypedArray().shouldContainNone(things.toTypedArray())
+
 infix fun FloatArray.shouldContainAll(things: FloatArray) = things.forEach { shouldContain(it) }
 
 infix fun FloatArray.shouldNotContain(theThing: Float) = this.toTypedArray() shouldNotContain theThing
@@ -133,6 +161,10 @@ fun LongArray.shouldBeEmpty() = this.toTypedArray().shouldBeEmpty()
 fun LongArray.shouldNotBeEmpty() = this.toTypedArray().shouldNotBeEmpty()
 
 infix fun LongArray.shouldContain(theThing: Long) = this.toTypedArray() shouldContain theThing
+
+infix fun LongArray.shouldContainSome(things: LongArray) = this.toTypedArray().shouldContainSome(things.toTypedArray())
+
+infix fun LongArray.shouldContainNone(things: LongArray) = this.toTypedArray().shouldContainNone(things.toTypedArray())
 
 infix fun LongArray.shouldContainAll(things: LongArray) = things.forEach { shouldContain(it) }
 
@@ -152,6 +184,10 @@ fun ShortArray.shouldNotBeEmpty() = this.toTypedArray().shouldNotBeEmpty()
 
 infix fun ShortArray.shouldContain(theThing: Short) = this.toTypedArray() shouldContain theThing
 
+infix fun ShortArray.shouldContainSome(things: ShortArray) = this.toTypedArray().shouldContainSome(things.toTypedArray())
+
+infix fun ShortArray.shouldContainNone(things: ShortArray) = this.toTypedArray().shouldContainNone(things.toTypedArray())
+
 infix fun ShortArray.shouldContainAll(things: ShortArray) = things.forEach { shouldContain(it) }
 
 infix fun ShortArray.shouldNotContain(theThing: Short) = this.toTypedArray() shouldNotContain theThing
@@ -163,6 +199,10 @@ infix fun Short.shouldBeIn(theArray: ShortArray) = this shouldBeIn theArray.toTy
 infix fun Short.shouldNotBeIn(theArray: ShortArray) = this shouldNotBeIn theArray.toTypedArray()
 
 infix fun <T> Iterable<T>.shouldContain(theThing: T) = if (this.contains(theThing)) Unit else fail("$this should contain $theThing", "$theThing", join(this))
+
+infix fun <T> Iterable<T>.shouldContainSome(things: Iterable<T>) = assertTrue("Expected $this to contain at least one of $things", this.any { things.contains(it) })
+
+infix fun <T> Iterable<T>.shouldContainNone(things: Iterable<T>) = assertTrue("Expected $this to contain none of $things", this.none { things.contains(it) })
 
 infix fun <T> Iterable<T>.shouldContainAll(things: Iterable<T>) = things.forEach { shouldContain(it) }
 
