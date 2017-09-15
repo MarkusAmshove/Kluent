@@ -29,6 +29,7 @@ archivesBaseName = isAndroid ? "kluent-android" : "kluent"
 
 repositories {
     jcenter()
+    mavenCentral()
     maven {
         url = 'http://repository.jetbrains.com/all'
     }
@@ -38,10 +39,10 @@ dependencies {
     compile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-    compile "com.nhaarman:mockito-kotlin:$mockito_version"
+    compile "com.nhaarman:mockito-kotlin-kt1.1:$mockito_version"
     testCompile 'junit:junit:4.12'
     testCompile "org.jetbrains.spek:spek:$spek_version"
-    testCompile "com.nhaarman:mockito-kotlin:$mockito_version"
+    testCompile "com.nhaarman:mockito-kotlin-kt1.1:$mockito_version"
 }
 
 sourceSets {
