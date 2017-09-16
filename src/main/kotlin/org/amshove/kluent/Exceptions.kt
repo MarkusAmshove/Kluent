@@ -3,7 +3,7 @@ package org.amshove.kluent
 import org.junit.ComparisonFailure
 import kotlin.reflect.KClass
 
-infix fun <T : Throwable> (() -> Any).shouldThrow(expectedException: KClass<T>): ExceptionResult<T> {
+infix fun <T : Throwable> (() -> Any?).shouldThrow(expectedException: KClass<T>): ExceptionResult<T> {
     try {
         this.invoke()
         fail("There was an Exception expected to be thrown, but nothing was thrown", "$expectedException", "None")
@@ -15,7 +15,7 @@ infix fun <T : Throwable> (() -> Any).shouldThrow(expectedException: KClass<T>):
     }
 }
 
-infix fun <T : Throwable> (() -> Any).shouldNotThrow(expectedException: KClass<T>) {
+infix fun <T : Throwable> (() -> Any?).shouldNotThrow(expectedException: KClass<T>) {
     try {
         this.invoke()
     } catch (e: Throwable) {
