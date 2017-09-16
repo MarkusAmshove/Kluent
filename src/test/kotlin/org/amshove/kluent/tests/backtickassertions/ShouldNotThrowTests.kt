@@ -2,6 +2,7 @@ package org.amshove.kluent.tests.backtickassertions
 
 import org.amshove.kluent.AnyException
 import org.amshove.kluent.`should not throw`
+import org.amshove.kluent.shouldNotThrow
 import org.jetbrains.spek.api.Spek
 import kotlin.test.assertFails
 
@@ -23,6 +24,13 @@ class ShouldNotThrowTests : Spek({
             it("should pass") {
                 val func = { throw IllegalArgumentException() }
                 func `should not throw` ArrayIndexOutOfBoundsException::class
+            }
+        }
+
+        on("providing a function that returns null") {
+            val func = { null }
+            it("should not throw exception") {
+                func `should not throw` AnyException
             }
         }
     }
