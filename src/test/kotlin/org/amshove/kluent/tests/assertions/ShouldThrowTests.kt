@@ -109,5 +109,12 @@ class ShouldThrowTests : Spek({
                 }
             }
         }
+
+        given("a lambda that can return null") {
+            val func = { if (0 == 1) null else throw IllegalStateException() }
+            it("should throw exception") {
+                func shouldThrow IllegalStateException::class
+            }
+        }
     }
 })

@@ -40,6 +40,13 @@ class ShouldNotThrowTests : Spek({
                 assertEquals(failure.expected, expected.toString())
             }
         }
+
+        given("providing a function that returns null") {
+            val func = { null }
+            it("should not throw exception") {
+                func shouldNotThrow AnyException
+            }
+        }
     }
 })
 
