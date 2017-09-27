@@ -5,6 +5,7 @@ import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.verifyNoMoreInteractions
 import com.nhaarman.mockito_kotlin.verifyZeroInteractions
 import org.mockito.Mockito.`when`
+import org.mockito.internal.util.MockUtil
 import org.mockito.invocation.InvocationOnMock
 import org.mockito.stubbing.OngoingStubbing
 import kotlin.reflect.KClass
@@ -18,7 +19,10 @@ infix fun <T> VerifyKeyword.on(mock: T) = verify(mock)
 
 infix fun <T> VerifyNotCalledKeyword.on(mock: T) = verify(mock, never())
 
-infix fun <T> T.that(mock: T): T = this.apply { mock.run { Unit } }
+infix fun <T> T.that(mock: T): T {
+    ensureMock(this)
+    return this.apply { mock.run { Unit } }
+}
 
 infix fun <T : Any> VerifyNoInteractionsKeyword.on(mock: T) = verifyZeroInteractions(mock)
 
@@ -28,6 +32,7 @@ infix fun <T> T.was(n: CalledKeyword) = n
 
 @Suppress("UNUSED_PARAMETER") // Backward compatibility
 inline fun <reified T : Any> any(kClass: KClass<T>): T = any()
+
 inline fun <reified T : Any> any(): T = com.nhaarman.mockito_kotlin.any()
 
 infix fun <T> OngoingStubbing<T>.itReturns(value: T): OngoingStubbing<T> = this.thenReturn(value)
@@ -41,6 +46,21 @@ infix fun <T> OngoingStubbing<T>.itAnswers(value: (InvocationOnMock) -> T): Ongo
 infix fun <T> WhenKeyword.calling(methodCall: T): OngoingStubbing<T> = `when`(methodCall)
 
 
+private fun <T> ensureMock(obj: T) {
+    if (!MockUtil.isMock(obj)) {
+        throw Exception("""
+            $obj is no mock.
+
+            Ensure to always determine the mock with the `on` method.
+            Example:
+                Verify on myMock that myMock.getPerson() was called
+                       /\
+                --------
+            """)
+    }
+}
+
+
 val When = WhenKeyword()
 val Verify = VerifyKeyword()
 val VerifyNotCalled = VerifyNotCalledKeyword()
@@ -48,9 +68,9 @@ val called = CalledKeyword()
 val VerifyNoInteractions = VerifyNoInteractionsKeyword()
 val VerifyNoFurtherInteractions = VerifyNoFurtherInteractionsKeyword()
 
-class VerifyKeyword internal constructor() {}
+class VerifyKeyword internal constructor()
 class VerifyNotCalledKeyword internal constructor()
-class CalledKeyword internal constructor() {}
-class WhenKeyword internal constructor() {}
-class VerifyNoInteractionsKeyword internal constructor() {}
-class VerifyNoFurtherInteractionsKeyword internal constructor() {}
+class CalledKeyword internal constructor()
+class WhenKeyword internal constructor()
+class VerifyNoInteractionsKeyword internal constructor()
+class VerifyNoFurtherInteractionsKeyword internal constructor()
