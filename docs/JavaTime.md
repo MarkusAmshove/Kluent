@@ -49,7 +49,7 @@ dateToTest shouldBeInYear 2017
 
 // Test that a LocalDateTime is not in a specific year
 val dateToTest = LocalDateTime.of(2017, 3, 1, 10, 0)
-dateToTest shouldBeInYear 2012
+dateToTest shouldNotBeInYear 2012
 
 // Test that a LocalDateTime is within 5 days after another
 val orderDate = LocalDateTime.of(2017, 6, 5, 10, 0)
