@@ -30,6 +30,7 @@ Some examples:
 ## 1.30 (WIP)
 * Allow should(Not)Throw to on functions returning nullables | [Issue](https://github.com/MarkusAmshove/Kluent/issues/63) | [PR](https://github.com/MarkusAmshove/Kluent/pull/64) | thanks to [@gregwoodfill](https://github.com/gregwoodfill)
 * Update mockito-kotlin to kt1.1 | [Issue](https://github.com/MarkusAmshove/Kluent/issues/61)
+* Rename asserts in Numericals to contain 'be' for consistency | [PR](https://github.com/MarkusAmshove/Kluent/pull/71) | thanks to [@javatarz](https://github.com/javatarz) 
 
 ## 1.29
 * Add shouldContainSome and shouldContainNone to collections | [Issue](https://github.com/MarkusAmshove/Kluent/issues/59) | [PR](https://github.com/MarkusAmshove/Kluent/pull/60)
