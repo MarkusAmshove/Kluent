@@ -36,12 +36,13 @@ repositories {
 }
 
 dependencies {
-    runtime "org.junit.jupiter:junit-jupiter-engine:5.0.1"
-    compile "org.junit.jupiter:junit-jupiter-api:5.0.1"
+    compile 'org.assertj:assertj-core:3.8.0'
+    compile 'org.opentest4j:opentest4j:1.0.0'
 
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     compile "com.nhaarman:mockito-kotlin-kt1.1:$mockito_version"
+
     testCompile "org.jetbrains.spek:spek:$spek_version"
     testCompile "com.nhaarman:mockito-kotlin-kt1.1:$mockito_version"
 }

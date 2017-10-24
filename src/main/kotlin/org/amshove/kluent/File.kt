@@ -1,17 +1,16 @@
 package org.amshove.kluent
 
-import org.junit.jupiter.api.Assertions.assertFalse
-import org.junit.jupiter.api.Assertions.assertTrue
+import org.assertj.core.api.Assertions.assertThat
 import java.io.File
 
-fun File.shouldExist() = assertTrue(this.exists(), "The file does not exist")
-fun File.shouldNotExist() = assertFalse(this.exists(), "The file exists")
+fun File.shouldExist() = assertThat(this.exists()).`as`("The file does not exist").isTrue()
+fun File.shouldNotExist() = assertThat(this.exists()).`as`("The file exists").isFalse()
 
-fun File.shouldBeDir() = assertTrue(this.isDirectory, "The file is not a directory")
-fun File.shouldNotBeDir() = assertFalse(this.isDirectory, "The file is a directory")
+fun File.shouldBeDir() = assertThat(this.isDirectory).`as`("The file is not a directory").isTrue()
+fun File.shouldNotBeDir() = assertThat(this.isDirectory).`as`("The file is a directory").isFalse()
 
-fun File.shouldBeFile() = assertTrue(this.isFile, "The file is not a file")
-fun File.shouldNotBeFile() = assertFalse(this.isFile, "The file is a file")
+fun File.shouldBeFile() = assertThat(this.isFile).`as`("The file is not a file").isTrue()
+fun File.shouldNotBeFile() = assertThat(this.isFile).`as`("The file is a file").isFalse()
 
 infix fun File.shouldHaveExtension(other: String) = this.extension shouldEqualTo other
 infix fun File.shouldNotHaveExtension(other: String) = this.extension shouldNotEqualTo other
