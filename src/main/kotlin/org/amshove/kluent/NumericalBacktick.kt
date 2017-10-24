@@ -1,32 +1,32 @@
 package org.amshove.kluent
 
-infix fun Boolean.`should equal to`(theOther: Boolean) = this.shouldEqualTo(theOther)
+infix fun Boolean.`should be equal to`(theOther: Boolean) = this.shouldEqualTo(theOther)
 
-infix fun Byte.`should equal to`(theOther: Byte) = this.shouldEqualTo(theOther)
+infix fun Byte.`should be equal to`(theOther: Byte) = this.shouldEqualTo(theOther)
 
-infix fun Short.`should equal to`(theOther: Short) = this.shouldEqualTo(theOther)
+infix fun Short.`should be equal to`(theOther: Short) = this.shouldEqualTo(theOther)
 
-infix fun Int.`should equal to`(theOther: Int) = this.shouldEqualTo(theOther)
+infix fun Int.`should be equal to`(theOther: Int) = this.shouldEqualTo(theOther)
 
-infix fun Long.`should equal to`(theOther: Long) = this.shouldEqualTo(theOther)
+infix fun Long.`should be equal to`(theOther: Long) = this.shouldEqualTo(theOther)
 
-infix fun Float.`should equal to`(theOther: Float) = this.shouldEqualTo(theOther)
+infix fun Float.`should be equal to`(theOther: Float) = this.shouldEqualTo(theOther)
 
-infix fun Double.`should equal to`(theOther: Double) = this.shouldEqualTo(theOther)
+infix fun Double.`should be equal to`(theOther: Double) = this.shouldEqualTo(theOther)
 
-infix fun Boolean.`should not equal to`(theOther: Boolean) = this.shouldNotEqualTo(theOther)
+infix fun Boolean.`should not be equal to`(theOther: Boolean) = this.shouldNotEqualTo(theOther)
 
-infix fun Byte.`should not equal to`(theOther: Byte) = this.shouldNotEqualTo(theOther)
+infix fun Byte.`should not be equal to`(theOther: Byte) = this.shouldNotEqualTo(theOther)
 
-infix fun Short.`should not equal to`(theOther: Short) = this.shouldNotEqualTo(theOther)
+infix fun Short.`should not be equal to`(theOther: Short) = this.shouldNotEqualTo(theOther)
 
-infix fun Int.`should not equal to`(theOther: Int) = this.shouldNotEqualTo(theOther)
+infix fun Int.`should not be equal to`(theOther: Int) = this.shouldNotEqualTo(theOther)
 
-infix fun Long.`should not equal to`(theOther: Long) = this.shouldNotEqualTo(theOther)
+infix fun Long.`should not be equal to`(theOther: Long) = this.shouldNotEqualTo(theOther)
 
-infix fun Float.`should not equal to`(theOther: Float) = this.shouldNotEqualTo(theOther)
+infix fun Float.`should not be equal to`(theOther: Float) = this.shouldNotEqualTo(theOther)
 
-infix fun Double.`should not equal to`(theOther: Double) = this.shouldNotEqualTo(theOther)
+infix fun Double.`should not be equal to`(theOther: Double) = this.shouldNotEqualTo(theOther)
 
 infix fun Byte.`should be greater than`(theOther: Byte) = this.shouldBeGreaterThan(theOther)
 

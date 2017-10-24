@@ -24,9 +24,9 @@ fun CharSequence.`should be blank`() = this.shouldBeBlank()
 
 fun CharSequence?.`should be null or blank`() = this.shouldBeNullOrBlank()
 
-infix fun String.`should equal to`(theOther: String) = this.shouldEqualTo(theOther)
+infix fun String.`should be equal to`(theOther: String) = this.shouldEqualTo(theOther)
 
-infix fun String.`should not equal to`(theOther: String) = this.shouldNotEqualTo(theOther)
+infix fun String.`should not be equal to`(theOther: String) = this.shouldNotEqualTo(theOther)
 
 infix fun CharSequence.`should not start with`(theOther: CharSequence) = this.shouldNotStartWith(theOther)
 
