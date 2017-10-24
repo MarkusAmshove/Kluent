@@ -1,6 +1,6 @@
 package org.amshove.kluent
 
-import org.junit.Assert.assertTrue
+import org.junit.jupiter.api.Assertions
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
@@ -34,27 +34,27 @@ abstract class AbstractJavaTimeComparator<T> where T : Comparable<T> {
     }
 
     protected fun assertAtLeastAfter(theOther: T) {
-        assertTrue("Expected $startValue to be at least { ${getExpectedOffset()} } after $theOther", startValue >= theOther)
+        Assertions.assertTrue(startValue >= theOther, "Expected $startValue to be at least { ${getExpectedOffset()} } after $theOther")
     }
 
     protected fun assertAtMostAfter(theOther: T) {
-        assertTrue("Expected $startValue to be at most { ${getExpectedOffset()} } after $theOther", startValue <= theOther)
+        Assertions.assertTrue(startValue <= theOther, "Expected $startValue to be at most { ${getExpectedOffset()} } after $theOther")
     }
 
     protected fun assertExactlyAfter(theOther: T) {
-        assertTrue("Expected $startValue to be { ${getExpectedOffset()} } after $theOther", startValue == theOther)
+        Assertions.assertTrue(startValue == theOther, "Expected $startValue to be { ${getExpectedOffset()} } after $theOther")
     }
 
     protected fun assertExactlyBefore(theOther: T) {
-        assertTrue("Expected $startValue to be { ${getExpectedOffset()} } before $theOther", startValue == theOther)
+        Assertions.assertTrue(startValue == theOther, "Expected $startValue to be { ${getExpectedOffset()} } before $theOther")
     }
 
     protected fun assertAtLeastBefore(theOther: T) {
-        assertTrue("Expected $startValue to be at least { ${getExpectedOffset()} } before $theOther", startValue <= theOther)
+        Assertions.assertTrue(startValue <= theOther, "Expected $startValue to be at least { ${getExpectedOffset()} } before $theOther")
     }
 
     protected fun assertAtMostBefore(theOther: T) {
-        assertTrue("Expected $startValue to be at most { ${getExpectedOffset()} } before $theOther", startValue >= theOther)
+        Assertions.assertTrue(startValue >= theOther, "Expected $startValue to be at most { ${getExpectedOffset()} } before $theOther")
     }
 
     protected abstract fun calculateComparedValue(currentValue: T, multiplier: Int = 1): T

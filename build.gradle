@@ -12,7 +12,7 @@ buildscript {
 }
 
 group 'org.amshove.kluent'
-version '1.30'
+version '2.0'
 
 apply plugin: 'kotlin'
 apply plugin: 'idea'
@@ -36,7 +36,9 @@ repositories {
 }
 
 dependencies {
-    compile 'junit:junit:4.12'
+    runtime "org.junit.jupiter:junit-jupiter-engine:5.0.1"
+    compile "org.junit.jupiter:junit-jupiter-api:5.0.1"
+
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     compile "com.nhaarman:mockito-kotlin-kt1.1:$mockito_version"

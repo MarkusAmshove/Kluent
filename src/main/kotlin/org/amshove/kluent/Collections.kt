@@ -1,12 +1,12 @@
 package org.amshove.kluent
 
-import org.junit.Assert.*
+import org.junit.jupiter.api.Assertions.*
 
 infix fun <T> Array<T>.shouldContain(theThing: T) = if (this.contains(theThing)) Unit else fail("$this should contain $theThing", "$theThing", join(this))
 
-infix fun <T> Array<T>.shouldContainSome(things: Array<T>) = assertTrue("Expected $this to contain at least one of $things", this.any { things.contains(it) })
+infix fun <T> Array<T>.shouldContainSome(things: Array<T>) = assertTrue(this.any { things.contains(it) }, "Expected $this to contain at least one of $things")
 
-infix fun <T> Array<T>.shouldContainNone(things: Array<T>) = assertTrue("Expected $this to contain none of $things", this.none { things.contains(it) })
+infix fun <T> Array<T>.shouldContainNone(things: Array<T>) = assertTrue(this.none { things.contains(it) }, "Expected $this to contain none of $things")
 
 infix fun <T> Array<T>.shouldContainAll(things: Array<T>) = things.forEach { shouldContain(it) }
 
@@ -200,9 +200,9 @@ infix fun Short.shouldNotBeIn(theArray: ShortArray) = this shouldNotBeIn theArra
 
 infix fun <T> Iterable<T>.shouldContain(theThing: T) = if (this.contains(theThing)) Unit else fail("$this should contain $theThing", "$theThing", join(this))
 
-infix fun <T> Iterable<T>.shouldContainSome(things: Iterable<T>) = assertTrue("Expected $this to contain at least one of $things", this.any { things.contains(it) })
+infix fun <T> Iterable<T>.shouldContainSome(things: Iterable<T>) = assertTrue(this.any { things.contains(it) }, "Expected $this to contain at least one of $things")
 
-infix fun <T> Iterable<T>.shouldContainNone(things: Iterable<T>) = assertTrue("Expected $this to contain none of $things", this.none { things.contains(it) })
+infix fun <T> Iterable<T>.shouldContainNone(things: Iterable<T>) = assertTrue(this.none { things.contains(it) }, "Expected $this to contain none of $things")
 
 infix fun <T> Iterable<T>.shouldContainAll(things: Iterable<T>) = things.forEach { shouldContain(it) }
 
@@ -244,5 +244,5 @@ infix fun <T> Any?.shouldNotBeIn(iterable: Iterable<T>) = if (!iterable.contains
 
 infix fun <T> Any?.shouldBeIn(array: Array<T>) = if (array.contains(this)) Unit else fail("$this should be in $array", "$this", join(array))
 
-internal fun <T> assertEmpty(iterable: Iterable<T>, collectionType: String) = assertTrue("Expected the $collectionType to be empty, but has ${iterable.count()} elements", iterable.count() == 0)
-internal fun <T> assertNotEmpty(iterable: Iterable<T>, collectionType: String) = assertTrue("Expected the $collectionType to contain elements, but is empty", iterable.count() > 0)
+internal fun <T> assertEmpty(iterable: Iterable<T>, collectionType: String) = assertTrue(iterable.count() == 0, "Expected the $collectionType to be empty, but has ${iterable.count()} elements")
+internal fun <T> assertNotEmpty(iterable: Iterable<T>, collectionType: String) = assertTrue(iterable.count() > 0, "Expected the $collectionType to contain elements, but is empty")

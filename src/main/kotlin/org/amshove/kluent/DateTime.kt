@@ -1,15 +1,15 @@
 package org.amshove.kluent
 
-import org.junit.Assert.assertTrue
+import org.junit.jupiter.api.Assertions.assertTrue
 import java.time.*
 
-infix fun LocalDateTime.shouldBeAfter(theOther: LocalDateTime) = assertTrue("Expected $this to be after $theOther", this > theOther)
+infix fun LocalDateTime.shouldBeAfter(theOther: LocalDateTime) = assertTrue(this > theOther, "Expected $this to be after $theOther")
 
-infix fun LocalDateTime.shouldBeAfter(theTime: LocalTime) = assertTrue("Expected $this to be after $theTime", this.toLocalTime() > theTime)
+infix fun LocalDateTime.shouldBeAfter(theTime: LocalTime) = assertTrue(this.toLocalTime() > theTime, "Expected $this to be after $theTime")
 
-infix fun LocalDateTime.shouldBeBefore(theOther: LocalDateTime) = assertTrue("Expected $this to be before $theOther", this < theOther)
+infix fun LocalDateTime.shouldBeBefore(theOther: LocalDateTime) = assertTrue(this < theOther, "Expected $this to be before $theOther")
 
-infix fun LocalDateTime.shouldBeBefore(theTime: LocalTime) = assertTrue("Expected $this to be before $theTime", this.toLocalTime() < theTime)
+infix fun LocalDateTime.shouldBeBefore(theTime: LocalTime) = assertTrue(this.toLocalTime() < theTime, "Expected $this to be before $theTime")
 
 infix fun LocalDateTime.shouldBeInHour(theHour: Int) = this.toLocalTime() shouldBeInHour theHour
 
@@ -23,41 +23,41 @@ infix fun LocalDateTime.shouldBeInSecond(theSecond: Int) = this.toLocalTime() sh
 
 infix fun LocalDateTime.shouldNotBeInSecond(theSecond: Int) = this.toLocalTime() shouldNotBeInSecond theSecond
 
-infix fun LocalDateTime.shouldBeOnOrAfter(theDate: LocalDateTime) = assertTrue("Expected $this to be on or after $theDate", this >= theDate)
+infix fun LocalDateTime.shouldBeOnOrAfter(theDate: LocalDateTime) = assertTrue(this >= theDate, "Expected $this to be on or after $theDate")
 
-infix fun LocalDateTime.shouldBeOnOrBefore(theDate: LocalDateTime) = assertTrue("Expected $this to be on or before $theDate", this <= theDate)
+infix fun LocalDateTime.shouldBeOnOrBefore(theDate: LocalDateTime) = assertTrue(this <= theDate, "Expected $this to be on or before $theDate")
 
-infix fun LocalDateTime.shouldBeOn(theDay: DayOfWeek) = assertTrue("Expected $this to be a $theDay, but was ${this.dayOfWeek}", this.dayOfWeek == theDay)
+infix fun LocalDateTime.shouldBeOn(theDay: DayOfWeek) = assertTrue(this.dayOfWeek == theDay, "Expected $this to be a $theDay, but was ${this.dayOfWeek}")
 
 infix fun LocalDateTime.shouldNotBeOn(theDay: DayOfWeek) = this.toLocalDate() shouldNotBeOn theDay
 
-infix fun LocalDateTime.shouldBeIn(theMonth: Month) = assertTrue("Expected $this to be in $theMonth, but was ${this.month}", this.month == theMonth)
+infix fun LocalDateTime.shouldBeIn(theMonth: Month) = assertTrue(this.month == theMonth, "Expected $this to be in $theMonth, but was ${this.month}")
 
 infix fun LocalDateTime.shouldNotBeIn(theMonth: Month) = this.toLocalDate() shouldNotBeIn theMonth
 
-infix fun LocalDateTime.shouldBeInYear(theYear: Int) = assertTrue("Expected $this to be in $theYear, but was ${this.year}", this.year == theYear)
+infix fun LocalDateTime.shouldBeInYear(theYear: Int) = assertTrue(this.year == theYear, "Expected $this to be in $theYear, but was ${this.year}")
 
 infix fun LocalDateTime.shouldNotBeInYear(theYear: Int) = this.toLocalDate() shouldNotBeInYear theYear
 
-infix fun LocalDate.shouldBeAfter(theOther: LocalDate) = assertTrue("Expected $this to be after $theOther", this > theOther)
+infix fun LocalDate.shouldBeAfter(theOther: LocalDate) = assertTrue(this > theOther, "Expected $this to be after $theOther")
 
-infix fun LocalDate.shouldBeBefore(theOther: LocalDate) = assertTrue("Expected $this to be before $theOther", this < theOther)
+infix fun LocalDate.shouldBeBefore(theOther: LocalDate) = assertTrue(this < theOther, "Expected $this to be before $theOther")
 
-infix fun LocalDate.shouldBeOnOrAfter(theDate: LocalDate) = assertTrue("Expected $this to be on or after $theDate", this >= theDate)
+infix fun LocalDate.shouldBeOnOrAfter(theDate: LocalDate) = assertTrue(this >= theDate, "Expected $this to be on or after $theDate")
 
-infix fun LocalDate.shouldBeOnOrBefore(theDate: LocalDate) = assertTrue("Expected $this to be on or before $theDate", this <= theDate)
+infix fun LocalDate.shouldBeOnOrBefore(theDate: LocalDate) = assertTrue(this <= theDate, "Expected $this to be on or before $theDate")
 
-infix fun LocalDate.shouldBeOn(theDay: DayOfWeek) = assertTrue("Expected $this to be a $theDay, but was ${this.dayOfWeek}", this.dayOfWeek == theDay)
+infix fun LocalDate.shouldBeOn(theDay: DayOfWeek) = assertTrue(this.dayOfWeek == theDay, "Expected $this to be a $theDay, but was ${this.dayOfWeek}")
 
-infix fun LocalDate.shouldNotBeOn(theDay: DayOfWeek) = assertTrue("Expected $this to not be a $theDay, but was ${this.dayOfWeek}", this.dayOfWeek != theDay)
+infix fun LocalDate.shouldNotBeOn(theDay: DayOfWeek) = assertTrue(this.dayOfWeek != theDay, "Expected $this to not be a $theDay, but was ${this.dayOfWeek}")
 
-infix fun LocalDate.shouldBeIn(theMonth: Month) = assertTrue("Expected $this to be in $theMonth, but was ${this.month}", this.month == theMonth)
+infix fun LocalDate.shouldBeIn(theMonth: Month) = assertTrue(this.month == theMonth, "Expected $this to be in $theMonth, but was ${this.month}")
 
-infix fun LocalDate.shouldNotBeIn(theMonth: Month) = assertTrue("Expected $this to not be in $theMonth, but was ${this.month}", this.month != theMonth)
+infix fun LocalDate.shouldNotBeIn(theMonth: Month) = assertTrue(this.month != theMonth, "Expected $this to not be in $theMonth, but was ${this.month}")
 
-infix fun LocalDate.shouldBeInYear(theYear: Int) = assertTrue("Expected $this to be in $theYear, but was ${this.year}", this.year == theYear)
+infix fun LocalDate.shouldBeInYear(theYear: Int) = assertTrue(this.year == theYear, "Expected $this to be in $theYear, but was ${this.year}")
 
-infix fun LocalDate.shouldNotBeInYear(theYear: Int) = assertTrue("Expected $this to not be in $theYear, but was ${this.year}", this.year != theYear)
+infix fun LocalDate.shouldNotBeInYear(theYear: Int) = assertTrue(this.year != theYear, "Expected $this to not be in $theYear, but was ${this.year}")
 
 fun Int.hours() = TimeComparator(addedHours = this)
 fun Int.minutes() = TimeComparator(addedMinutes = this)
@@ -72,17 +72,17 @@ infix fun LocalTime.shouldBeAtLeast(timeComparator: TimeComparator) = timeCompar
 
 infix fun LocalTime.shouldBeAtMost(timeComparator: TimeComparator) = timeComparator.withStartValue(this).withComparatorType(ComparatorType.AtMost)
 
-infix fun LocalTime.shouldBeInHour(theHour: Int) = assertTrue("Expected $this to be in hour $theHour", this.hour == theHour)
+infix fun LocalTime.shouldBeInHour(theHour: Int) = assertTrue(this.hour == theHour, "Expected $this to be in hour $theHour")
 
-infix fun LocalTime.shouldNotBeInHour(theHour: Int) = assertTrue("Expected $this to not be in hour $theHour", this.hour != theHour)
+infix fun LocalTime.shouldNotBeInHour(theHour: Int) = assertTrue(this.hour != theHour, "Expected $this to not be in hour $theHour")
 
-infix fun LocalTime.shouldBeInMinute(theMinute: Int) = assertTrue("Expected $this to be in minute $theMinute", this.minute == theMinute)
+infix fun LocalTime.shouldBeInMinute(theMinute: Int) = assertTrue(this.minute == theMinute, "Expected $this to be in minute $theMinute")
 
-infix fun LocalTime.shouldNotBeInMinute(theMinute: Int) = assertTrue("Expected $this to not be in minute $theMinute", this.minute != theMinute)
+infix fun LocalTime.shouldNotBeInMinute(theMinute: Int) = assertTrue(this.minute != theMinute, "Expected $this to not be in minute $theMinute")
 
-infix fun LocalTime.shouldBeInSecond(theSecond: Int) = assertTrue("Expected $this to be in second $theSecond", this.second == theSecond)
+infix fun LocalTime.shouldBeInSecond(theSecond: Int) = assertTrue(this.second == theSecond, "Expected $this to be in second $theSecond")
 
-infix fun LocalTime.shouldNotBeInSecond(theSecond: Int) = assertTrue("Expected $this to not be in second $theSecond", this.second != theSecond)
+infix fun LocalTime.shouldNotBeInSecond(theSecond: Int) = assertTrue(this.second != theSecond, "Expected $this to not be in second $theSecond")
 
 infix fun LocalDate.shouldBe(dateComparator: DateComparator) = dateComparator.withStartValue(this)
 
