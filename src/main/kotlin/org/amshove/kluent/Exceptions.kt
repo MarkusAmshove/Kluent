@@ -10,7 +10,7 @@ infix fun <T : Throwable> (() -> Any?).shouldThrow(expectedException: KClass<T>)
     } catch (e: Throwable) {
         @Suppress("UNCHECKED_CAST")
         return when {
-            e.isA(AssertionFailedError::class) -> throw e
+            e.isA(AssertionError::class) -> throw e
             e.isA(expectedException) -> ExceptionResult(e as T)
             else -> throw AssertionFailedError("Expected ${expectedException.javaObjectType} to be thrown", "${expectedException.javaObjectType}", "${e.javaClass}")
         }
