@@ -1,12 +1,12 @@
 package org.amshove.kluent
 
-import org.assertj.core.api.Assertions.assertThat
+import java.util.*
 
 infix fun <T> Array<T>.shouldContain(theThing: T) = if (this.contains(theThing)) Unit else fail("$this should contain $theThing", "$theThing", join(this))
 
-infix fun <T> Array<T>.shouldContainSome(things: Array<T>) = assertThat(this.any { things.contains(it) }).`as`("Expected $this to contain at least one of $things").isTrue()
+infix fun <T> Array<T>.shouldContainSome(things: Array<T>) = assert(this.any { things.contains(it) }, {"Expected $this to contain at least one of $things"})
 
-infix fun <T> Array<T>.shouldContainNone(things: Array<T>) = assertThat(this.none { things.contains(it) }).`as`("Expected $this to contain none of $things").isTrue()
+infix fun <T> Array<T>.shouldContainNone(things: Array<T>) = assert(this.none { things.contains(it) }, {"Expected $this to contain none of $things"})
 
 infix fun <T> Array<T>.shouldContainAll(things: Array<T>) = things.forEach { shouldContain(it) }
 
@@ -14,13 +14,13 @@ infix fun <T> Array<T>.shouldNotContain(theThing: T) = if (!this.contains(theThi
 
 infix fun <T> Array<T>.shouldNotContainAny(things: Array<T>) = things.forEach { shouldNotContain(it) }
 
-infix fun <T> Array<T>?.shouldEqual(theOther: Array<T>?) = assertThat(this).isEqualTo(theOther)
+infix fun <T> Array<T>?.shouldEqual(theOther: Array<T>?) = assert(Arrays.equals(this, theOther))
 
 fun <T> Array<T>.shouldBeEmpty() = assertEmpty(this.toList(), "Array")
 
 fun <T> Array<T>.shouldNotBeEmpty() = assertNotEmpty(this.toList(), "Array")
 
-infix fun IntArray.shouldEqual(theOther: IntArray) = assertThat(theOther).isEqualTo(this)
+infix fun IntArray.shouldEqual(theOther: IntArray) = assert(Arrays.equals(this, theOther))
 
 fun IntArray.shouldBeEmpty() = this.toTypedArray().shouldBeEmpty()
 
@@ -42,7 +42,7 @@ infix fun Int.shouldBeIn(theArray: IntArray) = this shouldBeIn theArray.toTypedA
 
 infix fun Int.shouldNotBeIn(theArray: IntArray) = this shouldNotBeIn theArray.toTypedArray()
 
-infix fun BooleanArray.shouldEqual(theOther: BooleanArray) = assertThat(theOther).isEqualTo(this)
+infix fun BooleanArray.shouldEqual(theOther: BooleanArray) = assert(Arrays.equals(this, theOther))
 
 fun BooleanArray.shouldBeEmpty() = this.toTypedArray().shouldBeEmpty()
 
@@ -64,7 +64,7 @@ infix fun Boolean.shouldBeIn(theArray: BooleanArray) = this shouldBeIn theArray.
 
 infix fun Boolean.shouldNotBeIn(theArray: BooleanArray) = this shouldNotBeIn theArray.toTypedArray()
 
-infix fun ByteArray.shouldEqual(theOther: ByteArray) = assertThat(theOther).isEqualTo(this)
+infix fun ByteArray.shouldEqual(theOther: ByteArray) = assert(Arrays.equals(this, theOther))
 
 fun ByteArray.shouldBeEmpty() = this.toTypedArray().shouldBeEmpty()
 
@@ -86,7 +86,7 @@ infix fun Byte.shouldBeIn(theArray: ByteArray) = this shouldBeIn theArray.toType
 
 infix fun Byte.shouldNotBeIn(theArray: ByteArray) = this shouldNotBeIn theArray.toTypedArray()
 
-infix fun CharArray.shouldEqual(theOther: CharArray) = assertThat(theOther).isEqualTo(this)
+infix fun CharArray.shouldEqual(theOther: CharArray) = assert(Arrays.equals(this, theOther))
 
 infix fun CharArray.shouldNotEqual(theOther: CharArray) = this.toTypedArray() shouldNotEqual theOther.toTypedArray()
 
@@ -110,7 +110,7 @@ infix fun Char.shouldBeIn(theArray: CharArray) = this shouldBeIn theArray.toType
 
 infix fun Char.shouldNotBeIn(theArray: CharArray) = this shouldNotBeIn theArray.toTypedArray()
 
-infix fun DoubleArray.shouldEqual(theOther: DoubleArray) = assertThat(theOther.toTypedArray()).isEqualTo(this.toTypedArray())
+infix fun DoubleArray.shouldEqual(theOther: DoubleArray) = assert(Arrays.equals(this.toTypedArray(), theOther.toTypedArray()))
 
 fun DoubleArray.shouldBeEmpty() = this.toTypedArray().shouldBeEmpty()
 
@@ -132,7 +132,7 @@ infix fun Double.shouldBeIn(theArray: DoubleArray) = this shouldBeIn theArray.to
 
 infix fun Double.shouldNotBeIn(theArray: DoubleArray) = this shouldNotBeIn theArray.toTypedArray()
 
-infix fun FloatArray.shouldEqual(theOther: FloatArray) = assertThat(theOther.toTypedArray()).isEqualTo(this.toTypedArray())
+infix fun FloatArray.shouldEqual(theOther: FloatArray) = assert(Arrays.equals(this.toTypedArray(), theOther.toTypedArray()))
 
 fun FloatArray.shouldBeEmpty() = this.toTypedArray().shouldBeEmpty()
 
@@ -154,7 +154,7 @@ infix fun Float.shouldBeIn(theArray: FloatArray) = this shouldBeIn theArray.toTy
 
 infix fun Float.shouldNotBeIn(theArray: FloatArray) = this shouldNotBeIn theArray.toTypedArray()
 
-infix fun LongArray.shouldEqual(theOther: LongArray) = assertThat(theOther).isEqualTo(this)
+infix fun LongArray.shouldEqual(theOther: LongArray) = assert(Arrays.equals(this, theOther))
 
 fun LongArray.shouldBeEmpty() = this.toTypedArray().shouldBeEmpty()
 
@@ -176,7 +176,7 @@ infix fun Long.shouldBeIn(theArray: LongArray) = this shouldBeIn theArray.toType
 
 infix fun Long.shouldNotBeIn(theArray: LongArray) = this shouldNotBeIn theArray.toTypedArray()
 
-infix fun ShortArray.shouldEqual(theOther: ShortArray) = assertThat(theOther).isEqualTo(this)
+infix fun ShortArray.shouldEqual(theOther: ShortArray) = assert(Arrays.equals(this, theOther))
 
 fun ShortArray.shouldBeEmpty() = this.toTypedArray().shouldBeEmpty()
 
@@ -200,9 +200,9 @@ infix fun Short.shouldNotBeIn(theArray: ShortArray) = this shouldNotBeIn theArra
 
 infix fun <T> Iterable<T>.shouldContain(theThing: T) = if (this.contains(theThing)) Unit else fail("$this should contain $theThing", "$theThing", join(this))
 
-infix fun <T> Iterable<T>.shouldContainSome(things: Iterable<T>) = assertThat(this.any { things.contains(it) }).`as`("Expected $this to contain at least one of $things").isTrue()
+infix fun <T> Iterable<T>.shouldContainSome(things: Iterable<T>) = assert(this.any { things.contains(it) }, {"Expected $this to contain at least one of $things"})
 
-infix fun <T> Iterable<T>.shouldContainNone(things: Iterable<T>) = assertThat(this.none { things.contains(it) }).`as`("Expected $this to contain none of $things").isTrue()
+infix fun <T> Iterable<T>.shouldContainNone(things: Iterable<T>) = assert(this.none { things.contains(it) }, {"Expected $this to contain none of $things"})
 
 infix fun <T> Iterable<T>.shouldContainAll(things: Iterable<T>) = things.forEach { shouldContain(it) }
 
@@ -210,7 +210,7 @@ infix fun <T> Iterable<T>.shouldNotContain(theThing: T) = if (!this.contains(the
 
 infix fun <T> Iterable<T>.shouldNotContainAny(things: Iterable<T>) = things.forEach { shouldNotContain(it) }
 
-infix fun <T> Iterable<T>?.shouldEqual(theOther: Iterable<T>?) = assertThat(this).isEqualTo(theOther)
+infix fun <T> Iterable<T>?.shouldEqual(theOther: Iterable<T>?) = assert(this == theOther)
 
 fun <T> Iterable<T>.shouldBeEmpty() = assertEmpty(this, "Iterable")
 
@@ -244,6 +244,6 @@ infix fun <T> Any?.shouldNotBeIn(iterable: Iterable<T>) = if (!iterable.contains
 
 infix fun <T> Any?.shouldBeIn(array: Array<T>) = if (array.contains(this)) Unit else fail("$this should be in $array", "$this", join(array))
 
-internal fun <T> assertEmpty(iterable: Iterable<T>, collectionType: String) = assertThat(iterable.count() == 0).`as`("Expected the $collectionType to be empty, but has ${iterable.count()} elements").isTrue()
+internal fun <T> assertEmpty(iterable: Iterable<T>, collectionType: String) = assert(iterable.count() == 0, {"Expected the $collectionType to be empty, but has ${iterable.count()} elements"})
 
-internal fun <T> assertNotEmpty(iterable: Iterable<T>, collectionType: String) = assertThat(iterable.count() > 0).`as`("Expected the $collectionType to contain elements, but is empty").isTrue()
+internal fun <T> assertNotEmpty(iterable: Iterable<T>, collectionType: String) = assert(iterable.count() > 0, {"Expected the $collectionType to contain elements, but is empty"})

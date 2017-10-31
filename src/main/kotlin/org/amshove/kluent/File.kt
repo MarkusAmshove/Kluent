@@ -1,16 +1,15 @@
 package org.amshove.kluent
 
-import org.assertj.core.api.Assertions.assertThat
 import java.io.File
 
-fun File.shouldExist() = assertThat(this.exists()).`as`("The file does not exist").isTrue()
-fun File.shouldNotExist() = assertThat(this.exists()).`as`("The file exists").isFalse()
+fun File.shouldExist() = assert(this.exists(), {"The file does not exist"})
+fun File.shouldNotExist() = assert(!this.exists(), {"The file exists"})
 
-fun File.shouldBeDir() = assertThat(this.isDirectory).`as`("The file is not a directory").isTrue()
-fun File.shouldNotBeDir() = assertThat(this.isDirectory).`as`("The file is a directory").isFalse()
+fun File.shouldBeDir() = assert(this.isDirectory, {"The file is not a directory"})
+fun File.shouldNotBeDir() = assert(!this.isDirectory, {"The file is a directory"})
 
-fun File.shouldBeFile() = assertThat(this.isFile).`as`("The file is not a file").isTrue()
-fun File.shouldNotBeFile() = assertThat(this.isFile).`as`("The file is a file").isFalse()
+fun File.shouldBeFile() = assert(this.isFile, {"The file is not a file"})
+fun File.shouldNotBeFile() = assert(!this.isFile, {"The file is a file"})
 
 infix fun File.shouldHaveExtension(other: String) = this.extension shouldEqualTo other
 infix fun File.shouldNotHaveExtension(other: String) = this.extension shouldNotEqualTo other

@@ -3,11 +3,13 @@ package org.amshove.kluent.tests
 import org.opentest4j.AssertionFailedError
 
 fun getFailure(func: () -> Unit): FailureMessage {
-    try {
+    return try {
         func.invoke()
         throw Exception("Test didn't fail")
     } catch (f: AssertionFailedError) {
-        return FailureMessage(f.actual.stringRepresentation, f.expected.stringRepresentation)
+        FailureMessage(f.actual.stringRepresentation, f.expected.stringRepresentation)
+    } catch (f: AssertionError) {
+        FailureMessage(f.message.orEmpty(), f.message.orEmpty())
     } catch (e: Exception) {
         throw Exception("Test didn't fail")
     }

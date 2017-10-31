@@ -1,178 +1,176 @@
 package org.amshove.kluent
 
-import org.assertj.core.api.Assertions.assertThat
+infix fun Boolean.shouldEqualTo(theOther: Boolean) = assert(this == theOther)
 
-infix fun Boolean.shouldEqualTo(theOther: Boolean) = assertThat(this).isEqualTo(theOther)
+infix fun Byte.shouldEqualTo(theOther: Byte) = assert(this == theOther)
 
-infix fun Byte.shouldEqualTo(theOther: Byte) = assertThat(this).isEqualTo(theOther)
+infix fun Short.shouldEqualTo(theOther: Short) = assert(this == theOther)
 
-infix fun Short.shouldEqualTo(theOther: Short) = assertThat(this).isEqualTo(theOther)
+infix fun Int.shouldEqualTo(theOther: Int) = assert(this == theOther)
 
-infix fun Int.shouldEqualTo(theOther: Int) = assertThat(this).isEqualTo(theOther)
+infix fun Long.shouldEqualTo(theOther: Long) = assert(this == theOther)
 
-infix fun Long.shouldEqualTo(theOther: Long) = assertThat(this).isEqualTo(theOther)
+infix fun Float.shouldEqualTo(theOther: Float) = assert(this == theOther)
 
-infix fun Float.shouldEqualTo(theOther: Float) = assertThat(this).isEqualTo(theOther)
+infix fun Double.shouldEqualTo(theOther: Double) = assert(this == theOther)
 
-infix fun Double.shouldEqualTo(theOther: Double) = assertThat(this).isEqualTo(theOther)
+infix fun Boolean.shouldNotEqualTo(theOther: Boolean) = assert(this != theOther)
 
-infix fun Boolean.shouldNotEqualTo(theOther: Boolean) = assertThat(this).isNotEqualTo(theOther)
+infix fun Byte.shouldNotEqualTo(theOther: Byte) = assert(this != theOther)
 
-infix fun Byte.shouldNotEqualTo(theOther: Byte) = assertThat(this).isNotEqualTo(theOther)
+infix fun Short.shouldNotEqualTo(theOther: Short) = assert(this != theOther)
 
-infix fun Short.shouldNotEqualTo(theOther: Short) = assertThat(this).isNotEqualTo(theOther)
+infix fun Int.shouldNotEqualTo(theOther: Int) = assert(this != theOther)
 
-infix fun Int.shouldNotEqualTo(theOther: Int) = assertThat(this).isNotEqualTo(theOther)
+infix fun Long.shouldNotEqualTo(theOther: Long) = assert(this != theOther)
 
-infix fun Long.shouldNotEqualTo(theOther: Long) = assertThat(this).isNotEqualTo(theOther)
+infix fun Float.shouldNotEqualTo(theOther: Float) = assert(this != theOther)
 
-infix fun Float.shouldNotEqualTo(theOther: Float) = assertThat(this).isNotEqualTo(theOther)
+infix fun Double.shouldNotEqualTo(theOther: Double) = assert(this != theOther)
 
-infix fun Double.shouldNotEqualTo(theOther: Double) = assertThat(this).isNotEqualTo(theOther)
+infix fun Byte.shouldBeGreaterThan(theOther: Byte) = assert(this > theOther, { "Expected $this to be greater than $theOther" })
 
-infix fun Byte.shouldBeGreaterThan(theOther: Byte) = assertThat(this > theOther).`as`("Expected $this to be greater than $theOther").isTrue()
+infix fun Short.shouldBeGreaterThan(theOther: Short) = assert(this > theOther, { "Expected $this to be greater than $theOther" })
 
-infix fun Short.shouldBeGreaterThan(theOther: Short) = assertThat(this > theOther).`as`("Expected $this to be greater than $theOther").isTrue()
+infix fun Int.shouldBeGreaterThan(theOther: Int) = assert(this > theOther, { "Expected $this to be greater than $theOther" })
 
-infix fun Int.shouldBeGreaterThan(theOther: Int) = assertThat(this > theOther).`as`("Expected $this to be greater than $theOther").isTrue()
+infix fun Long.shouldBeGreaterThan(theOther: Long) = assert(this > theOther, { "Expected $this to be greater than $theOther" })
 
-infix fun Long.shouldBeGreaterThan(theOther: Long) = assertThat(this > theOther).`as`("Expected $this to be greater than $theOther").isTrue()
+infix fun Float.shouldBeGreaterThan(theOther: Float) = assert(this > theOther, { "Expected $this to be greater than $theOther" })
 
-infix fun Float.shouldBeGreaterThan(theOther: Float) = assertThat(this > theOther).`as`("Expected $this to be greater than $theOther").isTrue()
+infix fun Double.shouldBeGreaterThan(theOther: Double) = assert(this > theOther, { "Expected $this to be greater than $theOther" })
 
-infix fun Double.shouldBeGreaterThan(theOther: Double) = assertThat(this > theOther).`as`("Expected $this to be greater than $theOther").isTrue()
+infix fun Byte.shouldNotBeGreaterThan(theOther: Byte) = assert(this <= theOther, { "Expected $this to not be greater than $theOther" })
 
-infix fun Byte.shouldNotBeGreaterThan(theOther: Byte) = assertThat(this <= theOther).`as`("Expected $this to not be greater than $theOther").isTrue()
+infix fun Short.shouldNotBeGreaterThan(theOther: Short) = assert(this <= theOther, { "Expected $this to not be greater than $theOther" })
 
-infix fun Short.shouldNotBeGreaterThan(theOther: Short) = assertThat(this <= theOther).`as`("Expected $this to not be greater than $theOther").isTrue()
+infix fun Int.shouldNotBeGreaterThan(theOther: Int) = assert(this <= theOther, { "Expected $this to not be greater than $theOther" })
 
-infix fun Int.shouldNotBeGreaterThan(theOther: Int) = assertThat(this <= theOther).`as`("Expected $this to not be greater than $theOther").isTrue()
+infix fun Long.shouldNotBeGreaterThan(theOther: Long) = assert(this <= theOther, { "Expected $this to not be greater than $theOther" })
 
-infix fun Long.shouldNotBeGreaterThan(theOther: Long) = assertThat(this <= theOther).`as`("Expected $this to not be greater than $theOther").isTrue()
+infix fun Float.shouldNotBeGreaterThan(theOther: Float) = assert(this <= theOther, { "Expected $this to not be greater than $theOther" })
 
-infix fun Float.shouldNotBeGreaterThan(theOther: Float) = assertThat(this <= theOther).`as`("Expected $this to not be greater than $theOther").isTrue()
+infix fun Double.shouldNotBeGreaterThan(theOther: Double) = assert(this <= theOther, { "Expected $this to not be greater than $theOther" })
 
-infix fun Double.shouldNotBeGreaterThan(theOther: Double) = assertThat(this <= theOther).`as`("Expected $this to not be greater than $theOther").isTrue()
+infix fun Byte.shouldBeGreaterOrEqualTo(theOther: Byte) = assert(this >= theOther, { "Expected $this to be greater or equal to $theOther" })
 
-infix fun Byte.shouldBeGreaterOrEqualTo(theOther: Byte) = assertThat(this >= theOther).`as`("Expected $this to be greater or equal to $theOther").isTrue()
+infix fun Short.shouldBeGreaterOrEqualTo(theOther: Short) = assert(this >= theOther, { "Expected $this to be greater or equal to $theOther" })
 
-infix fun Short.shouldBeGreaterOrEqualTo(theOther: Short) = assertThat(this >= theOther).`as`("Expected $this to be greater or equal to $theOther").isTrue()
+infix fun Int.shouldBeGreaterOrEqualTo(theOther: Int) = assert(this >= theOther, { "Expected $this to be greater or equal to $theOther" })
 
-infix fun Int.shouldBeGreaterOrEqualTo(theOther: Int) = assertThat(this >= theOther).`as`("Expected $this to be greater or equal to $theOther").isTrue()
+infix fun Long.shouldBeGreaterOrEqualTo(theOther: Long) = assert(this >= theOther, { "Expected $this to be greater or equal to $theOther" })
 
-infix fun Long.shouldBeGreaterOrEqualTo(theOther: Long) = assertThat(this >= theOther).`as`("Expected $this to be greater or equal to $theOther").isTrue()
+infix fun Float.shouldBeGreaterOrEqualTo(theOther: Float) = assert(this >= theOther, { "Expected $this to be greater or equal to $theOther" })
 
-infix fun Float.shouldBeGreaterOrEqualTo(theOther: Float) = assertThat(this >= theOther).`as`("Expected $this to be greater or equal to $theOther").isTrue()
+infix fun Double.shouldBeGreaterOrEqualTo(theOther: Double) = assert(this >= theOther, { "Expected $this to be greater or equal to $theOther" })
 
-infix fun Double.shouldBeGreaterOrEqualTo(theOther: Double) = assertThat(this >= theOther).`as`("Expected $this to be greater or equal to $theOther").isTrue()
+infix fun Byte.shouldNotBeGreaterOrEqualTo(theOther: Byte) = assert(this < theOther, { "Expected $this to be not be greater or equal to $theOther" })
 
-infix fun Byte.shouldNotBeGreaterOrEqualTo(theOther: Byte) = assertThat(this < theOther).`as`("Expected $this to be not be greater or equal to $theOther").isTrue()
+infix fun Short.shouldNotBeGreaterOrEqualTo(theOther: Short) = assert(this < theOther, { "Expected $this to not be greater or equal to $theOther" })
 
-infix fun Short.shouldNotBeGreaterOrEqualTo(theOther: Short) = assertThat(this < theOther).`as`("Expected $this to not be greater or equal to $theOther").isTrue()
+infix fun Int.shouldNotBeGreaterOrEqualTo(theOther: Int) = assert(this < theOther, { "Expected $this to not be greater or equal to $theOther" })
 
-infix fun Int.shouldNotBeGreaterOrEqualTo(theOther: Int) = assertThat(this < theOther).`as`("Expected $this to not be greater or equal to $theOther").isTrue()
+infix fun Long.shouldNotBeGreaterOrEqualTo(theOther: Long) = assert(this < theOther, { "Expected $this to not be greater or equal to $theOther" })
 
-infix fun Long.shouldNotBeGreaterOrEqualTo(theOther: Long) = assertThat(this < theOther).`as`("Expected $this to not be greater or equal to $theOther").isTrue()
+infix fun Float.shouldNotBeGreaterOrEqualTo(theOther: Float) = assert(this < theOther, { "Expected $this to not be greater or equal to $theOther" })
 
-infix fun Float.shouldNotBeGreaterOrEqualTo(theOther: Float) = assertThat(this < theOther).`as`("Expected $this to not be greater or equal to $theOther").isTrue()
+infix fun Double.shouldNotBeGreaterOrEqualTo(theOther: Double) = assert(this < theOther, { "Expected $this to not be greater or equal to $theOther" })
 
-infix fun Double.shouldNotBeGreaterOrEqualTo(theOther: Double) = assertThat(this < theOther).`as`("Expected $this to not be greater or equal to $theOther").isTrue()
+infix fun Byte.shouldBeLessThan(theOther: Byte) = assert(this < theOther, { "Expected $this to be less than $theOther" })
 
-infix fun Byte.shouldBeLessThan(theOther: Byte) = assertThat(this < theOther).`as`("Expected $this to be less than $theOther").isTrue()
+infix fun Short.shouldBeLessThan(theOther: Short) = assert(this < theOther, { "Expected $this to be less than $theOther" })
 
-infix fun Short.shouldBeLessThan(theOther: Short) = assertThat(this < theOther).`as`("Expected $this to be less than $theOther").isTrue()
+infix fun Int.shouldBeLessThan(theOther: Int) = assert(this < theOther, { "Expected $this to be less than $theOther" })
 
-infix fun Int.shouldBeLessThan(theOther: Int) = assertThat(this < theOther).`as`("Expected $this to be less than $theOther").isTrue()
+infix fun Long.shouldBeLessThan(theOther: Long) = assert(this < theOther, { "Expected $this to be less than $theOther" })
 
-infix fun Long.shouldBeLessThan(theOther: Long) = assertThat(this < theOther).`as`("Expected $this to be less than $theOther").isTrue()
+infix fun Float.shouldBeLessThan(theOther: Float) = assert(this < theOther, { "Expected $this to be less than $theOther" })
 
-infix fun Float.shouldBeLessThan(theOther: Float) = assertThat(this < theOther).`as`("Expected $this to be less than $theOther").isTrue()
+infix fun Double.shouldBeLessThan(theOther: Double) = assert(this < theOther, { "Expected $this to be less than $theOther" })
 
-infix fun Double.shouldBeLessThan(theOther: Double) = assertThat(this < theOther).`as`("Expected $this to be less than $theOther").isTrue()
+infix fun Byte.shouldNotBeLessThan(theOther: Byte) = assert(this >= theOther, { "Expected $this to not be less than $theOther" })
 
-infix fun Byte.shouldNotBeLessThan(theOther: Byte) = assertThat(this >= theOther).`as`("Expected $this to not be less than $theOther").isTrue()
+infix fun Short.shouldNotBeLessThan(theOther: Short) = assert(this >= theOther, { "Expected $this to not be less than $theOther" })
 
-infix fun Short.shouldNotBeLessThan(theOther: Short) = assertThat(this >= theOther).`as`("Expected $this to not be less than $theOther").isTrue()
+infix fun Int.shouldNotBeLessThan(theOther: Int) = assert(this >= theOther, { "Expected $this to not be less than $theOther" })
 
-infix fun Int.shouldNotBeLessThan(theOther: Int) = assertThat(this >= theOther).`as`("Expected $this to not be less than $theOther").isTrue()
+infix fun Long.shouldNotBeLessThan(theOther: Long) = assert(this >= theOther, { "Expected $this to not be less than $theOther" })
 
-infix fun Long.shouldNotBeLessThan(theOther: Long) = assertThat(this >= theOther).`as`("Expected $this to not be less than $theOther").isTrue()
+infix fun Float.shouldNotBeLessThan(theOther: Float) = assert(this >= theOther, { "Expected $this to not be less than $theOther" })
 
-infix fun Float.shouldNotBeLessThan(theOther: Float) = assertThat(this >= theOther).`as`("Expected $this to not be less than $theOther").isTrue()
+infix fun Double.shouldNotBeLessThan(theOther: Double) = assert(this >= theOther, { "Expected $this to not be less than $theOther" })
 
-infix fun Double.shouldNotBeLessThan(theOther: Double) = assertThat(this >= theOther).`as`("Expected $this to not be less than $theOther").isTrue()
+infix fun Byte.shouldBeLessOrEqualTo(theOther: Byte) = assert(this <= theOther, { "Expected $this to be less or equal to $theOther" })
 
-infix fun Byte.shouldBeLessOrEqualTo(theOther: Byte) = assertThat(this <= theOther).`as`("Expected $this to be less or equal to $theOther").isTrue()
+infix fun Short.shouldBeLessOrEqualTo(theOther: Short) = assert(this <= theOther, { "Expected $this to be less or equal to $theOther" })
 
-infix fun Short.shouldBeLessOrEqualTo(theOther: Short) = assertThat(this <= theOther).`as`("Expected $this to be less or equal to $theOther").isTrue()
+infix fun Int.shouldBeLessOrEqualTo(theOther: Int) = assert(this <= theOther, { "Expected $this to be less or equal to $theOther" })
 
-infix fun Int.shouldBeLessOrEqualTo(theOther: Int) = assertThat(this <= theOther).`as`("Expected $this to be less or equal to $theOther").isTrue()
+infix fun Long.shouldBeLessOrEqualTo(theOther: Long) = assert(this <= theOther, { "Expected $this to be less or equal to $theOther" })
 
-infix fun Long.shouldBeLessOrEqualTo(theOther: Long) = assertThat(this <= theOther).`as`("Expected $this to be less or equal to $theOther").isTrue()
+infix fun Float.shouldBeLessOrEqualTo(theOther: Float) = assert(this <= theOther, { "Expected $this to be less or equal to $theOther" })
 
-infix fun Float.shouldBeLessOrEqualTo(theOther: Float) = assertThat(this <= theOther).`as`("Expected $this to be less or equal to $theOther").isTrue()
+infix fun Double.shouldBeLessOrEqualTo(theOther: Double) = assert(this <= theOther, { "Expected $this to be less or equal to $theOther" })
 
-infix fun Double.shouldBeLessOrEqualTo(theOther: Double) = assertThat(this <= theOther).`as`("Expected $this to be less or equal to $theOther").isTrue()
+infix fun Byte.shouldNotBeLessOrEqualTo(theOther: Byte) = assert(this > theOther, { "Expected $this to not be less or equal to $theOther" })
 
-infix fun Byte.shouldNotBeLessOrEqualTo(theOther: Byte) = assertThat(this > theOther).`as`("Expected $this to not be less or equal to $theOther").isTrue()
+infix fun Short.shouldNotBeLessOrEqualTo(theOther: Short) = assert(this > theOther, { "Expected $this to not be less or equal to $theOther" })
 
-infix fun Short.shouldNotBeLessOrEqualTo(theOther: Short) = assertThat(this > theOther).`as`("Expected $this to not be less or equal to $theOther").isTrue()
+infix fun Int.shouldNotBeLessOrEqualTo(theOther: Int) = assert(this > theOther, { "Expected $this to not be less or equal to $theOther" })
 
-infix fun Int.shouldNotBeLessOrEqualTo(theOther: Int) = assertThat(this > theOther).`as`("Expected $this to not be less or equal to $theOther").isTrue()
+infix fun Long.shouldNotBeLessOrEqualTo(theOther: Long) = assert(this > theOther, { "Expected $this to not be less or equal to $theOther" })
 
-infix fun Long.shouldNotBeLessOrEqualTo(theOther: Long) = assertThat(this > theOther).`as`("Expected $this to not be less or equal to $theOther").isTrue()
+infix fun Float.shouldNotBeLessOrEqualTo(theOther: Float) = assert(this > theOther, { "Expected $this to not be less or equal to $theOther" })
 
-infix fun Float.shouldNotBeLessOrEqualTo(theOther: Float) = assertThat(this > theOther).`as`("Expected $this to not be less or equal to $theOther").isTrue()
+infix fun Double.shouldNotBeLessOrEqualTo(theOther: Double) = assert(this > theOther, { "Expected $this to not be less or equal to $theOther" })
 
-infix fun Double.shouldNotBeLessOrEqualTo(theOther: Double) = assertThat(this > theOther).`as`("Expected $this to not be less or equal to $theOther").isTrue()
+fun Byte.shouldBePositive() = assert(this > 0, { "Expected $this to be positive" })
 
-fun Byte.shouldBePositive() = assertThat(this > 0).`as`("Expected $this to be positive").isTrue()
+fun Short.shouldBePositive() = assert(this > 0, { "Expected $this to be positive" })
 
-fun Short.shouldBePositive() = assertThat(this > 0).`as`("Expected $this to be positive").isTrue()
+fun Int.shouldBePositive() = assert(this > 0, { "Expected $this to be positive" })
 
-fun Int.shouldBePositive() = assertThat(this > 0).`as`("Expected $this to be positive").isTrue()
+fun Long.shouldBePositive() = assert(this > 0, { "Expected $this to be positive" })
 
-fun Long.shouldBePositive() = assertThat(this > 0).`as`("Expected $this to be positive").isTrue()
+fun Float.shouldBePositive() = assert(this > 0, { "Expected $this to be positive" })
 
-fun Float.shouldBePositive() = assertThat(this > 0).`as`("Expected $this to be positive").isTrue()
+fun Double.shouldBePositive() = assert(this > 0, { "Expected $this to be positive" })
 
-fun Double.shouldBePositive() = assertThat(this > 0).`as`("Expected $this to be positive").isTrue()
+fun Byte.shouldBeNegative() = assert(this < 0, { "Expected $this to be negative" })
 
-fun Byte.shouldBeNegative() = assertThat(this < 0).`as`("Expected $this to be negative").isTrue()
+fun Short.shouldBeNegative() = assert(this < 0, { "Expected $this to be negative" })
 
-fun Short.shouldBeNegative() = assertThat(this < 0).`as`("Expected $this to be negative").isTrue()
+fun Int.shouldBeNegative() = assert(this < 0, { "Expected $this to be negative" })
 
-fun Int.shouldBeNegative() = assertThat(this < 0).`as`("Expected $this to be negative").isTrue()
+fun Long.shouldBeNegative() = assert(this < 0, { "Expected $this to be negative" })
 
-fun Long.shouldBeNegative() = assertThat(this < 0).`as`("Expected $this to be negative").isTrue()
+fun Float.shouldBeNegative() = assert(this < 0, { "Expected $this to be negative" })
 
-fun Float.shouldBeNegative() = assertThat(this < 0).`as`("Expected $this to be negative").isTrue()
+fun Double.shouldBeNegative() = assert(this < 0, { "Expected $this to be negative" })
 
-fun Double.shouldBeNegative() = assertThat(this < 0).`as`("Expected $this to be negative").isTrue()
+fun Byte.shouldBeInRange(lowerBound: Byte, upperBound: Byte) = assert(this >= lowerBound && this <= upperBound, { "Expected $this to be between (and including) $lowerBound and $upperBound" })
 
-fun Byte.shouldBeInRange(lowerBound: Byte, upperBound: Byte) = assertThat(this >= lowerBound && this <= upperBound).`as`("Expected $this to be between (and including) $lowerBound and $upperBound").isTrue()
+fun Short.shouldBeInRange(lowerBound: Short, upperBound: Short) = assert(this >= lowerBound && this <= upperBound, { "Expected $this to be between (and including) $lowerBound and $upperBound" })
 
-fun Short.shouldBeInRange(lowerBound: Short, upperBound: Short) = assertThat(this >= lowerBound && this <= upperBound).`as`("Expected $this to be between (and including) $lowerBound and $upperBound").isTrue()
+fun Int.shouldBeInRange(lowerBound: Int, upperBound: Int) = assert(this >= lowerBound && this <= upperBound, { "Expected $this to be between (and including) $lowerBound and $upperBound" })
 
-fun Int.shouldBeInRange(lowerBound: Int, upperBound: Int) = assertThat(this >= lowerBound && this <= upperBound).`as`("Expected $this to be between (and including) $lowerBound and $upperBound").isTrue()
+fun Long.shouldBeInRange(lowerBound: Long, upperBound: Long) = assert(this >= lowerBound && this <= upperBound, { "Expected $this to be between (and including) $lowerBound and $upperBound" })
 
-fun Long.shouldBeInRange(lowerBound: Long, upperBound: Long) = assertThat(this >= lowerBound && this <= upperBound).`as`("Expected $this to be between (and including) $lowerBound and $upperBound").isTrue()
+fun Float.shouldBeInRange(lowerBound: Float, upperBound: Float) = assert(this >= lowerBound && this <= upperBound, { "Expected $this to be between (and including) $lowerBound and $upperBound" })
 
-fun Float.shouldBeInRange(lowerBound: Float, upperBound: Float) = assertThat(this >= lowerBound && this <= upperBound).`as`("Expected $this to be between (and including) $lowerBound and $upperBound").isTrue()
+fun Double.shouldBeInRange(lowerBound: Double, upperBound: Double) = assert(this >= lowerBound && this <= upperBound, { "Expected $this to be between (and including) $lowerBound and $upperBound" })
 
-fun Double.shouldBeInRange(lowerBound: Double, upperBound: Double) = assertThat(this >= lowerBound && this <= upperBound).`as`("Expected $this to be between (and including) $lowerBound and $upperBound").isTrue()
+fun Byte.shouldNotBeInRange(lowerBound: Byte, upperBound: Byte) = assert(this < lowerBound || this > upperBound, { "Expected $this to not be between (and including) $lowerBound and $upperBound" })
 
-fun Byte.shouldNotBeInRange(lowerBound: Byte, upperBound: Byte) = assertThat(this < lowerBound || this > upperBound).`as`("Expected $this to not be between (and including) $lowerBound and $upperBound").isTrue()
+fun Short.shouldNotBeInRange(lowerBound: Short, upperBound: Short) = assert(this < lowerBound || this > upperBound, { "Expected $this to not be between (and including) $lowerBound and $upperBound" })
 
-fun Short.shouldNotBeInRange(lowerBound: Short, upperBound: Short) = assertThat(this < lowerBound || this > upperBound).`as`("Expected $this to not be between (and including) $lowerBound and $upperBound").isTrue()
+fun Int.shouldNotBeInRange(lowerBound: Int, upperBound: Int) = assert(this < lowerBound || this > upperBound, { "Expected $this to not be between (and including) $lowerBound and $upperBound" })
 
-fun Int.shouldNotBeInRange(lowerBound: Int, upperBound: Int) = assertThat(this < lowerBound || this > upperBound).`as`("Expected $this to not be between (and including) $lowerBound and $upperBound").isTrue()
+fun Long.shouldNotBeInRange(lowerBound: Long, upperBound: Long) = assert(this < lowerBound || this > upperBound, { "Expected $this to not be between (and including) $lowerBound and $upperBound" })
 
-fun Long.shouldNotBeInRange(lowerBound: Long, upperBound: Long) = assertThat(this < lowerBound || this > upperBound).`as`("Expected $this to not be between (and including) $lowerBound and $upperBound").isTrue()
+fun Float.shouldNotBeInRange(lowerBound: Float, upperBound: Float) = assert(this < lowerBound || this > upperBound, { "Expected $this to not be between (and including) $lowerBound and $upperBound" })
 
-fun Float.shouldNotBeInRange(lowerBound: Float, upperBound: Float) = assertThat(this < lowerBound || this > upperBound).`as`("Expected $this to not be between (and including) $lowerBound and $upperBound").isTrue()
-
-fun Double.shouldNotBeInRange(lowerBound: Double, upperBound: Double) = assertThat(this < lowerBound || this > upperBound).`as`("Expected $this to not be between (and including) $lowerBound and $upperBound").isTrue()
+fun Double.shouldNotBeInRange(lowerBound: Double, upperBound: Double) = assert(this < lowerBound || this > upperBound, { "Expected $this to not be between (and including) $lowerBound and $upperBound" })
 
 infix fun Byte.shouldBeInRange(range: IntRange) = (this.toInt()).shouldBeInRange(range)
 
