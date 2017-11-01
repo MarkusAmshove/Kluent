@@ -3,7 +3,6 @@ package org.amshove.kluent.tests.assertions
 import org.amshove.kluent.shouldEqual
 import org.amshove.kluent.tests.helpclasses.Person
 import org.jetbrains.spek.api.Spek
-import java.time.Duration
 import kotlin.test.assertFails
 
 class ShouldEqualTests : Spek({
@@ -42,6 +41,28 @@ class ShouldEqualTests : Spek({
             val secondArray = arrayOf(4, 5, 6)
             it("should fail") {
                 assertFails({ firstArray shouldEqual secondArray })
+            }
+        }
+        on("checking two empty arrays") {
+            val firstArray = emptyArray<Int>()
+            val secondArray = emptyArray<Int>()
+            it("should pass") {
+                firstArray shouldEqual secondArray
+            }
+        }
+        on("checking two null arrays") {
+            val firstArray: Array<Any>? = null
+            val secondArray = arrayOf(4, 5, 6)
+            it("should pass") {
+                assertFails({ firstArray shouldEqual secondArray })
+                assertFails({ secondArray shouldEqual firstArray })
+            }
+        }
+        on("checking two null arrays") {
+            val firstArray: Array<Any>? = null
+            val secondArray: Array<Any>? = null
+            it("should pass") {
+                firstArray shouldEqual secondArray
             }
         }
         on("checking two equal iterables") {
