@@ -36,7 +36,7 @@ repositories {
 }
 
 dependencies {
-    compile 'org.jetbrains.kotlin:kotlin-test:1.1.51'
+    compile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
     compile 'org.opentest4j:opentest4j:1.0.0'
 
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
