@@ -12,7 +12,7 @@ infix fun <T : Throwable> (() -> Any?).shouldThrow(expectedException: KClass<T>)
         return when {
             e.isA(AssertionError::class) -> throw e
             e.isA(expectedException) -> ExceptionResult(e as T)
-            else -> throw AssertionFailedError("Expected ${expectedException.javaObjectType} to be thrown", "${expectedException.javaObjectType}", "${e.javaClass}")
+            else -> fail("Expected ${expectedException.javaObjectType} to be thrown", "${expectedException.javaObjectType}", "${e.javaClass}")
         }
     }
 }
