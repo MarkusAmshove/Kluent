@@ -1,5 +1,7 @@
 package org.amshove.kluent
 
+import java.util.*
+
 infix fun <T> Array<T>.shouldContain(theThing: T) = if (this.contains(theThing)) Unit else fail("$this should contain $theThing", "$theThing", join(this))
 
 infix fun <T> Array<T>.shouldContainSome(things: Array<T>) = assert(this.any { things.contains(it) }) {
@@ -16,15 +18,7 @@ infix fun <T> Array<T>.shouldNotContain(theThing: T) = if (!this.contains(theThi
 
 infix fun <T> Array<T>.shouldNotContainAny(things: Array<T>) = things.forEach { shouldNotContain(it) }
 
-infix fun <T> Array<T>?.shouldEqual(theOther: Array<T>?) = assert(arraysEqual(this, theOther))
-
-private fun <T> arraysEqual(a1: Array<T>?, a2: Array<T>?): Boolean {
-    return when {
-        a1 == null && a2 == null -> true
-        a1 == null || a2 == null -> false
-        else -> a1 contentEquals a2
-    }
-}
+infix fun <T> Array<T>?.shouldEqual(theOther: Array<T>?) = assert(Arrays.equals(this, theOther))
 
 fun <T> Array<T>.shouldBeEmpty() = assertEmpty(this.toList(), "Array")
 
