@@ -1,7 +1,5 @@
 package org.amshove.kluent
 
-import java.util.*
-
 infix fun <T> Array<T>.shouldContain(theThing: T) = if (this.contains(theThing)) Unit else fail("$this should contain $theThing", "$theThing", join(this))
 
 infix fun <T> Array<T>.shouldContainSome(things: Array<T>) = assert(this.any { things.contains(it) }) {
@@ -18,13 +16,21 @@ infix fun <T> Array<T>.shouldNotContain(theThing: T) = if (!this.contains(theThi
 
 infix fun <T> Array<T>.shouldNotContainAny(things: Array<T>) = things.forEach { shouldNotContain(it) }
 
-infix fun <T> Array<T>?.shouldEqual(theOther: Array<T>?) = assert(Arrays.equals(this, theOther))
+infix fun <T> Array<T>?.shouldEqual(theOther: Array<T>?) = assert(arraysEqual(this, theOther))
+
+private fun <T> arraysEqual(a1: Array<T>?, a2: Array<T>?): Boolean {
+    return when {
+        a1 == null && a2 == null -> true
+        a1 == null || a2 == null -> false
+        else -> a1 contentEquals a2
+    }
+}
 
 fun <T> Array<T>.shouldBeEmpty() = assertEmpty(this.toList(), "Array")
 
 fun <T> Array<T>.shouldNotBeEmpty() = assertNotEmpty(this.toList(), "Array")
 
-infix fun IntArray.shouldEqual(theOther: IntArray) = assert(Arrays.equals(this, theOther))
+infix fun IntArray.shouldEqual(theOther: IntArray) = assert(this contentEquals theOther)
 
 fun IntArray.shouldBeEmpty() = this.toTypedArray().shouldBeEmpty()
 
@@ -46,7 +52,7 @@ infix fun Int.shouldBeIn(theArray: IntArray) = this shouldBeIn theArray.toTypedA
 
 infix fun Int.shouldNotBeIn(theArray: IntArray) = this shouldNotBeIn theArray.toTypedArray()
 
-infix fun BooleanArray.shouldEqual(theOther: BooleanArray) = assert(Arrays.equals(this, theOther))
+infix fun BooleanArray.shouldEqual(theOther: BooleanArray) = assert(this contentEquals theOther)
 
 fun BooleanArray.shouldBeEmpty() = this.toTypedArray().shouldBeEmpty()
 
@@ -68,7 +74,7 @@ infix fun Boolean.shouldBeIn(theArray: BooleanArray) = this shouldBeIn theArray.
 
 infix fun Boolean.shouldNotBeIn(theArray: BooleanArray) = this shouldNotBeIn theArray.toTypedArray()
 
-infix fun ByteArray.shouldEqual(theOther: ByteArray) = assert(Arrays.equals(this, theOther))
+infix fun ByteArray.shouldEqual(theOther: ByteArray) = assert(this contentEquals theOther)
 
 fun ByteArray.shouldBeEmpty() = this.toTypedArray().shouldBeEmpty()
 
@@ -90,7 +96,7 @@ infix fun Byte.shouldBeIn(theArray: ByteArray) = this shouldBeIn theArray.toType
 
 infix fun Byte.shouldNotBeIn(theArray: ByteArray) = this shouldNotBeIn theArray.toTypedArray()
 
-infix fun CharArray.shouldEqual(theOther: CharArray) = assert(Arrays.equals(this, theOther))
+infix fun CharArray.shouldEqual(theOther: CharArray) = assert(this contentEquals theOther)
 
 infix fun CharArray.shouldNotEqual(theOther: CharArray) = this.toTypedArray() shouldNotEqual theOther.toTypedArray()
 
@@ -114,7 +120,7 @@ infix fun Char.shouldBeIn(theArray: CharArray) = this shouldBeIn theArray.toType
 
 infix fun Char.shouldNotBeIn(theArray: CharArray) = this shouldNotBeIn theArray.toTypedArray()
 
-infix fun DoubleArray.shouldEqual(theOther: DoubleArray) = assert(Arrays.equals(this.toTypedArray(), theOther.toTypedArray()))
+infix fun DoubleArray.shouldEqual(theOther: DoubleArray) = assert(this.toTypedArray() contentEquals theOther.toTypedArray())
 
 fun DoubleArray.shouldBeEmpty() = this.toTypedArray().shouldBeEmpty()
 
@@ -136,7 +142,7 @@ infix fun Double.shouldBeIn(theArray: DoubleArray) = this shouldBeIn theArray.to
 
 infix fun Double.shouldNotBeIn(theArray: DoubleArray) = this shouldNotBeIn theArray.toTypedArray()
 
-infix fun FloatArray.shouldEqual(theOther: FloatArray) = assert(Arrays.equals(this.toTypedArray(), theOther.toTypedArray()))
+infix fun FloatArray.shouldEqual(theOther: FloatArray) = assert(this.toTypedArray() contentEquals theOther.toTypedArray())
 
 fun FloatArray.shouldBeEmpty() = this.toTypedArray().shouldBeEmpty()
 
@@ -158,7 +164,7 @@ infix fun Float.shouldBeIn(theArray: FloatArray) = this shouldBeIn theArray.toTy
 
 infix fun Float.shouldNotBeIn(theArray: FloatArray) = this shouldNotBeIn theArray.toTypedArray()
 
-infix fun LongArray.shouldEqual(theOther: LongArray) = assert(Arrays.equals(this, theOther))
+infix fun LongArray.shouldEqual(theOther: LongArray) = assert(this contentEquals theOther)
 
 fun LongArray.shouldBeEmpty() = this.toTypedArray().shouldBeEmpty()
 
@@ -180,7 +186,7 @@ infix fun Long.shouldBeIn(theArray: LongArray) = this shouldBeIn theArray.toType
 
 infix fun Long.shouldNotBeIn(theArray: LongArray) = this shouldNotBeIn theArray.toTypedArray()
 
-infix fun ShortArray.shouldEqual(theOther: ShortArray) = assert(Arrays.equals(this, theOther))
+infix fun ShortArray.shouldEqual(theOther: ShortArray) = assert(this contentEquals theOther)
 
 fun ShortArray.shouldBeEmpty() = this.toTypedArray().shouldBeEmpty()
 
