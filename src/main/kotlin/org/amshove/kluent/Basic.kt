@@ -4,9 +4,9 @@ import kotlin.reflect.KClass
 import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals
 
-infix fun Any?.shouldEqual(theOther: Any?) = assertEquals(this, theOther)
+infix fun Any?.shouldEqual(theOther: Any?) = assertEquals(theOther, this)
 
-infix fun Any?.shouldNotEqual(theOther: Any?) = assertNotEquals(this, theOther)
+infix fun Any?.shouldNotEqual(theOther: Any?) = assertNotEquals(theOther, this)
 
 infix fun Any?.shouldBe(theOther: Any?) = assert(this === theOther)
 
