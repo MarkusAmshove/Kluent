@@ -33,27 +33,39 @@ abstract class AbstractJavaTimeComparator<T> where T : Comparable<T> {
     }
 
     protected fun assertAtLeastAfter(theOther: T) {
-        assert(startValue >= theOther, { "Expected $startValue to be at least { ${getExpectedOffset()} } after $theOther" })
+        assert(startValue >= theOther) {
+            "Expected $startValue to be at least { ${getExpectedOffset()} } after $theOther"
+        }
     }
 
     protected fun assertAtMostAfter(theOther: T) {
-        assert(startValue <= theOther, { "Expected $startValue to be at most { ${getExpectedOffset()} } after $theOther" })
+        assert(startValue <= theOther) {
+            "Expected $startValue to be at most { ${getExpectedOffset()} } after $theOther"
+        }
     }
 
     protected fun assertExactlyAfter(theOther: T) {
-        assert(startValue == theOther, { "Expected $startValue to be { ${getExpectedOffset()} } after $theOther" })
+        assert(startValue == theOther) {
+            "Expected $startValue to be { ${getExpectedOffset()} } after $theOther"
+        }
     }
 
     protected fun assertExactlyBefore(theOther: T) {
-        assert(startValue == theOther, { "Expected $startValue to be { ${getExpectedOffset()} } before $theOther" })
+        assert(startValue == theOther) {
+            "Expected $startValue to be { ${getExpectedOffset()} } before $theOther"
+        }
     }
 
     protected fun assertAtLeastBefore(theOther: T) {
-        assert(startValue <= theOther, { "Expected $startValue to be at least { ${getExpectedOffset()} } before $theOther" })
+        assert(startValue <= theOther) {
+            "Expected $startValue to be at least { ${getExpectedOffset()} } before $theOther"
+        }
     }
 
     protected fun assertAtMostBefore(theOther: T) {
-        assert(startValue >= theOther, { "Expected $startValue to be at most { ${getExpectedOffset()} } before $theOther" })
+        assert(startValue >= theOther) {
+            "Expected $startValue to be at most { ${getExpectedOffset()} } before $theOther"
+        }
     }
 
     protected abstract fun calculateComparedValue(currentValue: T, multiplier: Int = 1): T
