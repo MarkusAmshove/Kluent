@@ -13,9 +13,9 @@ fun File.shouldNotBeDir() = assertFalse("The file is a directory", this.isDirect
 fun File.shouldBeFile() = assertTrue("The file is not a file", this.isFile)
 fun File.shouldNotBeFile() = assertFalse("The file is a file", this.isFile)
 
-infix fun File.shouldHaveExtension(other: String) = this.extension shouldEqualTo other
-infix fun File.shouldNotHaveExtension(other: String) = this.extension shouldNotEqualTo other
+infix fun File.shouldHaveExtension(other: String) = this.extension shouldBeEqualTo other
+infix fun File.shouldNotHaveExtension(other: String) = this.extension shouldNotBeEqualTo other
 
-infix fun File.shouldHaveName(other: String) = this.name shouldEqualTo other
-infix fun File.shouldNotHaveName(other: String) = this.name shouldNotEqualTo other
+infix fun File.shouldHaveName(other: String) = this.name shouldBeEqualTo other
+infix fun File.shouldNotHaveName(other: String) = this.name shouldNotBeEqualTo other
 

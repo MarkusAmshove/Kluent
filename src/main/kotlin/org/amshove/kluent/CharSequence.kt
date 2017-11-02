@@ -26,9 +26,15 @@ fun CharSequence.shouldBeBlank() = assertTrue("Expected the CharSequence to be b
 
 fun CharSequence?.shouldBeNullOrBlank() = assertTrue("Expected $this to be null or blank", this == null || this.isBlank())
 
-infix fun String.shouldEqualTo(theOther: String) = assertEquals(theOther, this)
+@Deprecated("Use shouldBeEqualTo", ReplaceWith("this.shouldBeEqualTo(theOther)"))
+infix fun String.shouldEqualTo(theOther: String) = shouldBeEqualTo(theOther)
 
-infix fun String.shouldNotEqualTo(theOther: String) = assertNotEquals(theOther, this)
+infix fun String.shouldBeEqualTo(theOther: String) = assertEquals(theOther, this)
+
+@Deprecated("Use shouldNotBeEqualTo", ReplaceWith("this.shouldNotBeEqualTo(theOther)"))
+infix fun String.shouldNotEqualTo(theOther: String) = shouldNotBeEqualTo(theOther)
+
+infix fun String.shouldNotBeEqualTo(theOther: String) = assertNotEquals(theOther, this)
 
 infix fun CharSequence.shouldNotStartWith(theOther: CharSequence) = assertFalse("Expected the CharSequence $this to not start with $theOther", this.startsWith(theOther))
 
