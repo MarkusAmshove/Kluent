@@ -43,6 +43,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     testImplementation "org.jetbrains.spek:spek:$spek_version"
     testImplementation "com.nhaarman:mockito-kotlin-kt1.1:$mockito_version"
+    if(isAndroid) {
+        testImplementation 'org.mockito:mockito-android:2.12.0'
+    }
 }
 
 sourceSets {
