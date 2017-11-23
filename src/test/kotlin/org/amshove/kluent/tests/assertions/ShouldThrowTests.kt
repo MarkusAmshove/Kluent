@@ -92,7 +92,7 @@ class ShouldThrowTests : Spek({
         }
 
         given("a custom exception") {
-            class CustomException(val code: Int) : Exception("code is $code")
+            data class CustomException(val code: Int) : Exception("code is $code")
 
             on("throwing an exception of the right type") {
                 it("should return the exception result with the given type") {
@@ -102,10 +102,25 @@ class ShouldThrowTests : Spek({
                     func.shouldThrow(CustomException::class).exception.code.shouldEqualTo(10)
                 }
             }
+
             on("throwing an exception of the wrong type") {
                 it("should fail") {
                     val func = { throw IllegalArgumentException() }
                     assertFails { func.shouldThrow(CustomException::class).exception.code.shouldEqualTo(10) }
+                }
+            }
+
+            on("expecting an exact thrown exception") {
+                it("should pass") {
+                    val func = { throw CustomException(12345) }
+                    func shouldThrow CustomException(12345)
+                }
+            }
+
+            on("expecting an exact thrown exception with wrong field values") {
+                it("should failing") {
+                    val func = { throw CustomException(12345) }
+                    assertFails({ func shouldThrow CustomException(54321) })
                 }
             }
         }

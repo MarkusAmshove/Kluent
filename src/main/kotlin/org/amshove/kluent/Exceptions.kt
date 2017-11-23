@@ -27,6 +27,17 @@ infix fun <T : Throwable> (() -> Any?).shouldNotThrow(expectedException: KClass<
     }
 }
 
+infix fun <T : Throwable> (() -> Any?).shouldThrow(expectedException: T) {
+    try {
+        this.invoke()
+        fail("There was an Exception expected to be thrown, but nothing was thrown", "$expectedException", "None")
+    } catch (e: Throwable) {
+        if (!e.equals(expectedException)) {
+            throw ComparisonFailure("Expected ${expectedException} to be thrown", "${expectedException}", "${e.javaClass}")
+        }
+    }
+}
+
 @Deprecated("Use shouldThrow instead", ReplaceWith("x shouldThrow expectedException"))
 infix fun <T : Throwable> (() -> Any).shouldThrowTheException(expectedException: KClass<T>): ExceptionResult<T> = this shouldThrow expectedException
 
