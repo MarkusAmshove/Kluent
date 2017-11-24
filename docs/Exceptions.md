@@ -3,8 +3,10 @@
 ```kt
 fun myThrowingFunction() { throw RuntimeException("oops!") }
 
+
 // Wrap the function which might throw an exception
 val theFunction = { myThrowingFunction() }
+
 
 // Expect any exception
 theFunction shouldThrow AnyException
@@ -25,7 +27,14 @@ theFunction shouldNotThrow RuntimeException::class withMessage "oops!"
 theFunction shouldThrow RuntimeException::class withCause IllegalArgumentException::class
 theFunction shouldNotThrow RuntimeException::class withCause IllegalArgumentException::class
 
+
 // Expecting a specific type and message can be chained
 val func = { throw IllegalArgumentException("hello", IOException()) }
 func shouldThrow IllegalArgumentException::class withCause IOException::class withMessage "hello"
+
+
+// Expect a specific Exception based on `equals` comparison
+data class CustomException(val code: Int) : Exception("code is $code")
+val func = { throw CustomException(12345) }
+func shouldThrow CustomException(12345)
 ```
