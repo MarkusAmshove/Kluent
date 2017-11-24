@@ -40,7 +40,10 @@ Some examples:
     "hello" `should not equal` "world"
 
 # Changelog
-# 1.30 (WIP)
+# 1.31
+* Expect an Exception instance to be thrown compared by equals | [PR](https://github.com/MarkusAmshove/Kluent/pull/78) | thanks to [@nhellwig](https://github.com/nhellwig)
+
+# 1.30
 * Allow should(Not)Throw to on functions returning nullables | [Issue](https://github.com/MarkusAmshove/Kluent/issues/63) | [PR](https://github.com/MarkusAmshove/Kluent/pull/64) | thanks to [@gregwoodfill](https://github.com/gregwoodfill)
 * Update mockito-kotlin to kt1.1 | [Issue](https://github.com/MarkusAmshove/Kluent/issues/61)
 

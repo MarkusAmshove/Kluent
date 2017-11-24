@@ -18,3 +18,5 @@ infix fun NotThrowExceptionResult.`with message`(theMessage: String) = this.with
 infix fun <T : Throwable> ExceptionResult<T>.`with cause`(expectedCause: KClass<out Throwable>) = this.withCause(expectedCause)
 
 infix fun NotThrowExceptionResult.`with cause`(expectedCause: KClass<out Throwable>) = this.withCause(expectedCause)
+
+infix fun <T : Throwable> (() -> Any?).`should throw`(expectedException: T) = this.shouldThrow(expectedException)
