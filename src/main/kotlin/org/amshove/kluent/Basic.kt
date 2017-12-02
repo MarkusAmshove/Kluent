@@ -30,3 +30,7 @@ fun Boolean.shouldBeFalse() =  assertFalse(this)
 fun Boolean.shouldNotBeTrue() = this.shouldBeFalse()
 
 fun Boolean.shouldNotBeFalse() = this.shouldBeTrue()
+
+infix fun <T> T.should(assertion: T.() -> Boolean) = should("Expected the assertion to return true, but returned false", assertion)
+
+fun <T> T.should(message: String, assertion: T.() -> Boolean) = if (assertion()) Unit else fail(message)
