@@ -22,8 +22,8 @@ class ShouldTests : Spek({
                 }
             }
         }
-        on("defining a domain specific assertion method") {
 
+        on("defining a domain specific assertion method") {
             fun Person.shouldHaveUppercaseName() = this.should("The name of $this should be uppercase") {
                 name[0].isUpperCase()
             }
@@ -40,9 +40,13 @@ class ShouldTests : Spek({
                 val peter = Person("pan", "peter")
                 try {
                     peter.shouldHaveUppercaseName()
+                } catch (e: AssertionError) {
+                    e.message.shouldEqual("The name of $peter should be uppercase")
                 }
-                catch (e: AssertionError) {
-                   e.message.shouldEqual("The name of $peter should be uppercase")
+            }
+            it("should fail when an exception occurs") {
+                assertFails {
+                    Person("", "").shouldHaveUppercaseName()
                 }
             }
         }

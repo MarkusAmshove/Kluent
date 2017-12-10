@@ -25,6 +25,8 @@ It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.ht
 
 [FileSystem](FileSystem.md)
 
+[Define own assertions](DefineOwn.md)
+
 ## Using backticks
 
 Every method that is included in Kluent also has a "backtick version", to make it feel more like a describing sentence.
@@ -33,13 +35,18 @@ Some examples:
 
 ### assertEquals ##
     "hello" shouldEqual "hello"
+    "hello".shouldEqual("hello")
     "hello" `should equal` "hello"
 
 ### assertNotEquals ##
     "hello" shouldNotEqual "world"
+    "hello".shouldNotEqual("world")
     "hello" `should not equal` "world"
 
 # Changelog
+# 1.32 (WIP)
+* Support lambda logic assertion | [Issue](https://github.com/MarkusAmshove/Kluent/issues/77) | [PR](https://github.com/MarkusAmshove/Kluent/pull/81) | Issue by [@goreRatzete](https://github.com/goreratzete)
+
 # 1.31
 * Expect an Exception instance to be thrown compared by equals | [PR](https://github.com/MarkusAmshove/Kluent/pull/78) | thanks to [@nhellwig](https://github.com/nhellwig)
 
