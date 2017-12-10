@@ -1,10 +1,14 @@
 package org.amshove.kluent.tests.mocking
 
+import com.nhaarman.mockito_kotlin.anyVararg
+import com.nhaarman.mockito_kotlin.reset
 import org.amshove.kluent.*
 import org.amshove.kluent.tests.helpclasses.Database
 import org.amshove.kluent.tests.helpclasses.Person
+import org.amshove.kluent.tests.helpclasses.Sizes
 import org.jetbrains.spek.api.Spek
 import org.junit.Assert.assertSame
+import org.mockito.ArgumentMatchers.anyList
 import org.mockito.exceptions.misusing.InvalidUseOfMatchersException
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
@@ -62,6 +66,69 @@ class StubTests : Spek({
                 When calling mock.getPerson() itReturns any()
                 val func = { mock.getPerson() }
                 func shouldThrow InvalidUseOfMatchersException::class
+            }
+        }
+
+        context("with specific arguments") {
+            val mock = mock(Sizes::class)
+            val firstArg = 1
+            val secondArg = 2
+            val thirdArg = 3
+            val fourthArg = 4
+            val fifthArg = 5
+            val sixthArg = 6
+
+            afterEach {
+                reset(mock)
+            }
+
+            on("telling it to return the first argument") {
+                it("returns the first argument") {
+                    When calling mock.getValue(any(), any(), any(), any(), any(), any()) itAnswers withFirstArg()
+
+                    val result = mock.getValue(firstArg, secondArg, thirdArg, fourthArg, fifthArg, sixthArg)
+                    assertEquals(firstArg, result)
+                }
+            }
+            on("telling it to return the second argument") {
+                it("returns the second argument") {
+                    When calling mock.getValue(any(), any(), any(), any(), any(), any()) itAnswers withSecondArg()
+
+                    val result = mock.getValue(firstArg, secondArg, thirdArg, fourthArg, fifthArg, sixthArg)
+                    assertEquals(secondArg, result)
+                }
+            }
+            on("telling it to return the third argument") {
+                it("returns the third argument") {
+                    When calling mock.getValue(any(), any(), any(), any(), any(), any()) itAnswers withThirdArg()
+
+                    val result = mock.getValue(firstArg, secondArg, thirdArg, fourthArg, fifthArg, sixthArg)
+                    assertEquals(thirdArg, result)
+                }
+            }
+            on("telling it to return the fourth argument") {
+                it("returns the fourth argument") {
+                    When calling mock.getValue(any(), any(), any(), any(), any(), any()) itAnswers withFourthArg()
+
+                    val result = mock.getValue(firstArg, secondArg, thirdArg, fourthArg, fifthArg, sixthArg)
+                    assertEquals(fourthArg, result)
+                }
+            }
+            on("telling it to return the argument in the fifth spot") {
+                it("returns the fifth spot argument") {
+                    When calling mock.getValue(any(), any(), any(), any(), any(), any()) itAnswers withArgAt(4)
+
+                    val result = mock.getValue(firstArg, secondArg, thirdArg, fourthArg, fifthArg, sixthArg)
+                    assertEquals(fifthArg, result)
+                }
+            }
+            on("telling it to return the argument in the last spot") {
+                it("returns the last argument") {
+                    When calling mock.getValue(any(), any(), any(), any(), any(), any()) itAnswers withLastArg()
+
+                    val result = mock.getValue(firstArg, secondArg, thirdArg, fourthArg, fifthArg, sixthArg)
+                    assertEquals(sixthArg, result)
+                }
             }
         }
     }

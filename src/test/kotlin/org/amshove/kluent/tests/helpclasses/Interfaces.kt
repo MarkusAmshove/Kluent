@@ -10,3 +10,7 @@ interface Shape {
     fun getArea(): Double
 }
 
+interface Sizes {
+    fun getValue(firstArg: Int, secondArg: Int, thirdArg: Int, fourthArg: Int, fifthArg: Int, sixthArg: Int): Int
+}
+

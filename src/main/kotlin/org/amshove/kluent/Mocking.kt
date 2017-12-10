@@ -4,9 +4,11 @@ import com.nhaarman.mockito_kotlin.never
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.verifyNoMoreInteractions
 import com.nhaarman.mockito_kotlin.verifyZeroInteractions
+import org.mockito.AdditionalAnswers.*
 import org.mockito.Mockito.`when`
 import org.mockito.internal.util.MockUtil
 import org.mockito.invocation.InvocationOnMock
+import org.mockito.stubbing.Answer
 import org.mockito.stubbing.OngoingStubbing
 import kotlin.reflect.KClass
 
@@ -35,6 +37,8 @@ inline fun <reified T : Any> any(kClass: KClass<T>): T = any()
 
 inline fun <reified T : Any> any(): T = com.nhaarman.mockito_kotlin.any()
 
+infix fun <T> WhenKeyword.calling(methodCall: T): OngoingStubbing<T> = `when`(methodCall)
+
 infix fun <T> OngoingStubbing<T>.itReturns(value: T): OngoingStubbing<T> = this.thenReturn(value)
 
 infix fun <T> OngoingStubbing<T>.itThrows(value: RuntimeException): OngoingStubbing<T> = this.thenThrow(value)
@@ -43,8 +47,19 @@ infix fun <T> OngoingStubbing<T>.itThrows(value: Error): OngoingStubbing<T> = th
 
 infix fun <T> OngoingStubbing<T>.itAnswers(value: (InvocationOnMock) -> T): OngoingStubbing<T> = this.thenAnswer(value)
 
-infix fun <T> WhenKeyword.calling(methodCall: T): OngoingStubbing<T> = `when`(methodCall)
+infix fun <T> OngoingStubbing<T>.itAnswers(value: Answer<T>): OngoingStubbing<T> = this.thenAnswer(value)
 
+/**
+ * Returns the parameter of an invocation at the given position.
+ * @param position Location of the parameter to return, zero based.
+ * @see [returnsArgAt]
+ */
+fun <T> withArgAt(position: Int): Answer<T> = returnsArgAt(position)
+fun <T> withFirstArg(): Answer<T> = returnsFirstArg()
+fun <T> withSecondArg(): Answer<T> = returnsSecondArg()
+fun <T> withThirdArg(): Answer<T> = withArgAt(2)
+fun <T> withFourthArg(): Answer<T> = withArgAt(3)
+fun <T> withLastArg(): Answer<T> = returnsLastArg()
 
 private fun <T> ensureMock(obj: T) {
     if (!MockUtil.isMock(obj)) {
