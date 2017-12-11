@@ -138,5 +138,21 @@ class ShouldContainAllTests : Spek({
                 assertFails { map shouldContainAll mapOf('a' to 2, 'b' to 1) }
             }
         }
+        on("checking if an Iterable contains all elements of an array") {
+            it("should pass") {
+                val actual = arrayOf("Berlin", "Washington")
+                val subset = listOf("Berlin", "Washington")
+
+                subset.shouldContainAll(actual)
+            }
+        }
+        on("checking if an array contains all elements of an iterable") {
+            it("should pass") {
+                val subset = arrayOf("Berlin", "Washington")
+                val actual = listOf("Berlin", "Washington")
+
+                subset.shouldContainAll(actual)
+            }
+        }
     }
 })
