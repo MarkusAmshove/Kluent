@@ -202,13 +202,21 @@ infix fun <T> Iterable<T>.shouldContain(theThing: T) = if (this.contains(theThin
 
 infix fun <T> Iterable<T>.shouldContainSome(things: Iterable<T>) = assertTrue("Expected $this to contain at least one of $things", this.any { things.contains(it) })
 
+infix fun <T> Iterable<T>.shouldContainSome(things: Array<T>) = assertTrue("Expected $this to contain at least one of $things", this.any { things.contains(it) })
+
 infix fun <T> Iterable<T>.shouldContainNone(things: Iterable<T>) = assertTrue("Expected $this to contain none of $things", this.none { things.contains(it) })
 
+infix fun <T> Iterable<T>.shouldContainNone(things: Array<T>) = assertTrue("Expected $this to contain none of $things", this.none { things.contains(it) })
+
 infix fun <T> Iterable<T>.shouldContainAll(things: Iterable<T>) = things.forEach { shouldContain(it) }
+
+infix fun <T> Iterable<T>.shouldContainAll(things: Array<T>) = things.forEach { shouldContain(it) }
 
 infix fun <T> Iterable<T>.shouldNotContain(theThing: T) = if (!this.contains(theThing)) Unit else fail("$this should not contain $theThing", "the Iterable to not contain $theThing", join(this))
 
 infix fun <T> Iterable<T>.shouldNotContainAny(things: Iterable<T>) = things.forEach { shouldNotContain(it) }
+
+infix fun <T> Iterable<T>.shouldNotContainAny(things: Array<T>) = things.forEach { shouldNotContain(it) }
 
 infix fun <T> Iterable<T>?.shouldEqual(theOther: Iterable<T>?) = assertEquals(theOther, this)
 

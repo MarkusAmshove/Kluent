@@ -198,13 +198,21 @@ infix fun <T> Iterable<T>.`should contain`(theThing: T) = this.shouldContain(the
 
 infix fun <T> Iterable<T>.`should contain some`(things: Iterable<T>) = this.shouldContainSome(things)
 
+infix fun <T> Iterable<T>.`should contain some`(things: Array<T>) = this.shouldContainSome(things)
+
 infix fun <T> Iterable<T>.`should contain none`(things: Iterable<T>) = this.shouldContainNone(things)
 
+infix fun <T> Iterable<T>.`should contain none`(things: Array<T>) = this.shouldContainNone(things)
+
 infix fun <T> Iterable<T>.`should contain all`(things: Iterable<T>) = this.shouldContainAll(things)
+
+infix fun <T> Iterable<T>.`should contain all`(things: Array<T>) = this.shouldContainAll(things)
 
 infix fun <T> Iterable<T>.`should not contain`(theThing: T) = this.shouldNotContain(theThing)
 
 infix fun <T> Iterable<T>.`should not contain any`(things: Iterable<T>) = this.shouldNotContainAny(things)
+
+infix fun <T> Iterable<T>.`should not contain any`(things: Array<T>) = this.shouldNotContainAny(things)
 
 infix fun <T> Iterable<T>?.`should equal`(theOther: Iterable<T>?) = this.shouldEqual(theOther)
 
