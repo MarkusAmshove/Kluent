@@ -44,7 +44,7 @@ Some examples:
     "hello" `should not equal` "world"
 
 # Changelog
-# 1.32 (WIP)
+# 1.32
 * More overloads for collection assertions | [Issue](https://github.com/MarkusAmshove/Kluent/issues/82) | [PR](https://github.com/MarkusAmshove/Kluent/pull/85) | Issue by [@goreRatzete](https://github.com/goreRatzete)
 * Update to Kotlin 1.2 | [Issue](https://github.com/MarkusAmshove/Kluent/issues/80)
 * `itAnswers` should allow original Mockito Answer types | [Issue](https://github.com/MarkusAmshove/Kluent/issues/83) | [PR](https://github.com/MarkusAmshove/Kluent/pull/84) | thanks to [@jpopadak](https://github.com/jpopadak)
