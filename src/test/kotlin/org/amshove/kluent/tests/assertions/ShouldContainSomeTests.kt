@@ -22,5 +22,13 @@ class ShouldContainSomeTests : Spek({
                 assertFails { actual shouldContainSome cities }
             }
         }
+        on("testing if a list contains a subset of an array") {
+            it("should pass") {
+                val cities = arrayOf("Israel", "Phoenix", "Berlin", "Egypt")
+                val actual = listOf("Berlin", "Stuttgart")
+
+                actual.shouldContainSome(cities)
+            }
+        }
     }
 })

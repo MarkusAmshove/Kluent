@@ -45,6 +45,8 @@ Some examples:
 
 # Changelog
 # 1.32 (WIP)
+* More overloads for collection assertions | [Issue](https://github.com/MarkusAmshove/Kluent/issues/82) | [PR](https://github.com/MarkusAmshove/Kluent/pull/85) | Issue by [@goreRatzete](https://github.com/goreRatzete)
+* Update to Kotlin 1.2 | [Issue](https://github.com/MarkusAmshove/Kluent/issues/80)
 * `itAnswers` should allow original Mockito Answer types | [Issue](https://github.com/MarkusAmshove/Kluent/issues/83) | [PR](https://github.com/MarkusAmshove/Kluent/pull/84) | thanks to [@jpopadak](https://github.com/jpopadak)
 * Support lambda logic assertion | [Issue](https://github.com/MarkusAmshove/Kluent/issues/77) | [PR](https://github.com/MarkusAmshove/Kluent/pull/81) | Issue by [@goreRatzete](https://github.com/goreratzete)
 
@@ -183,7 +185,7 @@ Some examples:
 * Update Kotlin to 1.0.6 | [Issue](https://github.com/MarkusAmshove/Kluent/issues/14) | [PR](https://github.com/MarkusAmshove/Kluent/pull/15)
 
 # 1.11
-* Provide methods for common String operations | [Issue](https://github.com/MarkusAmshove/Kluent/issues/12) | [PR](https://github.com/MarkusAmshove/Kluent/pull/13) | thanks to [@goreRatzeze](https://github.com/goreRatzete)
+* Provide methods for common String operations | [Issue](https://github.com/MarkusAmshove/Kluent/issues/12) | [PR](https://github.com/MarkusAmshove/Kluent/pull/13) | thanks to [@goreRatzete](https://github.com/goreRatzete)
 
     shouldStartWith
 
@@ -203,7 +205,7 @@ Some examples:
 
 # 1.10
 
-* Provide methods to test maps | [Issue](https://github.com/MarkusAmshove/Kluent/issues/10) | [PR](https://github.com/MarkusAmshove/Kluent/pull/11) | thanks to [@goreRatzeze](https://github.com/goreRatzete)
+* Provide methods to test maps | [Issue](https://github.com/MarkusAmshove/Kluent/issues/10) | [PR](https://github.com/MarkusAmshove/Kluent/pull/11) | thanks to [@goreRatzete](https://github.com/goreRatzete)
 
     shouldHaveKey
     
