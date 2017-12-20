@@ -9,5 +9,6 @@ infix fun <T> OngoingStubbing<T>.`it throws`(value: RuntimeException) = this.itT
 infix fun <T> OngoingStubbing<T>.`it throws`(value: Error) = this.itThrows(value)
 infix fun <T> OngoingStubbing<T>.`it answers`(value: (InvocationOnMock) -> T) = this.itAnswers(value)
 infix fun <T> OngoingStubbing<T>.`it answers`(value: Answer<T>) = this.itAnswers(value)
+val `Verify not called` = VerifyNotCalled
 val `Verify no interactions` = VerifyNoInteractions
 val `Verify no further interactions` = VerifyNoFurtherInteractions
