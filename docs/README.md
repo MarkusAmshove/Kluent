@@ -43,6 +43,48 @@ Some examples:
     "hello".shouldNotEqual("world")
     "hello" `should not equal` "world"
 
+## Collections
+
+    shouldBeEmpty
+
+    shouldNotBeEmpty
+
+## CharSequence
+
+    shouldBeEmpty
+
+    shouldNotBeEmpty
+
+    shouldBeBlank
+
+    shouldNotBeBlank
+
+## CharSequence?
+
+    shouldBeNullOrEmpty
+
+    shouldNotBeNullOrEmpty
+
+    shouldBeNullOrBlank
+
+    shouldNotBeNullOrBlank
+
+## Nullables
+
+    shouldBeNull
+
+    shouldNotBeNull
+
+## Boolean
+
+    shouldBeTrue
+
+    shouldBeFalse
+
+    shouldNotBeTrue
+
+    shouldNotBeFalse
+
 # Changelog
 # 1.32
 * More overloads for collection assertions | [Issue](https://github.com/MarkusAmshove/Kluent/issues/82) | [PR](https://github.com/MarkusAmshove/Kluent/pull/85) | Issue by [@goreRatzete](https://github.com/goreRatzete)
@@ -113,49 +155,6 @@ Some examples:
 * Extract assertions into different files
 * Add withCause for Exception-Assertions | [Issue](https://github.com/MarkusAmshove/Kluent/issues/24) | [PR](https://github.com/MarkusAmshove/Kluent/pull/25) | thanks to [@okkero](https://github.com/okkero)
 * Add common non infix assertions | [Issue](https://github.com/MarkusAmshove/Kluent/issues/21) | [PR](https://github.com/MarkusAmshove/Kluent/pull/26)
-
-## Collections
-
-    shouldBeEmpty
-
-    shouldNotBeEmpty
-
-## CharSequence
-
-    shouldBeEmpty
-
-    shouldNotBeEmpty
-
-    shouldBeBlank
-
-    shouldNotBeBlank
-
-## CharSequence?
-
-    shouldBeNullOrEmpty
-
-    shouldNotBeNullOrEmpty
-
-    shouldBeNullOrBlank
-
-    shouldNotBeNullOrBlank
-
-## Nullables
-
-    shouldBeNull
-
-    shouldNotBeNull
-
-## Boolean
-
-    shouldBeTrue
-
-    shouldBeFalse
-
-    shouldNotBeTrue
-
-    shouldNotBeFalse
-
 
 # 1.14
 * Introduce numerical operations | [Issue](https://github.com/MarkusAmshove/Kluent/issues/17) | [PR](https://github.com/MarkusAmshove/Kluent/pull/18)
