@@ -4,6 +4,10 @@ Kluent is a "Fluent Assertions" library written specifically for Kotlin.
 
 It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.html#infix-notation "Infix-Notation") and [Extension Functions](https://kotlinlang.org/docs/reference/extensions.html#extension-functions "Extension Functions") of Kotlin to provide a fluent wrapper around JUnit-Asserts and Mockito.
 
+[How to contribute](../CONTRIBUTING.md)
+
+[Contributors](../AUTHORS.md)
+
  [ ![Download](https://api.bintray.com/packages/markusamshove/maven/Kluent/images/download.svg) ](https://bintray.com/markusamshove/maven/Kluent/_latestVersion) [![Build Status](https://travis-ci.org/MarkusAmshove/Kluent.svg?branch=master)](https://travis-ci.org/MarkusAmshove/Kluent)
 
 
