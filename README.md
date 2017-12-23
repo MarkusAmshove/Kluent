@@ -26,7 +26,7 @@ Kluent-Android is hosted [here at jcenter](https://bintray.com/markusamshove/mav
 Replace {version} with the current version
 
     dependencies {
-        testCompile 'org.amshove.kluent:kluent:{version}'
+        testImplementation 'org.amshove.kluent:kluent:{version}'
 
         // for Android:
         testImplementation 'org.amshove.kluent:kluent-android:{version}'
