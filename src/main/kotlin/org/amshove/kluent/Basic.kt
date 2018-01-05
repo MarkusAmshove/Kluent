@@ -19,9 +19,9 @@ infix fun Any?.shouldNotBeInstanceOf(className: Class<*>) = assertFalse("Expecte
 
 infix fun Any?.shouldNotBeInstanceOf(className: KClass<*>) = assertFalse("Expected $this to not be an instance of $className", className.isInstance(this))
 
-fun Any?.shouldBeNull() = assertNull(this)
+fun Any?.shouldBeNull() = if (this != null) fail("expected value to be null, but was: $this") else Unit
 
-fun Any?.shouldNotBeNull() = assertNotNull(this)
+fun Any?.shouldNotBeNull() = if (this == null) fail("Expected non null value, but value was null") else Unit
 
 fun Boolean.shouldBeTrue() = assertTrue(this)
 
