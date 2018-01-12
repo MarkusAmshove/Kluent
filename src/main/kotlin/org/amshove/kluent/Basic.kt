@@ -23,9 +23,9 @@ fun Any?.shouldBeNull() = if (this != null) fail("expected value to be null, but
 
 fun <T : Any> T?.shouldNotBeNull() : T = this ?: throw AssertionError("Expected non null value, but value was null")
 
-fun Boolean.shouldBeTrue() = assertTrue(this)
+fun Boolean.shouldBeTrue() = assertTrue("Expected value to be true, but was $this", this)
 
-fun Boolean.shouldBeFalse() = assertFalse(this)
+fun Boolean.shouldBeFalse() = assertFalse("Expected value to be false, but was $this", this)
 
 fun Boolean.shouldNotBeTrue() = this.shouldBeFalse()
 
