@@ -20,7 +20,7 @@ infix fun Any?.`should not be instance of`(className: KClass<*>) = this.shouldNo
 
 fun Any?.`should be null`() = this.shouldBeNull()
 
-fun Any?.`should not be null`() = this.shouldNotBeNull()
+fun <T : Any> T?.`should not be null`() : T = this.shouldNotBeNull()
 
 fun Boolean.`should be true`() = this.shouldBeTrue()
 

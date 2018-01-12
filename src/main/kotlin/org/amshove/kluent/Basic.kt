@@ -21,7 +21,7 @@ infix fun Any?.shouldNotBeInstanceOf(className: KClass<*>) = assertFalse("Expect
 
 fun Any?.shouldBeNull() = if (this != null) fail("expected value to be null, but was: $this") else Unit
 
-fun Any?.shouldNotBeNull() = if (this == null) fail("Expected non null value, but value was null") else Unit
+fun <T : Any> T?.shouldNotBeNull() : T = this ?: throw AssertionError("Expected non null value, but value was null")
 
 fun Boolean.shouldBeTrue() = assertTrue(this)
 

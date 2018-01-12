@@ -1,5 +1,6 @@
 package org.amshove.kluent.tests.backtickassertions
 
+import org.amshove.kluent.`should be equal to`
 import org.amshove.kluent.`should not be null`
 import org.jetbrains.spek.api.Spek
 import kotlin.test.assertFails
@@ -11,6 +12,11 @@ class ShouldNotBeNullTests : Spek({
                 val str: String? = "Hello"
                 str.`should not be null`()
             }
+        }
+        it("should return a non nullable version") {
+            val str: String? = "Hello"
+            val notNull = str.`should not be null`()
+            notNull.length.`should be equal to`(5)
         }
         on("passing a null reference") {
             it("should fail") {
