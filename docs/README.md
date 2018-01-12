@@ -90,6 +90,17 @@ Some examples:
     shouldNotBeFalse
 
 # Changelog
+# 1.34
+* Return non-null instance when using `shouldNotBeNull` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/90) | thanks to [@goreRatzete](https://github.com/goreRatzete)
+* Add a more descriptive failure message for `shouldBeTrue` and `shouldBeFalse` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/89) | thanks to [@damelines](https://github.com/damelines)
+* Add a more descriptive failure message for not null | [Issue](https://github.com/MarkusAmshove/Kluent/issues/88) | thanks to [@kamilchm](https://github.com/kamilchm)
+
+
+# 1.33
+* Add missing backtick verifier | [Issue](https://github.com/MarkusAmshove/Kluent/issues/87) | thanks to [@athkalia](https://github.com/athkalia)
+
+* Kluent now uses fixed dependency version
+
 # 1.32
 * More overloads for collection assertions | [Issue](https://github.com/MarkusAmshove/Kluent/issues/82) | [PR](https://github.com/MarkusAmshove/Kluent/pull/85) | Issue by [@goreRatzete](https://github.com/goreRatzete)
 * Update to Kotlin 1.2 | [Issue](https://github.com/MarkusAmshove/Kluent/issues/80)
