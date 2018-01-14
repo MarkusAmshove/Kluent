@@ -3,11 +3,11 @@ package org.amshove.kluent
 import org.junit.Assert.assertTrue
 import java.time.*
 
-infix fun LocalDateTime.shouldBeAfter(theOther: LocalDateTime) = assertTrue("Expected $this to be after $theOther", this > theOther)
+infix fun LocalDateTime.shouldBeAfter(expected: LocalDateTime) = assertTrue("Expected $this to be after $expected", this > expected)
 
 infix fun LocalDateTime.shouldBeAfter(theTime: LocalTime) = assertTrue("Expected $this to be after $theTime", this.toLocalTime() > theTime)
 
-infix fun LocalDateTime.shouldBeBefore(theOther: LocalDateTime) = assertTrue("Expected $this to be before $theOther", this < theOther)
+infix fun LocalDateTime.shouldBeBefore(expected: LocalDateTime) = assertTrue("Expected $this to be before $expected", this < expected)
 
 infix fun LocalDateTime.shouldBeBefore(theTime: LocalTime) = assertTrue("Expected $this to be before $theTime", this.toLocalTime() < theTime)
 
@@ -39,9 +39,9 @@ infix fun LocalDateTime.shouldBeInYear(theYear: Int) = assertTrue("Expected $thi
 
 infix fun LocalDateTime.shouldNotBeInYear(theYear: Int) = this.toLocalDate() shouldNotBeInYear theYear
 
-infix fun LocalDate.shouldBeAfter(theOther: LocalDate) = assertTrue("Expected $this to be after $theOther", this > theOther)
+infix fun LocalDate.shouldBeAfter(expected: LocalDate) = assertTrue("Expected $this to be after $expected", this > expected)
 
-infix fun LocalDate.shouldBeBefore(theOther: LocalDate) = assertTrue("Expected $this to be before $theOther", this < theOther)
+infix fun LocalDate.shouldBeBefore(expected: LocalDate) = assertTrue("Expected $this to be before $expected", this < expected)
 
 infix fun LocalDate.shouldBeOnOrAfter(theDate: LocalDate) = assertTrue("Expected $this to be on or after $theDate", this >= theDate)
 
@@ -102,8 +102,8 @@ infix fun LocalDateTime.shouldBeAtLeast(timeComparator: TimeComparator) = DateTi
 
 infix fun LocalDateTime.shouldBeAtMost(timeComparator: TimeComparator) = DateTimeComparator(timeComparator = timeComparator).withStartValue(this).withComparatorType(ComparatorType.AtMost)
 
-infix fun <T : Comparable<T>> AbstractJavaTimeComparator<T>.after(theOther: T) = this.assertAfter(theOther)
-infix fun <T : Comparable<T>> AbstractJavaTimeComparator<T>.before(theOther: T) = this.assertBefore(theOther)
+infix fun <T : Comparable<T>> AbstractJavaTimeComparator<T>.after(expected: T) = this.assertAfter(expected)
+infix fun <T : Comparable<T>> AbstractJavaTimeComparator<T>.before(expected: T) = this.assertBefore(expected)
 
 infix fun DateTimeComparator.after(theDate: LocalDate) = this.assertAfter(theDate)
 infix fun DateTimeComparator.before(theDate: LocalDate) = this.assertBefore(theDate)

@@ -12,6 +12,11 @@ class ShouldEqualTests : Spek({
             it("should pass") {
                 "hello world" shouldEqual "hello world"
             }
+            it("should return the tested instance") {
+                val hello = "hello world"
+                val returnedInstance = hello shouldEqual "hello world"
+                hello shouldEqual returnedInstance
+            }
         }
         on("checking equality of two strings with unequal values") {
             it("should fail") {

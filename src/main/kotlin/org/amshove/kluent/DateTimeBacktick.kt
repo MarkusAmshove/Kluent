@@ -2,11 +2,11 @@ package org.amshove.kluent
 
 import java.time.*
 
-infix fun LocalDateTime.`should be after`(theOther: LocalDateTime) = this.shouldBeAfter(theOther)
+infix fun LocalDateTime.`should be after`(expected: LocalDateTime) = this.shouldBeAfter(expected)
 
 infix fun LocalDateTime.`should be after`(theTime: LocalTime) = this.shouldBeAfter(theTime)
 
-infix fun LocalDateTime.`should be before`(theOther: LocalDateTime) = this.shouldBeBefore(theOther)
+infix fun LocalDateTime.`should be before`(expected: LocalDateTime) = this.shouldBeBefore(expected)
 
 infix fun LocalDateTime.`should be before`(theTime: LocalTime) = this.shouldBeBefore(theTime)
 
@@ -38,9 +38,9 @@ infix fun LocalDateTime.`should be in year`(theYear: Int) = this.shouldBeInYear(
 
 infix fun LocalDateTime.`should not be in year`(theYear: Int) = this.shouldNotBeInYear(theYear)
 
-infix fun LocalDate.`should be after`(theOther: LocalDate) = this.shouldBeAfter(theOther)
+infix fun LocalDate.`should be after`(expected: LocalDate) = this.shouldBeAfter(expected)
 
-infix fun LocalDate.`should be before`(theOther: LocalDate) = this.shouldBeBefore(theOther)
+infix fun LocalDate.`should be before`(expected: LocalDate) = this.shouldBeBefore(expected)
 
 infix fun LocalDate.`should be on or after`(theDate: LocalDate) = this.shouldBeOnOrAfter(theDate)
 

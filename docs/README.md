@@ -88,9 +88,23 @@ Some examples:
     shouldNotBeTrue
 
     shouldNotBeFalse
+    
+## Chaining of assertions
+
+```kt
+val number = 42
+
+number
+        .shouldBePositive()
+        .shouldBeGreaterThan(10)
+        .shouldBeLessThan(43)
+        .shouldBeInRange(40..45)
+        .shouldNotBeInRange(45..50)
+```
 
 # Changelog
 # 1.34
+* Allow chaining of assertions | [Issue](https://github.com/MarkusAmshove/Kluent/issues/91) | [PR](https://github.com/MarkusAmshove/Kluent/pull/92)
 * Return non-null instance when using `shouldNotBeNull` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/90) | thanks to [@goreRatzete](https://github.com/goreRatzete)
 * Add a more descriptive failure message for `shouldBeTrue` and `shouldBeFalse` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/89) | thanks to [@damelines](https://github.com/damelines)
 * Add a more descriptive failure message for not null | [Issue](https://github.com/MarkusAmshove/Kluent/issues/88) | thanks to [@kamilchm](https://github.com/kamilchm)
@@ -98,7 +112,6 @@ Some examples:
 
 # 1.33
 * Add missing backtick verifier | [Issue](https://github.com/MarkusAmshove/Kluent/issues/87) | thanks to [@athkalia](https://github.com/athkalia)
-
 * Kluent now uses fixed dependency version
 
 # 1.32

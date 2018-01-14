@@ -2,12 +2,20 @@ package org.amshove.kluent.tests.assertions
 
 import org.amshove.kluent.should
 import org.amshove.kluent.shouldEqual
+import org.amshove.kluent.shouldStartWith
 import org.amshove.kluent.tests.helpclasses.Person
 import org.jetbrains.spek.api.Spek
 import kotlin.test.assertFails
 
 class ShouldTests : Spek({
     given("the should method") {
+        it("should be possible to chain assertions") {
+            val person = Person("Peter", "Pan")
+
+            person
+                    .should { name.startsWith("P") }
+                    .should { surname.startsWith("P") }
+        }
         on("passing a lambda that returns true") {
             it("should pass") {
                 Person("", "") should { name.length == 0 }

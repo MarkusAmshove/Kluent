@@ -1,170 +1,170 @@
 package org.amshove.kluent
 
-@Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(theOther)"))
-infix fun Boolean.`should equal to`(theOther: Boolean) = this.`should be equal to`(theOther)
+@Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
+infix fun Boolean.`should equal to`(expected: Boolean) = this.`should be equal to`(expected)
 
-infix fun Boolean.`should be equal to`(theOther: Boolean) = this.shouldEqualTo(theOther)
+infix fun Boolean.`should be equal to`(expected: Boolean) = this.shouldEqualTo(expected)
 
-@Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(theOther)"))
-infix fun Byte.`should equal to`(theOther: Byte) = this.`should be equal to`(theOther)
+@Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
+infix fun Byte.`should equal to`(expected: Byte) = this.`should be equal to`(expected)
 
-infix fun Byte.`should be equal to`(theOther: Byte) = this.shouldEqualTo(theOther)
+infix fun Byte.`should be equal to`(expected: Byte) = this.shouldEqualTo(expected)
 
-@Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(theOther)"))
-infix fun Short.`should equal to`(theOther: Short) = this.`should be equal to`(theOther)
+@Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
+infix fun Short.`should equal to`(expected: Short) = this.`should be equal to`(expected)
 
-infix fun Short.`should be equal to`(theOther: Short) = this.shouldEqualTo(theOther)
+infix fun Short.`should be equal to`(expected: Short) = this.shouldEqualTo(expected)
 
-@Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(theOther)"))
-infix fun Int.`should equal to`(theOther: Int) = this.`should be equal to`(theOther)
+@Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
+infix fun Int.`should equal to`(expected: Int) = this.`should be equal to`(expected)
 
-infix fun Int.`should be equal to`(theOther: Int) = this.shouldEqualTo(theOther)
+infix fun Int.`should be equal to`(expected: Int) = this.shouldEqualTo(expected)
 
-@Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(theOther)"))
-infix fun Long.`should equal to`(theOther: Long) = this.`should be equal to`(theOther)
+@Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
+infix fun Long.`should equal to`(expected: Long) = this.`should be equal to`(expected)
 
-infix fun Long.`should be equal to`(theOther: Long) = this.shouldEqualTo(theOther)
+infix fun Long.`should be equal to`(expected: Long) = this.shouldEqualTo(expected)
 
-@Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(theOther)"))
-infix fun Float.`should equal to`(theOther: Float) = this.`should be equal to`(theOther)
+@Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
+infix fun Float.`should equal to`(expected: Float) = this.`should be equal to`(expected)
 
-infix fun Float.`should be equal to`(theOther: Float) = this.shouldEqualTo(theOther)
+infix fun Float.`should be equal to`(expected: Float) = this.shouldEqualTo(expected)
 
-@Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(theOther)"))
-infix fun Double.`should equal to`(theOther: Double) = this.`should be equal to`(theOther)
+@Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
+infix fun Double.`should equal to`(expected: Double) = this.`should be equal to`(expected)
 
-infix fun Double.`should be equal to`(theOther: Double) = this.shouldEqualTo(theOther)
+infix fun Double.`should be equal to`(expected: Double) = this.shouldEqualTo(expected)
 
-@Deprecated("Use `should not equal to`", ReplaceWith("this.`should not equal to`(theOther)"))
-infix fun Boolean.`should not equal to`(theOther: Boolean) = this.`should not be equal to`(theOther)
+@Deprecated("Use `should not equal to`", ReplaceWith("this.`should not equal to`(expected)"))
+infix fun Boolean.`should not equal to`(expected: Boolean) = this.`should not be equal to`(expected)
 
-infix fun Boolean.`should not be equal to`(theOther: Boolean) = this.shouldNotEqualTo(theOther)
+infix fun Boolean.`should not be equal to`(expected: Boolean) = this.shouldNotEqualTo(expected)
 
-@Deprecated("Use `should not equal to`", ReplaceWith("this.`should not equal to`(theOther)"))
-infix fun Byte.`should not equal to`(theOther: Byte) = this.`should not be equal to`(theOther)
+@Deprecated("Use `should not equal to`", ReplaceWith("this.`should not equal to`(expected)"))
+infix fun Byte.`should not equal to`(expected: Byte) = this.`should not be equal to`(expected)
 
-infix fun Byte.`should not be equal to`(theOther: Byte) = this.shouldNotEqualTo(theOther)
+infix fun Byte.`should not be equal to`(expected: Byte) = this.shouldNotEqualTo(expected)
 
-@Deprecated("Use `should not equal to`", ReplaceWith("this.`should not equal to`(theOther)"))
-infix fun Short.`should not equal to`(theOther: Short) = this.`should not be equal to`(theOther)
+@Deprecated("Use `should not equal to`", ReplaceWith("this.`should not equal to`(expected)"))
+infix fun Short.`should not equal to`(expected: Short) = this.`should not be equal to`(expected)
 
-infix fun Short.`should not be equal to`(theOther: Short) = this.shouldNotEqualTo(theOther)
+infix fun Short.`should not be equal to`(expected: Short) = this.shouldNotEqualTo(expected)
 
-@Deprecated("Use `should not equal to`", ReplaceWith("this.`should not equal to`(theOther)"))
-infix fun Int.`should not equal to`(theOther: Int) = this.`should not be equal to`(theOther)
+@Deprecated("Use `should not equal to`", ReplaceWith("this.`should not equal to`(expected)"))
+infix fun Int.`should not equal to`(expected: Int) = this.`should not be equal to`(expected)
 
-infix fun Int.`should not be equal to`(theOther: Int) = this.shouldNotEqualTo(theOther)
+infix fun Int.`should not be equal to`(expected: Int) = this.shouldNotEqualTo(expected)
 
-@Deprecated("Use `should not equal to`", ReplaceWith("this.`should not equal to`(theOther)"))
-infix fun Long.`should not equal to`(theOther: Long) = this.`should not be equal to`(theOther)
+@Deprecated("Use `should not equal to`", ReplaceWith("this.`should not equal to`(expected)"))
+infix fun Long.`should not equal to`(expected: Long) = this.`should not be equal to`(expected)
 
-infix fun Long.`should not be equal to`(theOther: Long) = this.shouldNotEqualTo(theOther)
+infix fun Long.`should not be equal to`(expected: Long) = this.shouldNotEqualTo(expected)
 
-@Deprecated("Use `should not equal to`", ReplaceWith("this.`should not equal to`(theOther)"))
-infix fun Float.`should not equal to`(theOther: Float) = this.`should not be equal to`(theOther)
+@Deprecated("Use `should not equal to`", ReplaceWith("this.`should not equal to`(expected)"))
+infix fun Float.`should not equal to`(expected: Float) = this.`should not be equal to`(expected)
 
-infix fun Float.`should not be equal to`(theOther: Float) = this.shouldNotEqualTo(theOther)
+infix fun Float.`should not be equal to`(expected: Float) = this.shouldNotEqualTo(expected)
 
-@Deprecated("Use `should not equal to`", ReplaceWith("this.`should not equal to`(theOther)"))
-infix fun Double.`should not equal to`(theOther: Double) = this.`should not be equal to`(theOther)
+@Deprecated("Use `should not equal to`", ReplaceWith("this.`should not equal to`(expected)"))
+infix fun Double.`should not equal to`(expected: Double) = this.`should not be equal to`(expected)
 
-infix fun Double.`should not be equal to`(theOther: Double) = this.shouldNotEqualTo(theOther)
+infix fun Double.`should not be equal to`(expected: Double) = this.shouldNotEqualTo(expected)
 
-infix fun Byte.`should be greater than`(theOther: Byte) = this.shouldBeGreaterThan(theOther)
+infix fun Byte.`should be greater than`(expected: Byte) = this.shouldBeGreaterThan(expected)
 
-infix fun Short.`should be greater than`(theOther: Short) = this.shouldBeGreaterThan(theOther)
+infix fun Short.`should be greater than`(expected: Short) = this.shouldBeGreaterThan(expected)
 
-infix fun Int.`should be greater than`(theOther: Int) = this.shouldBeGreaterThan(theOther)
+infix fun Int.`should be greater than`(expected: Int) = this.shouldBeGreaterThan(expected)
 
-infix fun Long.`should be greater than`(theOther: Long) = this.shouldBeGreaterThan(theOther)
+infix fun Long.`should be greater than`(expected: Long) = this.shouldBeGreaterThan(expected)
 
-infix fun Float.`should be greater than`(theOther: Float) = this.shouldBeGreaterThan(theOther)
+infix fun Float.`should be greater than`(expected: Float) = this.shouldBeGreaterThan(expected)
 
-infix fun Double.`should be greater than`(theOther: Double) = this.shouldBeGreaterThan(theOther)
+infix fun Double.`should be greater than`(expected: Double) = this.shouldBeGreaterThan(expected)
 
-infix fun Byte.`should not be greater than`(theOther: Byte) = this.shouldNotBeGreaterThan(theOther)
+infix fun Byte.`should not be greater than`(expected: Byte) = this.shouldNotBeGreaterThan(expected)
 
-infix fun Short.`should not be greater than`(theOther: Short) = this.shouldNotBeGreaterThan(theOther)
+infix fun Short.`should not be greater than`(expected: Short) = this.shouldNotBeGreaterThan(expected)
 
-infix fun Int.`should not be greater than`(theOther: Int) = this.shouldNotBeGreaterThan(theOther)
+infix fun Int.`should not be greater than`(expected: Int) = this.shouldNotBeGreaterThan(expected)
 
-infix fun Long.`should not be greater than`(theOther: Long) = this.shouldNotBeGreaterThan(theOther)
+infix fun Long.`should not be greater than`(expected: Long) = this.shouldNotBeGreaterThan(expected)
 
-infix fun Float.`should not be greater than`(theOther: Float) = this.shouldNotBeGreaterThan(theOther)
+infix fun Float.`should not be greater than`(expected: Float) = this.shouldNotBeGreaterThan(expected)
 
-infix fun Double.`should not be greater than`(theOther: Double) = this.shouldNotBeGreaterThan(theOther)
+infix fun Double.`should not be greater than`(expected: Double) = this.shouldNotBeGreaterThan(expected)
 
-infix fun Byte.`should be greater or equal to`(theOther: Byte) = this.shouldBeGreaterOrEqualTo(theOther)
+infix fun Byte.`should be greater or equal to`(expected: Byte) = this.shouldBeGreaterOrEqualTo(expected)
 
-infix fun Short.`should be greater or equal to`(theOther: Short) = this.shouldBeGreaterOrEqualTo(theOther)
+infix fun Short.`should be greater or equal to`(expected: Short) = this.shouldBeGreaterOrEqualTo(expected)
 
-infix fun Int.`should be greater or equal to`(theOther: Int) = this.shouldBeGreaterOrEqualTo(theOther)
+infix fun Int.`should be greater or equal to`(expected: Int) = this.shouldBeGreaterOrEqualTo(expected)
 
-infix fun Long.`should be greater or equal to`(theOther: Long) = this.shouldBeGreaterOrEqualTo(theOther)
+infix fun Long.`should be greater or equal to`(expected: Long) = this.shouldBeGreaterOrEqualTo(expected)
 
-infix fun Float.`should be greater or equal to`(theOther: Float) = this.shouldBeGreaterOrEqualTo(theOther)
+infix fun Float.`should be greater or equal to`(expected: Float) = this.shouldBeGreaterOrEqualTo(expected)
 
-infix fun Double.`should be greater or equal to`(theOther: Double) = this.shouldBeGreaterOrEqualTo(theOther)
+infix fun Double.`should be greater or equal to`(expected: Double) = this.shouldBeGreaterOrEqualTo(expected)
 
-infix fun Byte.`should not be greater or equal to`(theOther: Byte) = this.shouldNotBeGreaterOrEqualTo(theOther)
+infix fun Byte.`should not be greater or equal to`(expected: Byte) = this.shouldNotBeGreaterOrEqualTo(expected)
 
-infix fun Short.`should not be greater or equal to`(theOther: Short) = this.shouldNotBeGreaterOrEqualTo(theOther)
+infix fun Short.`should not be greater or equal to`(expected: Short) = this.shouldNotBeGreaterOrEqualTo(expected)
 
-infix fun Int.`should not be greater or equal to`(theOther: Int) = this.shouldNotBeGreaterOrEqualTo(theOther)
+infix fun Int.`should not be greater or equal to`(expected: Int) = this.shouldNotBeGreaterOrEqualTo(expected)
 
-infix fun Long.`should not be greater or equal to`(theOther: Long) = this.shouldNotBeGreaterOrEqualTo(theOther)
+infix fun Long.`should not be greater or equal to`(expected: Long) = this.shouldNotBeGreaterOrEqualTo(expected)
 
-infix fun Float.`should not be greater or equal to`(theOther: Float) = this.shouldNotBeGreaterOrEqualTo(theOther)
+infix fun Float.`should not be greater or equal to`(expected: Float) = this.shouldNotBeGreaterOrEqualTo(expected)
 
-infix fun Double.`should not be greater or equal to`(theOther: Double) = this.shouldNotBeGreaterOrEqualTo(theOther)
+infix fun Double.`should not be greater or equal to`(expected: Double) = this.shouldNotBeGreaterOrEqualTo(expected)
 
-infix fun Byte.`should be less than`(theOther: Byte) = this.shouldBeLessThan(theOther)
+infix fun Byte.`should be less than`(expected: Byte) = this.shouldBeLessThan(expected)
 
-infix fun Short.`should be less than`(theOther: Short) = this.shouldBeLessThan(theOther)
+infix fun Short.`should be less than`(expected: Short) = this.shouldBeLessThan(expected)
 
-infix fun Int.`should be less than`(theOther: Int) = this.shouldBeLessThan(theOther)
+infix fun Int.`should be less than`(expected: Int) = this.shouldBeLessThan(expected)
 
-infix fun Long.`should be less than`(theOther: Long) = this.shouldBeLessThan(theOther)
+infix fun Long.`should be less than`(expected: Long) = this.shouldBeLessThan(expected)
 
-infix fun Float.`should be less than`(theOther: Float) = this.shouldBeLessThan(theOther)
+infix fun Float.`should be less than`(expected: Float) = this.shouldBeLessThan(expected)
 
-infix fun Double.`should be less than`(theOther: Double) = this.shouldBeLessThan(theOther)
+infix fun Double.`should be less than`(expected: Double) = this.shouldBeLessThan(expected)
 
-infix fun Byte.`should not be less than`(theOther: Byte) = this.shouldNotBeLessThan(theOther)
+infix fun Byte.`should not be less than`(expected: Byte) = this.shouldNotBeLessThan(expected)
 
-infix fun Short.`should not be less than`(theOther: Short) = this.shouldNotBeLessThan(theOther)
+infix fun Short.`should not be less than`(expected: Short) = this.shouldNotBeLessThan(expected)
 
-infix fun Int.`should not be less than`(theOther: Int) = this.shouldNotBeLessThan(theOther)
+infix fun Int.`should not be less than`(expected: Int) = this.shouldNotBeLessThan(expected)
 
-infix fun Long.`should not be less than`(theOther: Long) = this.shouldNotBeLessThan(theOther)
+infix fun Long.`should not be less than`(expected: Long) = this.shouldNotBeLessThan(expected)
 
-infix fun Float.`should not be less than`(theOther: Float) = this.shouldNotBeLessThan(theOther)
+infix fun Float.`should not be less than`(expected: Float) = this.shouldNotBeLessThan(expected)
 
-infix fun Double.`should not be less than`(theOther: Double) = this.shouldNotBeLessThan(theOther)
+infix fun Double.`should not be less than`(expected: Double) = this.shouldNotBeLessThan(expected)
 
-infix fun Byte.`should be less or equal to`(theOther: Byte) = this.shouldBeLessOrEqualTo(theOther)
+infix fun Byte.`should be less or equal to`(expected: Byte) = this.shouldBeLessOrEqualTo(expected)
 
-infix fun Short.`should be less or equal to`(theOther: Short) = this.shouldBeLessOrEqualTo(theOther)
+infix fun Short.`should be less or equal to`(expected: Short) = this.shouldBeLessOrEqualTo(expected)
 
-infix fun Int.`should be less or equal to`(theOther: Int) = this.shouldBeLessOrEqualTo(theOther)
+infix fun Int.`should be less or equal to`(expected: Int) = this.shouldBeLessOrEqualTo(expected)
 
-infix fun Long.`should be less or equal to`(theOther: Long) = this.shouldBeLessOrEqualTo(theOther)
+infix fun Long.`should be less or equal to`(expected: Long) = this.shouldBeLessOrEqualTo(expected)
 
-infix fun Float.`should be less or equal to`(theOther: Float) = this.shouldBeLessOrEqualTo(theOther)
+infix fun Float.`should be less or equal to`(expected: Float) = this.shouldBeLessOrEqualTo(expected)
 
-infix fun Double.`should be less or equal to`(theOther: Double) = this.shouldBeLessOrEqualTo(theOther)
+infix fun Double.`should be less or equal to`(expected: Double) = this.shouldBeLessOrEqualTo(expected)
 
-infix fun Byte.`should not be less or equal to`(theOther: Byte) = this.shouldNotBeLessOrEqualTo(theOther)
+infix fun Byte.`should not be less or equal to`(expected: Byte) = this.shouldNotBeLessOrEqualTo(expected)
 
-infix fun Short.`should not be less or equal to`(theOther: Short) = this.shouldNotBeLessOrEqualTo(theOther)
+infix fun Short.`should not be less or equal to`(expected: Short) = this.shouldNotBeLessOrEqualTo(expected)
 
-infix fun Int.`should not be less or equal to`(theOther: Int) = this.shouldNotBeLessOrEqualTo(theOther)
+infix fun Int.`should not be less or equal to`(expected: Int) = this.shouldNotBeLessOrEqualTo(expected)
 
-infix fun Long.`should not be less or equal to`(theOther: Long) = this.shouldNotBeLessOrEqualTo(theOther)
+infix fun Long.`should not be less or equal to`(expected: Long) = this.shouldNotBeLessOrEqualTo(expected)
 
-infix fun Float.`should not be less or equal to`(theOther: Float) = this.shouldNotBeLessOrEqualTo(theOther)
+infix fun Float.`should not be less or equal to`(expected: Float) = this.shouldNotBeLessOrEqualTo(expected)
 
-infix fun Double.`should not be less or equal to`(theOther: Double) = this.shouldNotBeLessOrEqualTo(theOther)
+infix fun Double.`should not be less or equal to`(expected: Double) = this.shouldNotBeLessOrEqualTo(expected)
 
 fun Byte.`should be positive`() = this.shouldBePositive()
 

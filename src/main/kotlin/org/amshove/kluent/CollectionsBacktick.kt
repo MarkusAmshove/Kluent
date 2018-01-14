@@ -12,13 +12,13 @@ infix fun <T> Array<T>.`should not contain`(theThing: T) = this.shouldNotContain
 
 infix fun <T> Array<T>.`should not contain any`(things: Array<T>) = this.shouldNotContainAny(things)
 
-infix fun <T> Array<T>?.`should equal`(theOther: Array<T>?) = this.shouldEqual(theOther)
+infix fun <T> Array<T>?.`should equal`(expected: Array<T>?) = this.shouldEqual(expected)
 
 fun <T> Array<T>.`should be empty`() = this.shouldBeEmpty()
 
 fun <T> Array<T>.`should not be empty`() = this.shouldNotBeEmpty()
 
-infix fun IntArray.`should equal`(theOther: IntArray) = this.shouldEqual(theOther)
+infix fun IntArray.`should equal`(expected: IntArray) = this.shouldEqual(expected)
 
 fun IntArray.`should be empty`() = this.shouldBeEmpty()
 
@@ -40,7 +40,7 @@ infix fun Int.`should be in`(theArray: IntArray) = this.shouldBeIn(theArray)
 
 infix fun Int.`should not be in`(theArray: IntArray) = this.shouldNotBeIn(theArray)
 
-infix fun BooleanArray.`should equal`(theOther: BooleanArray) = this.shouldEqual(theOther)
+infix fun BooleanArray.`should equal`(expected: BooleanArray) = this.shouldEqual(expected)
 
 fun BooleanArray.`should be empty`() = this.shouldBeEmpty()
 
@@ -62,7 +62,7 @@ infix fun Boolean.`should be in`(theArray: BooleanArray) = this.shouldBeIn(theAr
 
 infix fun Boolean.`should not be in`(theArray: BooleanArray) = this.shouldNotBeIn(theArray)
 
-infix fun ByteArray.`should equal`(theOther: ByteArray) = this.shouldEqual(theOther)
+infix fun ByteArray.`should equal`(expected: ByteArray) = this.shouldEqual(expected)
 
 fun ByteArray.`should be empty`() = this.shouldBeEmpty()
 
@@ -84,7 +84,7 @@ infix fun Byte.`should be in`(theArray: ByteArray) = this.shouldBeIn(theArray)
 
 infix fun Byte.`should not be in`(theArray: ByteArray) = this.shouldNotBeIn(theArray)
 
-infix fun CharArray.`should equal`(theOther: CharArray) = this.shouldEqual(theOther)
+infix fun CharArray.`should equal`(expected: CharArray) = this.shouldEqual(expected)
 
 fun CharArray.`should be empty`() = this.shouldBeEmpty()
 
@@ -106,7 +106,7 @@ infix fun Char.`should be in`(theArray: CharArray) = this.shouldBeIn(theArray)
 
 infix fun Char.`should not be in`(theArray: CharArray) = this.shouldNotBeIn(theArray)
 
-infix fun DoubleArray.`should equal`(theOther: DoubleArray) = this.shouldEqual(theOther)
+infix fun DoubleArray.`should equal`(expected: DoubleArray) = this.shouldEqual(expected)
 
 fun DoubleArray.`should be empty`() = this.shouldBeEmpty()
 
@@ -128,7 +128,7 @@ infix fun Double.`should be in`(theArray: DoubleArray) = this.shouldBeIn(theArra
 
 infix fun Double.`should not be in`(theArray: DoubleArray) = this.shouldNotBeIn(theArray)
 
-infix fun FloatArray.`should equal`(theOther: FloatArray) = this.shouldEqual(theOther)
+infix fun FloatArray.`should equal`(expected: FloatArray) = this.shouldEqual(expected)
 
 fun FloatArray.`should be empty`() = this.shouldBeEmpty()
 
@@ -150,7 +150,7 @@ infix fun Float.`should be in`(theArray: FloatArray) = this.shouldBeIn(theArray)
 
 infix fun Float.`should not be in`(theArray: FloatArray) = this.shouldNotBeIn(theArray)
 
-infix fun LongArray.`should equal`(theOther: LongArray) = this.shouldEqual(theOther)
+infix fun LongArray.`should equal`(expected: LongArray) = this.shouldEqual(expected)
 
 fun LongArray.`should be empty`() = this.shouldBeEmpty()
 
@@ -172,7 +172,7 @@ infix fun Long.`should be in`(theArray: LongArray) = this.shouldBeIn(theArray)
 
 infix fun Long.`should not be in`(theArray: LongArray) = this.shouldNotBeIn(theArray)
 
-infix fun ShortArray.`should equal`(theOther: ShortArray) = this.shouldEqual(theOther)
+infix fun ShortArray.`should equal`(expected: ShortArray) = this.shouldEqual(expected)
 
 fun ShortArray.`should be empty`() = this.shouldBeEmpty()
 
@@ -214,7 +214,7 @@ infix fun <T> Iterable<T>.`should not contain any`(things: Iterable<T>) = this.s
 
 infix fun <T> Iterable<T>.`should not contain any`(things: Array<T>) = this.shouldNotContainAny(things)
 
-infix fun <T> Iterable<T>?.`should equal`(theOther: Iterable<T>?) = this.shouldEqual(theOther)
+infix fun <T> Iterable<T>?.`should equal`(expected: Iterable<T>?) = this.shouldEqual(expected)
 
 fun <T> Iterable<T>.`should be empty`() = this.shouldBeEmpty()
 
