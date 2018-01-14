@@ -6,7 +6,7 @@ import kotlin.reflect.full.isSubclassOf
 
 infix fun <T> T.shouldEqual(theOther: T?): T = this.apply { assertEquals(theOther, this) }
 
-infix fun Any?.shouldNotEqual(theOther: Any?) = this.apply { assertNotEquals(theOther, this) }
+infix fun <T> T.shouldNotEqual(theOther: T?) = this.apply { assertNotEquals(theOther, this) }
 
 infix fun <T> T.shouldBe(theOther: T?): T = this.apply { assertSame(theOther, this) }
 
