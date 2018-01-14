@@ -4,19 +4,13 @@ import org.junit.Assert.*
 import kotlin.reflect.KClass
 import kotlin.reflect.full.isSubclassOf
 
-infix fun <T> T.shouldEqual(theOther: T?): T {
-    assertEquals(theOther, this)
-    return this
-}
+infix fun <T> T.shouldEqual(theOther: T?): T = this.apply { assertEquals(theOther, this) }
 
-infix fun Any?.shouldNotEqual(theOther: Any?) = assertNotEquals(theOther, this)
+infix fun Any?.shouldNotEqual(theOther: Any?) = this.apply { assertNotEquals(theOther, this) }
 
-infix fun <T> T.shouldBe(theOther: T?): T {
-    assertSame(theOther, this)
-    return this
-}
+infix fun <T> T.shouldBe(theOther: T?): T = this.apply { assertSame(theOther, this) }
 
-infix fun Any?.shouldNotBe(theOther: Any?) = assertNotSame(theOther, this)
+infix fun <T> T.shouldNotBe(theOther: T?) = this.apply { assertNotSame(theOther, this) }
 
 infix fun Any?.shouldBeInstanceOf(className: Class<*>) = assertTrue("Expected $this to be an instance of $className", className.isInstance(this))
 
@@ -32,15 +26,9 @@ fun Any?.shouldBeNull() = if (this != null) fail("expected value to be null, but
 
 fun <T : Any> T?.shouldNotBeNull(): T = this ?: throw AssertionError("Expected non null value, but value was null")
 
-fun Boolean.shouldBeTrue(): Boolean {
-    assertTrue("Expected value to be true, but was $this", this)
-    return this
-}
+fun Boolean.shouldBeTrue() = this.apply { assertTrue("Expected value to be true, but was $this", this) }
 
-fun Boolean.shouldBeFalse(): Boolean {
-    assertFalse("Expected value to be false, but was $this", this)
-    return this
-}
+fun Boolean.shouldBeFalse() = this.apply { assertFalse("Expected value to be false, but was $this", this) }
 
 fun Boolean.shouldNotBeTrue() = this.shouldBeFalse()
 
