@@ -4,13 +4,13 @@ import org.junit.Assert.*
 import kotlin.reflect.KClass
 import kotlin.reflect.full.isSubclassOf
 
-infix fun <T> T.shouldEqual(theOther: T?): T = this.apply { assertEquals(theOther, this) }
+infix fun <T> T.shouldEqual(expected: T?): T = this.apply { assertEquals(expected, this) }
 
-infix fun <T> T.shouldNotEqual(theOther: T?) = this.apply { assertNotEquals(theOther, this) }
+infix fun <T> T.shouldNotEqual(expected: T?) = this.apply { assertNotEquals(expected, this) }
 
-infix fun <T> T.shouldBe(theOther: T?): T = this.apply { assertSame(theOther, this) }
+infix fun <T> T.shouldBe(expected: T?): T = this.apply { assertSame(expected, this) }
 
-infix fun <T> T.shouldNotBe(theOther: T?) = this.apply { assertNotSame(theOther, this) }
+infix fun <T> T.shouldNotBe(expected: T?) = this.apply { assertNotSame(expected, this) }
 
 infix fun Any?.shouldBeInstanceOf(className: Class<*>) = assertTrue("Expected $this to be an instance of $className", className.isInstance(this))
 

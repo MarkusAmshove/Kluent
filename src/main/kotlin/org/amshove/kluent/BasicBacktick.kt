@@ -2,13 +2,13 @@ package org.amshove.kluent
 
 import kotlin.reflect.KClass
 
-infix fun <T> T.`should equal`(theOther: T?) : T = this.shouldEqual(theOther)
+infix fun <T> T.`should equal`(expected: T?) : T = this.shouldEqual(expected)
 
-infix fun Any?.`should not equal`(theOther: Any?) = this.shouldNotEqual(theOther)
+infix fun Any?.`should not equal`(expected: Any?) = this.shouldNotEqual(expected)
 
-infix fun <T> T.`should be`(theOther: T?) = this.shouldBe(theOther)
+infix fun <T> T.`should be`(expected: T?) = this.shouldBe(expected)
 
-infix fun Any?.`should not be`(theOther: Any?) = this.shouldNotBe(theOther)
+infix fun Any?.`should not be`(expected: Any?) = this.shouldNotBe(expected)
 
 infix fun Any?.`should be instance of`(className: Class<*>) = this.shouldBeInstanceOf(className)
 

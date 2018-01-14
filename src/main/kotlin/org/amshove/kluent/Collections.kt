@@ -22,13 +22,13 @@ infix fun <T> Array<T>.shouldNotContainAny(things: Array<T>) = this.apply { thin
 
 infix fun <T> Array<T>.shouldNotContainAny(things: Iterable<T>) = this.apply { things.forEach { shouldNotContain(it) } }
 
-infix fun <T> Array<T>?.shouldEqual(theOther: Array<T>?) = this.apply { assertArrayEquals(theOther, this) }
+infix fun <T> Array<T>?.shouldEqual(expected: Array<T>?) = this.apply { assertArrayEquals(expected, this) }
 
 fun <T> Array<T>.shouldBeEmpty() = this.apply { assertEmpty(this.toList(), "Array") }
 
 fun <T> Array<T>.shouldNotBeEmpty() = this.apply { assertNotEmpty(this.toList(), "Array") }
 
-infix fun IntArray.shouldEqual(theOther: IntArray) = this.apply { assertArrayEquals(this, theOther) }
+infix fun IntArray.shouldEqual(expected: IntArray) = this.apply { assertArrayEquals(this, expected) }
 
 fun IntArray.shouldBeEmpty() = this.apply { this.toTypedArray().shouldBeEmpty() }
 
@@ -50,7 +50,7 @@ infix fun Int.shouldBeIn(theArray: IntArray) = this.apply { this shouldBeIn theA
 
 infix fun Int.shouldNotBeIn(theArray: IntArray) = this.apply { this shouldNotBeIn theArray.toTypedArray() }
 
-infix fun BooleanArray.shouldEqual(theOther: BooleanArray) = this.apply { assertArrayEquals(this, theOther) }
+infix fun BooleanArray.shouldEqual(expected: BooleanArray) = this.apply { assertArrayEquals(this, expected) }
 
 fun BooleanArray.shouldBeEmpty() = this.apply { this.toTypedArray().shouldBeEmpty() }
 
@@ -72,7 +72,7 @@ infix fun Boolean.shouldBeIn(theArray: BooleanArray) = this.apply { this shouldB
 
 infix fun Boolean.shouldNotBeIn(theArray: BooleanArray) = this.apply { this shouldNotBeIn theArray.toTypedArray() }
 
-infix fun ByteArray.shouldEqual(theOther: ByteArray) = this.apply { assertArrayEquals(this, theOther) }
+infix fun ByteArray.shouldEqual(expected: ByteArray) = this.apply { assertArrayEquals(this, expected) }
 
 fun ByteArray.shouldBeEmpty() = this.apply { this.toTypedArray().shouldBeEmpty() }
 
@@ -94,9 +94,9 @@ infix fun Byte.shouldBeIn(theArray: ByteArray) = this.apply { this shouldBeIn th
 
 infix fun Byte.shouldNotBeIn(theArray: ByteArray) = this.apply { this shouldNotBeIn theArray.toTypedArray() }
 
-infix fun CharArray.shouldEqual(theOther: CharArray) = this.apply { assertArrayEquals(this, theOther) }
+infix fun CharArray.shouldEqual(expected: CharArray) = this.apply { assertArrayEquals(this, expected) }
 
-infix fun CharArray.shouldNotEqual(theOther: CharArray) = this.apply { this.toTypedArray() shouldNotEqual theOther.toTypedArray() }
+infix fun CharArray.shouldNotEqual(expected: CharArray) = this.apply { this.toTypedArray() shouldNotEqual expected.toTypedArray() }
 
 fun CharArray.shouldBeEmpty() = this.apply { this.toTypedArray().shouldBeEmpty() }
 
@@ -118,7 +118,7 @@ infix fun Char.shouldBeIn(theArray: CharArray) = this.apply { this shouldBeIn th
 
 infix fun Char.shouldNotBeIn(theArray: CharArray) = this.apply { this shouldNotBeIn theArray.toTypedArray() }
 
-infix fun DoubleArray.shouldEqual(theOther: DoubleArray) = this.apply { assertArrayEquals(this.toTypedArray(), theOther.toTypedArray()) }
+infix fun DoubleArray.shouldEqual(expected: DoubleArray) = this.apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
 fun DoubleArray.shouldBeEmpty() = this.apply { this.toTypedArray().shouldBeEmpty() }
 
@@ -140,7 +140,7 @@ infix fun Double.shouldBeIn(theArray: DoubleArray) = this.apply { this shouldBeI
 
 infix fun Double.shouldNotBeIn(theArray: DoubleArray) = this.apply { this shouldNotBeIn theArray.toTypedArray() }
 
-infix fun FloatArray.shouldEqual(theOther: FloatArray) = this.apply { assertArrayEquals(this.toTypedArray(), theOther.toTypedArray()) }
+infix fun FloatArray.shouldEqual(expected: FloatArray) = this.apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
 fun FloatArray.shouldBeEmpty() = this.apply { this.toTypedArray().shouldBeEmpty() }
 
@@ -162,7 +162,7 @@ infix fun Float.shouldBeIn(theArray: FloatArray) = this.apply { this shouldBeIn 
 
 infix fun Float.shouldNotBeIn(theArray: FloatArray) = this.apply { this shouldNotBeIn theArray.toTypedArray() }
 
-infix fun LongArray.shouldEqual(theOther: LongArray) = this.apply { assertArrayEquals(this, theOther) }
+infix fun LongArray.shouldEqual(expected: LongArray) = this.apply { assertArrayEquals(this, expected) }
 
 fun LongArray.shouldBeEmpty() = this.apply { this.toTypedArray().shouldBeEmpty() }
 
@@ -184,7 +184,7 @@ infix fun Long.shouldBeIn(theArray: LongArray) = this.apply { this shouldBeIn th
 
 infix fun Long.shouldNotBeIn(theArray: LongArray) = this.apply { this shouldNotBeIn theArray.toTypedArray() }
 
-infix fun ShortArray.shouldEqual(theOther: ShortArray) = this.apply { assertArrayEquals(this, theOther) }
+infix fun ShortArray.shouldEqual(expected: ShortArray) = this.apply { assertArrayEquals(this, expected) }
 
 fun ShortArray.shouldBeEmpty() = this.apply { this.toTypedArray().shouldBeEmpty() }
 
@@ -226,7 +226,7 @@ infix fun <T> Iterable<T>.shouldNotContainAny(things: Iterable<T>) = this.apply 
 
 infix fun <T> Iterable<T>.shouldNotContainAny(things: Array<T>) = this.apply { things.forEach { shouldNotContain(it) } }
 
-infix fun <T> Iterable<T>?.shouldEqual(theOther: Iterable<T>?) = this.apply { assertEquals(theOther, this) }
+infix fun <T> Iterable<T>?.shouldEqual(expected: Iterable<T>?) = this.apply { assertEquals(expected, this) }
 
 fun <T> Iterable<T>.shouldBeEmpty() = this.apply { assertEmpty(this, "Iterable") }
 
