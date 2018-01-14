@@ -4,7 +4,7 @@ import kotlin.reflect.KClass
 
 infix fun <T> T.`should equal`(expected: T?) : T = this.shouldEqual(expected)
 
-infix fun Any?.`should not equal`(expected: Any?) = this.shouldNotEqual(expected)
+infix fun <T> T.`should not equal`(expected: T?) = this.shouldNotEqual(expected)
 
 infix fun <T> T.`should be`(expected: T?) = this.shouldBe(expected)
 
