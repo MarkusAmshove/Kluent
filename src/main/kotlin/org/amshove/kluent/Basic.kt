@@ -32,12 +32,12 @@ fun Any?.shouldBeNull() = if (this != null) fail("expected value to be null, but
 
 fun <T : Any> T?.shouldNotBeNull(): T = this ?: throw AssertionError("Expected non null value, but value was null")
 
-fun Boolean.shouldBeTrue() : Boolean {
+fun Boolean.shouldBeTrue(): Boolean {
     assertTrue("Expected value to be true, but was $this", this)
     return this
 }
 
-fun Boolean.shouldBeFalse() : Boolean {
+fun Boolean.shouldBeFalse(): Boolean {
     assertFalse("Expected value to be false, but was $this", this)
     return this
 }
@@ -48,10 +48,10 @@ fun Boolean.shouldNotBeFalse() = this.shouldBeTrue()
 
 infix fun <T> T.should(assertion: T.() -> Boolean) = should("Expected the assertion to return true, but returned false", assertion)
 
-fun <T> T.should(message: String, assertion: T.() -> Boolean) = try {
-    if (assertion()) Unit else fail(message)
+fun <T> T.should(message: String, assertion: T.() -> Boolean): T = try {
+    if (assertion()) this else throw AssertionError(message)
 } catch (e: Exception) {
-    fail("""$message
+    throw AssertionError("""$message
         |
         | An exception occured:
         |   ${e::class.qualifiedName}: ${e.message}
