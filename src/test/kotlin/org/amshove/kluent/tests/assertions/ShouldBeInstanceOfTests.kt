@@ -27,6 +27,7 @@ class ShouldBeInstanceOfTests : Spek({
             it("should fail with generic shouldBeInstanceOf") {
                 val base : Base = Base()
                 assertFails {
+                    @Suppress("UNUSED_VARIABLE")
                     val child = base.shouldBeInstanceOf<Child>()
                 }
             }
