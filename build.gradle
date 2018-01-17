@@ -1,6 +1,6 @@
 buildscript {
     // Use fixed versions for artifacts which are meant for implementation
-    ext.kotlin_version = '1.2.10'
+    ext.kotlin_version = '1.2.20'
     ext.mockito_version = '1.5.0'
     // Use newest artifacts for tests
     ext.spek_version = "1.0.+"
