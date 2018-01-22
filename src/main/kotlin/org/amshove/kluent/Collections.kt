@@ -206,51 +206,51 @@ infix fun Short.shouldBeIn(theArray: ShortArray) = this.apply { this shouldBeIn 
 
 infix fun Short.shouldNotBeIn(theArray: ShortArray) = this.apply { this shouldNotBeIn theArray.toTypedArray() }
 
-infix fun <T> Iterable<T>.shouldContain(theThing: T) = this.apply { if (this.contains(theThing)) Unit else fail("$this should contain $theThing", "$theThing", join(this)) }
+infix fun <T, I : Iterable<T>> I.shouldContain(theThing: T) = this.apply { if (this.contains(theThing)) Unit else fail("$this should contain $theThing", "$theThing", join(this)) }
 
-infix fun <T> Iterable<T>.shouldContainSome(things: Iterable<T>) = this.apply { assertTrue("Expected $this to contain at least one of $things", this.any { things.contains(it) }) }
+infix fun <T, I : Iterable<T>> I.shouldContainSome(things: Iterable<T>) = this.apply { assertTrue("Expected $this to contain at least one of $things", this.any { things.contains(it) }) }
 
-infix fun <T> Iterable<T>.shouldContainSome(things: Array<T>) = this.apply { assertTrue("Expected $this to contain at least one of $things", this.any { things.contains(it) }) }
+infix fun <T, I : Iterable<T>> I.shouldContainSome(things: Array<T>) = this.apply { assertTrue("Expected $this to contain at least one of $things", this.any { things.contains(it) }) }
 
-infix fun <T> Iterable<T>.shouldContainNone(things: Iterable<T>) = this.apply { assertTrue("Expected $this to contain none of $things", this.none { things.contains(it) }) }
+infix fun <T, I : Iterable<T>> I.shouldContainNone(things: Iterable<T>) = this.apply { assertTrue("Expected $this to contain none of $things", this.none { things.contains(it) }) }
 
-infix fun <T> Iterable<T>.shouldContainNone(things: Array<T>) = this.apply { assertTrue("Expected $this to contain none of $things", this.none { things.contains(it) }) }
+infix fun <T, I : Iterable<T>> I.shouldContainNone(things: Array<T>) = this.apply { assertTrue("Expected $this to contain none of $things", this.none { things.contains(it) }) }
 
-infix fun <T> Iterable<T>.shouldContainAll(things: Iterable<T>) = this.apply { things.forEach { shouldContain(it) } }
+infix fun <T, I : Iterable<T>> I.shouldContainAll(things: Iterable<T>) = this.apply { things.forEach { shouldContain(it) } }
 
-infix fun <T> Iterable<T>.shouldContainAll(things: Array<T>) = this.apply { things.forEach { shouldContain(it) } }
+infix fun <T, I : Iterable<T>> I.shouldContainAll(things: Array<T>) = this.apply { things.forEach { shouldContain(it) } }
 
-infix fun <T> Iterable<T>.shouldNotContain(theThing: T) = this.apply { if (!this.contains(theThing)) Unit else fail("$this should not contain $theThing", "the Iterable to not contain $theThing", join(this)) }
+infix fun <T, I : Iterable<T>> I.shouldNotContain(theThing: T) = this.apply { if (!this.contains(theThing)) Unit else fail("$this should not contain $theThing", "the Iterable to not contain $theThing", join(this)) }
 
-infix fun <T> Iterable<T>.shouldNotContainAny(things: Iterable<T>) = this.apply { things.forEach { shouldNotContain(it) } }
+infix fun <T, I : Iterable<T>> I.shouldNotContainAny(things: Iterable<T>) = this.apply { things.forEach { shouldNotContain(it) } }
 
-infix fun <T> Iterable<T>.shouldNotContainAny(things: Array<T>) = this.apply { things.forEach { shouldNotContain(it) } }
+infix fun <T, I : Iterable<T>> I.shouldNotContainAny(things: Array<T>) = this.apply { things.forEach { shouldNotContain(it) } }
 
-infix fun <T> Iterable<T>?.shouldEqual(expected: Iterable<T>?) = this.apply { assertEquals(expected, this) }
+infix fun <T, I: Iterable<T>> I.shouldEqual(expected: Iterable<T>?) = this.apply { assertEquals(expected, this) }
 
-fun <T> Iterable<T>.shouldBeEmpty() = this.apply { assertEmpty(this, "Iterable") }
+fun <I : Iterable<*>> I.shouldBeEmpty() = this.apply { assertEmpty(this, "Iterable") }
 
-fun <T> Iterable<T>.shouldNotBeEmpty() = this.apply { assertNotEmpty(this, "Iterable") }
+fun <I : Iterable<*>> I.shouldNotBeEmpty() = this.apply { assertNotEmpty(this, "Iterable") }
 
-infix fun <R, T> Map<R, T>.shouldHaveKey(theKey: R) = this.apply { if (this.containsKey(theKey)) Unit else fail("$this should contain key $theKey", "$theKey", join(this.keys)) }
+infix fun <K, V, M : Map<K, V>> M.shouldHaveKey(theKey: K) = this.apply { if (this.containsKey(theKey)) Unit else fail("$this should contain key $theKey", "$theKey", join(this.keys)) }
 
-infix fun <R, T> Map<R, T>.shouldNotHaveKey(theKey: R) = this.apply { if (!this.containsKey(theKey)) Unit else fail("$this should not contain key $theKey", "the map to not have the key $theKey", join(this.keys)) }
+infix fun <K, V, M : Map<K, V>> M.shouldNotHaveKey(theKey: K) = this.apply { if (!this.containsKey(theKey)) Unit else fail("$this should not contain key $theKey", "the map to not have the key $theKey", join(this.keys)) }
 
-infix fun <R, T> Map<R, T>.shouldHaveValue(theValue: T) = this.apply { if (this.values.contains(theValue)) Unit else fail("$this should contain the value $theValue", "$theValue", join(this.values)) }
+infix fun <K, V, M : Map<K, V>> M.shouldHaveValue(theValue: V) = this.apply { if (this.values.contains(theValue)) Unit else fail("$this should contain the value $theValue", "$theValue", join(this.values)) }
 
-infix fun <R, T> Map<R, T>.shouldNotHaveValue(theValue: T) = this.apply { if (!this.values.contains(theValue)) Unit else fail("$this should not contain the value $theValue", "the map to not have the value $theValue", join(this.values)) }
+infix fun <K, V, M : Map<K, V>> M.shouldNotHaveValue(theValue: V) = this.apply { if (!this.values.contains(theValue)) Unit else fail("$this should not contain the value $theValue", "the map to not have the value $theValue", join(this.values)) }
 
-infix fun <R, T> Map<R, T>.shouldContain(theThing: Pair<R, T>) = this.apply { if (this[theThing.first] == theThing.second) Unit else fail("$this should contain $theThing", "$theThing", join(this)) }
+infix fun <K, V, M : Map<K, V>> M.shouldContain(theThing: Pair<K, V>) = this.apply { if (this[theThing.first] == theThing.second) Unit else fail("$this should contain $theThing", "$theThing", join(this)) }
 
-infix fun <R, T> Map<R, T>.shouldContainAll(things: Map<R, T>) = this.apply { things.forEach { shouldContain(it.toPair()) } }
+infix fun <K, V, M : Map<K, V>> M.shouldContainAll(things: M) = this.apply { things.forEach { shouldContain(it.toPair()) } }
 
-infix fun <R, T> Map<R, T>.shouldNotContain(theThing: Pair<R, T>) = this.apply { if (this[theThing.first] != theThing.second) Unit else fail("$this should not contain $theThing", "the map to not contain the pair $theThing", join(this)) }
+infix fun <K, V, M : Map<K, V>> M.shouldNotContain(theThing: Pair<K, V>) = this.apply { if (this[theThing.first] != theThing.second) Unit else fail("$this should not contain $theThing", "the map to not contain the pair $theThing", join(this)) }
 
-infix fun <R, T> Map<R, T>.shouldNotContainAny(things: Map<R, T>) = this.apply { things.forEach { shouldNotContain(it.toPair()) } }
+infix fun <K, V, M : Map<K, V>> M.shouldNotContainAny(things: M) = this.apply { things.forEach { shouldNotContain(it.toPair()) } }
 
-fun <R, T> Map<R, T>.shouldBeEmpty() = this.apply { assertEmpty(this.toList(), "Map") }
+fun <K, V, M : Map<K, V>> M.shouldBeEmpty() = this.apply { assertEmpty(this.toList(), "Map") }
 
-fun <R, T> Map<R, T>.shouldNotBeEmpty() = this.apply { assertNotEmpty(this.toList(), "Map") }
+fun <K, V, M : Map<K, V>> M.shouldNotBeEmpty() = this.apply { assertNotEmpty(this.toList(), "Map") }
 
 infix fun <T> Any?.shouldNotBeIn(array: Array<T>) = this.apply { if (!array.contains(this)) Unit else fail("$this should not be in $array", "the value $this to not be in the Array", join(array)) }
 

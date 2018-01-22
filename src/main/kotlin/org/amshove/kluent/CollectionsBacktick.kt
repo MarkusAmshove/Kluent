@@ -194,51 +194,51 @@ infix fun Short.`should be in`(theArray: ShortArray) = this.shouldBeIn(theArray)
 
 infix fun Short.`should not be in`(theArray: ShortArray) = this.shouldNotBeIn(theArray)
 
-infix fun <T> Iterable<T>.`should contain`(theThing: T) = this.shouldContain(theThing)
+infix fun <T, I : Iterable<T>> I.`should contain`(theThing: T) = this.shouldContain(theThing)
 
-infix fun <T> Iterable<T>.`should contain some`(things: Iterable<T>) = this.shouldContainSome(things)
+infix fun <T, I : Iterable<T>> I.`should contain some`(things: Iterable<T>) = this.shouldContainSome(things)
 
-infix fun <T> Iterable<T>.`should contain some`(things: Array<T>) = this.shouldContainSome(things)
+infix fun <T, I : Iterable<T>> I.`should contain some`(things: Array<T>) = this.shouldContainSome(things)
 
-infix fun <T> Iterable<T>.`should contain none`(things: Iterable<T>) = this.shouldContainNone(things)
+infix fun <T, I : Iterable<T>> I.`should contain none`(things: Iterable<T>) = this.shouldContainNone(things)
 
-infix fun <T> Iterable<T>.`should contain none`(things: Array<T>) = this.shouldContainNone(things)
+infix fun <T, I : Iterable<T>> I.`should contain none`(things: Array<T>) = this.shouldContainNone(things)
 
-infix fun <T> Iterable<T>.`should contain all`(things: Iterable<T>) = this.shouldContainAll(things)
+infix fun <T, I : Iterable<T>> I.`should contain all`(things: Iterable<T>) = this.shouldContainAll(things)
 
-infix fun <T> Iterable<T>.`should contain all`(things: Array<T>) = this.shouldContainAll(things)
+infix fun <T, I : Iterable<T>> I.`should contain all`(things: Array<T>) = this.shouldContainAll(things)
 
-infix fun <T> Iterable<T>.`should not contain`(theThing: T) = this.shouldNotContain(theThing)
+infix fun <T, I : Iterable<T>> I.`should not contain`(theThing: T) = this.shouldNotContain(theThing)
 
-infix fun <T> Iterable<T>.`should not contain any`(things: Iterable<T>) = this.shouldNotContainAny(things)
+infix fun <T, I : Iterable<T>> I.`should not contain any`(things: Iterable<T>) = this.shouldNotContainAny(things)
 
-infix fun <T> Iterable<T>.`should not contain any`(things: Array<T>) = this.shouldNotContainAny(things)
+infix fun <T, I : Iterable<T>> I.`should not contain any`(things: Array<T>) = this.shouldNotContainAny(things)
 
-infix fun <T> Iterable<T>?.`should equal`(expected: Iterable<T>?) = this.shouldEqual(expected)
+infix fun <T, I : Iterable<T>> I?.`should equal`(expected: Iterable<T>?) = this.shouldEqual(expected)
 
-fun <T> Iterable<T>.`should be empty`() = this.shouldBeEmpty()
+fun <I : Iterable<*>> I.`should be empty`() = this.shouldBeEmpty()
 
-fun <T> Iterable<T>.`should not be empty`() = this.shouldNotBeEmpty()
+fun <I : Iterable<*>> I.`should not be empty`() = this.shouldNotBeEmpty()
 
-infix fun <R, T> Map<R, T>.`should have key`(theKey: R) = this.shouldHaveKey(theKey)
+infix fun <K, V, M : Map<K, V>> M.`should have key`(theKey: K) = this.shouldHaveKey(theKey)
 
-infix fun <R, T> Map<R, T>.`should not have key`(theKey: R) = this.shouldNotHaveKey(theKey)
+infix fun <K, V, M : Map<K, V>> M.`should not have key`(theKey: K) = this.shouldNotHaveKey(theKey)
 
-infix fun <R, T> Map<R, T>.`should have value`(theValue: T) = this.shouldHaveValue(theValue)
+infix fun <K, V, M : Map<K, V>> M.`should have value`(theValue: V) = this.shouldHaveValue(theValue)
 
-infix fun <R, T> Map<R, T>.`should not have value`(theValue: T) = this.shouldNotHaveValue(theValue)
+infix fun <K, V, M : Map<K, V>> M.`should not have value`(theValue: V) = this.shouldNotHaveValue(theValue)
 
-infix fun <R, T> Map<R, T>.`should contain`(theThing: Pair<R, T>) = this.shouldContain(theThing)
+infix fun <K, V, M : Map<K, V>> M.`should contain`(theThing: Pair<K, V>) = this.shouldContain(theThing)
 
-infix fun <R, T> Map<R, T>.`should contain all`(things: Map<R, T>) = this.shouldContainAll(things)
+infix fun <K, V, M : Map<K , V>> M.`should contain all`(things: Map<K, V>) = this.shouldContainAll(things)
 
-infix fun <R, T> Map<R, T>.`should not contain`(theThing: Pair<R, T>) = this.shouldNotContain(theThing)
+infix fun <K, V, M : Map<K, V>> M.`should not contain`(theThing: Pair<K, V>) = this.shouldNotContain(theThing)
 
-infix fun <R, T> Map<R, T>.`should not contain any`(things: Map<R, T>) = this.shouldNotContainAny(things)
+infix fun <K, V, M : Map<K, V>> M.`should not contain any`(things: Map<K, V>) = this.shouldNotContainAny(things)
 
-fun <R, T> Map<R, T>.`should be empty`() = this.shouldBeEmpty()
+fun <K, V, M : Map<K, V>> M.`should be empty`() = this.shouldBeEmpty()
 
-fun <R, T> Map<R, T>.`should not be empty`() = this.shouldNotBeEmpty()
+fun <K, V, M : Map<K, V>> M.`should not be empty`() = this.shouldNotBeEmpty()
 
 infix fun <T> Any?.`should not be in`(array: Array<T>) = this.shouldNotBeIn(array)
 
