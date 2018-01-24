@@ -220,13 +220,13 @@ fun <I : Iterable<*>> I.`should be empty`() = this.shouldBeEmpty()
 
 fun <I : Iterable<*>> I.`should not be empty`() = this.shouldNotBeEmpty()
 
-infix fun <K, V, M : Map<K, V>> M.`should have key`(theKey: K) = this.shouldHaveKey(theKey)
+infix fun <K, M : Map<K, *>> M.`should have key`(theKey: K) = this.shouldHaveKey(theKey)
 
-infix fun <K, V, M : Map<K, V>> M.`should not have key`(theKey: K) = this.shouldNotHaveKey(theKey)
+infix fun <K, M : Map<K, *>> M.`should not have key`(theKey: K) = this.shouldNotHaveKey(theKey)
 
-infix fun <K, V, M : Map<K, V>> M.`should have value`(theValue: V) = this.shouldHaveValue(theValue)
+infix fun <V, M : Map<*, V>> M.`should have value`(theValue: V) = this.shouldHaveValue(theValue)
 
-infix fun <K, V, M : Map<K, V>> M.`should not have value`(theValue: V) = this.shouldNotHaveValue(theValue)
+infix fun <V, M : Map<*, V>> M.`should not have value`(theValue: V) = this.shouldNotHaveValue(theValue)
 
 infix fun <K, V, M : Map<K, V>> M.`should contain`(expected: Pair<K, V>) = this.shouldContain(expected)
 
@@ -236,9 +236,9 @@ infix fun <K, V, M : Map<K, V>> M.`should not contain`(expected: Pair<K, V>) = t
 
 infix fun <K, V, M : Map<K, V>> M.`should not contain any`(expected: Map<K, V>) = this.shouldNotContainAny(expected)
 
-fun <K, V, M : Map<K, V>> M.`should be empty`() = this.shouldBeEmpty()
+fun <M : Map<*, *>> M.`should be empty`() = this.shouldBeEmpty()
 
-fun <K, V, M : Map<K, V>> M.`should not be empty`() = this.shouldNotBeEmpty()
+fun <M : Map<*, *>> M.`should not be empty`() = this.shouldNotBeEmpty()
 
 infix fun <T> Any?.`should not be in`(array: Array<T>) = this.shouldNotBeIn(array)
 
