@@ -194,51 +194,51 @@ infix fun Short.`should be in`(theArray: ShortArray) = this.shouldBeIn(theArray)
 
 infix fun Short.`should not be in`(theArray: ShortArray) = this.shouldNotBeIn(theArray)
 
-infix fun <T, I : Iterable<T>> I.`should contain`(expected: T) = this.shouldContain(expected)
+infix fun <T, I : Iterable<T>> I.`should contain`(expected: T): I = this.shouldContain(expected)
 
-infix fun <T, I : Iterable<T>> I.`should contain some`(expected: Iterable<T>) = this.shouldContainSome(expected)
+infix fun <T, I : Iterable<T>> I.`should contain some`(expected: Iterable<T>): I = this.shouldContainSome(expected)
 
-infix fun <T, I : Iterable<T>> I.`should contain some`(expected: Array<T>) = this.shouldContainSome(expected)
+infix fun <T, I : Iterable<T>> I.`should contain some`(expected: Array<T>): I = this.shouldContainSome(expected)
 
-infix fun <T, I : Iterable<T>> I.`should contain none`(expected: Iterable<T>) = this.shouldContainNone(expected)
+infix fun <T, I : Iterable<T>> I.`should contain none`(expected: Iterable<T>): I = this.shouldContainNone(expected)
 
-infix fun <T, I : Iterable<T>> I.`should contain none`(expected: Array<T>) = this.shouldContainNone(expected)
+infix fun <T, I : Iterable<T>> I.`should contain none`(expected: Array<T>): I = this.shouldContainNone(expected)
 
-infix fun <T, I : Iterable<T>> I.`should contain all`(expected: Iterable<T>) = this.shouldContainAll(expected)
+infix fun <T, I : Iterable<T>> I.`should contain all`(expected: Iterable<T>): I = this.shouldContainAll(expected)
 
-infix fun <T, I : Iterable<T>> I.`should contain all`(expected: Array<T>) = this.shouldContainAll(expected)
+infix fun <T, I : Iterable<T>> I.`should contain all`(expected: Array<T>): I = this.shouldContainAll(expected)
 
-infix fun <T, I : Iterable<T>> I.`should not contain`(expected: T) = this.shouldNotContain(expected)
+infix fun <T, I : Iterable<T>> I.`should not contain`(expected: T): I = this.shouldNotContain(expected)
 
-infix fun <T, I : Iterable<T>> I.`should not contain any`(expected: Iterable<T>) = this.shouldNotContainAny(expected)
+infix fun <T, I : Iterable<T>> I.`should not contain any`(expected: Iterable<T>): I = this.shouldNotContainAny(expected)
 
-infix fun <T, I : Iterable<T>> I.`should not contain any`(expected: Array<T>) = this.shouldNotContainAny(expected)
+infix fun <T, I : Iterable<T>> I.`should not contain any`(expected: Array<T>): I = this.shouldNotContainAny(expected)
 
-infix fun <T, I : Iterable<T>> I?.`should equal`(expected: Iterable<T>?) = this.shouldEqual(expected)
+infix fun <T, I : Iterable<T>> I.`should equal`(expected: Iterable<T>?): I = this.shouldEqual(expected)
 
-fun <I : Iterable<*>> I.`should be empty`() = this.shouldBeEmpty()
+fun <I : Iterable<*>> I.`should be empty`(): I = this.shouldBeEmpty()
 
-fun <I : Iterable<*>> I.`should not be empty`() = this.shouldNotBeEmpty()
+fun <I : Iterable<*>> I.`should not be empty`(): I = this.shouldNotBeEmpty()
 
-infix fun <K, M : Map<K, *>> M.`should have key`(theKey: K) = this.shouldHaveKey(theKey)
+infix fun <K, M : Map<K, *>> M.`should have key`(theKey: K): M = this.shouldHaveKey(theKey)
 
-infix fun <K, M : Map<K, *>> M.`should not have key`(theKey: K) = this.shouldNotHaveKey(theKey)
+infix fun <K, M : Map<K, *>> M.`should not have key`(theKey: K): M = this.shouldNotHaveKey(theKey)
 
-infix fun <V, M : Map<*, V>> M.`should have value`(theValue: V) = this.shouldHaveValue(theValue)
+infix fun <V, M : Map<*, V>> M.`should have value`(theValue: V): M = this.shouldHaveValue(theValue)
 
-infix fun <V, M : Map<*, V>> M.`should not have value`(theValue: V) = this.shouldNotHaveValue(theValue)
+infix fun <V, M : Map<*, V>> M.`should not have value`(theValue: V): M = this.shouldNotHaveValue(theValue)
 
-infix fun <K, V, M : Map<K, V>> M.`should contain`(expected: Pair<K, V>) = this.shouldContain(expected)
+infix fun <K, V, M : Map<K, V>> M.`should contain`(expected: Pair<K, V>): M = this.shouldContain(expected)
 
-infix fun <K, V, M : Map<K , V>> M.`should contain all`(expected: Map<K, V>) = this.shouldContainAll(expected)
+infix fun <K, V, M : Map<K , V>> M.`should contain all`(expected: M): M = this.shouldContainAll(expected)
 
-infix fun <K, V, M : Map<K, V>> M.`should not contain`(expected: Pair<K, V>) = this.shouldNotContain(expected)
+infix fun <K, V, M : Map<K, V>> M.`should not contain`(expected: Pair<K, V>): M = this.shouldNotContain(expected)
 
-infix fun <K, V, M : Map<K, V>> M.`should not contain any`(expected: Map<K, V>) = this.shouldNotContainAny(expected)
+infix fun <K, V, M : Map<K, V>> M.`should not contain any`(expected: M): M = this.shouldNotContainAny(expected)
 
-fun <M : Map<*, *>> M.`should be empty`() = this.shouldBeEmpty()
+fun <M : Map<*, *>> M.`should be empty`(): M = this.shouldBeEmpty()
 
-fun <M : Map<*, *>> M.`should not be empty`() = this.shouldNotBeEmpty()
+fun <M : Map<*, *>> M.`should not be empty`(): M = this.shouldNotBeEmpty()
 
 infix fun <T> Any?.`should not be in`(array: Array<T>) = this.shouldNotBeIn(array)
 
