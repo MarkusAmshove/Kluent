@@ -1,16 +1,16 @@
 package org.amshove.kluent
 
-infix fun <T> Array<T>.`should contain`(theThing: T) = this.shouldContain(theThing)
+infix fun <T> Array<T>.`should contain`(expected: T) = this.shouldContain(expected)
 
-infix fun <T> Array<T>.`should contain some`(things: Array<T>) = this.shouldContainSome(things)
+infix fun <T> Array<T>.`should contain some`(expected: Array<T>) = this.shouldContainSome(expected)
 
-infix fun <T> Array<T>.`should contain none`(things: Array<T>) = this.shouldContainNone(things)
+infix fun <T> Array<T>.`should contain none`(expected: Array<T>) = this.shouldContainNone(expected)
 
-infix fun <T> Array<T>.`should contain all`(things: Array<T>) = this.shouldContainAll(things)
+infix fun <T> Array<T>.`should contain all`(expected: Array<T>) = this.shouldContainAll(expected)
 
-infix fun <T> Array<T>.`should not contain`(theThing: T) = this.shouldNotContain(theThing)
+infix fun <T> Array<T>.`should not contain`(expected: T) = this.shouldNotContain(expected)
 
-infix fun <T> Array<T>.`should not contain any`(things: Array<T>) = this.shouldNotContainAny(things)
+infix fun <T> Array<T>.`should not contain any`(expected: Array<T>) = this.shouldNotContainAny(expected)
 
 infix fun <T> Array<T>?.`should equal`(expected: Array<T>?) = this.shouldEqual(expected)
 
@@ -24,17 +24,17 @@ fun IntArray.`should be empty`() = this.shouldBeEmpty()
 
 fun IntArray.`should not be empty`() = this.shouldNotBeEmpty()
 
-infix fun IntArray.`should contain`(theThing: Int) = this.shouldContain(theThing)
+infix fun IntArray.`should contain`(expected: Int) = this.shouldContain(expected)
 
-infix fun IntArray.`should contain some`(things: IntArray) = this.shouldContainSome(things)
+infix fun IntArray.`should contain some`(expected: IntArray) = this.shouldContainSome(expected)
 
-infix fun IntArray.`should contain none`(things: IntArray) = this.shouldContainNone(things)
+infix fun IntArray.`should contain none`(expected: IntArray) = this.shouldContainNone(expected)
 
-infix fun IntArray.`should contain all`(things: IntArray) = this.shouldContainAll(things)
+infix fun IntArray.`should contain all`(expected: IntArray) = this.shouldContainAll(expected)
 
-infix fun IntArray.`should not contain`(theThing: Int) = this.shouldNotContain(theThing)
+infix fun IntArray.`should not contain`(expected: Int) = this.shouldNotContain(expected)
 
-infix fun IntArray.`should not contain any`(things: IntArray) = this.shouldNotContainAny(things)
+infix fun IntArray.`should not contain any`(expected: IntArray) = this.shouldNotContainAny(expected)
 
 infix fun Int.`should be in`(theArray: IntArray) = this.shouldBeIn(theArray)
 
@@ -46,17 +46,17 @@ fun BooleanArray.`should be empty`() = this.shouldBeEmpty()
 
 fun BooleanArray.`should not be empty`() = this.shouldNotBeEmpty()
 
-infix fun BooleanArray.`should contain`(theThing: Boolean) = this.shouldContain(theThing)
+infix fun BooleanArray.`should contain`(expected: Boolean) = this.shouldContain(expected)
 
-infix fun BooleanArray.`should contain some`(things: BooleanArray) = this.shouldContainSome(things)
+infix fun BooleanArray.`should contain some`(expected: BooleanArray) = this.shouldContainSome(expected)
 
-infix fun BooleanArray.`should contain none`(things: BooleanArray) = this.shouldContainNone(things)
+infix fun BooleanArray.`should contain none`(expected: BooleanArray) = this.shouldContainNone(expected)
 
-infix fun BooleanArray.`should contain all`(things: BooleanArray) = this.shouldContainAll(things)
+infix fun BooleanArray.`should contain all`(expected: BooleanArray) = this.shouldContainAll(expected)
 
-infix fun BooleanArray.`should not contain`(theThing: Boolean) = this.shouldNotContain(theThing)
+infix fun BooleanArray.`should not contain`(expected: Boolean) = this.shouldNotContain(expected)
 
-infix fun BooleanArray.`should not contain any`(things: BooleanArray) = this.shouldNotContainAny(things)
+infix fun BooleanArray.`should not contain any`(expected: BooleanArray) = this.shouldNotContainAny(expected)
 
 infix fun Boolean.`should be in`(theArray: BooleanArray) = this.shouldBeIn(theArray)
 
@@ -68,17 +68,17 @@ fun ByteArray.`should be empty`() = this.shouldBeEmpty()
 
 fun ByteArray.`should not be empty`() = this.shouldNotBeEmpty()
 
-infix fun ByteArray.`should contain`(theThing: Byte) = this.shouldContain(theThing)
+infix fun ByteArray.`should contain`(expected: Byte) = this.shouldContain(expected)
 
-infix fun ByteArray.`should contain some`(things: ByteArray) = this.shouldContainSome(things)
+infix fun ByteArray.`should contain some`(expected: ByteArray) = this.shouldContainSome(expected)
 
-infix fun ByteArray.`should contain none`(things: ByteArray) = this.shouldContainNone(things)
+infix fun ByteArray.`should contain none`(expected: ByteArray) = this.shouldContainNone(expected)
 
-infix fun ByteArray.`should contain all`(things: ByteArray) = this.shouldContainAll(things)
+infix fun ByteArray.`should contain all`(expected: ByteArray) = this.shouldContainAll(expected)
 
-infix fun ByteArray.`should not contain`(theThing: Byte) = this.shouldNotContain(theThing)
+infix fun ByteArray.`should not contain`(expected: Byte) = this.shouldNotContain(expected)
 
-infix fun ByteArray.`should not contain any`(things: ByteArray) = this.shouldNotContainAny(things)
+infix fun ByteArray.`should not contain any`(expected: ByteArray) = this.shouldNotContainAny(expected)
 
 infix fun Byte.`should be in`(theArray: ByteArray) = this.shouldBeIn(theArray)
 
@@ -90,17 +90,17 @@ fun CharArray.`should be empty`() = this.shouldBeEmpty()
 
 fun CharArray.`should not be empty`() = this.shouldNotBeEmpty()
 
-infix fun CharArray.`should contain`(theThing: Char) = this.shouldContain(theThing)
+infix fun CharArray.`should contain`(expected: Char) = this.shouldContain(expected)
 
-infix fun CharArray.`should contain some`(things: CharArray) = this.shouldContainSome(things)
+infix fun CharArray.`should contain some`(expected: CharArray) = this.shouldContainSome(expected)
 
-infix fun CharArray.`should contain none`(things: CharArray) = this.shouldContainNone(things)
+infix fun CharArray.`should contain none`(expected: CharArray) = this.shouldContainNone(expected)
 
-infix fun CharArray.`should contain all`(things: CharArray) = this.shouldContainAll(things)
+infix fun CharArray.`should contain all`(expected: CharArray) = this.shouldContainAll(expected)
 
-infix fun CharArray.`should not contain`(theThing: Char) = this.shouldNotContain(theThing)
+infix fun CharArray.`should not contain`(expected: Char) = this.shouldNotContain(expected)
 
-infix fun CharArray.`should not contain any`(things: CharArray) = this.shouldNotContainAny(things)
+infix fun CharArray.`should not contain any`(expected: CharArray) = this.shouldNotContainAny(expected)
 
 infix fun Char.`should be in`(theArray: CharArray) = this.shouldBeIn(theArray)
 
@@ -112,17 +112,17 @@ fun DoubleArray.`should be empty`() = this.shouldBeEmpty()
 
 fun DoubleArray.`should not be empty`() = this.shouldNotBeEmpty()
 
-infix fun DoubleArray.`should contain`(theThing: Double) = this.shouldContain(theThing)
+infix fun DoubleArray.`should contain`(expected: Double) = this.shouldContain(expected)
 
-infix fun DoubleArray.`should contain some`(things: DoubleArray) = this.shouldContainSome(things)
+infix fun DoubleArray.`should contain some`(expected: DoubleArray) = this.shouldContainSome(expected)
 
-infix fun DoubleArray.`should contain none`(things: DoubleArray) = this.shouldContainNone(things)
+infix fun DoubleArray.`should contain none`(expected: DoubleArray) = this.shouldContainNone(expected)
 
-infix fun DoubleArray.`should contain all`(things: DoubleArray) = this.shouldContainAll(things)
+infix fun DoubleArray.`should contain all`(expected: DoubleArray) = this.shouldContainAll(expected)
 
-infix fun DoubleArray.`should not contain`(theThing: Double) = this.shouldNotContain(theThing)
+infix fun DoubleArray.`should not contain`(expected: Double) = this.shouldNotContain(expected)
 
-infix fun DoubleArray.`should not contain any`(things: DoubleArray) = this.shouldNotContainAny(things)
+infix fun DoubleArray.`should not contain any`(expected: DoubleArray) = this.shouldNotContainAny(expected)
 
 infix fun Double.`should be in`(theArray: DoubleArray) = this.shouldBeIn(theArray)
 
@@ -134,17 +134,17 @@ fun FloatArray.`should be empty`() = this.shouldBeEmpty()
 
 fun FloatArray.`should not be empty`() = this.shouldNotBeEmpty()
 
-infix fun FloatArray.`should contain`(theThing: Float) = this.shouldContain(theThing)
+infix fun FloatArray.`should contain`(expected: Float) = this.shouldContain(expected)
 
-infix fun FloatArray.`should contain some`(things: FloatArray) = this.shouldContainSome(things)
+infix fun FloatArray.`should contain some`(expected: FloatArray) = this.shouldContainSome(expected)
 
-infix fun FloatArray.`should contain none`(things: FloatArray) = this.shouldContainNone(things)
+infix fun FloatArray.`should contain none`(expected: FloatArray) = this.shouldContainNone(expected)
 
-infix fun FloatArray.`should contain all`(things: FloatArray) = this.shouldContainAll(things)
+infix fun FloatArray.`should contain all`(expected: FloatArray) = this.shouldContainAll(expected)
 
-infix fun FloatArray.`should not contain`(theThing: Float) = this.shouldNotContain(theThing)
+infix fun FloatArray.`should not contain`(expected: Float) = this.shouldNotContain(expected)
 
-infix fun FloatArray.`should not contain any`(things: FloatArray) = this.shouldNotContainAny(things)
+infix fun FloatArray.`should not contain any`(expected: FloatArray) = this.shouldNotContainAny(expected)
 
 infix fun Float.`should be in`(theArray: FloatArray) = this.shouldBeIn(theArray)
 
@@ -156,17 +156,17 @@ fun LongArray.`should be empty`() = this.shouldBeEmpty()
 
 fun LongArray.`should not be empty`() = this.shouldNotBeEmpty()
 
-infix fun LongArray.`should contain`(theThing: Long) = this.shouldContain(theThing)
+infix fun LongArray.`should contain`(expected: Long) = this.shouldContain(expected)
 
-infix fun LongArray.`should contain some`(things: LongArray) = this.shouldContainSome(things)
+infix fun LongArray.`should contain some`(expected: LongArray) = this.shouldContainSome(expected)
 
-infix fun LongArray.`should contain none`(things: LongArray) = this.shouldContainNone(things)
+infix fun LongArray.`should contain none`(expected: LongArray) = this.shouldContainNone(expected)
 
-infix fun LongArray.`should contain all`(things: LongArray) = this.shouldContainAll(things)
+infix fun LongArray.`should contain all`(expected: LongArray) = this.shouldContainAll(expected)
 
-infix fun LongArray.`should not contain`(theThing: Long) = this.shouldNotContain(theThing)
+infix fun LongArray.`should not contain`(expected: Long) = this.shouldNotContain(expected)
 
-infix fun LongArray.`should not contain any`(things: LongArray) = this.shouldNotContainAny(things)
+infix fun LongArray.`should not contain any`(expected: LongArray) = this.shouldNotContainAny(expected)
 
 infix fun Long.`should be in`(theArray: LongArray) = this.shouldBeIn(theArray)
 
@@ -178,67 +178,67 @@ fun ShortArray.`should be empty`() = this.shouldBeEmpty()
 
 fun ShortArray.`should not be empty`() = this.shouldNotBeEmpty()
 
-infix fun ShortArray.`should contain`(theThing: Short) = this.shouldContain(theThing)
+infix fun ShortArray.`should contain`(expected: Short) = this.shouldContain(expected)
 
-infix fun ShortArray.`should contain some`(things: ShortArray) = this.shouldContainSome(things)
+infix fun ShortArray.`should contain some`(expected: ShortArray) = this.shouldContainSome(expected)
 
-infix fun ShortArray.`should contain none`(things: ShortArray) = this.shouldContainNone(things)
+infix fun ShortArray.`should contain none`(expected: ShortArray) = this.shouldContainNone(expected)
 
-infix fun ShortArray.`should contain all`(things: ShortArray) = this.shouldContainAll(things)
+infix fun ShortArray.`should contain all`(expected: ShortArray) = this.shouldContainAll(expected)
 
-infix fun ShortArray.`should not contain`(theThing: Short) = this.shouldNotContain(theThing)
+infix fun ShortArray.`should not contain`(expected: Short) = this.shouldNotContain(expected)
 
-infix fun ShortArray.`should not contain any`(things: ShortArray) = this.shouldNotContainAny(things)
+infix fun ShortArray.`should not contain any`(expected: ShortArray) = this.shouldNotContainAny(expected)
 
 infix fun Short.`should be in`(theArray: ShortArray) = this.shouldBeIn(theArray)
 
 infix fun Short.`should not be in`(theArray: ShortArray) = this.shouldNotBeIn(theArray)
 
-infix fun <T> Iterable<T>.`should contain`(theThing: T) = this.shouldContain(theThing)
+infix fun <T, I : Iterable<T>> I.`should contain`(expected: T): I = this.shouldContain(expected)
 
-infix fun <T> Iterable<T>.`should contain some`(things: Iterable<T>) = this.shouldContainSome(things)
+infix fun <T, I : Iterable<T>> I.`should contain some`(expected: Iterable<T>): I = this.shouldContainSome(expected)
 
-infix fun <T> Iterable<T>.`should contain some`(things: Array<T>) = this.shouldContainSome(things)
+infix fun <T, I : Iterable<T>> I.`should contain some`(expected: Array<T>): I = this.shouldContainSome(expected)
 
-infix fun <T> Iterable<T>.`should contain none`(things: Iterable<T>) = this.shouldContainNone(things)
+infix fun <T, I : Iterable<T>> I.`should contain none`(expected: Iterable<T>): I = this.shouldContainNone(expected)
 
-infix fun <T> Iterable<T>.`should contain none`(things: Array<T>) = this.shouldContainNone(things)
+infix fun <T, I : Iterable<T>> I.`should contain none`(expected: Array<T>): I = this.shouldContainNone(expected)
 
-infix fun <T> Iterable<T>.`should contain all`(things: Iterable<T>) = this.shouldContainAll(things)
+infix fun <T, I : Iterable<T>> I.`should contain all`(expected: Iterable<T>): I = this.shouldContainAll(expected)
 
-infix fun <T> Iterable<T>.`should contain all`(things: Array<T>) = this.shouldContainAll(things)
+infix fun <T, I : Iterable<T>> I.`should contain all`(expected: Array<T>): I = this.shouldContainAll(expected)
 
-infix fun <T> Iterable<T>.`should not contain`(theThing: T) = this.shouldNotContain(theThing)
+infix fun <T, I : Iterable<T>> I.`should not contain`(expected: T): I = this.shouldNotContain(expected)
 
-infix fun <T> Iterable<T>.`should not contain any`(things: Iterable<T>) = this.shouldNotContainAny(things)
+infix fun <T, I : Iterable<T>> I.`should not contain any`(expected: Iterable<T>): I = this.shouldNotContainAny(expected)
 
-infix fun <T> Iterable<T>.`should not contain any`(things: Array<T>) = this.shouldNotContainAny(things)
+infix fun <T, I : Iterable<T>> I.`should not contain any`(expected: Array<T>): I = this.shouldNotContainAny(expected)
 
-infix fun <T> Iterable<T>?.`should equal`(expected: Iterable<T>?) = this.shouldEqual(expected)
+infix fun <T, I : Iterable<T>> I.`should equal`(expected: Iterable<T>?): I = this.shouldEqual(expected)
 
-fun <T> Iterable<T>.`should be empty`() = this.shouldBeEmpty()
+fun <I : Iterable<*>> I.`should be empty`(): I = this.shouldBeEmpty()
 
-fun <T> Iterable<T>.`should not be empty`() = this.shouldNotBeEmpty()
+fun <I : Iterable<*>> I.`should not be empty`(): I = this.shouldNotBeEmpty()
 
-infix fun <R, T> Map<R, T>.`should have key`(theKey: R) = this.shouldHaveKey(theKey)
+infix fun <K, M : Map<K, *>> M.`should have key`(theKey: K): M = this.shouldHaveKey(theKey)
 
-infix fun <R, T> Map<R, T>.`should not have key`(theKey: R) = this.shouldNotHaveKey(theKey)
+infix fun <K, M : Map<K, *>> M.`should not have key`(theKey: K): M = this.shouldNotHaveKey(theKey)
 
-infix fun <R, T> Map<R, T>.`should have value`(theValue: T) = this.shouldHaveValue(theValue)
+infix fun <V, M : Map<*, V>> M.`should have value`(theValue: V): M = this.shouldHaveValue(theValue)
 
-infix fun <R, T> Map<R, T>.`should not have value`(theValue: T) = this.shouldNotHaveValue(theValue)
+infix fun <V, M : Map<*, V>> M.`should not have value`(theValue: V): M = this.shouldNotHaveValue(theValue)
 
-infix fun <R, T> Map<R, T>.`should contain`(theThing: Pair<R, T>) = this.shouldContain(theThing)
+infix fun <K, V, M : Map<K, V>> M.`should contain`(expected: Pair<K, V>): M = this.shouldContain(expected)
 
-infix fun <R, T> Map<R, T>.`should contain all`(things: Map<R, T>) = this.shouldContainAll(things)
+infix fun <K, V, M : Map<K , V>> M.`should contain all`(expected: M): M = this.shouldContainAll(expected)
 
-infix fun <R, T> Map<R, T>.`should not contain`(theThing: Pair<R, T>) = this.shouldNotContain(theThing)
+infix fun <K, V, M : Map<K, V>> M.`should not contain`(expected: Pair<K, V>): M = this.shouldNotContain(expected)
 
-infix fun <R, T> Map<R, T>.`should not contain any`(things: Map<R, T>) = this.shouldNotContainAny(things)
+infix fun <K, V, M : Map<K, V>> M.`should not contain any`(expected: M): M = this.shouldNotContainAny(expected)
 
-fun <R, T> Map<R, T>.`should be empty`() = this.shouldBeEmpty()
+fun <M : Map<*, *>> M.`should be empty`(): M = this.shouldBeEmpty()
 
-fun <R, T> Map<R, T>.`should not be empty`() = this.shouldNotBeEmpty()
+fun <M : Map<*, *>> M.`should not be empty`(): M = this.shouldNotBeEmpty()
 
 infix fun <T> Any?.`should not be in`(array: Array<T>) = this.shouldNotBeIn(array)
 

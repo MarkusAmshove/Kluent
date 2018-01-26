@@ -2,263 +2,263 @@ package org.amshove.kluent
 
 import org.junit.Assert.*
 
-infix fun <T> Array<T>.shouldContain(theThing: T) = this.apply { if (this.contains(theThing)) Unit else fail("$this should contain $theThing", "$theThing", join(this)) }
+infix fun <T> Array<T>.shouldContain(expected: T) = apply { if (this.contains(expected)) Unit else fail("$this should contain $expected", "$expected", join(this)) }
 
-infix fun <T> Array<T>.shouldContainSome(things: Array<T>) = this.apply { assertTrue("Expected $this to contain at least one of $things", this.any { things.contains(it) }) }
+infix fun <T> Array<T>.shouldContainSome(expected: Array<T>) = apply { assertTrue("Expected $this to contain at least one of $expected", this.any { expected.contains(it) }) }
 
-infix fun <T> Array<T>.shouldContainSome(things: Iterable<T>) = this.apply { assertTrue("Expected $this to contain at least one of $things", this.any { things.contains(it) }) }
+infix fun <T> Array<T>.shouldContainSome(expected: Iterable<T>) = apply { assertTrue("Expected $this to contain at least one of $expected", this.any { expected.contains(it) }) }
 
-infix fun <T> Array<T>.shouldContainNone(things: Array<T>) = this.apply { assertTrue("Expected $this to contain none of $things", this.none { things.contains(it) }) }
+infix fun <T> Array<T>.shouldContainNone(expected: Array<T>) = apply { assertTrue("Expected $this to contain none of $expected", this.none { expected.contains(it) }) }
 
-infix fun <T> Array<T>.shouldContainNone(things: Iterable<T>) = this.apply { assertTrue("Expected $this to contain none of $things", this.none { things.contains(it) }) }
+infix fun <T> Array<T>.shouldContainNone(expected: Iterable<T>) = apply { assertTrue("Expected $this to contain none of $expected", this.none { expected.contains(it) }) }
 
-infix fun <T> Array<T>.shouldContainAll(things: Array<T>) = this.apply { things.forEach { shouldContain(it) } }
+infix fun <T> Array<T>.shouldContainAll(expected: Array<T>) = apply { expected.forEach { shouldContain(it) } }
 
-infix fun <T> Array<T>.shouldContainAll(things: Iterable<T>) = this.apply { things.forEach { shouldContain(it) } }
+infix fun <T> Array<T>.shouldContainAll(expected: Iterable<T>) = apply { expected.forEach { shouldContain(it) } }
 
-infix fun <T> Array<T>.shouldNotContain(theThing: T) = this.apply { if (!this.contains(theThing)) Unit else fail("$this should not contain $theThing", "the Array to not contain $theThing", join(this)) }
+infix fun <T> Array<T>.shouldNotContain(expected: T) = apply { if (!this.contains(expected)) Unit else fail("$this should not contain $expected", "the Array to not contain $expected", join(this)) }
 
-infix fun <T> Array<T>.shouldNotContainAny(things: Array<T>) = this.apply { things.forEach { shouldNotContain(it) } }
+infix fun <T> Array<T>.shouldNotContainAny(expected: Array<T>) = apply { expected.forEach { shouldNotContain(it) } }
 
-infix fun <T> Array<T>.shouldNotContainAny(things: Iterable<T>) = this.apply { things.forEach { shouldNotContain(it) } }
+infix fun <T> Array<T>.shouldNotContainAny(expected: Iterable<T>) = apply { expected.forEach { shouldNotContain(it) } }
 
-infix fun <T> Array<T>?.shouldEqual(expected: Array<T>?) = this.apply { assertArrayEquals(expected, this) }
+infix fun <T> Array<T>?.shouldEqual(expected: Array<T>?) = apply { assertArrayEquals(expected, this) }
 
-fun <T> Array<T>.shouldBeEmpty() = this.apply { assertEmpty(this.toList(), "Array") }
+fun <T> Array<T>.shouldBeEmpty() = apply { assertEmpty(this.toList(), "Array") }
 
-fun <T> Array<T>.shouldNotBeEmpty() = this.apply { assertNotEmpty(this.toList(), "Array") }
+fun <T> Array<T>.shouldNotBeEmpty() = apply { assertNotEmpty(this.toList(), "Array") }
 
-infix fun IntArray.shouldEqual(expected: IntArray) = this.apply { assertArrayEquals(this, expected) }
+infix fun IntArray.shouldEqual(expected: IntArray) = apply { assertArrayEquals(this, expected) }
 
-fun IntArray.shouldBeEmpty() = this.apply { this.toTypedArray().shouldBeEmpty() }
+fun IntArray.shouldBeEmpty() = apply { this.toTypedArray().shouldBeEmpty() }
 
-fun IntArray.shouldNotBeEmpty() = this.apply { this.toTypedArray().shouldNotBeEmpty() }
+fun IntArray.shouldNotBeEmpty() = apply { this.toTypedArray().shouldNotBeEmpty() }
 
-infix fun IntArray.shouldContain(theThing: Int) = this.apply { this.toTypedArray() shouldContain theThing }
+infix fun IntArray.shouldContain(expected: Int) = apply { this.toTypedArray() shouldContain expected }
 
-infix fun IntArray.shouldContainSome(things: IntArray) = this.apply { this.toTypedArray().shouldContainSome(things.toTypedArray()) }
+infix fun IntArray.shouldContainSome(expected: IntArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
 
-infix fun IntArray.shouldContainNone(things: IntArray) = this.apply { this.toTypedArray().shouldContainNone(things.toTypedArray()) }
+infix fun IntArray.shouldContainNone(expected: IntArray) = apply { this.toTypedArray().shouldContainNone(expected.toTypedArray()) }
 
-infix fun IntArray.shouldContainAll(things: IntArray) = this.apply { things.forEach { shouldContain(it) } }
+infix fun IntArray.shouldContainAll(expected: IntArray) = apply { expected.forEach { shouldContain(it) } }
 
-infix fun IntArray.shouldNotContain(theThing: Int) = this.apply { this.toTypedArray() shouldNotContain theThing }
+infix fun IntArray.shouldNotContain(expected: Int) = apply { this.toTypedArray() shouldNotContain expected }
 
-infix fun IntArray.shouldNotContainAny(things: IntArray) = this.apply { things.forEach { shouldNotContain(it) } }
+infix fun IntArray.shouldNotContainAny(expected: IntArray) = apply { expected.forEach { shouldNotContain(it) } }
 
-infix fun Int.shouldBeIn(theArray: IntArray) = this.apply { this shouldBeIn theArray.toTypedArray() }
+infix fun Int.shouldBeIn(theArray: IntArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
-infix fun Int.shouldNotBeIn(theArray: IntArray) = this.apply { this shouldNotBeIn theArray.toTypedArray() }
+infix fun Int.shouldNotBeIn(theArray: IntArray) = apply { this shouldNotBeIn theArray.toTypedArray() }
 
-infix fun BooleanArray.shouldEqual(expected: BooleanArray) = this.apply { assertArrayEquals(this, expected) }
+infix fun BooleanArray.shouldEqual(expected: BooleanArray) = apply { assertArrayEquals(this, expected) }
 
-fun BooleanArray.shouldBeEmpty() = this.apply { this.toTypedArray().shouldBeEmpty() }
+fun BooleanArray.shouldBeEmpty() = apply { this.toTypedArray().shouldBeEmpty() }
 
-fun BooleanArray.shouldNotBeEmpty() = this.apply { this.toTypedArray().shouldNotBeEmpty() }
+fun BooleanArray.shouldNotBeEmpty() = apply { this.toTypedArray().shouldNotBeEmpty() }
 
-infix fun BooleanArray.shouldContain(theThing: Boolean) = this.apply { this.toTypedArray() shouldContain theThing }
+infix fun BooleanArray.shouldContain(expected: Boolean) = apply { this.toTypedArray() shouldContain expected }
 
-infix fun BooleanArray.shouldContainSome(things: BooleanArray) = this.apply { this.toTypedArray().shouldContainSome(things.toTypedArray()) }
+infix fun BooleanArray.shouldContainSome(expected: BooleanArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
 
-infix fun BooleanArray.shouldContainNone(things: BooleanArray) = this.apply { this.toTypedArray().shouldContainNone(things.toTypedArray()) }
+infix fun BooleanArray.shouldContainNone(expected: BooleanArray) = apply { this.toTypedArray().shouldContainNone(expected.toTypedArray()) }
 
-infix fun BooleanArray.shouldContainAll(things: BooleanArray) = this.apply { things.forEach { shouldContain(it) } }
+infix fun BooleanArray.shouldContainAll(expected: BooleanArray) = apply { expected.forEach { shouldContain(it) } }
 
-infix fun BooleanArray.shouldNotContain(theThing: Boolean) = this.apply { this.toTypedArray() shouldNotContain theThing }
+infix fun BooleanArray.shouldNotContain(expected: Boolean) = apply { this.toTypedArray() shouldNotContain expected }
 
-infix fun BooleanArray.shouldNotContainAny(things: BooleanArray) = this.apply { things.forEach { shouldNotContain(it) } }
+infix fun BooleanArray.shouldNotContainAny(expected: BooleanArray) = apply { expected.forEach { shouldNotContain(it) } }
 
-infix fun Boolean.shouldBeIn(theArray: BooleanArray) = this.apply { this shouldBeIn theArray.toTypedArray() }
+infix fun Boolean.shouldBeIn(theArray: BooleanArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
-infix fun Boolean.shouldNotBeIn(theArray: BooleanArray) = this.apply { this shouldNotBeIn theArray.toTypedArray() }
+infix fun Boolean.shouldNotBeIn(theArray: BooleanArray) = apply { this shouldNotBeIn theArray.toTypedArray() }
 
-infix fun ByteArray.shouldEqual(expected: ByteArray) = this.apply { assertArrayEquals(this, expected) }
+infix fun ByteArray.shouldEqual(expected: ByteArray) = apply { assertArrayEquals(this, expected) }
 
-fun ByteArray.shouldBeEmpty() = this.apply { this.toTypedArray().shouldBeEmpty() }
+fun ByteArray.shouldBeEmpty() = apply { this.toTypedArray().shouldBeEmpty() }
 
-fun ByteArray.shouldNotBeEmpty() = this.apply { this.toTypedArray().shouldNotBeEmpty() }
+fun ByteArray.shouldNotBeEmpty() = apply { this.toTypedArray().shouldNotBeEmpty() }
 
-infix fun ByteArray.shouldContain(theThing: Byte) = this.apply { this.toTypedArray() shouldContain theThing }
+infix fun ByteArray.shouldContain(expected: Byte) = apply { this.toTypedArray() shouldContain expected }
 
-infix fun ByteArray.shouldContainSome(things: ByteArray) = this.apply { this.toTypedArray().shouldContainSome(things.toTypedArray()) }
+infix fun ByteArray.shouldContainSome(expected: ByteArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
 
-infix fun ByteArray.shouldContainNone(things: ByteArray) = this.apply { this.toTypedArray().shouldContainNone(things.toTypedArray()) }
+infix fun ByteArray.shouldContainNone(expected: ByteArray) = apply { this.toTypedArray().shouldContainNone(expected.toTypedArray()) }
 
-infix fun ByteArray.shouldContainAll(things: ByteArray) = this.apply { things.forEach { shouldContain(it) } }
+infix fun ByteArray.shouldContainAll(expected: ByteArray) = apply { expected.forEach { shouldContain(it) } }
 
-infix fun ByteArray.shouldNotContain(theThing: Byte) = this.apply { this.toTypedArray() shouldNotContain theThing }
+infix fun ByteArray.shouldNotContain(expected: Byte) = apply { this.toTypedArray() shouldNotContain expected }
 
-infix fun ByteArray.shouldNotContainAny(things: ByteArray) = this.apply { things.forEach { shouldNotContain(it) } }
+infix fun ByteArray.shouldNotContainAny(expected: ByteArray) = apply { expected.forEach { shouldNotContain(it) } }
 
-infix fun Byte.shouldBeIn(theArray: ByteArray) = this.apply { this shouldBeIn theArray.toTypedArray() }
+infix fun Byte.shouldBeIn(theArray: ByteArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
-infix fun Byte.shouldNotBeIn(theArray: ByteArray) = this.apply { this shouldNotBeIn theArray.toTypedArray() }
+infix fun Byte.shouldNotBeIn(theArray: ByteArray) = apply { this shouldNotBeIn theArray.toTypedArray() }
 
-infix fun CharArray.shouldEqual(expected: CharArray) = this.apply { assertArrayEquals(this, expected) }
+infix fun CharArray.shouldEqual(expected: CharArray) = apply { assertArrayEquals(this, expected) }
 
-infix fun CharArray.shouldNotEqual(expected: CharArray) = this.apply { this.toTypedArray() shouldNotEqual expected.toTypedArray() }
+infix fun CharArray.shouldNotEqual(expected: CharArray) = apply { this.toTypedArray() shouldNotEqual expected.toTypedArray() }
 
-fun CharArray.shouldBeEmpty() = this.apply { this.toTypedArray().shouldBeEmpty() }
+fun CharArray.shouldBeEmpty() = apply { this.toTypedArray().shouldBeEmpty() }
 
-fun CharArray.shouldNotBeEmpty() = this.apply { this.toTypedArray().shouldNotBeEmpty() }
+fun CharArray.shouldNotBeEmpty() = apply { this.toTypedArray().shouldNotBeEmpty() }
 
-infix fun CharArray.shouldContain(theThing: Char) = this.apply { this.toTypedArray() shouldContain theThing }
+infix fun CharArray.shouldContain(expected: Char) = apply { this.toTypedArray() shouldContain expected }
 
-infix fun CharArray.shouldContainSome(things: CharArray) = this.apply { this.toTypedArray().shouldContainSome(things.toTypedArray()) }
+infix fun CharArray.shouldContainSome(expected: CharArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
 
-infix fun CharArray.shouldContainNone(things: CharArray) = this.apply { this.toTypedArray().shouldContainNone(things.toTypedArray()) }
+infix fun CharArray.shouldContainNone(expected: CharArray) = apply { this.toTypedArray().shouldContainNone(expected.toTypedArray()) }
 
-infix fun CharArray.shouldContainAll(things: CharArray) = this.apply { things.forEach { shouldContain(it) } }
+infix fun CharArray.shouldContainAll(expected: CharArray) = apply { expected.forEach { shouldContain(it) } }
 
-infix fun CharArray.shouldNotContain(theThing: Char) = this.apply { this.toTypedArray() shouldNotContain theThing }
+infix fun CharArray.shouldNotContain(expected: Char) = apply { this.toTypedArray() shouldNotContain expected }
 
-infix fun CharArray.shouldNotContainAny(things: CharArray) = this.apply { things.forEach { shouldNotContain(it) } }
+infix fun CharArray.shouldNotContainAny(expected: CharArray) = apply { expected.forEach { shouldNotContain(it) } }
 
-infix fun Char.shouldBeIn(theArray: CharArray) = this.apply { this shouldBeIn theArray.toTypedArray() }
+infix fun Char.shouldBeIn(theArray: CharArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
-infix fun Char.shouldNotBeIn(theArray: CharArray) = this.apply { this shouldNotBeIn theArray.toTypedArray() }
+infix fun Char.shouldNotBeIn(theArray: CharArray) = apply { this shouldNotBeIn theArray.toTypedArray() }
 
-infix fun DoubleArray.shouldEqual(expected: DoubleArray) = this.apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
+infix fun DoubleArray.shouldEqual(expected: DoubleArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
-fun DoubleArray.shouldBeEmpty() = this.apply { this.toTypedArray().shouldBeEmpty() }
+fun DoubleArray.shouldBeEmpty() = apply { this.toTypedArray().shouldBeEmpty() }
 
-fun DoubleArray.shouldNotBeEmpty() = this.apply { this.toTypedArray().shouldNotBeEmpty() }
+fun DoubleArray.shouldNotBeEmpty() = apply { this.toTypedArray().shouldNotBeEmpty() }
 
-infix fun DoubleArray.shouldContain(theThing: Double) = this.apply { this.toTypedArray() shouldContain theThing }
+infix fun DoubleArray.shouldContain(expected: Double) = apply { this.toTypedArray() shouldContain expected }
 
-infix fun DoubleArray.shouldContainSome(things: DoubleArray) = this.apply { this.toTypedArray().shouldContainSome(things.toTypedArray()) }
+infix fun DoubleArray.shouldContainSome(expected: DoubleArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
 
-infix fun DoubleArray.shouldContainNone(things: DoubleArray) = this.apply { this.toTypedArray().shouldContainNone(things.toTypedArray()) }
+infix fun DoubleArray.shouldContainNone(expected: DoubleArray) = apply { this.toTypedArray().shouldContainNone(expected.toTypedArray()) }
 
-infix fun DoubleArray.shouldContainAll(things: DoubleArray) = this.apply { things.forEach { shouldContain(it) } }
+infix fun DoubleArray.shouldContainAll(expected: DoubleArray) = apply { expected.forEach { shouldContain(it) } }
 
-infix fun DoubleArray.shouldNotContain(theThing: Double) = this.apply { this.toTypedArray() shouldNotContain theThing }
+infix fun DoubleArray.shouldNotContain(expected: Double) = apply { this.toTypedArray() shouldNotContain expected }
 
-infix fun DoubleArray.shouldNotContainAny(things: DoubleArray) = this.apply { things.forEach { shouldNotContain(it) } }
+infix fun DoubleArray.shouldNotContainAny(expected: DoubleArray) = apply { expected.forEach { shouldNotContain(it) } }
 
-infix fun Double.shouldBeIn(theArray: DoubleArray) = this.apply { this shouldBeIn theArray.toTypedArray() }
+infix fun Double.shouldBeIn(theArray: DoubleArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
-infix fun Double.shouldNotBeIn(theArray: DoubleArray) = this.apply { this shouldNotBeIn theArray.toTypedArray() }
+infix fun Double.shouldNotBeIn(theArray: DoubleArray) = apply { this shouldNotBeIn theArray.toTypedArray() }
 
-infix fun FloatArray.shouldEqual(expected: FloatArray) = this.apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
+infix fun FloatArray.shouldEqual(expected: FloatArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
-fun FloatArray.shouldBeEmpty() = this.apply { this.toTypedArray().shouldBeEmpty() }
+fun FloatArray.shouldBeEmpty() = apply { this.toTypedArray().shouldBeEmpty() }
 
-fun FloatArray.shouldNotBeEmpty() = this.apply { this.toTypedArray().shouldNotBeEmpty() }
+fun FloatArray.shouldNotBeEmpty() = apply { this.toTypedArray().shouldNotBeEmpty() }
 
-infix fun FloatArray.shouldContain(theThing: Float) = this.apply { this.toTypedArray() shouldContain theThing }
+infix fun FloatArray.shouldContain(expected: Float) = apply { this.toTypedArray() shouldContain expected }
 
-infix fun FloatArray.shouldContainSome(things: FloatArray) = this.apply { this.toTypedArray().shouldContainSome(things.toTypedArray()) }
+infix fun FloatArray.shouldContainSome(expected: FloatArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
 
-infix fun FloatArray.shouldContainNone(things: FloatArray) = this.apply { this.toTypedArray().shouldContainNone(things.toTypedArray()) }
+infix fun FloatArray.shouldContainNone(expected: FloatArray) = apply { this.toTypedArray().shouldContainNone(expected.toTypedArray()) }
 
-infix fun FloatArray.shouldContainAll(things: FloatArray) = this.apply { things.forEach { shouldContain(it) } }
+infix fun FloatArray.shouldContainAll(expected: FloatArray) = apply { expected.forEach { shouldContain(it) } }
 
-infix fun FloatArray.shouldNotContain(theThing: Float) = this.apply { this.toTypedArray() shouldNotContain theThing }
+infix fun FloatArray.shouldNotContain(expected: Float) = apply { this.toTypedArray() shouldNotContain expected }
 
-infix fun FloatArray.shouldNotContainAny(things: FloatArray) = this.apply { things.forEach { shouldNotContain(it) } }
+infix fun FloatArray.shouldNotContainAny(expected: FloatArray) = apply { expected.forEach { shouldNotContain(it) } }
 
-infix fun Float.shouldBeIn(theArray: FloatArray) = this.apply { this shouldBeIn theArray.toTypedArray() }
+infix fun Float.shouldBeIn(theArray: FloatArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
-infix fun Float.shouldNotBeIn(theArray: FloatArray) = this.apply { this shouldNotBeIn theArray.toTypedArray() }
+infix fun Float.shouldNotBeIn(theArray: FloatArray) = apply { this shouldNotBeIn theArray.toTypedArray() }
 
-infix fun LongArray.shouldEqual(expected: LongArray) = this.apply { assertArrayEquals(this, expected) }
+infix fun LongArray.shouldEqual(expected: LongArray) = apply { assertArrayEquals(this, expected) }
 
-fun LongArray.shouldBeEmpty() = this.apply { this.toTypedArray().shouldBeEmpty() }
+fun LongArray.shouldBeEmpty() = apply { this.toTypedArray().shouldBeEmpty() }
 
-fun LongArray.shouldNotBeEmpty() = this.apply { this.toTypedArray().shouldNotBeEmpty() }
+fun LongArray.shouldNotBeEmpty() = apply { this.toTypedArray().shouldNotBeEmpty() }
 
-infix fun LongArray.shouldContain(theThing: Long) = this.apply { this.toTypedArray() shouldContain theThing }
+infix fun LongArray.shouldContain(expected: Long) = apply { this.toTypedArray() shouldContain expected }
 
-infix fun LongArray.shouldContainSome(things: LongArray) = this.apply { this.toTypedArray().shouldContainSome(things.toTypedArray()) }
+infix fun LongArray.shouldContainSome(expected: LongArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
 
-infix fun LongArray.shouldContainNone(things: LongArray) = this.apply { this.toTypedArray().shouldContainNone(things.toTypedArray()) }
+infix fun LongArray.shouldContainNone(expected: LongArray) = apply { this.toTypedArray().shouldContainNone(expected.toTypedArray()) }
 
-infix fun LongArray.shouldContainAll(things: LongArray) = this.apply { things.forEach { shouldContain(it) } }
+infix fun LongArray.shouldContainAll(expected: LongArray) = apply { expected.forEach { shouldContain(it) } }
 
-infix fun LongArray.shouldNotContain(theThing: Long) = this.apply { this.toTypedArray() shouldNotContain theThing }
+infix fun LongArray.shouldNotContain(expected: Long) = apply { this.toTypedArray() shouldNotContain expected }
 
-infix fun LongArray.shouldNotContainAny(things: LongArray) = this.apply { things.forEach { shouldNotContain(it) } }
+infix fun LongArray.shouldNotContainAny(expected: LongArray) = apply { expected.forEach { shouldNotContain(it) } }
 
-infix fun Long.shouldBeIn(theArray: LongArray) = this.apply { this shouldBeIn theArray.toTypedArray() }
+infix fun Long.shouldBeIn(theArray: LongArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
-infix fun Long.shouldNotBeIn(theArray: LongArray) = this.apply { this shouldNotBeIn theArray.toTypedArray() }
+infix fun Long.shouldNotBeIn(theArray: LongArray) = apply { this shouldNotBeIn theArray.toTypedArray() }
 
-infix fun ShortArray.shouldEqual(expected: ShortArray) = this.apply { assertArrayEquals(this, expected) }
+infix fun ShortArray.shouldEqual(expected: ShortArray) = apply { assertArrayEquals(this, expected) }
 
-fun ShortArray.shouldBeEmpty() = this.apply { this.toTypedArray().shouldBeEmpty() }
+fun ShortArray.shouldBeEmpty() = apply { this.toTypedArray().shouldBeEmpty() }
 
-fun ShortArray.shouldNotBeEmpty() = this.apply { this.toTypedArray().shouldNotBeEmpty() }
+fun ShortArray.shouldNotBeEmpty() = apply { this.toTypedArray().shouldNotBeEmpty() }
 
-infix fun ShortArray.shouldContain(theThing: Short) = this.apply { this.toTypedArray() shouldContain theThing }
+infix fun ShortArray.shouldContain(expected: Short) = apply { this.toTypedArray() shouldContain expected }
 
-infix fun ShortArray.shouldContainSome(things: ShortArray) = this.apply { this.toTypedArray().shouldContainSome(things.toTypedArray()) }
+infix fun ShortArray.shouldContainSome(expected: ShortArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
 
-infix fun ShortArray.shouldContainNone(things: ShortArray) = this.apply { this.toTypedArray().shouldContainNone(things.toTypedArray()) }
+infix fun ShortArray.shouldContainNone(expected: ShortArray) = apply { this.toTypedArray().shouldContainNone(expected.toTypedArray()) }
 
-infix fun ShortArray.shouldContainAll(things: ShortArray) = this.apply { things.forEach { shouldContain(it) } }
+infix fun ShortArray.shouldContainAll(expected: ShortArray) = apply { expected.forEach { shouldContain(it) } }
 
-infix fun ShortArray.shouldNotContain(theThing: Short) = this.apply { this.toTypedArray() shouldNotContain theThing }
+infix fun ShortArray.shouldNotContain(expected: Short) = apply { this.toTypedArray() shouldNotContain expected }
 
-infix fun ShortArray.shouldNotContainAny(things: ShortArray) = this.apply { things.forEach { shouldNotContain(it) } }
+infix fun ShortArray.shouldNotContainAny(expected: ShortArray) = apply { expected.forEach { shouldNotContain(it) } }
 
-infix fun Short.shouldBeIn(theArray: ShortArray) = this.apply { this shouldBeIn theArray.toTypedArray() }
+infix fun Short.shouldBeIn(theArray: ShortArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
-infix fun Short.shouldNotBeIn(theArray: ShortArray) = this.apply { this shouldNotBeIn theArray.toTypedArray() }
+infix fun Short.shouldNotBeIn(theArray: ShortArray) = apply { this shouldNotBeIn theArray.toTypedArray() }
 
-infix fun <T> Iterable<T>.shouldContain(theThing: T) = this.apply { if (this.contains(theThing)) Unit else fail("$this should contain $theThing", "$theThing", join(this)) }
+infix fun <T, I : Iterable<T>> I.shouldContain(expected: T): I = apply { if (this.contains(expected)) Unit else fail("$this should contain $expected", "$expected", join(this)) }
 
-infix fun <T> Iterable<T>.shouldContainSome(things: Iterable<T>) = this.apply { assertTrue("Expected $this to contain at least one of $things", this.any { things.contains(it) }) }
+infix fun <T, I : Iterable<T>> I.shouldContainSome(expected: Iterable<T>): I = apply { assertTrue("Expected $this to contain at least one of $expected", this.any { expected.contains(it) }) }
 
-infix fun <T> Iterable<T>.shouldContainSome(things: Array<T>) = this.apply { assertTrue("Expected $this to contain at least one of $things", this.any { things.contains(it) }) }
+infix fun <T, I : Iterable<T>> I.shouldContainSome(expected: Array<T>): I = apply { assertTrue("Expected $this to contain at least one of $expected", this.any { expected.contains(it) }) }
 
-infix fun <T> Iterable<T>.shouldContainNone(things: Iterable<T>) = this.apply { assertTrue("Expected $this to contain none of $things", this.none { things.contains(it) }) }
+infix fun <T, I : Iterable<T>> I.shouldContainNone(expected: Iterable<T>): I = apply { assertTrue("Expected $this to contain none of $expected", this.none { expected.contains(it) }) }
 
-infix fun <T> Iterable<T>.shouldContainNone(things: Array<T>) = this.apply { assertTrue("Expected $this to contain none of $things", this.none { things.contains(it) }) }
+infix fun <T, I : Iterable<T>> I.shouldContainNone(expected: Array<T>): I = apply { assertTrue("Expected $this to contain none of $expected", this.none { expected.contains(it) }) }
 
-infix fun <T> Iterable<T>.shouldContainAll(things: Iterable<T>) = this.apply { things.forEach { shouldContain(it) } }
+infix fun <T, I : Iterable<T>> I.shouldContainAll(expected: Iterable<T>): I = apply { expected.forEach { shouldContain(it) } }
 
-infix fun <T> Iterable<T>.shouldContainAll(things: Array<T>) = this.apply { things.forEach { shouldContain(it) } }
+infix fun <T, I : Iterable<T>> I.shouldContainAll(expected: Array<T>): I = apply { expected.forEach { shouldContain(it) } }
 
-infix fun <T> Iterable<T>.shouldNotContain(theThing: T) = this.apply { if (!this.contains(theThing)) Unit else fail("$this should not contain $theThing", "the Iterable to not contain $theThing", join(this)) }
+infix fun <T, I : Iterable<T>> I.shouldNotContain(expected: T): I = apply { if (!this.contains(expected)) Unit else fail("$this should not contain $expected", "the Iterable to not contain $expected", join(this)) }
 
-infix fun <T> Iterable<T>.shouldNotContainAny(things: Iterable<T>) = this.apply { things.forEach { shouldNotContain(it) } }
+infix fun <T, I : Iterable<T>> I.shouldNotContainAny(expected: Iterable<T>): I = apply { expected.forEach { shouldNotContain(it) } }
 
-infix fun <T> Iterable<T>.shouldNotContainAny(things: Array<T>) = this.apply { things.forEach { shouldNotContain(it) } }
+infix fun <T, I : Iterable<T>> I.shouldNotContainAny(expected: Array<T>): I = apply { expected.forEach { shouldNotContain(it) } }
 
-infix fun <T> Iterable<T>?.shouldEqual(expected: Iterable<T>?) = this.apply { assertEquals(expected, this) }
+infix fun <T, I: Iterable<T>> I.shouldEqual(expected: Iterable<T>?): I = apply { assertEquals(expected, this) }
 
-fun <T> Iterable<T>.shouldBeEmpty() = this.apply { assertEmpty(this, "Iterable") }
+fun <I : Iterable<*>> I.shouldBeEmpty(): I = apply { assertEmpty(this, "Iterable") }
 
-fun <T> Iterable<T>.shouldNotBeEmpty() = this.apply { assertNotEmpty(this, "Iterable") }
+fun <I : Iterable<*>> I.shouldNotBeEmpty(): I = apply { assertNotEmpty(this, "Iterable") }
 
-infix fun <R, T> Map<R, T>.shouldHaveKey(theKey: R) = this.apply { if (this.containsKey(theKey)) Unit else fail("$this should contain key $theKey", "$theKey", join(this.keys)) }
+infix fun <K, M : Map<K, *>> M.shouldHaveKey(theKey: K): M = apply { if (this.containsKey(theKey)) Unit else fail("$this should contain key $theKey", "$theKey", join(this.keys)) }
 
-infix fun <R, T> Map<R, T>.shouldNotHaveKey(theKey: R) = this.apply { if (!this.containsKey(theKey)) Unit else fail("$this should not contain key $theKey", "the map to not have the key $theKey", join(this.keys)) }
+infix fun <K, M : Map<K, *>> M.shouldNotHaveKey(theKey: K): M = apply { if (!this.containsKey(theKey)) Unit else fail("$this should not contain key $theKey", "the map to not have the key $theKey", join(this.keys)) }
 
-infix fun <R, T> Map<R, T>.shouldHaveValue(theValue: T) = this.apply { if (this.values.contains(theValue)) Unit else fail("$this should contain the value $theValue", "$theValue", join(this.values)) }
+infix fun <V, M : Map<*, V>> M.shouldHaveValue(theValue: V): M = apply { if (this.values.contains(theValue)) Unit else fail("$this should contain the value $theValue", "$theValue", join(this.values)) }
 
-infix fun <R, T> Map<R, T>.shouldNotHaveValue(theValue: T) = this.apply { if (!this.values.contains(theValue)) Unit else fail("$this should not contain the value $theValue", "the map to not have the value $theValue", join(this.values)) }
+infix fun <V, M : Map<*, V>> M.shouldNotHaveValue(theValue: V): M = apply { if (!this.values.contains(theValue)) Unit else fail("$this should not contain the value $theValue", "the map to not have the value $theValue", join(this.values)) }
 
-infix fun <R, T> Map<R, T>.shouldContain(theThing: Pair<R, T>) = this.apply { if (this[theThing.first] == theThing.second) Unit else fail("$this should contain $theThing", "$theThing", join(this)) }
+infix fun <K, V, M : Map<K, V>> M.shouldContain(expected: Pair<K, V>): M = apply { if (this[expected.first] == expected.second) Unit else fail("$this should contain $expected", "$expected", join(this)) }
 
-infix fun <R, T> Map<R, T>.shouldContainAll(things: Map<R, T>) = this.apply { things.forEach { shouldContain(it.toPair()) } }
+infix fun <K, V, M : Map<K, V>> M.shouldContainAll(expected: M): M = apply { expected.forEach { shouldContain(it.toPair()) } }
 
-infix fun <R, T> Map<R, T>.shouldNotContain(theThing: Pair<R, T>) = this.apply { if (this[theThing.first] != theThing.second) Unit else fail("$this should not contain $theThing", "the map to not contain the pair $theThing", join(this)) }
+infix fun <K, V, M : Map<K, V>> M.shouldNotContain(expected: Pair<K, V>): M = apply { if (this[expected.first] != expected.second) Unit else fail("$this should not contain $expected", "the map to not contain the pair $expected", join(this)) }
 
-infix fun <R, T> Map<R, T>.shouldNotContainAny(things: Map<R, T>) = this.apply { things.forEach { shouldNotContain(it.toPair()) } }
+infix fun <K, V, M : Map<K, V>> M.shouldNotContainAny(expected: M): M = apply { expected.forEach { shouldNotContain(it.toPair()) } }
 
-fun <R, T> Map<R, T>.shouldBeEmpty() = this.apply { assertEmpty(this.toList(), "Map") }
+fun <M : Map<*, *>> M.shouldBeEmpty(): M = apply { assertEmpty(this.toList(), "Map") }
 
-fun <R, T> Map<R, T>.shouldNotBeEmpty() = this.apply { assertNotEmpty(this.toList(), "Map") }
+fun <M : Map<*, *>> M.shouldNotBeEmpty(): M = apply { assertNotEmpty(this.toList(), "Map") }
 
-infix fun <T> Any?.shouldNotBeIn(array: Array<T>) = this.apply { if (!array.contains(this)) Unit else fail("$this should not be in $array", "the value $this to not be in the Array", join(array)) }
+infix fun <T> Any?.shouldNotBeIn(array: Array<T>) = apply { if (!array.contains(this)) Unit else fail("$this should not be in $array", "the value $this to not be in the Array", join(array)) }
 
-infix fun <T> Any?.shouldBeIn(iterable: Iterable<T>) = this.apply { if (iterable.contains(this)) Unit else fail("$this should be in $iterable", "$this", join(iterable)) }
+infix fun <T> Any?.shouldBeIn(iterable: Iterable<T>) = apply { if (iterable.contains(this)) Unit else fail("$this should be in $iterable", "$this", join(iterable)) }
 
-infix fun <T> Any?.shouldNotBeIn(iterable: Iterable<T>) = this.apply { if (!iterable.contains(this)) Unit else fail("$this should not be in $iterable", "the value $this to not be in the Iterable", join(iterable)) }
+infix fun <T> Any?.shouldNotBeIn(iterable: Iterable<T>) = apply { if (!iterable.contains(this)) Unit else fail("$this should not be in $iterable", "the value $this to not be in the Iterable", join(iterable)) }
 
-infix fun <T> Any?.shouldBeIn(array: Array<T>) = this.apply { if (array.contains(this)) Unit else fail("$this should be in $array", "$this", join(array)) }
+infix fun <T> Any?.shouldBeIn(array: Array<T>) = apply { if (array.contains(this)) Unit else fail("$this should be in $array", "$this", join(array)) }
 
 internal fun <T> assertEmpty(iterable: Iterable<T>, collectionType: String) = assertTrue("Expected the $collectionType to be empty, but has ${iterable.count()} elements", iterable.count() == 0)
 internal fun <T> assertNotEmpty(iterable: Iterable<T>, collectionType: String) = assertTrue("Expected the $collectionType to contain elements, but is empty", iterable.count() > 0)
