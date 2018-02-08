@@ -25,6 +25,11 @@ Kluent-Android is hosted [here at jcenter](https://bintray.com/markusamshove/mav
 ## Gradle
 Replace {version} with the current version
 
+    // Add jcenter as a repository for dependencies
+    repositories {
+        jcenter()
+    }
+
     dependencies {
         testImplementation 'org.amshove.kluent:kluent:{version}'
 
@@ -34,6 +39,14 @@ Replace {version} with the current version
 
 ## Maven
 Replace {version} with the current version
+
+    <!-- Add jcenter as a repository for dependencies --> 
+    <repositories>
+        <repository>
+            <id>jcenter</id>
+            <url>https://jcenter.bintray.com/</url>
+        </repository>
+    </repositories>
 
     <dependency>
         <groupId>org.amshove.kluent</groupId>
