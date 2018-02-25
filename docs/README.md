@@ -103,6 +103,10 @@ number
 ```
 
 # Changelog
+
+# 1.35
+* Revisit return types of assertions | [Issue](https://github.com/MarkusAmshove/Kluent/issues/93) | [PR](https://github.com/MarkusAmshove/Kluent/pull/94)
+
 # 1.34
 * Allow chaining of assertions | [Issue](https://github.com/MarkusAmshove/Kluent/issues/91) | [PR](https://github.com/MarkusAmshove/Kluent/pull/92)
 * Return non-null instance when using `shouldNotBeNull` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/90) | thanks to [@goreRatzete](https://github.com/goreRatzete)
