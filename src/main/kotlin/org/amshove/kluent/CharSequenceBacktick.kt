@@ -4,11 +4,15 @@ infix fun CharSequence.`should start with`(expected: CharSequence) = this.should
 
 infix fun CharSequence.`should end with`(expected: CharSequence) = this.shouldEndWith(expected)
 
+infix fun CharSequence.`should contain`(char: Char) = this.shouldContain(char)
+
 infix fun CharSequence.`should contain some`(things: Iterable<CharSequence>) = this.shouldContainSome(things)
 
 infix fun CharSequence.`should contain none`(things: Iterable<CharSequence>) = this.shouldContainNone(things)
 
 infix fun CharSequence.`should contain`(expected: CharSequence) = this.shouldContain(expected)
+
+infix fun CharSequence.`should not contain`(char: Char) = this.shouldNotContain(char)
 
 infix fun CharSequence.`should not contain any`(things: Iterable<CharSequence>) = this.shouldNotContainAny(things)
 

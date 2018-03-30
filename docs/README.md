@@ -104,6 +104,9 @@ number
 
 # Changelog
 
+# 1.36 (WIP)
+* Assert that a CharSequence contains a Char | [Issue](https://github.com/MarkusAmshove/Kluent/issues/98)
+
 # 1.35
 * Revisit return types of assertions | [Issue](https://github.com/MarkusAmshove/Kluent/issues/93) | [PR](https://github.com/MarkusAmshove/Kluent/pull/94)
 

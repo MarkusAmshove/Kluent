@@ -6,11 +6,15 @@ infix fun CharSequence.shouldStartWith(expected: CharSequence) = this.apply { as
 
 infix fun CharSequence.shouldEndWith(expected: CharSequence) = this.apply { assertTrue("Expected the CharSequence $this to end with $expected", this.endsWith(expected)) }
 
+infix fun CharSequence.shouldContain(char: Char) = this.apply { assertTrue("Expected '$this' to contain '$char'", this.contains(char))}
+
 infix fun CharSequence.shouldContainSome(things: Iterable<CharSequence>) = this.apply { assertTrue("Expected '$this' to contain at least one of $things", things.any { this.contains(it) }) }
 
 infix fun CharSequence.shouldContainNone(things: Iterable<CharSequence>) = this.apply { assertTrue("Expected '$this' to not contain any of $things", things.none { this.contains(it) }) }
 
 infix fun CharSequence.shouldContain(expected: CharSequence) = this.apply { assertTrue("Expected the CharSequence $this to contain $expected", this.contains(expected)) }
+
+infix fun CharSequence.shouldNotContain(char: Char) = this.apply { assertFalse("Expected '$this' to not contain '$char'", this.contains(char))}
 
 infix fun CharSequence.shouldNotContainAny(things: Iterable<CharSequence>) = this.apply { this shouldContainNone things }
 
