@@ -4,14 +4,14 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import java.io.File
 
-fun File.shouldExist() = assertTrue("The file does not exist", this.exists())
-fun File.shouldNotExist() = assertFalse("The file exists", this.exists())
+fun File.shouldExist() = assertTrue("The file '${this.absolutePath}' should exist, but does not", this.exists())
+fun File.shouldNotExist() = assertFalse("The file '${this.absolutePath}' should not exist, but does", this.exists())
 
-fun File.shouldBeDir() = assertTrue("The file is not a directory", this.isDirectory)
-fun File.shouldNotBeDir() = assertFalse("The file is a directory", this.isDirectory)
+fun File.shouldBeDir() = assertTrue("The file '${this.absolutePath}' should be a directory, but is not", this.isDirectory)
+fun File.shouldNotBeDir() = assertFalse("The file '${this.absolutePath}' should not be a directory, but is", this.isDirectory)
 
-fun File.shouldBeFile() = assertTrue("The file is not a file", this.isFile)
-fun File.shouldNotBeFile() = assertFalse("The file is a file", this.isFile)
+fun File.shouldBeFile() = assertTrue("The file '${this.absolutePath}' should be a file, but is not", this.isFile)
+fun File.shouldNotBeFile() = assertFalse("The file '${this.absolutePath}' should not be a file, but is", this.isFile)
 
 infix fun File.shouldHaveExtension(other: String) = this.extension shouldBeEqualTo other
 infix fun File.shouldNotHaveExtension(other: String) = this.extension shouldNotBeEqualTo other
