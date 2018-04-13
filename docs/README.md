@@ -104,7 +104,7 @@ number
 
 # Changelog
 
-# 1.36 (WIP)
+# 1.36
 * Assert that a CharSequence contains a Char | [Issue](https://github.com/MarkusAmshove/Kluent/issues/98)
 * Include the file path in `File` assertions | [Issue](https://github.com/MarkusAmshove/Kluent/issues/99)
 
