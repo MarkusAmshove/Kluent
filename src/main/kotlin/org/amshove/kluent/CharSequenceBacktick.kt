@@ -1,5 +1,7 @@
 package org.amshove.kluent
 
+import org.junit.Assert.assertFalse
+
 infix fun CharSequence.`should start with`(expected: CharSequence) = this.shouldStartWith(expected)
 
 infix fun CharSequence.`should end with`(expected: CharSequence) = this.shouldEndWith(expected)
@@ -55,3 +57,11 @@ fun CharSequence?.`should not be null or empty`() = this.shouldNotBeNullOrEmpty(
 fun CharSequence.`should not be blank`() = this.shouldNotBeBlank()
 
 fun CharSequence?.`should not be null or blank`() = this.shouldNotBeNullOrBlank()
+
+infix fun CharSequence.`should contain all`(items: Iterable<CharSequence>): CharSequence = this.apply {
+    items.forEach { this shouldContain it }
+}
+
+infix fun CharSequence.`should not contain all`(items: Iterable<CharSequence>): CharSequence = this.apply {
+    assertFalse("Expected the CharSequence to not contail all items: $items", items.all { this.contains(it) })
+}
