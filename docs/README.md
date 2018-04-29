@@ -104,6 +104,9 @@ number
 
 # Changelog
 
+# 1.37
+* Add `shouldContainAll` for `CharSequence` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/100) | [PR](https://github.com/MarkusAmshove/Kluent/pull/102) | thanks to [@AndreasVolkmann](https://github.com/AndreasVolkmann)
+
 # 1.36
 * Assert that a CharSequence contains a Char | [Issue](https://github.com/MarkusAmshove/Kluent/issues/98)
 * Include the file path in `File` assertions | [Issue](https://github.com/MarkusAmshove/Kluent/issues/99)
