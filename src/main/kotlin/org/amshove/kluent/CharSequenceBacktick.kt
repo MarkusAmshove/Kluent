@@ -55,3 +55,8 @@ fun CharSequence?.`should not be null or empty`() = this.shouldNotBeNullOrEmpty(
 fun CharSequence.`should not be blank`() = this.shouldNotBeBlank()
 
 fun CharSequence?.`should not be null or blank`() = this.shouldNotBeNullOrBlank()
+
+infix fun CharSequence.`should contain all`(items: Iterable<CharSequence>): CharSequence = this shouldContainAll items
+
+infix fun CharSequence.`should not contain all`(items: Iterable<CharSequence>): CharSequence =
+    this shouldNotContainAll items

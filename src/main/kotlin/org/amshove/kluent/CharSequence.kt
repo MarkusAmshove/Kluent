@@ -65,3 +65,11 @@ fun CharSequence?.shouldNotBeNullOrBlank(): CharSequence? {
     this!!.shouldNotBeBlank()
     return this
 }
+
+infix fun CharSequence.shouldContainAll(items: Iterable<CharSequence>): CharSequence = this.apply {
+    items.forEach { this shouldContain it }
+}
+
+infix fun CharSequence.shouldNotContainAll(items: Iterable<CharSequence>): CharSequence = this.apply {
+    assertFalse("Expected the CharSequence to not contail all items: $items", items.all { this.contains(it) })
+}
