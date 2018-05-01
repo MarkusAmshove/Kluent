@@ -48,13 +48,13 @@ infix fun CharSequence.`should not match`(regex: String) = this.shouldNotMatch(r
 
 infix fun CharSequence.`should not match`(regex: Regex) = this.shouldNotMatch(regex)
 
-fun CharSequence.`should not be empty`() = this.shouldNotBeEmpty()
+fun <T: CharSequence> T.`should not be empty`(): T = this.shouldNotBeEmpty()
 
-fun CharSequence?.`should not be null or empty`() = this.shouldNotBeNullOrEmpty()
+fun <T: CharSequence> T?.`should not be null or empty`(): T = this.shouldNotBeNullOrEmpty()
 
-fun CharSequence.`should not be blank`() = this.shouldNotBeBlank()
+fun <T: CharSequence> T.`should not be blank`(): T = this.shouldNotBeBlank()
 
-fun CharSequence?.`should not be null or blank`() = this.shouldNotBeNullOrBlank()
+fun <T: CharSequence> T?.`should not be null or blank`(): T = this.shouldNotBeNullOrBlank()
 
 infix fun CharSequence.`should contain all`(items: Iterable<CharSequence>): CharSequence = this shouldContainAll items
 

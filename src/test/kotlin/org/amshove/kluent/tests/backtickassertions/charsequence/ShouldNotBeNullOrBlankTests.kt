@@ -22,5 +22,11 @@ class ShouldNotBeNullOrBlankTests : Spek({
                 assertFails({ str.`should not be null or blank`() })
             }
         }
+        on("checking a nullable string") {
+            it("should return non null") {
+                val nullable: String? = "is this null?"
+                val result: String = nullable.`should not be null or blank`()
+            }
+        }
     }
 })

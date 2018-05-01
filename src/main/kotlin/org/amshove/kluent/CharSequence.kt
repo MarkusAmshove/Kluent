@@ -50,21 +50,15 @@ infix fun CharSequence.shouldNotMatch(regex: String) = this.apply { assertFalse(
 
 infix fun CharSequence.shouldNotMatch(regex: Regex) = this.apply { assertFalse("Expected $this to not match ${regex.pattern}", this.matches(regex)) }
 
-fun CharSequence.shouldNotBeEmpty() = this.apply { assertTrue("Expected the CharSequence to not be empty", this.isNotEmpty()) }
+fun <T : CharSequence> T.shouldNotBeEmpty(): T =
+    this.apply { assertTrue("Expected the CharSequence to not be empty", this.isNotEmpty()) }
 
-fun CharSequence?.shouldNotBeNullOrEmpty(): CharSequence? {
-    this.shouldNotBeNull()
-    this!!.shouldNotBeEmpty()
-    return this
-}
+fun <T : CharSequence> T?.shouldNotBeNullOrEmpty(): T = this.shouldNotBeNull().shouldNotBeEmpty()
 
-fun CharSequence.shouldNotBeBlank() = this.apply { assertTrue("Expected the CharSequence to not be blank", this.isNotBlank()) }
+fun <T : CharSequence> T.shouldNotBeBlank(): T =
+    this.apply { assertTrue("Expected the CharSequence to not be blank", this.isNotBlank()) }
 
-fun CharSequence?.shouldNotBeNullOrBlank(): CharSequence? {
-    this.shouldNotBeNull()
-    this!!.shouldNotBeBlank()
-    return this
-}
+fun <T : CharSequence> T?.shouldNotBeNullOrBlank(): T = this.shouldNotBeNull().shouldNotBeBlank()
 
 infix fun CharSequence.shouldContainAll(items: Iterable<CharSequence>): CharSequence = this.apply {
     items.forEach { this shouldContain it }
