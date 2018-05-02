@@ -104,6 +104,9 @@ number
 
 # Changelog
 
+# 1.38
+* Return correct subtype of `CharSequence` assertions | [Issue](https://github.com/MarkusAmshove/Kluent/issues/104) | [PR](https://github.com/MarkusAmshove/Kluent/pull/105) | thanks to [@AndreasVolkmann](https://github.com/AndreasVolkmann)
+
 # 1.37
 * Add `shouldContainAll` for `CharSequence` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/100) | [PR](https://github.com/MarkusAmshove/Kluent/pull/102) | thanks to [@AndreasVolkmann](https://github.com/AndreasVolkmann)
 
