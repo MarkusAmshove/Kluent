@@ -10,3 +10,4 @@ out/
 bin/
 .settings/
 local.properties
+node_modules/
