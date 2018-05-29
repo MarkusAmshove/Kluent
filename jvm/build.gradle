@@ -1,0 +1,24 @@
+apply plugin: 'kotlin-platform-jvm'
+
+dependencies {
+    expectedBy project(':common')
+    compile libs.kotlin_stdlib_jvm
+    compile libs.kotlin_reflect
+
+    testCompile libs.junit
+    testCompile libs.kotlin_test_jvm
+    testCompile libs.kotlin_test_junit
+
+
+    // TODO: To be removed
+    compile libs.junit
+    compile "com.nhaarman:mockito-kotlin-kt1.1:$mockito_version"
+    testCompile "org.jetbrains.spek:spek:$spek_version"
+    testCompile "com.nhaarman:mockito-kotlin-kt1.1:$mockito_version"
+}
+
+tasks.withType(compileKotlin.getClass()) {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}

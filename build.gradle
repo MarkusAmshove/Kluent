@@ -1,120 +1,57 @@
 buildscript {
-    // Use fixed versions for artifacts which are meant for implementation
-    ext.kotlin_version = '1.2.20'
+    // TODO: Mockito and Spek will be removed in the future
     ext.mockito_version = '1.5.0'
-    // Use newest artifacts for tests
     ext.spek_version = "1.0.+"
     repositories {
         jcenter()
+        maven { url "http://kotlin.bintray.com/kotlinx" }
+        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url "https://dl.bintray.com/jetbrains/kotlin-native-dependencies" }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.moowork.gradle:gradle-node-plugin:$gradle_node_version"
+        classpath "org.jetbrains.kotlin:kotlin-native-gradle-plugin:$kotlin_native_version"
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
     }
 }
 
-group 'org.amshove.kluent'
-version '1.38'
+ext {
+    libs = [
+        // Compile
+        kotlin_stdlib_common    : "org.jetbrains.kotlin:kotlin-stdlib-common:$kotlin_version",
+        kotlin_stdlib_jvm       : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version",
+        kotlin_stdlib_js        : "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version",
+        kotlin_reflect          : "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version",
 
-apply plugin: 'kotlin'
-apply plugin: 'idea'
-apply plugin: 'eclipse'
-apply plugin: 'maven'
-apply plugin: 'maven-publish'
-apply plugin: 'com.jfrog.bintray'
+        // Tests
+        kotlin_test_common      : "org.jetbrains.kotlin:kotlin-test-common:$kotlin_version",
+        kotlin_test_jvm         : "org.jetbrains.kotlin:kotlin-test:$kotlin_version",
+        kotlin_test_junit       : "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version",
+        kotlin_test_js          : "org.jetbrains.kotlin:kotlin-test-js:$kotlin_version",
+        kotlin_test_annotations : "org.jetbrains.kotlin:kotlin-test-annotations-common:$kotlin_version",
 
-def isAndroid = project.rootProject.hasProperty("ANDROID")
-if(isAndroid) {
-    logger.warn("Android build!")
+        junit                   : "junit:junit:4.12",
+    ]
 }
-archivesBaseName = isAndroid ? "kluent-android" : "kluent"
 
-repositories {
-    jcenter()
-    mavenCentral()
-    maven {
-        url = 'http://repository.jetbrains.com/all'
+allprojects {
+    group 'org.amshove.kluent'
+    version '1.38'
+
+    repositories {
+        jcenter()
+        maven { url "http://kotlin.bintray.com/kotlinx" }
+        // TODO: To be removed (only used for Spek)
+        maven { url = 'http://repository.jetbrains.com/all' }
     }
-}
 
-dependencies {
-    implementation 'junit:junit:4.12'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-    implementation "com.nhaarman:mockito-kotlin-kt1.1:$mockito_version"
-    testImplementation 'junit:junit:4.12'
-    testImplementation "org.jetbrains.spek:spek:$spek_version"
-    testImplementation "com.nhaarman:mockito-kotlin-kt1.1:$mockito_version"
-}
-
-sourceSets {
-    main {
-        kotlin {
-            srcDirs += 'src/main/kotlin'
-
-            if(isAndroid) {
-                exclude '**/*Backtick.kt'
-            }
+    /*tasks.withType(Test) {
+        testLogging {
+            showStandardStreams = true
+            events "passed", "failed"
         }
-    }
-    test {
-        kotlin {
-            srcDirs += 'src/test/kotlin'
-
-            if(isAndroid) {
-                exclude '**/backtick*/**'
-            }
-        }
-    }
+    }*/
 }
 
-task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
-}
 
-artifacts {
-    archives sourcesJar
-}
-
-bintrayUpload.dependsOn install
-
-bintray {
-    user = System.getenv('BINTRAY_USER')
-    key = System.getenv('BINTRAY_KEY')
-    publications = ['PublishKluent']
-    configurations = ['archives']
-    pkg {
-        repo = "maven"
-        name = isAndroid ? "Kluent-Android" : "Kluent"
-        licenses = ['MIT']
-        vcsUrl = 'https://github.com/MarkusAmshove/Kluent'
-    }
-}
-
-publishing {
-    publications {
-        PublishKluent(MavenPublication) {
-            from components.java
-            artifact sourcesJar
-            groupId 'org.amshove.kluent'
-            artifactId isAndroid ? 'kluent-android' : 'kluent'
-            version project.version
-
-            pom.withXml {
-                configurations.compile.allDependencies.each {
-                   def dependencyNode = dependenciesNode.appendNode('dependency')
-                   dependencyNode.appendNode('groupId', it.group)
-                   dependencyNode.appendNode('artifactId', it.name)
-                   dependencyNode.appendNode('version', it.version)
-                }
-            }
-        }
-    }
-}
-
-compileTestKotlin {
-    kotlinOptions {
-        apiVersion = "1.2"
-    }
-}

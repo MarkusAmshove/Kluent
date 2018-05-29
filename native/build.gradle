@@ -1,0 +1,23 @@
+apply plugin: 'konan'
+
+konanArtifacts {
+    library('kluent-native') {
+        srcDir 'src/main/kotlin'
+        enableMultiplatform true
+    }
+
+    program('native-test') {
+        srcDir 'src/test/kotlin'
+        commonSourceSet 'test'
+        libraries {
+            artifact 'kluent-native'
+        }
+        extraOpts '-tr'
+    }
+}
+
+dependencies {
+    expectedBy project(':common')
+}
+
+compileKonan.finalizedBy run

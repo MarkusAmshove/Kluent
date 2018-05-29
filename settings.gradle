@@ -1,2 +1,10 @@
 rootProject.name = 'kluent'
 
+include 'common'
+include 'jvm'
+include 'js'
+include 'native'
+
+project(':jvm').name   = 'kluent'
+project(':js').name    = 'kluent-js'
+project(':native').name = 'kluent-native'
