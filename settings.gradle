@@ -5,6 +5,6 @@ include 'jvm'
 include 'js'
 include 'native'
 
-project(':jvm').name   = 'kluent'
+project(':jvm').name   = 'kluent-jvm'
 project(':js').name    = 'kluent-js'
 project(':native').name = 'kluent-native'

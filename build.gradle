@@ -4,6 +4,7 @@ buildscript {
     ext.spek_version = "1.0.+"
     repositories {
         jcenter()
+        mavenCentral()
         maven { url "http://kotlin.bintray.com/kotlinx" }
         maven { url "https://plugins.gradle.org/m2/" }
         maven { url "https://dl.bintray.com/jetbrains/kotlin-native-dependencies" }
@@ -41,6 +42,7 @@ allprojects {
 
     repositories {
         jcenter()
+        mavenCentral()
         maven { url "http://kotlin.bintray.com/kotlinx" }
         // TODO: To be removed (only used for Spek)
         maven { url = 'http://repository.jetbrains.com/all' }
