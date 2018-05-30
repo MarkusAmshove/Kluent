@@ -26,9 +26,9 @@ fun Boolean.shouldNotBeFalse() = this.shouldBeTrue()
 infix fun <T> T.should(assertion: T.() -> Boolean) = should("Expected the assertion to return true, but returned false", assertion)
 
 fun <T> T.should(message: String, assertion: T.() -> Boolean): T = try {
-    if (assertion()) this else throw fail(message)
+    if (assertion()) this else fail(message)
 } catch (t: Throwable) {
-    throw fail("""$message
+    fail("""$message
         |
         | An exception occured:
         |   ${t.platformClassName()}: ${t.message}
