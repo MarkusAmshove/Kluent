@@ -1,4 +1,6 @@
 apply plugin: 'kotlin-platform-common'
+// TODO: Used for local integration test
+apply plugin: 'maven'
 
 dependencies {
     implementation libs.kotlin_stdlib_common
