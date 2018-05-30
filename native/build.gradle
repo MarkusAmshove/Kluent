@@ -4,6 +4,7 @@ konanArtifacts {
     library('kluent-native') {
         srcDir 'src/main/kotlin'
         enableMultiplatform true
+        extraOpts '-tr'
     }
 
     program('native-test') {

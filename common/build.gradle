@@ -1,9 +1,9 @@
 apply plugin: 'kotlin-platform-common'
 
 dependencies {
-    compile libs.kotlin_stdlib_common
-    compile libs.kotlin_test_common
+    implementation libs.kotlin_stdlib_common
+    implementation libs.kotlin_test_common
 
-    testCompile libs.kotlin_test_common
-    testCompile libs.kotlin_test_annotations
+    testImplementation libs.kotlin_test_common
+    testImplementation libs.kotlin_test_annotations
 }

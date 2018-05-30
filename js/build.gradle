@@ -3,7 +3,9 @@ apply plugin: 'com.moowork.node'
 
 dependencies {
     expectedBy project(':common')
+    // TODO: use libraries from root buildfile
     compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-test-js:$kotlin_version"
     testCompile "org.jetbrains.kotlin:kotlin-test-js:$kotlin_version"
 }
 

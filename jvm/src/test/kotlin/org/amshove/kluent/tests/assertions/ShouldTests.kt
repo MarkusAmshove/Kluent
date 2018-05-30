@@ -49,7 +49,7 @@ class ShouldTests : Spek({
                 try {
                     peter.shouldHaveUppercaseName()
                 } catch (e: AssertionError) {
-                    e.message.shouldEqual("The name of $peter should be uppercase")
+                    e.message!!.shouldStartWith("The name of $peter should be uppercase")
                 }
             }
             it("should fail when an exception occurs") {
