@@ -42,13 +42,14 @@ class ShouldEqualShould {
         assertFails { jane shouldEqual jon }
     }
 
-    /* TODO: Passes on JVM, fails on JavaScript
+    /* TODO(BEHAVIOUR): Passes on JVM, fails on JavaScript and Native
     @Test
     fun passWhenCheckingEqualArrays() {
         val firstArray = arrayOf(1, 2, 3)
         val secondArray = arrayOf(1, 2, 3)
         firstArray shouldEqual secondArray
-    }*/
+    }
+    */
 
     @Test
     fun failWhenCheckingUnequalArrays() {
