@@ -9,6 +9,7 @@ konanArtifacts {
 
     program('native-test') {
         srcDir 'src/test/kotlin'
+        enableMultiplatform true
         commonSourceSet 'test'
         libraries {
             artifact 'kluent-native'
