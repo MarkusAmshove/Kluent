@@ -1,6 +1,9 @@
 package org.amshove.kluent
 
-import org.junit.Assert.*
+import org.amshove.kluent.internal.assertFalse
+import org.amshove.kluent.internal.assertTrue
+import kotlin.test.assertEquals
+import kotlin.test.assertNotEquals
 
 infix fun <T : CharSequence> T.shouldStartWith(expected: T) = this.apply { assertTrue("Expected the CharSequence $this to start with $expected", this.startsWith(expected)) }
 
@@ -51,12 +54,12 @@ infix fun <T : CharSequence> T.shouldNotMatch(regex: String) = this.apply { asse
 infix fun <T : CharSequence> T.shouldNotMatch(regex: Regex) = this.apply { assertFalse("Expected $this to not match ${regex.pattern}", this.matches(regex)) }
 
 fun <T : CharSequence> T.shouldNotBeEmpty(): T =
-    this.apply { assertTrue("Expected the CharSequence to not be empty", this.isNotEmpty()) }
+        this.apply { assertTrue("Expected the CharSequence to not be empty", this.isNotEmpty()) }
 
 fun <T : CharSequence> T?.shouldNotBeNullOrEmpty(): T = this.shouldNotBeNull().shouldNotBeEmpty()
 
 fun <T : CharSequence> T.shouldNotBeBlank(): T =
-    this.apply { assertTrue("Expected the CharSequence to not be blank", this.isNotBlank()) }
+        this.apply { assertTrue("Expected the CharSequence to not be blank", this.isNotBlank()) }
 
 fun <T : CharSequence> T?.shouldNotBeNullOrBlank(): T = this.shouldNotBeNull().shouldNotBeBlank()
 
