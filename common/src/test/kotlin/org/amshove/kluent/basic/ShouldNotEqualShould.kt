@@ -44,34 +44,4 @@ class ShouldNotEqualShould {
         instance shouldEqual jane
     }
 
-    @Test
-    fun passWhenCheckingUnequalArrays() {
-        val firstArray = arrayOf(1, 2, 3)
-        val secondArray = arrayOf(4, 5, 6)
-        firstArray shouldNotEqual secondArray
-    }
-
-    /* TODO(BEHAVIOUR): Passes on JVM, fails on JavaScript
-    @Test
-    fun failWhenCheckingEqualArrays() {
-        val firstArray = arrayOf(1, 2, 3)
-        val secondArray = arrayOf(1, 2, 3)
-        assertFails { firstArray shouldNotEqual secondArray }
-    }
-    */
-
-    @Test
-    fun passWhenCheckingUnequalIterables() {
-        val firstIterable = listOf(Person("Tom", "Guy"), Person("Jon", "Doe"), Person("Peter", "Meyer"))
-        val secondIterable = listOf(Person("Tom", "Guy"), Person("Alice", "Bob"), Person("Jon", "Doe"))
-        firstIterable shouldNotEqual secondIterable
-    }
-
-    @Test
-    fun failWhenCheckingEqualIterables() {
-        val firstIterable = listOf(Person("Tom", "Guy"), Person("Alice", "Bob"), Person("Jon", "Doe"))
-        val secondIterable = listOf(Person("Tom", "Guy"), Person("Alice", "Bob"), Person("Jon", "Doe"))
-        assertFails { firstIterable shouldNotEqual secondIterable }
-    }
-
 }

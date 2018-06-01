@@ -23,10 +23,6 @@ class ShouldNotHaveValueTests : Spek({
             it("should pass") {
                 map shouldNotHaveValue 3
             }
-            it("should format the values") {
-                val theFailure = getFailure { map shouldNotHaveValue 2 }
-                Assert.assertEquals("1, 2", theFailure.actual)
-            }
         }
         on("checking any Map for an object as value") {
             val alice = Person("Alice", "Green")
@@ -44,10 +40,6 @@ class ShouldNotHaveValueTests : Spek({
             val map = mapOf(alice to bob)
             it("should pass") {
                 map shouldNotHaveValue jon
-            }
-            it("should format the output") {
-                val failure = getFailure { map shouldNotHaveValue bob }
-                Assert.assertEquals("Person(name=Bob, surname=Blue)", failure.actual)
             }
         }
     }

@@ -24,10 +24,6 @@ class ShouldNotContainTests : Spek({
             it("should pass") {
                 map shouldNotContain ("three" to 3)
             }
-            it("should format the array") {
-                val theFailure = getFailure { map shouldNotContain ("one" to 1) }
-                assertEquals("one=1, two=2", theFailure.actual)
-            }
         }
         on("checking any Map for a Pair of objects") {
             val alice = Person("Alice", "Bob")
@@ -43,10 +39,6 @@ class ShouldNotContainTests : Spek({
             val map = mapOf(alice to jon)
             it("should pass") {
                 map shouldNotContain (jon to alice)
-            }
-            it("should format the output") {
-                val failure = getFailure { map shouldNotContain (alice to jon) }
-                assertEquals("Person(name=Alice, surname=Bob)=Person(name=Jon, surname=Doe)", failure.actual)
             }
         }
     }

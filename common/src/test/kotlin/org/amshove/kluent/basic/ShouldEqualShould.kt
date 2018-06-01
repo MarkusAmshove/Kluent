@@ -42,33 +42,4 @@ class ShouldEqualShould {
         assertFails { jane shouldEqual jon }
     }
 
-    /* TODO(BEHAVIOUR): Passes on JVM, fails on JavaScript and Native
-    @Test
-    fun passWhenCheckingEqualArrays() {
-        val firstArray = arrayOf(1, 2, 3)
-        val secondArray = arrayOf(1, 2, 3)
-        firstArray shouldEqual secondArray
-    }
-    */
-
-    @Test
-    fun failWhenCheckingUnequalArrays() {
-        val firstArray = arrayOf(1, 2, 3)
-        val secondArray = arrayOf(4, 5, 6)
-        assertFails { firstArray shouldEqual secondArray }
-    }
-
-    @Test
-    fun passWhenCheckingEqualIterables() {
-        val firstIterable = listOf(Person("Tom", "Guy"), Person("Alice", "Bob"), Person("Jon", "Doe"))
-        val secondIterable = listOf(Person("Tom", "Guy"), Person("Alice", "Bob"), Person("Jon", "Doe"))
-        firstIterable shouldEqual secondIterable
-    }
-
-    @Test
-    fun failWhenCheckingDifferentIterables() {
-        val firstIterable = listOf(Person("Tom", "Guy"), Person("Jon", "Doe"), Person("Peter", "Meyer"))
-        val secondIterable = listOf(Person("Tom", "Guy"), Person("Alice", "Bob"), Person("Jon", "Doe"))
-        assertFails { firstIterable shouldEqual secondIterable }
-    }
 }

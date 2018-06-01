@@ -20,10 +20,6 @@ class ShouldContainTests : Spek({
             it("should fail") {
                 assertFails({ array `should contain` "World" })
             }
-            it("should format the array") {
-                val theFailure = getFailure { array `should contain` "World" }
-                assertEquals("Hello, Wide, Web", theFailure.actual)
-            }
         }
         on("checking any iterable for an object") {
             val alice = Person("Alice", "Bob")
@@ -39,10 +35,6 @@ class ShouldContainTests : Spek({
             val list = listOf(alice)
             it("should fail") {
                 assertFails({ list `should contain` jon })
-            }
-            it("should format the output") {
-                val failure = getFailure { list `should contain` jon }
-                assertEquals("Person(name=Alice, surname=Bob)", failure.actual)
             }
         }
     }

@@ -23,10 +23,7 @@ class ShouldHaveKeyTests : Spek({
             it("should fail") {
                 assertFails { map `should have key` 3 }
             }
-            it("should format the keys") {
-                val theFailure = getFailure { map `should have key` 3 }
-                assertEquals("1, 2", theFailure.actual)
-            }
+
         }
         on("checking any Map for an object as key") {
             val alice = Person("Alice", "Green")
@@ -44,10 +41,6 @@ class ShouldHaveKeyTests : Spek({
             val map = mapOf(alice to bob)
             it("should fail") {
                 assertFails { map `should have key` jon }
-            }
-            it("should format the output") {
-                val failure = getFailure { map `should have key` jon }
-                assertEquals("Person(name=Alice, surname=Green)", failure.actual)
             }
         }
     }

@@ -2,6 +2,7 @@ package org.amshove.kluent.tests.backtickassertions.charsequence
 
 import org.amshove.kluent.`should not be null or blank`
 import org.jetbrains.spek.api.Spek
+import org.junit.Assert.assertEquals
 import kotlin.test.assertFails
 
 class ShouldNotBeNullOrBlankTests : Spek({
@@ -26,6 +27,7 @@ class ShouldNotBeNullOrBlankTests : Spek({
             it("should return non null") {
                 val nullable: String? = "is this null?"
                 val result: String = nullable.`should not be null or blank`()
+                assertEquals(result, nullable)
             }
         }
     }

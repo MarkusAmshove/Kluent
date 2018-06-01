@@ -23,10 +23,6 @@ class ShouldNotHaveKeyTests : Spek({
             it("should pass") {
                 map `should not have key` 3
             }
-            it("should format the keys") {
-                val theFailure = getFailure { map `should not have key` 2 }
-                assertEquals("1, 2", theFailure.actual)
-            }
         }
         on("checking any Map for an object as key") {
             val alice = Person("Alice", "Green")
@@ -45,10 +41,7 @@ class ShouldNotHaveKeyTests : Spek({
             it("should pass") {
                 map `should not have key` jon
             }
-            it("should format the output") {
-                val failure = getFailure { map `should not have key` alice }
-                assertEquals("Person(name=Alice, surname=Green)", failure.actual)
-            }
+
         }
     }
 
