@@ -1,6 +1,8 @@
 package org.amshove.kluent
 
-import org.junit.Assert.*
+import org.amshove.kluent.internal.assertTrue
+import kotlin.test.assertEquals
+import kotlin.test.assertNotEquals
 
 infix fun Boolean.shouldEqualTo(expected: Boolean) = this.apply { assertEquals(expected, this) }
 
@@ -12,9 +14,9 @@ infix fun Int.shouldEqualTo(expected: Int) = this.apply { assertEquals(expected,
 
 infix fun Long.shouldEqualTo(expected: Long) = this.apply { assertEquals(expected, this) }
 
-infix fun Float.shouldEqualTo(expected: Float) = this.apply { assertEquals(expected, this, 0f) }
+infix fun Float.shouldEqualTo(expected: Float) = this.apply { assertEquals(expected, this) }
 
-infix fun Double.shouldEqualTo(expected: Double) = this.apply { assertEquals(expected, this, 0.0) }
+infix fun Double.shouldEqualTo(expected: Double) = this.apply { assertEquals(expected, this) }
 
 infix fun Boolean.shouldNotEqualTo(expected: Boolean) = this.apply { assertNotEquals(expected, this) }
 
@@ -180,6 +182,10 @@ infix fun Short.shouldBeInRange(range: IntRange) = this.apply { (this.toInt()).s
 
 infix fun Int.shouldBeInRange(range: IntRange) = this.apply { this.shouldBeInRange(range.first, range.last) }
 
+infix fun Double.shouldBeInRange(range: ClosedFloatingPointRange<Double>) = this.assertIsInFloatingRange(range)
+
+infix fun Float.shouldBeInRange(range: ClosedRange<Float>) = this.assertIsInFloatingRange(range)
+
 infix fun Long.shouldBeInRange(range: LongRange) = this.apply { this.shouldBeInRange(range.first, range.last) }
 
 infix fun Byte.shouldNotBeInRange(range: IntRange) = this.apply { (this.toInt()).shouldNotBeInRange(range) }
@@ -188,5 +194,12 @@ infix fun Short.shouldNotBeInRange(range: IntRange) = this.apply { (this.toInt()
 
 infix fun Int.shouldNotBeInRange(range: IntRange) = this.apply { this.shouldNotBeInRange(range.first, range.last) }
 
+infix fun Double.shouldNotBeInRange(range: ClosedFloatingPointRange<Double>) = this.assertIsNotInFloatingRange(range)
+
+infix fun Float.shouldNotBeInRange(range: ClosedRange<Float>) = this.assertIsNotInFloatingRange(range)
+
 infix fun Long.shouldNotBeInRange(range: LongRange) = this.apply { this.shouldNotBeInRange(range.first, range.last) }
 
+private fun <T : Comparable<T>> T.assertIsInFloatingRange(range: ClosedRange<T>): T = this.apply { assertTrue("Expected $this to be between (and including) ${range.start} and ${range.endInclusive}", range.contains(this)) }
+
+private fun <T : Comparable<T>> T.assertIsNotInFloatingRange(range: ClosedRange<T>): T = this.apply { assertTrue("Expected $this to not be between (and including) ${range.start} and ${range.endInclusive}", !range.contains(this)) }
