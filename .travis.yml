@@ -1,5 +1,9 @@
 language: java
 
+os:
+    - linux
+    - osx
+
 matrix:
     include:
         - os: linux
@@ -9,3 +13,6 @@ matrix:
 
 before_install:
      - chmod +x gradlew
+
+script:
+    - ./gradlew build
