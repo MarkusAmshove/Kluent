@@ -33,4 +33,33 @@ class ShouldContainShould {
         val list = listOf(alice)
         assertFails { list shouldContain jon }
     }
+
+    @Test
+    fun passWhenTestingAMapWhichContainsAPair() {
+        val map = mapOf(1 to "one", 2 to "two")
+        map shouldContain (1 to "one")
+    }
+
+    @Test
+    fun failWhenTestingAMapWhichDoesNotContainAPair() {
+        val map = mapOf(1 to "one", 2 to "two")
+        assertFails { map shouldContain (1 to "three") }
+    }
+
+    @Test
+    fun passWhenTestingAMapWhichContainsAPairOfObjects() {
+        val alice = Person("Alice", "Bob")
+        val jon = Person("Jon", "Doe")
+        val map = mapOf(alice to jon, jon to alice)
+        map shouldContain (alice to jon)
+    }
+
+    @Test
+    fun failWhenTestingAMapWhichDoesNotContainAPairOfObjects() {
+        val alice = Person("Alice", "Bob")
+        val jon = Person("Jon", "Doe")
+        val bob = Person("Bob", "Blue")
+        val map = mapOf(alice to jon)
+        assertFails { map shouldContain (alice to bob) }
+    }
 }
