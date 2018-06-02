@@ -44,13 +44,21 @@ infix fun IntArray.shouldContain(expected: Int) = apply { this.toTypedArray() sh
 
 infix fun IntArray.shouldContainSome(expected: IntArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
 
+infix fun IntArray.shouldContainSome(expected: Iterable<Int>) = apply { this.toList().shouldContainSome(expected) }
+
 infix fun IntArray.shouldContainNone(expected: IntArray) = apply { this.toTypedArray().shouldContainNone(expected.toTypedArray()) }
 
+infix fun IntArray.shouldContainNone(expected: Iterable<Int>) = apply { this.toList().shouldContainNone(expected) }
+
 infix fun IntArray.shouldContainAll(expected: IntArray) = apply { expected.forEach { shouldContain(it) } }
+
+infix fun IntArray.shouldContainAll(expected: Iterable<Int>) = apply { this.toList().shouldContainAll(expected) }
 
 infix fun IntArray.shouldNotContain(expected: Int) = apply { this.toTypedArray() shouldNotContain expected }
 
 infix fun IntArray.shouldNotContainAny(expected: IntArray) = apply { expected.forEach { shouldNotContain(it) } }
+
+infix fun IntArray.shouldNotContainAny(expected: Iterable<Int>) = apply { this.toList().shouldNotContainAny(expected) }
 
 infix fun Int.shouldBeIn(theArray: IntArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
@@ -68,13 +76,21 @@ infix fun BooleanArray.shouldContain(expected: Boolean) = apply { this.toTypedAr
 
 infix fun BooleanArray.shouldContainSome(expected: BooleanArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
 
+infix fun BooleanArray.shouldContainSome(expected: Iterable<Boolean>) = apply { this.toList().shouldContainSome(expected) }
+
 infix fun BooleanArray.shouldContainNone(expected: BooleanArray) = apply { this.toTypedArray().shouldContainNone(expected.toTypedArray()) }
 
+infix fun BooleanArray.shouldContainNone(expected: Iterable<Boolean>) = apply { this.toList().shouldContainNone(expected) }
+
 infix fun BooleanArray.shouldContainAll(expected: BooleanArray) = apply { expected.forEach { shouldContain(it) } }
+
+infix fun BooleanArray.shouldContainAll(expected: Iterable<Boolean>) = apply { this.toList().shouldContainAll(expected) }
 
 infix fun BooleanArray.shouldNotContain(expected: Boolean) = apply { this.toTypedArray() shouldNotContain expected }
 
 infix fun BooleanArray.shouldNotContainAny(expected: BooleanArray) = apply { expected.forEach { shouldNotContain(it) } }
+
+infix fun BooleanArray.shouldNotContainAny(expected: Iterable<Boolean>) = apply { this.toList().shouldNotContainAny(expected) }
 
 infix fun Boolean.shouldBeIn(theArray: BooleanArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
@@ -92,13 +108,21 @@ infix fun ByteArray.shouldContain(expected: Byte) = apply { this.toTypedArray() 
 
 infix fun ByteArray.shouldContainSome(expected: ByteArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
 
+infix fun ByteArray.shouldContainSome(expected: Iterable<Byte>) = apply { this.toList().shouldContainSome(expected) }
+
 infix fun ByteArray.shouldContainNone(expected: ByteArray) = apply { this.toTypedArray().shouldContainNone(expected.toTypedArray()) }
 
+infix fun ByteArray.shouldContainNone(expected: Iterable<Byte>) = apply { this.toList().shouldContainNone(expected) }
+
 infix fun ByteArray.shouldContainAll(expected: ByteArray) = apply { expected.forEach { shouldContain(it) } }
+
+infix fun ByteArray.shouldContainAll(expected: Iterable<Byte>) = apply { this.toList().shouldContainAll(expected) }
 
 infix fun ByteArray.shouldNotContain(expected: Byte) = apply { this.toTypedArray() shouldNotContain expected }
 
 infix fun ByteArray.shouldNotContainAny(expected: ByteArray) = apply { expected.forEach { shouldNotContain(it) } }
+
+infix fun ByteArray.shouldNotContainAny(expected: Iterable<Byte>) = apply { this.toList().shouldNotContainAny(expected) }
 
 infix fun Byte.shouldBeIn(theArray: ByteArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
@@ -116,13 +140,21 @@ infix fun CharArray.shouldContain(expected: Char) = apply { this.toTypedArray() 
 
 infix fun CharArray.shouldContainSome(expected: CharArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
 
+infix fun CharArray.shouldContainSome(expected: Iterable<Char>) = apply { this.toList().shouldContainSome(expected) }
+
 infix fun CharArray.shouldContainNone(expected: CharArray) = apply { this.toTypedArray().shouldContainNone(expected.toTypedArray()) }
 
+infix fun CharArray.shouldContainNone(expected: Iterable<Char>) = apply { this.toList().shouldContainNone(expected) }
+
 infix fun CharArray.shouldContainAll(expected: CharArray) = apply { expected.forEach { shouldContain(it) } }
+
+infix fun CharArray.shouldContainAll(expected: Iterable<Char>) = apply { this.toList().shouldContainAll(expected) }
 
 infix fun CharArray.shouldNotContain(expected: Char) = apply { this.toTypedArray() shouldNotContain expected }
 
 infix fun CharArray.shouldNotContainAny(expected: CharArray) = apply { expected.forEach { shouldNotContain(it) } }
+
+infix fun CharArray.shouldNotContainAny(expected: Iterable<Char>) = apply { this.toList().shouldNotContainAny(expected) }
 
 infix fun Char.shouldBeIn(theArray: CharArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
@@ -140,13 +172,21 @@ infix fun DoubleArray.shouldContain(expected: Double) = apply { this.toTypedArra
 
 infix fun DoubleArray.shouldContainSome(expected: DoubleArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
 
+infix fun DoubleArray.shouldContainSome(expected: Iterable<Double>) = apply { this.toList().shouldContainSome(expected) }
+
 infix fun DoubleArray.shouldContainNone(expected: DoubleArray) = apply { this.toTypedArray().shouldContainNone(expected.toTypedArray()) }
 
+infix fun DoubleArray.shouldContainNone(expected: Iterable<Double>) = apply { this.toList().shouldContainNone(expected) }
+
 infix fun DoubleArray.shouldContainAll(expected: DoubleArray) = apply { expected.forEach { shouldContain(it) } }
+
+infix fun DoubleArray.shouldContainAll(expected: Iterable<Double>) = apply { this.toList().shouldContainAll(expected) }
 
 infix fun DoubleArray.shouldNotContain(expected: Double) = apply { this.toTypedArray() shouldNotContain expected }
 
 infix fun DoubleArray.shouldNotContainAny(expected: DoubleArray) = apply { expected.forEach { shouldNotContain(it) } }
+
+infix fun DoubleArray.shouldNotContainAny(expected: Iterable<Double>) = apply { this.toList().shouldNotContainAny(expected) }
 
 infix fun Double.shouldBeIn(theArray: DoubleArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
@@ -164,13 +204,21 @@ infix fun FloatArray.shouldContain(expected: Float) = apply { this.toTypedArray(
 
 infix fun FloatArray.shouldContainSome(expected: FloatArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
 
+infix fun FloatArray.shouldContainSome(expected: Iterable<Float>) = apply { this.toList().shouldContainSome(expected) }
+
 infix fun FloatArray.shouldContainNone(expected: FloatArray) = apply { this.toTypedArray().shouldContainNone(expected.toTypedArray()) }
 
+infix fun FloatArray.shouldContainNone(expected: Iterable<Float>) = apply { this.toList().shouldContainNone(expected) }
+
 infix fun FloatArray.shouldContainAll(expected: FloatArray) = apply { expected.forEach { shouldContain(it) } }
+
+infix fun FloatArray.shouldContainAll(expected: Iterable<Float>) = apply { this.toList().shouldContainAll(expected) }
 
 infix fun FloatArray.shouldNotContain(expected: Float) = apply { this.toTypedArray() shouldNotContain expected }
 
 infix fun FloatArray.shouldNotContainAny(expected: FloatArray) = apply { expected.forEach { shouldNotContain(it) } }
+
+infix fun FloatArray.shouldNotContainAny(expected: Iterable<Float>) = apply { this.toList().shouldNotContainAny(expected) }
 
 infix fun Float.shouldBeIn(theArray: FloatArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
@@ -188,13 +236,21 @@ infix fun LongArray.shouldContain(expected: Long) = apply { this.toTypedArray() 
 
 infix fun LongArray.shouldContainSome(expected: LongArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
 
+infix fun LongArray.shouldContainSome(expected: Iterable<Long>) = apply { this.toList().shouldContainSome(expected) }
+
 infix fun LongArray.shouldContainNone(expected: LongArray) = apply { this.toTypedArray().shouldContainNone(expected.toTypedArray()) }
 
+infix fun LongArray.shouldContainNone(expected: Iterable<Long>) = apply { this.toList().shouldContainNone(expected) }
+
 infix fun LongArray.shouldContainAll(expected: LongArray) = apply { expected.forEach { shouldContain(it) } }
+
+infix fun LongArray.shouldContainAll(expected: Iterable<Long>) = apply { this.toList().shouldContainAll(expected) }
 
 infix fun LongArray.shouldNotContain(expected: Long) = apply { this.toTypedArray() shouldNotContain expected }
 
 infix fun LongArray.shouldNotContainAny(expected: LongArray) = apply { expected.forEach { shouldNotContain(it) } }
+
+infix fun LongArray.shouldNotContainAny(expected: Iterable<Long>) = apply { this.toList().shouldNotContainAny(expected) }
 
 infix fun Long.shouldBeIn(theArray: LongArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
@@ -212,13 +268,21 @@ infix fun ShortArray.shouldContain(expected: Short) = apply { this.toTypedArray(
 
 infix fun ShortArray.shouldContainSome(expected: ShortArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
 
+infix fun ShortArray.shouldContainSome(expected: Iterable<Short>) = apply { this.toList().shouldContainSome(expected) }
+
 infix fun ShortArray.shouldContainNone(expected: ShortArray) = apply { this.toTypedArray().shouldContainNone(expected.toTypedArray()) }
 
+infix fun ShortArray.shouldContainNone(expected: Iterable<Short>) = apply { this.toList().shouldContainNone(expected) }
+
 infix fun ShortArray.shouldContainAll(expected: ShortArray) = apply { expected.forEach { shouldContain(it) } }
+
+infix fun ShortArray.shouldContainAll(expected: Iterable<Short>) = apply { this.toList().shouldContainAll(expected) }
 
 infix fun ShortArray.shouldNotContain(expected: Short) = apply { this.toTypedArray() shouldNotContain expected }
 
 infix fun ShortArray.shouldNotContainAny(expected: ShortArray) = apply { expected.forEach { shouldNotContain(it) } }
+
+infix fun ShortArray.shouldNotContainAny(expected: Iterable<Short>) = apply { this.toList().shouldNotContainAny(expected) }
 
 infix fun Short.shouldBeIn(theArray: ShortArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
