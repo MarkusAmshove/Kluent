@@ -112,6 +112,7 @@ number
 # 1.39 (WIP)
 * Provide `shouldBeDigit` and `shouldNotBeDigit` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/107) | thanks to [@AndreasVolkmann](https://github.com/AndreasVolkmann)
 * Restructure project into platform modules to prepare for 2.0 | [PR](https://github.com/MarkusAmshove/Kluent/pull/106)
+* Create more overloads for Collections | [Issue](https://github.com/MarkusAmshove/Kluent/issues/108)
 
 # 1.38
 * Return correct subtype of `CharSequence` assertions | [Issue](https://github.com/MarkusAmshove/Kluent/issues/104) | [PR](https://github.com/MarkusAmshove/Kluent/pull/105) | thanks to [@AndreasVolkmann](https://github.com/AndreasVolkmann)
