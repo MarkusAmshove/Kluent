@@ -5,10 +5,12 @@ import kotlin.test.assertFails
 import kotlin.test.Test
 
 class ShouldNotContainAnyShould {
+
     @Test
     fun passWhenTestingAnArrayWithNoMatchingValue() {
         val array = arrayOf("Hello", "World", "Wide", "Web")
         array shouldNotContainAny arrayOf("cat", "bat", "rat")
+        array shouldNotContainAny listOf("cat", "bat", "rat")
     }
 
     @Test

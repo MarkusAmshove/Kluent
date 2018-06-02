@@ -62,4 +62,101 @@ class ShouldNotContainShould {
         val map = mapOf(alice to jon, jon to alice)
         assertFails { map shouldNotContain (alice to jon) }
     }
+
+    @Test
+    fun passWhenTestingAPrimitiveIntegerArrayWhichDoesNotContainTheValue() {
+        val theArray = intArrayOf(1, 5, 10)
+        theArray.shouldNotContain(7)
+    }
+
+    @Test
+    fun failWhenTestingAPrimitiveIntegerArrayContainingTheValue() {
+        val theArray = intArrayOf(1, 5, 10)
+        assertFails { theArray.shouldNotContain(5) }
+    }
+
+    @Test
+    fun passWhenTestingAPrimitiveLongArrayWhichDoesNotContainTheValue() {
+        val theArray = longArrayOf(1, 5, 10)
+        theArray.shouldNotContain(7)
+    }
+
+    @Test
+    fun failWhenTestingAPrimitiveLongArrayContainingTheValue() {
+        val theArray = longArrayOf(1, 5, 10)
+        assertFails { theArray.shouldNotContain(5) }
+    }
+
+    @Test
+    fun passWhenTestingAPrimitiveShortArrayWhichDoesNotContainTheValue() {
+        val theArray = shortArrayOf(1, 5, 10)
+        theArray.shouldNotContain(7)
+    }
+
+    @Test
+    fun failWhenTestingAPrimitiveShortArrayContainingTheValue() {
+        val theArray = shortArrayOf(1, 5, 10)
+        assertFails { theArray.shouldNotContain(5) }
+    }
+
+    @Test
+    fun passWhenTestingAPrimitiveDoubleArrayWhichDoesNotContainTheValue() {
+        val theArray = doubleArrayOf(1.0, 5.0, 10.0)
+        theArray.shouldNotContain(7.0)
+    }
+
+    @Test
+    fun failWhenTestingAPrimitiveDoubleArrayContainingTheValue() {
+        val theArray = doubleArrayOf(1.0, 5.0, 10.0)
+        assertFails { theArray.shouldNotContain(5.0) }
+    }
+
+    @Test
+    fun passWhenTestingAPrimitiveFloatArrayWhichDoesNotContainTheValue() {
+        val theArray = floatArrayOf(1.0f, 5.0f, 10.0f)
+        theArray.shouldNotContain(7.0f)
+    }
+
+    @Test
+    fun failWhenTestingAPrimitiveFloatArrayContainingTheValue() {
+        val theArray = floatArrayOf(1.0f, 5.0f, 10.0f)
+        assertFails { theArray.shouldNotContain(5.0f) }
+    }
+
+    @Test
+    fun passWhenTestingAPrimitiveByteArrayWhichDoesNotContainTheValue() {
+        val theArray = byteArrayOf(1, 5, 10)
+        theArray.shouldNotContain(7)
+    }
+
+    @Test
+    fun failWhenTestingAPrimitiveByteArrayContainingTheValue() {
+        val theArray = byteArrayOf(1, 5, 10)
+        assertFails { theArray.shouldNotContain(5) }
+    }
+
+    @Test
+    fun passWhenTestingAPrimitiveCharArrayWhichDoesNotContainTheValue() {
+        val theArray = charArrayOf('a', 'b', 'c')
+        theArray.shouldNotContain('d')
+    }
+
+    @Test
+    fun failWhenTestingAPrimitiveCharArrayContainingTheValue() {
+        val theArray = charArrayOf('a', 'b', 'c')
+        assertFails { theArray.shouldNotContain('b') }
+    }
+
+    @Test
+    fun passWhenTestingAPrimitiveBooleanArrayWhichDoesNotContainTheValue() {
+        val theArray = booleanArrayOf(true, true)
+        theArray.shouldNotContain(false)
+    }
+
+    @Test
+    fun failWhenTestingAPrimitiveBooleanArrayContainingTheValue() {
+        val theArray = booleanArrayOf(true, true)
+        assertFails { theArray.shouldNotContain(true) }
+    }
+
 }
