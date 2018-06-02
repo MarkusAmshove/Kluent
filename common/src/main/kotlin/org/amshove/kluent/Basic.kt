@@ -23,6 +23,10 @@ fun Boolean.shouldNotBeTrue() = this.shouldBeFalse()
 
 fun Boolean.shouldNotBeFalse() = this.shouldBeTrue()
 
+fun Char.shouldBeDigit() = this.apply { assertTrue("Expected '$this' to be a digit", this.platformIsDigit()) }
+
+fun Char.shouldNotBeDigit() = this.apply { assertTrue("Expected '$this' to be no digit", !this.platformIsDigit()) }
+
 infix fun <T> T.should(assertion: T.() -> Boolean) = should("Expected the assertion to return true, but returned false", assertion)
 
 fun <T> T.should(message: String, assertion: T.() -> Boolean): T = try {

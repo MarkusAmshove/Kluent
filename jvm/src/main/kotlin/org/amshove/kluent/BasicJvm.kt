@@ -14,6 +14,3 @@ infix fun Any?.shouldNotBeInstanceOf(className: Class<*>) = assertFalse("Expecte
 
 infix fun Any?.shouldNotBeInstanceOf(className: KClass<*>) = assertFalse("Expected $this to not be an instance of $className", className.isInstance(this))
 
-fun Char.shouldBeDigit(): Char = this.apply { assertTrue("Expected $this to be a digit", this.isDigit()) }
-
-fun Char.shouldNotBeDigit(): Char = this.apply { assertTrue("Expected $this to not be a digit", !this.isDigit()) }
