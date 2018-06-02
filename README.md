@@ -8,7 +8,7 @@ It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.ht
 
 [Contributors](AUTHORS.md)
 
- [ ![Download](https://api.bintray.com/packages/markusamshove/maven/Kluent/images/download.svg) ](https://bintray.com/markusamshove/maven/Kluent/_latestVersion) 
+[ ![Download](https://api.bintray.com/packages/markusamshove/maven/Kluent/images/download.svg) ](https://bintray.com/markusamshove/maven/Kluent/_latestVersion) 
 
 
 | Platform  | Status  |
