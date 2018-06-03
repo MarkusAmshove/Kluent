@@ -13,13 +13,19 @@ infix fun <T : CharSequence> T.shouldContain(char: Char) = this.apply { assertTr
 
 infix fun <T : CharSequence> T.shouldContainSome(things: Iterable<CharSequence>) = this.apply { assertTrue("Expected '$this' to contain at least one of $things", things.any { this.contains(it) }) }
 
+fun <T : CharSequence> T.shouldContainSome(vararg expected: CharSequence) = this.shouldContainSome(expected.toList())
+
 infix fun <T : CharSequence> T.shouldContainNone(things: Iterable<CharSequence>) = this.apply { assertTrue("Expected '$this' to not contain any of $things", things.none { this.contains(it) }) }
+
+fun <T : CharSequence> T.shouldContainNone(vararg expected: CharSequence) = this.shouldContainNone(expected.toList())
 
 infix fun <T : CharSequence> T.shouldContain(expected: CharSequence) = this.apply { assertTrue("Expected the CharSequence $this to contain $expected", this.contains(expected)) }
 
 infix fun <T : CharSequence> T.shouldNotContain(char: Char) = this.apply { assertFalse("Expected '$this' to not contain '$char'", this.contains(char))}
 
 infix fun <T : CharSequence> T.shouldNotContainAny(things: Iterable<CharSequence>) = this.apply { this shouldContainNone things }
+
+fun <T : CharSequence> T.shouldNotContainAny(vararg expected: CharSequence) = this.shouldNotContainAny(expected.toList())
 
 infix fun <T : CharSequence> T.shouldMatch(regex: String) = this.apply { assertTrue("Expected $this to match $regex", this.matches(Regex(regex))) }
 
@@ -67,6 +73,10 @@ infix fun <T : CharSequence> T.shouldContainAll(items: Iterable<CharSequence>): 
     items.forEach { this shouldContain it }
 }
 
+fun <T : CharSequence> T.shouldContainAll(vararg expected: CharSequence) = this.shouldContainAll(expected.toList())
+
 infix fun <T : CharSequence> T.shouldNotContainAll(items: Iterable<CharSequence>): CharSequence = this.apply {
     assertFalse("Expected the CharSequence to not contail all items: $items", items.all { this.contains(it) })
 }
+
+fun <T : CharSequence> T.shouldNotContainAll(vararg expected: CharSequence) = this.shouldNotContainAll(expected.toList())

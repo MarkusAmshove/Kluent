@@ -11,6 +11,7 @@ class ShouldContainNoneShould {
         val notContained = listOf("testing", "writing", "code")
 
         message.shouldContainNone(notContained)
+        message.shouldContainNone("testing", "writing", "code")
     }
 
     @Test
@@ -18,6 +19,9 @@ class ShouldContainNoneShould {
         val message = "I love to write fluent tests"
         val notContained = listOf("Berlin", "write")
 
-        assertFails { message.shouldContainNone(notContained) }
+        assertFails {
+            message.shouldContainNone(notContained)
+            message.shouldContainNone("Berlin", "write")
+        }
     }
 }

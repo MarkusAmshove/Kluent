@@ -8,10 +8,14 @@ class ShouldNotContainAllShould {
     @Test
     fun passWhenTestingAListWhereSomeItemsAreNotWithinTheOriginalSequence() {
         "1, 2, 3".shouldNotContainAll(listOf("1", "2", "4"))
+        "1, 2, 3".shouldNotContainAll("1", "2", "4")
     }
 
     @Test
     fun failWhenTestingAListWhereAllItemsAreWithinTheOriginalSequence() {
-        assertFails { "1, 2, 3" shouldNotContainAll listOf("1", "2", "3") }
+        assertFails {
+            "1, 2, 3" shouldNotContainAll listOf("1", "2", "3")
+            "1, 2, 3".shouldNotContainAll("1", "2", "3")
+        }
     }
 }

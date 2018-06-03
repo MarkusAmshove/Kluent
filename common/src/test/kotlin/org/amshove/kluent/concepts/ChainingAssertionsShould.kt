@@ -39,6 +39,6 @@ class ChainingAssertionsShould {
                 .shouldNotBeBlank()
                 .shouldStartWith("Hello")
                 .shouldEndWith("!")
-                .shouldContainSome(listOf("e", "l"))
+                .shouldContainSome("e", "l")
     }
 }
