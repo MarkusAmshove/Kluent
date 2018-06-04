@@ -10,6 +10,7 @@ import org.jetbrains.spek.api.Spek
 import org.junit.Assert.assertSame
 import org.mockito.ArgumentMatchers.anyList
 import org.mockito.exceptions.misusing.InvalidUseOfMatchersException
+import java.io.IOException
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
@@ -43,6 +44,13 @@ class StubTests : Spek({
                 val mock = mock(Database::class)
                 When calling mock.getPerson() itThrows Error("An exception")
                 assertFailsWith(Error::class, { mock.getPerson() })
+            }
+        }
+        on("telling it to throw a checked exception") {
+            it("should throw the checked exception") {
+                val mock = mock(Database::class)
+                When calling mock.getPersonChecked() itThrows IOException("This is checked")
+                mock.getPerson()
             }
         }
         on("telling it to answer") {
