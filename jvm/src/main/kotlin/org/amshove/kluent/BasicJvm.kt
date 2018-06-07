@@ -1,5 +1,7 @@
 package org.amshove.kluent
 
+import org.amshove.kluent.internal.failExpectedActual
+import org.amshove.kluent.internal.platformClassName
 import org.junit.Assert.*
 import kotlin.reflect.KClass
 import kotlin.reflect.full.isSubclassOf

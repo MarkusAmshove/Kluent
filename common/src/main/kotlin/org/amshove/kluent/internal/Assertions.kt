@@ -51,13 +51,13 @@ internal fun <K, V, M : Map<K, V>> mapsEqual(m1: M?, m2: M?): Boolean {
     return true
 }
 
-internal fun failExpectedActual(message: String, expected: String, actual: String): Nothing = fail("""
+internal fun failExpectedActual(message: String, expected: String?, actual: String?): Nothing = fail("""
     |$message
     |   Expected:   $expected
     |   Actual:     $actual
 """.trimMargin())
 
-internal fun failFirstSecond(message: String, first: String, second: String): Nothing = fail("""
+internal fun failFirstSecond(message: String, first: String?, second: String?): Nothing = fail("""
     |$message
     |   First:      $first
     |   Second:     $second
