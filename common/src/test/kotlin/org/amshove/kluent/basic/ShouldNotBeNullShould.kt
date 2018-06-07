@@ -1,5 +1,6 @@
 package org.amshove.kluent.basic
 
+import org.amshove.kluent.shouldNotBe
 import org.amshove.kluent.shouldNotBeNull
 import kotlin.test.Test
 import kotlin.test.assertFails
@@ -9,6 +10,13 @@ class ShouldNotBeNullShould {
     fun passWhenPassingNonNullReference() {
         val str: String? = "Hello"
         str.shouldNotBeNull()
+    }
+
+    @Test
+    fun returnANonNullableInstance() {
+        val str: String? = "Hello"
+        val nonNullable: String = str.shouldNotBeNull()
+        nonNullable.shouldNotBeNull()
     }
 
     @Test
