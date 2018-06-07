@@ -15,15 +15,15 @@ infix fun <T : Throwable> (() -> Any?).shouldThrow(expectedException: KClass<T>)
     }
 }
 
-infix fun <T : Throwable> (() -> Any?).shouldNotThrow(expectedException: KClass<T>) {
+infix fun <T : Throwable> (() -> Any?).shouldNotThrow(expectedException: KClass<T>): NotThrowExceptionResult {
     try {
         this.invoke()
+        return NotThrowExceptionResult(noException)
     } catch (e: Throwable) {
         if (expectedException.isAnyException()) {
             fail("Expected no Exception to be thrown", "No Exception", "${e.javaClass}")
         }
-        if (e.isA(expectedException))
-            fail("Expected ${expectedException.javaObjectType} to not be thrown", "${expectedException.javaObjectType}", "${e.javaClass}")
+        return NotThrowExceptionResult(e)
     }
 }
 
@@ -38,20 +38,11 @@ infix fun <T : Throwable> (() -> Any?).shouldThrow(expectedException: T) {
     }
 }
 
-@Deprecated("Use shouldThrow instead", ReplaceWith("x shouldThrow expectedException"))
+@Deprecated("Use shouldThrow instead", ReplaceWith("this shouldThrow expectedException"))
 infix fun <T : Throwable> (() -> Any).shouldThrowTheException(expectedException: KClass<T>): ExceptionResult<T> = this shouldThrow expectedException
 
-infix fun <T : Throwable> (() -> Any).shouldNotThrowTheException(expectedException: KClass<T>): NotThrowExceptionResult {
-    try {
-        this.invoke()
-        return NotThrowExceptionResult(noException)
-    } catch (e: Throwable) {
-        if (expectedException.isAnyException()) {
-            fail("Expected no Exception to be thrown", "No Exception", "${e.javaClass}")
-        }
-        return NotThrowExceptionResult(e)
-    }
-}
+@Deprecated("Use shouldNotThrow instead", ReplaceWith("this shouldNotThrow expectedException"))
+infix fun <T : Throwable> (() -> Any).shouldNotThrowTheException(expectedException: KClass<T>): NotThrowExceptionResult = this.shouldNotThrow(expectedException)
 
 infix fun <T : Throwable> ExceptionResult<T>.withMessage(theMessage: String): ExceptionResult<T> {
     this.exceptionMessage shouldEqual theMessage

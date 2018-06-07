@@ -6,10 +6,11 @@ infix fun <T : Throwable> (() -> Any?).`should throw`(expectedException: KClass<
 
 infix fun <T : Throwable> (() -> Any?).`should not throw`(expectedException: KClass<T>) = this.shouldNotThrow(expectedException)
 
-@Deprecated("Use `should throw` instead", ReplaceWith("x `should throw` expectedException"))
+@Deprecated("Use `should throw` instead", ReplaceWith("this `should throw` expectedException"))
 infix fun <T : Throwable> (() -> Any).`should throw the Exception`(expectedException: KClass<T>) = this.shouldThrow(expectedException)
 
-infix fun <T : Throwable> (() -> Any).`should not throw the Exception`(expectedException: KClass<T>) = this.shouldNotThrowTheException(expectedException)
+@Deprecated("Use `should not throw` instead", ReplaceWith("this `should not throw` expectedException"))
+infix fun <T : Throwable> (() -> Any).`should not throw the Exception`(expectedException: KClass<T>) = this `should not throw` expectedException
 
 infix fun <T : Throwable> ExceptionResult<T>.`with message`(theMessage: String) = this.withMessage(theMessage)
 
