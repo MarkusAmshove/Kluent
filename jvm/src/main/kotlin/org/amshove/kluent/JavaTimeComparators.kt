@@ -1,6 +1,6 @@
 package org.amshove.kluent
 
-import org.junit.Assert.assertTrue
+import org.amshove.kluent.internal.assertTrue
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime

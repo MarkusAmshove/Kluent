@@ -1,7 +1,7 @@
 package org.amshove.kluent
 
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
+import org.amshove.kluent.internal.assertFalse
+import org.amshove.kluent.internal.assertTrue
 import java.io.File
 
 fun File.shouldExist() = assertTrue("The file '${this.absolutePath}' should exist, but does not", this.exists())
