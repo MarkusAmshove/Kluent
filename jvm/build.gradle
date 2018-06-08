@@ -4,14 +4,15 @@ def isAndroid = project.rootProject.hasProperty("ANDROID")
 if(isAndroid) {
     logger.warn("Android build!")
 }
-def artifactName = isAndroid ? "kluent-android" : project.name
+
+// TODO: rename 'kluent' to 'kluent-jvm' for 2.0
+def artifactName = isAndroid ? 'kluent-android' : 'kluent'
 
 dependencies {
     expectedBy project(':common')
     implementation libs.kotlin_stdlib_jvm
     implementation libs.kotlin_reflect
     implementation libs.kotlin_test_jvm
-    implementation libs.kotlin_test_junit
 
     testImplementation libs.junit
     testImplementation libs.kotlin_test_jvm
