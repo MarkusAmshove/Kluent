@@ -23,3 +23,5 @@ dependencies {
 }
 
 compileKonan.finalizedBy run
+
+configurePublishing()

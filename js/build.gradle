@@ -9,10 +9,13 @@ dependencies {
     testCompile "org.jetbrains.kotlin:kotlin-test-js:$kotlin_version"
 }
 
+configurePublishing()
+
 tasks.withType(compileKotlin2Js.getClass()) {
     kotlinOptions {
-        moduleKind = "umd"
+        moduleKind = "commonjs"
         sourceMap = true
+        sourceMapEmbedSources = "always"
         metaInfo = true
     }
 }

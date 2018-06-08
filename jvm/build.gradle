@@ -1,6 +1,10 @@
 apply plugin: 'kotlin-platform-jvm'
-// TODO: Used for local integration test
-apply plugin: 'maven'
+
+def isAndroid = project.rootProject.hasProperty("ANDROID")
+if(isAndroid) {
+    logger.warn("Android build!")
+}
+def artifactName = isAndroid ? "kluent-android" : project.name
 
 dependencies {
     expectedBy project(':common')
@@ -21,8 +25,31 @@ dependencies {
     testImplementation "com.nhaarman:mockito-kotlin-kt1.1:$mockito_version"
 }
 
+sourceSets {
+    main {
+        kotlin {
+            srcDir 'src/main/kotlin'
+
+            if(isAndroid) {
+                exclude '**/*Backtick*'
+            }
+        }
+    }
+    test {
+        kotlin {
+            srcDir 'src/test/kotlin'
+
+            if(isAndroid) {
+                exclude '**/backtick*/**'
+            }
+        }
+    }
+}
+
 tasks.withType(compileKotlin.getClass()) {
     kotlinOptions {
         jvmTarget = "1.8"
     }
 }
+
+configurePublishing(artifactName)

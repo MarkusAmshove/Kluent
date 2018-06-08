@@ -9,3 +9,5 @@ dependencies {
     testImplementation libs.kotlin_test_common
     testImplementation libs.kotlin_test_annotations
 }
+
+configurePublishing()

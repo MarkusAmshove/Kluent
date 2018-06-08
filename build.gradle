@@ -48,12 +48,54 @@ allprojects {
         maven { url = 'http://repository.jetbrains.com/all' }
     }
 
-    /*tasks.withType(Test) {
+    tasks.withType(Test) {
         testLogging {
             showStandardStreams = true
             events "passed", "failed"
         }
-    }*/
+    }
 }
 
+subprojects {
+    ext.configurePublishing = { artifactName = null ->
+        apply plugin: 'com.jfrog.bintray'
+        apply plugin: 'maven-publish'
+        apply plugin: 'java'
 
+        artifactName = artifactName ?: project.name
+        println "artifactName: $artifactName"
+
+        task sourcesJar(type: Jar, dependsOn: classes) {
+            classifier = 'sources'
+            from sourceSets.main.allSource
+        }
+
+        artifacts {
+            archives sourcesJar
+        }
+
+        bintray {
+            user = System.getenv('BINTRAY_USER')
+            key = System.getenv('BINTRAY_KEY')
+            publish = true
+            pkg {
+                repo = 'maven'
+                name = artifactName
+                licenses = ['MIT']
+                vcsUrl = 'https://github.com/MarkusAmshove/Kluent'
+            }
+
+            publishing {
+                publications {
+                    Publication(MavenPublication) {
+                        from components.java
+                        groupId 'org.amshove.kluent'
+                        artifactId artifactName
+                        version project.version
+                        artifact sourcesJar
+                    }
+                }
+            }
+        }
+    }
+}
