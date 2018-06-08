@@ -24,4 +24,5 @@ dependencies {
 
 compileKonan.finalizedBy run
 
-configurePublishing()
+// Not yet supported to publish to e.g. Bintray
+// configurePublishing()
