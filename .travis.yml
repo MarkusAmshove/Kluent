@@ -1,8 +1,14 @@
-language: java
-
-
-jdk:
-    - oraclejdk8
-
-before_install:
-     - chmod +x gradlew
+matrix:
+    include:
+        - os: linux
+          jdk: oraclejdk8
+          before_script:
+              - chmod u+x gradlew
+          script:
+              - ./gradlew build
+        - os: osx
+          osx_image: xcode8
+          before_script:
+              - chmod u+x gradlew
+          script:
+              - ./gradlew build

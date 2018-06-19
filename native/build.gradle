@@ -1,0 +1,28 @@
+apply plugin: 'konan'
+
+konanArtifacts {
+    library('kluent-native') {
+        srcDir 'src/main/kotlin'
+        enableMultiplatform true
+        extraOpts '-tr'
+    }
+
+    program('native-test') {
+        srcDir 'src/test/kotlin'
+        enableMultiplatform true
+        commonSourceSet 'test'
+        libraries {
+            artifact 'kluent-native'
+        }
+        extraOpts '-tr'
+    }
+}
+
+dependencies {
+    expectedBy project(':common')
+}
+
+compileKonan.finalizedBy run
+
+// Not yet supported to publish to e.g. Bintray
+// configurePublishing()

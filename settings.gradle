@@ -1,2 +1,16 @@
 rootProject.name = 'kluent'
 
+def isAndroid = hasProperty("ANDROID")
+
+include 'common'
+
+include 'jvm'
+project(':jvm').name        =    'kluent-jvm'
+
+if(!isAndroid) {
+    include 'js'
+    project(':js').name         =    'kluent-js'
+    include 'native'
+    project(':native').name     =   'kluent-native'
+}
+

@@ -1,0 +1,56 @@
+apply plugin: 'kotlin-platform-jvm'
+
+def isAndroid = project.rootProject.hasProperty("ANDROID")
+if(isAndroid) {
+    logger.warn("Android build!")
+}
+
+// TODO: rename 'kluent' to 'kluent-jvm' for 2.0
+def artifactName = isAndroid ? 'kluent-android' : 'kluent'
+
+dependencies {
+    expectedBy project(':common')
+    implementation libs.kotlin_stdlib_jvm
+    implementation libs.kotlin_reflect
+    implementation libs.kotlin_test_jvm
+
+    testImplementation libs.junit
+    testImplementation libs.kotlin_test_jvm
+    testImplementation libs.kotlin_test_junit
+
+
+    // TODO: To be removed
+    implementation libs.junit
+    implementation "com.nhaarman:mockito-kotlin-kt1.1:$mockito_version"
+    testImplementation "org.jetbrains.spek:spek:$spek_version"
+    testImplementation "com.nhaarman:mockito-kotlin-kt1.1:$mockito_version"
+}
+
+sourceSets {
+    main {
+        kotlin {
+            srcDir 'src/main/kotlin'
+
+            if(isAndroid) {
+                exclude '**/*Backtick*'
+            }
+        }
+    }
+    test {
+        kotlin {
+            srcDir 'src/test/kotlin'
+
+            if(isAndroid) {
+                exclude '**/backtick*/**'
+            }
+        }
+    }
+}
+
+tasks.withType(compileKotlin.getClass()) {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+configurePublishing(artifactName)

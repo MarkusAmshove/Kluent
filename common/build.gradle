@@ -1,0 +1,11 @@
+apply plugin: 'kotlin-platform-common'
+
+dependencies {
+    implementation libs.kotlin_stdlib_common
+    implementation libs.kotlin_test_common
+
+    testImplementation libs.kotlin_test_common
+    testImplementation libs.kotlin_test_annotations
+}
+
+configurePublishing()
