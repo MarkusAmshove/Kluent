@@ -19,7 +19,7 @@ konanArtifacts {
 }
 
 dependencies {
-    expectedBy project(':common')
+    expectedBy project(':kluent-common')
 }
 
 compileKonan.finalizedBy run

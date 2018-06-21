@@ -9,7 +9,7 @@ if(isAndroid) {
 def artifactName = isAndroid ? 'kluent-android' : 'kluent'
 
 dependencies {
-    expectedBy project(':common')
+    expectedBy project(':kluent-common')
     implementation libs.kotlin_stdlib_jvm
     implementation libs.kotlin_reflect
     implementation libs.kotlin_test_jvm

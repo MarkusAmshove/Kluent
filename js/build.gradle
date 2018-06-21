@@ -2,7 +2,7 @@ apply plugin: 'kotlin-platform-js'
 apply plugin: 'com.moowork.node'
 
 dependencies {
-    expectedBy project(':common')
+    expectedBy project(':kluent-common')
     compile libs.kotlin_stdlib_js
     compile libs.kotlin_test_js
     testCompile libs.kotlin_test_js
