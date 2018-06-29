@@ -3,6 +3,7 @@ rootProject.name = 'kluent'
 def buildAndroid = hasProperty("ANDROID")
 def buildNative = hasProperty("NATIVE")
 def buildJs = hasProperty("JS")
+def skipJVM = hasProperty("SKIPJVM")
 
 if(!buildAndroid) {
     logger.warn("Kluent Android build not included. Pass -PANDROID to build Android instead of JVM")
@@ -16,11 +17,17 @@ if(!buildJs) {
     logger.warn("Kluent JS build not included. Pass -PJS to also build JS")
 }
 
+if(skipJVM) {
+    logger.warn("Skipping JVM build")
+}
+
 include 'common'
 project(':common').name = 'kluent-common'
 
-include 'jvm'
-project(':jvm').name        =    'kluent-jvm'
+if(!skipJVM) {
+    include 'jvm'
+    project(':jvm').name        =    'kluent-jvm'
+}
 
 if(buildJs) {
     include 'js'
