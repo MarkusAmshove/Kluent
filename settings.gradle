@@ -1,6 +1,20 @@
 rootProject.name = 'kluent'
 
-def isAndroid = hasProperty("ANDROID")
+def buildAndroid = hasProperty("ANDROID")
+def buildNative = hasProperty("NATIVE")
+def buildJs = hasProperty("JS")
+
+if(!buildAndroid) {
+    logger.warn("Kluent Android build not included. Pass -PANDROID to build Android instead of JVM")
+}
+
+if(!buildNative) {
+    logger.warn("Kluent Native build not included. Pass -PNATIVE to also build native")
+}
+
+if(!buildJs) {
+    logger.warn("Kluent JS build not included. Pass -PJS to also build JS")
+}
 
 include 'common'
 project(':common').name = 'kluent-common'
@@ -8,9 +22,12 @@ project(':common').name = 'kluent-common'
 include 'jvm'
 project(':jvm').name        =    'kluent-jvm'
 
-if(!isAndroid) {
+if(buildJs) {
     include 'js'
     project(':js').name         =    'kluent-js'
+}
+
+if (buildNative) {
     include 'native'
     project(':native').name     =   'kluent-native'
 }
