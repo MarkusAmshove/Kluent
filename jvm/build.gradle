@@ -6,7 +6,7 @@ if(isAndroid) {
 }
 
 // TODO: rename 'kluent' to 'kluent-jvm' for 2.0
-def artifactName = isAndroid ? 'kluent-android' : 'kluent-jvm'
+def artifactName = isAndroid ? 'kluent-android' : 'kluent'
 
 dependencies {
     expectedBy project(':kluent-common')

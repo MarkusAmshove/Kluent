@@ -93,7 +93,7 @@ Some examples:
     shouldNotBeTrue
 
     shouldNotBeFalse
-    
+
 ## Chaining of assertions
 
 ```kt
@@ -109,9 +109,9 @@ number
 
 # Changelog
 
-# 1.39 (WIP)
+# 1.39
 * Provide `shouldBeDigit` and `shouldNotBeDigit` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/107) | thanks to [@AndreasVolkmann](https://github.com/AndreasVolkmann) | [PR](https://github.com/MarkusAmshove/Kluent/pull/106)
-* Implement `shouldHaveTheSameClassAs` and `shouldNotHaveTheSameClassAs' | [Issue](https://github.com/MarkusAmshove/Kluent/issues/110) | thanks to [@igorwojda](https://github.com/igorwojda) | [PR](https://github.com/MarkusAmshove/Kluent/pull/106)
+* Implement `shouldHaveTheSameClassAs` and `shouldNotHaveTheSameClassAs` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/110) | thanks to [@igorwojda](https://github.com/igorwojda) | [PR](https://github.com/MarkusAmshove/Kluent/pull/106)
 * Add checked exceptions to `itThrows` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/109) | thanks to [@thetric](https://github.com/thetric) | [PR](https://github.com/MarkusAmshove/Kluent/pull/106)
 * Restructure project into platform modules to prepare for 2.0 | [PR](https://github.com/MarkusAmshove/Kluent/pull/106)
 * Create more overloads for Collections | [Issue](https://github.com/MarkusAmshove/Kluent/issues/108) | [PR](https://github.com/MarkusAmshove/Kluent/pull/106)
