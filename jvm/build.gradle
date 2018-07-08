@@ -6,7 +6,8 @@ if(isAndroid) {
 }
 
 // TODO: rename 'kluent' to 'kluent-jvm' for 2.0
-def artifactName = isAndroid ? 'kluent-android' : 'kluent'
+def artifactName = isAndroid ? 'Kluent-Android' : 'Kluent'
+configurePublishing(artifactName)
 
 dependencies {
     expectedBy project(':kluent-common')
@@ -52,5 +53,3 @@ tasks.withType(compileKotlin.getClass()) {
         jvmTarget = "1.8"
     }
 }
-
-configurePublishing(artifactName)
