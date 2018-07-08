@@ -27,7 +27,7 @@ project(':common').name = 'kluent-common'
 if(!skipJVM) {
     include 'jvm'
     // TODO(2.0) Rename to kluent-jvm
-    def jvmProjectName = buildAndroid ? 'Kluent-Android' : 'Kluent'
+    def jvmProjectName = buildAndroid ? 'kluent-android' : 'kluent'
     project(':jvm').name        =    jvmProjectName
 }
 
