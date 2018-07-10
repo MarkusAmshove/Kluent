@@ -8,7 +8,7 @@ It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.ht
 
 [Contributors](AUTHORS.md)
 
-[ ![Download](https://api.bintray.com/packages/markusamshove/maven/Kluent/images/download.svg) ](https://bintray.com/markusamshove/maven/Kluent/_latestVersion) 
+[ ![Download](https://api.bintray.com/packages/markusamshove/maven/kluent/images/download.svg) ](https://bintray.com/markusamshove/maven/Kluent/_latestVersion) 
 
 
 | Platform  | Status  |
@@ -23,9 +23,9 @@ It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.ht
 
 # Include it via gradle/maven
 
-Kluent is hosted [here at jcenter](https://bintray.com/markusamshove/maven/Kluent/view# "jCenter")
+Kluent is hosted [here at jcenter](https://bintray.com/markusamshove/maven/kluent/view# "jCenter")
 
-Kluent-Android is hosted [here at jcenter](https://bintray.com/markusamshove/maven/Kluent-Android/view# "jCenter")
+Kluent-Android is hosted [here at jcenter](https://bintray.com/markusamshove/maven/kluent-android/view# "jCenter")
 
 ## Gradle
 Replace {version} with the current version
