@@ -59,8 +59,8 @@ internal fun failExpectedActual(message: String, expected: String?, actual: Stri
 
 internal fun failCollectionWithDifferentItems(message: String, expected: String?, actual: String?): Nothing = fail("""
     |$message
-    |${ if(actual.isNullOrEmpty()) "Items included on the expected collection but not in the actual: $expected" else "" }
-    |${ if(expected.isNullOrEmpty()) "Items included on the actual collection but not in the expected: $actual" else "" }
+    |${ if(!expected.isNullOrEmpty()) "Items included on the expected collection but not in the actual: $expected" else "" }
+    |${ if(!actual.isNullOrEmpty()) "Items included on the actual collection but not in the expected: $actual" else "" }
 """.trimMargin())
 
 internal fun failFirstSecond(message: String, first: String?, second: String?): Nothing = fail("""

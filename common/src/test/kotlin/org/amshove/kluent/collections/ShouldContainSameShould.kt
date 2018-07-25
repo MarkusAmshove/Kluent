@@ -91,9 +91,9 @@ class ShouldContainSameShould {
 
     @Test
     fun passWhenTestingAFloatArrayWhichContainsSameValues() {
-        val array = floatArrayOf(5.6f, 7.0f, 0.33f)
-        array shouldContainSame floatArrayOf(0.33f, 5.6f, 7.0f)
-        array shouldContainSame listOf(0.33f, 5.6f, 7.0f)
+        val array = floatArrayOf(5.0f, 7.0f, 3.0f)
+        array shouldContainSame floatArrayOf(3.0f, 5.0f, 7.0f)
+        array shouldContainSame listOf(3.0f, 5.0f, 7.0f)
     }
 
     @Test
