@@ -20,7 +20,7 @@ infix fun <T> Array<T>.shouldContainAll(expected: Iterable<T>) = apply { expecte
 
 infix fun <T> Array<T>.shouldContainSame(expected: Array<T>) = assertBothCollectionsContainsSame(expected.toList(), this.toList())
 
-infix fun <T> Array<T>.shouldContainSame(expected: Iterable<T>) = assertBothCollectionsContainsSame(expected.iterator().asSequence().toList(), this.toList())
+infix fun <T> Array<T>.shouldContainSame(expected: Iterable<T>) = assertBothCollectionsContainsSame(expected.toList(), this.toList())
 
 infix fun <T> Array<T>.shouldNotContain(expected: T) = apply { if (!this.contains(expected)) Unit else failExpectedActual("Array should not contain \"$expected\"", "the Array to not contain \"$expected\"", join(this)) }
 
@@ -60,7 +60,7 @@ infix fun IntArray.shouldContainAll(expected: Iterable<Int>) = apply { this.toLi
 
 infix fun IntArray.shouldContainSame(expected: IntArray) = assertBothCollectionsContainsSame(expected.toList(), this.toList())
 
-infix fun IntArray.shouldContainSame(expected: Iterable<Int>) = assertBothCollectionsContainsSame(expected.iterator().asSequence().toList(), this.toList())
+infix fun IntArray.shouldContainSame(expected: Iterable<Int>) = assertBothCollectionsContainsSame(expected.toList(), this.toList())
 
 infix fun IntArray.shouldNotContain(expected: Int) = apply { this.toTypedArray() shouldNotContain expected }
 
@@ -98,7 +98,7 @@ infix fun BooleanArray.shouldNotContain(expected: Boolean) = apply { this.toType
 
 infix fun BooleanArray.shouldContainSame(expected: BooleanArray) = assertBothCollectionsContainsSame(expected.toList(), this.toList())
 
-infix fun BooleanArray.shouldContainSame(expected: Iterable<Boolean>) = assertBothCollectionsContainsSame(expected.iterator().asSequence().toList(), this.toList())
+infix fun BooleanArray.shouldContainSame(expected: Iterable<Boolean>) = assertBothCollectionsContainsSame(expected.toList(), this.toList())
 
 infix fun BooleanArray.shouldNotContainAny(expected: BooleanArray) = apply { expected.forEach { shouldNotContain(it) } }
 
@@ -132,7 +132,7 @@ infix fun ByteArray.shouldContainAll(expected: Iterable<Byte>) = apply { this.to
 
 infix fun ByteArray.shouldContainSame(expected: ByteArray) = assertBothCollectionsContainsSame(expected.toList(), this.toList())
 
-infix fun ByteArray.shouldContainSame(expected: Iterable<Byte>) = assertBothCollectionsContainsSame(expected.iterator().asSequence().toList(), this.toList())
+infix fun ByteArray.shouldContainSame(expected: Iterable<Byte>) = assertBothCollectionsContainsSame(expected.toList(), this.toList())
 
 infix fun ByteArray.shouldNotContain(expected: Byte) = apply { this.toTypedArray() shouldNotContain expected }
 
@@ -168,7 +168,7 @@ infix fun CharArray.shouldContainAll(expected: Iterable<Char>) = apply { this.to
 
 infix fun CharArray.shouldContainSame(expected: CharArray) = assertBothCollectionsContainsSame(expected.toList(), this.toList())
 
-infix fun CharArray.shouldContainSame(expected: Iterable<Char>) = assertBothCollectionsContainsSame(expected.iterator().asSequence().toList(), this.toList())
+infix fun CharArray.shouldContainSame(expected: Iterable<Char>) = assertBothCollectionsContainsSame(expected.toList(), this.toList())
 
 infix fun CharArray.shouldNotContain(expected: Char) = apply { this.toTypedArray() shouldNotContain expected }
 
@@ -204,7 +204,7 @@ infix fun DoubleArray.shouldContainAll(expected: Iterable<Double>) = apply { thi
 
 infix fun DoubleArray.shouldContainSame(expected: DoubleArray) = assertBothCollectionsContainsSame(expected.toList(), this.toList())
 
-infix fun DoubleArray.shouldContainSame(expected: Iterable<Double>) = assertBothCollectionsContainsSame(expected.iterator().asSequence().toList(), this.toList())
+infix fun DoubleArray.shouldContainSame(expected: Iterable<Double>) = assertBothCollectionsContainsSame(expected.toList(), this.toList())
 
 infix fun DoubleArray.shouldNotContain(expected: Double) = apply { this.toTypedArray() shouldNotContain expected }
 
@@ -240,7 +240,7 @@ infix fun FloatArray.shouldContainAll(expected: Iterable<Float>) = apply { this.
 
 infix fun FloatArray.shouldContainSame(expected: FloatArray) = assertBothCollectionsContainsSame(expected.toList(), this.toList())
 
-infix fun FloatArray.shouldContainSame(expected: Iterable<Float>) = assertBothCollectionsContainsSame(expected.iterator().asSequence().toList(), this.toList())
+infix fun FloatArray.shouldContainSame(expected: Iterable<Float>) = assertBothCollectionsContainsSame(expected.toList(), this.toList())
 
 infix fun FloatArray.shouldNotContain(expected: Float) = apply { this.toTypedArray() shouldNotContain expected }
 
@@ -276,7 +276,7 @@ infix fun LongArray.shouldContainAll(expected: Iterable<Long>) = apply { this.to
 
 infix fun LongArray.shouldContainSame(expected: LongArray) = assertBothCollectionsContainsSame(expected.toList(), this.toList())
 
-infix fun LongArray.shouldContainSame(expected: Iterable<Long>) = assertBothCollectionsContainsSame(expected.iterator().asSequence().toList(), this.toList())
+infix fun LongArray.shouldContainSame(expected: Iterable<Long>) = assertBothCollectionsContainsSame(expected.toList(), this.toList())
 
 infix fun LongArray.shouldNotContain(expected: Long) = apply { this.toTypedArray() shouldNotContain expected }
 
@@ -312,7 +312,7 @@ infix fun ShortArray.shouldContainAll(expected: Iterable<Short>) = apply { this.
 
 infix fun ShortArray.shouldContainSame(expected: ShortArray) = assertBothCollectionsContainsSame(expected.toList(), this.toList())
 
-infix fun ShortArray.shouldContainSame(expected: Iterable<Short>) = assertBothCollectionsContainsSame(expected.iterator().asSequence().toList(), this.toList())
+infix fun ShortArray.shouldContainSame(expected: Iterable<Short>) = assertBothCollectionsContainsSame(expected.toList(), this.toList())
 
 infix fun ShortArray.shouldNotContain(expected: Short) = apply { this.toTypedArray() shouldNotContain expected }
 
