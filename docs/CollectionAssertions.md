@@ -22,6 +22,8 @@ theIntArray.shouldNotBeEmpty()
 
 listOf(10, 15, 20) shouldContainAll listOf(10, 15, 20)
 listOf(10, 15, 20) shouldNotContainAny listOf(5, 7)
+
+listOf(1, 2, 3) shouldContainSame listOf(3, 1, 2)
 ```
 
 ## Maps
