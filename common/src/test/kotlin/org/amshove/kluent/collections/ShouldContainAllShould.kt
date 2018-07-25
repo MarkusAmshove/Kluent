@@ -36,8 +36,8 @@ class ShouldContainAllShould {
     @Test
     fun passWhenTestingABooleanArrayWhichContainsAllValues() {
         val array = booleanArrayOf(true, false)
-        array shouldContainAll booleanArrayOf(false, true, false)
-        array shouldContainAll listOf(false, true, false)
+        array shouldContainAll booleanArrayOf(false, true)
+        array shouldContainAll listOf(false, true)
     }
 
     @Test
