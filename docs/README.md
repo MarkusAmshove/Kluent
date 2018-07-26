@@ -109,6 +109,9 @@ number
 
 # Changelog
 
+# 1.40
+* Implement `shouldContainSame` | [PR](https://github.com/MarkusAmshove/Kluent/pull/113) | thanks to [@fabriciorissetto](https://github.com/fabriciorissetto)
+
 # 1.39
 * Provide `shouldBeDigit` and `shouldNotBeDigit` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/107) | thanks to [@AndreasVolkmann](https://github.com/AndreasVolkmann) | [PR](https://github.com/MarkusAmshove/Kluent/pull/106)
 * Implement `shouldHaveTheSameClassAs` and `shouldNotHaveTheSameClassAs` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/110) | thanks to [@igorwojda](https://github.com/igorwojda) | [PR](https://github.com/MarkusAmshove/Kluent/pull/106)
