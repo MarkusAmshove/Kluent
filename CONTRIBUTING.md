@@ -55,43 +55,50 @@ We're looking for all kinds of contributions, may it be additional assertions, u
 NOTE: When the build fails after your changes and you don't know why, don't hesitate to create a pull request anyway,
 we might be able to help you!
 
-## Running the Tests
+# Building Kluent
 
-Your pull request will be automatically build and tested by [Travis](https://travis-ci.org/MarkusAmshove/Kluent).
-To make sure that the build won't fail, you can the build again locally:
+All projects of Kluent are built with [Gradle](http://gradle.org/)
 
-```bash
-$ ./gradlew clean build
-```
+The default `gradlew build` will only build the `common` and `jvm` module, to keep the build times as small as possible.
 
-To make sure your changes also run against Android, run
+If you plan to submit a pull request, it is also fine if you just make sure it builds and tests against `common` and `jvm` (which `gradlew build` will make sure of),
+because the rest of the heavy work will be done by Travis and AppVeyor.
+That way you can keep your machine free from NodeJS and Kotlin Native :-)
 
-```bash
-$ ./gradlew clean build -PANDROID
-```
+To build the Android library, pass the parameter `ANDROID` to Gradle.
+This will build the `common` and `android` artifacts.
+To pass the parameter, type:
 
-## Testing in your projects
+`gradlew build -PANDROID`
 
-If you want to test your changes in your local projects, increment the `version` in `build.gradle` (but make sure not to commit it) and run
+To also build the JS module, pass `JS`:
 
-```bash
-$ ./gradlew install
-# for Android:
-$ ./gradlew install -PANDROID
-```
+`gradlew build -PJS`
 
-which will put the artifact into your local maven cache.
+To build native, pass:
 
-In your project, make sure to add `mavenLocal()` as a repository:
-```groovy
-repositories {
-    mavenLocal()
-}
-```
+`gradlew build -PNATIVE`
 
-and also change the Kluent dependency to the version you previously specified.
+In these cases, the JVM module will also be built, because it is our primary target and everything should pass on the JVM.
+To skip the JVM build, e.g. for testing only against Native or JS, pass `SKIPVM`:
 
-If you build your own project again, Gradle should pull your Kluent version from the local maven repository.
+`gradlew build -PJS -PNATIVE -PSKIPJVM`
+
+This command will build `common`, `js`, `native`, but not `jvm`.
+
+## Where to put new features
+
+If you plan to add a feature (e.g. an Assertion), it would be nice to first try adding it to the `common` module, as it would then be available to all platforms.
+If it uses specific APIs, like classes from the Java standard library, then it needs to go to the `jvm` module.
+
+If you're unsure where to put a feature, or if you want to put something in the `common` module which needs platform specific
+implementations, you can have a look [here](https://github.com/MarkusAmshove/Kluent/blob/master/common/src/main/kotlin/org/amshove/kluent/Basic.kt) (`platformIsDigit` or `platformClassName`)
+where a function in the `common` module calls a so called `expect` function, which is defined [here](https://github.com/MarkusAmshove/Kluent/blob/master/common/src/main/kotlin/org/amshove/kluent/internal/Platform.kt)
+in the `common` module and has specific [JVM](https://github.com/MarkusAmshove/Kluent/blob/master/jvm/src/main/kotlin/org/amshove/kluent/internal/Platform.kt),
+[JS](https://github.com/MarkusAmshove/Kluent/blob/master/js/src/main/kotlin/org/amshove/kluent/internal/Platform.kt)
+and [Native](https://github.com/MarkusAmshove/Kluent/blob/master/native/src/main/kotlin/org/amshove/kluent/internal/Platform.kt) implementation.
+
+If you're still unsure how to make something platform independent, we can have a look together inside the PR :-)
 
 ## Coding Style
 
