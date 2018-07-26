@@ -43,3 +43,5 @@ Ole Kristian Sandum [@okkero](https://github.com/okkero)
 Gabriel Aumala [@GAumala](https://github.com/GAumala)
 
 Deconinck Alban [@neyb](https://github.com/neyb)
+
+Fabrício Rissetto [@fabriciorissetto](https://github.com/fabriciorissetto)
