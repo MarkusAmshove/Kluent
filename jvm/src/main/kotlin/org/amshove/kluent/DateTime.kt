@@ -1,6 +1,6 @@
 package org.amshove.kluent
 
-import org.junit.Assert.assertTrue
+import org.amshove.kluent.internal.assertTrue
 import java.time.*
 
 infix fun LocalDateTime.shouldBeAfter(expected: LocalDateTime) = assertTrue("Expected $this to be after $expected", this > expected)
