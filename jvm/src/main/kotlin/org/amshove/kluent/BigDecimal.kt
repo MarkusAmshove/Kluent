@@ -26,3 +26,9 @@ infix fun BigDecimal.shouldBeLessThan(expected: BigDecimal) =
 
 infix fun BigDecimal.shouldNotBeLessThan(expected: BigDecimal) =
     this.apply { assertTrue("Expected $this to not be less than $expected", this.compareTo(expected) >= 0) }
+
+infix fun BigDecimal.shouldBeLessOrEqualTo(expected: BigDecimal) =
+    this.apply { assertTrue("Expected $this to be less or equal to $expected", this.compareTo(expected) <= 0) }
+
+infix fun BigDecimal.shouldNotBeLessOrEqualTo(expected: BigDecimal) =
+    this.apply { assertTrue("Expected $this to not be less or equal to $expected", this.compareTo(expected) > 0) }

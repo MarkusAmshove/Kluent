@@ -5,7 +5,7 @@ import kotlin.test.Test
 import java.math.BigDecimal
 import kotlin.test.assertFails
 
-class BigDecimalShouldBeGreaterOrEqualTo {
+class BigDecimalShouldBeGreaterOrEqualToShould {
     @Test
     fun passWhenTestingAgainstASmallerValue() {
         val a = BigDecimal("158295189289152")
