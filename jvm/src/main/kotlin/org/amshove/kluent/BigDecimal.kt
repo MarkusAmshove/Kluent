@@ -1,3 +1,6 @@
+// The Java API of operators prefers calls to `compareTo`
+@file:Suppress("ReplaceCallWithBinaryOperator")
+
 package org.amshove.kluent
 
 import org.amshove.kluent.internal.assertTrue
