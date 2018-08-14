@@ -32,3 +32,6 @@ infix fun BigDecimal.shouldBeLessOrEqualTo(expected: BigDecimal) =
 
 infix fun BigDecimal.shouldNotBeLessOrEqualTo(expected: BigDecimal) =
     this.apply { assertTrue("Expected $this to not be less or equal to $expected", this.compareTo(expected) > 0) }
+
+fun BigDecimal.shouldBePositive() =
+    this.apply { assertTrue("Expected $this to be positive", this.compareTo(java.math.BigDecimal.ZERO) > 0) }
