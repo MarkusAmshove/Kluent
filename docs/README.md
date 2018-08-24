@@ -109,7 +109,7 @@ number
 
 # Changelog
 
-# 1.41 (WIP)
+# 1.41
 * Implement numerical assertions for `BigDecimal` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/114) | [PR](https://github.com/MarkusAmshove/Kluent/pull/116)
 
 # 1.40
