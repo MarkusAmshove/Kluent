@@ -41,3 +41,25 @@ fun BigDecimal.shouldBePositive() =
 
 fun BigDecimal.shouldBeNegative() =
     this.apply { assertTrue("Expected $this to be negative", this.compareTo(java.math.BigDecimal.ZERO) < 0) }
+
+fun BigDecimal.shouldBeInRange(lowerBound: BigDecimal, upperBound: BigDecimal) = this.apply {
+    assertTrue(
+        "Expected $this to be between $lowerBound and $upperBound",
+        this.compareTo(lowerBound) >= 0 && this.compareTo(upperBound) <= 0
+    )
+}
+
+fun BigDecimal.shouldNotBeInRange(lowerBound: BigDecimal, upperBound: BigDecimal) = this.apply {
+    assertTrue(
+        "Expected $this to not be between $lowerBound and $upperBound",
+        this.compareTo(lowerBound) < 0 || this.compareTo(upperBound) > 0
+    )
+}
+
+infix fun BigDecimal.shouldBeInRange(range: ClosedRange<BigDecimal>) = this.apply {
+    this.shouldBeInRange(range.start, range.endInclusive)
+}
+
+infix fun BigDecimal.shouldNotBeInRange(range: ClosedRange<BigDecimal>) = this.apply {
+    this.shouldNotBeInRange(range.start, range.endInclusive)
+}
