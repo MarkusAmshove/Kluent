@@ -109,6 +109,9 @@ number
 
 # Changelog
 
+# 1.42
+* Use jvmTarget `1.6` for Android builds
+
 # 1.41
 * Implement numerical assertions for `BigDecimal` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/114) | [PR](https://github.com/MarkusAmshove/Kluent/pull/116)
 

@@ -50,6 +50,6 @@ sourceSets {
 
 tasks.withType(compileKotlin.getClass()) {
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = isAndroid ? '1.6' : '1.8'
     }
 }
