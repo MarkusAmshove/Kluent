@@ -29,37 +29,39 @@ Kluent-Android is hosted [here at jcenter](https://bintray.com/markusamshove/mav
 
 ## Gradle
 Replace {version} with the current version
+```groovy
+// Add jcenter as a repository for dependencies
+repositories {
+    jcenter()
+}
 
-    // Add jcenter as a repository for dependencies
-    repositories {
-        jcenter()
-    }
+dependencies {
+    testImplementation 'org.amshove.kluent:kluent:{version}'
 
-    dependencies {
-        testImplementation 'org.amshove.kluent:kluent:{version}'
-
-        // for Android:
-        testImplementation 'org.amshove.kluent:kluent-android:{version}'
-    }
+    // for Android:
+    testImplementation 'org.amshove.kluent:kluent-android:{version}'
+}
+```
 
 ## Maven
 Replace {version} with the current version
 
-    <!-- Add jcenter as a repository for dependencies --> 
-    <repositories>
-        <repository>
-            <id>jcenter</id>
-            <url>https://jcenter.bintray.com/</url>
-        </repository>
-    </repositories>
+```xml
+<!-- Add jcenter as a repository for dependencies --> 
+<repositories>
+    <repository>
+        <id>jcenter</id>
+        <url>https://jcenter.bintray.com/</url>
+    </repository>
+</repositories>
 
-    <dependency>
-        <groupId>org.amshove.kluent</groupId>
-        <artifactId>kluent</artifactId>
-        <version>{version}</version>
-        <type>pom</type>
-    </dependency>
-
+<dependency>
+    <groupId>org.amshove.kluent</groupId>
+    <artifactId>kluent</artifactId>
+    <version>{version}</version>
+    <type>pom</type>
+</dependency>
+```
 
 ----------
 
@@ -69,24 +71,32 @@ More examples can be seen on the [Site](https://markusamshove.github.io/Kluent/)
 
 ### assertEquals ##
 
-    "hello" shouldEqual "hello"
+```kotlin
+"hello" shouldEqual "hello"
+```
 
 ### assertNotEquals ##
 
-    "hello" shouldNotEqual "world"
+```kotlin
+"hello" shouldNotEqual "world"
+```    
 
 ### Assert that an Array/Iterable contains something ##
 
-    val alice = Person("Alice", "Bob")
-    val jon = Person("Jon", "Doe")
-    val list = listOf(alice, jon)
-    list shouldContain jon
+```kotlin
+val alice = Person("Alice", "Bob")
+val jon = Person("Jon", "Doe")
+val list = listOf(alice, jon)
+list shouldContain jon
+```
 
 ### Stubbing
 
-    val stub = mock(Database::class)
-    val bob = Person("Bob", "Guy")
-    When calling stub.getPerson() itReturns bob
+```kotlin
+val stub = mock(Database::class)
+val bob = Person("Bob", "Guy")
+When calling stub.getPerson() itReturns bob
+```
 
 ## Using backticks
 
@@ -96,11 +106,14 @@ Some examples:
 
 ### assertEquals ##
 
-    "hello" `should equal` "hello"
+```kotlin
+"hello" `should equal` "hello"
+```
 
 ### assertNotEquals ##
-
-    "hello" `should not equal` "world"
+```kotlin
+"hello" `should not equal` "world"
+```
 
 # Building Kluent
 
