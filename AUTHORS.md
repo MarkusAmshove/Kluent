@@ -24,3 +24,4 @@
 1. Gabriel Aumala - [@GAumala](https://github.com/GAumala) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=GAumala))
 1. Deconinck Alban - [@neyb](https://github.com/neyb) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=neyb))
 1. Fabrício Rissetto - [@fabriciorissetto](https://github.com/fabriciorissetto) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=fabriciorissetto))
+1. Vitus Ortner - [@vitusortner](https://github.com/vitusortner) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=vitusortner))
