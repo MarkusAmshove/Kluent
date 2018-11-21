@@ -1,9 +1,9 @@
 package org.amshove.kluent
 
-import com.nhaarman.mockito_kotlin.never
-import com.nhaarman.mockito_kotlin.verify
-import com.nhaarman.mockito_kotlin.verifyNoMoreInteractions
-import com.nhaarman.mockito_kotlin.verifyZeroInteractions
+import com.nhaarman.mockitokotlin2.never
+import com.nhaarman.mockitokotlin2.verify
+import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
+import com.nhaarman.mockitokotlin2.verifyZeroInteractions
 import org.mockito.AdditionalAnswers.*
 import org.mockito.Mockito.`when`
 import org.mockito.internal.util.MockUtil
@@ -15,7 +15,7 @@ import kotlin.reflect.KClass
 @Suppress("UNUSED_PARAMETER") // Backward compatibility
 inline fun <reified T : Any> mock(targetClass: KClass<out T>): T = mock()
 
-inline fun <reified T : Any> mock(): T = com.nhaarman.mockito_kotlin.mock()
+inline fun <reified T : Any> mock(): T = com.nhaarman.mockitokotlin2.mock()
 
 infix fun <T> VerifyKeyword.on(mock: T) = verify(mock)
 
@@ -35,7 +35,7 @@ infix fun <T> T.was(n: CalledKeyword) = n
 @Suppress("UNUSED_PARAMETER") // Backward compatibility
 inline fun <reified T : Any> any(kClass: KClass<T>): T = any()
 
-inline fun <reified T : Any> any(): T = com.nhaarman.mockito_kotlin.any()
+inline fun <reified T : Any> any(): T = com.nhaarman.mockitokotlin2.any()
 
 infix fun <T> WhenKeyword.calling(methodCall: T): OngoingStubbing<T> = `when`(methodCall)
 

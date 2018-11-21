@@ -1,7 +1,7 @@
 package org.amshove.kluent.tests.mocking
 
-import com.nhaarman.mockito_kotlin.anyVararg
-import com.nhaarman.mockito_kotlin.reset
+import com.nhaarman.mockitokotlin2.anyVararg
+import com.nhaarman.mockitokotlin2.reset
 import org.amshove.kluent.*
 import org.amshove.kluent.tests.helpclasses.Database
 import org.amshove.kluent.tests.helpclasses.Person

@@ -1,6 +1,6 @@
 package org.amshove.kluent.tests.backtickmockings
 
-import com.nhaarman.mockito_kotlin.reset
+import com.nhaarman.mockitokotlin2.reset
 import org.amshove.kluent.*
 import org.amshove.kluent.tests.helpclasses.Database
 import org.amshove.kluent.tests.helpclasses.Person
