@@ -109,6 +109,10 @@ number
 
 # Changelog
 
+# 1.43
+* Update Kotlin to 1.3
+* Update `mockito-kotlin` to 2.0.0 | [PR](https://github.com/MarkusAmshove/Kluent/pull/116) | thanks to [@floralvikings](https://github.com/floralvikings)
+
 # 1.42
 * Use jvmTarget `1.6` for Android builds
 
