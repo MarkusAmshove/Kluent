@@ -2,6 +2,8 @@ package org.amshove.kluent
 
 import org.amshove.kluent.internal.assertFalse
 import org.amshove.kluent.internal.assertTrue
+import kotlin.contracts.ExperimentalContracts
+import kotlin.contracts.contract
 import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals
 
@@ -62,12 +64,26 @@ infix fun <T : CharSequence> T.shouldNotMatch(regex: Regex) = this.apply { asser
 fun <T : CharSequence> T.shouldNotBeEmpty(): T =
         this.apply { assertTrue("Expected the CharSequence to not be empty", this.isNotEmpty()) }
 
-fun <T : CharSequence> T?.shouldNotBeNullOrEmpty(): T = this.shouldNotBeNull().shouldNotBeEmpty()
+@UseExperimental(ExperimentalContracts::class)
+fun <T : CharSequence> T?.shouldNotBeNullOrEmpty(): T {
+    contract {
+        returns() implies (this@shouldNotBeNullOrEmpty != null)
+    }
+
+    return this.shouldNotBeNull().shouldNotBeEmpty()
+}
 
 fun <T : CharSequence> T.shouldNotBeBlank(): T =
         this.apply { assertTrue("Expected the CharSequence to not be blank", this.isNotBlank()) }
 
-fun <T : CharSequence> T?.shouldNotBeNullOrBlank(): T = this.shouldNotBeNull().shouldNotBeBlank()
+@UseExperimental(ExperimentalContracts::class)
+fun <T : CharSequence> T?.shouldNotBeNullOrBlank(): T {
+    contract {
+        returns() implies (this@shouldNotBeNullOrBlank != null)
+    }
+
+    return this.shouldNotBeNull().shouldNotBeBlank()
+}
 
 infix fun <T : CharSequence> T.shouldContainAll(items: Iterable<CharSequence>): CharSequence = this.apply {
     items.forEach { this shouldContain it }

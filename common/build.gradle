@@ -9,3 +9,11 @@ dependencies {
 }
 
 configurePublishing()
+
+compileKotlinCommon {
+    kotlinOptions {
+        freeCompilerArgs += [
+                '-Xuse-experimental=kotlin.Experimental'
+        ]
+    }
+}

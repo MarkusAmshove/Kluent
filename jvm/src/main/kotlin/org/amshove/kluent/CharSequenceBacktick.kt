@@ -1,5 +1,8 @@
 package org.amshove.kluent
 
+import kotlin.contracts.ExperimentalContracts
+import kotlin.contracts.contract
+
 infix fun <T : CharSequence> T.`should start with`(expected: CharSequence) = this.shouldStartWith(expected)
 
 infix fun <T : CharSequence> T.`should end with`(expected: CharSequence) = this.shouldEndWith(expected)
@@ -50,11 +53,25 @@ infix fun <T : CharSequence> T.`should not match`(regex: Regex) = this.shouldNot
 
 fun <T: CharSequence> T.`should not be empty`(): T = this.shouldNotBeEmpty()
 
-fun <T: CharSequence> T?.`should not be null or empty`(): T = this.shouldNotBeNullOrEmpty()
+@UseExperimental(ExperimentalContracts::class)
+fun <T: CharSequence> T?.`should not be null or empty`(): T {
+    contract {
+        returns() implies (this@`should not be null or empty` != null)
+    }
+
+    return this.shouldNotBeNullOrEmpty()
+}
 
 fun <T: CharSequence> T.`should not be blank`(): T = this.shouldNotBeBlank()
 
-fun <T: CharSequence> T?.`should not be null or blank`(): T = this.shouldNotBeNullOrBlank()
+@UseExperimental(ExperimentalContracts::class)
+fun <T: CharSequence> T?.`should not be null or blank`(): T {
+    contract {
+        returns() implies (this@`should not be null or blank` != null)
+    }
+
+    return this.shouldNotBeNullOrBlank()
+}
 
 infix fun <T : CharSequence> T.`should contain all`(items: Iterable<CharSequence>): CharSequence = this shouldContainAll items
 

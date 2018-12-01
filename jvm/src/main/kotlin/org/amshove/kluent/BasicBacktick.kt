@@ -1,5 +1,7 @@
 package org.amshove.kluent
 
+import kotlin.contracts.ExperimentalContracts
+import kotlin.contracts.contract
 import kotlin.reflect.KClass
 
 infix fun <T> T.`should equal`(expected: T?): T = this.shouldEqual(expected)
@@ -22,15 +24,50 @@ infix fun Any?.`should not be instance of`(className: KClass<*>) = this.shouldNo
 
 fun Any?.`should be null`() = this.shouldBeNull()
 
-fun <T : Any> T?.`should not be null`(): T = this.shouldNotBeNull()
+@UseExperimental(ExperimentalContracts::class)
+fun <T : Any> T?.`should not be null`(): T {
+    contract {
+        returns() implies (this@`should not be null` != null)
+    }
 
-fun Boolean.`should be true`() = this.shouldBeTrue()
+    return this.shouldNotBeNull()
+}
 
-fun Boolean.`should be false`() = this.shouldBeFalse()
+@UseExperimental(ExperimentalContracts::class)
+fun Boolean.`should be true`(): Boolean {
+    contract {
+        returns() implies this@`should be true`
+    }
 
-fun Boolean.`should not be true`() = this.shouldBeFalse()
+    return this.shouldBeTrue()
+}
 
-fun Boolean.`should not be false`() = this.shouldBeTrue()
+@UseExperimental(ExperimentalContracts::class)
+fun Boolean.`should be false`(): Boolean {
+    contract {
+        returns() implies !this@`should be false`
+    }
+
+    return this.shouldBeFalse()
+}
+
+@UseExperimental(ExperimentalContracts::class)
+fun Boolean.`should not be true`(): Boolean {
+    contract {
+        returns() implies !this@`should not be true`
+    }
+
+    return this.shouldBeFalse()
+}
+
+@UseExperimental(ExperimentalContracts::class)
+fun Boolean.`should not be false`(): Boolean {
+    contract {
+        returns() implies this@`should not be false`
+    }
+
+    return this.shouldBeTrue()
+}
 
 fun Char.`should be digit`(): Char = this.shouldBeDigit()
 
