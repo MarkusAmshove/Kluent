@@ -16,11 +16,13 @@ infix fun Any?.`should be instance of`(className: Class<*>) = this.shouldBeInsta
 
 infix fun Any?.`should be instance of`(className: KClass<*>) = this.shouldBeInstanceOf(className)
 
-inline fun <reified T : Any> Any.`should be instance of`() = this.shouldBeInstanceOf<T>()
+inline fun <reified T : Any> Any?.`should be instance of`() = this.shouldBeInstanceOf<T>()
 
 infix fun Any?.`should not be instance of`(className: Class<*>) = this.shouldNotBeInstanceOf(className)
 
 infix fun Any?.`should not be instance of`(className: KClass<*>) = this.shouldNotBeInstanceOf(className)
+
+inline fun <reified T : Any> Any?.`should not be instance of`() = this.shouldNotBeInstanceOf<T>()
 
 fun Any?.`should be null`() = this.shouldBeNull()
 
