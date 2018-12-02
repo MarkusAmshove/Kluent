@@ -38,7 +38,7 @@ ext {
 
 allprojects {
     group 'org.amshove.kluent'
-    version '1.43'
+    version '1.44'
 
     repositories {
         jcenter()

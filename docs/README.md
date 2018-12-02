@@ -109,6 +109,10 @@ number
 
 # Changelog
 
+# 1.44
+* Implement kotlin `contracts` where possible | [PR](https://github.com/MarkusAmshove/Kluent/pull/126) | thanks to [@jcornaz](https://github.com/jcornaz)
+* Allow to call `isInstanceOf` and equivalent assertions on nullable types | [PR](https://github.com/MarkusAmshove/Kluent/pull/127) | thanks to [@jcornaz](https://github.com/jcornaz)
+
 # 1.43
 * Update Kotlin to 1.3
 * Update `mockito-kotlin` to 2.0.0 | [PR](https://github.com/MarkusAmshove/Kluent/pull/116) | thanks to [@floralvikings](https://github.com/floralvikings)

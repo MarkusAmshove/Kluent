@@ -44,7 +44,7 @@ sourceSets {
             srcDir 'src/test/kotlin'
 
             if(isAndroid) {
-                exclude '**/backtick*/**'
+                exclude '**/backtick*/**', '**/*Backtick*'
             }
         }
     }
