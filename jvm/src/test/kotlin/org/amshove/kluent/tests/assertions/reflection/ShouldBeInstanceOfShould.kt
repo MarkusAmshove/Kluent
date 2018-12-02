@@ -47,4 +47,16 @@ class ShouldBeInstanceOfShould {
             base.shouldBeInstanceOf<Base>()
         }
     }
+
+    @Test
+    fun passWhenTestingNullInstanceAgainstNullableType() {
+        val base: Base? = null
+        base.shouldBeInstanceOf<Base?>()
+    }
+
+    @Test
+    fun passWhenTestingNonNullInstanceAgainstCompatibleNullableType() {
+        val base: Base = Base()
+        base.shouldBeInstanceOf<Base?>()
+    }
 }

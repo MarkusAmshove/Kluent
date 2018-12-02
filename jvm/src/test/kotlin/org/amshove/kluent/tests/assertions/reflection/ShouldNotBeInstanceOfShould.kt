@@ -1,5 +1,6 @@
 package org.amshove.kluent.tests.assertions.reflection
 
+import org.amshove.kluent.shouldBeInstanceOf
 import org.amshove.kluent.shouldNotBeInstanceOf
 import org.amshove.kluent.tests.helpclasses.Base
 import org.amshove.kluent.tests.helpclasses.Circle
@@ -39,5 +40,17 @@ class ShouldNotBeInstanceOfShould {
     fun passWhenTestingNullInstance() {
         val base: Base? = null
         base.shouldNotBeInstanceOf<Base>()
+    }
+
+    @Test
+    fun failWhenTestingNullInstanceAgainstNullableType() {
+        val base: Base? = null
+        assertFails { base.shouldNotBeInstanceOf<Base?>() }
+    }
+
+    @Test
+    fun failWhenTestingNonNullInstanceAgainstCompatibleNullableType() {
+        val base: Base = Base()
+        assertFails { base.shouldNotBeInstanceOf<Base?>() }
     }
 }

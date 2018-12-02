@@ -9,13 +9,13 @@ infix fun Any?.shouldBeInstanceOf(className: Class<*>) = assertTrue("Expected $t
 
 infix fun Any?.shouldBeInstanceOf(className: KClass<*>) = assertTrue("Expected $this to be an instance of $className", className.isInstance(this))
 
-inline fun <reified T : Any> Any?.shouldBeInstanceOf(): T = if (this is T) this else throw AssertionError("Expected $this to be an instance or subclass of ${T::class.qualifiedName}")
+inline fun <reified T> Any?.shouldBeInstanceOf(): T = if (this is T) this else throw AssertionError("Expected $this to be an instance or subclass of ${T::class.qualifiedName}")
 
 infix fun Any?.shouldNotBeInstanceOf(className: Class<*>) = assertFalse("Expected $this to not be an instance of $className", className.isInstance(this))
 
 infix fun Any?.shouldNotBeInstanceOf(className: KClass<*>) = assertFalse("Expected $this to not be an instance of $className", className.isInstance(this))
 
-inline fun <reified T : Any> Any?.shouldNotBeInstanceOf() = this.shouldNotBeInstanceOf(T::class)
+inline fun <reified T> Any?.shouldNotBeInstanceOf() = if (this !is T) this else throw AssertionError("Expected $this to not be an instance or subclass of ${T::class.qualifiedName}")
 
 infix fun <T : Any> T?.shouldHaveTheSameClassAs(other: Any) = apply {
     if (!haveSameClasses(this, other)) {
