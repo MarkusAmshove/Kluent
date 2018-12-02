@@ -1,6 +1,7 @@
 package org.amshove.kluent.tests.assertions.reflection
 
 import org.amshove.kluent.shouldHaveTheSameClassAs
+import org.amshove.kluent.tests.helpclasses.Base
 import org.junit.Test
 import kotlin.test.assertFails
 
@@ -44,6 +45,16 @@ class ShouldHaveTheSameClassAsShould {
         val secondChild = ChildTwo()
 
         assertFails { firstChild.shouldHaveTheSameClassAs(secondChild) }
+    }
+
+    @Test
+    fun failWhenTestingNullInstance() {
+        val base: Base? = null
+        val other = Base()
+
+        assertFails {
+            base.shouldHaveTheSameClassAs(other)
+        }
     }
 }
 

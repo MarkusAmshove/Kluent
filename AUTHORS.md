@@ -26,4 +26,4 @@
 1. Fabrício Rissetto - [@fabriciorissetto](https://github.com/fabriciorissetto) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=fabriciorissetto))
 1. Vitus Ortner - [@vitusortner](https://github.com/vitusortner) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=vitusortner))
 1. Caleb Brinkman - [@floralvikings](https://github.com/floralvikings) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=floralvikings))
-
+1. Jonathan Cornaz - [@jcornaz](https://github.com/jcornaz) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=jcornaz))

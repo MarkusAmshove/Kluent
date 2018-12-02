@@ -5,7 +5,6 @@ import org.amshove.kluent.tests.helpclasses.*
 import org.junit.Test
 import kotlin.test.assertFails
 
-
 class ShouldBeInstanceOfShould {
     @Test
     fun passWhenTestingAnObjectWithThePassedClass() {
@@ -39,5 +38,25 @@ class ShouldBeInstanceOfShould {
             @Suppress("UNUSED_VARIABLE")
             val child = base.shouldBeInstanceOf<Child>()
         }
+    }
+
+    @Test
+    fun failWhenTestingNullInstance() {
+        val base: Base? = null
+        assertFails {
+            base.shouldBeInstanceOf<Base>()
+        }
+    }
+
+    @Test
+    fun passWhenTestingNullInstanceAgainstNullableType() {
+        val base: Base? = null
+        base.shouldBeInstanceOf<Base?>()
+    }
+
+    @Test
+    fun passWhenTestingNonNullInstanceAgainstCompatibleNullableType() {
+        val base: Base = Base()
+        base.shouldBeInstanceOf<Base?>()
     }
 }
