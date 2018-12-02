@@ -1,7 +1,11 @@
 package org.amshove.kluent
 
 import org.amshove.kluent.internal.*
-import kotlin.test.*
+import kotlin.contracts.ExperimentalContracts
+import kotlin.contracts.contract
+import kotlin.test.assertEquals
+import kotlin.test.assertNotEquals
+import kotlin.test.fail
 
 infix fun <T> T.shouldEqual(expected: T?): T = this.apply { assertEquals(expected, this) }
 
@@ -13,15 +17,50 @@ infix fun <T> T.shouldNotBe(expected: T?) = this.apply { assertNotSame(expected,
 
 fun Any?.shouldBeNull() = if (this != null) fail("expected value to be null, but was: $this") else Unit
 
-fun <T : Any> T?.shouldNotBeNull(): T = this ?: fail("Expected non null value, but value was null")
+@UseExperimental(ExperimentalContracts::class)
+fun <T : Any> T?.shouldNotBeNull(): T {
+    contract {
+        returns() implies (this@shouldNotBeNull != null)
+    }
 
-fun Boolean.shouldBeTrue() = this.apply { assertTrue("Expected value to be true, but was $this", this) }
+    return this ?: fail("Expected non null value, but value was null")
+}
 
-fun Boolean.shouldBeFalse() = this.apply { assertFalse("Expected value to be false, but was $this", this) }
+@UseExperimental(ExperimentalContracts::class)
+fun Boolean.shouldBeTrue(): Boolean {
+    contract {
+        returns() implies this@shouldBeTrue
+    }
 
-fun Boolean.shouldNotBeTrue() = this.shouldBeFalse()
+    return this.apply { assertTrue("Expected value to be true, but was $this", this) }
+}
 
-fun Boolean.shouldNotBeFalse() = this.shouldBeTrue()
+@UseExperimental(ExperimentalContracts::class)
+fun Boolean.shouldBeFalse(): Boolean {
+    contract {
+        returns() implies !this@shouldBeFalse
+    }
+
+    return this.apply { assertFalse("Expected value to be false, but was $this", this) }
+}
+
+@UseExperimental(ExperimentalContracts::class)
+fun Boolean.shouldNotBeTrue(): Boolean {
+    contract {
+        returns() implies !this@shouldNotBeTrue
+    }
+
+    return this.shouldBeFalse()
+}
+
+@UseExperimental(ExperimentalContracts::class)
+fun Boolean.shouldNotBeFalse(): Boolean {
+    contract {
+        returns() implies this@shouldNotBeFalse
+    }
+
+    return this.shouldBeTrue()
+}
 
 fun Char.shouldBeDigit() = this.apply { assertTrue("Expected '$this' to be a digit", this.platformIsDigit()) }
 
