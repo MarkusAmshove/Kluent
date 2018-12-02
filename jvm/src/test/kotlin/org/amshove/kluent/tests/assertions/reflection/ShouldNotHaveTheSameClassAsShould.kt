@@ -1,6 +1,7 @@
 package org.amshove.kluent.tests.assertions.reflection
 
 import org.amshove.kluent.shouldNotHaveTheSameClassAs
+import org.amshove.kluent.tests.helpclasses.Base
 import org.junit.Test
 import kotlin.test.assertFails
 
@@ -44,5 +45,13 @@ class ShouldNotHaveTheSameClassAsShould {
         val stringList = listOf("abc", "def")
 
         assertFails { intList.shouldNotHaveTheSameClassAs(stringList) }
+    }
+
+    @Test
+    fun passWhenTestingNullInstance() {
+        val base: Base? = null
+        val other = Base()
+
+        base.shouldNotHaveTheSameClassAs(other)
     }
 }

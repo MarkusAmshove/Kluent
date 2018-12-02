@@ -1,6 +1,7 @@
 package org.amshove.kluent.tests.assertions.reflection
 
 import org.amshove.kluent.shouldNotBeInstanceOf
+import org.amshove.kluent.tests.helpclasses.Base
 import org.amshove.kluent.tests.helpclasses.Circle
 import org.amshove.kluent.tests.helpclasses.Shape
 import org.amshove.kluent.tests.helpclasses.Square
@@ -32,5 +33,11 @@ class ShouldNotBeInstanceOfShould {
     fun failWhenCheckingAnObjectWithTheCorrectTypeUsingGenericParameter() {
         val firstObject: Shape = Circle(10.0)
         assertFails { firstObject.shouldNotBeInstanceOf<Circle>() }
+    }
+
+    @Test
+    fun passWhenTestingNullInstance() {
+        val base: Base? = null
+        base.shouldNotBeInstanceOf<Base>()
     }
 }
