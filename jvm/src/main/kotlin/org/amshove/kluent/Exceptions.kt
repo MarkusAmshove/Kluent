@@ -23,6 +23,9 @@ infix fun <T : Throwable> (() -> Any?).shouldNotThrow(expectedException: KClass<
         if (expectedException.isAnyException()) {
             fail("Expected no Exception to be thrown", "No Exception", "${e.javaClass}")
         }
+        if (e.isA(expectedException)) {
+            fail("Expected no Exception of type ${e::class.qualifiedName} to be thrown", "No Exception", e.toInformativeString());
+        }
         return NotThrowExceptionResult(e)
     }
 }
@@ -76,3 +79,7 @@ internal fun <T> join(theArray: Array<T>): String = theArray.joinToString(", ")
 internal fun <T> join(theIterable: Iterable<T>): String = theIterable.joinToString(", ")
 internal fun <R, T> join(theMap: Map<R, T>): String = theMap.entries.joinToString(", ")
 
+private fun Throwable.toInformativeString() = when (this.message) {
+    null -> "${this::class.qualifiedName}"
+    else -> "${this::class.qualifiedName} (Message: \"${this.message}\")"
+}

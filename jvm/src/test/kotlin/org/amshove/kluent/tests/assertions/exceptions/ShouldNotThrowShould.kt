@@ -43,14 +43,14 @@ class ShouldNotThrowShould {
     }
 
     @Test
-    fun passWhenTestingAFunctionThatDoesThrowAnExceptionWithoutTheExpectedCause() {
-        val func = { throw Exception(RuntimeException()) }
-        func shouldNotThrow Exception::class withCause IOException::class
-    }
-
-    @Test
     fun failWhenTestingAFunctionThatDoesThrowAnExceptionWithTheExpectedCause() {
         val func = { throw Exception(RuntimeException()) }
         assertFails { func shouldNotThrow Exception::class withCause RuntimeException::class }
+    }
+
+    @Test
+    fun failWhenExpectingAnExceptionThatWasThrown() {
+        val func = { throw Exception() }
+        assertFails { func shouldNotThrow Exception::class }
     }
 }

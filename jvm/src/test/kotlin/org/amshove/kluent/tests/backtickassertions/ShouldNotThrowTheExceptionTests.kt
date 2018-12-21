@@ -8,6 +8,7 @@ import org.jetbrains.spek.api.Spek
 import java.io.IOException
 import kotlin.test.assertFails
 
+@Suppress("DEPRECATION")
 class ShouldNotThrowTheExceptionTests : Spek({
     given("the should not throw the exception method") {
         on("providing a function that throws Exception A and shouldn't throw B") {
@@ -22,28 +23,10 @@ class ShouldNotThrowTheExceptionTests : Spek({
                 func `should not throw the Exception` AnyException
             }
         }
-        on("providing a function that does throw an exception without the expected message") {
-            it("should pass") {
-                val func = { throw Exception("Hello!") }
-                func `should not throw the Exception` Exception::class `with message` "Another message"
-            }
-        }
         on("providing a function that does throw an exception with the expected message") {
             it("should pass") {
                 val func = { throw Exception("The Message") }
                 assertFails({ func `should not throw the Exception` Exception::class `with message` "The Message" })
-            }
-        }
-        on("providing a function that does throw an exception without the expected cause") {
-            it("should pass") {
-                val func = { throw Exception(RuntimeException()) }
-                func `should not throw the Exception` Exception::class `with cause` IOException::class
-            }
-        }
-        on("providing a function that does throw an exception with the expected cause") {
-            it("should fail") {
-                val func = { throw Exception(RuntimeException()) }
-                assertFails({ func `should not throw the Exception` Exception::class `with cause` RuntimeException::class })
             }
         }
     }
