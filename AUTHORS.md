@@ -27,3 +27,4 @@
 1. Vitus Ortner - [@vitusortner](https://github.com/vitusortner) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=vitusortner))
 1. Caleb Brinkman - [@floralvikings](https://github.com/floralvikings) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=floralvikings))
 1. Jonathan Cornaz - [@jcornaz](https://github.com/jcornaz) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=jcornaz))
+1. Ivan Atanasov - [@IvanAtanasov89](https://github.com/IvanAtanasov89) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=IvanAtanasov89))
