@@ -247,3 +247,17 @@ infix fun <T> Any?.`should be in`(iterable: Iterable<T>) = this.shouldBeIn(itera
 infix fun <T> Any?.`should not be in`(iterable: Iterable<T>) = this.shouldNotBeIn(iterable)
 
 infix fun <T> Any?.`should be in`(array: Array<T>) = this.shouldBeIn(array)
+
+infix fun <T> Array<T>.`should contain same`(expected: Array<T>) = this.shouldContainSame(expected.toList())
+
+infix fun <T> Iterable<T>.`should contain same`(expected: Iterable<T>) = this.shouldContainSame(expected.toList())
+
+infix fun ShortArray.`should contain same`(expected: ShortArray) = this.shouldContainSame(expected.toList())
+
+infix fun FloatArray.`should contain same`(expected: FloatArray) = this.shouldContainSame(expected.toList())
+
+infix fun DoubleArray.`should contain same`(expected: DoubleArray) = this.shouldContainSame(expected.toList())
+
+infix fun LongArray.`should contain same`(expected: LongArray) = this.shouldContainSame(expected.toList())
+
+infix fun CharArray.`should contain same`(expected: CharArray) = this.shouldContainSame(expected.toList())

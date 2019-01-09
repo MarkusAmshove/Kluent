@@ -17,13 +17,13 @@ class ShouldThrowTests : Spek({
         on("expection another exception") {
             it("should fail") {
                 val func = { throw IndexOutOfBoundsException() }
-                assertFails({ func `should throw` IllegalArgumentException::class })
+                assertFails { func `should throw` IllegalArgumentException::class }
             }
         }
         on("trying to get an out of indexed item in an empty list") {
-            val funcWithReturn = { ArrayList<String>().get(-1) }
+            val funcWithReturn = { ArrayList<String>()[-1] }
             it("should pass a failing test") {
-                funcWithReturn `should throw` ArrayIndexOutOfBoundsException::class
+                funcWithReturn `should throw` java.lang.IndexOutOfBoundsException::class
             }
         }
         on("throwing subtype of an exception") {
@@ -41,7 +41,7 @@ class ShouldThrowTests : Spek({
         on("throwing an exception with a wrong message") {
             it("should fail") {
                 val func = { throw Exception("Hello World!") }
-                assertFails({ func `should throw` Exception::class `with message` "Hello" })
+                assertFails { func `should throw` Exception::class `with message` "Hello" }
             }
         }
         on("throwing an exception with a cause") {
@@ -53,13 +53,13 @@ class ShouldThrowTests : Spek({
         on("throwing an exception with a wrong cause") {
             it("should fail") {
                 val func = { throw Exception(RuntimeException()) }
-                assertFails({ func `should throw` Exception::class `with cause` IOException::class })
+                assertFails { func `should throw` Exception::class `with cause` IOException::class }
             }
         }
         on("throwing another exception") {
             it("should fail") {
                 val func = { throw IllegalArgumentException() }
-                assertFails({ func `should throw` IndexOutOfBoundsException::class })
+                assertFails { func `should throw` IndexOutOfBoundsException::class }
             }
         }
         on("expecting any exception when any exception is thrown") {
@@ -71,7 +71,7 @@ class ShouldThrowTests : Spek({
         on("expecting any exception when no exception is thrown") {
             it("should fail") {
                 val func = { Unit }
-                assertFails({ func `should throw` AnyException })
+                assertFails { func `should throw` AnyException }
             }
         }
         on("being fluent asserting both a cause and a message") {
