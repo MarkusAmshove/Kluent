@@ -109,6 +109,9 @@ number
 
 # Changelog
 
+# 1.46
+* Add backtick-assertions for `should contain some` | [PR](https://github.com/MarkusAmshove/Kluent/pull/129) | thanks to [@IvanAtanasov89](https://github.com/IvanAtanasov89)
+
 # 1.45
 * Fix ´shouldNotThrow` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/128) | thanks to [@svenjacobs](https://github.com/svenjacobs)
 
