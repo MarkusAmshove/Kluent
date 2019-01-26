@@ -2,55 +2,57 @@ package org.amshove.kluent.tests.assertions.exceptions
 
 import org.amshove.kluent.*
 import org.junit.Test
-import java.io.IOException
 import kotlin.test.assertFails
 
 class ShouldNotThrowShould {
     @Test
     fun passWhenTestingAFunctionThatDoesNotThrowAnException() {
-        val func = { Unit }
-        func shouldNotThrow AnyException
+        invoking { Unit } shouldNotThrow AnyException
     }
 
     @Test
     fun failWhenTestingAFunctionThatDoesThrowAnException() {
-        val func = { throw IllegalArgumentException() }
-        assertFails { func shouldNotThrow AnyException }
+        assertFails {
+            invoking { throw IllegalArgumentException() } shouldNotThrow AnyException
+        }
     }
 
     @Test
     fun passWhenTestingAFunctionThatDoesNotThrowTheExpectedException() {
-        val func = { throw IllegalArgumentException() }
-        func shouldNotThrow ArrayIndexOutOfBoundsException::class
+        invoking { throw IllegalArgumentException() } shouldNotThrow ArrayIndexOutOfBoundsException::class
     }
 
     @Test
     fun passWhenTestingAFunctionThatReturnsNull() {
-        val func = { null }
-        func shouldNotThrow AnyException
+        invoking { null } shouldNotThrow AnyException
     }
 
     @Test
     fun passWhenTestingAFunctionThatThrowsAnExceptionWithADifferentMessage() {
-        val func = { throw IllegalArgumentException("Actual Message") }
-        func shouldNotThrow IllegalAccessException::class withMessage "Expected Message"
+        invoking { throw IllegalArgumentException("Actual Message") } shouldNotThrow
+            IllegalAccessException::class withMessage "Expected Message"
     }
 
     @Test
     fun failWhenTestingAFunctionThatThrowsAnExceptionWithTheSameMessage() {
-        val func = { throw IllegalArgumentException("Actual Message") }
-        assertFails { func shouldNotThrow IllegalAccessException::class withMessage "Actual Message" }
+        assertFails {
+            invoking { throw IllegalArgumentException("Actual Message") } shouldNotThrow
+                IllegalAccessException::class withMessage "Actual Message"
+        }
     }
 
     @Test
     fun failWhenTestingAFunctionThatDoesThrowAnExceptionWithTheExpectedCause() {
-        val func = { throw Exception(RuntimeException()) }
-        assertFails { func shouldNotThrow Exception::class withCause RuntimeException::class }
+        assertFails {
+            invoking { throw Exception(RuntimeException()) } shouldNotThrow
+                Exception::class withCause RuntimeException::class
+        }
     }
 
     @Test
     fun failWhenExpectingAnExceptionThatWasThrown() {
-        val func = { throw Exception() }
-        assertFails { func shouldNotThrow Exception::class }
+        assertFails {
+            invoking { throw Exception() } shouldNotThrow Exception::class
+        }
     }
 }

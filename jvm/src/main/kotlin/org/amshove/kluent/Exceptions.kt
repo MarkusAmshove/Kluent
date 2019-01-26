@@ -3,6 +3,8 @@ package org.amshove.kluent
 import org.junit.ComparisonFailure
 import kotlin.reflect.KClass
 
+fun invoking(function: () -> Any?): () -> Any? = function
+
 infix fun <T : Throwable> (() -> Any?).shouldThrow(expectedException: KClass<T>): ExceptionResult<T> {
     try {
         this.invoke()

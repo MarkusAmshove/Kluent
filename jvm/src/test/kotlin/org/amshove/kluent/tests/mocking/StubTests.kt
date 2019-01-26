@@ -72,8 +72,7 @@ class StubTests : Spek({
             it("should throw an exception") {
                 val mock = mock(Database::class)
                 When calling mock.getPerson() itReturns any()
-                val func = { mock.getPerson() }
-                func shouldThrow InvalidUseOfMatchersException::class
+                invoking { mock.getPerson() } shouldThrow InvalidUseOfMatchersException::class
             }
         }
 
