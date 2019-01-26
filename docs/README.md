@@ -109,6 +109,9 @@ number
 
 # Changelog
 
+# 1.47 (WIP)
+* Provide a wrapper function for asserting exceptions | [Issue](https://github.com/MarkusAmshove/Kluent/issues/111) | [PR](https://github.com/MarkusAmshove/Kluent/pull/132) | thanks to [@rubengees](https://github.com/rubengees)
+
 # 1.46
 * Add backtick-assertions for `should contain some` | [PR](https://github.com/MarkusAmshove/Kluent/pull/129) | thanks to [@IvanAtanasov89](https://github.com/IvanAtanasov89)
 
