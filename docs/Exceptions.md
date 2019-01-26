@@ -3,29 +3,24 @@
 ```kt
 fun myThrowingFunction() { throw RuntimeException("oops!") }
 
-
-// Wrap the function which might throw an exception
-val theFunction = { myThrowingFunction() }
-
-
 // Expect any exception
-theFunction shouldThrow AnyException
-theFunction shouldNotThrow AnyException
+invoking { myThrowingFunction() } shouldThrow AnyException
+invoking { myThrowingFunction() } shouldNotThrow AnyException
 
 
 // Expect a specific type of exception
-theFunction shouldThrow RuntimeException::class
-theFunction shouldNotThrow RuntimeException::class
+invoking { myThrowingFunction() } shouldThrow RuntimeException::class
+invoking { myThrowingFunction() } shouldNotThrow RuntimeException::class
 
 
 // Expect a specific exception with a specific message
-theFunction shouldThrow RuntimeException::class withMessage "oops!"
-theFunction shouldNotThrow RuntimeException::class withMessage "oops!"
+invoking { myThrowingFunction() } shouldThrow RuntimeException::class withMessage "oops!"
+invoking { myThrowingFunction() } shouldNotThrow RuntimeException::class withMessage "oops!"
 
 
 // Expect a specific type of cause
-theFunction shouldThrow RuntimeException::class withCause IllegalArgumentException::class
-theFunction shouldNotThrow RuntimeException::class withCause IllegalArgumentException::class
+invoking { myThrowingFunction() } shouldThrow RuntimeException::class withCause IllegalArgumentException::class
+invoking { myThrowingFunction() } shouldNotThrow RuntimeException::class withCause IllegalArgumentException::class
 
 
 // Expecting a specific type and message can be chained
