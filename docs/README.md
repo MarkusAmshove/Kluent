@@ -109,7 +109,7 @@ number
 
 # Changelog
 
-# 1.47 (WIP)
+# 1.47
 * Provide a wrapper function for asserting exceptions | [Issue](https://github.com/MarkusAmshove/Kluent/issues/111) | [PR](https://github.com/MarkusAmshove/Kluent/pull/132) | thanks to [@rubengees](https://github.com/rubengees)
 
 # 1.46
