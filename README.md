@@ -90,14 +90,6 @@ val list = listOf(alice, jon)
 list shouldContain jon
 ```
 
-### Stubbing
-
-```kotlin
-val stub = mock(Database::class)
-val bob = Person("Bob", "Guy")
-When calling stub.getPerson() itReturns bob
-```
-
 ## Using backticks
 
 Every method that is included in Kluent also has a "backtick version", to make it feel more like a describing sentence.
