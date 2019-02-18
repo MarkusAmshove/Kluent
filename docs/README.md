@@ -109,6 +109,9 @@ number
 
 # Changelog
 
+# 1.48
+* Add `runtime` dependencies for Android | fixes [#130](https://github.com/MarkusAmshove/Kluent/issues/130) and [#133](https://github.com/MarkusAmshove/Kluent/issues/133)
+
 # 1.47
 * Provide a wrapper function for asserting exceptions | [Issue](https://github.com/MarkusAmshove/Kluent/issues/111) | [PR](https://github.com/MarkusAmshove/Kluent/pull/132) | thanks to [@rubengees](https://github.com/rubengees)
 
