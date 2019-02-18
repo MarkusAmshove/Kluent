@@ -28,7 +28,7 @@ Kluent is hosted [here at jcenter](https://bintray.com/markusamshove/maven/kluen
 Kluent-Android is hosted [here at jcenter](https://bintray.com/markusamshove/maven/kluent-android/view# "jCenter")
 
 ## Gradle
-Replace {version} with the current version
+Replace {version} with the current version and chose one of the two artifacts, based on your target platform:
 ```groovy
 // Add jcenter as a repository for dependencies
 repositories {
@@ -36,6 +36,7 @@ repositories {
 }
 
 dependencies {
+    // for JVM:
     testImplementation 'org.amshove.kluent:kluent:{version}'
 
     // for Android:
