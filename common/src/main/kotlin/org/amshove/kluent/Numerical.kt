@@ -152,6 +152,10 @@ fun Float.shouldBeNegative() = this.apply { assertTrue("Expected $this to be neg
 
 fun Double.shouldBeNegative() = this.apply { assertTrue("Expected $this to be negative", this < 0) }
 
+fun Float.shouldBeNear(expected: Float, delta: Float) = shouldBeInRange(expected - delta, expected + delta)
+
+fun Double.shouldBeNear(expected: Double, delta: Double) = shouldBeInRange(expected - delta, expected + delta)
+
 fun Byte.shouldBeInRange(lowerBound: Byte, upperBound: Byte) = this.apply { assertTrue("Expected $this to be between (and including) $lowerBound and $upperBound", this >= lowerBound && this <= upperBound) }
 
 fun Short.shouldBeInRange(lowerBound: Short, upperBound: Short) = this.apply { assertTrue("Expected $this to be between (and including) $lowerBound and $upperBound", this >= lowerBound && this <= upperBound) }
