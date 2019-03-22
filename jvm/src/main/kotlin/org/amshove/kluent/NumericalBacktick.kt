@@ -190,6 +190,10 @@ fun Float.`should be negative`() = this.shouldBeNegative()
 
 fun Double.`should be negative`() = this.shouldBeNegative()
 
+fun Float.`should be near`(expected: Float, delta: Float) = this.shouldBeNear(expected, delta)
+
+fun Double.`should be near`(expected: Double, delta: Double) = this.shouldBeNear(expected, delta)
+
 fun Byte.`should be in range`(lowerBound: Byte, upperBound: Byte) = this.shouldBeInRange(lowerBound, upperBound)
 
 fun Short.`should be in range`(lowerBound: Short, upperBound: Short) = this.shouldBeInRange(lowerBound, upperBound)
