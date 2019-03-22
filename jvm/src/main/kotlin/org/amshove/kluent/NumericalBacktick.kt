@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package org.amshove.kluent
 
 @Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
