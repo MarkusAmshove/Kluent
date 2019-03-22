@@ -1,8 +1,6 @@
 package org.amshove.kluent.tests.assertions.file
 
 import org.amshove.kluent.shouldBeDir
-import org.amshove.kluent.shouldNotBeDir
-import org.jetbrains.spek.api.Spek
 import org.junit.Before
 import org.junit.Test
 import java.io.File

@@ -1,7 +1,6 @@
 buildscript {
-    // TODO: Mockito and Spek will be removed in the future
+    // TODO: Mockito and will be removed in the future
     ext.mockito_version = '1.5.0'
-    ext.spek_version = "1.0.+"
     repositories {
         jcenter()
         mavenCentral()
@@ -14,6 +13,7 @@ buildscript {
         classpath "com.moowork.gradle:gradle-node-plugin:$gradle_node_version"
         classpath "org.jetbrains.kotlin:kotlin-native-gradle-plugin:$kotlin_version"
         classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.+"
+        classpath 'com.adarshr:gradle-test-logger-plugin:1.6.0'
     }
 }
 
@@ -40,19 +40,12 @@ allprojects {
     group 'org.amshove.kluent'
     version '1.48'
 
+    apply plugin: 'com.adarshr.test-logger'
+
     repositories {
         jcenter()
         mavenCentral()
         maven { url "http://kotlin.bintray.com/kotlinx" }
-        // TODO: To be removed (only used for Spek)
-        maven { url = 'http://repository.jetbrains.com/all' }
-    }
-
-    tasks.withType(Test) {
-        testLogging {
-            showStandardStreams = true
-            events "passed", "failed"
-        }
     }
 }
 

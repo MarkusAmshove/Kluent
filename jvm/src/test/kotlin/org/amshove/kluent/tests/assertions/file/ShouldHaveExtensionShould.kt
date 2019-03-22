@@ -1,8 +1,6 @@
 package org.amshove.kluent.tests.assertions.file
 
 import org.amshove.kluent.shouldHaveExtension
-import org.amshove.kluent.shouldNotHaveExtension
-import org.jetbrains.spek.api.Spek
 import java.io.File
 import kotlin.test.Test
 import kotlin.test.assertFails
