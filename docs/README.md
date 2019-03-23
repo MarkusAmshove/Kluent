@@ -109,6 +109,9 @@ number
 
 # Changelog
 
+# 1.49 (TBR)
+* Add `shouldBeNear` for Float and Double | [PR](https://github.com/MarkusAmshove/Kluent/pull/139) | thanks to [@wangjuechen](https://github.com/wangjuechen)
+
 # 1.48
 * Add `runtime` dependencies for Android | fixes [#130](https://github.com/MarkusAmshove/Kluent/issues/130) and [#133](https://github.com/MarkusAmshove/Kluent/issues/133)
 
