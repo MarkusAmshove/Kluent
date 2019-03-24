@@ -109,7 +109,7 @@ number
 
 # Changelog
 
-# 1.49 (TBR)
+# 1.49
 * Add `shouldBeNear` for Float and Double | [PR](https://github.com/MarkusAmshove/Kluent/pull/139) | thanks to [@wangjuechen](https://github.com/wangjuechen)
 
 # 1.48
