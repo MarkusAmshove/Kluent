@@ -16,7 +16,7 @@ It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.ht
 | MacOS / Linux |   [![Build Status](https://travis-ci.org/MarkusAmshove/Kluent.svg?branch=master)](https://travis-ci.org/MarkusAmshove/Kluent)            |
 | Windows       |  [![Build status](https://ci.appveyor.com/api/projects/status/c8j2nkwb5nc8b55a?svg=true)](https://ci.appveyor.com/project/magges/kluent) |
 
-# [Changelog](https://markusamshove.github.io/Kluent/)
+# [Changelog](CHANGELOG.md)
 # [Documentation](https://markusamshove.github.io/Kluent/)
 
 ----------
