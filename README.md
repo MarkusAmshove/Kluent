@@ -1,14 +1,17 @@
 # Kluent
 
+[![Changelog](https://img.shields.io/badge/docs-changelog-blue.svg)](https://github.com/MarkusAmshove/Kluent/blob/master/CHANGELOG.md)
+[![Documentation](https://img.shields.io/badge/docs-documentation-blue.svg)](https://markusamshove.github.io/Kluent/)
+[![Contributors](https://img.shields.io/badge/docs-contributors-blue.svg)](https://github.com/MarkusAmshove/Kluent/blob/master/AUTHORS.md)
+
 [Kluent](https://markusamshove.github.io/Kluent/) is a "Fluent Assertions" library written specifically for Kotlin.
 
 It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.html#infix-notation "Infix-Notation") and [Extension Functions](https://kotlinlang.org/docs/reference/extensions.html#extension-functions "Extension Functions") of Kotlin to provide a fluent wrapper around the JUnit-Asserts and Mockito.
 
 [How to contribute](CONTRIBUTING.md)
 
-[Contributors](AUTHORS.md)
 
-[ ![Download](https://api.bintray.com/packages/markusamshove/maven/kluent/images/download.svg) ](https://bintray.com/markusamshove/maven/kluent/_latestVersion) 
+[ ![Download](https://api.bintray.com/packages/markusamshove/maven/kluent/images/download.svg) ](https://bintray.com/markusamshove/maven/kluent/_latestVersion)
 
 
 | Platform  | Status  |
@@ -16,8 +19,6 @@ It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.ht
 | MacOS / Linux |   [![Build Status](https://travis-ci.org/MarkusAmshove/Kluent.svg?branch=master)](https://travis-ci.org/MarkusAmshove/Kluent)            |
 | Windows       |  [![Build status](https://ci.appveyor.com/api/projects/status/c8j2nkwb5nc8b55a?svg=true)](https://ci.appveyor.com/project/magges/kluent) |
 
-# [Changelog](CHANGELOG.md)
-# [Documentation](https://markusamshove.github.io/Kluent/)
 
 ----------
 
