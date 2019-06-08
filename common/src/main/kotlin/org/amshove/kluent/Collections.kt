@@ -36,6 +36,8 @@ fun <T> Array<T>.shouldBeEmpty() = apply { assertEmpty(this.toList(), "Array") }
 
 fun <T> Array<T>.shouldNotBeEmpty() = apply { assertNotEmpty(this.toList(), "Array") }
 
+infix fun <T> Array<T>.shouldHaveSize(expectedSize: Int) = apply { this.toList().shouldHaveSize(expectedSize) }
+
 infix fun IntArray.shouldEqual(expected: IntArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
 infix fun IntArray.shouldNotEqual(expected: IntArray) = apply { assertArrayNotEquals(expected.toTypedArray(), this.toTypedArray()) }
@@ -43,6 +45,8 @@ infix fun IntArray.shouldNotEqual(expected: IntArray) = apply { assertArrayNotEq
 fun IntArray.shouldBeEmpty() = apply { this.toTypedArray().shouldBeEmpty() }
 
 fun IntArray.shouldNotBeEmpty() = apply { this.toTypedArray().shouldNotBeEmpty() }
+
+infix fun IntArray.shouldHaveSize(expectedSize: Int) = apply { this.toList().shouldHaveSize(expectedSize) }
 
 infix fun IntArray.shouldContain(expected: Int) = apply { this.toTypedArray() shouldContain expected }
 
@@ -80,6 +84,8 @@ fun BooleanArray.shouldBeEmpty() = apply { this.toTypedArray().shouldBeEmpty() }
 
 fun BooleanArray.shouldNotBeEmpty() = apply { this.toTypedArray().shouldNotBeEmpty() }
 
+infix fun BooleanArray.shouldHaveSize(expectedSize: Int) = apply { this.toList().shouldHaveSize(expectedSize) }
+
 infix fun BooleanArray.shouldContain(expected: Boolean) = apply { this.toTypedArray() shouldContain expected }
 
 infix fun BooleanArray.shouldContainSome(expected: BooleanArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
@@ -115,6 +121,8 @@ infix fun ByteArray.shouldNotEqual(expected: ByteArray) = apply { assertArrayNot
 fun ByteArray.shouldBeEmpty() = apply { this.toTypedArray().shouldBeEmpty() }
 
 fun ByteArray.shouldNotBeEmpty() = apply { this.toTypedArray().shouldNotBeEmpty() }
+
+infix fun ByteArray.shouldHaveSize(expectedSize: Int) = apply { this.toList().shouldHaveSize(expectedSize) }
 
 infix fun ByteArray.shouldContain(expected: Byte) = apply { this.toTypedArray() shouldContain expected }
 
@@ -152,6 +160,8 @@ fun CharArray.shouldBeEmpty() = apply { this.toTypedArray().shouldBeEmpty() }
 
 fun CharArray.shouldNotBeEmpty() = apply { this.toTypedArray().shouldNotBeEmpty() }
 
+infix fun CharArray.shouldHaveSize(expectedSize: Int) = apply { this.toList().shouldHaveSize(expectedSize) }
+
 infix fun CharArray.shouldContain(expected: Char) = apply { this.toTypedArray() shouldContain expected }
 
 infix fun CharArray.shouldContainSome(expected: CharArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
@@ -187,6 +197,8 @@ infix fun DoubleArray.shouldNotEqual(expected: DoubleArray) = apply { assertArra
 fun DoubleArray.shouldBeEmpty() = apply { this.toTypedArray().shouldBeEmpty() }
 
 fun DoubleArray.shouldNotBeEmpty() = apply { this.toTypedArray().shouldNotBeEmpty() }
+
+infix fun DoubleArray.shouldHaveSize(expectedSize: Int) = apply { this.toList().shouldHaveSize(expectedSize) }
 
 infix fun DoubleArray.shouldContain(expected: Double) = apply { this.toTypedArray() shouldContain expected }
 
@@ -224,6 +236,8 @@ fun FloatArray.shouldBeEmpty() = apply { this.toTypedArray().shouldBeEmpty() }
 
 fun FloatArray.shouldNotBeEmpty() = apply { this.toTypedArray().shouldNotBeEmpty() }
 
+infix fun FloatArray.shouldHaveSize(expectedSize: Int) = apply { this.toList().shouldHaveSize(expectedSize) }
+
 infix fun FloatArray.shouldContain(expected: Float) = apply { this.toTypedArray() shouldContain expected }
 
 infix fun FloatArray.shouldContainSome(expected: FloatArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
@@ -260,6 +274,8 @@ fun LongArray.shouldBeEmpty() = apply { this.toTypedArray().shouldBeEmpty() }
 
 fun LongArray.shouldNotBeEmpty() = apply { this.toTypedArray().shouldNotBeEmpty() }
 
+infix fun LongArray.shouldHaveSize(expectedSize: Int) = apply { this.toList().shouldHaveSize(expectedSize) }
+
 infix fun LongArray.shouldContain(expected: Long) = apply { this.toTypedArray() shouldContain expected }
 
 infix fun LongArray.shouldContainSome(expected: LongArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
@@ -295,6 +311,8 @@ infix fun ShortArray.shouldNotEqual(expected: ShortArray) = apply { assertArrayN
 fun ShortArray.shouldBeEmpty() = apply { this.toTypedArray().shouldBeEmpty() }
 
 fun ShortArray.shouldNotBeEmpty() = apply { this.toTypedArray().shouldNotBeEmpty() }
+
+infix fun ShortArray.shouldHaveSize(expectedSize: Int) = apply { this.toList().shouldHaveSize(expectedSize) }
 
 infix fun ShortArray.shouldContain(expected: Short) = apply { this.toTypedArray() shouldContain expected }
 
@@ -356,6 +374,13 @@ fun <I : Iterable<*>> I.shouldBeEmpty(): I = apply { assertEmpty(this, "Iterable
 
 fun <I : Iterable<*>> I.shouldNotBeEmpty(): I = apply { assertNotEmpty(this, "Iterable") }
 
+infix fun <I : Iterable<*>> I.shouldHaveSize(expectedSize: Int) = apply {
+    val actualSize = this.count()
+    should("Expected collection size to be $expectedSize but was $actualSize") {
+        actualSize == expectedSize
+    }
+}
+
 infix fun <K, M : Map<K, *>> M.shouldEqual(expected: M): M = apply { assertMapEquals(this, expected) }
 
 infix fun <K, M : Map<K, *>> M.shouldNotEqual(expected: M): M = apply { assertMapNotEquals(this, expected) }
@@ -381,6 +406,8 @@ infix fun <K, V, M : Map<K, V>> M.shouldNotContainAny(expected: M): M = apply { 
 fun <M : Map<*, *>> M.shouldBeEmpty(): M = apply { assertEmpty(this.toList(), "Map") }
 
 fun <M : Map<*, *>> M.shouldNotBeEmpty(): M = apply { assertNotEmpty(this.toList(), "Map") }
+
+fun <M : Map<*, *>> M.shouldHaveSize(expectedSize: Int) = apply { this.keys.shouldHaveSize(expectedSize) }
 
 infix fun <T> Any?.shouldNotBeIn(array: Array<T>) = apply { if (!array.contains(this)) Unit else failExpectedActual("\"$this\" should not be in Array", "the value \"$this\" to not be in the Array", join(array)) }
 
