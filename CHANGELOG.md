@@ -1,3 +1,6 @@
+# 1.50
+* Add `shouldHaveSize` and `shouldHaveSingleItem` to collections | [Issue](https://github.com/MarkusAmshove/Kluent/issues/142)
+
 # 1.49
 * Add `shouldBeNear` for Float and Double | [PR](https://github.com/MarkusAmshove/Kluent/pull/139) | thanks to [@wangjuechen](https://github.com/wangjuechen)
 
