@@ -32,6 +32,8 @@ infix fun <T> Array<T>?.shouldEqual(expected: Array<T>?) = apply { assertArrayEq
 
 infix fun <T> Array<T>?.shouldNotEqual(expected: Array<T>?) = apply { assertArrayNotEquals(expected, this) }
 
+fun <T> Array<T>.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
+
 fun <T> Array<T>.shouldBeEmpty() = apply { assertEmpty(this.toList(), "Array") }
 
 fun <T> Array<T>.shouldNotBeEmpty() = apply { assertNotEmpty(this.toList(), "Array") }
@@ -41,6 +43,8 @@ infix fun <T> Array<T>.shouldHaveSize(expectedSize: Int) = apply { this.toList()
 infix fun IntArray.shouldEqual(expected: IntArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
 infix fun IntArray.shouldNotEqual(expected: IntArray) = apply { assertArrayNotEquals(expected.toTypedArray(), this.toTypedArray()) }
+
+fun IntArray.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
 
 fun IntArray.shouldBeEmpty() = apply { this.toTypedArray().shouldBeEmpty() }
 
@@ -80,6 +84,8 @@ infix fun BooleanArray.shouldEqual(expected: BooleanArray) = apply { assertArray
 
 infix fun BooleanArray.shouldNotEqual(expected: BooleanArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
 
+fun BooleanArray.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
+
 fun BooleanArray.shouldBeEmpty() = apply { this.toTypedArray().shouldBeEmpty() }
 
 fun BooleanArray.shouldNotBeEmpty() = apply { this.toTypedArray().shouldNotBeEmpty() }
@@ -117,6 +123,8 @@ infix fun Boolean.shouldNotBeIn(theArray: BooleanArray) = apply { this shouldNot
 infix fun ByteArray.shouldEqual(expected: ByteArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
 infix fun ByteArray.shouldNotEqual(expected: ByteArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
+
+fun ByteArray.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
 
 fun ByteArray.shouldBeEmpty() = apply { this.toTypedArray().shouldBeEmpty() }
 
@@ -156,6 +164,8 @@ infix fun CharArray.shouldEqual(expected: CharArray) = apply { assertArrayEquals
 
 infix fun CharArray.shouldNotEqual(expected: CharArray) = apply { assertArrayNotEquals(expected.toTypedArray(), this.toTypedArray()) }
 
+fun CharArray.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
+
 fun CharArray.shouldBeEmpty() = apply { this.toTypedArray().shouldBeEmpty() }
 
 fun CharArray.shouldNotBeEmpty() = apply { this.toTypedArray().shouldNotBeEmpty() }
@@ -193,6 +203,8 @@ infix fun Char.shouldNotBeIn(theArray: CharArray) = apply { this shouldNotBeIn t
 infix fun DoubleArray.shouldEqual(expected: DoubleArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
 infix fun DoubleArray.shouldNotEqual(expected: DoubleArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
+
+fun DoubleArray.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
 
 fun DoubleArray.shouldBeEmpty() = apply { this.toTypedArray().shouldBeEmpty() }
 
@@ -232,6 +244,8 @@ infix fun FloatArray.shouldEqual(expected: FloatArray) = apply { assertArrayEqua
 
 infix fun FloatArray.shouldNotEqual(expected: FloatArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
 
+fun FloatArray.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
+
 fun FloatArray.shouldBeEmpty() = apply { this.toTypedArray().shouldBeEmpty() }
 
 fun FloatArray.shouldNotBeEmpty() = apply { this.toTypedArray().shouldNotBeEmpty() }
@@ -270,6 +284,8 @@ infix fun LongArray.shouldEqual(expected: LongArray) = apply { assertArrayEquals
 
 infix fun LongArray.shouldNotEqual(expected: LongArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
 
+fun LongArray.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
+
 fun LongArray.shouldBeEmpty() = apply { this.toTypedArray().shouldBeEmpty() }
 
 fun LongArray.shouldNotBeEmpty() = apply { this.toTypedArray().shouldNotBeEmpty() }
@@ -307,6 +323,8 @@ infix fun Long.shouldNotBeIn(theArray: LongArray) = apply { this shouldNotBeIn t
 infix fun ShortArray.shouldEqual(expected: ShortArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
 infix fun ShortArray.shouldNotEqual(expected: ShortArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
+
+fun ShortArray.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
 
 fun ShortArray.shouldBeEmpty() = apply { this.toTypedArray().shouldBeEmpty() }
 
@@ -369,6 +387,11 @@ infix fun <T, I : Iterable<T>> I.shouldNotContainAny(expected: Array<T>): I = ap
 infix fun <T, I : Iterable<T>> I.shouldEqual(expected: Iterable<T>?): I = apply { assertEquals(expected, this) }
 
 infix fun <T, I : Iterable<T>> I.shouldNotEqual(expected: Iterable<T>?): I = apply { assertNotEquals(expected, this) }
+
+fun <I : Iterable<T>, T> I.shouldHaveSingleItem(): T {
+    shouldHaveSize(1)
+    return first()
+}
 
 fun <I : Iterable<*>> I.shouldBeEmpty(): I = apply { assertEmpty(this, "Iterable") }
 

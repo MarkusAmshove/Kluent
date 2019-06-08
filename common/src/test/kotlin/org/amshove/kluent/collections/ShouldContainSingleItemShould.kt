@@ -1,0 +1,50 @@
+package org.amshove.kluent.collections
+
+import org.amshove.kluent.shouldEqual
+import org.amshove.kluent.shouldHaveSingleItem
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFails
+
+class ShouldContainSingleItemShould {
+    @Test
+    fun notThrowWhenACollectionHasOneItem() {
+        val collection = listOf(1)
+        collection.shouldHaveSingleItem()
+    }
+
+    @Test
+    fun failWhenACollectionIsEmpty() {
+        val collection = listOf<Int>()
+        assertFails {
+            collection.shouldHaveSingleItem()
+        }
+    }
+
+    @Test
+    fun failWhenACollectionHasMoreThanOneItem() {
+        val collection = listOf(1, 2, 3, 4, 5)
+        assertFails {
+            collection.shouldHaveSingleItem()
+        }
+    }
+
+    @Test
+    fun returnTheItemInsideTheCollection() {
+        val collection = listOf("Hello")
+        val item = collection.shouldHaveSingleItem()
+        assertEquals("Hello", item)
+    }
+
+    @Test
+    fun workWithArrays() {
+        val arr = arrayOf("World")
+        arr.shouldHaveSingleItem().shouldEqual("World")
+    }
+
+    @Test
+    fun workWithPrimitiveArrays() {
+        val arr = shortArrayOf(5)
+        arr.shouldHaveSingleItem().shouldEqual(5)
+    }
+}
