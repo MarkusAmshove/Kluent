@@ -20,4 +20,29 @@ components.main {
 }
 
 // Not yet supported to publish to e.g. Bintray
-//configurePublishing()
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+
+    pkg {
+        repo = 'maven'
+        name = 'kluent-native'
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/MarkusAmshove/Kluent'
+    }
+}
+
+publishing {
+  repositories {
+    maven {
+        url = 'https://dl.bintray.com/markusamshove/maven'
+    }
+  }
+}
+
+bintrayUpload.doFirst {
+    publications = project.publishing.publications
+}
