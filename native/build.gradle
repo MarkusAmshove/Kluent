@@ -1,28 +1,23 @@
-apply plugin: 'konan'
-
-konanArtifacts {
-    library('kluent-native') {
-        srcDir 'src/main/kotlin'
-        enableMultiplatform true
-        extraOpts '-tr'
-    }
-
-    program('native-test') {
-        srcDir 'src/test/kotlin'
-        enableMultiplatform true
-        commonSourceSet 'test'
-        libraries {
-            artifact 'kluent-native'
-        }
-        extraOpts '-tr'
-    }
+plugins {
+  id "org.jetbrains.kotlin.platform.native"
 }
 
 dependencies {
     expectedBy project(':kluent-common')
 }
 
-compileKonan.finalizedBy run
+components.main {
+    targets = ['linux_x64', 'macos_x64', 'mingw_x64']
+    outputKinds = [KLIBRARY]
+    extraOpts '-Xuse-experimental=kotlin.Experimental'
+    pom {
+        withXml {
+            def root = asNode()
+            root.appendNode('name', 'Kluent Native')
+            root.appendNode('description', 'Kluent assertion library for Kotlin native')
+        }
+    }
+}
 
 // Not yet supported to publish to e.g. Bintray
-// configurePublishing()
+//configurePublishing()
