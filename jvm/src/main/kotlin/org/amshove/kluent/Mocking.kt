@@ -41,6 +41,10 @@ infix fun <T> WhenKeyword.calling(methodCall: T): OngoingStubbing<T> = `when`(me
 
 infix fun <T> OngoingStubbing<T>.itReturns(value: T): OngoingStubbing<T> = this.thenReturn(value)
 
+inline infix fun <reified T> OngoingStubbing<T>.itReturnsConsecutively(ts: List<T>): OngoingStubbing<T> {
+    return this.thenReturn(ts[0], *ts.drop(1).toTypedArray())
+}
+
 infix fun <T> OngoingStubbing<T>.itThrows(value: Throwable): OngoingStubbing<T> = this.thenThrow(value)
 
 infix fun <T> OngoingStubbing<T>.itAnswers(value: (InvocationOnMock) -> T): OngoingStubbing<T> = this.thenAnswer(value)
