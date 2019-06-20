@@ -29,5 +29,5 @@
 1. Jonathan Cornaz - [@jcornaz](https://github.com/jcornaz) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=jcornaz))
 1. Ivan Atanasov - [@IvanAtanasov89](https://github.com/IvanAtanasov89) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=IvanAtanasov89))
 1. Ruben Gees - [@rubengees](https://github.com/rubengees) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=rubengees))
-1. Juechen Wang - [@wangjuechen](https://github.com/wangjuechen) ([Contributions])(https://github.com/MarkusAmshove/Kluent/commits?author=wangjuechen))
-1. Joan Fuentes - [@nescafemix](https://github.com/Nescafemix) ([Contributions])(https://github.com/MarkusAmshove/Kluent/commits?author=Nescafemix))
+1. Juechen Wang - [@wangjuechen](https://github.com/wangjuechen) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=wangjuechen))
+1. Joan Fuentes - [@nescafemix](https://github.com/Nescafemix) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=Nescafemix))
