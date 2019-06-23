@@ -3,6 +3,7 @@ package org.amshove.kluent
 import org.amshove.kluent.internal.*
 import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals
+import kotlin.test.fail
 
 infix fun <T> Array<T>.shouldContain(expected: T) = apply { if (this.contains(expected)) Unit else failExpectedActual("Array doesn't contain \"$expected\"", "the Array to contain \"$expected\"", join(this)) }
 
@@ -39,6 +40,11 @@ fun <T> Array<T>.shouldBeEmpty() = apply { assertEmpty(this.toList(), "Array") }
 fun <T> Array<T>.shouldNotBeEmpty() = apply { assertNotEmpty(this.toList(), "Array") }
 
 infix fun <T> Array<T>.shouldHaveSize(expectedSize: Int) = apply { this.toList().shouldHaveSize(expectedSize) }
+
+infix fun <T> Array<T>.shouldMatchAtLeastOneOf(predicate: (T) -> Boolean) = apply { this.toList().shouldMatchAtLeastOneOf(predicate) }
+
+infix fun <T> Array<T>.shouldMatchAllWith(predicate: (T) -> Boolean) = apply { this.toList().shouldMatchAllWith(predicate) }
+
 
 infix fun IntArray.shouldEqual(expected: IntArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
@@ -80,6 +86,11 @@ infix fun Int.shouldBeIn(theArray: IntArray) = apply { this shouldBeIn theArray.
 
 infix fun Int.shouldNotBeIn(theArray: IntArray) = apply { this shouldNotBeIn theArray.toTypedArray() }
 
+infix fun IntArray.shouldMatchAtLeastOneOf(predicate: (Int) -> Boolean) = apply { this.toList().shouldMatchAtLeastOneOf(predicate) }
+
+infix fun IntArray.shouldMatchAllWith(predicate: (Int) -> Boolean) = apply { this.toList().shouldMatchAllWith(predicate) }
+
+
 infix fun BooleanArray.shouldEqual(expected: BooleanArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
 infix fun BooleanArray.shouldNotEqual(expected: BooleanArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
@@ -119,6 +130,10 @@ infix fun BooleanArray.shouldNotContainAny(expected: Iterable<Boolean>) = apply 
 infix fun Boolean.shouldBeIn(theArray: BooleanArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
 infix fun Boolean.shouldNotBeIn(theArray: BooleanArray) = apply { this shouldNotBeIn theArray.toTypedArray() }
+
+infix fun BooleanArray.shouldMatchAtLeastOneOf(predicate: (Boolean) -> Boolean) = apply { this.toList().shouldMatchAtLeastOneOf(predicate) }
+
+infix fun BooleanArray.shouldMatchAllWith(predicate: (Boolean) -> Boolean) = apply { this.toList().shouldMatchAllWith(predicate) }
 
 infix fun ByteArray.shouldEqual(expected: ByteArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
@@ -160,6 +175,10 @@ infix fun Byte.shouldBeIn(theArray: ByteArray) = apply { this shouldBeIn theArra
 
 infix fun Byte.shouldNotBeIn(theArray: ByteArray) = apply { this shouldNotBeIn theArray.toTypedArray() }
 
+infix fun ByteArray.shouldMatchAtLeastOneOf(predicate: (Byte) -> Boolean) = apply { this.toList().shouldMatchAtLeastOneOf(predicate) }
+
+infix fun ByteArray.shouldMatchAllWith(predicate: (Byte) -> Boolean) = apply { this.toList().shouldMatchAllWith(predicate) }
+
 infix fun CharArray.shouldEqual(expected: CharArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
 infix fun CharArray.shouldNotEqual(expected: CharArray) = apply { assertArrayNotEquals(expected.toTypedArray(), this.toTypedArray()) }
@@ -200,6 +219,10 @@ infix fun Char.shouldBeIn(theArray: CharArray) = apply { this shouldBeIn theArra
 
 infix fun Char.shouldNotBeIn(theArray: CharArray) = apply { this shouldNotBeIn theArray.toTypedArray() }
 
+infix fun CharArray.shouldMatchAtLeastOneOf(predicate: (Char) -> Boolean) = apply { this.toList().shouldMatchAtLeastOneOf(predicate) }
+
+infix fun CharArray.shouldMatchAllWith(predicate: (Char) -> Boolean) = apply { this.toList().shouldMatchAllWith(predicate) }
+
 infix fun DoubleArray.shouldEqual(expected: DoubleArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
 infix fun DoubleArray.shouldNotEqual(expected: DoubleArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
@@ -235,6 +258,10 @@ infix fun DoubleArray.shouldNotContain(expected: Double) = apply { this.toTypedA
 infix fun DoubleArray.shouldNotContainAny(expected: DoubleArray) = apply { expected.forEach { shouldNotContain(it) } }
 
 infix fun DoubleArray.shouldNotContainAny(expected: Iterable<Double>) = apply { this.toList().shouldNotContainAny(expected) }
+
+infix fun DoubleArray.shouldMatchAtLeastOneOf(predicate: (Double) -> Boolean) = apply { this.toList().shouldMatchAtLeastOneOf(predicate) }
+
+infix fun DoubleArray.shouldMatchAllWith(predicate: (Double) -> Boolean) = apply { this.toList().shouldMatchAllWith(predicate) }
 
 infix fun Double.shouldBeIn(theArray: DoubleArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
@@ -280,6 +307,10 @@ infix fun Float.shouldBeIn(theArray: FloatArray) = apply { this shouldBeIn theAr
 
 infix fun Float.shouldNotBeIn(theArray: FloatArray) = apply { this shouldNotBeIn theArray.toTypedArray() }
 
+infix fun FloatArray.shouldMatchAtLeastOneOf(predicate: (Float) -> Boolean) = apply { this.toList().shouldMatchAtLeastOneOf(predicate) }
+
+infix fun FloatArray.shouldMatchAllWith(predicate: (Float) -> Boolean) = apply { this.toList().shouldMatchAllWith(predicate) }
+
 infix fun LongArray.shouldEqual(expected: LongArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
 infix fun LongArray.shouldNotEqual(expected: LongArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
@@ -320,6 +351,11 @@ infix fun Long.shouldBeIn(theArray: LongArray) = apply { this shouldBeIn theArra
 
 infix fun Long.shouldNotBeIn(theArray: LongArray) = apply { this shouldNotBeIn theArray.toTypedArray() }
 
+infix fun LongArray.shouldMatchAtLeastOneOf(predicate: (Long) -> Boolean) = apply { this.toList().shouldMatchAtLeastOneOf(predicate) }
+
+infix fun LongArray.shouldMatchAllWith(predicate: (Long) -> Boolean) = apply { this.toList().shouldMatchAllWith(predicate) }
+
+
 infix fun ShortArray.shouldEqual(expected: ShortArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
 infix fun ShortArray.shouldNotEqual(expected: ShortArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
@@ -355,6 +391,10 @@ infix fun ShortArray.shouldNotContain(expected: Short) = apply { this.toTypedArr
 infix fun ShortArray.shouldNotContainAny(expected: ShortArray) = apply { expected.forEach { shouldNotContain(it) } }
 
 infix fun ShortArray.shouldNotContainAny(expected: Iterable<Short>) = apply { this.toList().shouldNotContainAny(expected) }
+
+infix fun ShortArray.shouldMatchAtLeastOneOf(predicate: (Short) -> Boolean) = apply { this.toList().shouldMatchAtLeastOneOf(predicate) }
+
+infix fun ShortArray.shouldMatchAllWith(predicate: (Short) -> Boolean) = apply { this.toList().shouldMatchAllWith(predicate) }
 
 infix fun Short.shouldBeIn(theArray: ShortArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
@@ -439,6 +479,22 @@ infix fun <T> Any?.shouldBeIn(iterable: Iterable<T>) = apply { if (iterable.cont
 infix fun <T> Any?.shouldNotBeIn(iterable: Iterable<T>) = apply { if (!iterable.contains(this)) Unit else failExpectedActual("\"$this\" should not be in Iterable", "the value \"$this\" to not be in the Iterable", join(iterable)) }
 
 infix fun <T> Any?.shouldBeIn(array: Array<T>) = apply { if (array.contains(this)) Unit else failExpectedActual("\"$this\" should be in Array", "the value \"$this\" inside the Array", join(array)) }
+
+fun <E> Iterable<E>.shouldMatchAtLeastOneOf(predicate: (E) -> Boolean): Iterable<E> {
+    this.forEach {
+        if (predicate(it))
+            return this
+    }
+    fail("Iterable had no matching items")
+}
+
+fun <E> Iterable<E>.shouldMatchAllWith(predicate: (E) -> Boolean): Iterable<E> {
+    this.forEach {
+        if (!predicate(it))
+            failExpectedActual("the Iterable contains \"$it\", which doesn't match the Predicate", "Iterable should match all with the Predicate", join(this))
+    }
+    return this
+}
 
 internal fun <T> assertEmpty(iterable: Iterable<T>, collectionType: String) = assertTrue("Expected the $collectionType to be empty, but has ${iterable.count()} elements", iterable.count() == 0)
 internal fun <T> assertNotEmpty(iterable: Iterable<T>, collectionType: String) = assertTrue("Expected the $collectionType to contain elements, but is empty", iterable.count() > 0)
