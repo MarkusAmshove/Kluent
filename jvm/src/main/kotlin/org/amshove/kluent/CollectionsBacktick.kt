@@ -230,7 +230,7 @@ infix fun <V, M : Map<*, V>> M.`should not have value`(theValue: V): M = this.sh
 
 infix fun <K, V, M : Map<K, V>> M.`should contain`(expected: Pair<K, V>): M = this.shouldContain(expected)
 
-infix fun <K, V, M : Map<K , V>> M.`should contain all`(expected: M): M = this.shouldContainAll(expected)
+infix fun <K, V, M : Map<K, V>> M.`should contain all`(expected: M): M = this.shouldContainAll(expected)
 
 infix fun <K, V, M : Map<K, V>> M.`should not contain`(expected: Pair<K, V>): M = this.shouldNotContain(expected)
 
@@ -261,3 +261,66 @@ infix fun DoubleArray.`should contain same`(expected: DoubleArray) = this.should
 infix fun LongArray.`should contain same`(expected: LongArray) = this.shouldContainSame(expected)
 
 infix fun CharArray.`should contain same`(expected: CharArray) = this.shouldContainSame(expected)
+
+infix fun <E> Array<E>.`should match at least one of`(predicate: (E) -> Boolean): Array<E> {
+    return shouldMatchAtLeastOneOf(predicate)
+}
+
+infix fun <E> Iterable<E>.`should match at least one of`(predicate: (E) -> Boolean): Iterable<E> {
+    return shouldMatchAtLeastOneOf(predicate)
+}
+
+infix fun ShortArray.`should match at least one of`(predicate: (Short) -> Boolean): ShortArray {
+    return shouldMatchAtLeastOneOf(predicate)
+}
+
+infix fun LongArray.`should match at least one of`(predicate: (Long) -> Boolean): LongArray {
+    return shouldMatchAtLeastOneOf(predicate)
+}
+
+infix fun FloatArray.`should match at least one of`(predicate: (Float) -> Boolean): FloatArray {
+    return shouldMatchAtLeastOneOf(predicate)
+}
+
+infix fun DoubleArray.`should match at least one of`(predicate: (Double) -> Boolean): DoubleArray {
+    return shouldMatchAtLeastOneOf(predicate)
+}
+
+infix fun CharArray.`should match at least one of`(predicate: (Char) -> Boolean): CharArray {
+    return shouldMatchAtLeastOneOf(predicate)
+}
+
+infix fun IntArray.`should match at least one of`(predicate: (Int) -> Boolean): IntArray {
+    return shouldMatchAtLeastOneOf(predicate)
+}
+infix fun <E> Array<E>.`should match all with`(predicate: (E) -> Boolean): Array<E> {
+    return shouldMatchAllWith(predicate)
+}
+
+infix fun <E> Iterable<E>.`should match all with`(predicate: (E) -> Boolean): Iterable<E> {
+    return shouldMatchAllWith(predicate)
+}
+
+infix fun ShortArray.`should match all with`(predicate: (Short) -> Boolean): ShortArray {
+    return shouldMatchAllWith(predicate)
+}
+
+infix fun LongArray.`should match all with`(predicate: (Long) -> Boolean): LongArray {
+    return shouldMatchAllWith(predicate)
+}
+
+infix fun FloatArray.`should match all with`(predicate: (Float) -> Boolean): FloatArray {
+    return shouldMatchAllWith(predicate)
+}
+
+infix fun DoubleArray.`should match all with`(predicate: (Double) -> Boolean): DoubleArray {
+    return shouldMatchAllWith(predicate)
+}
+
+infix fun CharArray.`should match all with`(predicate: (Char) -> Boolean): CharArray {
+    return shouldMatchAllWith(predicate)
+}
+
+infix fun IntArray.`should match all with`(predicate: (Int) -> Boolean): IntArray {
+    return shouldMatchAllWith(predicate)
+}
