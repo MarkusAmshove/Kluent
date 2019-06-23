@@ -1,3 +1,6 @@
+# 1.51
+* Add predicate matchers for collections (`shouldMatchAtLeastOneOf` and `shouldMatchAllWith`) | [PR](https://github.com/MarkusAmshove/Kluent/pull/144) | thanks to [@sheix](https://github.com/sheix)
+
 # 1.50
 * Add `shouldHaveSize` and `shouldHaveSingleItem` to collections | [Issue](https://github.com/MarkusAmshove/Kluent/issues/142)
 
