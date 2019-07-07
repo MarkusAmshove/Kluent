@@ -31,3 +31,19 @@ jobs:
       publishJUnitResults: true
       testResultsFiles: '**/TEST-*.xml'
       tasks: 'build'
+- job: MacOS
+  displayName: MacOS
+  pool:
+    vmImage: 'macOS-10.14'
+  steps:
+  - task: Gradle@2
+    inputs:
+      workingDirectory: ''
+      gradleWrapperFile: 'gradlew'
+      gradleOptions: '-Xmx3072m'
+      javaHomeOption: 'JDKVersion'
+      jdkVersionOption: '1.8'
+      jdkArchitectureOption: 'x64'
+      publishJUnitResults: true
+      testResultsFiles: '**/TEST-*.xml'
+      tasks: 'build'
