@@ -36,9 +36,9 @@ if(buildJs) {
     project(':js').name         =    'kluent-js'
 }
 
-if (buildNative) {
+//if (buildNative) {
     enableFeaturePreview('GRADLE_METADATA')
     include 'native'
     project(':native').name     =   'kluent-native'
-}
+//}
 
