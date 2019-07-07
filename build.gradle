@@ -19,6 +19,7 @@ kotlin {
     }
     // Currently ncurses5 must be installed (see https://github.com/JetBrains/kotlin-native/issues/2674)
     linuxX64('linux')
+    mingwX64('windows')
     sourceSets {
         commonMain {
             dependencies {
@@ -62,6 +63,10 @@ kotlin {
         }
         linuxTest {
         }
+        windowsMain {
+        }
+        windowsTest {
+        }
     }
 }
 
@@ -69,10 +74,11 @@ bintray {
     user = getBintrayUser()
     key = getBintrayKey()
     publish = false
+    override = true
 
     pkg {
         repo = 'maven'
-        name = 'kluent-native'
+        name = 'kluent'
         userOrg = 'markusamshove'
         licenses = ['MIT']
         vcsUrl = 'https://github.com/MarkusAmshove/Kluent'
@@ -90,10 +96,14 @@ bintrayUpload.doFirst {
 bintrayUpload.dependsOn publishToMavenLocal
 
 def getBintrayUser() {
-    return project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
+    def user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
+    println("Using user: $user")
+    return user
 }
 
 def getBintrayKey() {
-    return project.hasProperty('bintrayApiKey') ? project.property('bintrayKey') : System.getenv('BINTRAY_KEY')
+    def key = project.hasProperty('bintrayKey') ? project.property('bintrayKey') : System.getenv('BINTRAY_KEY')
+    println("Using key: $key")
+    return key
 }
 
