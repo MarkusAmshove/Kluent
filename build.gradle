@@ -1,97 +1,65 @@
-buildscript {
-    // TODO: Mockito and will be removed in the future
-    ext.mockito_version = '1.5.0'
-    repositories {
-        jcenter()
-        mavenCentral()
-        maven { url "http://kotlin.bintray.com/kotlinx" }
-        maven { url "https://plugins.gradle.org/m2/" }
-        maven { url "https://dl.bintray.com/jetbrains/kotlin-native-dependencies" }
-    }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "com.moowork.gradle:gradle-node-plugin:$gradle_node_version"
-        classpath "org.jetbrains.kotlin:kotlin-native-gradle-plugin:$kotlin_version"
-        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.+"
-        classpath 'com.adarshr:gradle-test-logger-plugin:1.6.0'
-    }
+plugins {
+    id 'maven-publish'
+    id 'org.jetbrains.kotlin.multiplatform' version '1.3.41'
 }
-
-ext {
-    libs = [
-        // Compile
-        kotlin_stdlib_common    : "org.jetbrains.kotlin:kotlin-stdlib-common:$kotlin_version",
-        kotlin_stdlib_jvm       : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version",
-        kotlin_stdlib_js        : "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version",
-        kotlin_reflect          : "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version",
-
-        // Tests
-        kotlin_test_common      : "org.jetbrains.kotlin:kotlin-test-common:$kotlin_version",
-        kotlin_test_jvm         : "org.jetbrains.kotlin:kotlin-test:$kotlin_version",
-        kotlin_test_junit       : "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version",
-        kotlin_test_js          : "org.jetbrains.kotlin:kotlin-test-js:$kotlin_version",
-        kotlin_test_annotations : "org.jetbrains.kotlin:kotlin-test-annotations-common:$kotlin_version",
-
-        junit                   : "junit:junit:4.12",
-    ]
+repositories {
+    mavenCentral()
 }
+group 'org.amshove.kluent'
+version '1.51'
 
-allprojects {
-    group 'org.amshove.kluent'
-    version '1.51'
-
-    apply plugin: 'com.adarshr.test-logger'
-
-    repositories {
-        jcenter()
-        mavenCentral()
-        maven { url "http://kotlin.bintray.com/kotlinx" }
-    }
-}
-
-subprojects {
-    ext.configurePublishing = { artifactName = null ->
-        apply plugin: 'com.jfrog.bintray'
-        apply plugin: 'maven-publish'
-        apply plugin: 'java'
-
-        artifactName = artifactName ?: project.name
-        println "artifactName: $artifactName"
-
-        task sourcesJar(type: Jar, dependsOn: classes) {
-            classifier = 'sources'
-            from sourceSets.main.allSource
+kotlin {
+    jvm()
+    js {
+        browser {
         }
-
-        artifacts {
-            archives sourcesJar
+        nodejs {
         }
-
-        bintray {
-            user = System.getenv('BINTRAY_USER')
-            key = System.getenv('BINTRAY_KEY')
-            publish = true
-            override = true
-            publications = ['Publication']
-            configurations = ['archives']
-            pkg {
-                repo = 'maven'
-                name = artifactName
-                licenses = ['MIT']
-                vcsUrl = 'https://github.com/MarkusAmshove/Kluent'
+    }
+    // Currently ncurses5 must be installed (see https://github.com/JetBrains/kotlin-native/issues/2674)
+    linuxX64('linux')
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation kotlin('stdlib-common')
+                implementation kotlin('test-common')
             }
-
-            publishing {
-                publications {
-                    Publication(MavenPublication) {
-                        from components.java
-                        groupId 'org.amshove.kluent'
-                        artifactId artifactName
-                        version project.version
-                        artifact sourcesJar
-                    }
-                }
+        }
+        commonTest {
+            dependencies {
+                implementation kotlin('test-common')
+                implementation kotlin('test-annotations-common')
             }
+        }
+        jvmMain {
+            dependencies {
+                implementation kotlin('stdlib-jdk8')
+                implementation kotlin('reflect')
+                implementation kotlin('test-junit')
+
+                implementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0'
+            }
+        }
+        jvmTest {
+            dependencies {
+                implementation kotlin('test')
+                implementation kotlin('test-junit')
+            }
+        }
+        jsMain {
+            dependencies {
+                implementation kotlin('stdlib-js')
+                implementation kotlin('test-js')
+            }
+        }
+        jsTest {
+            dependencies {
+                implementation kotlin('test-js')
+            }
+        }
+        linuxMain {
+        }
+        linuxTest {
         }
     }
 }
