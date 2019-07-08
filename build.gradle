@@ -20,6 +20,7 @@ kotlin {
     // Currently ncurses5 must be installed (see https://github.com/JetBrains/kotlin-native/issues/2674)
     linuxX64('linux')
     mingwX64('windows')
+    macosX64('macOS')
     sourceSets {
         commonMain {
             dependencies {
@@ -66,6 +67,10 @@ kotlin {
         windowsMain {
         }
         windowsTest {
+        }
+        macOSMain {
+        }
+        macOSTest {
         }
     }
 }
