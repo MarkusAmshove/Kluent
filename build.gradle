@@ -38,7 +38,7 @@ ext {
 
 allprojects {
     group 'org.amshove.kluent'
-    version '1.51'
+    version '1.52'
 
     apply plugin: 'com.adarshr.test-logger'
 
