@@ -11,6 +11,14 @@ version '1.52'
 
 kotlin {
     jvm()
+    jvm('android') {
+        compilations.main.kotlinOptions {
+            jvmTarget = '1.6'
+        }
+        compilations.test.kotlinOptions {
+            jvmTarget = '1.6'
+        }
+    }
     js {
         browser {
         }
@@ -44,6 +52,25 @@ kotlin {
             }
         }
         jvmTest {
+            dependencies {
+                implementation kotlin('test')
+                implementation kotlin('test-junit')
+            }
+        }
+        androidMain {
+            kotlin.filter.exclude '**/*Backtick*'
+            kotlin.srcDirs += jvmMain.kotlin.srcDirs
+            dependencies {
+                implementation kotlin('stdlib-jdk8')
+                implementation kotlin('reflect')
+                implementation kotlin('test-junit')
+
+                implementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0'
+            }
+        }
+        androidTest {
+            kotlin.filter.exclude '**/*Backtick*'
+            kotlin.srcDirs += jvmTest.kotlin.srcDirs
             dependencies {
                 implementation kotlin('test')
                 implementation kotlin('test-junit')
