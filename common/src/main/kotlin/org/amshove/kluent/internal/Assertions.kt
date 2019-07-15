@@ -41,10 +41,9 @@ internal fun <K, V, M : Map<K, V>> mapsEqual(m1: M?, m2: M?): Boolean {
     if (m1 == null || m2 == null) return false
     if (m1.size != m2.size) return false
 
-    val m1Iter = m1.toList()
-    val m2Iter = m2.toList()
-    for (index in m1Iter.indices) {
-        if (m1Iter[index] != m2Iter[index]) {
+    val iter = m1.toList()
+    for (i in iter) {
+        if (m2[i.first] != i.second) {
             return false
         }
     }
