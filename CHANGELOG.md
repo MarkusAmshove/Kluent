@@ -1,3 +1,6 @@
+# 1.53 (WIP)
+* Add `shouldEqualUnordered` and `shouldNotEqualUnordered` | [PR](https://github.com/MarkusAmshove/Kluent/pull/150) | thanks to [@jeggy](https://github.com/jeggy)
+
 # 1.52
 * Update mockito-kotlin to add Gradle 5.1.1 compatibility | [PR](https://github.com/MarkusAmshove/Kluent/pull/147) | thanks to [@St4B](https://github.com/St4B)
 
