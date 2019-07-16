@@ -1,4 +1,4 @@
-# 1.53 (WIP)
+# 1.53
 * Add `shouldEqualUnordered` and `shouldNotEqualUnordered` | [PR](https://github.com/MarkusAmshove/Kluent/pull/150) | thanks to [@jeggy](https://github.com/jeggy)
 
 # 1.52
