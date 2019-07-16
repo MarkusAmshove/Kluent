@@ -44,14 +44,6 @@ class ShouldEqualShould {
     }
 
     @Test
-    fun passWhenMapCreationOrderNotTheSame() {
-        val firstMap = mapOf(2 to Person("C", "D"), 1 to Person("A", "B"))
-        val secondMap = mapOf(1 to Person("A", "B"), 2 to Person("C", "D"))
-
-        firstMap shouldEqual secondMap
-    }
-
-    @Test
     fun failWhenTestingDifferentMaps() {
         val firstMap = mapOf(1 to Person("A", "B"), 2 to Person("C", "D"))
         val secondMap = mapOf(1 to Person("A", "C"), 2 to Person("D", "C"))

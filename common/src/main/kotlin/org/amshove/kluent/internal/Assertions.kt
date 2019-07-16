@@ -37,13 +37,38 @@ internal fun <K, V, M : Map<K, V>> assertMapNotEquals(m1: M, m2: M) {
     }
 }
 
+internal fun <K, V, M : Map<K, V>> assertMapEqualsUnordered(m1: M, m2: M) {
+    if (!mapsEqualUnordered(m1, m2)) {
+        failFirstSecond("Expected Maps to contain same values, but were different", joinPairs(m1), joinPairs(m2))
+    }
+}
+
+internal fun <K, V, M : Map<K, V>> assertMapNotEqualsUnordered(m1: M, m2: M) {
+    if (mapsEqualUnordered(m1, m2)) {
+        failFirstSecond("Expected Maps to not contain same values, but did", joinPairs(m1), joinPairs(m2))
+    }
+}
+
 internal fun <K, V, M : Map<K, V>> mapsEqual(m1: M?, m2: M?): Boolean {
     if (m1 == null || m2 == null) return false
     if (m1.size != m2.size) return false
 
-    val iter = m1.toList()
-    for (i in iter) {
-        if (m2[i.first] != i.second) {
+    val m1Iter = m1.toList()
+    val m2Iter = m2.toList()
+    for (index in m1Iter.indices) {
+        if (m1Iter[index] != m2Iter[index]) {
+            return false
+        }
+    }
+    return true
+}
+
+internal fun <K, V, M : Map<K, V>> mapsEqualUnordered(m1: M?, m2: M?): Boolean {
+    if (m1 == null || m2 == null) return false
+    if (m1.size != m2.size) return false
+
+    for ((key, value) in m1) {
+        if (m2[key] != value) {
             return false
         }
     }
