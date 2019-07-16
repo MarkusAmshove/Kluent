@@ -448,6 +448,10 @@ infix fun <K, M : Map<K, *>> M.shouldEqual(expected: M): M = apply { assertMapEq
 
 infix fun <K, M : Map<K, *>> M.shouldNotEqual(expected: M): M = apply { assertMapNotEquals(this, expected) }
 
+infix fun <K, M : Map<K, *>> M.shouldEqualUnordered(expected: M): M = apply { assertMapEqualsUnordered(this, expected) }
+
+infix fun <K, M : Map<K, *>> M.shouldNotEqualUnordered(expected: M): M = apply { assertMapNotEqualsUnordered(this, expected) }
+
 infix fun <K, M : Map<K, *>> M.shouldHaveKey(theKey: K): M = apply { if (this.containsKey(theKey)) Unit else failExpectedActual("Map should contain key \"$theKey\"", "the Map to contain key \"$theKey\"", joinKeys(this)) }
 
 infix fun <K, M : Map<K, *>> M.shouldNotHaveKey(theKey: K): M = apply { if (!this.containsKey(theKey)) Unit else failExpectedActual("Map should not contain key \"$theKey\"", "the Map to not contain the key \"$theKey\"", joinKeys(this)) }

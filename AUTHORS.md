@@ -31,3 +31,5 @@
 1. Ruben Gees - [@rubengees](https://github.com/rubengees) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=rubengees))
 1. Juechen Wang - [@wangjuechen](https://github.com/wangjuechen) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=wangjuechen))
 1. Anton Sheihman [@sheix_](https://github.com/sheix_) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=rubengees))
+1. Vaios Tsitsonis [@St4B](https://github.com/St4B) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=st4b))
+1. Jógvan Olsen - [@jeggy](https://github.com/jeggy) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=jeggy))

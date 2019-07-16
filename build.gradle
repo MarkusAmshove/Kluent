@@ -138,4 +138,3 @@ def getBintrayKey() {
     println("Using key: $key")
     return key
 }
-
