@@ -32,4 +32,10 @@ func shouldThrow IllegalArgumentException::class withCause IOException::class wi
 data class CustomException(val code: Int) : Exception("code is $code")
 val func = { throw CustomException(12345) }
 func shouldThrow CustomException(12345)
+
+// The above assertions also work with suspend functions:
+suspend fun myThrowingSuspendFunction() { throw RuntimeException("oops!") }
+
+invokingSuspend { myThrowingSuspendFunction() } shouldThrow RuntimeException::class withMessage "oops!"
+invokingSuspend { myThrowingSuspendFunction() } shouldNotThrow RuntimeException::class withMessage "oops!"
 ```
