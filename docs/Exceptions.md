@@ -36,6 +36,6 @@ func shouldThrow CustomException(12345)
 // The above assertions also work with suspend functions:
 suspend fun myThrowingSuspendFunction() { throw RuntimeException("oops!") }
 
-invokingSuspend { myThrowingSuspendFunction() } shouldThrow RuntimeException::class withMessage "oops!"
-invokingSuspend { myThrowingSuspendFunction() } shouldNotThrow RuntimeException::class withMessage "oops!"
+coInvoking { myThrowingSuspendFunction() } shouldThrow RuntimeException::class withMessage "oops!"
+coInvoking { myThrowingSuspendFunction() } shouldNotThrow RuntimeException::class withMessage "oops!"
 ```

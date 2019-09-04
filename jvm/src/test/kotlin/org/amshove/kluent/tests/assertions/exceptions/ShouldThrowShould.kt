@@ -21,7 +21,7 @@ class ShouldThrowShould {
         suspend fun func() {
             suspendCancellableCoroutine<Any> { throw IndexOutOfBoundsException() }
         }
-        invokingSuspend { func() } shouldThrow IndexOutOfBoundsException::class
+        coInvoking { func() } shouldThrow IndexOutOfBoundsException::class
     }
 
     @Test
@@ -38,7 +38,7 @@ class ShouldThrowShould {
             suspendCancellableCoroutine<Any> { throw IndexOutOfBoundsException() }
         }
         assertFails {
-            invokingSuspend { func() } shouldThrow IllegalArgumentException::class
+            coInvoking { func() } shouldThrow IllegalArgumentException::class
         }
     }
 
@@ -53,7 +53,7 @@ class ShouldThrowShould {
         suspend fun func() {
             suspendCancellableCoroutine<Int> { listOf(0)[-1] }
         }
-        invokingSuspend { func() } shouldThrow IndexOutOfBoundsException::class
+        coInvoking { func() } shouldThrow IndexOutOfBoundsException::class
     }
 
     @Test
@@ -67,7 +67,7 @@ class ShouldThrowShould {
         suspend fun func() {
             suspendCancellableCoroutine<Any> { throw IllegalStateException() }
         }
-        invokingSuspend { func() } shouldThrow RuntimeException::class
+        coInvoking { func() } shouldThrow RuntimeException::class
     }
 
     @Test
@@ -81,7 +81,7 @@ class ShouldThrowShould {
         suspend fun func() {
             suspendCancellableCoroutine<Any> { throw Exception("Hello World!") }
         }
-        invokingSuspend { func() } shouldThrow Exception::class withMessage "Hello World!"
+        coInvoking { func() } shouldThrow Exception::class withMessage "Hello World!"
     }
 
     @Test
@@ -98,7 +98,7 @@ class ShouldThrowShould {
             suspendCancellableCoroutine<Any> { throw Exception("Hello World!") }
         }
         assertFails {
-            invokingSuspend { func() } shouldThrow Exception::class withMessage "Hello"
+            coInvoking { func() } shouldThrow Exception::class withMessage "Hello"
         }
     }
 
@@ -113,7 +113,7 @@ class ShouldThrowShould {
         suspend fun func() {
             suspendCancellableCoroutine<Any> { throw Exception(RuntimeException()) }
         }
-        invokingSuspend { func() } shouldThrow Exception::class withCause RuntimeException::class
+        coInvoking { func() } shouldThrow Exception::class withCause RuntimeException::class
     }
 
     @Test
@@ -130,7 +130,7 @@ class ShouldThrowShould {
             suspendCancellableCoroutine<Any> { throw RuntimeException() }
         }
         assertFails {
-            invokingSuspend { func() } shouldThrow Exception::class withCause IOException::class
+            coInvoking { func() } shouldThrow Exception::class withCause IOException::class
         }
     }
 
@@ -145,7 +145,7 @@ class ShouldThrowShould {
         suspend fun func() {
             suspendCancellableCoroutine<Any> { throw Exception() }
         }
-        invokingSuspend { func() } shouldThrow AnyException
+        coInvoking { func() } shouldThrow AnyException
     }
 
     @Test
@@ -159,7 +159,7 @@ class ShouldThrowShould {
         suspend fun func() {
             coroutineScope { Unit }
         }
-        assertFails { invokingSuspend { func() } shouldThrow AnyException }
+        assertFails { coInvoking { func() } shouldThrow AnyException }
     }
 
     @Test
@@ -174,7 +174,7 @@ class ShouldThrowShould {
         suspend fun func() {
             suspendCancellableCoroutine<Any> { throw IllegalArgumentException("hello", IOException()) }
         }
-        invokingSuspend { func() } shouldThrow
+        coInvoking { func() } shouldThrow
                 IllegalArgumentException::class withCause IOException::class withMessage "hello"
     }
 
@@ -193,7 +193,7 @@ class ShouldThrowShould {
             suspendCancellableCoroutine<Any> { throw IllegalArgumentException("not hello", IOException()) }
         }
         assertFails {
-            invokingSuspend { func() } shouldThrow
+            coInvoking { func() } shouldThrow
                     IllegalArgumentException::class withCause IOException::class withMessage "hello"
         }
     }
@@ -212,7 +212,7 @@ class ShouldThrowShould {
             suspendCancellableCoroutine<Any> { throw CustomException(10) }
         }
 
-        val exception = invokingSuspend { func() }.shouldThrow(CustomException::class).exception
+        val exception = coInvoking { func() }.shouldThrow(CustomException::class).exception
 
         exception.code.shouldEqual(10)
     }
@@ -228,7 +228,7 @@ class ShouldThrowShould {
         suspend fun func() {
             suspendCancellableCoroutine<Any> { throw CustomException(12345) }
         }
-        invokingSuspend { func() } shouldThrow CustomException(12345)
+        coInvoking { func() } shouldThrow CustomException(12345)
     }
 
     @Test
@@ -242,7 +242,7 @@ class ShouldThrowShould {
         suspend fun func() {
             suspendCancellableCoroutine<Any> { throw CustomException(12345) }
         }
-        assertFails { invokingSuspend { func() } shouldThrow CustomException(54321) }
+        assertFails { coInvoking { func() } shouldThrow CustomException(54321) }
     }
 }
 

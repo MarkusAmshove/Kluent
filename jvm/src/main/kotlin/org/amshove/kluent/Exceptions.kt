@@ -5,7 +5,7 @@ import kotlin.reflect.KClass
 
 fun invoking(function: () -> Any?): () -> Any? = function
 
-fun invokingSuspend(function: suspend () -> Any?): suspend () -> Any? = function
+fun coInvoking(function: suspend () -> Any?): suspend () -> Any? = function
 
 infix fun <T : Throwable> (() -> Any?).shouldThrow(expectedException: KClass<T>): ExceptionResult<T> {
     try {

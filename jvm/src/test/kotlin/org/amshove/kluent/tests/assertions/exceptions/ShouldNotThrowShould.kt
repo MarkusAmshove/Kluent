@@ -20,7 +20,7 @@ class ShouldNotThrowShould {
         suspend fun func() {
             coroutineScope { Unit }
         }
-        invokingSuspend { func() } shouldNotThrow AnyException
+        coInvoking { func() } shouldNotThrow AnyException
     }
 
     @Test
@@ -37,7 +37,7 @@ class ShouldNotThrowShould {
             suspendCancellableCoroutine<Any> { throw IllegalArgumentException() }
         }
         assertFails {
-            invokingSuspend { func() } shouldNotThrow AnyException
+            coInvoking { func() } shouldNotThrow AnyException
         }
     }
 
@@ -52,7 +52,7 @@ class ShouldNotThrowShould {
         suspend fun func() {
             suspendCancellableCoroutine<Any> { throw IllegalArgumentException() }
         }
-        invokingSuspend { func() } shouldNotThrow ArrayIndexOutOfBoundsException::class
+        coInvoking { func() } shouldNotThrow ArrayIndexOutOfBoundsException::class
     }
 
     @Test
@@ -66,7 +66,7 @@ class ShouldNotThrowShould {
         suspend fun func(): String? {
             return coroutineScope { null }
         }
-        invokingSuspend { func() } shouldNotThrow AnyException
+        coInvoking { func() } shouldNotThrow AnyException
     }
 
     @Test
@@ -81,7 +81,7 @@ class ShouldNotThrowShould {
         suspend fun func() {
             suspendCancellableCoroutine<Any> { throw IllegalArgumentException("Actual Message") }
         }
-        invokingSuspend { func() } shouldNotThrow
+        coInvoking { func() } shouldNotThrow
                 IllegalAccessException::class withMessage "Expected Message"
     }
 
@@ -100,7 +100,7 @@ class ShouldNotThrowShould {
             suspendCancellableCoroutine<Any> { throw IllegalArgumentException("Actual Message") }
         }
         assertFails {
-            invokingSuspend { func() } shouldNotThrow
+            coInvoking { func() } shouldNotThrow
                     IllegalAccessException::class withMessage "Actual Message"
         }
     }
@@ -120,7 +120,7 @@ class ShouldNotThrowShould {
             suspendCancellableCoroutine<Any> { throw Exception(RuntimeException()) }
         }
         assertFails {
-            invokingSuspend { func() } shouldNotThrow
+            coInvoking { func() } shouldNotThrow
                     Exception::class withCause RuntimeException::class
         }
     }
@@ -139,7 +139,7 @@ class ShouldNotThrowShould {
             suspendCancellableCoroutine<Any> { throw Exception() }
         }
         assertFails {
-            invokingSuspend { func() } shouldNotThrow Exception::class
+            coInvoking { func() } shouldNotThrow Exception::class
         }
     }
 }
