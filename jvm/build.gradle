@@ -25,6 +25,7 @@ dependencies {
     testImplementation libs.junit
     testImplementation libs.kotlin_test_jvm
     testImplementation libs.kotlin_test_junit
+    testImplementation libs.kotlinx_coroutines_test
 
 
     // TODO: To be removed

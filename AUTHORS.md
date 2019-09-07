@@ -33,3 +33,4 @@
 1. Anton Sheihman [@sheix_](https://github.com/sheix_) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=rubengees))
 1. Vaios Tsitsonis [@St4B](https://github.com/St4B) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=st4b))
 1. Jógvan Olsen - [@jeggy](https://github.com/jeggy) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=jeggy))
+1. Yang C - [@ychescale9](https://github.com/ychescale9) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=ychescale9))
