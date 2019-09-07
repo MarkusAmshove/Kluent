@@ -1,3 +1,6 @@
+# 1.54
+* Support asserting suspend function | [Issue](https://github.com/MarkusAmshove/Kluent/issues/151) | [PR](https://github.com/MarkusAmshove/Kluent/pull/154) | thanks to [@ychescale9](https://github.com/ychescale9)
+
 # 1.53
 * Add `shouldEqualUnordered` and `shouldNotEqualUnordered` | [PR](https://github.com/MarkusAmshove/Kluent/pull/150) | thanks to [@jeggy](https://github.com/jeggy)
 

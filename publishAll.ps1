@@ -1,6 +1,8 @@
+param($user, $key)
+
 function Publish-Artifact($name, $gradleFlags) {
     Write-Host "Starting $name" -Foreground Yellow
-    .\gradlew clean build $gradleFlags
+    .\gradlew clean build $gradleFlags -PbintrayUser="$user" -PbintrayKey="$key"
     if($?) {
         Write-Host "Published $name" -Foreground Green
     } else {

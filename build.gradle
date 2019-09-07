@@ -39,7 +39,7 @@ ext {
 
 allprojects {
     group 'org.amshove.kluent'
-    version '1.53'
+    version '1.54'
 
     apply plugin: 'com.adarshr.test-logger'
 
@@ -69,8 +69,8 @@ subprojects {
         }
 
         bintray {
-            user = System.getenv('BINTRAY_USER')
-            key = System.getenv('BINTRAY_KEY')
+            user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
+            key = project.hasProperty('bintrayKey') ? project.property('bintrayKey') : System.getenv('BINTRAY_KEY')
             publish = true
             override = true
             publications = ['Publication']
