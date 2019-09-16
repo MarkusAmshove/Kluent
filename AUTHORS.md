@@ -34,3 +34,4 @@
 1. Vaios Tsitsonis [@St4B](https://github.com/St4B) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=st4b))
 1. Jógvan Olsen - [@jeggy](https://github.com/jeggy) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=jeggy))
 1. Yang C - [@ychescale9](https://github.com/ychescale9) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=ychescale9))
+1. Christian Ivicevic - [@ChristianIvicevic](https://github.com/ChristianIvicevic) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=ChristianIvicevic))

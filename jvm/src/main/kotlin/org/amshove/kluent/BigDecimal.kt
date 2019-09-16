@@ -63,3 +63,9 @@ infix fun BigDecimal.shouldBeInRange(range: ClosedRange<BigDecimal>) = this.appl
 infix fun BigDecimal.shouldNotBeInRange(range: ClosedRange<BigDecimal>) = this.apply {
     this.shouldNotBeInRange(range.start, range.endInclusive)
 }
+
+fun BigDecimal.shouldBeNear(expected: BigDecimal, delta: BigDecimal) =
+    this.shouldBeInRange(expected - delta, expected + delta)
+
+fun BigDecimal.shouldNotBeNear(expected: BigDecimal, delta: BigDecimal) =
+    this.shouldNotBeInRange(expected - delta, expected + delta)
