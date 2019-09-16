@@ -1,3 +1,6 @@
+# 1.55
+* Add `shouldBeNear` for `BigDecimal` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/155) | [PR](https://github.com/MarkusAmshove/Kluent/pull/156) | thanks to [@ChristianIvicevic](https://github.com/ChristianIvicevic)
+
 # 1.54
 * Support asserting suspend function | [Issue](https://github.com/MarkusAmshove/Kluent/issues/151) | [PR](https://github.com/MarkusAmshove/Kluent/pull/154) | thanks to [@ychescale9](https://github.com/ychescale9)
 
