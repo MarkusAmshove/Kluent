@@ -113,6 +113,8 @@ infix fun NotThrowExceptionResult.withCause(expectedCause: KClass<out Throwable>
     return this
 }
 
+infix fun <T: Throwable, R> ExceptionResult<T>.with(block: T.() -> R): R = block(exception)
+
 val AnyException = AnyExceptionType::class
 
 class AnyExceptionType : Throwable()

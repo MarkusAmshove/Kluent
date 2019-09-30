@@ -199,6 +199,15 @@ class ShouldThrowShould {
     }
 
     @Test
+    fun validatedCustomValuesOfThrownException() {
+        class CustomException(val value: String, val num: Int): Exception(value)
+        invoking { throw CustomException("Hello World", 25) } shouldThrow CustomException::class with {
+            value shouldEqual "Hello World"
+            num shouldEqual 25
+        }
+    }
+
+    @Test
     fun returnTheExceptionWhenPassing() {
         val exception = invoking { throw CustomException(10) }.shouldThrow(CustomException::class).exception
 
