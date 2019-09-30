@@ -1,3 +1,6 @@
+# 1.56
+* Support for validating custom exception values | [PR](https://github.com/MarkusAmshove/Kluent/pull/158) | thanks to [@jeggy](https://github.com/jeggy)
+
 # 1.55
 * Add `shouldBeNear` for `BigDecimal` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/155) | [PR](https://github.com/MarkusAmshove/Kluent/pull/156) | thanks to [@ChristianIvicevic](https://github.com/ChristianIvicevic)
 
