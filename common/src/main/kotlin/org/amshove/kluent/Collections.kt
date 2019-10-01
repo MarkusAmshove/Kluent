@@ -444,6 +444,27 @@ infix fun <I : Iterable<*>> I.shouldHaveSize(expectedSize: Int) = apply {
     }
 }
 
+private fun <T> areSequencesEqual(sequence1: Sequence<T>, sequence2: Sequence<T>): Boolean {
+    val iterator1 = sequence1.iterator()
+    val iterator2 = sequence2.iterator()
+
+    while (iterator1.hasNext() && iterator2.hasNext()) {
+        if (iterator1.next() != iterator2.next()) return false
+    }
+
+    return !iterator1.hasNext() && !iterator2.hasNext()
+}
+
+infix fun <T, S : Sequence<T>> S.shouldEqual(expected: Sequence<T>): S = apply {
+    if (!areSequencesEqual(this, expected))
+        failExpectedActual("Sequence should equal \"${join(expected.asIterable())}\"", join(expected.asIterable()), join(asIterable()))
+}
+
+infix fun <T, S : Sequence<T>> S.shouldNotEqual(expected: Sequence<T>): S = apply {
+    if (areSequencesEqual(this, expected))
+        failExpectedActual("Sequence should not equal \"${join(expected.asIterable())}\"", join(expected.asIterable()), join(asIterable()))
+}
+
 fun <S : Sequence<*>> S.shouldBeEmpty(): S = apply { assertEmpty(asIterable(), "Sequence") }
 fun <S : Sequence<*>> S.shouldNotBeEmpty(): S = apply { assertNotEmpty(asIterable(), "Sequence") }
 
@@ -460,14 +481,14 @@ infix fun <S, I : Sequence<S>> I.shouldNotContain(expected: S): I = apply {
 infix fun <T, S : Sequence<T>> S.shouldContainAll(expected: Sequence<T>): S = apply {
     val set = toHashSet()
     expected.forEach {
-        if(it !in set)
+        if (it !in set)
             failExpectedActual("Sequence doesn't contain \"$expected\"", "the Sequence to contain \"$expected\"", join(asIterable()))
     }
 }
 
 infix fun <T, S : Sequence<T>> S.shouldContainNone(expected: Sequence<T>): S = apply {
     assertTrue(none { it in expected }) {
-        "Expected Sequence to contain none of \"${expected.toList()}\""
+        "Expected Sequence to contain none of \"${join(expected.asIterable())}\""
     }
 }
 

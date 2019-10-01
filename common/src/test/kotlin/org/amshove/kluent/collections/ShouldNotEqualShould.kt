@@ -1,9 +1,9 @@
 package org.amshove.kluent.collections
 
-import org.amshove.kluent.shouldNotEqual
 import org.amshove.kluent.Person
-import kotlin.test.assertFails
+import org.amshove.kluent.shouldNotEqual
 import kotlin.test.Test
+import kotlin.test.assertFails
 
 class ShouldNotEqualShould {
     @Test
@@ -32,6 +32,28 @@ class ShouldNotEqualShould {
         val firstIterable = listOf(Person("Tom", "Guy"), Person("Alice", "Bob"), Person("Jon", "Doe"))
         val secondIterable = listOf(Person("Tom", "Guy"), Person("Alice", "Bob"), Person("Jon", "Doe"))
         assertFails { firstIterable shouldNotEqual secondIterable }
+    }
+
+    @Test
+    fun passWhenTestingUnequalSequence() {
+        val firstSequence = sequenceOf(Person("Tom", "Guy"), Person("Jon", "Doe"), Person("Peter", "Meyer"))
+        val secondSequence = sequenceOf(Person("Tom", "Guy"), Person("Alice", "Bob"), Person("Jon", "Doe"))
+        firstSequence shouldNotEqual secondSequence
+    }
+
+    @Test
+    fun failWhenTestingEqualSequence() {
+        val firstSequence = sequenceOf(Person("Tom", "Guy"), Person("Alice", "Bob"), Person("Jon", "Doe"))
+        val secondSequence = sequenceOf(Person("Tom", "Guy"), Person("Alice", "Bob"), Person("Jon", "Doe"))
+        assertFails { firstSequence shouldNotEqual secondSequence }
+    }
+
+    @Test
+    fun passWhenTestingSequencesOfDifferentSizes() {
+        val firstSequence = sequenceOf(Person("Tom", "Guy"), Person("Alice", "Bob"), Person("Jon", "Doe"))
+        val secondSequence = sequenceOf(Person("Tom", "Guy"), Person("Alice", "Bob"))
+        firstSequence shouldNotEqual secondSequence
+        secondSequence shouldNotEqual firstSequence
     }
 
     @Test
