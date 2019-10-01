@@ -144,6 +144,18 @@ class ShouldContainSameShould {
     }
 
     @Test
+    fun passWhenTestingASequenceWhichContainsSameValues() {
+        val sequence = sequenceOf(5, 8, 12)
+        sequence shouldContainSame sequenceOf(12, 8, 5)
+    }
+
+    @Test
+    fun failWhenTestingASequenceWhichDoesNotContainSameValues() {
+        val sequence = sequenceOf(4, 9)
+        assertFails { sequence shouldContainSame sequenceOf(4, 6) }
+    }
+
+    @Test
     fun passWhenTestingAMapWhichContainsSameValues() {
         val map = mapOf('a' to 1, 'b' to 2, 'c' to 3)
         map shouldContainSame mapOf('b' to 2, 'a' to 1, 'c' to 3)

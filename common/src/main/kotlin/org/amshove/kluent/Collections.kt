@@ -471,6 +471,9 @@ infix fun <T, S : Sequence<T>> S.shouldContainNone(expected: Sequence<T>): S = a
     }
 }
 
+infix fun <T, S : Sequence<T>> S.shouldContainSame(expected: Sequence<T>): S =
+        assertBothIterablesContainsSame(expected.toList(), this.toList())
+
 infix fun <K, M : Map<K, *>> M.shouldEqual(expected: M): M = apply { assertMapEquals(this, expected) }
 
 infix fun <K, M : Map<K, *>> M.shouldNotEqual(expected: M): M = apply { assertMapNotEquals(this, expected) }
@@ -535,7 +538,7 @@ internal fun <T> assertNotEmpty(iterable: Iterable<T>, collectionType: String) {
     assertTrue(iterable.any()) { "Expected the $collectionType to contain elements, but is empty" }
 }
 
-internal fun <T, I : Iterable<T>> I.assertBothIterablesContainsSame(expected: Iterable<T>, actual: Iterable<T>): I {
+internal fun <T, C> C.assertBothIterablesContainsSame(expected: Iterable<T>, actual: Iterable<T>): C {
     assertBothCollectionsContainsSame(expected.toList(), actual.toList())
     return this
 }
