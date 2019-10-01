@@ -457,6 +457,20 @@ infix fun <S, I : Sequence<S>> I.shouldNotContain(expected: S): I = apply {
         failExpectedActual("Sequence should not contain \"$expected\"", "the Sequence to not contain \"$expected\"", join(asIterable()))
 }
 
+infix fun <T, S : Sequence<T>> S.shouldContainAll(expected: Sequence<T>): S = apply {
+    val set = toHashSet()
+    expected.forEach {
+        if(it !in set)
+            failExpectedActual("Sequence doesn't contain \"$expected\"", "the Sequence to contain \"$expected\"", join(asIterable()))
+    }
+}
+
+infix fun <T, S : Sequence<T>> S.shouldContainNone(expected: Sequence<T>): S = apply {
+    assertTrue(none { it in expected }) {
+        "Expected Sequence to contain none of \"${expected.toList()}\""
+    }
+}
+
 infix fun <K, M : Map<K, *>> M.shouldEqual(expected: M): M = apply { assertMapEquals(this, expected) }
 
 infix fun <K, M : Map<K, *>> M.shouldNotEqual(expected: M): M = apply { assertMapNotEquals(this, expected) }
