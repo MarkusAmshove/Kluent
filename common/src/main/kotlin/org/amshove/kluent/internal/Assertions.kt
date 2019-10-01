@@ -1,10 +1,13 @@
 package org.amshove.kluent.internal
 
-import kotlin.test.assertTrue
 import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 import kotlin.test.fail
 
 internal fun assertTrue(message: String, boolean: Boolean) = assertTrue(boolean, message)
+internal inline fun assertTrue(boolean: Boolean, lazyMessage: () -> String) {
+    if (!boolean) fail(lazyMessage())
+}
 
 internal fun assertFalse(message: String, boolean: Boolean) = assertFalse(boolean, message)
 
