@@ -447,6 +447,16 @@ infix fun <I : Iterable<*>> I.shouldHaveSize(expectedSize: Int) = apply {
 fun <S : Sequence<*>> S.shouldBeEmpty(): S = apply { assertEmpty(asIterable(), "Sequence") }
 fun <S : Sequence<*>> S.shouldNotBeEmpty(): S = apply { assertNotEmpty(asIterable(), "Sequence") }
 
+infix fun <T, S : Sequence<T>> S.shouldContain(expected: T): S = apply {
+    if (expected !in this)
+        failExpectedActual("Sequence doesn't contain \"$expected\"", "the Sequence to contain \"$expected\"", join(asIterable()))
+}
+
+infix fun <S, I : Sequence<S>> I.shouldNotContain(expected: S): I = apply {
+    if (expected in this)
+        failExpectedActual("Sequence should not contain \"$expected\"", "the Sequence to not contain \"$expected\"", join(asIterable()))
+}
+
 infix fun <K, M : Map<K, *>> M.shouldEqual(expected: M): M = apply { assertMapEquals(this, expected) }
 
 infix fun <K, M : Map<K, *>> M.shouldNotEqual(expected: M): M = apply { assertMapNotEquals(this, expected) }
@@ -507,7 +517,9 @@ internal fun <T> assertEmpty(iterable: Iterable<T>, collectionType: String) {
     assertTrue(iterable.none()) { "Expected the $collectionType to be empty, but has ${iterable.count()} elements" }
 }
 
-internal fun <T> assertNotEmpty(iterable: Iterable<T>, collectionType: String) = assertTrue("Expected the $collectionType to contain elements, but is empty", iterable.count() > 0)
+internal fun <T> assertNotEmpty(iterable: Iterable<T>, collectionType: String) {
+    assertTrue(iterable.any()) { "Expected the $collectionType to contain elements, but is empty" }
+}
 
 internal fun <T, I : Iterable<T>> I.assertBothIterablesContainsSame(expected: Iterable<T>, actual: Iterable<T>): I {
     assertBothCollectionsContainsSame(expected.toList(), actual.toList())
