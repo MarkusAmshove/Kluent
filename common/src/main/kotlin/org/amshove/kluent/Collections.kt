@@ -471,6 +471,11 @@ infix fun <T, S : Sequence<T>> S.shouldContainNone(expected: Sequence<T>): S = a
     }
 }
 
+infix fun <T, S : Sequence<T>> S.shouldContainSome(expected: Sequence<T>): S = apply {
+    val expectedSet = expected.toHashSet()
+    assertTrue(any { it in expectedSet }) { "Expected Iterable to contain at least one of \"$expected\"" }
+}
+
 fun <S : Sequence<T>, T> S.shouldHaveSingleItem(): T {
     shouldHaveSize(1)
     return first()
