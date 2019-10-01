@@ -37,6 +37,35 @@ class ShouldContainSingleItemShould {
     }
 
     @Test
+    fun notThrowWhenASequenceHasOneItem() {
+        val sequence = sequenceOf(1)
+        sequence.shouldHaveSingleItem()
+    }
+
+    @Test
+    fun failWhenASequenceIsEmpty() {
+        val sequence = emptySequence<Int>()
+        assertFails {
+            sequence.shouldHaveSingleItem()
+        }
+    }
+
+    @Test
+    fun failWhenASequenceHasMoreThanOneItem() {
+        val sequence = sequenceOf(1, 2, 3, 4, 5)
+        assertFails {
+            sequence.shouldHaveSingleItem()
+        }
+    }
+
+    @Test
+    fun returnTheItemInsideTheSequence() {
+        val sequence = sequenceOf("Hello")
+        val item = sequence.shouldHaveSingleItem()
+        assertEquals("Hello", item)
+    }
+
+    @Test
     fun workWithArrays() {
         val arr = arrayOf("World")
         arr.shouldHaveSingleItem().shouldEqual("World")

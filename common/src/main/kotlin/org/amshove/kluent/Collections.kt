@@ -471,6 +471,16 @@ infix fun <T, S : Sequence<T>> S.shouldContainNone(expected: Sequence<T>): S = a
     }
 }
 
+fun <S : Sequence<T>, T> S.shouldHaveSingleItem(): T {
+    shouldHaveSize(1)
+    return first()
+}
+
+infix fun <S : Sequence<*>> S.shouldHaveSize(expectedSize: Int) = apply {
+    val actualSize = count()
+    assertTrue(actualSize == expectedSize) { "Expected collection size to be $expectedSize but was $actualSize" }
+}
+
 infix fun <T, S : Sequence<T>> S.shouldContainSame(expected: Sequence<T>): S =
         assertBothIterablesContainsSame(expected.toList(), this.toList())
 
