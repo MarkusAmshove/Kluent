@@ -83,9 +83,9 @@ class ShouldContainSomeShould {
 
     @Test
     fun passWhenTestingAPrimitiveByteArrayContainsAtLeastOneElement() {
-        val theArray = shortArrayOf(1, 5, 7, 13)
-        theArray shouldContainSome shortArrayOf(7.toShort(), 4.toShort())
-        theArray shouldContainSome listOf(7.toShort(), 4.toShort())
+        val theArray = byteArrayOf(1, 5, 7, 13)
+        theArray shouldContainSome byteArrayOf(7, 4)
+        theArray shouldContainSome listOf<Byte>(7, 4)
     }
 
     @Test
