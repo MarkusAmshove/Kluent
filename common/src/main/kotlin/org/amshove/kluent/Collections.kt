@@ -484,6 +484,15 @@ infix fun <T> Any?.shouldNotBeIn(iterable: Iterable<T>) = apply { if (!iterable.
 
 infix fun <T> Any?.shouldBeIn(array: Array<T>) = apply { if (array.contains(this)) Unit else failExpectedActual("\"$this\" should be in Array", "the value \"$this\" inside the Array", join(array)) }
 
+infix fun <T : Comparable<T>> ClosedRange<T>.shouldBeInRange(input: ClosedRange<T>): ClosedRange<T> = apply {
+    if (this.contains(input.start) && this.contains(input.endInclusive)) Unit
+    else failExpectedActual(
+            "ClosedRange does not contain all elements of \"$input\"",
+            "the ClosedRange to contain \"$input\"",
+            "the ClosedRange contains \"$this\""
+    )
+}
+
 fun <E> Iterable<E>.shouldMatchAtLeastOneOf(predicate: (E) -> Boolean): Iterable<E> {
     this.forEach {
         if (predicate(it))

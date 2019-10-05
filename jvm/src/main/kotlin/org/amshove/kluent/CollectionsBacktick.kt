@@ -262,6 +262,8 @@ infix fun LongArray.`should contain same`(expected: LongArray) = this.shouldCont
 
 infix fun CharArray.`should contain same`(expected: CharArray) = this.shouldContainSame(expected)
 
+infix fun <T : Comparable<T>> ClosedRange<T>.`should be in range`(target: ClosedRange<T>) = this.shouldBeInRange(target)
+
 infix fun <E> Array<E>.`should match at least one of`(predicate: (E) -> Boolean): Array<E> {
     return shouldMatchAtLeastOneOf(predicate)
 }
