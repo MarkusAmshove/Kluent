@@ -96,7 +96,7 @@ subprojects {
 
         task printArtifactName {
             doLast {
-                println "artifactName: $artifactName"
+                logger.info("artifactName: $artifactName")
             }
         }
 
