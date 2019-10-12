@@ -9,7 +9,10 @@ infix fun <T> Array<T>.shouldContain(expected: T) = apply { if (this.contains(ex
 
 infix fun <T> Array<T>.shouldContainSome(expected: Array<T>) = apply { assertTrue("Expected Array to contain at least one of \"$expected\"", this.any { expected.contains(it) }) }
 
+@Deprecated("Use shouldContainAny", ReplaceWith("this.shouldContainAny(check)"))
 infix fun <T> Array<T>.shouldContainSome(expected: Iterable<T>) = apply { assertTrue("Expected Array to contain at least one of \"$expected\"", this.any { expected.contains(it) }) }
+
+infix fun <T> Array<T>.shouldContainAny(check: (T) -> Boolean) = apply { assertTrue("Expected Array to contain at least one element that passes the check", this.any { check.invoke(it) }) }
 
 infix fun <T> Array<T>.shouldContainNone(expected: Array<T>) = apply { assertTrue("Expected Array to contain none of \"$expected\"", this.none { expected.contains(it) }) }
 
@@ -60,8 +63,12 @@ infix fun IntArray.shouldHaveSize(expectedSize: Int) = apply { this.toList().sho
 
 infix fun IntArray.shouldContain(expected: Int) = apply { this.toTypedArray() shouldContain expected }
 
+@Deprecated("Use shouldContainAny", ReplaceWith("this.shouldContainAny(check)"))
 infix fun IntArray.shouldContainSome(expected: IntArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
 
+infix fun IntArray.shouldContainAny(check: (Int) -> Boolean) = apply { this.toTypedArray().shouldContainAny(check) }
+
+@Deprecated("Use shouldContainAny", ReplaceWith("this.shouldContainAny(check)"))
 infix fun IntArray.shouldContainSome(expected: Iterable<Int>) = apply { this.toList().shouldContainSome(expected) }
 
 infix fun IntArray.shouldContainNone(expected: IntArray) = apply { this.toTypedArray().shouldContainNone(expected.toTypedArray()) }
@@ -105,8 +112,14 @@ infix fun BooleanArray.shouldHaveSize(expectedSize: Int) = apply { this.toList()
 
 infix fun BooleanArray.shouldContain(expected: Boolean) = apply { this.toTypedArray() shouldContain expected }
 
+@Deprecated("Use shouldContainTrue or shouldContainFalse", ReplaceWith("this.shouldContainTrue(check)"))
 infix fun BooleanArray.shouldContainSome(expected: BooleanArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
 
+fun BooleanArray.shouldContainTrue() = apply { this.toTypedArray().shouldContainAny { it } }
+
+fun BooleanArray.shouldContainFalse() = apply { this.toTypedArray().shouldContainAny { !it } }
+
+@Deprecated("Use shouldContainAny", ReplaceWith("this.shouldContainAny(check)"))
 infix fun BooleanArray.shouldContainSome(expected: Iterable<Boolean>) = apply { this.toList().shouldContainSome(expected) }
 
 infix fun BooleanArray.shouldContainNone(expected: BooleanArray) = apply { this.toTypedArray().shouldContainNone(expected.toTypedArray()) }
@@ -149,8 +162,12 @@ infix fun ByteArray.shouldHaveSize(expectedSize: Int) = apply { this.toList().sh
 
 infix fun ByteArray.shouldContain(expected: Byte) = apply { this.toTypedArray() shouldContain expected }
 
+@Deprecated("Use shouldContainAny", ReplaceWith("this.shouldContainAny(check)"))
 infix fun ByteArray.shouldContainSome(expected: ByteArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
 
+infix fun ByteArray.shouldContainAny(check: (Byte) -> Boolean) = apply { this.toTypedArray().shouldContainAny(check) }
+
+@Deprecated("Use shouldContainAny", ReplaceWith("this.shouldContainAny(check)"))
 infix fun ByteArray.shouldContainSome(expected: Iterable<Byte>) = apply { this.toList().shouldContainSome(expected) }
 
 infix fun ByteArray.shouldContainNone(expected: ByteArray) = apply { this.toTypedArray().shouldContainNone(expected.toTypedArray()) }
@@ -193,8 +210,12 @@ infix fun CharArray.shouldHaveSize(expectedSize: Int) = apply { this.toList().sh
 
 infix fun CharArray.shouldContain(expected: Char) = apply { this.toTypedArray() shouldContain expected }
 
+@Deprecated("Use shouldContainAny", ReplaceWith("this.shouldContainAny(check)"))
 infix fun CharArray.shouldContainSome(expected: CharArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
 
+infix fun CharArray.shouldContainAny(check: (Char) -> Boolean) = apply { this.toTypedArray().shouldContainAny(check) }
+
+@Deprecated("Use shouldContainAny", ReplaceWith("this.shouldContainAny(check)"))
 infix fun CharArray.shouldContainSome(expected: Iterable<Char>) = apply { this.toList().shouldContainSome(expected) }
 
 infix fun CharArray.shouldContainNone(expected: CharArray) = apply { this.toTypedArray().shouldContainNone(expected.toTypedArray()) }
@@ -237,8 +258,12 @@ infix fun DoubleArray.shouldHaveSize(expectedSize: Int) = apply { this.toList().
 
 infix fun DoubleArray.shouldContain(expected: Double) = apply { this.toTypedArray() shouldContain expected }
 
+@Deprecated("Use shouldContainAny", ReplaceWith("this.shouldContainAny(check)"))
 infix fun DoubleArray.shouldContainSome(expected: DoubleArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
 
+infix fun DoubleArray.shouldContainAny(check: (Double) -> Boolean) = apply { this.toTypedArray().shouldContainAny(check) }
+
+@Deprecated("Use shouldContainAny", ReplaceWith("this.shouldContainAny(check)"))
 infix fun DoubleArray.shouldContainSome(expected: Iterable<Double>) = apply { this.toList().shouldContainSome(expected) }
 
 infix fun DoubleArray.shouldContainNone(expected: DoubleArray) = apply { this.toTypedArray().shouldContainNone(expected.toTypedArray()) }
@@ -281,8 +306,12 @@ infix fun FloatArray.shouldHaveSize(expectedSize: Int) = apply { this.toList().s
 
 infix fun FloatArray.shouldContain(expected: Float) = apply { this.toTypedArray() shouldContain expected }
 
+@Deprecated("Use shouldContainAny", ReplaceWith("this.shouldContainAny(check)"))
 infix fun FloatArray.shouldContainSome(expected: FloatArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
 
+infix fun FloatArray.shouldContainAny(check: (Float) -> Boolean) = apply { this.toTypedArray().shouldContainAny(check) }
+
+@Deprecated("Use shouldContainAny", ReplaceWith("this.shouldContainAny(check)"))
 infix fun FloatArray.shouldContainSome(expected: Iterable<Float>) = apply { this.toList().shouldContainSome(expected) }
 
 infix fun FloatArray.shouldContainNone(expected: FloatArray) = apply { this.toTypedArray().shouldContainNone(expected.toTypedArray()) }
@@ -325,8 +354,12 @@ infix fun LongArray.shouldHaveSize(expectedSize: Int) = apply { this.toList().sh
 
 infix fun LongArray.shouldContain(expected: Long) = apply { this.toTypedArray() shouldContain expected }
 
+@Deprecated("Use shouldContainAny", ReplaceWith("this.shouldContainAny(check)"))
 infix fun LongArray.shouldContainSome(expected: LongArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
 
+infix fun LongArray.shouldContainAny(check: (Long) -> Boolean) = apply { this.toTypedArray().shouldContainAny(check) }
+
+@Deprecated("Use shouldContainAny", ReplaceWith("this.shouldContainAny(check)"))
 infix fun LongArray.shouldContainSome(expected: Iterable<Long>) = apply { this.toList().shouldContainSome(expected) }
 
 infix fun LongArray.shouldContainNone(expected: LongArray) = apply { this.toTypedArray().shouldContainNone(expected.toTypedArray()) }
@@ -370,8 +403,12 @@ infix fun ShortArray.shouldHaveSize(expectedSize: Int) = apply { this.toList().s
 
 infix fun ShortArray.shouldContain(expected: Short) = apply { this.toTypedArray() shouldContain expected }
 
+@Deprecated("Use shouldContainAny", ReplaceWith("this.shouldContainAny(check)"))
 infix fun ShortArray.shouldContainSome(expected: ShortArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
 
+infix fun ShortArray.shouldContainAny(check: (Short) -> Boolean) = apply { this.toTypedArray().shouldContainAny(check) }
+
+@Deprecated("Use shouldContainAny", ReplaceWith("this.shouldContainAny(check)"))
 infix fun ShortArray.shouldContainSome(expected: Iterable<Short>) = apply { this.toList().shouldContainSome(expected) }
 
 infix fun ShortArray.shouldContainNone(expected: ShortArray) = apply { this.toTypedArray().shouldContainNone(expected.toTypedArray()) }
@@ -402,8 +439,28 @@ infix fun Short.shouldNotBeIn(theArray: ShortArray) = apply { this shouldNotBeIn
 
 infix fun <T, I : Iterable<T>> I.shouldContain(expected: T): I = apply { if (this.contains(expected)) Unit else failExpectedActual("Iterable doesn't contain \"$expected\"", "the Iterable to contain \"$expected\"", join(this)) }
 
+infix fun <T, I : Iterable<T>> I.shouldContainAny(check: (T) -> Boolean): I = apply {
+    val result = this.map { it to check.invoke(it) }
+
+    if (result.any { it.second }) {
+        Unit
+    } else {
+        val failedItems = result
+                .filterNot { it.second }
+                .map { it.first }
+                .joinToString(", ")
+        failExpectedActual(
+                "Iterable doesn't contain \"$failedItems\"",
+                "the Iterable to contain \"$failedItems\"",
+                join(this)
+        )
+    }
+}
+
+@Deprecated("Use shouldContainAny", ReplaceWith("this.shouldContainAny(check)"))
 infix fun <T, I : Iterable<T>> I.shouldContainSome(expected: Iterable<T>): I = apply { assertTrue("Expected Iterable to contain at least one of \"$expected\"", this.any { expected.contains(it) }) }
 
+@Deprecated("Use shouldContainAny", ReplaceWith("this.shouldContainAny(check)"))
 infix fun <T, I : Iterable<T>> I.shouldContainSome(expected: Array<T>): I = apply { assertTrue("Expected Iterable to contain at least one of \"$expected\"", this.any { expected.contains(it) }) }
 
 infix fun <T, I : Iterable<T>> I.shouldContainNone(expected: Iterable<T>): I = apply { assertTrue("Expected Iterable to contain none of \"$expected\"", this.none { expected.contains(it) }) }

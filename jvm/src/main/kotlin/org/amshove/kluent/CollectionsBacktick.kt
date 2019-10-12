@@ -2,7 +2,10 @@ package org.amshove.kluent
 
 infix fun <T> Array<T>.`should contain`(expected: T) = this.shouldContain(expected)
 
+@Deprecated("Use `should contain any`", ReplaceWith("this `should contain any` check"))
 infix fun <T> Array<T>.`should contain some`(expected: Array<T>) = this.shouldContainSome(expected)
+
+infix fun <T> Array<T>.`should contain any`(check: (T) -> Boolean) = this.shouldContainAny(check)
 
 infix fun <T> Array<T>.`should contain none`(expected: Array<T>) = this.shouldContainNone(expected)
 
@@ -26,7 +29,10 @@ fun IntArray.`should not be empty`() = this.shouldNotBeEmpty()
 
 infix fun IntArray.`should contain`(expected: Int) = this.shouldContain(expected)
 
+@Deprecated("Use `should contain any`", ReplaceWith("this `should contain any` check"))
 infix fun IntArray.`should contain some`(expected: IntArray) = this.shouldContainSome(expected)
+
+infix fun IntArray.`should contain any`(check: (Int) -> Boolean) = this.shouldContainAny(check)
 
 infix fun IntArray.`should contain none`(expected: IntArray) = this.shouldContainNone(expected)
 
@@ -48,7 +54,11 @@ fun BooleanArray.`should not be empty`() = this.shouldNotBeEmpty()
 
 infix fun BooleanArray.`should contain`(expected: Boolean) = this.shouldContain(expected)
 
-infix fun BooleanArray.`should contain some`(expected: BooleanArray) = this.shouldContainSome(expected)
+@Deprecated("Use `should contain true` or `should contain false`", ReplaceWith("this.`should contain true`()"))
+infix fun BooleanArray.`should contain some`(expected: BooleanArray) = this.`should contain true`()
+
+fun BooleanArray.`should contain true`() = this.shouldContainTrue()
+fun BooleanArray.`should contain false`() = this.shouldContainFalse()
 
 infix fun BooleanArray.`should contain none`(expected: BooleanArray) = this.shouldContainNone(expected)
 
@@ -70,7 +80,10 @@ fun ByteArray.`should not be empty`() = this.shouldNotBeEmpty()
 
 infix fun ByteArray.`should contain`(expected: Byte) = this.shouldContain(expected)
 
+@Deprecated("Use `should contain any`", ReplaceWith("this `should contain any` check"))
 infix fun ByteArray.`should contain some`(expected: ByteArray) = this.shouldContainSome(expected)
+
+infix fun ByteArray.`should contain any`(check: (Byte) -> Boolean) = this.shouldContainAny(check)
 
 infix fun ByteArray.`should contain none`(expected: ByteArray) = this.shouldContainNone(expected)
 
@@ -92,7 +105,10 @@ fun CharArray.`should not be empty`() = this.shouldNotBeEmpty()
 
 infix fun CharArray.`should contain`(expected: Char) = this.shouldContain(expected)
 
+@Deprecated("Use `should contain any`", ReplaceWith("this `should contain any` check"))
 infix fun CharArray.`should contain some`(expected: CharArray) = this.shouldContainSome(expected)
+
+infix fun CharArray.`should contain any`(check: (Char) -> Boolean) = this.shouldContainAny(check)
 
 infix fun CharArray.`should contain none`(expected: CharArray) = this.shouldContainNone(expected)
 
@@ -114,7 +130,10 @@ fun DoubleArray.`should not be empty`() = this.shouldNotBeEmpty()
 
 infix fun DoubleArray.`should contain`(expected: Double) = this.shouldContain(expected)
 
+@Deprecated("Use `should contain any`", ReplaceWith("this `should contain any` check"))
 infix fun DoubleArray.`should contain some`(expected: DoubleArray) = this.shouldContainSome(expected)
+
+infix fun DoubleArray.`should contain any`(check: (Double) -> Boolean) = this.shouldContainAny(check)
 
 infix fun DoubleArray.`should contain none`(expected: DoubleArray) = this.shouldContainNone(expected)
 
@@ -136,7 +155,10 @@ fun FloatArray.`should not be empty`() = this.shouldNotBeEmpty()
 
 infix fun FloatArray.`should contain`(expected: Float) = this.shouldContain(expected)
 
+@Deprecated("Use `should contain any`", ReplaceWith("this `should contain any` check"))
 infix fun FloatArray.`should contain some`(expected: FloatArray) = this.shouldContainSome(expected)
+
+infix fun FloatArray.`should contain any`(check: (Float) -> Boolean) = this.shouldContainAny(check)
 
 infix fun FloatArray.`should contain none`(expected: FloatArray) = this.shouldContainNone(expected)
 
@@ -158,7 +180,10 @@ fun LongArray.`should not be empty`() = this.shouldNotBeEmpty()
 
 infix fun LongArray.`should contain`(expected: Long) = this.shouldContain(expected)
 
+@Deprecated("Use `should contain any`", ReplaceWith("this `should contain any` check"))
 infix fun LongArray.`should contain some`(expected: LongArray) = this.shouldContainSome(expected)
+
+infix fun LongArray.`should contain any`(check: (Long) -> Boolean) = this.shouldContainAny(check)
 
 infix fun LongArray.`should contain none`(expected: LongArray) = this.shouldContainNone(expected)
 
@@ -180,7 +205,10 @@ fun ShortArray.`should not be empty`() = this.shouldNotBeEmpty()
 
 infix fun ShortArray.`should contain`(expected: Short) = this.shouldContain(expected)
 
+@Deprecated("Use `should contain any`", ReplaceWith("this `should contain any` check"))
 infix fun ShortArray.`should contain some`(expected: ShortArray) = this.shouldContainSome(expected)
+
+infix fun ShortArray.`should contain any`(check: (Short) -> Boolean) = this.shouldContainAny(check)
 
 infix fun ShortArray.`should contain none`(expected: ShortArray) = this.shouldContainNone(expected)
 
@@ -196,9 +224,13 @@ infix fun Short.`should not be in`(theArray: ShortArray) = this.shouldNotBeIn(th
 
 infix fun <T, I : Iterable<T>> I.`should contain`(expected: T): I = this.shouldContain(expected)
 
+@Deprecated("Use `should contain any`", ReplaceWith("this `should contain any` check"))
 infix fun <T, I : Iterable<T>> I.`should contain some`(expected: Iterable<T>): I = this.shouldContainSome(expected)
 
+@Deprecated("Use `should contain any`", ReplaceWith("this `should contain any` check"))
 infix fun <T, I : Iterable<T>> I.`should contain some`(expected: Array<T>): I = this.shouldContainSome(expected)
+
+infix fun <T, I : Iterable<T>> I.`should contain any`(check: (T) -> Boolean) = this.shouldContainAny(check)
 
 infix fun <T, I : Iterable<T>> I.`should contain none`(expected: Iterable<T>): I = this.shouldContainNone(expected)
 
