@@ -48,6 +48,20 @@ class ShouldHaveSingleItemShould {
     }
 
     @Test
+    fun passWhenAnIntArrayHasASingleItem() {
+        intArrayOf(0).shouldHaveSingleItem()
+        intArrayOf(1).shouldHaveSingleItem()
+    }
+
+    @Test
+    fun failWhenAnIntArrayDoesNotHaveASingleItem() {
+        assertFails {
+            intArrayOf().shouldHaveSingleItem()
+            intArrayOf(0, 1).shouldHaveSingleItem()
+        }
+    }
+
+    @Test
     fun passWhenADoubleArrayHasASingleItem() {
         doubleArrayOf(0.0).shouldHaveSingleItem()
         doubleArrayOf(1.0).shouldHaveSingleItem()
