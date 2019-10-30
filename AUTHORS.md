@@ -35,3 +35,4 @@
 1. Jógvan Olsen - [@jeggy](https://github.com/jeggy) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=jeggy))
 1. Yang C - [@ychescale9](https://github.com/ychescale9) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=ychescale9))
 1. Christian Ivicevic - [@ChristianIvicevic](https://github.com/ChristianIvicevic) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=ChristianIvicevic))
+1. Kshitij Patil [@Kshitij09](https://github.com/Kshitij09) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=ChristianIvicevic))
