@@ -36,28 +36,6 @@ class ShouldEqualShould {
     }
 
     @Test
-    fun passWhenTestingEqualSequence() {
-        val firstSequence = sequenceOf(Person("Tom", "Guy"), Person("Alice", "Bob"), Person("Jon", "Doe"))
-        val secondSequence = sequenceOf(Person("Tom", "Guy"), Person("Alice", "Bob"), Person("Jon", "Doe"))
-        firstSequence shouldEqual secondSequence
-    }
-
-    @Test
-    fun failWhenTestingDifferentSequence() {
-        val firstSequence = sequenceOf(Person("Tom", "Guy"), Person("Jon", "Doe"), Person("Peter", "Meyer"))
-        val secondSequence = sequenceOf(Person("Tom", "Guy"), Person("Alice", "Bob"), Person("Jon", "Doe"))
-        assertFails { firstSequence shouldEqual secondSequence }
-    }
-
-    @Test
-    fun failWhenTestingSequenceOfDifferentSize() {
-        val firstSequence = sequenceOf(Person("Tom", "Guy"), Person("Alice", "Bob"), Person("Jon", "Doe"))
-        val secondSequence = sequenceOf(Person("Tom", "Guy"), Person("Alice", "Bob"))
-        assertFails { firstSequence shouldEqual secondSequence }
-        assertFails { secondSequence shouldEqual firstSequence }
-    }
-
-    @Test
     fun passWhenTestingEqualMaps() {
         val firstMap = mapOf(1 to Person("A", "B"), 2 to Person("C", "D"))
         val secondMap = mapOf(1 to Person("A", "B"), 2 to Person("C", "D"))

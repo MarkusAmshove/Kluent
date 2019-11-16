@@ -512,15 +512,13 @@ private fun <T> areSequencesEqual(sequence1: Sequence<T>, sequence2: Sequence<T>
     return !iterator1.hasNext() && !iterator2.hasNext()
 }
 
-infix fun <T, S : Sequence<T>> S.shouldEqual(expected: Sequence<T>): S = apply {
-    if (!areSequencesEqual(this, expected))
-        failExpectedActual("Sequence should equal \"${join(expected.asIterable())}\"", join(expected.asIterable()), join(asIterable()))
-}
+@Deprecated("Equality should not be tested on sequences", level = DeprecationLevel.ERROR)
+infix fun <T, S : Sequence<T>> S.shouldEqual(expected: Sequence<T>): S =
+        fail("Equality should not be tested on sequences")
 
-infix fun <T, S : Sequence<T>> S.shouldNotEqual(expected: Sequence<T>): S = apply {
-    if (areSequencesEqual(this, expected))
-        failExpectedActual("Sequence should not equal \"${join(expected.asIterable())}\"", join(expected.asIterable()), join(asIterable()))
-}
+@Deprecated("Equality should not be tested on sequences", level = DeprecationLevel.ERROR)
+infix fun <T, S : Sequence<T>> S.shouldNotEqual(expected: Sequence<T>): S =
+        fail("Equality should not be tested on sequences")
 
 fun <S : Sequence<*>> S.shouldBeEmpty(): S = apply { assertEmpty(asIterable(), "Sequence") }
 fun <S : Sequence<*>> S.shouldNotBeEmpty(): S = apply { assertNotEmpty(asIterable(), "Sequence") }
