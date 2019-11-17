@@ -1,9 +1,9 @@
 package org.amshove.kluent.collections
 
-import org.amshove.kluent.shouldNotEqual
 import org.amshove.kluent.Person
-import kotlin.test.assertFails
+import org.amshove.kluent.shouldNotEqual
 import kotlin.test.Test
+import kotlin.test.assertFails
 
 class ShouldNotEqualShould {
     @Test

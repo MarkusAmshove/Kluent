@@ -36,6 +36,22 @@ class ShouldContainNoneShould {
     }
 
     @Test
+    fun passWhenTestingASequenceWhichDoesNotContainAtLeastOneElement() {
+        val cities = sequenceOf("Israel", "Phoenix", "Egypt")
+        val actual = sequenceOf("Berlin", "Stuttgart")
+
+        actual shouldContainNone cities
+    }
+
+    @Test
+    fun failWhenTestingASequenceWhichContainsAtLeastOneElement() {
+        val cities = sequenceOf("Israel", "Phoenix", "Stuttgart", "Egypt")
+        val actual = sequenceOf("Berlin", "Stuttgart")
+
+        assertFails { actual shouldContainNone cities }
+    }
+
+    @Test
     fun passWhenTestingAPrimitiveIntegerArrayWhichDoesNotContainAtLeastOneElement() {
         val theArray = intArrayOf(1, 5, 7, 13)
         theArray shouldContainNone intArrayOf(4, 3)

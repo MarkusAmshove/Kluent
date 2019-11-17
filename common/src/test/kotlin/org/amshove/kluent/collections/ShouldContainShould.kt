@@ -1,9 +1,9 @@
 package org.amshove.kluent.collections
 
-import org.amshove.kluent.shouldContain
 import org.amshove.kluent.Person
-import kotlin.test.assertFails
+import org.amshove.kluent.shouldContain
 import kotlin.test.Test
+import kotlin.test.assertFails
 
 class ShouldContainShould {
     @Test
@@ -27,11 +27,27 @@ class ShouldContainShould {
     }
 
     @Test
+    fun passWhenTestingASequenceWhichContainsTheValue() {
+        val alice = Person("Alice", "Bob")
+        val jon = Person("Jon", "Doe")
+        val sequence = sequenceOf(alice, jon)
+        sequence shouldContain jon
+    }
+
+    @Test
     fun failWhenTestingAnIterableWhichDoesNotContainTheValue() {
         val alice = Person("Alice", "Bob")
         val jon = Person("Jon", "Doe")
         val list = listOf(alice)
         assertFails { list shouldContain jon }
+    }
+
+    @Test
+    fun failWhenTestingASequenceWhichDoesNotContainTheValue() {
+        val alice = Person("Alice", "Bob")
+        val jon = Person("Jon", "Doe")
+        val sequence = sequenceOf(alice)
+        assertFails { sequence shouldContain jon }
     }
 
     @Test

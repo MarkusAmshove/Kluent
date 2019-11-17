@@ -501,6 +501,70 @@ infix fun <I : Iterable<*>> I.shouldHaveSize(expectedSize: Int) = apply {
     }
 }
 
+private fun <T> areSequencesEqual(sequence1: Sequence<T>, sequence2: Sequence<T>): Boolean {
+    val iterator1 = sequence1.iterator()
+    val iterator2 = sequence2.iterator()
+
+    while (iterator1.hasNext() && iterator2.hasNext()) {
+        if (iterator1.next() != iterator2.next()) return false
+    }
+
+    return !iterator1.hasNext() && !iterator2.hasNext()
+}
+
+@Deprecated("Equality should not be tested on sequences", level = DeprecationLevel.ERROR)
+infix fun <T, S : Sequence<T>> S.shouldEqual(expected: Sequence<T>): S =
+        fail("Equality should not be tested on sequences")
+
+@Deprecated("Equality should not be tested on sequences", level = DeprecationLevel.ERROR)
+infix fun <T, S : Sequence<T>> S.shouldNotEqual(expected: Sequence<T>): S =
+        fail("Equality should not be tested on sequences")
+
+fun <S : Sequence<*>> S.shouldBeEmpty(): S = apply { assertEmpty(asIterable(), "Sequence") }
+fun <S : Sequence<*>> S.shouldNotBeEmpty(): S = apply { assertNotEmpty(asIterable(), "Sequence") }
+
+infix fun <T, S : Sequence<T>> S.shouldContain(expected: T): S = apply {
+    if (expected !in this)
+        failExpectedActual("Sequence doesn't contain \"$expected\"", "the Sequence to contain \"$expected\"", join(asIterable()))
+}
+
+infix fun <S, I : Sequence<S>> I.shouldNotContain(expected: S): I = apply {
+    if (expected in this)
+        failExpectedActual("Sequence should not contain \"$expected\"", "the Sequence to not contain \"$expected\"", join(asIterable()))
+}
+
+infix fun <T, S : Sequence<T>> S.shouldContainAll(expected: Sequence<T>): S = apply {
+    val set = toHashSet()
+    expected.forEach {
+        if (it !in set)
+            failExpectedActual("Sequence doesn't contain \"$expected\"", "the Sequence to contain \"$expected\"", join(asIterable()))
+    }
+}
+
+infix fun <T, S : Sequence<T>> S.shouldContainNone(expected: Sequence<T>): S = apply {
+    assertTrue(none { it in expected }) {
+        "Expected Sequence to contain none of \"${join(expected.asIterable())}\""
+    }
+}
+
+infix fun <T, S : Sequence<T>> S.shouldContainSome(expected: Sequence<T>): S = apply {
+    val expectedSet = expected.toHashSet()
+    assertTrue(any { it in expectedSet }) { "Expected Iterable to contain at least one of \"$expected\"" }
+}
+
+fun <S : Sequence<T>, T> S.shouldHaveSingleItem(): T {
+    shouldHaveSize(1)
+    return first()
+}
+
+infix fun <S : Sequence<*>> S.shouldHaveSize(expectedSize: Int) = apply {
+    val actualSize = count()
+    assertTrue(actualSize == expectedSize) { "Expected collection size to be $expectedSize but was $actualSize" }
+}
+
+infix fun <T, S : Sequence<T>> S.shouldContainSame(expected: Sequence<T>): S =
+        assertBothIterablesContainsSame(expected.toList(), this.toList())
+
 infix fun <K, M : Map<K, *>> M.shouldEqual(expected: M): M = apply { assertMapEquals(this, expected) }
 
 infix fun <K, M : Map<K, *>> M.shouldNotEqual(expected: M): M = apply { assertMapNotEquals(this, expected) }
@@ -557,10 +621,15 @@ fun <E> Iterable<E>.shouldMatchAllWith(predicate: (E) -> Boolean): Iterable<E> {
     return this
 }
 
-internal fun <T> assertEmpty(iterable: Iterable<T>, collectionType: String) = assertTrue("Expected the $collectionType to be empty, but has ${iterable.count()} elements", iterable.count() == 0)
-internal fun <T> assertNotEmpty(iterable: Iterable<T>, collectionType: String) = assertTrue("Expected the $collectionType to contain elements, but is empty", iterable.count() > 0)
+internal fun <T> assertEmpty(iterable: Iterable<T>, collectionType: String) {
+    assertTrue(iterable.none()) { "Expected the $collectionType to be empty, but has ${iterable.count()} elements" }
+}
 
-internal fun <T, I : Iterable<T>> I.assertBothIterablesContainsSame(expected: Iterable<T>, actual: Iterable<T>): I {
+internal fun <T> assertNotEmpty(iterable: Iterable<T>, collectionType: String) {
+    assertTrue(iterable.any()) { "Expected the $collectionType to contain elements, but is empty" }
+}
+
+internal fun <T, C> C.assertBothIterablesContainsSame(expected: Iterable<T>, actual: Iterable<T>): C {
     assertBothCollectionsContainsSame(expected.toList(), actual.toList())
     return this
 }
