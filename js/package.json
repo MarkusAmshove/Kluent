@@ -7,6 +7,6 @@
         "mocha": "^4.1.0"
     },
     "dependencies": {
-        "source-map-support": "^0.5.13"
+        "source-map-support": "^0.5.16"
     }
 }
