@@ -501,17 +501,6 @@ infix fun <I : Iterable<*>> I.shouldHaveSize(expectedSize: Int) = apply {
     }
 }
 
-private fun <T> areSequencesEqual(sequence1: Sequence<T>, sequence2: Sequence<T>): Boolean {
-    val iterator1 = sequence1.iterator()
-    val iterator2 = sequence2.iterator()
-
-    while (iterator1.hasNext() && iterator2.hasNext()) {
-        if (iterator1.next() != iterator2.next()) return false
-    }
-
-    return !iterator1.hasNext() && !iterator2.hasNext()
-}
-
 @Deprecated("Equality should not be tested on sequences", level = DeprecationLevel.ERROR)
 infix fun <T, S : Sequence<T>> S.shouldEqual(expected: Sequence<T>): S =
         fail("Equality should not be tested on sequences")
