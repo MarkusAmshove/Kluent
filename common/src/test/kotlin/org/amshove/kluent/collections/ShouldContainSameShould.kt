@@ -168,6 +168,12 @@ class ShouldContainSameShould {
     }
 
     @Test
+    fun failWhenTestingAMapWhichOnlyHasASubsetOfKeysOfThisMap() {
+        val map = mapOf('a' to 1, 'b' to 2)
+        assertFails { map shouldContainSame mapOf('a' to 1) }
+    }
+
+    @Test
     fun passWhenTestingAnIterableWhichContainsSameValuesOfAnArray() {
         val anIterable = listOf("Berlin", "Washington")
         val anArray = arrayOf("Washington", "Berlin")
