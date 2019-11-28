@@ -1,3 +1,6 @@
+# 1.58
+* Fix implementation of `Map.shouldContainSame` to compare all pairs |[Issue](https://github.com/MarkusAmshove/Kluent/issues/170) | [PR](https://github.com/MarkusAmshove/Kluent/pull/171) | thanks to [@Murtaught](https://github.com/Murtaught)
+
 # 1.57
 * Add assertions for sequences | [PR](https://github.com/MarkusAmshove/Kluent/pull/159) | thanks to [@jcornaz](https://github.com/jcornaz)
 * Add `shouldHaveSingleItem` assertions for various arrays | [PR](https://github.com/MarkusAmshove/Kluent/pull/165) | thanks to [@ChristianIvicevic](https://github.com/ChristianIvicevic)
