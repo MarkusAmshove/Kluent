@@ -574,7 +574,7 @@ infix fun <K, V, M : Map<K, V>> M.shouldContain(expected: Pair<K, V>): M = apply
 
 infix fun <K, V, M : Map<K, V>> M.shouldContainAll(expected: M): M = apply { expected.forEach { shouldContain(it.toPair()) } }
 
-infix fun <K, V, M : Map<K, V>> M.shouldContainSame(expected: M): M = apply { expected.forEach { shouldContain(it.toPair()); this.forEach { shouldContain(it.toPair()) } } }
+infix fun <K, V, M : Map<K, V>> M.shouldContainSame(expected: M): M = apply { expected.forEach { shouldContain(it.toPair()) }; this.forEach { expected.shouldContain(it.toPair()) } }
 
 infix fun <K, V, M : Map<K, V>> M.shouldNotContain(expected: Pair<K, V>): M = apply { if (this[expected.first] != expected.second) Unit else failExpectedActual("Map should not contain Pair $expected", "the Map to not contain the Pair $expected", joinPairs(this)) }
 
