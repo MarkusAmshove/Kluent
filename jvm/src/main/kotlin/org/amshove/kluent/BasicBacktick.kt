@@ -4,7 +4,10 @@ import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
 import kotlin.reflect.KClass
 
-infix fun <T> T.`should equal`(expected: T?): T = this.shouldEqual(expected)
+@Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
+infix fun <T> T.`should equal`(expected: T?): T = this.`should be equal to`(expected)
+
+infix fun <T> T.`should be equal to`(expected: T?): T = this.shouldBeEqualTo(expected)
 
 infix fun <T> T.`should not equal`(expected: T?) = this.shouldNotEqual(expected)
 

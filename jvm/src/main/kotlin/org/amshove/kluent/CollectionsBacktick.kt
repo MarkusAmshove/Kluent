@@ -15,13 +15,19 @@ infix fun <T> Array<T>.`should not contain`(expected: T) = this.shouldNotContain
 
 infix fun <T> Array<T>.`should not contain any`(expected: Array<T>) = this.shouldNotContainAny(expected)
 
-infix fun <T> Array<T>?.`should equal`(expected: Array<T>?) = this.shouldEqual(expected)
+@Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
+infix fun <T> Array<T>?.`should equal`(expected: Array<T>?) = this.`should be equal to`(expected)
+
+infix fun <T> Array<T>?.`should be equal to`(expected: Array<T>?) = this.shouldBeEqualTo(expected)
 
 fun <T> Array<T>.`should be empty`() = this.shouldBeEmpty()
 
 fun <T> Array<T>.`should not be empty`() = this.shouldNotBeEmpty()
 
-infix fun IntArray.`should equal`(expected: IntArray) = this.shouldEqual(expected)
+@Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
+infix fun IntArray.`should equal`(expected: IntArray) = this.`should be equal to`(expected)
+
+infix fun IntArray.`should be equal to`(expected: IntArray) = this.shouldBeEqualTo(expected)
 
 fun IntArray.`should be empty`() = this.shouldBeEmpty()
 
@@ -45,8 +51,10 @@ infix fun IntArray.`should not contain any`(expected: IntArray) = this.shouldNot
 infix fun Int.`should be in`(theArray: IntArray) = this.shouldBeIn(theArray)
 
 infix fun Int.`should not be in`(theArray: IntArray) = this.shouldNotBeIn(theArray)
+@Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
+infix fun BooleanArray.`should equal`(expected: BooleanArray) = this.`should be equal to`(expected)
 
-infix fun BooleanArray.`should equal`(expected: BooleanArray) = this.shouldEqual(expected)
+infix fun BooleanArray.`should be equal to`(expected: BooleanArray) = this.shouldBeEqualTo(expected)
 
 fun BooleanArray.`should be empty`() = this.shouldBeEmpty()
 
@@ -72,7 +80,10 @@ infix fun Boolean.`should be in`(theArray: BooleanArray) = this.shouldBeIn(theAr
 
 infix fun Boolean.`should not be in`(theArray: BooleanArray) = this.shouldNotBeIn(theArray)
 
-infix fun ByteArray.`should equal`(expected: ByteArray) = this.shouldEqual(expected)
+@Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
+infix fun ByteArray.`should equal`(expected: ByteArray) = this.`should be equal to`(expected)
+
+infix fun ByteArray.`should be equal to`(expected: ByteArray) = this.shouldBeEqualTo(expected)
 
 fun ByteArray.`should be empty`() = this.shouldBeEmpty()
 
@@ -97,7 +108,10 @@ infix fun Byte.`should be in`(theArray: ByteArray) = this.shouldBeIn(theArray)
 
 infix fun Byte.`should not be in`(theArray: ByteArray) = this.shouldNotBeIn(theArray)
 
-infix fun CharArray.`should equal`(expected: CharArray) = this.shouldEqual(expected)
+@Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
+infix fun CharArray.`should equal`(expected: CharArray) = this.`should be equal to`(expected)
+
+infix fun CharArray.`should be equal to`(expected: CharArray) = this.shouldBeEqualTo(expected)
 
 fun CharArray.`should be empty`() = this.shouldBeEmpty()
 
@@ -122,7 +136,10 @@ infix fun Char.`should be in`(theArray: CharArray) = this.shouldBeIn(theArray)
 
 infix fun Char.`should not be in`(theArray: CharArray) = this.shouldNotBeIn(theArray)
 
-infix fun DoubleArray.`should equal`(expected: DoubleArray) = this.shouldEqual(expected)
+@Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
+infix fun DoubleArray.`should equal`(expected: DoubleArray) = this.`should be equal to`(expected)
+
+infix fun DoubleArray.`should be equal to`(expected: DoubleArray) = this.shouldBeEqualTo(expected)
 
 fun DoubleArray.`should be empty`() = this.shouldBeEmpty()
 
@@ -147,7 +164,10 @@ infix fun Double.`should be in`(theArray: DoubleArray) = this.shouldBeIn(theArra
 
 infix fun Double.`should not be in`(theArray: DoubleArray) = this.shouldNotBeIn(theArray)
 
-infix fun FloatArray.`should equal`(expected: FloatArray) = this.shouldEqual(expected)
+@Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
+infix fun FloatArray.`should equal`(expected: FloatArray) = this.`should be equal to`(expected)
+
+infix fun FloatArray.`should be equal to`(expected: FloatArray) = this.shouldBeEqualTo(expected)
 
 fun FloatArray.`should be empty`() = this.shouldBeEmpty()
 
@@ -172,7 +192,10 @@ infix fun Float.`should be in`(theArray: FloatArray) = this.shouldBeIn(theArray)
 
 infix fun Float.`should not be in`(theArray: FloatArray) = this.shouldNotBeIn(theArray)
 
-infix fun LongArray.`should equal`(expected: LongArray) = this.shouldEqual(expected)
+@Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
+infix fun LongArray.`should equal`(expected: LongArray) = this.`should be equal to`(expected)
+
+infix fun LongArray.`should be equal to`(expected: LongArray) = this.shouldBeEqualTo(expected)
 
 fun LongArray.`should be empty`() = this.shouldBeEmpty()
 
@@ -197,7 +220,10 @@ infix fun Long.`should be in`(theArray: LongArray) = this.shouldBeIn(theArray)
 
 infix fun Long.`should not be in`(theArray: LongArray) = this.shouldNotBeIn(theArray)
 
-infix fun ShortArray.`should equal`(expected: ShortArray) = this.shouldEqual(expected)
+@Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
+infix fun ShortArray.`should equal`(expected: ShortArray) = this.`should be equal to`(expected)
+
+infix fun ShortArray.`should be equal to`(expected: ShortArray) = this.shouldBeEqualTo(expected)
 
 fun ShortArray.`should be empty`() = this.shouldBeEmpty()
 
@@ -246,7 +272,10 @@ infix fun <T, I : Iterable<T>> I.`should not contain any`(expected: Iterable<T>)
 
 infix fun <T, I : Iterable<T>> I.`should not contain any`(expected: Array<T>): I = this.shouldNotContainAny(expected)
 
-infix fun <T, I : Iterable<T>> I.`should equal`(expected: Iterable<T>?): I = this.shouldEqual(expected)
+@Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
+infix fun <T, I : Iterable<T>> I.`should equal`(expected: Iterable<T>?): I = this.`should be equal to`(expected)
+
+infix fun <T, I : Iterable<T>> I.`should be equal to`(expected: Iterable<T>?): I = this.shouldBeEqualTo(expected)
 
 fun <I : Iterable<*>> I.`should be empty`(): I = this.shouldBeEmpty()
 
