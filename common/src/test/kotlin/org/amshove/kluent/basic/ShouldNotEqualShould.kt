@@ -1,7 +1,7 @@
 package org.amshove.kluent.basic
 
 import org.amshove.kluent.Person
-import org.amshove.kluent.shouldEqual
+import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldNotEqual
 import kotlin.test.Test
 import kotlin.test.assertFails
@@ -41,7 +41,7 @@ class ShouldNotEqualShould {
         val jane = Person("Jane", "Doe")
         val jon = Person("Jon", "Doe")
         val instance = jane shouldNotEqual jon
-        instance shouldEqual jane
+        instance shouldBeEqualTo jane
     }
 
 }

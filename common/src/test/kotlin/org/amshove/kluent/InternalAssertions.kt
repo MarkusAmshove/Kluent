@@ -4,6 +4,6 @@ fun assertMessage(message: String, func: () -> Unit) {
     try {
         func()
     } catch (e: Throwable) {
-        e.message.shouldEqual(message)
+        e.message.shouldBeEqualTo(message)
     }
 }
