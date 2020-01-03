@@ -11,8 +11,8 @@ theIntArray shouldNotContain 10
 theIntArray shouldContainSome arrayOf(1, 10, 15, 2)
 theIntArray shouldContainNone arrayOf(5, 10, 11)
 
-arrayOf(1, 2, 3) shouldEqual arrayOf(1, 2, 3)
-arrayOf(4, 5, 6) shouldNotEqual arrayOf(7, 8, 9)
+arrayOf(1, 2, 3) shouldBeEqualTo arrayOf(1, 2, 3)
+arrayOf(4, 5, 6) shouldNotBeEqualTo arrayOf(7, 8, 9)
 
 theIntArray.shouldBeEmpty()
 theIntArray.shouldNotBeEmpty()

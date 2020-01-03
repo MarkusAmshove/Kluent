@@ -74,13 +74,13 @@ More examples can be seen on the [Site](https://markusamshove.github.io/Kluent/)
 ### assertEquals ##
 
 ```kotlin
-"hello" shouldEqual "hello"
+"hello" shouldBeEqualTo "hello"
 ```
 
 ### assertNotEquals ##
 
 ```kotlin
-"hello" shouldNotEqual "world"
+"hello" shouldNotBeEqualTo "world"
 ```    
 
 ### Assert that an Array/Iterable contains something ##
@@ -109,12 +109,12 @@ Some examples:
 ### assertEquals ##
 
 ```kotlin
-"hello" `should equal` "hello"
+"hello" `should be equal to` "hello"
 ```
 
 ### assertNotEquals ##
 ```kotlin
-"hello" `should not equal` "world"
+"hello" `should not be equal to` "world"
 ```
 
 # Building Kluent

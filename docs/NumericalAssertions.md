@@ -5,8 +5,8 @@ The following assertions work for all subtypes of `Number`(`Int`, `Byte`, `Float
 ## Equality
 
 ```kt
-5 shouldEqualTo 5
-5 shouldNotEqualTo 10
+5 shouldBeEqualTo 5
+5 shouldNotBeEqualTo 10
 ```
 
 ## Comparison
