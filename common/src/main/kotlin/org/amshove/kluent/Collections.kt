@@ -435,6 +435,14 @@ infix fun LongArray.shouldNotContainAny(expected: LongArray) = apply { expected.
 
 infix fun LongArray.shouldNotContainAny(expected: Iterable<Long>) = apply { this.toList().shouldNotContainAny(expected) }
 
+infix fun LongArray.shouldBeSortedAccordingTo(comparator: Comparator<Long>) = apply {
+    var index = 0
+    toList().zipWithNext { a, b ->
+        if (comparator.compare(a, b) > 0) fail("LongArray is not sorted according to $comparator comparator because element $index:\n <$a>\nis not less or equal than element ${index + 1}:\n <$b>\nLongArray was:\n <$this>")
+        index++
+    }
+}
+
 infix fun Long.shouldBeIn(theArray: LongArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
 infix fun Long.shouldNotBeIn(theArray: LongArray) = apply { this shouldNotBeIn theArray.toTypedArray() }

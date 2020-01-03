@@ -205,6 +205,8 @@ infix fun LongArray.`should not contain`(expected: Long) = this.shouldNotContain
 
 infix fun LongArray.`should not contain any`(expected: LongArray) = this.shouldNotContainAny(expected)
 
+infix fun LongArray.`should be sorted according to`(comparator: Comparator<Long>) = this.shouldBeSortedAccordingTo(comparator)
+
 infix fun Long.`should be in`(theArray: LongArray) = this.shouldBeIn(theArray)
 
 infix fun Long.`should not be in`(theArray: LongArray) = this.shouldNotBeIn(theArray)
