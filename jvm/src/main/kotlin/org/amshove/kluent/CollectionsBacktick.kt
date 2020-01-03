@@ -178,6 +178,8 @@ infix fun FloatArray.`should not contain`(expected: Float) = this.shouldNotConta
 
 infix fun FloatArray.`should not contain any`(expected: FloatArray) = this.shouldNotContainAny(expected)
 
+infix fun FloatArray.`should be sorted according to`(comparator: Comparator<Float>) = this.shouldBeSortedAccordingTo(comparator)
+
 infix fun Float.`should be in`(theArray: FloatArray) = this.shouldBeIn(theArray)
 
 infix fun Float.`should not be in`(theArray: FloatArray) = this.shouldNotBeIn(theArray)

@@ -379,6 +379,14 @@ infix fun FloatArray.shouldNotContainAny(expected: FloatArray) = apply { expecte
 
 infix fun FloatArray.shouldNotContainAny(expected: Iterable<Float>) = apply { this.toList().shouldNotContainAny(expected) }
 
+infix fun FloatArray.shouldBeSortedAccordingTo(comparator: Comparator<Float>) = apply {
+    var index = 0
+    toList().zipWithNext { a, b ->
+        if (comparator.compare(a, b) > 0) fail("FloatArray is not sorted according to $comparator comparator because element $index:\n <$a>\nis not less or equal than element ${index + 1}:\n <$b>\nFloatArray was:\n <$this>")
+        index++
+    }
+}
+
 infix fun Float.shouldBeIn(theArray: FloatArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
 infix fun Float.shouldNotBeIn(theArray: FloatArray) = apply { this shouldNotBeIn theArray.toTypedArray() }
