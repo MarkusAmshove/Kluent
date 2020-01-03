@@ -9,7 +9,10 @@ infix fun <T> T.`should equal`(expected: T?): T = this.`should be equal to`(expe
 
 infix fun <T> T.`should be equal to`(expected: T?): T = this.shouldBeEqualTo(expected)
 
-infix fun <T> T.`should not equal`(expected: T?) = this.shouldNotBeEqualTo(expected)
+@Deprecated("Use `should not be equal to`", ReplaceWith("this.`should not be equal to`(expected)"))
+infix fun <T> T.`should not equal`(expected: T?) = this.`should not be equal to`(expected)
+
+infix fun <T> T.`should not be equal to`(expected: T?) = this.shouldNotBeEqualTo(expected)
 
 infix fun <T> T.`should be`(expected: T?) = this.shouldBe(expected)
 
