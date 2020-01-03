@@ -1,5 +1,6 @@
 package org.amshove.kluent.collections
 
+import org.amshove.kluent.Person
 import org.amshove.kluent.shouldBeSortedAccordingTo
 import kotlin.random.Random
 import kotlin.test.Test
@@ -14,6 +15,7 @@ class ShouldBeSortedAccordingToShould {
     private val floatComparator = Comparator { a: Float, b: Float -> a.compareTo(b) }
     private val longComparator = Comparator { a: Long, b: Long -> a.compareTo(b) }
     private val shortComparator = Comparator { a: Short, b: Short -> a.compareTo(b) }
+    private val personComparator = Comparator { a: Person, b: Person -> a.name.compareTo(b.name) }
 
     @Test
     fun passWhenTestingEmptyArray() {
@@ -229,5 +231,29 @@ class ShouldBeSortedAccordingToShould {
     fun failWhenTestingUnsortedShortArray() {
         val array = shortArrayOf(1, 5, 3)
         assertFails { array shouldBeSortedAccordingTo shortComparator }
+    }
+
+    @Test
+    fun passWhenTestingEmptyIterable() {
+        val iterable = emptyList<Person>()
+        iterable shouldBeSortedAccordingTo personComparator
+    }
+
+    @Test
+    fun passWhenTestingSingleItemIterable() {
+        val iterable = listOf(Person("Alice", "Bob"))
+        iterable shouldBeSortedAccordingTo personComparator
+    }
+
+    @Test
+    fun passWhenTestingSortedIterable() {
+        val iterable = listOf(Person("Alice", "Bob"), Person("Jon", "Doe"), Person("Tom", "Guy"))
+        iterable shouldBeSortedAccordingTo personComparator
+    }
+
+    @Test
+    fun failWhenTestingUnsrotedIterable() {
+        val iterable = listOf(Person("Jon", "Doe"), Person("Tom", "Guy"), Person("Peter", "Meyer"))
+        assertFails { iterable shouldBeSortedAccordingTo personComparator }
     }
 }

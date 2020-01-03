@@ -571,6 +571,14 @@ infix fun <I : Iterable<*>> I.shouldHaveSize(expectedSize: Int) = apply {
     }
 }
 
+infix fun <T, I : Iterable<T>> I.shouldBeSortedAccordingTo(comparator: Comparator<T>) = apply {
+    var index = 0
+    zipWithNext { a, b ->
+        if (comparator.compare(a, b) > 0) fail("Iterable is not sorted according to $comparator comparator because element $index:\n <$a>\nis not less or equal than element ${index + 1}:\n <$b>\nIterable was:\n <$this>")
+        index++
+    }
+}
+
 @Deprecated("Equality should not be tested on sequences", level = DeprecationLevel.ERROR)
 infix fun <T, S : Sequence<T>> S.shouldEqual(expected: Sequence<T>): S =
         fail("Equality should not be tested on sequences")
@@ -578,6 +586,14 @@ infix fun <T, S : Sequence<T>> S.shouldEqual(expected: Sequence<T>): S =
 @Deprecated("Equality should not be tested on sequences", level = DeprecationLevel.ERROR)
 infix fun <T, S : Sequence<T>> S.shouldNotEqual(expected: Sequence<T>): S =
         fail("Equality should not be tested on sequences")
+
+infix fun <T, S : Sequence<T>> S.shouldBeSortedAccordingTo(comparator: Comparator<T>) = apply {
+    var index = 0
+    zipWithNext { a, b ->
+        if (comparator.compare(a, b) > 0) fail("Sequence is not sorted according to $comparator comparator because element $index:\n <$a>\nis not less or equal than element ${index + 1}:\n <$b>\nSequence was:\n <$this>")
+        index++
+    }
+}
 
 fun <S : Sequence<*>> S.shouldBeEmpty(): S = apply { assertEmpty(asIterable(), "Sequence") }
 fun <S : Sequence<*>> S.shouldNotBeEmpty(): S = apply { assertNotEmpty(asIterable(), "Sequence") }

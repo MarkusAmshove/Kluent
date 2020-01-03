@@ -268,6 +268,8 @@ fun <I : Iterable<*>> I.`should be empty`(): I = this.shouldBeEmpty()
 
 fun <I : Iterable<*>> I.`should not be empty`(): I = this.shouldNotBeEmpty()
 
+infix fun <T, I : Iterable<T>> I.`should be sorted according to`(comparator: Comparator<T>) = this.shouldBeSortedAccordingTo(comparator)
+
 infix fun <K, M : Map<K, *>> M.`should have key`(theKey: K): M = this.shouldHaveKey(theKey)
 
 infix fun <K, M : Map<K, *>> M.`should not have key`(theKey: K): M = this.shouldNotHaveKey(theKey)
