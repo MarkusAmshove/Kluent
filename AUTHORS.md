@@ -36,3 +36,4 @@
 1. Yang C - [@ychescale9](https://github.com/ychescale9) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=ychescale9))
 1. Christian Ivicevic - [@ChristianIvicevic](https://github.com/ChristianIvicevic) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=ChristianIvicevic))
 1. Ivan Mikhnovich - [@Murtaught](https://github.com/Murtaught) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=Murtaught))
+1. Jc Miñarro - [@JcMinarro](https://github.com/JcMinarro) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=JcMinarro))
