@@ -327,6 +327,14 @@ infix fun DoubleArray.shouldMatchAtLeastOneOf(predicate: (Double) -> Boolean) = 
 
 infix fun DoubleArray.shouldMatchAllWith(predicate: (Double) -> Boolean) = apply { this.toList().shouldMatchAllWith(predicate) }
 
+infix fun DoubleArray.shouldBeSortedAccordingTo(comparator: Comparator<Double>) = apply {
+    var index = 0
+    toList().zipWithNext { a, b ->
+        if (comparator.compare(a, b) > 0) fail("DoubleArray is not sorted according to $comparator comparator because element $index:\n <$a>\nis not less or equal than element ${index + 1}:\n <$b>\nDoubleArray was:\n <$this>")
+        index++
+    }
+}
+
 infix fun Double.shouldBeIn(theArray: DoubleArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
 infix fun Double.shouldNotBeIn(theArray: DoubleArray) = apply { this shouldNotBeIn theArray.toTypedArray() }

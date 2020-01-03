@@ -136,6 +136,8 @@ fun DoubleArray.`should be empty`() = this.shouldBeEmpty()
 
 fun DoubleArray.`should not be empty`() = this.shouldNotBeEmpty()
 
+infix fun DoubleArray.`should be sorted according to`(comparator: Comparator<Double>) = this.shouldBeSortedAccordingTo(comparator)
+
 infix fun DoubleArray.`should contain`(expected: Double) = this.shouldContain(expected)
 
 @Deprecated("Use `should contain any`", ReplaceWith("this `should contain any` check"))

@@ -10,6 +10,7 @@ class ShouldBeSortedAccordingToShould {
     private val booleanComparator = Comparator { a: Boolean, b: Boolean -> a.compareTo(b) }
     private val byteComparator = Comparator { a: Byte, b: Byte -> a.compareTo(b) }
     private val charComparator = Comparator { a: Char, b: Char -> a.compareTo(b) }
+    private val doubleComparator = Comparator { a: Double, b: Double -> a.compareTo(b) }
 
     @Test
     fun passWhenTestingEmptyArray() {
@@ -129,5 +130,29 @@ class ShouldBeSortedAccordingToShould {
     fun failWhenTestingUnsortedCharArray() {
         val array = charArrayOf('a', 'o', 'b', 'c')
         assertFails { array shouldBeSortedAccordingTo charComparator }
+    }
+
+    @Test
+    fun passWhenTestingEmptyDoubleArray() {
+        val array = doubleArrayOf()
+        array shouldBeSortedAccordingTo doubleComparator
+    }
+
+    @Test
+    fun passWhenTestingSingleItemDoubleArray() {
+        val array = doubleArrayOf(Random.nextDouble())
+        array shouldBeSortedAccordingTo doubleComparator
+    }
+
+    @Test
+    fun passWhenTestingSortedDoubleArray() {
+        val array = doubleArrayOf(1.0, 2.0, 3.0)
+        array shouldBeSortedAccordingTo doubleComparator
+    }
+
+    @Test
+    fun failWhenTestingUnsortedDoubleArray() {
+        val array = doubleArrayOf(1.0, 5.0, 3.0)
+        assertFails { array shouldBeSortedAccordingTo doubleComparator }
     }
 }
