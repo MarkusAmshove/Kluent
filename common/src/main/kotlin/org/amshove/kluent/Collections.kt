@@ -48,6 +48,13 @@ infix fun <T> Array<T>.shouldMatchAtLeastOneOf(predicate: (T) -> Boolean) = appl
 
 infix fun <T> Array<T>.shouldMatchAllWith(predicate: (T) -> Boolean) = apply { this.toList().shouldMatchAllWith(predicate) }
 
+infix fun <T> Array<T>.shouldBeSortedAccordingTo(comparator: Comparator<T>) = apply {
+    var index = 0
+    toList().zipWithNext { a, b ->
+        if (comparator.compare(a, b) > 0) fail("Array is not sorted according to $comparator comparator because element $index:\n <$a>\nis not less or equal than element ${index + 1}:\n <$b>\nArray was:\n <$this>")
+        index++
+    }
+}
 
 infix fun IntArray.shouldEqual(expected: IntArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
