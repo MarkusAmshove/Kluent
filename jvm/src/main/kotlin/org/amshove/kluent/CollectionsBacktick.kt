@@ -84,6 +84,8 @@ fun ByteArray.`should not be empty`() = this.shouldNotBeEmpty()
 
 infix fun ByteArray.`should contain`(expected: Byte) = this.shouldContain(expected)
 
+infix fun ByteArray.`should be sorted according to`(comparator: Comparator<Byte>) = this.shouldBeSortedAccordingTo(comparator)
+
 @Deprecated("Use `should contain any`", ReplaceWith("this `should contain any` check"))
 infix fun ByteArray.`should contain some`(expected: ByteArray) = this.shouldContainSome(expected)
 

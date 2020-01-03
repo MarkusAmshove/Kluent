@@ -211,6 +211,14 @@ infix fun ByteArray.shouldNotContainAny(expected: ByteArray) = apply { expected.
 
 infix fun ByteArray.shouldNotContainAny(expected: Iterable<Byte>) = apply { this.toList().shouldNotContainAny(expected) }
 
+infix fun ByteArray.shouldBeSortedAccordingTo(comparator: Comparator<Byte>) = apply {
+    var index = 0
+    toList().zipWithNext { a, b ->
+        if (comparator.compare(a, b) > 0) fail("ByteArray is not sorted according to $comparator comparator because element $index:\n <$a>\nis not less or equal than element ${index + 1}:\n <$b>\nByteArray was:\n <$this>")
+        index++
+    }
+}
+
 infix fun Byte.shouldBeIn(theArray: ByteArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
 infix fun Byte.shouldNotBeIn(theArray: ByteArray) = apply { this shouldNotBeIn theArray.toTypedArray() }
