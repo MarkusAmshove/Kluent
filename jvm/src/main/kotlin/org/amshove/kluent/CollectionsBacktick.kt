@@ -111,6 +111,8 @@ fun CharArray.`should not be empty`() = this.shouldNotBeEmpty()
 
 infix fun CharArray.`should contain`(expected: Char) = this.shouldContain(expected)
 
+infix fun CharArray.`should be sorted according to`(comparator: Comparator<Char>) = this.shouldBeSortedAccordingTo(comparator)
+
 @Deprecated("Use `should contain any`", ReplaceWith("this `should contain any` check"))
 infix fun CharArray.`should contain some`(expected: CharArray) = this.shouldContainSome(expected)
 

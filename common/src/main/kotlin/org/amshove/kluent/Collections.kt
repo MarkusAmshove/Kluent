@@ -267,6 +267,14 @@ infix fun CharArray.shouldNotContainAny(expected: CharArray) = apply { expected.
 
 infix fun CharArray.shouldNotContainAny(expected: Iterable<Char>) = apply { this.toList().shouldNotContainAny(expected) }
 
+infix fun CharArray.shouldBeSortedAccordingTo(comparator: Comparator<Char>) = apply {
+    var index = 0
+    toList().zipWithNext { a, b ->
+        if (comparator.compare(a, b) > 0) fail("ByteArray is not sorted according to $comparator comparator because element $index:\n <$a>\nis not less or equal than element ${index + 1}:\n <$b>\nByteArray was:\n <$this>")
+        index++
+    }
+}
+
 infix fun Char.shouldBeIn(theArray: CharArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
 infix fun Char.shouldNotBeIn(theArray: CharArray) = apply { this shouldNotBeIn theArray.toTypedArray() }
