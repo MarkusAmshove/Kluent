@@ -13,6 +13,7 @@ class ShouldBeSortedAccordingToShould {
     private val doubleComparator = Comparator { a: Double, b: Double -> a.compareTo(b) }
     private val floatComparator = Comparator { a: Float, b: Float -> a.compareTo(b) }
     private val longComparator = Comparator { a: Long, b: Long -> a.compareTo(b) }
+    private val shortComparator = Comparator { a: Short, b: Short -> a.compareTo(b) }
 
     @Test
     fun passWhenTestingEmptyArray() {
@@ -204,5 +205,29 @@ class ShouldBeSortedAccordingToShould {
     fun failWhenTestingUnsortedLongArray() {
         val array = longArrayOf(1, 5, 3)
         assertFails { array shouldBeSortedAccordingTo longComparator }
+    }
+
+    @Test
+    fun passWhenTestingEmptyShortArray() {
+        val array = shortArrayOf()
+        array shouldBeSortedAccordingTo shortComparator
+    }
+
+    @Test
+    fun passWhenTestingSingleItemShortArray() {
+        val array = shortArrayOf(Random.nextInt().toShort())
+        array shouldBeSortedAccordingTo shortComparator
+    }
+
+    @Test
+    fun passWhenTestingSortedShortArray() {
+        val array = shortArrayOf(1, 2, 3)
+        array shouldBeSortedAccordingTo shortComparator
+    }
+
+    @Test
+    fun failWhenTestingUnsortedShortArray() {
+        val array = shortArrayOf(1, 5, 3)
+        assertFails { array shouldBeSortedAccordingTo shortComparator }
     }
 }

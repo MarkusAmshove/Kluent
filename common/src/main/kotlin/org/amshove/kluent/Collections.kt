@@ -451,7 +451,6 @@ infix fun LongArray.shouldMatchAtLeastOneOf(predicate: (Long) -> Boolean) = appl
 
 infix fun LongArray.shouldMatchAllWith(predicate: (Long) -> Boolean) = apply { this.toList().shouldMatchAllWith(predicate) }
 
-
 infix fun ShortArray.shouldEqual(expected: ShortArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
 infix fun ShortArray.shouldNotEqual(expected: ShortArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
@@ -495,6 +494,14 @@ infix fun ShortArray.shouldNotContainAny(expected: Iterable<Short>) = apply { th
 infix fun ShortArray.shouldMatchAtLeastOneOf(predicate: (Short) -> Boolean) = apply { this.toList().shouldMatchAtLeastOneOf(predicate) }
 
 infix fun ShortArray.shouldMatchAllWith(predicate: (Short) -> Boolean) = apply { this.toList().shouldMatchAllWith(predicate) }
+
+infix fun ShortArray.shouldBeSortedAccordingTo(comparator: Comparator<Short>) = apply {
+    var index = 0
+    toList().zipWithNext { a, b ->
+        if (comparator.compare(a, b) > 0) fail("ShortArray is not sorted according to $comparator comparator because element $index:\n <$a>\nis not less or equal than element ${index + 1}:\n <$b>\nShortArray was:\n <$this>")
+        index++
+    }
+}
 
 infix fun Short.shouldBeIn(theArray: ShortArray) = apply { this shouldBeIn theArray.toTypedArray() }
 

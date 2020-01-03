@@ -232,6 +232,8 @@ infix fun ShortArray.`should not contain`(expected: Short) = this.shouldNotConta
 
 infix fun ShortArray.`should not contain any`(expected: ShortArray) = this.shouldNotContainAny(expected)
 
+infix fun ShortArray.`should be sorted according to`(comparator: Comparator<Short>) = this.shouldBeSortedAccordingTo(comparator)
+
 infix fun Short.`should be in`(theArray: ShortArray) = this.shouldBeIn(theArray)
 
 infix fun Short.`should not be in`(theArray: ShortArray) = this.shouldNotBeIn(theArray)
