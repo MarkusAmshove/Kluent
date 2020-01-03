@@ -42,6 +42,8 @@ infix fun IntArray.`should not contain`(expected: Int) = this.shouldNotContain(e
 
 infix fun IntArray.`should not contain any`(expected: IntArray) = this.shouldNotContainAny(expected)
 
+infix fun IntArray.`should be sorted according to`(comparator: Comparator<Int>) = this.shouldBeSortedAccordingTo(comparator)
+
 infix fun Int.`should be in`(theArray: IntArray) = this.shouldBeIn(theArray)
 
 infix fun Int.`should not be in`(theArray: IntArray) = this.shouldNotBeIn(theArray)

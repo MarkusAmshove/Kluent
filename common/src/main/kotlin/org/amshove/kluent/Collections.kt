@@ -60,6 +60,14 @@ infix fun IntArray.shouldEqual(expected: IntArray) = apply { assertArrayEquals(t
 
 infix fun IntArray.shouldNotEqual(expected: IntArray) = apply { assertArrayNotEquals(expected.toTypedArray(), this.toTypedArray()) }
 
+infix fun IntArray.shouldBeSortedAccordingTo(comparator: Comparator<Int>) = apply {
+    var index = 0
+    toList().zipWithNext { a, b ->
+        if (comparator.compare(a, b) > 0) fail("IntArray is not sorted according to $comparator comparator because element $index:\n <$a>\nis not less or equal than element ${index + 1}:\n <$b>\nIntArray was:\n <$this>")
+        index++
+    }
+}
+
 fun IntArray.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
 
 fun IntArray.shouldBeEmpty() = apply { this.toTypedArray().shouldBeEmpty() }

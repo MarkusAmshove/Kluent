@@ -31,4 +31,28 @@ class ShouldBeSortedAccordingToShould {
         val array = arrayOf(1, 5, 3)
         assertFails { array shouldBeSortedAccordingTo intComparator }
     }
+
+    @Test
+    fun passWhenTestingEmptyIntArray() {
+        val array = intArrayOf()
+        array shouldBeSortedAccordingTo intComparator
+    }
+
+    @Test
+    fun passWhenTestingSingleItemIntArray() {
+        val array = intArrayOf(Random.nextInt())
+        array shouldBeSortedAccordingTo intComparator
+    }
+
+    @Test
+    fun passWhenTestingSortedIntArray() {
+        val array = intArrayOf(1, 2, 3)
+        array shouldBeSortedAccordingTo intComparator
+    }
+
+    @Test
+    fun failWhenTestingUnsortedIntArray() {
+        val array = intArrayOf(1, 5, 3)
+        assertFails { array shouldBeSortedAccordingTo intComparator }
+    }
 }
