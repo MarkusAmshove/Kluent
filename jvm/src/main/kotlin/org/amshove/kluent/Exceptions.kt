@@ -99,7 +99,7 @@ infix fun <T : Throwable> ExceptionResult<T>.withMessage(theMessage: String): Ex
 }
 
 infix fun NotThrowExceptionResult.withMessage(theMessage: String): NotThrowExceptionResult {
-    this.exceptionMessage shouldNotEqual theMessage
+    this.exceptionMessage shouldNotBeEqualTo theMessage
     return this
 }
 

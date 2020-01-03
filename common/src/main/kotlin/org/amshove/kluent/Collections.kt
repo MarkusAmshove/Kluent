@@ -37,7 +37,10 @@ infix fun <T> Array<T>?.shouldEqual(expected: Array<T>?) = shouldBeEqualTo(expec
 
 infix fun <T> Array<T>?.shouldBeEqualTo(expected: Array<T>?) = apply { assertArrayEquals(expected, this) }
 
-infix fun <T> Array<T>?.shouldNotEqual(expected: Array<T>?) = apply { assertArrayNotEquals(expected, this) }
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun <T> Array<T>?.shouldNotEqual(expected: Array<T>?) = shouldNotBeEqualTo(expected)
+
+infix fun <T> Array<T>?.shouldNotBeEqualTo(expected: Array<T>?) = apply { assertArrayNotEquals(expected, this) }
 
 fun <T> Array<T>.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
 
@@ -56,7 +59,10 @@ infix fun IntArray.shouldEqual(expected: IntArray) = shouldBeEqualTo(expected)
 
 infix fun IntArray.shouldBeEqualTo(expected: IntArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
-infix fun IntArray.shouldNotEqual(expected: IntArray) = apply { assertArrayNotEquals(expected.toTypedArray(), this.toTypedArray()) }
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun IntArray.shouldNotEqual(expected: IntArray) = shouldNotBeEqualTo(expected)
+
+infix fun IntArray.shouldNotBeEqualTo(expected: IntArray) = apply { assertArrayNotEquals(expected.toTypedArray(), this.toTypedArray()) }
 
 fun IntArray.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
 
@@ -107,7 +113,10 @@ infix fun BooleanArray.shouldEqual(expected: BooleanArray) = shouldBeEqualTo(exp
 
 infix fun BooleanArray.shouldBeEqualTo(expected: BooleanArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
-infix fun BooleanArray.shouldNotEqual(expected: BooleanArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun BooleanArray.shouldNotEqual(expected: BooleanArray) = shouldNotBeEqualTo(expected)
+
+infix fun BooleanArray.shouldNotBeEqualTo(expected: BooleanArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
 
 fun BooleanArray.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
 
@@ -160,7 +169,10 @@ infix fun ByteArray.shouldEqual(expected: ByteArray) = shouldBeEqualTo(expected)
 
 infix fun ByteArray.shouldBeEqualTo(expected: ByteArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
-infix fun ByteArray.shouldNotEqual(expected: ByteArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun ByteArray.shouldNotEqual(expected: ByteArray) = shouldNotBeEqualTo(expected)
+
+infix fun ByteArray.shouldNotBeEqualTo(expected: ByteArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
 
 fun ByteArray.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
 
@@ -211,7 +223,10 @@ infix fun CharArray.shouldEqual(expected: CharArray) = shouldBeEqualTo(expected)
 
 infix fun CharArray.shouldBeEqualTo(expected: CharArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
-infix fun CharArray.shouldNotEqual(expected: CharArray) = apply { assertArrayNotEquals(expected.toTypedArray(), this.toTypedArray()) }
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun CharArray.shouldNotEqual(expected: CharArray) = shouldNotBeEqualTo(expected)
+
+infix fun CharArray.shouldNotBeEqualTo(expected: CharArray) = apply { assertArrayNotEquals(expected.toTypedArray(), this.toTypedArray()) }
 
 fun CharArray.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
 
@@ -262,7 +277,10 @@ infix fun DoubleArray.shouldEqual(expected: DoubleArray) = shouldBeEqualTo(expec
 
 infix fun DoubleArray.shouldBeEqualTo(expected: DoubleArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
-infix fun DoubleArray.shouldNotEqual(expected: DoubleArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun DoubleArray.shouldNotEqual(expected: DoubleArray) = shouldNotBeEqualTo(expected)
+
+infix fun DoubleArray.shouldNotBeEqualTo(expected: DoubleArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
 
 fun DoubleArray.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
 
@@ -313,7 +331,10 @@ infix fun FloatArray.shouldEqual(expected: FloatArray) = shouldBeEqualTo(expecte
 
 infix fun FloatArray.shouldBeEqualTo(expected: FloatArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
-infix fun FloatArray.shouldNotEqual(expected: FloatArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun FloatArray.shouldNotEqual(expected: FloatArray) = shouldNotBeEqualTo(expected)
+
+infix fun FloatArray.shouldNotBeEqualTo(expected: FloatArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
 
 fun FloatArray.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
 
@@ -364,7 +385,10 @@ infix fun LongArray.shouldEqual(expected: LongArray) = shouldBeEqualTo(expected)
 
 infix fun LongArray.shouldBeEqualTo(expected: LongArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
-infix fun LongArray.shouldNotEqual(expected: LongArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun LongArray.shouldNotEqual(expected: LongArray) = shouldNotBeEqualTo(expected)
+
+infix fun LongArray.shouldNotBeEqualTo(expected: LongArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
 
 fun LongArray.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
 
@@ -415,7 +439,10 @@ infix fun ShortArray.shouldEqual(expected: ShortArray) = shouldBeEqualTo(expecte
 
 infix fun ShortArray.shouldBeEqualTo(expected: ShortArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
-infix fun ShortArray.shouldNotEqual(expected: ShortArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun ShortArray.shouldNotEqual(expected: ShortArray) = shouldNotBeEqualTo(expected)
+
+infix fun ShortArray.shouldNotBeEqualTo(expected: ShortArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
 
 fun ShortArray.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
 
@@ -510,7 +537,10 @@ infix fun <T, I : Iterable<T>> I.shouldEqual(expected: Iterable<T>?): I = should
 
 infix fun <T, I : Iterable<T>> I.shouldBeEqualTo(expected: Iterable<T>?): I = apply { assertEquals(expected, this) }
 
-infix fun <T, I : Iterable<T>> I.shouldNotEqual(expected: Iterable<T>?): I = apply { assertNotEquals(expected, this) }
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun <T, I : Iterable<T>> I.shouldNotEqual(expected: Iterable<T>?): I = shouldNotBeEqualTo(expected)
+
+infix fun <T, I : Iterable<T>> I.shouldNotBeEqualTo(expected: Iterable<T>?): I = apply { assertNotEquals(expected, this) }
 
 fun <I : Iterable<T>, T> I.shouldHaveSingleItem(): T {
     shouldHaveSize(1)
@@ -586,7 +616,10 @@ infix fun <K, M : Map<K, *>> M.shouldEqual(expected: M): M = shouldBeEqualTo(exp
 
 infix fun <K, M : Map<K, *>> M.shouldBeEqualTo(expected: M): M = apply { assertMapEquals(this, expected) }
 
-infix fun <K, M : Map<K, *>> M.shouldNotEqual(expected: M): M = apply { assertMapNotEquals(this, expected) }
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun <K, M : Map<K, *>> M.shouldNotEqual(expected: M): M = shouldNotBeEqualTo(expected)
+
+infix fun <K, M : Map<K, *>> M.shouldNotBeEqualTo(expected: M): M = apply { assertMapNotEquals(this, expected) }
 
 infix fun <K, M : Map<K, *>> M.shouldEqualUnordered(expected: M): M = apply { assertMapEqualsUnordered(this, expected) }
 
