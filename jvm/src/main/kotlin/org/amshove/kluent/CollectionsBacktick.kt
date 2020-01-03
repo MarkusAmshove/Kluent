@@ -50,6 +50,8 @@ infix fun Int.`should not be in`(theArray: IntArray) = this.shouldNotBeIn(theArr
 
 infix fun BooleanArray.`should equal`(expected: BooleanArray) = this.shouldEqual(expected)
 
+infix fun BooleanArray.`should be sorted according to`(comparator: Comparator<Boolean>) = this.shouldBeSortedAccordingTo(comparator)
+
 fun BooleanArray.`should be empty`() = this.shouldBeEmpty()
 
 fun BooleanArray.`should not be empty`() = this.shouldNotBeEmpty()

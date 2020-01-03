@@ -134,6 +134,14 @@ fun BooleanArray.shouldContainTrue() = apply { this.toTypedArray().shouldContain
 
 fun BooleanArray.shouldContainFalse() = apply { this.toTypedArray().shouldContainAny { !it } }
 
+infix fun BooleanArray.shouldBeSortedAccordingTo(comparator: Comparator<Boolean>) = apply {
+    var index = 0
+    toList().zipWithNext { a, b ->
+        if (comparator.compare(a, b) > 0) fail("BooleanArray is not sorted according to $comparator comparator because element $index:\n <$a>\nis not less or equal than element ${index + 1}:\n <$b>\nBooleanArray was:\n <$this>")
+        index++
+    }
+}
+
 @Deprecated("Use shouldContainAny", ReplaceWith("this.shouldContainAny(check)"))
 infix fun BooleanArray.shouldContainSome(expected: Iterable<Boolean>) = apply { this.toList().shouldContainSome(expected) }
 

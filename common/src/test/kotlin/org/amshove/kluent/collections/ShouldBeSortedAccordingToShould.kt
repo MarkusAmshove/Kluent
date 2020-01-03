@@ -7,6 +7,7 @@ import kotlin.test.assertFails
 
 class ShouldBeSortedAccordingToShould {
     private val intComparator = Comparator { a: Int, b: Int -> a.compareTo(b) }
+    private val booleanComparator = Comparator { a: Boolean, b: Boolean -> a.compareTo(b) }
 
     @Test
     fun passWhenTestingEmptyArray() {
@@ -54,5 +55,29 @@ class ShouldBeSortedAccordingToShould {
     fun failWhenTestingUnsortedIntArray() {
         val array = intArrayOf(1, 5, 3)
         assertFails { array shouldBeSortedAccordingTo intComparator }
+    }
+
+    @Test
+    fun passWhenTestingEmptyBooleanArray() {
+        val array = booleanArrayOf()
+        array shouldBeSortedAccordingTo booleanComparator
+    }
+
+    @Test
+    fun passWhenTestingSingleItemBooleanArray() {
+        val array = booleanArrayOf(Random.nextBoolean())
+        array shouldBeSortedAccordingTo booleanComparator
+    }
+
+    @Test
+    fun passWhenTestingSortedBooleanArray() {
+        val array = booleanArrayOf(false, false, true, true)
+        array shouldBeSortedAccordingTo booleanComparator
+    }
+
+    @Test
+    fun failWhenTestingUnsortedBooleanArray() {
+        val array = booleanArrayOf(true, false, false)
+        assertFails { array shouldBeSortedAccordingTo booleanComparator }
     }
 }
