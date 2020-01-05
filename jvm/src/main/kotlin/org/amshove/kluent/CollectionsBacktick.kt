@@ -48,6 +48,8 @@ infix fun IntArray.`should not contain`(expected: Int) = this.shouldNotContain(e
 
 infix fun IntArray.`should not contain any`(expected: IntArray) = this.shouldNotContainAny(expected)
 
+infix fun IntArray.`should be sorted according to`(comparator: Comparator<Int>) = this.shouldBeSortedAccordingTo(comparator)
+
 infix fun Int.`should be in`(theArray: IntArray) = this.shouldBeIn(theArray)
 
 infix fun Int.`should not be in`(theArray: IntArray) = this.shouldNotBeIn(theArray)
@@ -55,6 +57,8 @@ infix fun Int.`should not be in`(theArray: IntArray) = this.shouldNotBeIn(theArr
 infix fun BooleanArray.`should equal`(expected: BooleanArray) = this.`should be equal to`(expected)
 
 infix fun BooleanArray.`should be equal to`(expected: BooleanArray) = this.shouldBeEqualTo(expected)
+
+infix fun BooleanArray.`should be sorted according to`(comparator: Comparator<Boolean>) = this.shouldBeSortedAccordingTo(comparator)
 
 fun BooleanArray.`should be empty`() = this.shouldBeEmpty()
 
@@ -91,6 +95,8 @@ fun ByteArray.`should not be empty`() = this.shouldNotBeEmpty()
 
 infix fun ByteArray.`should contain`(expected: Byte) = this.shouldContain(expected)
 
+infix fun ByteArray.`should be sorted according to`(comparator: Comparator<Byte>) = this.shouldBeSortedAccordingTo(comparator)
+
 @Deprecated("Use `should contain any`", ReplaceWith("this `should contain any` check"))
 infix fun ByteArray.`should contain some`(expected: ByteArray) = this.shouldContainSome(expected)
 
@@ -119,6 +125,8 @@ fun CharArray.`should not be empty`() = this.shouldNotBeEmpty()
 
 infix fun CharArray.`should contain`(expected: Char) = this.shouldContain(expected)
 
+infix fun CharArray.`should be sorted according to`(comparator: Comparator<Char>) = this.shouldBeSortedAccordingTo(comparator)
+
 @Deprecated("Use `should contain any`", ReplaceWith("this `should contain any` check"))
 infix fun CharArray.`should contain some`(expected: CharArray) = this.shouldContainSome(expected)
 
@@ -144,6 +152,8 @@ infix fun DoubleArray.`should be equal to`(expected: DoubleArray) = this.shouldB
 fun DoubleArray.`should be empty`() = this.shouldBeEmpty()
 
 fun DoubleArray.`should not be empty`() = this.shouldNotBeEmpty()
+
+infix fun DoubleArray.`should be sorted according to`(comparator: Comparator<Double>) = this.shouldBeSortedAccordingTo(comparator)
 
 infix fun DoubleArray.`should contain`(expected: Double) = this.shouldContain(expected)
 
@@ -188,6 +198,8 @@ infix fun FloatArray.`should not contain`(expected: Float) = this.shouldNotConta
 
 infix fun FloatArray.`should not contain any`(expected: FloatArray) = this.shouldNotContainAny(expected)
 
+infix fun FloatArray.`should be sorted according to`(comparator: Comparator<Float>) = this.shouldBeSortedAccordingTo(comparator)
+
 infix fun Float.`should be in`(theArray: FloatArray) = this.shouldBeIn(theArray)
 
 infix fun Float.`should not be in`(theArray: FloatArray) = this.shouldNotBeIn(theArray)
@@ -216,6 +228,8 @@ infix fun LongArray.`should not contain`(expected: Long) = this.shouldNotContain
 
 infix fun LongArray.`should not contain any`(expected: LongArray) = this.shouldNotContainAny(expected)
 
+infix fun LongArray.`should be sorted according to`(comparator: Comparator<Long>) = this.shouldBeSortedAccordingTo(comparator)
+
 infix fun Long.`should be in`(theArray: LongArray) = this.shouldBeIn(theArray)
 
 infix fun Long.`should not be in`(theArray: LongArray) = this.shouldNotBeIn(theArray)
@@ -243,6 +257,8 @@ infix fun ShortArray.`should contain all`(expected: ShortArray) = this.shouldCon
 infix fun ShortArray.`should not contain`(expected: Short) = this.shouldNotContain(expected)
 
 infix fun ShortArray.`should not contain any`(expected: ShortArray) = this.shouldNotContainAny(expected)
+
+infix fun ShortArray.`should be sorted according to`(comparator: Comparator<Short>) = this.shouldBeSortedAccordingTo(comparator)
 
 infix fun Short.`should be in`(theArray: ShortArray) = this.shouldBeIn(theArray)
 
@@ -280,6 +296,8 @@ infix fun <T, I : Iterable<T>> I.`should be equal to`(expected: Iterable<T>?): I
 fun <I : Iterable<*>> I.`should be empty`(): I = this.shouldBeEmpty()
 
 fun <I : Iterable<*>> I.`should not be empty`(): I = this.shouldNotBeEmpty()
+
+infix fun <T, I : Iterable<T>> I.`should be sorted according to`(comparator: Comparator<T>) = this.shouldBeSortedAccordingTo(comparator)
 
 infix fun <K, M : Map<K, *>> M.`should have key`(theKey: K): M = this.shouldHaveKey(theKey)
 
