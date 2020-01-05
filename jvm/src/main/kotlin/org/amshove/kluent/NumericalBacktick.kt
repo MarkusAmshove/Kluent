@@ -5,72 +5,72 @@ package org.amshove.kluent
 @Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
 infix fun Boolean.`should equal to`(expected: Boolean) = this.`should be equal to`(expected)
 
-infix fun Boolean.`should be equal to`(expected: Boolean) = this.shouldEqualTo(expected)
+infix fun Boolean.`should be equal to`(expected: Boolean) = this.shouldBeEqualTo(expected)
 
 @Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
 infix fun Byte.`should equal to`(expected: Byte) = this.`should be equal to`(expected)
 
-infix fun Byte.`should be equal to`(expected: Byte) = this.shouldEqualTo(expected)
+infix fun Byte.`should be equal to`(expected: Byte) = this.shouldBeEqualTo(expected)
 
 @Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
 infix fun Short.`should equal to`(expected: Short) = this.`should be equal to`(expected)
 
-infix fun Short.`should be equal to`(expected: Short) = this.shouldEqualTo(expected)
+infix fun Short.`should be equal to`(expected: Short) = this.shouldBeEqualTo(expected)
 
 @Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
 infix fun Int.`should equal to`(expected: Int) = this.`should be equal to`(expected)
 
-infix fun Int.`should be equal to`(expected: Int) = this.shouldEqualTo(expected)
+infix fun Int.`should be equal to`(expected: Int) = this.shouldBeEqualTo(expected)
 
 @Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
 infix fun Long.`should equal to`(expected: Long) = this.`should be equal to`(expected)
 
-infix fun Long.`should be equal to`(expected: Long) = this.shouldEqualTo(expected)
+infix fun Long.`should be equal to`(expected: Long) = this.shouldBeEqualTo(expected)
 
 @Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
 infix fun Float.`should equal to`(expected: Float) = this.`should be equal to`(expected)
 
-infix fun Float.`should be equal to`(expected: Float) = this.shouldEqualTo(expected)
+infix fun Float.`should be equal to`(expected: Float) = this.shouldBeEqualTo(expected)
 
 @Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
 infix fun Double.`should equal to`(expected: Double) = this.`should be equal to`(expected)
 
-infix fun Double.`should be equal to`(expected: Double) = this.shouldEqualTo(expected)
+infix fun Double.`should be equal to`(expected: Double) = this.shouldBeEqualTo(expected)
 
-@Deprecated("Use `should not equal to`", ReplaceWith("this.`should not equal to`(expected)"))
+@Deprecated("Use `should not be equal to`", ReplaceWith("this.`should not be equal to`(expected)"))
 infix fun Boolean.`should not equal to`(expected: Boolean) = this.`should not be equal to`(expected)
 
-infix fun Boolean.`should not be equal to`(expected: Boolean) = this.shouldNotEqualTo(expected)
+infix fun Boolean.`should not be equal to`(expected: Boolean) = this.shouldNotBeEqualTo(expected)
 
-@Deprecated("Use `should not equal to`", ReplaceWith("this.`should not equal to`(expected)"))
+@Deprecated("Use `should not be equal to`", ReplaceWith("this.`should not be equal to`(expected)"))
 infix fun Byte.`should not equal to`(expected: Byte) = this.`should not be equal to`(expected)
 
-infix fun Byte.`should not be equal to`(expected: Byte) = this.shouldNotEqualTo(expected)
+infix fun Byte.`should not be equal to`(expected: Byte) = this.shouldNotBeEqualTo(expected)
 
-@Deprecated("Use `should not equal to`", ReplaceWith("this.`should not equal to`(expected)"))
+@Deprecated("Use `should not be equal to`", ReplaceWith("this.`should not be equal to`(expected)"))
 infix fun Short.`should not equal to`(expected: Short) = this.`should not be equal to`(expected)
 
-infix fun Short.`should not be equal to`(expected: Short) = this.shouldNotEqualTo(expected)
+infix fun Short.`should not be equal to`(expected: Short) = this.shouldNotBeEqualTo(expected)
 
-@Deprecated("Use `should not equal to`", ReplaceWith("this.`should not equal to`(expected)"))
+@Deprecated("Use `should not be equal to`", ReplaceWith("this.`should not be equal to`(expected)"))
 infix fun Int.`should not equal to`(expected: Int) = this.`should not be equal to`(expected)
 
-infix fun Int.`should not be equal to`(expected: Int) = this.shouldNotEqualTo(expected)
+infix fun Int.`should not be equal to`(expected: Int) = this.shouldNotBeEqualTo(expected)
 
-@Deprecated("Use `should not equal to`", ReplaceWith("this.`should not equal to`(expected)"))
+@Deprecated("Use `should not be equal to`", ReplaceWith("this.`should not be equal to`(expected)"))
 infix fun Long.`should not equal to`(expected: Long) = this.`should not be equal to`(expected)
 
-infix fun Long.`should not be equal to`(expected: Long) = this.shouldNotEqualTo(expected)
+infix fun Long.`should not be equal to`(expected: Long) = this.shouldNotBeEqualTo(expected)
 
-@Deprecated("Use `should not equal to`", ReplaceWith("this.`should not equal to`(expected)"))
+@Deprecated("Use `should not be equal to`", ReplaceWith("this.`should not be equal to`(expected)"))
 infix fun Float.`should not equal to`(expected: Float) = this.`should not be equal to`(expected)
 
-infix fun Float.`should not be equal to`(expected: Float) = this.shouldNotEqualTo(expected)
+infix fun Float.`should not be equal to`(expected: Float) = this.shouldNotBeEqualTo(expected)
 
-@Deprecated("Use `should not equal to`", ReplaceWith("this.`should not equal to`(expected)"))
+@Deprecated("Use `should not be equal to`", ReplaceWith("this.`should not be equal to`(expected)"))
 infix fun Double.`should not equal to`(expected: Double) = this.`should not be equal to`(expected)
 
-infix fun Double.`should not be equal to`(expected: Double) = this.shouldNotEqualTo(expected)
+infix fun Double.`should not be equal to`(expected: Double) = this.shouldNotBeEqualTo(expected)
 
 infix fun Byte.`should be greater than`(expected: Byte) = this.shouldBeGreaterThan(expected)
 

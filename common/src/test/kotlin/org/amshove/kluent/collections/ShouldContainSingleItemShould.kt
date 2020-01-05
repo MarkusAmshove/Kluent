@@ -1,6 +1,6 @@
 package org.amshove.kluent.collections
 
-import org.amshove.kluent.shouldEqual
+import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldHaveSingleItem
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -68,12 +68,12 @@ class ShouldContainSingleItemShould {
     @Test
     fun workWithArrays() {
         val arr = arrayOf("World")
-        arr.shouldHaveSingleItem().shouldEqual("World")
+        arr.shouldHaveSingleItem().shouldBeEqualTo("World")
     }
 
     @Test
     fun workWithPrimitiveArrays() {
         val arr = shortArrayOf(5)
-        arr.shouldHaveSingleItem().shouldEqual(5)
+        arr.shouldHaveSingleItem().shouldBeEqualTo(5)
     }
 }

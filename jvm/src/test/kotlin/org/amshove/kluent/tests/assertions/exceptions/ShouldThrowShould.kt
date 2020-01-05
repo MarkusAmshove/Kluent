@@ -202,8 +202,8 @@ class ShouldThrowShould {
     fun validatedCustomValuesOfThrownException() {
         class CustomException(val value: String, val num: Int): Exception(value)
         invoking { throw CustomException("Hello World", 25) } shouldThrow CustomException::class with {
-            value shouldEqual "Hello World"
-            num shouldEqual 25
+            value shouldBeEqualTo "Hello World"
+            num shouldBeEqualTo 25
         }
     }
 
@@ -211,7 +211,7 @@ class ShouldThrowShould {
     fun returnTheExceptionWhenPassing() {
         val exception = invoking { throw CustomException(10) }.shouldThrow(CustomException::class).exception
 
-        exception.code.shouldEqual(10)
+        exception.code.shouldBeEqualTo<Int>(10)
     }
 
     @Test
@@ -223,7 +223,7 @@ class ShouldThrowShould {
 
         val exception = coInvoking { func() }.shouldThrow(CustomException::class).exception
 
-        exception.code.shouldEqual(10)
+        exception.code.shouldBeEqualTo<Int>(10)
     }
 
     @Test

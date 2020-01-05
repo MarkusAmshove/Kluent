@@ -4,8 +4,8 @@ This assertions are available for all objects:
 
 ## Testing for equality
 ```kt
-anObject shouldEqual anotherObject
-anObject shouldNotEqual anotherObject
+anObject shouldBeEqualTo anotherObject
+anObject shouldNotBeEqualTo anotherObject
 ```
 
 ## Testing for referential equality

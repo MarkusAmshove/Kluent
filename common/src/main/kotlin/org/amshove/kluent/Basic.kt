@@ -7,9 +7,15 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals
 import kotlin.test.fail
 
-infix fun <T> T.shouldEqual(expected: T?): T = this.apply { assertEquals(expected, this) }
+@Deprecated("Use `shouldBeEqualTo`", ReplaceWith("this.shouldBeEqualTo(expected)"))
+infix fun <T> T.shouldEqual(expected: T?): T = this.shouldBeEqualTo(expected)
 
-infix fun <T> T.shouldNotEqual(expected: T?) = this.apply { assertNotEquals(expected, this) }
+infix fun <T> T.shouldBeEqualTo(expected: T?): T = this.apply { assertEquals(expected, this) }
+
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun <T> T.shouldNotEqual(expected: T?) = this.shouldNotBeEqualTo(expected)
+
+infix fun <T> T.shouldNotBeEqualTo(expected: T?) = this.apply { assertNotEquals(expected, this) }
 
 infix fun <T> T.shouldBe(expected: T?): T = this.apply { assertSame(expected, this) }
 

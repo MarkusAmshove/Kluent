@@ -10,7 +10,7 @@ class ShouldEqualUnorderedShould {
         val firstMap = mapOf(2 to Person("C", "D"), 1 to Person("A", "B"))
         val secondMap = mapOf(1 to Person("A", "B"), 2 to Person("C", "D"))
 
-        assertFails { firstMap shouldEqual secondMap }
+        assertFails { firstMap shouldBeEqualTo  secondMap }
     }
 
     @Test

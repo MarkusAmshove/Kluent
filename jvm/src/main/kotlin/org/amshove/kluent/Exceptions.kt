@@ -94,12 +94,12 @@ infix fun <T : Throwable> (() -> Any).shouldThrowTheException(expectedException:
 infix fun <T : Throwable> (() -> Any).shouldNotThrowTheException(expectedException: KClass<T>): NotThrowExceptionResult = this.shouldNotThrow(expectedException)
 
 infix fun <T : Throwable> ExceptionResult<T>.withMessage(theMessage: String): ExceptionResult<T> {
-    this.exceptionMessage shouldEqual theMessage
+    this.exceptionMessage shouldBeEqualTo theMessage
     return this
 }
 
 infix fun NotThrowExceptionResult.withMessage(theMessage: String): NotThrowExceptionResult {
-    this.exceptionMessage shouldNotEqual theMessage
+    this.exceptionMessage shouldNotBeEqualTo theMessage
     return this
 }
 

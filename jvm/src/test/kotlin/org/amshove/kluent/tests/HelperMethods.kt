@@ -1,6 +1,6 @@
 package org.amshove.kluent.tests
 
-import org.amshove.kluent.shouldEqual
+import org.amshove.kluent.shouldBeEqualTo
 import org.junit.ComparisonFailure
 
 fun getFailure(func: () -> Unit): ComparisonFailure {
@@ -18,6 +18,6 @@ fun assertMessage(message: String, func: () -> Unit) {
     try {
         func()
     } catch (e: Throwable) {
-        e.message.shouldEqual(message)
+        e.message.shouldBeEqualTo(message)
     }
 }
