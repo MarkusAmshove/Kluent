@@ -32,9 +32,15 @@ infix fun <T> Array<T>.shouldNotContainAny(expected: Array<T>) = apply { expecte
 
 infix fun <T> Array<T>.shouldNotContainAny(expected: Iterable<T>) = apply { expected.forEach { shouldNotContain(it) } }
 
-infix fun <T> Array<T>?.shouldEqual(expected: Array<T>?) = apply { assertArrayEquals(expected, this) }
+@Deprecated("Use `shouldBeEqualTo`", ReplaceWith("this.shouldBeEqualTo(expected)"))
+infix fun <T> Array<T>?.shouldEqual(expected: Array<T>?) = shouldBeEqualTo(expected)
 
-infix fun <T> Array<T>?.shouldNotEqual(expected: Array<T>?) = apply { assertArrayNotEquals(expected, this) }
+infix fun <T> Array<T>?.shouldBeEqualTo(expected: Array<T>?) = apply { assertArrayEquals(expected, this) }
+
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun <T> Array<T>?.shouldNotEqual(expected: Array<T>?) = shouldNotBeEqualTo(expected)
+
+infix fun <T> Array<T>?.shouldNotBeEqualTo(expected: Array<T>?) = apply { assertArrayNotEquals(expected, this) }
 
 fun <T> Array<T>.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
 
@@ -48,10 +54,31 @@ infix fun <T> Array<T>.shouldMatchAtLeastOneOf(predicate: (T) -> Boolean) = appl
 
 infix fun <T> Array<T>.shouldMatchAllWith(predicate: (T) -> Boolean) = apply { this.toList().shouldMatchAllWith(predicate) }
 
+@Deprecated("Use `shouldBeEqualTo`", ReplaceWith("this.shouldBeEqualTo(expected)"))
+infix fun IntArray.shouldEqual(expected: IntArray) = shouldBeEqualTo(expected)
 
-infix fun IntArray.shouldEqual(expected: IntArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
+infix fun IntArray.shouldBeEqualTo(expected: IntArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
-infix fun IntArray.shouldNotEqual(expected: IntArray) = apply { assertArrayNotEquals(expected.toTypedArray(), this.toTypedArray()) }
+infix fun <T> Array<T>.shouldBeSortedAccordingTo(comparator: Comparator<T>) = apply {
+    var index = 0
+    toList().zipWithNext { a, b ->
+        if (comparator.compare(a, b) > 0) fail("Array is not sorted according to $comparator comparator because element $index:\n <$a>\nis not less or equal than element ${index + 1}:\n <$b>\nArray was:\n <$this>")
+        index++
+    }
+}
+
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun IntArray.shouldNotEqual(expected: IntArray) = shouldNotBeEqualTo(expected)
+
+infix fun IntArray.shouldNotBeEqualTo(expected: IntArray) = apply { assertArrayNotEquals(expected.toTypedArray(), this.toTypedArray()) }
+
+infix fun IntArray.shouldBeSortedAccordingTo(comparator: Comparator<Int>) = apply {
+    var index = 0
+    toList().zipWithNext { a, b ->
+        if (comparator.compare(a, b) > 0) fail("IntArray is not sorted according to $comparator comparator because element $index:\n <$a>\nis not less or equal than element ${index + 1}:\n <$b>\nIntArray was:\n <$this>")
+        index++
+    }
+}
 
 fun IntArray.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
 
@@ -97,10 +124,15 @@ infix fun IntArray.shouldMatchAtLeastOneOf(predicate: (Int) -> Boolean) = apply 
 
 infix fun IntArray.shouldMatchAllWith(predicate: (Int) -> Boolean) = apply { this.toList().shouldMatchAllWith(predicate) }
 
+@Deprecated("Use `shouldBeEqualTo`", ReplaceWith("this.shouldBeEqualTo(expected)"))
+infix fun BooleanArray.shouldEqual(expected: BooleanArray) = shouldBeEqualTo(expected)
 
-infix fun BooleanArray.shouldEqual(expected: BooleanArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
+infix fun BooleanArray.shouldBeEqualTo(expected: BooleanArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
-infix fun BooleanArray.shouldNotEqual(expected: BooleanArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun BooleanArray.shouldNotEqual(expected: BooleanArray) = shouldNotBeEqualTo(expected)
+
+infix fun BooleanArray.shouldNotBeEqualTo(expected: BooleanArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
 
 fun BooleanArray.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
 
@@ -118,6 +150,14 @@ infix fun BooleanArray.shouldContainSome(expected: BooleanArray) = apply { this.
 fun BooleanArray.shouldContainTrue() = apply { this.toTypedArray().shouldContainAny { it } }
 
 fun BooleanArray.shouldContainFalse() = apply { this.toTypedArray().shouldContainAny { !it } }
+
+infix fun BooleanArray.shouldBeSortedAccordingTo(comparator: Comparator<Boolean>) = apply {
+    var index = 0
+    toList().zipWithNext { a, b ->
+        if (comparator.compare(a, b) > 0) fail("BooleanArray is not sorted according to $comparator comparator because element $index:\n <$a>\nis not less or equal than element ${index + 1}:\n <$b>\nBooleanArray was:\n <$this>")
+        index++
+    }
+}
 
 @Deprecated("Use shouldContainAny", ReplaceWith("this.shouldContainAny(check)"))
 infix fun BooleanArray.shouldContainSome(expected: Iterable<Boolean>) = apply { this.toList().shouldContainSome(expected) }
@@ -148,9 +188,15 @@ infix fun BooleanArray.shouldMatchAtLeastOneOf(predicate: (Boolean) -> Boolean) 
 
 infix fun BooleanArray.shouldMatchAllWith(predicate: (Boolean) -> Boolean) = apply { this.toList().shouldMatchAllWith(predicate) }
 
-infix fun ByteArray.shouldEqual(expected: ByteArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
+@Deprecated("Use `shouldBeEqualTo`", ReplaceWith("this.shouldBeEqualTo(expected)"))
+infix fun ByteArray.shouldEqual(expected: ByteArray) = shouldBeEqualTo(expected)
 
-infix fun ByteArray.shouldNotEqual(expected: ByteArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
+infix fun ByteArray.shouldBeEqualTo(expected: ByteArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
+
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun ByteArray.shouldNotEqual(expected: ByteArray) = shouldNotBeEqualTo(expected)
+
+infix fun ByteArray.shouldNotBeEqualTo(expected: ByteArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
 
 fun ByteArray.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
 
@@ -188,6 +234,14 @@ infix fun ByteArray.shouldNotContainAny(expected: ByteArray) = apply { expected.
 
 infix fun ByteArray.shouldNotContainAny(expected: Iterable<Byte>) = apply { this.toList().shouldNotContainAny(expected) }
 
+infix fun ByteArray.shouldBeSortedAccordingTo(comparator: Comparator<Byte>) = apply {
+    var index = 0
+    toList().zipWithNext { a, b ->
+        if (comparator.compare(a, b) > 0) fail("ByteArray is not sorted according to $comparator comparator because element $index:\n <$a>\nis not less or equal than element ${index + 1}:\n <$b>\nByteArray was:\n <$this>")
+        index++
+    }
+}
+
 infix fun Byte.shouldBeIn(theArray: ByteArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
 infix fun Byte.shouldNotBeIn(theArray: ByteArray) = apply { this shouldNotBeIn theArray.toTypedArray() }
@@ -196,9 +250,15 @@ infix fun ByteArray.shouldMatchAtLeastOneOf(predicate: (Byte) -> Boolean) = appl
 
 infix fun ByteArray.shouldMatchAllWith(predicate: (Byte) -> Boolean) = apply { this.toList().shouldMatchAllWith(predicate) }
 
-infix fun CharArray.shouldEqual(expected: CharArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
+@Deprecated("Use `shouldBeEqualTo`", ReplaceWith("this.shouldBeEqualTo(expected)"))
+infix fun CharArray.shouldEqual(expected: CharArray) = shouldBeEqualTo(expected)
 
-infix fun CharArray.shouldNotEqual(expected: CharArray) = apply { assertArrayNotEquals(expected.toTypedArray(), this.toTypedArray()) }
+infix fun CharArray.shouldBeEqualTo(expected: CharArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
+
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun CharArray.shouldNotEqual(expected: CharArray) = shouldNotBeEqualTo(expected)
+
+infix fun CharArray.shouldNotBeEqualTo(expected: CharArray) = apply { assertArrayNotEquals(expected.toTypedArray(), this.toTypedArray()) }
 
 fun CharArray.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
 
@@ -236,6 +296,14 @@ infix fun CharArray.shouldNotContainAny(expected: CharArray) = apply { expected.
 
 infix fun CharArray.shouldNotContainAny(expected: Iterable<Char>) = apply { this.toList().shouldNotContainAny(expected) }
 
+infix fun CharArray.shouldBeSortedAccordingTo(comparator: Comparator<Char>) = apply {
+    var index = 0
+    toList().zipWithNext { a, b ->
+        if (comparator.compare(a, b) > 0) fail("ByteArray is not sorted according to $comparator comparator because element $index:\n <$a>\nis not less or equal than element ${index + 1}:\n <$b>\nByteArray was:\n <$this>")
+        index++
+    }
+}
+
 infix fun Char.shouldBeIn(theArray: CharArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
 infix fun Char.shouldNotBeIn(theArray: CharArray) = apply { this shouldNotBeIn theArray.toTypedArray() }
@@ -244,9 +312,15 @@ infix fun CharArray.shouldMatchAtLeastOneOf(predicate: (Char) -> Boolean) = appl
 
 infix fun CharArray.shouldMatchAllWith(predicate: (Char) -> Boolean) = apply { this.toList().shouldMatchAllWith(predicate) }
 
-infix fun DoubleArray.shouldEqual(expected: DoubleArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
+@Deprecated("Use `shouldBeEqualTo`", ReplaceWith("this.shouldBeEqualTo(expected)"))
+infix fun DoubleArray.shouldEqual(expected: DoubleArray) = shouldBeEqualTo(expected)
 
-infix fun DoubleArray.shouldNotEqual(expected: DoubleArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
+infix fun DoubleArray.shouldBeEqualTo(expected: DoubleArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
+
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun DoubleArray.shouldNotEqual(expected: DoubleArray) = shouldNotBeEqualTo(expected)
+
+infix fun DoubleArray.shouldNotBeEqualTo(expected: DoubleArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
 
 fun DoubleArray.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
 
@@ -288,13 +362,27 @@ infix fun DoubleArray.shouldMatchAtLeastOneOf(predicate: (Double) -> Boolean) = 
 
 infix fun DoubleArray.shouldMatchAllWith(predicate: (Double) -> Boolean) = apply { this.toList().shouldMatchAllWith(predicate) }
 
+infix fun DoubleArray.shouldBeSortedAccordingTo(comparator: Comparator<Double>) = apply {
+    var index = 0
+    toList().zipWithNext { a, b ->
+        if (comparator.compare(a, b) > 0) fail("DoubleArray is not sorted according to $comparator comparator because element $index:\n <$a>\nis not less or equal than element ${index + 1}:\n <$b>\nDoubleArray was:\n <$this>")
+        index++
+    }
+}
+
 infix fun Double.shouldBeIn(theArray: DoubleArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
 infix fun Double.shouldNotBeIn(theArray: DoubleArray) = apply { this shouldNotBeIn theArray.toTypedArray() }
 
-infix fun FloatArray.shouldEqual(expected: FloatArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
+@Deprecated("Use `shouldBeEqualTo`", ReplaceWith("this.shouldBeEqualTo(expected)"))
+infix fun FloatArray.shouldEqual(expected: FloatArray) = shouldBeEqualTo(expected)
 
-infix fun FloatArray.shouldNotEqual(expected: FloatArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
+infix fun FloatArray.shouldBeEqualTo(expected: FloatArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
+
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun FloatArray.shouldNotEqual(expected: FloatArray) = shouldNotBeEqualTo(expected)
+
+infix fun FloatArray.shouldNotBeEqualTo(expected: FloatArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
 
 fun FloatArray.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
 
@@ -332,6 +420,14 @@ infix fun FloatArray.shouldNotContainAny(expected: FloatArray) = apply { expecte
 
 infix fun FloatArray.shouldNotContainAny(expected: Iterable<Float>) = apply { this.toList().shouldNotContainAny(expected) }
 
+infix fun FloatArray.shouldBeSortedAccordingTo(comparator: Comparator<Float>) = apply {
+    var index = 0
+    toList().zipWithNext { a, b ->
+        if (comparator.compare(a, b) > 0) fail("FloatArray is not sorted according to $comparator comparator because element $index:\n <$a>\nis not less or equal than element ${index + 1}:\n <$b>\nFloatArray was:\n <$this>")
+        index++
+    }
+}
+
 infix fun Float.shouldBeIn(theArray: FloatArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
 infix fun Float.shouldNotBeIn(theArray: FloatArray) = apply { this shouldNotBeIn theArray.toTypedArray() }
@@ -340,9 +436,15 @@ infix fun FloatArray.shouldMatchAtLeastOneOf(predicate: (Float) -> Boolean) = ap
 
 infix fun FloatArray.shouldMatchAllWith(predicate: (Float) -> Boolean) = apply { this.toList().shouldMatchAllWith(predicate) }
 
-infix fun LongArray.shouldEqual(expected: LongArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
+@Deprecated("Use `shouldBeEqualTo`", ReplaceWith("this.shouldBeEqualTo(expected)"))
+infix fun LongArray.shouldEqual(expected: LongArray) = shouldBeEqualTo(expected)
 
-infix fun LongArray.shouldNotEqual(expected: LongArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
+infix fun LongArray.shouldBeEqualTo(expected: LongArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
+
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun LongArray.shouldNotEqual(expected: LongArray) = shouldNotBeEqualTo(expected)
+
+infix fun LongArray.shouldNotBeEqualTo(expected: LongArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
 
 fun LongArray.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
 
@@ -380,6 +482,14 @@ infix fun LongArray.shouldNotContainAny(expected: LongArray) = apply { expected.
 
 infix fun LongArray.shouldNotContainAny(expected: Iterable<Long>) = apply { this.toList().shouldNotContainAny(expected) }
 
+infix fun LongArray.shouldBeSortedAccordingTo(comparator: Comparator<Long>) = apply {
+    var index = 0
+    toList().zipWithNext { a, b ->
+        if (comparator.compare(a, b) > 0) fail("LongArray is not sorted according to $comparator comparator because element $index:\n <$a>\nis not less or equal than element ${index + 1}:\n <$b>\nLongArray was:\n <$this>")
+        index++
+    }
+}
+
 infix fun Long.shouldBeIn(theArray: LongArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
 infix fun Long.shouldNotBeIn(theArray: LongArray) = apply { this shouldNotBeIn theArray.toTypedArray() }
@@ -388,10 +498,15 @@ infix fun LongArray.shouldMatchAtLeastOneOf(predicate: (Long) -> Boolean) = appl
 
 infix fun LongArray.shouldMatchAllWith(predicate: (Long) -> Boolean) = apply { this.toList().shouldMatchAllWith(predicate) }
 
+@Deprecated("Use `shouldBeEqualTo`", ReplaceWith("this.shouldBeEqualTo(expected)"))
+infix fun ShortArray.shouldEqual(expected: ShortArray) = shouldBeEqualTo(expected)
 
-infix fun ShortArray.shouldEqual(expected: ShortArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
+infix fun ShortArray.shouldBeEqualTo(expected: ShortArray) = apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
 
-infix fun ShortArray.shouldNotEqual(expected: ShortArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun ShortArray.shouldNotEqual(expected: ShortArray) = shouldNotBeEqualTo(expected)
+
+infix fun ShortArray.shouldNotBeEqualTo(expected: ShortArray) = apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
 
 fun ShortArray.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
 
@@ -432,6 +547,14 @@ infix fun ShortArray.shouldNotContainAny(expected: Iterable<Short>) = apply { th
 infix fun ShortArray.shouldMatchAtLeastOneOf(predicate: (Short) -> Boolean) = apply { this.toList().shouldMatchAtLeastOneOf(predicate) }
 
 infix fun ShortArray.shouldMatchAllWith(predicate: (Short) -> Boolean) = apply { this.toList().shouldMatchAllWith(predicate) }
+
+infix fun ShortArray.shouldBeSortedAccordingTo(comparator: Comparator<Short>) = apply {
+    var index = 0
+    toList().zipWithNext { a, b ->
+        if (comparator.compare(a, b) > 0) fail("ShortArray is not sorted according to $comparator comparator because element $index:\n <$a>\nis not less or equal than element ${index + 1}:\n <$b>\nShortArray was:\n <$this>")
+        index++
+    }
+}
 
 infix fun Short.shouldBeIn(theArray: ShortArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
@@ -481,9 +604,15 @@ infix fun <T, I : Iterable<T>> I.shouldNotContainAny(expected: Iterable<T>): I =
 
 infix fun <T, I : Iterable<T>> I.shouldNotContainAny(expected: Array<T>): I = apply { expected.forEach { shouldNotContain(it) } }
 
-infix fun <T, I : Iterable<T>> I.shouldEqual(expected: Iterable<T>?): I = apply { assertEquals(expected, this) }
+@Deprecated("Use `shouldBeEqualTo`", ReplaceWith("this.shouldBeEqualTo(expected)"))
+infix fun <T, I : Iterable<T>> I.shouldEqual(expected: Iterable<T>?): I = shouldBeEqualTo(expected)
 
-infix fun <T, I : Iterable<T>> I.shouldNotEqual(expected: Iterable<T>?): I = apply { assertNotEquals(expected, this) }
+infix fun <T, I : Iterable<T>> I.shouldBeEqualTo(expected: Iterable<T>?): I = apply { assertEquals(expected, this) }
+
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun <T, I : Iterable<T>> I.shouldNotEqual(expected: Iterable<T>?): I = shouldNotBeEqualTo(expected)
+
+infix fun <T, I : Iterable<T>> I.shouldNotBeEqualTo(expected: Iterable<T>?): I = apply { assertNotEquals(expected, this) }
 
 fun <I : Iterable<T>, T> I.shouldHaveSingleItem(): T {
     shouldHaveSize(1)
@@ -501,9 +630,84 @@ infix fun <I : Iterable<*>> I.shouldHaveSize(expectedSize: Int) = apply {
     }
 }
 
-infix fun <K, M : Map<K, *>> M.shouldEqual(expected: M): M = apply { assertMapEquals(this, expected) }
+infix fun <T, I : Iterable<T>> I.shouldBeSortedAccordingTo(comparator: Comparator<T>) = apply {
+    var index = 0
+    zipWithNext { a, b ->
+        if (comparator.compare(a, b) > 0) fail("Iterable is not sorted according to $comparator comparator because element $index:\n <$a>\nis not less or equal than element ${index + 1}:\n <$b>\nIterable was:\n <$this>")
+        index++
+    }
+}
 
-infix fun <K, M : Map<K, *>> M.shouldNotEqual(expected: M): M = apply { assertMapNotEquals(this, expected) }
+@Deprecated("Equality should not be tested on sequences", level = DeprecationLevel.ERROR)
+infix fun <T, S : Sequence<T>> S.shouldEqual(expected: Sequence<T>): S =
+        fail("Equality should not be tested on sequences")
+
+@Deprecated("Equality should not be tested on sequences", level = DeprecationLevel.ERROR)
+infix fun <T, S : Sequence<T>> S.shouldNotEqual(expected: Sequence<T>): S =
+        fail("Equality should not be tested on sequences")
+
+infix fun <T, S : Sequence<T>> S.shouldBeSortedAccordingTo(comparator: Comparator<T>) = apply {
+    var index = 0
+    zipWithNext { a, b ->
+        if (comparator.compare(a, b) > 0) fail("Sequence is not sorted according to $comparator comparator because element $index:\n <$a>\nis not less or equal than element ${index + 1}:\n <$b>\nSequence was:\n <$this>")
+        index++
+    }
+}
+
+fun <S : Sequence<*>> S.shouldBeEmpty(): S = apply { assertEmpty(asIterable(), "Sequence") }
+fun <S : Sequence<*>> S.shouldNotBeEmpty(): S = apply { assertNotEmpty(asIterable(), "Sequence") }
+
+infix fun <T, S : Sequence<T>> S.shouldContain(expected: T): S = apply {
+    if (expected !in this)
+        failExpectedActual("Sequence doesn't contain \"$expected\"", "the Sequence to contain \"$expected\"", join(asIterable()))
+}
+
+infix fun <S, I : Sequence<S>> I.shouldNotContain(expected: S): I = apply {
+    if (expected in this)
+        failExpectedActual("Sequence should not contain \"$expected\"", "the Sequence to not contain \"$expected\"", join(asIterable()))
+}
+
+infix fun <T, S : Sequence<T>> S.shouldContainAll(expected: Sequence<T>): S = apply {
+    val set = toHashSet()
+    expected.forEach {
+        if (it !in set)
+            failExpectedActual("Sequence doesn't contain \"$expected\"", "the Sequence to contain \"$expected\"", join(asIterable()))
+    }
+}
+
+infix fun <T, S : Sequence<T>> S.shouldContainNone(expected: Sequence<T>): S = apply {
+    assertTrue(none { it in expected }) {
+        "Expected Sequence to contain none of \"${join(expected.asIterable())}\""
+    }
+}
+
+infix fun <T, S : Sequence<T>> S.shouldContainSome(expected: Sequence<T>): S = apply {
+    val expectedSet = expected.toHashSet()
+    assertTrue(any { it in expectedSet }) { "Expected Iterable to contain at least one of \"$expected\"" }
+}
+
+fun <S : Sequence<T>, T> S.shouldHaveSingleItem(): T {
+    shouldHaveSize(1)
+    return first()
+}
+
+infix fun <S : Sequence<*>> S.shouldHaveSize(expectedSize: Int) = apply {
+    val actualSize = count()
+    assertTrue(actualSize == expectedSize) { "Expected collection size to be $expectedSize but was $actualSize" }
+}
+
+infix fun <T, S : Sequence<T>> S.shouldContainSame(expected: Sequence<T>): S =
+        assertBothIterablesContainsSame(expected.toList(), this.toList())
+
+@Deprecated("Use `shouldBeEqualTo`", ReplaceWith("this.shouldBeEqualTo(expected)"))
+infix fun <K, M : Map<K, *>> M.shouldEqual(expected: M): M = shouldBeEqualTo(expected)
+
+infix fun <K, M : Map<K, *>> M.shouldBeEqualTo(expected: M): M = apply { assertMapEquals(this, expected) }
+
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun <K, M : Map<K, *>> M.shouldNotEqual(expected: M): M = shouldNotBeEqualTo(expected)
+
+infix fun <K, M : Map<K, *>> M.shouldNotBeEqualTo(expected: M): M = apply { assertMapNotEquals(this, expected) }
 
 infix fun <K, M : Map<K, *>> M.shouldEqualUnordered(expected: M): M = apply { assertMapEqualsUnordered(this, expected) }
 
@@ -521,7 +725,7 @@ infix fun <K, V, M : Map<K, V>> M.shouldContain(expected: Pair<K, V>): M = apply
 
 infix fun <K, V, M : Map<K, V>> M.shouldContainAll(expected: M): M = apply { expected.forEach { shouldContain(it.toPair()) } }
 
-infix fun <K, V, M : Map<K, V>> M.shouldContainSame(expected: M): M = apply { expected.forEach { shouldContain(it.toPair()); this.forEach { shouldContain(it.toPair()) } } }
+infix fun <K, V, M : Map<K, V>> M.shouldContainSame(expected: M): M = apply { expected.forEach { shouldContain(it.toPair()) }; this.forEach { expected.shouldContain(it.toPair()) } }
 
 infix fun <K, V, M : Map<K, V>> M.shouldNotContain(expected: Pair<K, V>): M = apply { if (this[expected.first] != expected.second) Unit else failExpectedActual("Map should not contain Pair $expected", "the Map to not contain the Pair $expected", joinPairs(this)) }
 
@@ -575,10 +779,15 @@ fun <E> Iterable<E>.shouldMatchAllWith(predicate: (E) -> Boolean): Iterable<E> {
     return this
 }
 
-internal fun <T> assertEmpty(iterable: Iterable<T>, collectionType: String) = assertTrue("Expected the $collectionType to be empty, but has ${iterable.count()} elements", iterable.count() == 0)
-internal fun <T> assertNotEmpty(iterable: Iterable<T>, collectionType: String) = assertTrue("Expected the $collectionType to contain elements, but is empty", iterable.count() > 0)
+internal fun <T> assertEmpty(iterable: Iterable<T>, collectionType: String) {
+    assertTrue(iterable.none()) { "Expected the $collectionType to be empty, but has ${iterable.count()} elements" }
+}
 
-internal fun <T, I : Iterable<T>> I.assertBothIterablesContainsSame(expected: Iterable<T>, actual: Iterable<T>): I {
+internal fun <T> assertNotEmpty(iterable: Iterable<T>, collectionType: String) {
+    assertTrue(iterable.any()) { "Expected the $collectionType to contain elements, but is empty" }
+}
+
+internal fun <T, C> C.assertBothIterablesContainsSame(expected: Iterable<T>, actual: Iterable<T>): C {
     assertBothCollectionsContainsSame(expected.toList(), actual.toList())
     return this
 }

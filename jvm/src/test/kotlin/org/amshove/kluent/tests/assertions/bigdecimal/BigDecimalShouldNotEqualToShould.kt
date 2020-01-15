@@ -1,6 +1,6 @@
 package org.amshove.kluent.tests.assertions.bigdecimal
 
-import org.amshove.kluent.shouldNotEqualTo
+import org.amshove.kluent.shouldNotBeEqualTo
 import org.junit.Test
 import java.math.BigDecimal
 import kotlin.test.assertFails
@@ -11,13 +11,13 @@ class BigDecimalShouldNotEqualToShould {
     fun passWhenComparingUnequalValues() {
         val a = BigDecimal("590125871260891762126")
         val b = BigDecimal("590125871260891762127")
-        a.shouldNotEqualTo(b)
+        a.shouldNotBeEqualTo(b)
     }
 
     @Test
     fun failWhenComparingEqualValues() {
         val a = BigDecimal("590125871260891762126")
         val b = BigDecimal("590125871260891762126")
-        assertFails { a.shouldNotEqualTo(b) }
+        assertFails { a.shouldNotBeEqualTo(b) }
     }
 }

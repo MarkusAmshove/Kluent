@@ -1,3 +1,15 @@
+# 1.59
+* Rename some assertions to keep consistent naming strategy | [Issue](https://github.com/MarkusAmshove/Kluent/issues/96) | [PR](https://github.com/MarkusAmshove/Kluent/pull/172/) | thanks to [@JcMinarro](https://github.com/JcMinarro)
+* Support assertion for sorted collections | [Issue](https://github.com/MarkusAmshove/Kluent/issues/167) | [PR](https://github.com/MarkusAmshove/Kluent/pull/173/) | thanks to [@JcMinarro](https://github.com/JcMinarro)
+# 1.58
+* Fix implementation of `Map.shouldContainSame` to compare all pairs |[Issue](https://github.com/MarkusAmshove/Kluent/issues/170) | [PR](https://github.com/MarkusAmshove/Kluent/pull/171) | thanks to [@Murtaught](https://github.com/Murtaught)
+
+# 1.57
+* Add assertions for sequences | [PR](https://github.com/MarkusAmshove/Kluent/pull/159) | thanks to [@jcornaz](https://github.com/jcornaz)
+* Add `shouldHaveSingleItem` assertions for various arrays | [PR](https://github.com/MarkusAmshove/Kluent/pull/165) | thanks to [@ChristianIvicevic](https://github.com/ChristianIvicevic)
+* Add `shouldContainAny` with lambda predicates | [PR](https://github.com/MarkusAmshove/Kluent/pull/153) | thanks to [@javatarz](https://github.com/javatarz)
+* Various gradle fixes | [PR](https://github.com/MarkusAmshove/Kluent/pull/161) | thanks to [@javatarz](https://github.com/javatarz)
+
 # 1.56
 * Support for validating custom exception values | [PR](https://github.com/MarkusAmshove/Kluent/pull/158) | thanks to [@jeggy](https://github.com/jeggy)
 

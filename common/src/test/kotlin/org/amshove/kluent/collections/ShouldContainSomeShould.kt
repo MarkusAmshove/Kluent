@@ -23,6 +23,24 @@ class ShouldContainSomeShould {
     }
 
     @Test
+    fun passWhenTestingASequenceWhichContainsAtLeastOneElement() {
+        val cities = sequenceOf("Israel", "Berlin", "Phoenix", "Egypt")
+        val actual = sequenceOf("Berlin", "Stuttgart")
+
+        actual shouldContainSome cities
+    }
+
+    @Test
+    fun failWhenTestingASequenceWhichDoesNotContainAtLeastOneElement() {
+
+        val cities = sequenceOf("Israel", "Phoenix", "Egypt")
+        val actual = sequenceOf("Berlin", "Stuttgart")
+
+        assertFails { actual shouldContainSome cities }
+    }
+
+
+    @Test
     fun passWhenTestingIfAListContainsASubsetOfAnArrayWhenItDoes() {
 
         val cities = arrayOf("Israel", "Phoenix", "Berlin", "Egypt")

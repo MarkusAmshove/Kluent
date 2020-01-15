@@ -35,6 +35,23 @@ class ShouldNotContainShould {
     }
 
     @Test
+    fun passWhenTestingASequenceWhichDoesNotContainTheValue() {
+        val alice = Person("Alice", "Bob")
+        val jon = Person("Jon", "Doe")
+        val sequence = sequenceOf(alice)
+        sequence shouldNotContain jon
+    }
+
+    @Test
+    fun failWhenTestingASequenceWhichContainsTheValue() {
+        val alice = Person("Alice", "Bob")
+        val jon = Person("Jon", "Doe")
+        val sequence = sequenceOf(alice, jon)
+        assertFails { sequence shouldNotContain jon }
+    }
+
+
+    @Test
     fun passWhenTestingAMapWhichDoesNotContainAPair() {
         val map = mapOf(1 to "one", 2 to "two")
         map shouldNotContain (1 to "three")

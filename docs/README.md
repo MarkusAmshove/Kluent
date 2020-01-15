@@ -45,14 +45,14 @@ Every method that is included in Kluent also has a "backtick version", to make i
 Some examples:
 
 ### assertEquals ##
-    "hello" shouldEqual "hello"
-    "hello".shouldEqual("hello")
-    "hello" `should equal` "hello"
+    "hello" shouldBeEqualTo "hello"
+    "hello".shouldBeEqualTo("hello")
+    "hello" `should be equal to` "hello"
 
 ### assertNotEquals ##
-    "hello" shouldNotEqual "world"
-    "hello".shouldNotEqual("world")
-    "hello" `should not equal` "world"
+    "hello" shouldNotBeEqualTo "world"
+    "hello".shouldNotBeEqualTo("world")
+    "hello" `should not be equal to` "world"
 
 ## Collections
 

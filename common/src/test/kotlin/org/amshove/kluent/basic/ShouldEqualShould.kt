@@ -1,45 +1,45 @@
 package org.amshove.kluent.basic
 
 import org.amshove.kluent.Person
-import org.amshove.kluent.shouldEqual
+import org.amshove.kluent.shouldBeEqualTo
 import kotlin.test.Test
 import kotlin.test.assertFails
 
 class ShouldEqualShould {
     @Test
     fun passWhenComparingEqualStrings() {
-        "hello world" shouldEqual "hello world"
+        "hello world" shouldBeEqualTo "hello world"
     }
 
     @Test
     fun returnTheTestedInstance() {
         val hello = "hello world"
-        val returnedInstance = hello shouldEqual "hello world"
-        hello shouldEqual returnedInstance
+        val returnedInstance = hello shouldBeEqualTo "hello world"
+        hello shouldBeEqualTo returnedInstance
     }
 
     @Test
     fun failWhenComparingUnequalStrings() {
-        assertFails { "hello world!" shouldEqual "hello" }
+        assertFails { "hello world!" shouldBeEqualTo "hello" }
     }
 
     @Test
     fun failWhenComparingDifferentTypes() {
-        assertFails { "hello world" shouldEqual 5 }
+        assertFails { "hello world" shouldBeEqualTo 5 }
     }
 
     @Test
     fun passWhenCheckingTwoDataObjectsWithSameValues() {
         val firstObject = Person("Jon", "Doe")
         val secondObject = Person("Jon", "Doe")
-        firstObject shouldEqual secondObject
+        firstObject shouldBeEqualTo secondObject
     }
 
     @Test
     fun failWhenCheckingTwoDataObjectsWithDifferentValues() {
         val jane = Person("Jane", "Doe")
         val jon = Person("Jon", "Doe")
-        assertFails { jane shouldEqual jon }
+        assertFails { jane shouldBeEqualTo jon }
     }
 
 }
