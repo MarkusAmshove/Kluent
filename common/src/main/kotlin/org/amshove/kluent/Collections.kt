@@ -550,6 +550,15 @@ infix fun <T : Comparable<T>> ClosedRange<T>.shouldBeInRange(input: ClosedRange<
     )
 }
 
+infix fun <T : Comparable<T>> ClosedRange<T>.shouldNotBeInRange(input: ClosedRange<T>): ClosedRange<T> = apply {
+    if (!(input.start <= this.start && input.endInclusive >= this.endInclusive)) Unit
+    else failExpectedActual(
+            "ClosedRange contain elements of \"$input\"",
+            "the ClosedRange should not contain \"$input\"",
+            "the ClosedRange contains \"$this\""
+    )
+}
+
 fun <E> Iterable<E>.shouldMatchAtLeastOneOf(predicate: (E) -> Boolean): Iterable<E> {
     this.forEach {
         if (predicate(it))
