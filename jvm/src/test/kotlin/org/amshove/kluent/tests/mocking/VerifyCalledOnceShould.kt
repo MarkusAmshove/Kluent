@@ -5,15 +5,16 @@ import org.amshove.kluent.tests.helpclasses.Database
 import kotlin.test.Test
 import kotlin.test.assertFails
 
-class VerifyCalledOnceShould {
+class VerifyUsingTimesShould {
 
     @Test
-    fun passWhenAMethodWasCalledOnlyOnce() {
+    fun passWhenAMethodWasCalledSpecifiedTimes() {
         val mock = mock(Database::class)
         mock.getPerson(1)
-        mock.getPerson(1)
-        Verify times 2 on mock that mock.getPerson(1) was called
-        assertFails { Verify on mock that mock.getPerson(1) was called }
+        mock.getPerson(5)
+        Verify on mock that mock.getPerson(1) was called
+        Verify on mock that mock.getPerson(5) was called
+        Verify times 2 on mock that mock.getPerson(any()) was called
     }
 
     @Test
@@ -25,10 +26,20 @@ class VerifyCalledOnceShould {
     }
 
     @Test
-    fun failWhenTimesThatAMethodWasCalledDoesNotMatch() {
+    fun failWhenAMethodWasCalledLessThanSpecified() {
         val mock = mock(Database::class)
         mock.getPerson(1)
         Verify on mock that mock.getPerson(1) was called
-        assertFails { Verify times 2 on mock that mock.getPerson(1) was called }
+        assertFails { Verify times 2 on mock that mock.getPerson(any()) was called }
+    }
+
+    @Test
+    fun failWhenAMethodWasCalledMoreThanSpecified() {
+        val mock = mock(Database::class)
+        mock.getPerson(1)
+        mock.getPerson(5)
+        Verify on mock that mock.getPerson(1) was called
+        Verify on mock that mock.getPerson(5) was called
+        assertFails { Verify times 1 on mock that mock.getPerson(any()) was called }
     }
 }
