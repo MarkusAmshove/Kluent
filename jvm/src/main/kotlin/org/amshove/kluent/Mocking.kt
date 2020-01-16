@@ -1,9 +1,6 @@
 package org.amshove.kluent
 
-import com.nhaarman.mockitokotlin2.never
-import com.nhaarman.mockitokotlin2.verify
-import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
-import com.nhaarman.mockitokotlin2.verifyZeroInteractions
+import com.nhaarman.mockitokotlin2.*
 import org.mockito.AdditionalAnswers.*
 import org.mockito.Mockito.`when`
 import org.mockito.internal.util.MockUtil
@@ -12,10 +9,16 @@ import org.mockito.stubbing.Answer
 import org.mockito.stubbing.OngoingStubbing
 import kotlin.reflect.KClass
 
+
+
 @Suppress("UNUSED_PARAMETER") // Backward compatibility
 inline fun <reified T : Any> mock(targetClass: KClass<out T>): T = mock()
 
 inline fun <reified T : Any> mock(): T = com.nhaarman.mockitokotlin2.mock()
+
+infix fun VerifyKeyword.times(numInvocations: Int) = OngoingVerification(numInvocations)
+
+infix fun <T> OngoingVerification.on(mock: T) = verify(mock, times(numInvocations))
 
 infix fun <T> VerifyKeyword.on(mock: T) = verify(mock)
 
@@ -87,3 +90,5 @@ class CalledKeyword internal constructor()
 class WhenKeyword internal constructor()
 class VerifyNoInteractionsKeyword internal constructor()
 class VerifyNoFurtherInteractionsKeyword internal constructor()
+
+class OngoingVerification(val numInvocations: Int)
