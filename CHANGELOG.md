@@ -1,3 +1,6 @@
+# 1.60 (WIP)
+* Add `shouldBeInRange` and `shouldNotBeInRange` for ClosedRanges | [Issue](https://github.com/markusamshove/kluent/issues/119) | [PR](https://github.com/markusamshove/kluent/pull/160) | thanks to [@javatarz](https://github.com/javatarz) and [@Kshitij09](https://github.com/Kshitij09)
+
 # 1.59
 * Rename some assertions to keep consistent naming strategy | [Issue](https://github.com/MarkusAmshove/Kluent/issues/96) | [PR](https://github.com/MarkusAmshove/Kluent/pull/172/) | thanks to [@JcMinarro](https://github.com/JcMinarro)
 * Support assertion for sorted collections | [Issue](https://github.com/MarkusAmshove/Kluent/issues/167) | [PR](https://github.com/MarkusAmshove/Kluent/pull/173/) | thanks to [@JcMinarro](https://github.com/JcMinarro)
