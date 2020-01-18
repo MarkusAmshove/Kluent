@@ -37,3 +37,4 @@
 1. Christian Ivicevic - [@ChristianIvicevic](https://github.com/ChristianIvicevic) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=ChristianIvicevic))
 1. Ivan Mikhnovich - [@Murtaught](https://github.com/Murtaught) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=Murtaught))
 1. Jc Miñarro - [@JcMinarro](https://github.com/JcMinarro) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=JcMinarro))
+1. Kshitij Patil [@Kshitij09](https://github.com/Kshitij09) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=Kshitij09))
