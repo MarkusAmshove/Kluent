@@ -1,5 +1,6 @@
-# 1.60 (WIP)
+# 1.60
 * Add `shouldBeInRange` and `shouldNotBeInRange` for ClosedRanges | [Issue](https://github.com/markusamshove/kluent/issues/119) | [PR](https://github.com/markusamshove/kluent/pull/160) | thanks to [@javatarz](https://github.com/javatarz) and [@Kshitij09](https://github.com/Kshitij09)
+* Implement VerificationMode `times` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/49) | [PR](https://github.com/MarkusAmshove/Kluent/pull/174) | thanks to [@Tenkei](https://github.com/Tenkei)
 
 # 1.59
 * Rename some assertions to keep consistent naming strategy | [Issue](https://github.com/MarkusAmshove/Kluent/issues/96) | [PR](https://github.com/MarkusAmshove/Kluent/pull/172/) | thanks to [@JcMinarro](https://github.com/JcMinarro)
