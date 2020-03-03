@@ -144,6 +144,18 @@ class ShouldContainAllShould {
     }
 
     @Test
+    fun passWhenTestingASequenceWhichContainsAllValues() {
+        val sequence = sequenceOf(5, 8, 12)
+        sequence shouldContainAll sequenceOf(12, 8)
+    }
+
+    @Test
+    fun failWhenTestingASequenceWhichDoesNotContainAllValues() {
+        val sequence = sequenceOf(4, 9)
+        assertFails { sequence shouldContainAll sequenceOf(5, 9) }
+    }
+
+    @Test
     fun passWhenTestingAMapWhichContainsAllValues() {
         val map = mapOf('a' to 1, 'b' to 2, 'c' to 3)
         map shouldContainAll mapOf('b' to 2, 'a' to 1)

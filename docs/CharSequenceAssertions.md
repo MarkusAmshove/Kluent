@@ -3,8 +3,8 @@
 The following assertions work with every subtype of `CharSequence` (e.g. `Sring`)
 
 ```kt
-"name" shouldEqualTo "name"
-"name" shouldNotEqualTo "abc"
+"name" shouldBeEqualTo "name"
+"name" shouldNotBeEqualTo "abc"
 
 "name" shouldStartWith "n"
 "age" shouldNotStartWith "n"

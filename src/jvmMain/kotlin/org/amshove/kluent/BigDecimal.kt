@@ -5,11 +5,16 @@ package org.amshove.kluent
 
 import org.amshove.kluent.internal.assertTrue
 import java.math.BigDecimal
+@Deprecated("Use `shouldBeEqualTo`", ReplaceWith("this.shouldBeEqualTo(expected)"))
+infix fun BigDecimal.shouldEqualTo(expected: BigDecimal) = this.shouldBeEqualTo(expected)
 
-infix fun BigDecimal.shouldEqualTo(expected: BigDecimal) =
+infix fun BigDecimal.shouldBeEqualTo(expected: BigDecimal) =
     this.apply { assertTrue("Expected $this to be equal to $expected", this.compareTo(expected) == 0) }
 
-infix fun BigDecimal.shouldNotEqualTo(expected: BigDecimal) =
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun BigDecimal.shouldNotEqualTo(expected: BigDecimal) = shouldNotBeEqualTo(expected)
+
+infix fun BigDecimal.shouldNotBeEqualTo(expected: BigDecimal) =
     this.apply { assertTrue("Expected $this to not be equal to $expected", this.compareTo(expected) != 0) }
 
 infix fun BigDecimal.shouldBeGreaterThan(expected: BigDecimal) =
@@ -63,3 +68,9 @@ infix fun BigDecimal.shouldBeInRange(range: ClosedRange<BigDecimal>) = this.appl
 infix fun BigDecimal.shouldNotBeInRange(range: ClosedRange<BigDecimal>) = this.apply {
     this.shouldNotBeInRange(range.start, range.endInclusive)
 }
+
+fun BigDecimal.shouldBeNear(expected: BigDecimal, delta: BigDecimal) =
+    this.shouldBeInRange(expected - delta, expected + delta)
+
+fun BigDecimal.shouldNotBeNear(expected: BigDecimal, delta: BigDecimal) =
+    this.shouldNotBeInRange(expected - delta, expected + delta)

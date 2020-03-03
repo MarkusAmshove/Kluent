@@ -20,6 +20,20 @@ class ShouldHaveSizeShould {
     }
 
     @Test
+    fun passWhenTestingASequenceWithTheCorrectSize() {
+        val sequence = sequenceOf("First", "valueIchi", "Second", "valueNi")
+        sequence.shouldHaveSize(4)
+    }
+
+    @Test
+    fun failWhenTestingASequenceWithAnIncorrectSize() {
+        val sequence = sequenceOf("First", "valueIchi", "Second", "valueNi")
+        assertFails {
+            sequence.shouldHaveSize(2)
+        }
+    }
+
+    @Test
     fun workWithArrays() {
         val arr = arrayOf(1, 2, 3, 4, 5)
         arr.shouldHaveSize(5)

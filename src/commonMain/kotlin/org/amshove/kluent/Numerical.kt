@@ -4,33 +4,75 @@ import org.amshove.kluent.internal.assertTrue
 import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals
 
-infix fun Boolean.shouldEqualTo(expected: Boolean) = this.apply { assertEquals(expected, this) }
+@Deprecated("Use `shouldBeEqualTo`", ReplaceWith("this.shouldBeEqualTo(expected)"))
+infix fun Boolean.shouldEqualTo(expected: Boolean) = this.shouldBeEqualTo(expected)
 
-infix fun Byte.shouldEqualTo(expected: Byte) = this.apply { assertEquals(expected, this) }
+infix fun Boolean.shouldBeEqualTo(expected: Boolean) = this.apply { assertEquals(expected, this) }
 
-infix fun Short.shouldEqualTo(expected: Short) = this.apply { assertEquals(expected, this) }
+@Deprecated("Use `shouldBeEqualTo`", ReplaceWith("this.shouldBeEqualTo(expected)"))
+infix fun Byte.shouldEqualTo(expected: Byte) = this.shouldBeEqualTo(expected)
 
-infix fun Int.shouldEqualTo(expected: Int) = this.apply { assertEquals(expected, this) }
+infix fun Byte.shouldBeEqualTo(expected: Byte) = this.apply { assertEquals(expected, this) }
 
-infix fun Long.shouldEqualTo(expected: Long) = this.apply { assertEquals(expected, this) }
+@Deprecated("Use `shouldBeEqualTo`", ReplaceWith("this.shouldBeEqualTo(expected)"))
+infix fun Short.shouldEqualTo(expected: Short) = this.shouldBeEqualTo(expected)
 
-infix fun Float.shouldEqualTo(expected: Float) = this.apply { assertEquals(expected, this) }
+infix fun Short.shouldBeEqualTo(expected: Short) = this.apply { assertEquals(expected, this) }
 
-infix fun Double.shouldEqualTo(expected: Double) = this.apply { assertEquals(expected, this) }
+@Deprecated("Use `shouldBeEqualTo`", ReplaceWith("this.shouldBeEqualTo(expected)"))
+infix fun Int.shouldEqualTo(expected: Int) = this.shouldBeEqualTo(expected)
 
-infix fun Boolean.shouldNotEqualTo(expected: Boolean) = this.apply { assertNotEquals(expected, this) }
+infix fun Int.shouldBeEqualTo(expected: Int) = this.apply { assertEquals(expected, this) }
 
-infix fun Byte.shouldNotEqualTo(expected: Byte) = this.apply { assertNotEquals(expected, this) }
+@Deprecated("Use `shouldBeEqualTo`", ReplaceWith("this.shouldBeEqualTo(expected)"))
+infix fun Long.shouldEqualTo(expected: Long) = this.shouldBeEqualTo(expected)
 
-infix fun Short.shouldNotEqualTo(expected: Short) = this.apply { assertNotEquals(expected, this) }
+infix fun Long.shouldBeEqualTo(expected: Long) = this.apply { assertEquals(expected, this) }
 
-infix fun Int.shouldNotEqualTo(expected: Int) = this.apply { assertNotEquals(expected, this) }
+@Deprecated("Use `shouldBeEqualTo`", ReplaceWith("this.shouldBeEqualTo(expected)"))
+infix fun Float.shouldEqualTo(expected: Float) = this.shouldBeEqualTo(expected)
 
-infix fun Long.shouldNotEqualTo(expected: Long) = this.apply { assertNotEquals(expected, this) }
+infix fun Float.shouldBeEqualTo(expected: Float) = this.apply { assertEquals(expected, this) }
 
-infix fun Float.shouldNotEqualTo(expected: Float) = this.apply { assertNotEquals(expected, this) }
+@Deprecated("Use `shouldBeEqualTo`", ReplaceWith("this.shouldBeEqualTo(expected)"))
+infix fun Double.shouldEqualTo(expected: Double) = this.shouldBeEqualTo(expected)
 
-infix fun Double.shouldNotEqualTo(expected: Double) = this.apply { assertNotEquals(expected, this) }
+infix fun Double.shouldBeEqualTo(expected: Double) = this.apply { assertEquals(expected, this) }
+
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun Boolean.shouldNotEqualTo(expected: Boolean) = this.shouldNotBeEqualTo(expected)
+
+infix fun Boolean.shouldNotBeEqualTo(expected: Boolean) = this.apply { assertNotEquals(expected, this) }
+
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun Byte.shouldNotEqualTo(expected: Byte) = this.shouldNotBeEqualTo(expected)
+
+infix fun Byte.shouldNotBeEqualTo(expected: Byte) = this.apply { assertNotEquals(expected, this) }
+
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun Short.shouldNotEqualTo(expected: Short) = this.shouldNotBeEqualTo(expected)
+
+infix fun Short.shouldNotBeEqualTo(expected: Short) = this.apply { assertNotEquals(expected, this) }
+
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun Int.shouldNotEqualTo(expected: Int) = this.shouldNotBeEqualTo(expected)
+
+infix fun Int.shouldNotBeEqualTo(expected: Int) = this.apply { assertNotEquals(expected, this) }
+
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun Long.shouldNotEqualTo(expected: Long) = this.shouldNotBeEqualTo(expected)
+
+infix fun Long.shouldNotBeEqualTo(expected: Long) = this.apply { assertNotEquals(expected, this) }
+
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun Float.shouldNotEqualTo(expected: Float) = this.shouldNotBeEqualTo(expected)
+
+infix fun Float.shouldNotBeEqualTo(expected: Float) = this.apply { assertNotEquals(expected, this) }
+
+@Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
+infix fun Double.shouldNotEqualTo(expected: Double) = this.shouldNotBeEqualTo(expected)
+
+infix fun Double.shouldNotBeEqualTo(expected: Double) = this.apply { assertNotEquals(expected, this) }
 
 infix fun Byte.shouldBeGreaterThan(expected: Byte) = this.apply { assertTrue("Expected $this to be greater than $expected", this > expected) }
 

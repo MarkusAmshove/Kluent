@@ -18,6 +18,12 @@ class ShouldBeEmptyShould {
     }
 
     @Test
+    fun passWhenTestingAnEmptySequence() {
+        val sequence = emptySequence<String>()
+        sequence.shouldBeEmpty()
+    }
+
+    @Test
     fun passWhenTestingAnEmptyMap() {
         val map = mapOf<Int, String>()
         map.shouldBeEmpty()
@@ -31,6 +37,11 @@ class ShouldBeEmptyShould {
     @Test
     fun failWhenTestingANonEmptyIterable() {
         assertFails { listOf("Hi").shouldBeEmpty() }
+    }
+
+    @Test
+    fun failWhenTestingANonEmptySequence() {
+        assertFails { sequenceOf("Hi").shouldBeEmpty() }
     }
 
     @Test
