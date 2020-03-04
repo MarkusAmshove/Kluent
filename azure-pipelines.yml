@@ -14,7 +14,7 @@ jobs:
       jdkArchitectureOption: 'x64'
       publishJUnitResults: true
       testResultsFiles: '**/TEST-*.xml'
-      tasks: 'build'
+      tasks: 'check'
 - job: Windows
   displayName: Windows x64
   pool:
@@ -30,7 +30,7 @@ jobs:
       jdkArchitectureOption: 'x64'
       publishJUnitResults: true
       testResultsFiles: '**/TEST-*.xml'
-      tasks: 'build'
+      tasks: 'check'
 - job: MacOS
   displayName: MacOS
   pool:
@@ -46,4 +46,4 @@ jobs:
       jdkArchitectureOption: 'x64'
       publishJUnitResults: true
       testResultsFiles: '**/TEST-*.xml'
-      tasks: 'build'
+      tasks: 'check'
