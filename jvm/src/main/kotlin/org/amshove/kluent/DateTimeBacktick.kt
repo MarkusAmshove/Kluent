@@ -93,3 +93,7 @@ infix fun LocalDateTime.`should be`(timeComparator: TimeComparator) = this.shoul
 infix fun LocalDateTime.`should be at least`(timeComparator: TimeComparator) = this.shouldBeAtLeast(timeComparator)
 
 infix fun LocalDateTime.`should be at most`(timeComparator: TimeComparator) = this.shouldBeAtMost(timeComparator)
+
+infix fun Instant.`should be after`(expected: Instant) = this.shouldBeAfter(expected)
+
+infix fun Instant.`should be before`(expected: Instant) = this.shouldBeBefore(expected)
