@@ -1,3 +1,6 @@
+# 1.61
+* Add `shouldBeAfter` and `shouldBeBefore` for `Instant` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/175) | [PR](https://github.com/MarkusAmshove/Kluent/pull/176) | thanks to [@samneirinck](https://github.com/samneirinck)
+
 # 1.60
 * Add `shouldBeInRange` and `shouldNotBeInRange` for ClosedRanges | [Issue](https://github.com/markusamshove/kluent/issues/119) | [PR](https://github.com/markusamshove/kluent/pull/160) | thanks to [@javatarz](https://github.com/javatarz) and [@Kshitij09](https://github.com/Kshitij09)
 * Implement VerificationMode `times` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/49) | [PR](https://github.com/MarkusAmshove/Kluent/pull/174) | thanks to [@Tenkei](https://github.com/Tenkei)
