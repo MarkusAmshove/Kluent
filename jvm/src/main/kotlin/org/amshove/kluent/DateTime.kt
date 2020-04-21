@@ -116,3 +116,7 @@ internal enum class ComparatorType {
     AtLeast,
     Exactly
 }
+
+infix fun Instant.shouldBeAfter(expected: Instant) = assertTrue("Expected $this to be after $expected", this > expected)
+
+infix fun Instant.shouldBeBefore(expected: Instant) = assertTrue("Expected $this to be before $expected", this < expected)
