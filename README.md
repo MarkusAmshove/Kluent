@@ -42,6 +42,9 @@ dependencies {
 
     // for Android:
     testImplementation 'org.amshove.kluent:kluent-android:{version}'
+
+    // To get JUnit errors from kotlin.test, to e.g. enable diff windows in failure messages
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
 }
 ```
 
