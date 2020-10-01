@@ -22,6 +22,21 @@ class ShouldBeNearShould {
     }
 
     @Test
+    fun passWhenTestingADoubleWhichIsEqualToExpectedAndNan() {
+        Double.NaN.shouldBeNear(Double.NaN, 0.1)
+    }
+
+    @Test
+    fun passWhenTestingADoubleWhichIsEqualToExpectedAndInfinite() {
+        Double.POSITIVE_INFINITY.shouldBeNear(Double.POSITIVE_INFINITY, 0.1)
+    }
+
+    @Test
+    fun passWhenTestingADoubleWhichIsEqualToExpectedAndNegativeInfinite() {
+        Double.NEGATIVE_INFINITY.shouldBeNear(Double.NEGATIVE_INFINITY, 0.1)
+    }
+
+    @Test
     fun failWhenTestingADoubleWhichIsAboveTheBound() {
         assertFails {
             (5.7).shouldBeNear(5.5, 0.1)
@@ -48,6 +63,21 @@ class ShouldBeNearShould {
     @Test
     fun passWhenTestingAFloatWhichIsTheUpperBound() {
         (5.6f).shouldBeNear(5.5f, 0.1f)
+    }
+
+    @Test
+    fun passWhenTestingAFloatWhichIsEqualToExpectedAndNan() {
+        Float.NaN.shouldBeNear(Float.NaN, 0.1f)
+    }
+
+    @Test
+    fun passWhenTestingAFloatWhichIsEqualToExpectedAndInfinite() {
+        Float.POSITIVE_INFINITY.shouldBeNear(Float.POSITIVE_INFINITY, 0.1f)
+    }
+
+    @Test
+    fun passWhenTestingAFloatWhichIsEqualToExpectedAndNegativeInfinite() {
+        Float.NEGATIVE_INFINITY.shouldBeNear(Float.NEGATIVE_INFINITY, 0.1f)
     }
 
     @Test
