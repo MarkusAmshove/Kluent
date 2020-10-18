@@ -1,4 +1,6 @@
 apply plugin: 'kotlin-platform-jvm'
+apply plugin: 'jacoco'
+apply plugin: 'org.sonarqube'
 
 def isAndroid = project.rootProject.hasProperty("ANDROID")
 if(isAndroid) {
@@ -62,5 +64,21 @@ tasks.withType(compileKotlin.getClass()) {
         freeCompilerArgs += [
                 '-Xuse-experimental=kotlin.Experimental'
         ]
+    }
+}
+
+sonarqube {
+    properties {
+        property 'sonar.coverage.exclusions', '**/*Backtick.kt'
+        property 'sonar.projectKey', 'MarkusAmshove_Kluent'
+        property 'sonar.organization', 'markusamshove'
+        property 'sonar.host.url', 'https://sonarcloud.io'
+    }
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled true
     }
 }

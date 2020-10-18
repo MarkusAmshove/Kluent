@@ -14,6 +14,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-native-gradle-plugin:$kotlin_native_gradle_plugin_version"
         classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.+"
         classpath 'com.adarshr:gradle-test-logger-plugin:1.6.0'
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.0"
     }
 }
 
@@ -62,6 +63,7 @@ subprojects {
             classifier = 'sources'
             from sourceSets.main.allSource
         }
+
 
         artifacts {
             archives sourcesJar
