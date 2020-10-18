@@ -1,3 +1,7 @@
+# 1.62
+* Make shouldBeNear to consider NaN as being near itself | [PR](https://github.com/MarkusAmshove/Kluent/pull/179) | thanks to [@jcornaz](https://github.com/jcornaz)
+* Make the shouldBeLess/Greater family of assertion accept anything comparable | [PR](https://github.com/MarkusAmshove/Kluent/pull/180) | thanks to [@jcornaz](https://github.com/jcornaz)
+
 # 1.61
 * Add `shouldBeAfter` and `shouldBeBefore` for `Instant` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/175) | [PR](https://github.com/MarkusAmshove/Kluent/pull/176) | thanks to [@samneirinck](https://github.com/samneirinck)
 
