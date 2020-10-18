@@ -33,6 +33,3 @@ jobs:
 
       - name: Build JS
         run: ./gradlew build -PJS
-
-      - name: Build Native
-        run: ./gradlew build -PNATIVE
