@@ -134,7 +134,7 @@ infix fun Short.shouldBeInRange(range: IntRange) = this.apply { (this.toInt()).s
 
 infix fun Int.shouldBeInRange(range: IntRange) = this.apply { this.shouldBeInRange(range.first, range.last) }
 
-infix fun Double.shouldBeInRange(range: ClosedFloatingPointRange<Double>) = this.assertIsInFloatingRange(range)
+infix fun <T : Comparable<T>> T.shouldBeInRange(range: ClosedFloatingPointRange<T>) = this.assertIsInFloatingRange(range)
 
 infix fun <T : Comparable<T>> T.shouldBeInRange(range: ClosedRange<T>) = this.assertIsInFloatingRange(range)
 
@@ -146,7 +146,7 @@ infix fun Short.shouldNotBeInRange(range: IntRange) = this.apply { (this.toInt()
 
 infix fun Int.shouldNotBeInRange(range: IntRange) = this.apply { this.shouldNotBeInRange(range.first, range.last) }
 
-infix fun Double.shouldNotBeInRange(range: ClosedFloatingPointRange<Double>) = this.assertIsNotInFloatingRange(range)
+infix fun <T : Comparable<T>> T.shouldNotBeInRange(range: ClosedFloatingPointRange<T>) = this.assertIsNotInFloatingRange(range)
 
 infix fun <T : Comparable<T>> T.shouldNotBeInRange(range: ClosedRange<T>) = this.assertIsNotInFloatingRange(range)
 

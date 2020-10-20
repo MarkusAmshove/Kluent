@@ -72,101 +72,22 @@ infix fun Double.`should not equal to`(expected: Double) = this.`should not be e
 
 infix fun Double.`should not be equal to`(expected: Double) = this.shouldNotBeEqualTo(expected)
 
-infix fun Byte.`should be greater than`(expected: Byte) = this.shouldBeGreaterThan(expected)
 
-infix fun Short.`should be greater than`(expected: Short) = this.shouldBeGreaterThan(expected)
+infix fun <T : Comparable<T>> T.`should be greater than`(expected: T) = this.shouldBeGreaterThan(expected)
 
-infix fun Int.`should be greater than`(expected: Int) = this.shouldBeGreaterThan(expected)
+infix fun <T : Comparable<T>> T.`should not be greater than`(expected: T) = this.shouldBeGreaterThan(expected)
 
-infix fun Long.`should be greater than`(expected: Long) = this.shouldBeGreaterThan(expected)
+infix fun <T : Comparable<T>> T.`should be greater or equal to`(expected: T) = this.shouldBeGreaterOrEqualTo(expected)
 
-infix fun Float.`should be greater than`(expected: Float) = this.shouldBeGreaterThan(expected)
+infix fun <T : Comparable<T>> T.`should not be greater or equal to`(expected: T) = this.shouldNotBeGreaterOrEqualTo(expected)
 
-infix fun Double.`should be greater than`(expected: Double) = this.shouldBeGreaterThan(expected)
+infix fun <T : Comparable<T>> T.`should be less than`(expected: T) = this.shouldBeLessThan(expected)
 
-infix fun Byte.`should not be greater than`(expected: Byte) = this.shouldNotBeGreaterThan(expected)
+infix fun <T : Comparable<T>> T.`should not be less than`(expected: T) = this.shouldNotBeLessThan(expected)
 
-infix fun Short.`should not be greater than`(expected: Short) = this.shouldNotBeGreaterThan(expected)
+infix fun <T : Comparable<T>> T.`should be less or equal to`(expected: T) = this.shouldBeLessOrEqualTo(expected)
 
-infix fun Int.`should not be greater than`(expected: Int) = this.shouldNotBeGreaterThan(expected)
-
-infix fun Long.`should not be greater than`(expected: Long) = this.shouldNotBeGreaterThan(expected)
-
-infix fun Float.`should not be greater than`(expected: Float) = this.shouldNotBeGreaterThan(expected)
-
-infix fun Double.`should not be greater than`(expected: Double) = this.shouldNotBeGreaterThan(expected)
-
-infix fun Byte.`should be greater or equal to`(expected: Byte) = this.shouldBeGreaterOrEqualTo(expected)
-
-infix fun Short.`should be greater or equal to`(expected: Short) = this.shouldBeGreaterOrEqualTo(expected)
-
-infix fun Int.`should be greater or equal to`(expected: Int) = this.shouldBeGreaterOrEqualTo(expected)
-
-infix fun Long.`should be greater or equal to`(expected: Long) = this.shouldBeGreaterOrEqualTo(expected)
-
-infix fun Float.`should be greater or equal to`(expected: Float) = this.shouldBeGreaterOrEqualTo(expected)
-
-infix fun Double.`should be greater or equal to`(expected: Double) = this.shouldBeGreaterOrEqualTo(expected)
-
-infix fun Byte.`should not be greater or equal to`(expected: Byte) = this.shouldNotBeGreaterOrEqualTo(expected)
-
-infix fun Short.`should not be greater or equal to`(expected: Short) = this.shouldNotBeGreaterOrEqualTo(expected)
-
-infix fun Int.`should not be greater or equal to`(expected: Int) = this.shouldNotBeGreaterOrEqualTo(expected)
-
-infix fun Long.`should not be greater or equal to`(expected: Long) = this.shouldNotBeGreaterOrEqualTo(expected)
-
-infix fun Float.`should not be greater or equal to`(expected: Float) = this.shouldNotBeGreaterOrEqualTo(expected)
-
-infix fun Double.`should not be greater or equal to`(expected: Double) = this.shouldNotBeGreaterOrEqualTo(expected)
-
-infix fun Byte.`should be less than`(expected: Byte) = this.shouldBeLessThan(expected)
-
-infix fun Short.`should be less than`(expected: Short) = this.shouldBeLessThan(expected)
-
-infix fun Int.`should be less than`(expected: Int) = this.shouldBeLessThan(expected)
-
-infix fun Long.`should be less than`(expected: Long) = this.shouldBeLessThan(expected)
-
-infix fun Float.`should be less than`(expected: Float) = this.shouldBeLessThan(expected)
-
-infix fun Double.`should be less than`(expected: Double) = this.shouldBeLessThan(expected)
-
-infix fun Byte.`should not be less than`(expected: Byte) = this.shouldNotBeLessThan(expected)
-
-infix fun Short.`should not be less than`(expected: Short) = this.shouldNotBeLessThan(expected)
-
-infix fun Int.`should not be less than`(expected: Int) = this.shouldNotBeLessThan(expected)
-
-infix fun Long.`should not be less than`(expected: Long) = this.shouldNotBeLessThan(expected)
-
-infix fun Float.`should not be less than`(expected: Float) = this.shouldNotBeLessThan(expected)
-
-infix fun Double.`should not be less than`(expected: Double) = this.shouldNotBeLessThan(expected)
-
-infix fun Byte.`should be less or equal to`(expected: Byte) = this.shouldBeLessOrEqualTo(expected)
-
-infix fun Short.`should be less or equal to`(expected: Short) = this.shouldBeLessOrEqualTo(expected)
-
-infix fun Int.`should be less or equal to`(expected: Int) = this.shouldBeLessOrEqualTo(expected)
-
-infix fun Long.`should be less or equal to`(expected: Long) = this.shouldBeLessOrEqualTo(expected)
-
-infix fun Float.`should be less or equal to`(expected: Float) = this.shouldBeLessOrEqualTo(expected)
-
-infix fun Double.`should be less or equal to`(expected: Double) = this.shouldBeLessOrEqualTo(expected)
-
-infix fun Byte.`should not be less or equal to`(expected: Byte) = this.shouldNotBeLessOrEqualTo(expected)
-
-infix fun Short.`should not be less or equal to`(expected: Short) = this.shouldNotBeLessOrEqualTo(expected)
-
-infix fun Int.`should not be less or equal to`(expected: Int) = this.shouldNotBeLessOrEqualTo(expected)
-
-infix fun Long.`should not be less or equal to`(expected: Long) = this.shouldNotBeLessOrEqualTo(expected)
-
-infix fun Float.`should not be less or equal to`(expected: Float) = this.shouldNotBeLessOrEqualTo(expected)
-
-infix fun Double.`should not be less or equal to`(expected: Double) = this.shouldNotBeLessOrEqualTo(expected)
+infix fun <T : Comparable<T>> T.`should not be less or equal to`(expected: T) = this.shouldNotBeLessOrEqualTo(expected)
 
 fun Byte.`should be positive`() = this.shouldBePositive()
 
@@ -196,29 +117,9 @@ fun Float.`should be near`(expected: Float, delta: Float) = this.shouldBeNear(ex
 
 fun Double.`should be near`(expected: Double, delta: Double) = this.shouldBeNear(expected, delta)
 
-fun Byte.`should be in range`(lowerBound: Byte, upperBound: Byte) = this.shouldBeInRange(lowerBound, upperBound)
+fun <T : Comparable<T>> T.`should be in range`(lowerBound: T, upperBound: T) = this.shouldBeInRange(lowerBound, upperBound)
 
-fun Short.`should be in range`(lowerBound: Short, upperBound: Short) = this.shouldBeInRange(lowerBound, upperBound)
-
-fun Int.`should be in range`(lowerBound: Int, upperBound: Int) = this.shouldBeInRange(lowerBound, upperBound)
-
-fun Long.`should be in range`(lowerBound: Long, upperBound: Long) = this.shouldBeInRange(lowerBound, upperBound)
-
-fun Float.`should be in range`(lowerBound: Float, upperBound: Float) = this.shouldBeInRange(lowerBound, upperBound)
-
-fun Double.`should be in range`(lowerBound: Double, upperBound: Double) = this.shouldBeInRange(lowerBound, upperBound)
-
-fun Byte.`should not be in range`(lowerBound: Byte, upperBound: Byte) = this.shouldNotBeInRange(lowerBound, upperBound)
-
-fun Short.`should not be in range`(lowerBound: Short, upperBound: Short) = this.shouldNotBeInRange(lowerBound, upperBound)
-
-fun Int.`should not be in range`(lowerBound: Int, upperBound: Int) = this.shouldNotBeInRange(lowerBound, upperBound)
-
-fun Long.`should not be in range`(lowerBound: Long, upperBound: Long) = this.shouldNotBeInRange(lowerBound, upperBound)
-
-fun Float.`should not be in range`(lowerBound: Float, upperBound: Float) = this.shouldNotBeInRange(lowerBound, upperBound)
-
-fun Double.`should not be in range`(lowerBound: Double, upperBound: Double) = this.shouldNotBeInRange(lowerBound, upperBound)
+fun <T : Comparable<T>> T.`should not be in range`(lowerBound: T, upperBound: T) = this.shouldNotBeInRange(lowerBound, upperBound)
 
 infix fun Byte.`should be in range`(range: IntRange) = this.shouldBeInRange(range)
 
@@ -235,3 +136,8 @@ infix fun Short.`should not be in range`(range: IntRange) = this.shouldNotBeInRa
 infix fun Int.`should not be in range`(range: IntRange) = this.shouldNotBeInRange(range)
 
 infix fun Long.`should not be in range`(range: LongRange) = this.shouldNotBeInRange(range)
+
+infix fun <T : Comparable<T>> T.`should be in range`(range: ClosedRange<T>) = this.shouldBeInRange(range)
+infix fun <T : Comparable<T>> T.`should not be in range`(range: ClosedRange<T>) = this.shouldNotBeInRange(range)
+infix fun <T : Comparable<T>> T.`should be in range`(range: ClosedFloatingPointRange<T>) = this.shouldBeInRange(range)
+infix fun <T : Comparable<T>> T.`should not be in range`(range: ClosedFloatingPointRange<T>) = this.shouldNotBeInRange(range)
