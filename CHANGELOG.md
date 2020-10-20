@@ -1,3 +1,6 @@
+# 1.63
+* Make numerical backtick assertions accept Comparable | [Issue](https://github.com/MarkusAmshove/Kluent/issues/182) | [PR](https://github.com/MarkusAmshove/Kluent/pull/183) | thanks to [@CiprianU](https://github.com/CiprianU)
+
 # 1.62
 * Make shouldBeNear to consider NaN as being near itself | [PR](https://github.com/MarkusAmshove/Kluent/pull/179) | thanks to [@jcornaz](https://github.com/jcornaz)
 * Make the shouldBeLess/Greater family of assertion accept anything comparable | [PR](https://github.com/MarkusAmshove/Kluent/pull/180) | thanks to [@jcornaz](https://github.com/jcornaz)
