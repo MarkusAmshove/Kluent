@@ -3,6 +3,7 @@
 [![Changelog](https://img.shields.io/badge/docs-changelog-blue.svg)](https://github.com/MarkusAmshove/Kluent/blob/master/CHANGELOG.md)
 [![Documentation](https://img.shields.io/badge/docs-documentation-blue.svg)](https://markusamshove.github.io/Kluent/)
 [![Contributors](https://img.shields.io/badge/docs-contributors-blue.svg)](https://github.com/MarkusAmshove/Kluent/blob/master/AUTHORS.md)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=MarkusAmshove_Kluent&metric=alert_status)](https://sonarcloud.io/dashboard?id=MarkusAmshove_Kluent)
 
 [Kluent](https://markusamshove.github.io/Kluent/) is a "Fluent Assertions" library written specifically for Kotlin.
 
@@ -12,13 +13,6 @@ It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.ht
 
 
 [ ![Download](https://api.bintray.com/packages/markusamshove/maven/kluent/images/download.svg) ](https://bintray.com/markusamshove/maven/kluent/_latestVersion)
-
-
-| Platform  | Status  |
-|     ---       |  ---    |
-| MacOS / Linux |   [![Build Status](https://travis-ci.org/MarkusAmshove/Kluent.svg?branch=master)](https://travis-ci.org/MarkusAmshove/Kluent)            |
-| Windows       |  [![Build status](https://ci.appveyor.com/api/projects/status/c8j2nkwb5nc8b55a?svg=true)](https://ci.appveyor.com/project/magges/kluent) |
-
 
 ----------
 
