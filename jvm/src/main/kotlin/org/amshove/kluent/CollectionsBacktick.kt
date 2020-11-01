@@ -407,3 +407,10 @@ infix fun CharArray.`should match all with`(predicate: (Char) -> Boolean): CharA
 infix fun IntArray.`should match all with`(predicate: (Int) -> Boolean): IntArray {
     return shouldMatchAllWith(predicate)
 }
+
+@ExperimentalStdlibApi
+fun <T: Any, I: Iterable<T>> I.`should be equivalent to`(expected: Iterable<T>, config: ((EquivalencyAssertionOptions) -> EquivalencyAssertionOptions)? = null) = this.shouldBeEquivalentTo(expected, config)
+
+@ExperimentalStdlibApi
+fun <T: Any, I: Iterable<T>> I.`should not be equivalent to`(expected: Iterable<T>, config: ((EquivalencyAssertionOptions) -> EquivalencyAssertionOptions)? = null) = this.shouldNotBeEquivalentTo(expected, config)
+
