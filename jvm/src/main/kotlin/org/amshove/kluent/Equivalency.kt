@@ -267,7 +267,7 @@ private fun <T : Any> assertBothCollectionsEquivalency(not: Boolean = false, exp
                 actualList[i].toStructuredString(0, actualStructure)
                 expectedList[i].toStructuredString(0, expectedStructure)
             }
-            fail("Are ${if (not) { "not" } else { "" } }equivalent:", expectedStructure.toString(), actualStructure.toString())
+            fail("Are ${if (!not) { "not " } else { "" } }equivalent:", expectedStructure.toString(), actualStructure.toString())
         }
     }
 }
