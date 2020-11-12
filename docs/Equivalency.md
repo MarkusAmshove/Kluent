@@ -164,7 +164,7 @@ Another example using excluding:
 ```
 Here the assertion will pass, as the persons property is excluded - therefore, only the name is compared.
 
-###excludingNestedObjects
+### excludingNestedObjects
 
 If you do not want to compare the nested objects and only limit it by the top level object in your hierarchy:
 ```kt
@@ -191,12 +191,12 @@ If you do not want to compare the nested objects and only limit it by the top le
 ```
 In this case only the properties of [primitive types](https://kotlinlang.org/docs/tutorials/kotlin-for-py/primitive-data-types-and-their-limitations.html) and strings are compared.
 
-###allowingInfiniteRecursion
+### allowingInfiniteRecursion
 
 The default level of recurrsion in the equivalency assertions is 10. That means, if your object hierarchy contains more than 10 nested objects, even if on the 11th level some object properties are not the same, but everything before that level passed comparision, the assertion will also pass.
 Using allowingInfiniteRecursion() you can instruct the Kluent to perform infinite recursion.
 
-###withStrictOrdering
+### withStrictOrdering
 
 By default, if you compare lists of objects, the order they appear in such lists is not important. But if you need to verify also the order, you can use withStrictOrdering:
 ```kt
