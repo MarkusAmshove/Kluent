@@ -38,7 +38,7 @@ It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.ht
 
 [Define own assertions](DefineOwn.md)
 
-[Equivalency assertions] (Equivalency.md)
+[Equivalency assertions](Equivalency.md)
 
 ## Using backticks
 
