@@ -1,3 +1,6 @@
+# 1.64
+* Add shouldBeEquivalentTo and shouldNotBeEquivalentTo | [Docs](https://github.com/MarkusAmshove/Kluent/blob/master/docs/Equivalency.md) | [PR](https://github.com/MarkusAmshove/Kluent/pull/184) | thanks to [@drcolombo](https://github.com/drcolombo)
+
 # 1.63
 * Make numerical backtick assertions accept Comparable | [Issue](https://github.com/MarkusAmshove/Kluent/issues/182) | [PR](https://github.com/MarkusAmshove/Kluent/pull/183) | thanks to [@CiprianU](https://github.com/CiprianU)
 
