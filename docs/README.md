@@ -38,6 +38,8 @@ It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.ht
 
 [Define own assertions](DefineOwn.md)
 
+[Equivalency assertions](Equivalency.md)
+
 ## Using backticks
 
 Every method that is included in Kluent also has a "backtick version", to make it feel more like a describing sentence.
