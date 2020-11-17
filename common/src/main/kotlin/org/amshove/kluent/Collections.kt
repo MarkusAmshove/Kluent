@@ -3,7 +3,6 @@ package org.amshove.kluent
 import org.amshove.kluent.internal.*
 import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals
-import kotlin.test.fail
 
 infix fun <T> Array<T>.shouldContain(expected: T) = apply { if (this.contains(expected)) Unit else failExpectedActual("Array doesn't contain \"$expected\"", "the Array to contain \"$expected\"", join(this)) }
 

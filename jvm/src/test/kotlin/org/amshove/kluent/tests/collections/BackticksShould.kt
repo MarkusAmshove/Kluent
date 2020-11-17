@@ -1,6 +1,6 @@
 package org.amshove.kluent.tests.collections
 
-import org.amshove.kluent.Person
+import org.amshove.kluent.tests.Person
 import org.amshove.kluent.`should match at least one of`
 import kotlin.test.Test
 

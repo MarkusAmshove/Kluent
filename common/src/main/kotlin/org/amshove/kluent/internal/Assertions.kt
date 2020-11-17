@@ -1,15 +1,34 @@
 package org.amshove.kluent.internal
 
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
-import kotlin.test.fail
+import org.amshove.kluent.*
 
 internal fun assertTrue(message: String, boolean: Boolean) = assertTrue(boolean, message)
-internal inline fun assertTrue(boolean: Boolean, lazyMessage: () -> String) {
-    if (!boolean) fail(lazyMessage())
+internal fun assertTrue(actual: Boolean, message: String? = null) {
+    if (!actual) {
+        if (errorCollector.getCollectionMode() == ErrorCollectionMode.Soft) {
+            try {
+                throw AssertionError(message)
+            } catch (ex: AssertionError) {
+                errorCollector.pushError(ex)
+            }
+        } else {
+            try {
+                throw AssertionError(message)
+            } catch (ex: AssertionError) {
+                throw assertionError(ex)
+            }
+        }
+    }
+}
+
+internal inline fun assertTrue(actual: Boolean, lazyMessage: () -> String) {
+    assertTrue(actual, lazyMessage())
 }
 
 internal fun assertFalse(message: String, boolean: Boolean) = assertFalse(boolean, message)
+fun assertFalse(actual: Boolean, message: String? = null) {
+    return assertTrue(message ?: "Expected value to be false.", !actual)
+}
 
 internal fun <T> assertArrayEquals(a1: Array<T>?, a2: Array<T>?) {
     if (!arraysEqual(a1, a2)) {
@@ -86,8 +105,8 @@ internal fun failExpectedActual(message: String, expected: String?, actual: Stri
 
 internal fun failCollectionWithDifferentItems(message: String, expected: String?, actual: String?): Nothing = fail("""
     |$message
-    |${ if(!expected.isNullOrEmpty()) "Items included on the expected collection but not in the actual: $expected" else "" }
-    |${ if(!actual.isNullOrEmpty()) "Items included on the actual collection but not in the expected: $actual" else "" }
+    |${if (!expected.isNullOrEmpty()) "Items included on the expected collection but not in the actual: $expected" else ""}
+    |${if (!actual.isNullOrEmpty()) "Items included on the actual collection but not in the expected: $actual" else ""}
 """.trimMargin())
 
 internal fun failFirstSecond(message: String, first: String?, second: String?): Nothing = fail("""
@@ -104,4 +123,3 @@ fun assertSame(expected: Any?, actual: Any?) {
 fun assertNotSame(expected: Any?, actual: Any?) {
     assertTrue("Expected <$expected>, actual <$actual> are the same instance.", actual !== expected)
 }
-
