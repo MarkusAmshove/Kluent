@@ -6,8 +6,6 @@ enum class ErrorCollectionMode {
     Soft, Hard
 }
 
-typealias Clue = () -> String
-
 interface ErrorCollector {
 
     fun getCollectionMode(): ErrorCollectionMode
@@ -28,39 +26,18 @@ interface ErrorCollector {
      * Clears all errors from the current context.
      */
     fun clear()
-
-    fun pushClue(clue: Clue)
-
-    fun popClue()
-
-    /**
-     * Returns the current clue context.
-     * That is all the clues nested to this point.
-     */
-    fun clueContext(): List<Clue>
 }
 
 open class BasicErrorCollector : ErrorCollector {
 
     private val failures = mutableListOf<Throwable>()
     private var mode = ErrorCollectionMode.Hard
-    private val clues = mutableListOf<Clue>()
 
     override fun getCollectionMode(): ErrorCollectionMode = mode
 
     override fun setCollectionMode(mode: ErrorCollectionMode) {
         this.mode = mode
     }
-
-    override fun pushClue(clue: Clue) {
-        clues.add(0, clue)
-    }
-
-    override fun popClue() {
-        clues.removeAt(0)
-    }
-
-    override fun clueContext(): List<Clue> = clues.toList()
 
     override fun pushError(t: Throwable) {
         failures.add(t)
@@ -69,10 +46,6 @@ open class BasicErrorCollector : ErrorCollector {
     override fun errors(): List<Throwable> = failures.toList()
 
     override fun clear() = failures.clear()
-}
-
-fun clueContextAsString() = errorCollector.clueContext().let {
-    if (it.isEmpty()) "" else it.joinToString("\n", postfix = "\n") { f -> f.invoke() }
 }
 
 /**

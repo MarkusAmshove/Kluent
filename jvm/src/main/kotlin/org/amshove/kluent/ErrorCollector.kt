@@ -2,15 +2,9 @@
 
 package org.amshove.kluent
 
-import java.util.*
-
 actual val errorCollector: ErrorCollector = ThreadLocalErrorCollector
 
 object ThreadLocalErrorCollector : ErrorCollector {
-
-    private val clueContext = object : ThreadLocal<Stack<Clue>>() {
-        override fun initialValue(): Stack<Clue> = Stack()
-    }
 
     private val failures = object : ThreadLocal<MutableList<Throwable>>() {
         override fun initialValue(): MutableList<Throwable> = mutableListOf()
@@ -23,16 +17,6 @@ object ThreadLocalErrorCollector : ErrorCollector {
     override fun setCollectionMode(mode: ErrorCollectionMode) = collectionMode.set(mode)
 
     override fun getCollectionMode(): ErrorCollectionMode = collectionMode.get()
-
-    override fun pushClue(clue: Clue) {
-        clueContext.get().push(clue)
-    }
-
-    override fun popClue() {
-        clueContext.get().pop()
-    }
-
-    override fun clueContext(): List<Clue> = clueContext.get()
 
     override fun errors(): List<Throwable> = failures.get().toList()
 
