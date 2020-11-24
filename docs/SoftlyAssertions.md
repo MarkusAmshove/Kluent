@@ -151,9 +151,9 @@ Now we get all assertions at once:
 *org.amshove.kluent.MultiAssertionError:*
 *The following 2 assertions failed:*
 *1) Expected <2>, actual <3>.*
-*	at org.amshove.kluent.tests.assertions.softly.AssertSoftly.houseTest(AssertSoftly.kt:147)*
+	*at org.amshove.kluent.tests.assertions.softly.AssertSoftly.houseTest(AssertSoftly.kt:147)*
 *2) Expected <6>, actual <5>.*
-*	at org.amshove.kluent.tests.assertions.softly.AssertSoftly.houseTest(AssertSoftly.kt:148)*
+	*at org.amshove.kluent.tests.assertions.softly.AssertSoftly.houseTest(AssertSoftly.kt:148)*
 
 If you like, you can use a bit different syntax achieving the same result:
 ```kt
