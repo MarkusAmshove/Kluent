@@ -1,20 +1,19 @@
 package org.amshove.kluent.tests.basic
 
-import org.amshove.kluent.shouldNotBe
+import org.amshove.kluent.internal.assertFails
 import org.amshove.kluent.shouldNotBeNull
 import kotlin.test.Test
-import kotlin.test.assertFails
 
 class ShouldNotBeNullShould {
     @Test
     fun passWhenPassingNonNullReference() {
-        val str: String? = "Hello"
+        val str = "Hello"
         str.shouldNotBeNull()
     }
 
     @Test
     fun returnANonNullableInstance() {
-        val str: String? = "Hello"
+        val str = "Hello"
         val nonNullable: String = str.shouldNotBeNull()
         nonNullable.shouldNotBeNull()
     }
@@ -27,7 +26,7 @@ class ShouldNotBeNullShould {
 
     @Test
     fun passWhenPassingNonNullableType() {
-        val str: String = "Hello"
+        val str = "Hello"
         str.shouldNotBeNull()
     }
 }

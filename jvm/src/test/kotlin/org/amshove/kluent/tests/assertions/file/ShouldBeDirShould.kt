@@ -1,10 +1,10 @@
 package org.amshove.kluent.tests.assertions.file
 
+import org.amshove.kluent.internal.assertFails
 import org.amshove.kluent.shouldBeDir
 import org.junit.Before
 import org.junit.Test
 import java.io.File
-import kotlin.test.assertFails
 
 class ShouldBeDirShould {
     lateinit var dir: File

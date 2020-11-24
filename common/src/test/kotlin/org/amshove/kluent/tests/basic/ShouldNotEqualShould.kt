@@ -1,10 +1,10 @@
 package org.amshove.kluent.tests.basic
 
+import org.amshove.kluent.internal.assertFails
 import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldNotBeEqualTo
 import org.amshove.kluent.tests.Person
 import kotlin.test.Test
-import kotlin.test.assertFails
 
 class ShouldNotEqualShould {
     @Test

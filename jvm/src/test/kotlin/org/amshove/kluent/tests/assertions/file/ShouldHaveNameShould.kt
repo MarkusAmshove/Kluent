@@ -1,9 +1,9 @@
 package org.amshove.kluent.tests.assertions.file
 
+import org.amshove.kluent.internal.assertFails
 import org.amshove.kluent.shouldHaveName
 import java.io.File
 import kotlin.test.Test
-import kotlin.test.assertFails
 
 class ShouldHaveNameShould
 {

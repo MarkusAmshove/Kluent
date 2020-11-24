@@ -1,8 +1,8 @@
 package org.amshove.kluent.tests.collections
 
+import org.amshove.kluent.internal.assertFails
 import org.amshove.kluent.shouldNotBeEmpty
 import kotlin.test.Test
-import kotlin.test.assertFails
 
 class ShouldNotBeEmptyShould {
     @Test

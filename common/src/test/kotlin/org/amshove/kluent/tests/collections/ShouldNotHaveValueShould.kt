@@ -1,8 +1,8 @@
 package org.amshove.kluent.tests.collections
 
+import org.amshove.kluent.internal.assertFails
 import org.amshove.kluent.tests.Person
 import org.amshove.kluent.shouldNotHaveValue
-import kotlin.test.assertFails
 import kotlin.test.Test
 
 class ShouldNotHaveValueShould {

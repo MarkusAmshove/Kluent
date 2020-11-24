@@ -1,8 +1,8 @@
 package org.amshove.kluent.tests.basic
 
+import org.amshove.kluent.internal.assertFails
 import org.amshove.kluent.shouldNotBeFalse
 import kotlin.test.Test
-import kotlin.test.assertFails
 
 class ShouldNotBeFalseShould {
     @Test

@@ -1,10 +1,10 @@
 package org.amshove.kluent.tests.assertions.bigdecimal
 
+import org.amshove.kluent.internal.assertFails
 import org.amshove.kluent.shouldBeEqualTo
 import java.math.BigDecimal
 import java.math.BigInteger
 import kotlin.test.Test
-import kotlin.test.assertFails
 
 
 class BigDecimalShouldEqualToShould {

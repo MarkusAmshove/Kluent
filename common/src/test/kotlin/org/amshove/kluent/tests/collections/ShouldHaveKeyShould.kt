@@ -1,9 +1,9 @@
 package org.amshove.kluent.tests.collections
 
+import org.amshove.kluent.internal.assertFails
 import org.amshove.kluent.shouldHaveKey
 import org.amshove.kluent.tests.Person
 import kotlin.test.Test
-import kotlin.test.assertFails
 
 class ShouldHaveKeyShould {
     @Test

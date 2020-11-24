@@ -3,8 +3,6 @@ package org.amshove.kluent
 import org.amshove.kluent.internal.*
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
-import kotlin.test.assertEquals
-import kotlin.test.assertNotEquals
 
 @Deprecated("Use `shouldBeEqualTo`", ReplaceWith("this.shouldBeEqualTo(expected)"))
 infix fun <T> T.shouldEqual(expected: T?): T = this.shouldBeEqualTo(expected)

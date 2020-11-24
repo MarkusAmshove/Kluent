@@ -1,10 +1,10 @@
 package org.amshove.kluent.tests.collections
 
+import org.amshove.kluent.internal.assertFails
 import org.amshove.kluent.tests.Person
 import org.amshove.kluent.shouldBeSortedAccordingTo
 import kotlin.random.Random
 import kotlin.test.Test
-import kotlin.test.assertFails
 
 class ShouldBeSortedAccordingToShould {
     private val intComparator = Comparator { a: Int, b: Int -> a.compareTo(b) }
@@ -252,7 +252,7 @@ class ShouldBeSortedAccordingToShould {
     }
 
     @Test
-    fun failWhenTestingUnsrotedIterable() {
+    fun failWhenTestingUnsortedIterable() {
         val iterable = listOf(Person("Jon", "Doe"), Person("Tom", "Guy"), Person("Peter", "Meyer"))
         assertFails { iterable shouldBeSortedAccordingTo personComparator }
     }

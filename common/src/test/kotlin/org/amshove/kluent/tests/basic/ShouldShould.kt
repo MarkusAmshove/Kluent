@@ -1,10 +1,10 @@
 package org.amshove.kluent.tests.basic
 
+import org.amshove.kluent.internal.assertFails
+import org.amshove.kluent.internal.assertTrue
 import kotlin.test.Test
 import org.amshove.kluent.should
 import org.amshove.kluent.tests.Person
-import kotlin.test.assertFails
-import kotlin.test.assertTrue
 
 class ShouldShould {
     @Test
@@ -18,13 +18,13 @@ class ShouldShould {
 
     @Test
     fun passWhenPassingALambdaThatReturnsTrue() {
-        Person("", "") should { name.length == 0 }
+        Person("", "") should { name.isEmpty() }
     }
 
     @Test
     fun failWhenPassingALambdaThatReturnsFalse() {
         assertFails {
-            Person("", "") should { name.length > 0 }
+            Person("", "") should { name.isNotEmpty() }
         }
     }
 

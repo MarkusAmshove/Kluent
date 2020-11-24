@@ -1,12 +1,12 @@
 package org.amshove.kluent.tests.charsequence
 
+import org.amshove.kluent.internal.assertFails
 import org.amshove.kluent.shouldContainSome
 import kotlin.test.Test
-import kotlin.test.assertFails
 
 class ShouldContainSomeShould {
     @Test
-    fun passWhenTestingCharSequencesWithAtleastOneBeingInTheOriginalSequence() {
+    fun passWhenTestingCharSequencesWithAtLeastOneBeingInTheOriginalSequence() {
         val message = "I love to write fluent tests"
         val otherStrings = listOf("Berlin", "write")
 

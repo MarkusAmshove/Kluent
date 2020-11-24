@@ -5,10 +5,10 @@ package org.amshove.kluent
 actual val stacktraces: StackTraces = object : StackTraces {
 
     override fun throwableLocation(t: Throwable): String? {
-        return throwableLocation(t, 1)?.firstOrNull()
+        return throwableLocation(t, 1).firstOrNull()
     }
 
-    override fun throwableLocation(t: Throwable, n: Int): List<String>? {
+    override fun throwableLocation(t: Throwable, n: Int): List<String> {
         return (t.cause ?: t).stackTrace?.dropWhile {
             it.className.startsWith("org.amshove.kluent") && !it.className.startsWith("org.amshove.kluent.test")
         }?.take(n)?.map { it.toString() } ?: emptyList()

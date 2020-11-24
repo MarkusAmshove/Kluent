@@ -1,11 +1,9 @@
 package org.amshove.kluent.tests.basic
 
-import org.amshove.kluent.shouldBeTrue
-import org.amshove.kluent.assertMessage
 import org.amshove.kluent.assertMessageContain
-import org.amshove.kluent.shouldBeFalse
+import org.amshove.kluent.internal.assertFails
+import org.amshove.kluent.shouldBeTrue
 import kotlin.test.Test
-import kotlin.test.assertFails
 
 class ShouldBeTrueShould {
     @Test

@@ -1,3 +1,4 @@
+import org.amshove.kluent.*
 import kotlin.test.*
 
 class TestsRun {

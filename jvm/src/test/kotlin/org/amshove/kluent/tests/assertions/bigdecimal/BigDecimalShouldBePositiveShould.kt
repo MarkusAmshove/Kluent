@@ -1,9 +1,9 @@
 package org.amshove.kluent.tests.assertions.bigdecimal
 
+import org.amshove.kluent.internal.assertFails
 import org.amshove.kluent.shouldBePositive
 import kotlin.test.Test
 import java.math.BigDecimal
-import kotlin.test.assertFails
 
 class BigDecimalShouldBePositiveShould {
     @Test

@@ -1,7 +1,7 @@
 package org.amshove.kluent.tests.numerical
 
+import org.amshove.kluent.internal.assertFails
 import org.amshove.kluent.shouldBeGreaterThan
-import kotlin.test.assertFails
 import kotlin.test.Test
 
 class ShouldBeGreaterThanShould {

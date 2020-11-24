@@ -1,8 +1,8 @@
 package org.amshove.kluent.tests.numerical
 
+import org.amshove.kluent.internal.assertFails
 import org.amshove.kluent.shouldBeLessOrEqualTo
 import kotlin.test.Test
-import kotlin.test.assertFails
 
 class ShouldBeLessOrEqualToShould {
     @Test

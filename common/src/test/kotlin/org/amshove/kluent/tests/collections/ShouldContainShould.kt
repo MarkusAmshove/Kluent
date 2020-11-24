@@ -1,9 +1,9 @@
 package org.amshove.kluent.tests.collections
 
+import org.amshove.kluent.internal.assertFails
 import org.amshove.kluent.tests.Person
 import org.amshove.kluent.shouldContain
 import kotlin.test.Test
-import kotlin.test.assertFails
 
 class ShouldContainShould {
     @Test

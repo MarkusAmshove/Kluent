@@ -1,10 +1,10 @@
 package org.amshove.kluent.tests.equivalency
 
 import org.amshove.kluent.*
+import org.amshove.kluent.internal.assertFailsWith
 import org.junit.ComparisonFailure
 import org.junit.Test
 import java.time.LocalDate
-import kotlin.test.assertFailsWith
 
 @ExperimentalStdlibApi
 class ShouldBeEquivalentTo {

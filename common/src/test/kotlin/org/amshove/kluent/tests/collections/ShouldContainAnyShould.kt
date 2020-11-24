@@ -2,8 +2,8 @@ package org.amshove.kluent.tests.collections
 
 
 import org.amshove.kluent.*
+import org.amshove.kluent.internal.assertFails
 import kotlin.test.Test
-import kotlin.test.assertFails
 
 class ShouldContainAnyShould {
     private val strings = listOf("Paris", "Berlin", "Phoenix", "Cairo")

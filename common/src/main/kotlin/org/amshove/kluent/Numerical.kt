@@ -1,8 +1,8 @@
 package org.amshove.kluent
 
+import org.amshove.kluent.internal.assertEquals
+import org.amshove.kluent.internal.assertNotEquals
 import org.amshove.kluent.internal.assertTrue
-import kotlin.test.assertEquals
-import kotlin.test.assertNotEquals
 
 @Deprecated("Use `shouldBeEqualTo`", ReplaceWith("this.shouldBeEqualTo(expected)"))
 infix fun Boolean.shouldEqualTo(expected: Boolean) = this.shouldBeEqualTo(expected)

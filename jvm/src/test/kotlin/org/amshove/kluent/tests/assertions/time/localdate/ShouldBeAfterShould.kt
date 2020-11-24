@@ -1,9 +1,9 @@
 package org.amshove.kluent.tests.assertions.time.localdate
 
+import org.amshove.kluent.internal.assertFails
 import org.amshove.kluent.shouldBeAfter
 import java.time.LocalDate
 import kotlin.test.Test
-import kotlin.test.assertFails
 
 class ShouldBeAfterShould {
     @Test

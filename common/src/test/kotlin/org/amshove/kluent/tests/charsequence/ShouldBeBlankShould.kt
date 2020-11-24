@@ -1,8 +1,8 @@
 package org.amshove.kluent.tests.charsequence
 
+import org.amshove.kluent.internal.assertFails
 import org.amshove.kluent.shouldBeBlank
 import kotlin.test.Test
-import kotlin.test.assertFails
 
 class ShouldBeBlankShould {
     @Test
