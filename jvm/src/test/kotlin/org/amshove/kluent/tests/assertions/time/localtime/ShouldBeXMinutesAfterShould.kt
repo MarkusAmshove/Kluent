@@ -1,11 +1,11 @@
 package org.amshove.kluent.tests.assertions.time.localtime
 
 import org.amshove.kluent.after
+import org.amshove.kluent.internal.assertFails
 import org.amshove.kluent.minutes
 import org.amshove.kluent.shouldBe
 import java.time.LocalTime
 import kotlin.test.Test
-import kotlin.test.assertFails
 
 class ShouldBeXMinutesAfterShould {
     val loginTime = LocalTime.of(10, 59)

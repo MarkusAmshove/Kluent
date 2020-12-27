@@ -1,9 +1,9 @@
 package org.amshove.kluent.tests.assertions.bigdecimal
 
+import org.amshove.kluent.internal.assertFails
 import org.amshove.kluent.shouldNotBeLessThan
 import org.junit.Test
 import java.math.BigDecimal
-import kotlin.test.assertFails
 
 class BigDecimalShouldNotBeLessThanShould {
     @Test

@@ -1,11 +1,11 @@
 package org.amshove.kluent
 
+import org.amshove.kluent.internal.assertEquals
 import org.amshove.kluent.internal.assertFalse
+import org.amshove.kluent.internal.assertNotEquals
 import org.amshove.kluent.internal.assertTrue
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
-import kotlin.test.assertEquals
-import kotlin.test.assertNotEquals
 
 infix fun <T : CharSequence> T.shouldStartWith(expected: T) = this.apply { assertTrue("Expected the CharSequence $this to start with $expected", this.startsWith(expected)) }
 

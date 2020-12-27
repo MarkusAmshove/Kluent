@@ -40,6 +40,8 @@ It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.ht
 
 [Equivalency assertions](Equivalency.md)
 
+[Softly assertions](SoftlyAssertions.md)
+
 ## Using backticks
 
 Every method that is included in Kluent also has a "backtick version", to make it feel more like a describing sentence.

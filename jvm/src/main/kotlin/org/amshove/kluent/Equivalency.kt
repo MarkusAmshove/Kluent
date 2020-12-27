@@ -1,11 +1,11 @@
 package org.amshove.kluent
 
+import org.amshove.kluent.internal.fail
 import java.lang.reflect.InvocationTargetException
 import java.util.*
 import kotlin.reflect.KProperty1
 import kotlin.reflect.KVisibility
 import kotlin.reflect.full.declaredMemberProperties
-import kotlin.test.fail
 
 @ExperimentalStdlibApi
 fun <T : Any> T.shouldBeEquivalentTo(expected: T, config: ((EquivalencyAssertionOptions) -> EquivalencyAssertionOptions)? = null): T = this.apply { assertEquivalency(false, expected, this, config) }
