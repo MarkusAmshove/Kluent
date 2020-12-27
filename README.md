@@ -158,3 +158,7 @@ in the `common` module and has specific [JVM](https://github.com/MarkusAmshove/K
 and [Native](https://github.com/MarkusAmshove/Kluent/blob/master/native/src/main/kotlin/org/amshove/kluent/internal/Platform.kt) implementation.
 
 If you're still unsure how to make something platform independent, we can have a look together inside the PR :-)
+
+# Attribution
+
+[Parts of the `assertSoftly` feature](https://github.com/MarkusAmshove/Kluent/pull/185#issuecomment-731777949) are best upon the great work of [Kotest](https://github.com/kotest/kotest) under the Apache 2.0 License.
