@@ -55,6 +55,9 @@ internal fun <T : Any> areEquivalent(recursionLevel: Int, actual: T, expected: T
                     }
                     val actualList = subA.toList()
                     val expectedList = (subB as Iterable<*>).toMutableList()
+                    if (actualList.size != expectedList.size) {
+                        return false
+                    }
                     for (i in actualList.indices) {
                         for (j in expectedList.indices) {
                             if (expectedList.size > j) {
@@ -125,8 +128,9 @@ private fun <T : Any> T.toStructuredString(recursionLevel: Int, structuredString
     }
     if (primitiveTypesAdded) {
         structuredStringBuilder.delete(structuredStringBuilder.length - 2, structuredStringBuilder.length)
-        structuredStringBuilder.append(")")
+        structuredStringBuilder.append(')')
     }
+    structuredStringBuilder.append('\n')
 
     // enumerate through complex types
     for (property in objClass.declaredMemberProperties.filter { it.visibility != KVisibility.PRIVATE }
@@ -136,7 +140,6 @@ private fun <T : Any> T.toStructuredString(recursionLevel: Int, structuredString
             }
     )
         try {
-            structuredStringBuilder.append('\n')
             structuredStringBuilder.append('˪')
 
             if (property.second!!::class.declaredMemberProperties.all { it.visibility == KVisibility.PRIVATE }) {
@@ -162,9 +165,9 @@ private fun <T : Any> T.toStructuredString(recursionLevel: Int, structuredString
 
 private fun <T : Iterable<*>> T.iterableToStructuredString(recursionLevel: Int, structuredStringBuilder: StringBuilder) {
     val list = this.toList()
-    val objClass = list[0]!!::class
 
     for (i in list.indices) {
+        val objClass = list[i]!!::class
         var className = "${objClass.simpleName}"
         className = className.padStart(className.length + recursionLevel + 1, '-')
         structuredStringBuilder.append(className)
@@ -179,13 +182,13 @@ private fun <T : Any> assertEquivalency(not: Boolean = false, expected: T, actua
     val actualStructure: StringBuilder = StringBuilder().apply { append('\n') }
     val expectedStructure: StringBuilder = StringBuilder().apply { append('\n') }
 
-    val options = equivalencyAssertionOptions?.invoke(EquivalencyAssertionOptions())!!
+    val options = equivalencyAssertionOptions?.invoke(EquivalencyAssertionOptions()) ?: EquivalencyAssertionOptions()
     if (options.compareByProperties) {
         if (!not.xor(areEquivalent(0, actual, expected, options))) {
             actual.toStructuredString(0, actualStructure)
             expected.toStructuredString(0, expectedStructure)
             fail("Are ${
-                if (not) {
+                if (!not) {
                     "not "
                 } else {
                     ""
@@ -215,18 +218,25 @@ private fun <T : Any, C : Any> C.assertBothIterablesBeNotEquivalent(expected: It
 
 @ExperimentalStdlibApi
 private fun <T : Any> assertBothCollectionsEquivalency(not: Boolean = false, expectedList: List<T>, actualList: List<T>, equivalencyAssertionOptions: ((EquivalencyAssertionOptions) -> EquivalencyAssertionOptions)? = null) {
+    val actualStructure: StringBuilder = java.lang.StringBuilder()
+    val expectedStructure: StringBuilder = java.lang.StringBuilder()
+
     if (!not && expectedList.size != actualList.size) {
-        fail("The expected collection has ${expectedList.size} items and the actual one has ${actualList.size}.")
+        for (i in actualList.indices) {
+            actualList[i].toStructuredString(0, actualStructure)
+        }
+        for (i in expectedList.indices) {
+            expectedList[i].toStructuredString(0, expectedStructure)
+        }
+        fail("Are ${if (!not) { "not " } else { "" } }equivalent:", expectedStructure.toString(), actualStructure.toString())
     }
 
-    val remainingItemsOnExpectedList: MutableList<Int> = mutableListOf()
+    val remainingItemIndicesOnExpectedList: MutableList<Int> = mutableListOf()
     for (i in expectedList.indices) {
-        remainingItemsOnExpectedList.add(i)
+        remainingItemIndicesOnExpectedList.add(i)
     }
 
     val options = equivalencyAssertionOptions?.invoke(EquivalencyAssertionOptions()) ?: EquivalencyAssertionOptions()
-    val actualStructure: StringBuilder = java.lang.StringBuilder().apply { append('\n') }
-    val expectedStructure: StringBuilder = java.lang.StringBuilder().apply { append('\n') }
 
     if (options.withStrictOrdering) {
         var areEquivalentWithStrictOrdering = true
@@ -250,19 +260,19 @@ private fun <T : Any> assertBothCollectionsEquivalency(not: Boolean = false, exp
                 if (expectedList.size > j) {
                     val deepEquals = areEquivalent(0, actualList[i], expectedList[j], options)
                     if (deepEquals) {
-                        remainingItemsOnExpectedList.remove(j)
+                        remainingItemIndicesOnExpectedList.remove(j)
                     }
                 }
             }
         }
-        for (i in remainingItemsOnExpectedList.indices) {
-            val deepEquals = areEquivalent(0, actualList[i], expectedList[remainingItemsOnExpectedList[i]], options)
+        for (i in remainingItemIndicesOnExpectedList.indices) {
+            val deepEquals = areEquivalent(0, actualList[i], expectedList[remainingItemIndicesOnExpectedList[i]], options)
             if (deepEquals) {
-                remainingItemsOnExpectedList.remove(i)
+                remainingItemIndicesOnExpectedList.remove(i)
             }
         }
 
-        if (not.xor(remainingItemsOnExpectedList.isNotEmpty())) {
+        if (not.xor(remainingItemIndicesOnExpectedList.isNotEmpty())) {
             for (i in actualList.indices) {
                 actualList[i].toStructuredString(0, actualStructure)
                 expectedList[i].toStructuredString(0, expectedStructure)

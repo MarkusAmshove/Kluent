@@ -21,16 +21,12 @@ class ShouldBeEquivalentTo {
         }
         val team2 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson"),
-                    Person("Marc", "Marcson")
             )
         }
 
         // assert
         assertFailsWith(ComparisonFailure::class) {
-            team1.shouldBeEquivalentTo(team2) {
-                it.compareByProperties()
-            }
+            team1.shouldBeEquivalentTo(team2)
         }
     }
 
@@ -73,6 +69,14 @@ class ShouldBeEquivalentTo {
                             Person("John", "Johnson"),
                             Person("Marc", "Marcson")
                     )
+                },
+                Team("team3").apply {
+                    persons = listOf(
+                            Person("John", "Johnson").apply {
+                                address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                            },
+                            Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
+                    )
                 }
         )
         val teams2 = listOf(
@@ -88,6 +92,14 @@ class ShouldBeEquivalentTo {
                     persons = listOf(
                             Person("John", "Johnson"),
                             Person("Marc", "")
+                    )
+                },
+                Team("team3").apply {
+                    persons = listOf(
+                            Person("John", "Johnson").apply {
+                                address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                            },
+                            Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
                     )
                 }
         )
@@ -775,36 +787,14 @@ class ShouldBeEquivalentTo {
     fun passShouldBeEquivalentToEvenIfPropertiesAreDifferentAsNotAllowingInfiniteRecursion() {
         // arrange
         val a1 = A("name1").apply {
-            b = listOf(
-                    B("name11").apply {
-                        c = listOf(
-                                C(D("name111").apply { name2 = "name1111" }),
-                                C(D("name112").apply { name2 = "name1121" })
-                        )
-                    },
-                    B("name12").apply {
-                        c = listOf(
-                                C(D("name121").apply { name2 = "name1211" }),
-                                C(D("name122").apply { name2 = "name1221" })
-                        )
-                    }
-            )
+            b = B("name11").apply {
+                c = C(D("name111").apply { name2 = "name1111" })
+            }
         }
         val a2 = A("name1").apply {
-            b = listOf(
-                    B("name11").apply {
-                        c = listOf(
-                                C(D("name311").apply { name2 = "name3111" }),
-                                C(D("name312").apply { name2 = "name3121" })
-                        )
-                    },
-                    B("name12").apply {
-                        c = listOf(
-                                C(D("name321").apply { name2 = "name3211" }),
-                                C(D("name322").apply { name2 = "name3221" })
-                        )
-                    }
-            )
+            b = B("name11").apply {
+                c = C(D("name311").apply { name2 = "name3111" })
+            }
         }
 
         // assert
@@ -818,36 +808,14 @@ class ShouldBeEquivalentTo {
     fun failShouldNotBeEquivalentToEvenIfPropertiesAreDifferentAsNotAllowingInfiniteRecursion() {
         // arrange
         val a1 = A("name1").apply {
-            b = listOf(
-                    B("name11").apply {
-                        c = listOf(
-                                C(D("name111").apply { name2 = "name1111" }),
-                                C(D("name112").apply { name2 = "name1121" })
-                        )
-                    },
-                    B("name12").apply {
-                        c = listOf(
-                                C(D("name121").apply { name2 = "name1211" }),
-                                C(D("name122").apply { name2 = "name1221" })
-                        )
-                    }
-            )
+            b = B("name11").apply {
+                c = C(D("name111").apply { name2 = "name1111" })
+            }
         }
         val a2 = A("name1").apply {
-            b = listOf(
-                    B("name11").apply {
-                        c = listOf(
-                                C(D("name311").apply { name2 = "name3111" }),
-                                C(D("name312").apply { name2 = "name3121" })
-                        )
-                    },
-                    B("name12").apply {
-                        c = listOf(
-                                C(D("name321").apply { name2 = "name3211" }),
-                                C(D("name322").apply { name2 = "name3221" })
-                        )
-                    }
-            )
+            b = B("name11").apply {
+                c = C(D("name311").apply { name2 = "name3111" })
+            }
         }
 
         // assert
@@ -860,92 +828,216 @@ class ShouldBeEquivalentTo {
     }
 
     @Test
-    fun failShouldBeEquivalentToAsPropertiesAreDifferentAndAllowingInfiniteRecursion() {
+    fun passShouldNotBeEquivalentToAsPropertiesAreDifferentAndAllowingInfiniteRecursion() {
         // arrange
-        val a1 = A("name1").apply {
-            b = listOf(
-                    B("name11").apply {
-                        c = listOf(
-                                C(D("name111").apply { name2 = "name1111" }),
-                                C(D("name112").apply { name2 = "name1121" })
-                        )
-                    },
-                    B("name12").apply {
-                        c = listOf(
-                                C(D("name121").apply { name2 = "name1211" }),
-                                C(D("name122").apply { name2 = "name1221" })
-                        )
+        val a1 = listOf(
+                A("name1").apply {
+                    b = B("name11").apply {
+                        c = C(D("name111").apply { name2 = "name1111" }).apply { name = "name1111" }
+                        d = D("name111").apply { name2 = "name1111" }
                     }
-            )
-        }
-        val a2 = A("name1").apply {
-            b = listOf(
-                    B("name11").apply {
-                        c = listOf(
-                                C(D("name311").apply { name2 = "name3111" }),
-                                C(D("name312").apply { name2 = "name3121" })
-                        )
-                    },
-                    B("name12").apply {
-                        c = listOf(
-                                C(D("name321").apply { name2 = "name3211" }),
-                                C(D("name322").apply { name2 = "name3221" })
-                        )
+                    e = "abc"
+                },
+                A("name2").apply {
+                    b = B("name11").apply {
+                        c = C(D("name111").apply { name2 = "name2111" }).apply { name = "name1111" }
+                        d = D("name111").apply { name2 = "name1111" }
                     }
-            )
-        }
+                    e = "abc"
+                }
+        )
+        val a2 = listOf(
+                A("name1").apply {
+                    b = B("name11").apply {
+                        c = C(D("name111").apply { name2 = "name1111" }).apply { name = "name1111" }
+                        d = D("name111").apply { name2 = "name1111" }
+                    }
+                    e = "abc"
+                },
+                A("name2").apply {
+                    b = B("name11").apply {
+                        c = C(D("name111").apply { name2 = "name3111" }).apply { name = "name1111" }
+                        d = D("name111").apply { name2 = "name1111" }
+                    }
+                    e = "abc"
+                }
+        )
 
         // assert
-        assertFailsWith(ComparisonFailure::class) {
-            a1.shouldBeEquivalentTo(a2) {
-                it.allowingInfiniteRecursion()
-                it.maxLevelOfRecursion = 2
-                return@shouldBeEquivalentTo it
-            }
+        a1.shouldNotBeEquivalentTo(a2) {
+            // set the default maxLevelOfRecursion = 2 but allow infinite recursion
+            it.maxLevelOfRecursion = 2
+            it.allowingInfiniteRecursion()
+            return@shouldNotBeEquivalentTo it
         }
     }
 
     @Test
-    fun passShouldNotBeEquivalentToAsPropertiesAreDifferentAndAllowingInfiniteRecursion() {
+    fun failShouldBeEquivalentToAsPropertiesAreDifferentAndAllowingInfiniteRecursion() {
         // arrange
-        val a1 = A("name1").apply {
-            b = listOf(
-                    B("name11").apply {
-                        c = listOf(
-                                C(D("name111").apply { name2 = "name1111" }),
-                                C(D("name112").apply { name2 = "name1121" })
-                        )
-                    },
-                    B("name12").apply {
-                        c = listOf(
-                                C(D("name121").apply { name2 = "name1211" }),
-                                C(D("name122").apply { name2 = "name1221" })
-                        )
+        val a1 = listOf(
+                A("name1").apply {
+                    b = B("name11").apply {
+                        c = C(D("name111").apply { name2 = "name1111" }).apply { name = "name1111" }
+                        d = D("name111").apply { name2 = "name1111" }
                     }
+                    e = "abc"
+                },
+                A("name2").apply {
+                    b = B("name11").apply {
+                        c = C(D("name111").apply { name2 = "name2111" }).apply { name = "name1111" }
+                        d = D("name111").apply { name2 = "name1111" }
+                    }
+                    e = "abc"
+                }
+        )
+        val a2 = listOf(
+                A("name1").apply {
+                    b = B("name11").apply {
+                        c = C(D("name111").apply { name2 = "name1111" }).apply { name = "name1111" }
+                        d = D("name111").apply { name2 = "name1111" }
+                    }
+                    e = "abc"
+                },
+                A("name2").apply {
+                    b = B("name11").apply {
+                        c = C(D("name111").apply { name2 = "name3111" }).apply { name = "name1111" }
+                        d = D("name111").apply { name2 = "name1111" }
+                    }
+                    e = "abc"
+                }
+        )
+
+        // assert
+        try {
+
+            a1.shouldBeEquivalentTo(a2) {
+                // set the default maxLevelOfRecursion = 2 but allow infinite recursion
+                it.maxLevelOfRecursion = 2
+                it.allowingInfiniteRecursion()
+                return@shouldBeEquivalentTo it
+            }
+        } catch (e: ComparisonFailure) {
+            e.message!!.shouldStartWith("Are not equivalent:")
+            e.actual!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo("""
+                A (e = abc, name = name1)
+                ˪-B (name = name11)
+                ˪--C (name = name1111)
+                ˪---D (name = name111, name2 = name1111)
+                ˪--D (name = name111, name2 = name1111)
+                A (e = abc, name = name2)
+                ˪-B (name = name11)
+                ˪--C (name = name1111)
+                ˪---D (name = name111, name2 = name2111)
+                ˪--D (name = name111, name2 = name1111)
+            """.replace("\\s+|\\t|\\n".toRegex(), " ").trim())
+            e.expected!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo("""
+                A (e = abc, name = name1)
+                ˪-B (name = name11)
+                ˪--C (name = name1111)
+                ˪---D (name = name111, name2 = name1111)
+                ˪--D (name = name111, name2 = name1111)
+                A (e = abc, name = name2)
+                ˪-B (name = name11)
+                ˪--C (name = name1111)
+                ˪---D (name = name111, name2 = name3111)
+                ˪--D (name = name111, name2 = name1111)
+            """.replace("\\s+|\\t|\\n".toRegex(), " ").trim())
+        }
+    }
+
+    @Test
+    fun failShouldBeEquivalentToAsAmountOfEntitiesIsDifferent() {
+        // arrange
+        val a1 = listOf(
+                A("name1").apply {
+                    b = B("name11").apply {
+                        c = C(D("name111").apply { name2 = "name1111" }).apply { name = "name1111" }
+                        d = D("name111").apply { name2 = "name1111" }
+                    }
+                    e = "abc"
+                },
+                A("name2").apply {
+                    b = B("name11").apply {
+                        c = C(D("name111").apply { name2 = "name2111" }).apply { name = "name1111" }
+                        d = D("name111").apply { name2 = "name1111" }
+                    }
+                    e = "abc"
+                }
+        )
+        val a2 = listOf(
+                A("name1").apply {
+                    b = B("name11").apply {
+                        c = C(D("name111").apply { name2 = "name1111" }).apply { name = "name1111" }
+                        d = D("name111").apply { name2 = "name1111" }
+                    }
+                    e = "abc"
+                }
+        )
+
+        // assert
+        try {
+            a1.shouldBeEquivalentTo(a2) {
+                // set the default maxLevelOfRecursion = 2 but allow infinite recursion
+                it.maxLevelOfRecursion = 2
+                it.allowingInfiniteRecursion()
+                return@shouldBeEquivalentTo it
+            }
+        } catch (e: ComparisonFailure) {
+            e.message!!.shouldStartWith("Are not equivalent:")
+            e.actual!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo("""
+                A (e = abc, name = name1)
+                ˪-B (name = name11)
+                ˪--C (name = name1111)
+                ˪---D (name = name111, name2 = name1111)
+                ˪--D (name = name111, name2 = name1111)
+                A (e = abc, name = name2)
+                ˪-B (name = name11)
+                ˪--C (name = name1111)
+                ˪---D (name = name111, name2 = name2111)
+                ˪--D (name = name111, name2 = name1111)
+            """.replace("\\s+|\\t|\\n".toRegex(), " ").trim())
+            e.expected!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo("""
+                A (e = abc, name = name1)
+                ˪-B (name = name11)
+                ˪--C (name = name1111)
+                ˪---D (name = name111, name2 = name1111)
+                ˪--D (name = name111, name2 = name1111)
+            """.replace("\\s+|\\t|\\n".toRegex(), " ").trim())
+        }
+    }
+
+    @Test
+    fun shouldFailAsAmountOfPropertiesIsDifferent() {
+        // arrange
+        val a1 = E().apply {
+            F = listOf(
+                    F(1).apply { name = "name1" },
+                    F(2).apply { name = "name2" }
             )
         }
-        val a2 = A("name1").apply {
-            b = listOf(
-                    B("name11").apply {
-                        c = listOf(
-                                C(D("name311").apply { name2 = "name3111" }),
-                                C(D("name312").apply { name2 = "name3121" })
-                        )
-                    },
-                    B("name12").apply {
-                        c = listOf(
-                                C(D("name321").apply { name2 = "name3211" }),
-                                C(D("name322").apply { name2 = "name3221" })
-                        )
-                    }
+        val a2 = E().apply {
+            F = listOf(
+                    F(1).apply { name = "name1" }
             )
         }
 
         // assert
-        a1.shouldNotBeEquivalentTo(a2) {
-            it.allowingInfiniteRecursion()
-            it.maxLevelOfRecursion = 2
-            return@shouldNotBeEquivalentTo it
+        try {
+            a1.shouldBeEquivalentTo(a2)
+        } catch (e: ComparisonFailure) {
+            e.message!!.shouldStartWith("Are not equivalent:")
+            e.actual!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo("""
+                E
+                ˪-F
+                --F[0] (id = 1, name = name1)
+                --F[1] (id = 2, name = name2)
+            """.replace("\\s+|\\t|\\n".toRegex(), " ").trim())
+            e.expected!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo("""
+                E
+                ˪-F
+                --F[0] (id = 1, name = name1)
+            """.replace("\\s+|\\t|\\n".toRegex(), " ").trim())
         }
     }
 
@@ -966,12 +1058,14 @@ class ShouldBeEquivalentTo {
 
     @Suppress("unused")
     internal class A(val name: String) {
-        var b: List<B> = listOf()
+        var b: B? = null
+        var e: String? = null
     }
 
     @Suppress("unused")
     internal class B(val name: String) {
-        var c: List<C> = listOf()
+        var c: C? = null
+        var d: D? = null
     }
 
     @Suppress("unused")
@@ -982,5 +1076,13 @@ class ShouldBeEquivalentTo {
     @Suppress("unused")
     internal class D(val name: String) {
         var name2: String? = null
+    }
+
+    internal class E() {
+        var F: List<F> = listOf()
+    }
+
+    internal class F(var id: Int) {
+        lateinit var name: String
     }
 }
