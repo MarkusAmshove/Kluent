@@ -1,6 +1,6 @@
 # CharSequence assertions
 
-The following assertions work with every subtype of `CharSequence` (e.g. `Sring`)
+The following assertions work with every subtype of `CharSequence` (e.g. `String`)
 
 ```kt
 "name" shouldBeEqualTo "name"
@@ -35,4 +35,22 @@ The following assertions work with every subtype of `CharSequence` (e.g. `Sring`
 
 " ".shouldBeNullOrBlank()
 "".shouldNotBeNullOrBlank()
+```
+
+In case if you need to assert Char or CharSequence ignoring the characters case, you can use the following assertions:
+```kt
+"name" shouldBeEqualToIgnoringCase "nAmE"
+"name" shouldNotBeEqualToIgnoringCase "abc"
+
+"name" shouldStartWithIgnoringCase "N"
+"age" shouldNotStartWithIgnoringCase "n"
+
+"name" shouldEndWithIgnoringCase "ME"
+"name" shouldNotEndWithIgnoringCase "ee"
+
+"name" shouldContainIgnoringCase "Am"
+"name" shouldNotContainIgnoringCase "abc"
+
+"I like fluent assertions" shouldContainSomeIgnoringCase listOf("Fluent", "NOT", "tesT")
+"I like fluent assertions" shouldContainNoneIgnoringCase listOf("test, "compile")
 ```
