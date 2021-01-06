@@ -9,6 +9,10 @@ infix fun <T> T.shouldEqual(expected: T?): T = this.shouldBeEqualTo(expected)
 
 infix fun <T> T.shouldBeEqualTo(expected: T?): T = this.apply { assertEquals(expected, this) }
 
+infix fun Char.shouldBeEqualToIgnoringCase(expected: Char): Char = this.apply { assertEqualsIgnoringCase(expected, this) }
+
+infix fun CharSequence.shouldBeEqualToIgnoringCase(expected: CharSequence): CharSequence = this.apply { assertEqualsIgnoringCase(expected, this) }
+
 @Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
 infix fun <T> T.shouldNotEqual(expected: T?) = this.shouldNotBeEqualTo(expected)
 

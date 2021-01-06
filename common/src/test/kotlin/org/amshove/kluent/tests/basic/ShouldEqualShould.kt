@@ -2,6 +2,7 @@ package org.amshove.kluent.tests.basic
 
 import org.amshove.kluent.internal.assertFails
 import org.amshove.kluent.shouldBeEqualTo
+import org.amshove.kluent.shouldBeEqualToIgnoringCase
 import org.amshove.kluent.tests.Person
 import kotlin.test.Test
 
@@ -12,6 +13,11 @@ class ShouldEqualShould {
     }
 
     @Test
+    fun passWhenComparingEqualStringsIgnoringCase() {
+        "hello world" shouldBeEqualToIgnoringCase "Hello World"
+    }
+
+    @Test
     fun returnTheTestedInstance() {
         val hello = "hello world"
         val returnedInstance = hello shouldBeEqualTo "hello world"
@@ -19,8 +25,20 @@ class ShouldEqualShould {
     }
 
     @Test
+    fun returnTheTestedInstanceIgnoringCase() {
+        val hello = "hello world"
+        val returnedInstance = hello shouldBeEqualToIgnoringCase "Hello World"
+        hello shouldBeEqualToIgnoringCase returnedInstance
+    }
+
+    @Test
     fun failWhenComparingUnequalStrings() {
         assertFails { "hello world!" shouldBeEqualTo "hello" }
+    }
+
+    @Test
+    fun failWhenComparingUnequalStringsIgnoringCase() {
+        assertFails { "hello world!" shouldBeEqualToIgnoringCase "Hello" }
     }
 
     @Test

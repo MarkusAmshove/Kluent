@@ -1,6 +1,7 @@
 package org.amshove.kluent.tests.collections
 
 import org.amshove.kluent.shouldContainNone
+import org.amshove.kluent.shouldContainNoneIgnoringCase
 import kotlin.test.Test
 import kotlin.test.assertFails
 
@@ -13,10 +14,24 @@ class ShouldContainNoneShould {
     }
 
     @Test
+    fun passWhenTestingAnArrayWhichDoesNotContainAtLeastOneElementIgnoringCase() {
+        val anArray = arrayOf("Israel", "Phoenix", "Egypt")
+
+        anArray shouldContainNoneIgnoringCase listOf("berlin", "stuttart")
+    }
+
+    @Test
     fun failWhenTestingAnArrayWhichContainsAtLeastOneElement() {
         val anArray = arrayOf("Israel", "Phoenix", "Egypt")
 
         assertFails { anArray shouldContainNone listOf("Berlin", "Egypt") }
+    }
+
+    @Test
+    fun failWhenTestingAnArrayWhichContainsAtLeastOneElementIgnoringCase() {
+        val anArray = arrayOf("Israel", "Phoenix", "Egypt")
+
+        assertFails { anArray shouldContainNoneIgnoringCase listOf("berlin", "egypt") }
     }
 
     @Test
@@ -28,11 +43,27 @@ class ShouldContainNoneShould {
     }
 
     @Test
+    fun passWhenTestingAListWhichDoesNotContainAtLeastOneElementIgnoringCase() {
+        val cities = listOf("Israel", "Phoenix", "Egypt")
+        val actual = listOf("berlin", "stuttgart")
+
+        actual shouldContainNoneIgnoringCase cities
+    }
+
+    @Test
     fun failWhenTestingAListWhichContainsAtLeastOneElement() {
         val cities = listOf("Israel", "Phoenix", "Stuttgart", "Egypt")
         val actual = listOf("Berlin", "Stuttgart")
 
         assertFails { actual shouldContainNone cities }
+    }
+
+    @Test
+    fun failWhenTestingAListWhichContainsAtLeastOneElementIgnoringCase() {
+        val cities = listOf("Israel", "Phoenix", "Stuttgart", "Egypt")
+        val actual = listOf("berlin", "stuttgart")
+
+        assertFails { actual shouldContainNoneIgnoringCase cities }
     }
 
     @Test
@@ -44,11 +75,27 @@ class ShouldContainNoneShould {
     }
 
     @Test
+    fun passWhenTestingASequenceWhichDoesNotContainAtLeastOneElementIgnoringCase() {
+        val cities = sequenceOf("Israel", "Phoenix", "Egypt")
+        val actual = sequenceOf("berlin", "stuttgart")
+
+        actual shouldContainNoneIgnoringCase cities
+    }
+
+    @Test
     fun failWhenTestingASequenceWhichContainsAtLeastOneElement() {
         val cities = sequenceOf("Israel", "Phoenix", "Stuttgart", "Egypt")
         val actual = sequenceOf("Berlin", "Stuttgart")
 
         assertFails { actual shouldContainNone cities }
+    }
+
+    @Test
+    fun failWhenTestingASequenceWhichContainsAtLeastOneElementIgnoringCase() {
+        val cities = sequenceOf("Israel", "Phoenix", "Stuttgart", "Egypt")
+        val actual = sequenceOf("berlin", "stuttgart")
+
+        assertFails { actual shouldContainNoneIgnoringCase cities }
     }
 
     @Test
@@ -143,10 +190,24 @@ class ShouldContainNoneShould {
     }
 
     @Test
+    fun passWhenTestingAPrimitiveCharArrayWhichDoesNotContainAtLeastOneElementIgnoringCase() {
+        val theArray = charArrayOf('a', 'b', 'c')
+        theArray shouldContainNoneIgnoringCase charArrayOf('E', 'E')
+        theArray shouldContainNoneIgnoringCase listOf('D', 'E')
+    }
+
+    @Test
     fun failWhenTestingAPrimitiveCharArrayWhichContainsAtLeastOneElement() {
         val theArray = charArrayOf('a', 'b', 'c')
         assertFails { theArray shouldContainNone charArrayOf('b') }
         assertFails { theArray shouldContainNone listOf('b') }
+    }
+
+    @Test
+    fun failWhenTestingAPrimitiveCharArrayWhichContainsAtLeastOneElementIgnoringCase() {
+        val theArray = charArrayOf('a', 'b', 'c')
+        assertFails { theArray shouldContainNoneIgnoringCase charArrayOf('B') }
+        assertFails { theArray shouldContainNoneIgnoringCase listOf('B') }
     }
 
     @Test
