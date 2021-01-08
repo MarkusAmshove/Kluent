@@ -11,8 +11,6 @@ if(isAndroid) {
 def artifactName = isAndroid ? 'kluent-android' : 'kluent'
 configurePublishing(artifactName)
 
-def mockito_kotlin_version = "2.1.0"
-
 dependencies {
     expectedBy project(':kluent-common')
     implementation libs.kotlin_stdlib_jvm
@@ -23,17 +21,13 @@ dependencies {
         runtime libs.kotlin_reflect
         runtime libs.kotlin_test_jvm
     }
+    implementation libs.junit
 
     testImplementation libs.junit
     testImplementation libs.kotlin_test_jvm
     testImplementation libs.kotlin_test_junit
     testImplementation libs.kotlinx_coroutines_test
-
-
-    // TODO: To be removed
-    implementation libs.junit
-    implementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
-    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
+    testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0'
 }
 
 sourceSets {

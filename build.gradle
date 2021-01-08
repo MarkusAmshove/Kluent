@@ -1,6 +1,4 @@
 buildscript {
-    // TODO: Mockito and will be removed in the future
-    ext.mockito_version = '1.5.0'
     repositories {
         jcenter()
         mavenCentral()
