@@ -8,7 +8,7 @@ import java.time.LocalDate
 @ExperimentalStdlibApi
 class BackticksEquivalency {
     @Test
-    fun `pass should be qquivalent to withStrictOrdering as properties are equal for iterables`() {
+    fun `pass should be equivalent to withStrictOrdering as properties are equal for iterables`() {
         // arrange
         val teams1 = listOf(
                 ShouldBeEquivalentTo.Team("team1").apply {

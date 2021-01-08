@@ -2,6 +2,7 @@ package org.amshove.kluent.tests.collections
 
 import org.amshove.kluent.internal.assertFails
 import org.amshove.kluent.shouldContainAll
+import org.amshove.kluent.shouldContainAllIgnoringCase
 import kotlin.test.Test
 
 class ShouldContainAllShould {
@@ -13,10 +14,31 @@ class ShouldContainAllShould {
     }
 
     @Test
+    fun passWhenTestingAnArrayWhichContainsAllValuesIgnoringCase() {
+        val array = arrayOf("Hello", "World", "Wide", "Web")
+        array shouldContainAllIgnoringCase arrayOf("world", "widE", "WEB")
+        array shouldContainAllIgnoringCase listOf("world", "widE", "WEB")
+    }
+
+    @Test
+    fun passWhenTestingAListWhichContainsAllValuesIgnoringCase() {
+        val list = listOf("Hello", "World", "Wide", "Web")
+        list shouldContainAllIgnoringCase arrayOf("world", "widE", "WEB")
+        list shouldContainAllIgnoringCase listOf("world", "widE", "WEB")
+    }
+
+    @Test
     fun failWhenTestingAnArrayWhichDoesNotContainAllValues() {
         val array = arrayOf("Hello", "World", "Wide", "Web")
         assertFails { array shouldContainAll arrayOf("Hello", "World", "White") }
         assertFails { array shouldContainAll listOf("Hello", "World", "White") }
+    }
+
+    @Test
+    fun failWhenTestingAnArrayWhichDoesNotContainAllValuesIgnoringCase() {
+        val array = arrayOf("Hello", "World", "Wide", "Web")
+        assertFails { array shouldContainAllIgnoringCase arrayOf("hello", "worlD", "WhiTE") }
+        assertFails { array shouldContainAllIgnoringCase listOf("hello", "worlD", "WhiTE") }
     }
 
     @Test
@@ -69,10 +91,24 @@ class ShouldContainAllShould {
     }
 
     @Test
+    fun passWhenTestingACharArrayWhichContainsAllValuesIgnoringCase() {
+        val array = charArrayOf('a', 'f', 'z')
+        array shouldContainAllIgnoringCase charArrayOf('Z')
+        array shouldContainAllIgnoringCase listOf('Z')
+    }
+
+    @Test
     fun failWhenTestingACharArrayWhichDoesNotContainAllValues() {
         val array = charArrayOf('a', '-')
         assertFails { array shouldContainAll charArrayOf('-', '-', 'b') }
         assertFails { array shouldContainAll listOf('-', '-', 'b') }
+    }
+
+    @Test
+    fun failWhenTestingACharArrayWhichDoesNotContainAllValuesIgnoringCase() {
+        val array = charArrayOf('a', '-')
+        assertFails { array shouldContainAllIgnoringCase charArrayOf('-', '-', 'B') }
+        assertFails { array shouldContainAllIgnoringCase listOf('-', '-', 'B') }
     }
 
     @Test
@@ -176,10 +212,26 @@ class ShouldContainAllShould {
     }
 
     @Test
+    fun passWhenTestingAnIterableWhichContainsAllValuesOfAnArrayIgnoringCase() {
+        val anIterable = listOf("Berlin", "Washington")
+        val anArray = arrayOf("Berlin", "Washington")
+
+        anIterable.shouldContainAllIgnoringCase(anArray)
+    }
+
+    @Test
     fun passWhenTestingAnArrayWhichContainsAllValuesOfAnIterable() {
         val anArray = arrayOf("Berlin", "Washington")
         val anIterable = listOf("Berlin", "Washington")
 
         anArray.shouldContainAll(anIterable)
+    }
+
+    @Test
+    fun passWhenTestingAnArrayWhichContainsAllValuesOfAnIterableIgnoringCase() {
+        val anArray = arrayOf("Berlin", "Washington")
+        val anIterable = listOf("Berlin", "Washington")
+
+        anArray.shouldContainAllIgnoringCase(anIterable)
     }
 }

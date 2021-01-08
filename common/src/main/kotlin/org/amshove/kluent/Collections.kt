@@ -1,8 +1,17 @@
 package org.amshove.kluent
 
 import org.amshove.kluent.internal.*
+import kotlin.jvm.JvmName
 
 infix fun <T> Array<T>.shouldContain(expected: T) = apply { if (this.contains(expected)) Unit else failExpectedActual("Array doesn't contain \"$expected\"", "the Array to contain \"$expected\"", join(this)) }
+
+infix fun Array<Char>.shouldContainIgnoringCase(expected: Char) = apply {
+    if (this.any { it.equals(expected, true) }) Unit else failExpectedActual("Array doesn't contain \"$expected\"", "the Array to contain \"$expected\"", join(this))
+}
+
+infix fun <T: CharSequence> Array<T>.shouldContainIgnoringCase(expected: T) = apply {
+    if (this.any { it.toString().equals(expected.toString(), true) }) Unit else failExpectedActual("Array doesn't contain \"$expected\"", "the Array to contain \"$expected\"", join(this))
+}
 
 infix fun <T> Array<T>.shouldContainSome(expected: Array<T>) = apply { assertTrue("Expected Array to contain at least one of \"$expected\"", this.any { expected.contains(it) }) }
 
@@ -13,11 +22,39 @@ infix fun <T> Array<T>.shouldContainAny(check: (T) -> Boolean) = apply { assertT
 
 infix fun <T> Array<T>.shouldContainNone(expected: Array<T>) = apply { assertTrue("Expected Array to contain none of \"$expected\"", this.none { expected.contains(it) }) }
 
+infix fun <T: Char> Array<T>.shouldContainNoneIgnoringCase(expected: Array<T>) = apply {
+    assertTrue("Expected Array to contain none of \"$expected\"",
+            this.none {
+                expected.any { exp -> exp.equals(it, true) }
+            }
+    )
+}
+
+infix fun <T: CharSequence> Array<T>.shouldContainNoneIgnoringCase(expected: Array<T>) = apply {
+    assertTrue("Expected Array to contain none of \"$expected\"",
+            this.none {
+                expected.any { exp -> exp.contains(it, true) }
+            }
+    )
+}
+
 infix fun <T> Array<T>.shouldContainNone(expected: Iterable<T>) = apply { assertTrue("Expected Array to contain none of \"$expected\"", this.none { expected.contains(it) }) }
+
+infix fun <T: CharSequence> Array<T>.shouldContainNoneIgnoringCase(expected: Iterable<T>) = apply {
+    assertTrue("Expected Array to contain none of \"$expected\"",
+            this.none {
+                expected.any { exp -> exp.contains(it, true) }
+            }
+    )
+}
 
 infix fun <T> Array<T>.shouldContainAll(expected: Array<T>) = apply { expected.forEach { shouldContain(it) } }
 
+infix fun <T: CharSequence> Array<T>.shouldContainAllIgnoringCase(expected: Array<T>) = apply { expected.forEach { shouldContainIgnoringCase(it) } }
+
 infix fun <T> Array<T>.shouldContainAll(expected: Iterable<T>) = apply { expected.forEach { shouldContain(it) } }
+
+infix fun <T: CharSequence> Array<T>.shouldContainAllIgnoringCase(expected: Iterable<T>) = apply { expected.forEach { shouldContainIgnoringCase(it) } }
 
 infix fun <T> Array<T>.shouldContainSame(expected: Array<T>) = assertBothCollectionsContainsSame(expected.toList(), this.toList())
 
@@ -267,6 +304,8 @@ infix fun CharArray.shouldHaveSize(expectedSize: Int) = apply { this.toList().sh
 
 infix fun CharArray.shouldContain(expected: Char) = apply { this.toTypedArray() shouldContain expected }
 
+infix fun CharArray.shouldContainIgnoringCase(expected: Char) = apply { this.toTypedArray() shouldContainIgnoringCase expected }
+
 @Deprecated("Use shouldContainAny", ReplaceWith("this.shouldContainAny(check)"))
 infix fun CharArray.shouldContainSome(expected: CharArray) = apply { this.toTypedArray().shouldContainSome(expected.toTypedArray()) }
 
@@ -277,11 +316,19 @@ infix fun CharArray.shouldContainSome(expected: Iterable<Char>) = apply { this.t
 
 infix fun CharArray.shouldContainNone(expected: CharArray) = apply { this.toTypedArray().shouldContainNone(expected.toTypedArray()) }
 
+infix fun CharArray.shouldContainNoneIgnoringCase(expected: CharArray) = apply { this.toTypedArray().shouldContainNoneIgnoringCase(expected.toTypedArray()) }
+
 infix fun CharArray.shouldContainNone(expected: Iterable<Char>) = apply { this.toList().shouldContainNone(expected) }
+
+infix fun CharArray.shouldContainNoneIgnoringCase(expected: Iterable<Char>) = apply { this.toList().shouldContainNoneIgnoringCase(expected) }
 
 infix fun CharArray.shouldContainAll(expected: CharArray) = apply { expected.forEach { shouldContain(it) } }
 
+infix fun CharArray.shouldContainAllIgnoringCase(expected: CharArray) = apply { expected.forEach { shouldContainIgnoringCase(it) } }
+
 infix fun CharArray.shouldContainAll(expected: Iterable<Char>) = apply { this.toList().shouldContainAll(expected) }
+
+infix fun CharArray.shouldContainAllIgnoringCase(expected: Iterable<Char>) = apply { this.toList().shouldContainAllIgnoringCase(expected) }
 
 infix fun CharArray.shouldContainSame(expected: CharArray) = assertBothCollectionsContainsSame(expected.toList(), this.toList())
 
@@ -303,7 +350,11 @@ infix fun CharArray.shouldBeSortedAccordingTo(comparator: Comparator<Char>) = ap
 
 infix fun Char.shouldBeIn(theArray: CharArray) = apply { this shouldBeIn theArray.toTypedArray() }
 
+infix fun Char.shouldBeInIgnoringCase(theArray: CharArray) = apply { this shouldBeInIgnoringCase theArray.toTypedArray() }
+
 infix fun Char.shouldNotBeIn(theArray: CharArray) = apply { this shouldNotBeIn theArray.toTypedArray() }
+
+infix fun Char.shouldNotBeInIgnoringCase(theArray: CharArray) = apply { this shouldNotBeInIgnoringCase theArray.toTypedArray() }
 
 infix fun CharArray.shouldMatchAtLeastOneOf(predicate: (Char) -> Boolean) = apply { this.toList().shouldMatchAtLeastOneOf(predicate) }
 
@@ -559,6 +610,14 @@ infix fun Short.shouldNotBeIn(theArray: ShortArray) = apply { this shouldNotBeIn
 
 infix fun <T, I : Iterable<T>> I.shouldContain(expected: T): I = apply { if (this.contains(expected)) Unit else failExpectedActual("Iterable doesn't contain \"$expected\"", "the Iterable to contain \"$expected\"", join(this)) }
 
+infix fun <I : Iterable<Char>> I.shouldContainIgnoringCase(expected: Char): I = apply {
+    if (this.any { it.equals(expected, true) }) Unit else failExpectedActual("Iterable doesn't contain \"$expected\"", "the Iterable to contain \"$expected\"", join(this))
+}
+
+infix fun <T: CharSequence, I : Iterable<T>> I.shouldContainIgnoringCase(expected: T): I = apply {
+    if (this.any { it.contains(expected, true) }) Unit else failExpectedActual("Iterable doesn't contain \"$expected\"", "the Iterable to contain \"$expected\"", join(this))
+}
+
 infix fun <T, I : Iterable<T>> I.shouldContainAny(check: (T) -> Boolean): I = apply {
     val result = this.map { it to check.invoke(it) }
 
@@ -585,11 +644,37 @@ infix fun <T, I : Iterable<T>> I.shouldContainSome(expected: Array<T>): I = appl
 
 infix fun <T, I : Iterable<T>> I.shouldContainNone(expected: Iterable<T>): I = apply { assertTrue("Expected Iterable to contain none of \"$expected\"", this.none { expected.contains(it) }) }
 
+@JvmName("shouldContainNoneCharsIgnoringCase")
+infix fun <I : Iterable<Char>> I.shouldContainNoneIgnoringCase(expected: Iterable<Char>): I = apply {
+    assertTrue("Expected Iterable to contain none of \"$expected\"",
+            this.none {
+                expected.any { exp -> exp.equals(it, true) }
+            }
+    )
+}
+
+@JvmName("shouldContainNoneCharSequenceIgnoringCase")
+infix fun <T: CharSequence, I : Iterable<T>> I.shouldContainNoneIgnoringCase(expected: Iterable<T>): I = apply {
+    assertTrue("Expected Iterable to contain none of \"$expected\"",
+            this.none {
+                expected.any { exp -> exp.contains(it, true) }
+            }
+    )
+}
+
 infix fun <T, I : Iterable<T>> I.shouldContainNone(expected: Array<T>): I = apply { assertTrue("Expected Iterable to contain none of \"$expected\"", this.none { expected.contains(it) }) }
 
 infix fun <T, I : Iterable<T>> I.shouldContainAll(expected: Iterable<T>): I = apply { expected.forEach { shouldContain(it) } }
 
+@JvmName("shouldContainAllCharsIgnoringCase")
+infix fun <I : Iterable<Char>> I.shouldContainAllIgnoringCase(expected: Iterable<Char>): I = apply { expected.forEach { shouldContainIgnoringCase(it) } }
+
+@JvmName("shouldContainAllCharSequenceIgnoringCase")
+infix fun <T: CharSequence, I : Iterable<T>> I.shouldContainAllIgnoringCase(expected: Iterable<T>): I = apply { expected.forEach { shouldContainIgnoringCase(it) } }
+
 infix fun <T, I : Iterable<T>> I.shouldContainAll(expected: Array<T>): I = apply { expected.forEach { shouldContain(it) } }
+
+infix fun <T: CharSequence, I : Iterable<T>> I.shouldContainAllIgnoringCase(expected: Array<T>): I = apply { expected.forEach { shouldContainIgnoringCase(it) } }
 
 infix fun <T, I : Iterable<T>> I.shouldContainSame(expected: Iterable<T>): I = assertBothIterablesContainsSame(expected.toList(), this.toList())
 
@@ -678,6 +763,13 @@ infix fun <T, S : Sequence<T>> S.shouldContainNone(expected: Sequence<T>): S = a
     }
 }
 
+infix fun <T: CharSequence, S : Sequence<T>> S.shouldContainNoneIgnoringCase(expected: Sequence<T>): S = apply {
+    val expectedCollection: Collection<String> = expected.map { it.toString() }.toList()
+    assertTrue(none { it.findAnyOf(expectedCollection, 0, true) != null }) {
+        "Expected Sequence to contain none of \"${join(expected.asIterable())}\""
+    }
+}
+
 infix fun <T, S : Sequence<T>> S.shouldContainSome(expected: Sequence<T>): S = apply {
     val expectedSet = expected.toHashSet()
     assertTrue(any { it in expectedSet }) { "Expected Iterable to contain at least one of \"$expected\"" }
@@ -736,11 +828,19 @@ fun <M : Map<*, *>> M.shouldHaveSize(expectedSize: Int) = apply { this.keys.shou
 
 infix fun <T> Any?.shouldNotBeIn(array: Array<T>) = apply { if (!array.contains(this)) Unit else failExpectedActual("\"$this\" should not be in Array", "the value \"$this\" to not be in the Array", join(array)) }
 
+infix fun Char.shouldNotBeInIgnoringCase(array: Array<Char>) = apply {
+    if (!array.contains(this.toLowerCase()) && !array.contains(this.toUpperCase())) Unit else failExpectedActual("\"$this\" should not be in Array", "the value \"$this\" to not be in the Array", join(array))
+}
+
 infix fun <T> Any?.shouldBeIn(iterable: Iterable<T>) = apply { if (iterable.contains(this)) Unit else failExpectedActual("\"$this\" should be in Iterable", "the value \"$this\" inside the Iterable", join(iterable)) }
 
 infix fun <T> Any?.shouldNotBeIn(iterable: Iterable<T>) = apply { if (!iterable.contains(this)) Unit else failExpectedActual("\"$this\" should not be in Iterable", "the value \"$this\" to not be in the Iterable", join(iterable)) }
 
 infix fun <T> Any?.shouldBeIn(array: Array<T>) = apply { if (array.contains(this)) Unit else failExpectedActual("\"$this\" should be in Array", "the value \"$this\" inside the Array", join(array)) }
+
+infix fun Char.shouldBeInIgnoringCase(array: Array<Char>) = apply {
+    if (array.contains(this.toLowerCase()) || array.contains(this.toUpperCase())) Unit else failExpectedActual("\"$this\" should be in Array", "the value \"$this\" inside the Array", join(array))
+}
 
 infix fun <T : Comparable<T>> ClosedRange<T>.shouldBeInRange(input: ClosedRange<T>): ClosedRange<T> = apply {
     if (this.contains(input.start) && this.contains(input.endInclusive)) Unit

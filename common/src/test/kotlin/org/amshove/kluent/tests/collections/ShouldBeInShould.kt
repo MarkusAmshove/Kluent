@@ -4,6 +4,7 @@ import org.amshove.kluent.internal.assertFails
 import kotlin.test.Test
 import org.amshove.kluent.tests.Person
 import org.amshove.kluent.shouldBeIn
+import org.amshove.kluent.shouldBeInIgnoringCase
 
 class ShouldBeInShould {
     @Test
@@ -101,9 +102,21 @@ class ShouldBeInShould {
     }
 
     @Test
+    fun passWhenTestingAPrimitiveCharWhichIsWithinAnArrayIgnoringCase() {
+        val theArray = charArrayOf('a', 'b', 'c')
+        'B' shouldBeInIgnoringCase theArray
+    }
+
+    @Test
     fun failWhenTestingAPrimitiveCharWhichIsNotWithinAnArray() {
         val theArray = charArrayOf('a', 'b', 'c')
         assertFails { 'd' shouldBeIn theArray }
+    }
+
+    @Test
+    fun failWhenTestingAPrimitiveCharWhichIsNotWithinAnArrayIgnoringCase() {
+        val theArray = charArrayOf('a', 'b', 'c')
+        assertFails { 'd' shouldBeInIgnoringCase theArray }
     }
 
     @Test

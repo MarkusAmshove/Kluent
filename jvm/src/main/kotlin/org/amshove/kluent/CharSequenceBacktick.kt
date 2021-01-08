@@ -73,7 +73,7 @@ fun <T: CharSequence> T?.`should not be null or blank`(): T {
     return this.shouldNotBeNullOrBlank()
 }
 
-infix fun <T : CharSequence> T.`should contain all`(items: Iterable<CharSequence>): CharSequence = this shouldContainAll items
+infix fun <T : CharSequence> T.`should contain all`(items: Iterable<CharSequence>): CharSequence = this.shouldContainAll(items)
 
 infix fun <T : CharSequence> T.`should not contain all`(items: Iterable<CharSequence>): CharSequence =
-    this shouldNotContainAll items
+    this.shouldNotContainAll(items)
