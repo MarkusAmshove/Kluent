@@ -1,4 +1,4 @@
-# 1.65 (WIP)
+# 1.65
 * Add soft assertions (`assertSoftly`) | [Docs](https://github.com/MarkusAmshove/Kluent/blob/master/docs/SoftlyAssertions.md) | [Issue](https://github.com/MarkusAmshove/Kluent/issues/178) | [PR](https://github.com/MarkusAmshove/Kluent/pull/185) | thanks to [@drcolombo](https://github.com/drcolombo)
 * Various bug fixes in Equivalency functionality and message formatting | [PR](https://github.com/MarkusAmshove/Kluent/pull/186) | thanks to [@drcolombo](https://github.com/drcolombo)
 * New assertion `shouldBeEqualToIgnoringCase` for `Char[Sequence]` | [PR](https://github.com/MarkusAmshove/Kluent/pull/187) | thanks to [@drcolombo](https://github.com/drcolombo)
