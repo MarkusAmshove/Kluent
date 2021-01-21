@@ -1,6 +1,5 @@
 package org.amshove.kluent
 
-import org.amshove.kluent.internal.fail
 import java.lang.reflect.InvocationTargetException
 import java.util.*
 import kotlin.reflect.KProperty1
@@ -78,7 +77,6 @@ internal fun <T : Any> areEquivalent(recursionLevel: Int, actual: T, expected: T
                             return false
                         }
                     }
-                    return true
                 } else {
                     if ((currentLevelOfRecursion == equivalencyAssertionOptions.maxLevelOfRecursion && !equivalencyAssertionOptions.allowingInfiniteRecursion)
                             || equivalencyAssertionOptions.excludingNestedObjects) {
@@ -86,7 +84,9 @@ internal fun <T : Any> areEquivalent(recursionLevel: Int, actual: T, expected: T
                     }
                     equivalencyAssertionOptions.includedProperties.clear()
                     equivalencyAssertionOptions.excludedProperties.clear()
-                    return areEquivalent(currentLevelOfRecursion, subA, subB, equivalencyAssertionOptions)
+                    if (!areEquivalent(currentLevelOfRecursion, subA, subB, equivalencyAssertionOptions)) {
+                        return false
+                    }
                 }
             }
         }
@@ -170,9 +170,8 @@ private fun <T : Iterable<*>> T.iterableToStructuredString(recursionLevel: Int, 
         val objClass = list[i]!!::class
         var className = "${objClass.simpleName}"
         className = className.padStart(className.length + recursionLevel + 1, '-')
-        structuredStringBuilder.append(className)
-        structuredStringBuilder.append("[$i]")
-        list[i]!!.toStructuredString(recursionLevel, structuredStringBuilder, false)
+        structuredStringBuilder.append("˪$className[$i]")
+        list[i]!!.toStructuredString(recursionLevel + 1, structuredStringBuilder, false)
         structuredStringBuilder.append('\n')
     }
 }
