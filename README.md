@@ -7,7 +7,7 @@
 
 [Kluent](https://markusamshove.github.io/Kluent/) is a "Fluent Assertions" library written specifically for Kotlin.
 
-It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.html#infix-notation "Infix-Notation") and [Extension Functions](https://kotlinlang.org/docs/reference/extensions.html#extension-functions "Extension Functions") of Kotlin to provide a fluent wrapper around the JUnit-Asserts and Mockito.
+It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.html#infix-notation "Infix-Notation") and [Extension Functions](https://kotlinlang.org/docs/reference/extensions.html#extension-functions "Extension Functions") of Kotlin to provide a fluent wrapper around the JUnit-Assertions.
 
 [How to contribute](CONTRIBUTING.md)
 
@@ -46,7 +46,7 @@ dependencies {
 Replace {version} with the current version
 
 ```xml
-<!-- Add jcenter as a repository for dependencies --> 
+<!-- Add jcenter as a repository for dependencies -->
 <repositories>
     <repository>
         <id>jcenter</id>
@@ -78,7 +78,7 @@ More examples can be seen on the [Site](https://markusamshove.github.io/Kluent/)
 
 ```kotlin
 "hello" shouldNotBeEqualTo "world"
-```    
+```
 
 ### Assert that an Array/Iterable contains something ##
 
@@ -88,15 +88,6 @@ val jon = Person("Jon", "Doe")
 val list = listOf(alice, jon)
 list shouldContain jon
 ```
-
-### Stubbing
-
-```kotlin
-val stub = mock(Database::class)
-val bob = Person("Bob", "Guy")
-When calling stub.getPerson() itReturns bob
-```
-
 ## Using backticks
 
 Every method that is included in Kluent also has a "backtick version", to make it feel more like a describing sentence.

@@ -1,5 +1,7 @@
 # Mocking
 
+**This feature has been removed from v1.65 upwards. To continue using it, use v1.64**
+
 Kluent wraps [mockito-kotlin](https://github.com/nhaarman/mockito-kotlin) to provide a fluent API
 
 ## Mocking
