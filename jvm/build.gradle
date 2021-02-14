@@ -16,11 +16,6 @@ dependencies {
     implementation libs.kotlin_stdlib_jvm
     implementation libs.kotlin_reflect
     implementation libs.kotlin_test_jvm
-    if(isAndroid) {
-        runtime libs.kotlin_stdlib_jvm
-        runtime libs.kotlin_reflect
-        runtime libs.kotlin_test_jvm
-    }
     implementation libs.junit
 
     testImplementation libs.junit

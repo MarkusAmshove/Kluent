@@ -43,7 +43,6 @@ allprojects {
     apply plugin: 'com.adarshr.test-logger'
 
     repositories {
-        jcenter()
         mavenCentral()
         maven { url "http://kotlin.bintray.com/kotlinx" }
     }
@@ -51,9 +50,15 @@ allprojects {
 
 subprojects {
     ext.configurePublishing = { artifactName = null ->
-        apply plugin: 'com.jfrog.bintray'
-        apply plugin: 'maven-publish'
+
+        apply plugin: 'maven'
         apply plugin: 'java'
+        apply plugin: 'signing'
+
+        signing {
+            useGpgCmd()
+            sign configurations.archives
+        }
 
         artifactName = artifactName ?: project.name
 
@@ -62,33 +67,52 @@ subprojects {
             from sourceSets.main.allSource
         }
 
-
-        artifacts {
-            archives sourcesJar
+        task javadocJar(type: Jar) {
+            classifier = 'javadoc'
+            from javadoc
         }
 
-        bintray {
-            user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
-            key = project.hasProperty('bintrayKey') ? project.property('bintrayKey') : System.getenv('BINTRAY_KEY')
-            publish = true
-            override = true
-            publications = ['Publication']
-            configurations = ['archives']
-            pkg {
-                repo = 'maven'
-                name = artifactName
-                licenses = ['MIT']
-                vcsUrl = 'https://github.com/MarkusAmshove/Kluent'
-            }
+        artifacts {
+            archives javadocJar, sourcesJar
+        }
 
-            publishing {
-                publications {
-                    Publication(MavenPublication) {
-                        from components.java
-                        groupId 'org.amshove.kluent'
-                        artifactId artifactName
-                        version project.version
-                        artifact sourcesJar
+        uploadArchives {
+            repositories {
+                mavenDeployer {
+                    beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+                    repository(url: 'https://oss.sonatype.org/service/local/staging/deploy/maven2') {
+                        authentication(userName: ossrhUsername, password: ossrhPassword)
+                    }
+                    snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                        authentication(userName: ossrhUsername, password: ossrhPassword)
+                    }
+
+                    pom.project {
+                        name artifactName
+                        packaging 'jar'
+                        description 'Fluent Assertion-Library for Kotlin'
+                        url 'https://github.com/MarkusAmshove/Kluent'
+
+                        scm {
+                            connection 'scm:git:git:github.com/MarkusAmshove/Kluent.git'
+                            developerConnection 'scm:git:git:github.com/MarkusAmshove/Kluent.git'
+                            url 'https://github.com/MarkusAmshove/Kluent'
+                        }
+
+                        licenses {
+                            license {
+                                name 'MIT'
+                                url 'https://github.com/MarkusAmshove/Kluent/blob/master/LICENSE'
+                            }
+                        }
+
+                        developers {
+                            developer {
+                                id 'markusamshove'
+                                name 'Markus Amshove'
+                            }
+                        }
                     }
                 }
             }
@@ -99,7 +123,5 @@ subprojects {
                 logger.info("artifactName: $artifactName")
             }
         }
-
-        bintrayUpload.dependsOn(printArtifactName)
     }
 }
