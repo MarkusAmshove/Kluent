@@ -1,7 +1,9 @@
 package org.amshove.kluent.tests.assertions.softly
 
 import org.amshove.kluent.*
+import java.lang.RuntimeException
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class AssertSoftly {
     @Test
@@ -20,9 +22,9 @@ class AssertSoftly {
             e.message!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo("""
                 The following 2 assertions failed:
                 1) Expected the CharSequence ab1 to contain 2
-                at org.amshove.kluent.tests.assertions.softly.AssertSoftly.failShouldAssertSoftly(AssertSoftly.kt:16)
+                at org.amshove.kluent.tests.assertions.softly.AssertSoftly.failShouldAssertSoftly(AssertSoftly.kt:18)
                 2) Expected 3 to be greater or equal to 4
-                at org.amshove.kluent.tests.assertions.softly.AssertSoftly.failShouldAssertSoftly(AssertSoftly.kt:17)""".replace("\\s+|\\t|\\n".toRegex(), " ").trim())
+                at org.amshove.kluent.tests.assertions.softly.AssertSoftly.failShouldAssertSoftly(AssertSoftly.kt:19)""".replace("\\s+|\\t|\\n".toRegex(), " ").trim())
         }
     }
 
@@ -55,7 +57,7 @@ class AssertSoftly {
             e.message!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo("""
                 The following assertion failed:
                 Expected the CharSequence ab1 to contain 2
-                at org.amshove.kluent.tests.assertions.softly.AssertSoftly.verifyAssertErrorForNonSoftlyAssertions(AssertSoftly.kt:51)"""
+                at org.amshove.kluent.tests.assertions.softly.AssertSoftly.verifyAssertErrorForNonSoftlyAssertions(AssertSoftly.kt:53)"""
                     .replace("\\s+|\\t|\\n".toRegex(), " ").trim())
         }
     }
@@ -77,7 +79,7 @@ class AssertSoftly {
             e.message!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo("""
                 The following assertion failed:
                 Expected 3 to be greater or equal to 4
-                at org.amshove.kluent.tests.assertions.softly.AssertSoftly.failShouldAssertSoftlyForSeveralObjects(AssertSoftly.kt:74)"""
+                at org.amshove.kluent.tests.assertions.softly.AssertSoftly.failShouldAssertSoftlyForSeveralObjects(AssertSoftly.kt:76)"""
                     .replace("\\s+|\\t|\\n".toRegex(), " ").trim())
         }
     }
@@ -152,11 +154,31 @@ class AssertSoftly {
             e.message!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo("""
                 The following 2 assertions failed:
                 1) Expected <2>, actual <3>.
-                    at org.amshove.kluent.tests.assertions.softly.AssertSoftly.houseTest(AssertSoftly.kt:148)
+                    at org.amshove.kluent.tests.assertions.softly.AssertSoftly.houseTest(AssertSoftly.kt:150)
                 2) Expected <6>, actual <5>.
-                    at org.amshove.kluent.tests.assertions.softly.AssertSoftly.houseTest(AssertSoftly.kt:149)
+                    at org.amshove.kluent.tests.assertions.softly.AssertSoftly.houseTest(AssertSoftly.kt:151)
                 """.replace("\\s+|\\t|\\n".toRegex(), " ").trim())
         }
     }
 
+    @Test
+    fun handledExceptionThrownFromAssertSoftly() {
+        // arrange
+        try {
+            assertSoftly {
+                throw RuntimeException("Test exception")
+            }
+        } catch (e: Throwable) {
+            // do nothing
+        }
+
+        // assert
+        var errorThrown = false
+        try {
+            5 shouldBeEqualTo 3
+        } catch (e: Throwable) {
+            errorThrown = true
+        }
+        assertEquals(true, errorThrown)
+    }
 }
