@@ -152,4 +152,4 @@ If you're still unsure how to make something platform independent, we can have a
 
 # Attribution
 
-[Parts of the `assertSoftly` feature](https://github.com/MarkusAmshove/Kluent/pull/185#issuecomment-731777949) are best upon the great work of [Kotest](https://github.com/kotest/kotest) under the Apache 2.0 License.
+[Parts of the `assertSoftly` feature](https://github.com/MarkusAmshove/Kluent/pull/185#issuecomment-731777949) are based upon the great work of [Kotest](https://github.com/kotest/kotest) under the Apache 2.0 License.
