@@ -7,7 +7,9 @@ inline fun <T> assertSoftly(assertions: () -> T): T {
         return assertions()
     }
     errorCollector.setCollectionMode(ErrorCollectionMode.Soft)
-    return assertions().apply {
+    try {
+        return assertions()
+    } finally {
         errorCollector.throwCollectedErrors()
     }
 }
