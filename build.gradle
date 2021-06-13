@@ -38,7 +38,7 @@ ext {
 
 allprojects {
     group 'org.amshove.kluent'
-    version '1.65'
+    version '1.66'
 
     apply plugin: 'com.adarshr.test-logger'
 
@@ -55,7 +55,7 @@ subprojects {
         apply plugin: 'java'
         apply plugin: 'signing'
 
-        // Only attempt signing artifacts when publishing
+        // Comment when publishing
         tasks.withType(Sign) {
             onlyIf { gradle.taskGraph.hasTask("publish") }
         }
