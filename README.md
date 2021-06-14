@@ -3,7 +3,6 @@
 [![Changelog](https://img.shields.io/badge/docs-changelog-blue.svg)](https://github.com/MarkusAmshove/Kluent/blob/master/CHANGELOG.md)
 [![Documentation](https://img.shields.io/badge/docs-documentation-blue.svg)](https://markusamshove.github.io/Kluent/)
 [![Contributors](https://img.shields.io/badge/docs-contributors-blue.svg)](https://github.com/MarkusAmshove/Kluent/blob/master/AUTHORS.md)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=MarkusAmshove_Kluent&metric=alert_status)](https://sonarcloud.io/dashboard?id=MarkusAmshove_Kluent)
 
 [Kluent](https://markusamshove.github.io/Kluent/) is a "Fluent Assertions" library written specifically for Kotlin.
 
