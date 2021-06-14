@@ -722,11 +722,11 @@ infix fun <T, I : Iterable<T>> I.shouldBeSortedAccordingTo(comparator: Comparato
 
 @Deprecated("Equality should not be tested on sequences", level = DeprecationLevel.ERROR)
 infix fun <T, S : Sequence<T>> S.shouldEqual(expected: Sequence<T>): S =
-        fail("Equality should not be tested on sequences")
+        hardFail("Equality should not be tested on sequences")
 
 @Deprecated("Equality should not be tested on sequences", level = DeprecationLevel.ERROR)
 infix fun <T, S : Sequence<T>> S.shouldNotEqual(expected: Sequence<T>): S =
-        fail("Equality should not be tested on sequences")
+        hardFail("Equality should not be tested on sequences")
 
 infix fun <T, S : Sequence<T>> S.shouldBeSortedAccordingTo(comparator: Comparator<T>) = apply {
     var index = 0
@@ -860,12 +860,10 @@ infix fun <T : Comparable<T>> ClosedRange<T>.shouldNotBeInRange(input: ClosedRan
     )
 }
 
-fun <E> Iterable<E>.shouldMatchAtLeastOneOf(predicate: (E) -> Boolean): Iterable<E> {
-    this.forEach {
-        if (predicate(it))
-            return this
+fun <E> Iterable<E>.shouldMatchAtLeastOneOf(predicate: (E) -> Boolean): Iterable<E> = also {
+    if (it.none(predicate)) {
+        fail("Iterable had no matching items")
     }
-    fail("Iterable had no matching items")
 }
 
 fun <E> Iterable<E>.shouldMatchAllWith(predicate: (E) -> Boolean): Iterable<E> {

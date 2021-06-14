@@ -1,6 +1,5 @@
 package org.amshove.kluent
 
-import org.amshove.kluent.internal.fail
 import java.lang.reflect.InvocationTargetException
 import java.util.*
 import kotlin.reflect.KProperty1

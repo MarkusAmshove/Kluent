@@ -10,9 +10,6 @@ internal fun joinKeys(map: Map<*, *>) = "Keys: [${join(map.keys)}]"
 internal fun joinValues(map: Map<*, *>) = "Values: [${join(map.values)}]"
 internal fun joinPairs(map: Map<*, *>) = "Pairs: [${map.map { it.toPair() }.joinToString(", ")}]"
 
-internal fun fail(message: String): Nothing {
-    throw AssertionError(message)
-}
 
 internal fun messagePrefix(message: String?) = if (message == null) "" else "$message. "
 

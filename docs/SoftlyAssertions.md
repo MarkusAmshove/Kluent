@@ -162,3 +162,9 @@ If you like, you can use a bit different syntax achieving the same result:
             guests.size.shouldBeEqualTo(6)
         }
 ```
+
+## Compatibility note
+The following assertions are not compatible with `assertSoftly` and exit the test immediately after failure:
+* `assertFails`
+* `shouldNotBeNull`
+* `a.shouldBeInstanceOf<B>()`
