@@ -1,3 +1,6 @@
+# 1.67
+* Further improve assertSoftly compatibility | [Issue](https://github.com/MarkusAmshove/Kluent/pull/196) | [PR](https://github.com/MarkusAmshove/Kluent/pull/198) | thanks to [@piotrb5e3](https://github.com/piotrb5e3)
+
 # 1.66
 * Fix exceptions failing silently with `assertSoftly` | [Issue](https://github.com/MarkusAmshove/Kluent/pull/196) | [PR](https://github.com/MarkusAmshove/Kluent/pull/197) | thanks to [@piotrb5e3](https://github.com/piotrb5e3)
 
