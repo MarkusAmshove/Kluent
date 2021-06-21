@@ -30,7 +30,7 @@ fun <T : Any> T?.shouldNotBeNull(): T {
         returns() implies (this@shouldNotBeNull != null)
     }
 
-    return this ?: fail("Expected non null value, but value was null")
+    return this ?: hardFail("Expected non null value, but value was null")
 }
 
 @UseExperimental(ExperimentalContracts::class)
@@ -75,13 +75,38 @@ fun Char.shouldNotBeDigit() = this.apply { assertTrue("Expected '$this' to be no
 
 infix fun <T> T.should(assertion: T.() -> Boolean) = should("Expected the assertion to return true, but returned false", assertion)
 
-fun <T> T.should(message: String, assertion: T.() -> Boolean): T = try {
-    if (assertion()) this else fail(message)
-} catch (t: Throwable) {
-    fail("""$message
+fun <T> T.should(message: String, assertion: T.() -> Boolean): T = also {
+    try {
+        if (!assertion()) {
+            fail(message)
+        }
+    } catch (t: Throwable) {
+        fail("""$message
         |
         | An exception occured:
         |   ${t.platformClassName()}: ${t.message}
         |   ${"\tat "}${t.platformJoinStackTrace()}
     """.trimMargin())
+    }
 }
+
+/**
+ * Provides an assertSoftly-compatible way of reporting a failed assertion
+ * All assertions should rely on it for error reporting.
+ * Assertions that don't work with assertSoftly (for example shouldNotBeNull) can use hardFail
+ */
+fun fail(message: String?) {
+    try {
+        throw AssertionError(message)
+    } catch (ex: AssertionError) {
+        if (errorCollector.getCollectionMode() == ErrorCollectionMode.Soft) {
+            errorCollector.pushError(ex)
+        } else {
+            throw assertionError(ex)
+        }
+    }
+}
+
+/** Use this function in places where a soft fail in assertSoftly would not make sense - for example shouldNotBeNull. */
+@PublishedApi
+internal fun hardFail(message: String?): Nothing = throw AssertionError(message)

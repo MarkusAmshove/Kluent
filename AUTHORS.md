@@ -41,3 +41,4 @@
 1. Keivan Esbati - [@Tenkei](https://github.com/Tenkei) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=Tenkei))
 1. Sam Neirinck - [@samneirinck](https://github.com/samneirinck) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=samneirinck)) 
 1. Maxim Ivanov [@drcolombo](https://github.com/drcolombo) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=drcolombo))
+1. Piotr Bakalarski [@piotrb5e3](https://github.com/piotrb5e3) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=piotrb5e3))

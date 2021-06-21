@@ -181,4 +181,27 @@ class AssertSoftly {
         }
         assertEquals(true, errorThrown)
     }
+
+    @Test
+    fun assertSoftlyCollections() {
+        // arrange
+        val list = listOf('x', 'y', 'z')
+
+        // assert
+        try {
+            assertSoftly {
+                list shouldHaveSize 2
+                list shouldContainSame listOf('x', 'z')
+            }
+        } catch (e: Throwable) {
+            e.message!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo("""
+                The following 2 assertions failed:
+                1) Expected collection size to be 2 but was 3
+                    at org.amshove.kluent.tests.assertions.softly.AssertSoftly.assertSoftlyCollections(AssertSoftly.kt:193)
+                2) The collection doesn't have the same items Items included on the actual collection but not in the expected: y
+                    at org.amshove.kluent.tests.assertions.softly.AssertSoftly.assertSoftlyCollections(AssertSoftly.kt:194)
+                """.replace("\\s+|\\t|\\n".toRegex(), " ").trim())
+        }
+    }
+
 }

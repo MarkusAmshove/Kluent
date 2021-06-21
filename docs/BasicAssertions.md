@@ -33,3 +33,8 @@ isMale.shouldBeFalse()
 isMale.shouldNotBeTrue()
 isMale.shouldNotBeFalse()
 ```
+
+## Failing with a message
+```kt
+fail("You did not know the airspeed velocity of an unladen swallow!")
+```

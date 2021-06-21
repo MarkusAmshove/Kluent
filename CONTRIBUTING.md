@@ -100,6 +100,13 @@ and [Native](https://github.com/MarkusAmshove/Kluent/blob/master/native/src/main
 
 If you're still unsure how to make something platform independent, we can have a look together inside the PR :-)
 
+## Compatibility with assertSoftly
+When adding assertions, do not throw AssertionError directly.
+Insead, use existing assertions, internal helpers or the `fail` method.
+This way your assertion will be compatible with `assertSoftly`.
+
+If your assertion can't fail softly, for example `fun T?.shouldNotBeNull(): T = ...`, then call `hardFail`.
+
 ## Coding Style
 
 Our coding style is the default code style coming with IntelliJ.
