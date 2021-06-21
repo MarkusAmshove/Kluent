@@ -107,6 +107,19 @@ fun fail(message: String?) {
     }
 }
 
+/**
+ * Provides an assertSoftly-compatible way of reporting a failed assertion
+ * All assertions should rely on it for error reporting.
+ * Assertions that don't work with assertSoftly (for example shouldNotBeNull) can use hardFail
+ */
+fun fail(throwable: Throwable) {
+    if(errorCollector.getCollectionMode() == ErrorCollectionMode.Soft) {
+        errorCollector.pushError(throwable)
+    } else {
+        throw throwable
+    }
+}
+
 /** Use this function in places where a soft fail in assertSoftly would not make sense - for example shouldNotBeNull. */
 @PublishedApi
 internal fun hardFail(message: String?): Nothing = throw AssertionError(message)

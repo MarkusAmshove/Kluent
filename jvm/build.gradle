@@ -15,7 +15,6 @@ dependencies {
     implementation libs.kotlin_stdlib_jvm
     implementation libs.kotlin_reflect
     implementation libs.kotlin_test_jvm
-    implementation libs.junit
 
     testImplementation libs.junit
     testImplementation libs.kotlin_test_jvm

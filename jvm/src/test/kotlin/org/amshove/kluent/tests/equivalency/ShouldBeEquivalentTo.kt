@@ -2,7 +2,7 @@ package org.amshove.kluent.tests.equivalency
 
 import org.amshove.kluent.*
 import org.amshove.kluent.internal.assertFailsWith
-import org.junit.ComparisonFailure
+import org.amshove.kluent.ComparisonFailure
 import org.junit.Test
 import java.time.LocalDate
 

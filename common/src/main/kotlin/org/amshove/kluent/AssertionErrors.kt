@@ -1,19 +1,29 @@
 package org.amshove.kluent
 
-import kotlin.test.assertFails
+
+class ComparisonFailure(val customMessage: String?, val expected: String?, val actual: String?) : RuntimeException(
+    """${customMessage ?: ""}
+        |Expected: <$expected> but was: <$actual>
+    """.trimMargin().trim()
+) {
+    constructor(customMessage: String?, expected: Any?, actual: Any?)
+            : this(customMessage, expected?.toString(), actual?.toString())
+}
 
 /** An error that bundles multiple other [Throwable]s together */
 class MultiAssertionError(errors: List<Throwable>) : AssertionError(createMessage(errors)) {
     companion object {
         private fun createMessage(errors: List<Throwable>) = buildString {
-            append("\nThe following ")
+            append("\nExpected no assertion to fail, but ")
 
             if (errors.size == 1) {
-                append("assertion")
+                append("one assertion")
             } else {
                 append(errors.size).append(" assertions")
             }
             append(" failed:\n")
+
+            append("Expected: <>, but was: <")
 
             if (errors.size == 1) {
                 append(errors[0].message).append("\n")
@@ -28,6 +38,8 @@ class MultiAssertionError(errors: List<Throwable>) : AssertionError(createMessag
                     }
                 }
             }
+
+            append(">")
         }
     }
 }

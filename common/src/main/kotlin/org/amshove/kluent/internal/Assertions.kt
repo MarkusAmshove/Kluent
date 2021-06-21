@@ -1,5 +1,6 @@
 package org.amshove.kluent.internal
 
+import org.amshove.kluent.ComparisonFailure
 import org.amshove.kluent.fail
 import kotlin.jvm.JvmName
 import kotlin.reflect.KClass
@@ -126,7 +127,9 @@ fun <T> assertEquals(expected: T, actual: T, message: String? = null) {
  * @param message the message to report if the assertion fails.
  */
 fun assertEquals(message: String?, expected: Any?, actual: Any?): Unit {
-    assertTrue(actual == expected) { messagePrefix(message) + "Expected <$expected>, actual <$actual>." }
+    if(actual != expected) {
+        fail(ComparisonFailure(message, expected, actual))
+    }
 }
 
 /** Asserts that the [actual] value is not equal to the illegal value, with an optional [message]. */

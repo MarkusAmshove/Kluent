@@ -1,6 +1,6 @@
 package org.amshove.kluent
 
-import org.junit.ComparisonFailure
+import java.lang.RuntimeException
 import kotlin.reflect.KClass
 
 fun invoking(function: () -> Any?): () -> Any? = function
