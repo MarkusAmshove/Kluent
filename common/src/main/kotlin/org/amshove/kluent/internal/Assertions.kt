@@ -1,6 +1,6 @@
 package org.amshove.kluent.internal
 
-import org.amshove.kluent.*
+import org.amshove.kluent.fail
 import kotlin.jvm.JvmName
 import kotlin.reflect.KClass
 import kotlin.test.asserter
@@ -8,19 +8,7 @@ import kotlin.test.asserter
 internal fun assertTrue(message: String, boolean: Boolean) = assertTrue(boolean, message)
 internal fun assertTrue(actual: Boolean, message: String? = null) {
     if (!actual) {
-        if (errorCollector.getCollectionMode() == ErrorCollectionMode.Soft) {
-            try {
-                throw AssertionError(message)
-            } catch (ex: AssertionError) {
-                errorCollector.pushError(ex)
-            }
-        } else {
-            try {
-                throw AssertionError(message)
-            } catch (ex: AssertionError) {
-                throw assertionError(ex)
-            }
-        }
+        fail(message)
     }
 }
 
@@ -100,19 +88,19 @@ internal fun <K, V, M : Map<K, V>> mapsEqualUnordered(m1: M?, m2: M?): Boolean {
     return true
 }
 
-internal fun failExpectedActual(message: String, expected: String?, actual: String?): Nothing = fail("""
+internal fun failExpectedActual(message: String, expected: String?, actual: String?) = fail("""
     |$message
     |   Expected:   $expected
     |   Actual:     $actual
 """.trimMargin())
 
-internal fun failCollectionWithDifferentItems(message: String, expected: String?, actual: String?): Nothing = fail("""
+internal fun failCollectionWithDifferentItems(message: String, expected: String?, actual: String?) = fail("""
     |$message
     |${if (!expected.isNullOrEmpty()) "Items included on the expected collection but not in the actual: $expected" else ""}
     |${if (!actual.isNullOrEmpty()) "Items included on the actual collection but not in the expected: $actual" else ""}
 """.trimMargin())
 
-internal fun failFirstSecond(message: String, first: String?, second: String?): Nothing = fail("""
+internal fun failFirstSecond(message: String, first: String?, second: String?) = fail("""
     |$message
     |   First:      $first
     |   Second:     $second

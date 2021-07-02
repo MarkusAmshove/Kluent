@@ -12,7 +12,6 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-native-gradle-plugin:$kotlin_native_gradle_plugin_version"
         classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.+"
         classpath 'com.adarshr:gradle-test-logger-plugin:1.6.0'
-        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.0"
     }
 }
 
@@ -38,12 +37,11 @@ ext {
 
 allprojects {
     group 'org.amshove.kluent'
-    version '1.65'
+    version '1.67'
 
     apply plugin: 'com.adarshr.test-logger'
 
     repositories {
-        jcenter()
         mavenCentral()
         maven { url "http://kotlin.bintray.com/kotlinx" }
     }
@@ -51,9 +49,20 @@ allprojects {
 
 subprojects {
     ext.configurePublishing = { artifactName = null ->
-        apply plugin: 'com.jfrog.bintray'
-        apply plugin: 'maven-publish'
+
+        apply plugin: 'maven'
         apply plugin: 'java'
+        apply plugin: 'signing'
+
+        // Comment when publishing
+        tasks.withType(Sign) {
+            onlyIf { gradle.taskGraph.hasTask("publish") }
+        }
+
+        signing {
+            useGpgCmd()
+            sign configurations.archives
+        }
 
         artifactName = artifactName ?: project.name
 
@@ -62,33 +71,52 @@ subprojects {
             from sourceSets.main.allSource
         }
 
-
-        artifacts {
-            archives sourcesJar
+        task javadocJar(type: Jar) {
+            classifier = 'javadoc'
+            from javadoc
         }
 
-        bintray {
-            user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
-            key = project.hasProperty('bintrayKey') ? project.property('bintrayKey') : System.getenv('BINTRAY_KEY')
-            publish = true
-            override = true
-            publications = ['Publication']
-            configurations = ['archives']
-            pkg {
-                repo = 'maven'
-                name = artifactName
-                licenses = ['MIT']
-                vcsUrl = 'https://github.com/MarkusAmshove/Kluent'
-            }
+        artifacts {
+            archives javadocJar, sourcesJar
+        }
 
-            publishing {
-                publications {
-                    Publication(MavenPublication) {
-                        from components.java
-                        groupId 'org.amshove.kluent'
-                        artifactId artifactName
-                        version project.version
-                        artifact sourcesJar
+        uploadArchives {
+            repositories {
+                mavenDeployer {
+                    beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+                    repository(url: 'https://oss.sonatype.org/service/local/staging/deploy/maven2') {
+                        authentication(userName: findProperty('ossrhUsername'), password: findProperty('ossrhPassword'))
+                    }
+                    snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                        authentication(userName: findProperty('ossrhUsername'), password: findProperty('ossrhPassword'))
+                    }
+
+                    pom.project {
+                        name artifactName
+                        packaging 'jar'
+                        description 'Fluent Assertion-Library for Kotlin'
+                        url 'https://github.com/MarkusAmshove/Kluent'
+
+                        scm {
+                            connection 'scm:git:git:github.com/MarkusAmshove/Kluent.git'
+                            developerConnection 'scm:git:git:github.com/MarkusAmshove/Kluent.git'
+                            url 'https://github.com/MarkusAmshove/Kluent'
+                        }
+
+                        licenses {
+                            license {
+                                name 'MIT'
+                                url 'https://github.com/MarkusAmshove/Kluent/blob/master/LICENSE'
+                            }
+                        }
+
+                        developers {
+                            developer {
+                                id 'markusamshove'
+                                name 'Markus Amshove'
+                            }
+                        }
                     }
                 }
             }
@@ -99,7 +127,5 @@ subprojects {
                 logger.info("artifactName: $artifactName")
             }
         }
-
-        bintrayUpload.dependsOn(printArtifactName)
     }
 }
