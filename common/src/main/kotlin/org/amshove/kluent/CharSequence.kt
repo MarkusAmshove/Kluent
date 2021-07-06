@@ -131,11 +131,11 @@ fun <T : CharSequence> T.shouldContainAll(vararg expected: CharSequence) = this.
 fun <T : CharSequence> T.shouldContainAllIgnoringCase(vararg expected: CharSequence) = this.shouldContainAllIgnoringCase(expected.toList())
 
 infix fun <T : CharSequence> T.shouldNotContainAll(items: Iterable<CharSequence>): CharSequence = this.apply {
-    assertFalse("Expected the CharSequence to not contail all items: $items", items.all { this.contains(it) })
+    assertFalse("Expected the CharSequence to not contain all items: $items", items.all { this.contains(it) })
 }
 
 infix fun <T : CharSequence> T.shouldNotContainAllIgnoringCase(items: Iterable<CharSequence>): CharSequence = this.apply {
-    assertFalse("Expected the CharSequence to not contail all items: $items", items.all { this.contains(it, true) })
+    assertFalse("Expected the CharSequence to not contain all items: $items", items.all { this.contains(it, true) })
 }
 
 fun <T : CharSequence> T.shouldNotContainAll(vararg expected: CharSequence) = this.shouldNotContainAll(expected.toList())

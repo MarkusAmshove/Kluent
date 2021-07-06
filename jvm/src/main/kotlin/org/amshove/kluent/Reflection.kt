@@ -3,6 +3,7 @@ package org.amshove.kluent
 import org.amshove.kluent.internal.assertFalse
 import org.amshove.kluent.internal.assertTrue
 import org.amshove.kluent.internal.failExpectedActual
+import org.amshove.kluent.internal.hardFail
 import kotlin.reflect.KClass
 
 infix fun Any?.shouldBeInstanceOf(className: Class<*>) = assertTrue("Expected $this to be an instance of $className", className.isInstance(this))

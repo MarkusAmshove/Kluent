@@ -1,5 +1,6 @@
 package org.amshove.kluent
 
+import org.junit.ComparisonFailure
 import java.lang.reflect.InvocationTargetException
 import java.util.*
 import kotlin.reflect.KProperty1
@@ -23,6 +24,15 @@ fun <T : Any, I : Iterable<T>> I.shouldNotBeEquivalentTo(expected: Iterable<T>, 
 @Suppress("UNCHECKED_CAST")
 internal fun <T : Any> areEquivalent(recursionLevel: Int, actual: T, expected: T, equivalencyAssertionOptions: EquivalencyAssertionOptions): Boolean {
     val currentLevelOfRecursion = recursionLevel + 1
+
+    if (actual is Boolean || actual is Byte || actual is Short || actual is Int || actual is Long || actual is Float || actual is Double || actual is Char)
+    {
+        return actual == expected
+    }
+    if (actual is CharSequence || actual is String)
+    {
+        return (actual as String).equals(expected as String, true)
+    }
 
     val actualKClass = actual::class
     val expectedKClass = expected::class
@@ -130,7 +140,7 @@ private fun <T : Any> T.toStructuredString(recursionLevel: Int, structuredString
         structuredStringBuilder.delete(structuredStringBuilder.length - 2, structuredStringBuilder.length)
         structuredStringBuilder.append(')')
     }
-    structuredStringBuilder.append('\n')
+    structuredStringBuilder.append(System.lineSeparator())
 
     // enumerate through complex types
     for (property in objClass.declaredMemberProperties.filter { it.visibility != KVisibility.PRIVATE }
@@ -139,28 +149,28 @@ private fun <T : Any> T.toStructuredString(recursionLevel: Int, structuredString
                 !(it.second is Number || it.second is Date || it.second is Boolean || it.second is String || it.second is Enum<*>) && it.second != null
             }
     )
-        try {
-            structuredStringBuilder.append('˪')
+    try {
+        structuredStringBuilder.append('˪')
 
-            if (property.second!!::class.declaredMemberProperties.all { it.visibility == KVisibility.PRIVATE }) {
-                structuredStringBuilder.append("${property.first.name} = ${property.second!!}")
+        if (property.second!!::class.declaredMemberProperties.all { it.visibility == KVisibility.PRIVATE }) {
+            structuredStringBuilder.append("${property.first.name} = ${property.second!!}")
+        } else {
+            if (property.second is Iterable<*>) {
+                var propertyName = property.first.name
+                propertyName = propertyName.padStart(propertyName.length + recursionLevel + 1, '-')
+                structuredStringBuilder.append("${propertyName}${System.lineSeparator()}")
+                (property.second!! as Iterable<*>).iterableToStructuredString(recursionLevel + 1, structuredStringBuilder)
             } else {
-                if (property.second is Iterable<*>) {
-                    var propertyName = property.first.name
-                    propertyName = propertyName.padStart(propertyName.length + recursionLevel + 1, '-')
-                    structuredStringBuilder.append("${propertyName}\n")
-                    (property.second!! as Iterable<*>).iterableToStructuredString(recursionLevel + 1, structuredStringBuilder)
-                } else {
-                    property.second!!.toStructuredString(recursionLevel + 1, structuredStringBuilder)
-                }
+                property.second!!.toStructuredString(recursionLevel + 1, structuredStringBuilder)
             }
-        } catch (e: NoSuchMethodException) {
-            structuredStringBuilder.append("${property.first.name} = ")
-        } catch (e: InvocationTargetException) {
-            structuredStringBuilder.append("${property.first.name} = ")
-        } catch (e: IllegalAccessException) {
-            structuredStringBuilder.append("${property.first.name} = ")
         }
+    } catch (e: NoSuchMethodException) {
+        structuredStringBuilder.append("${property.first.name} = ")
+    } catch (e: InvocationTargetException) {
+        structuredStringBuilder.append("${property.first.name} = ")
+    } catch (e: IllegalAccessException) {
+        structuredStringBuilder.append("${property.first.name} = ")
+    }
 }
 
 private fun <T : Iterable<*>> T.iterableToStructuredString(recursionLevel: Int, structuredStringBuilder: StringBuilder) {
@@ -172,27 +182,29 @@ private fun <T : Iterable<*>> T.iterableToStructuredString(recursionLevel: Int, 
         className = className.padStart(className.length + recursionLevel + 1, '-')
         structuredStringBuilder.append("˪$className[$i]")
         list[i]!!.toStructuredString(recursionLevel + 1, structuredStringBuilder, false)
-        structuredStringBuilder.append('\n')
     }
 }
 
 @ExperimentalStdlibApi
 private fun <T : Any> assertEquivalency(not: Boolean = false, expected: T, actual: T, equivalencyAssertionOptions: ((EquivalencyAssertionOptions) -> EquivalencyAssertionOptions)? = null) {
-    val actualStructure: StringBuilder = StringBuilder().apply { append('\n') }
-    val expectedStructure: StringBuilder = StringBuilder().apply { append('\n') }
+    val actualStructure: StringBuilder = StringBuilder()
+    val expectedStructure: StringBuilder = StringBuilder()
 
-    val options = equivalencyAssertionOptions?.invoke(EquivalencyAssertionOptions()) ?: EquivalencyAssertionOptions()
+    val options = equivalencyAssertionOptions?.invoke(EquivalencyAssertionOptions())
+            ?: EquivalencyAssertionOptions()
     if (options.compareByProperties) {
         if (!not.xor(areEquivalent(0, actual, expected, options))) {
             actual.toStructuredString(0, actualStructure)
             expected.toStructuredString(0, expectedStructure)
-            fail("Are ${
-                if (!not) {
-                    "not "
-                } else {
-                    ""
+            if (errorCollector.getCollectionMode() == ErrorCollectionMode.Soft) {
+                try {
+                    fail(EquivalencyExceptionMessage.exceptionMessage(not), expectedStructure.toString().plus(System.lineSeparator()), actualStructure.toString().plus(System.lineSeparator()))
+                } catch (ex: ComparisonFailure) {
+                    errorCollector.pushError(ex)
                 }
-            }equivalent:", expectedStructure.toString(), actualStructure.toString())
+            } else {
+                fail(EquivalencyExceptionMessage.exceptionMessage(not), expectedStructure.toString().plus(System.lineSeparator()), actualStructure.toString().plus(System.lineSeparator()))
+            }
         }
     } else {
         if (not) {
@@ -227,7 +239,15 @@ private fun <T : Any> assertBothCollectionsEquivalency(not: Boolean = false, exp
         for (i in expectedList.indices) {
             expectedList[i].toStructuredString(0, expectedStructure)
         }
-        fail("Are ${if (!not) { "not " } else { "" } }equivalent:", expectedStructure.toString(), actualStructure.toString())
+        if (errorCollector.getCollectionMode() == ErrorCollectionMode.Soft) {
+            try {
+                fail(EquivalencyExceptionMessage.exceptionMessage(not), expectedStructure.toString().plus(System.lineSeparator()), actualStructure.toString().plus(System.lineSeparator()))
+            } catch (ex: ComparisonFailure) {
+                errorCollector.pushError(ex)
+            }
+        } else {
+            fail(EquivalencyExceptionMessage.exceptionMessage(not), expectedStructure.toString().plus(System.lineSeparator()), actualStructure.toString().plus(System.lineSeparator()))
+        }
     }
 
     val remainingItemIndicesOnExpectedList: MutableList<Int> = mutableListOf()
@@ -235,7 +255,8 @@ private fun <T : Any> assertBothCollectionsEquivalency(not: Boolean = false, exp
         remainingItemIndicesOnExpectedList.add(i)
     }
 
-    val options = equivalencyAssertionOptions?.invoke(EquivalencyAssertionOptions()) ?: EquivalencyAssertionOptions()
+    val options = equivalencyAssertionOptions?.invoke(EquivalencyAssertionOptions())
+            ?: EquivalencyAssertionOptions()
 
     if (options.withStrictOrdering) {
         var areEquivalentWithStrictOrdering = true
@@ -251,7 +272,16 @@ private fun <T : Any> assertBothCollectionsEquivalency(not: Boolean = false, exp
                 actualList[i].toStructuredString(0, actualStructure)
                 expectedList[i].toStructuredString(0, expectedStructure)
             }
-            fail("Are not equivalent with strict ordering:", expectedStructure.toString(), actualStructure.toString())
+            val exceptionMessage = "Are not equivalent with strict ordering:"
+            if (errorCollector.getCollectionMode() == ErrorCollectionMode.Soft) {
+                try {
+                    fail(exceptionMessage, expectedStructure.toString().plus(System.lineSeparator()), actualStructure.toString().plus(System.lineSeparator()))
+                } catch (ex: ComparisonFailure) {
+                    errorCollector.pushError(ex)
+                }
+            } else {
+                fail(exceptionMessage, expectedStructure.toString().plus(System.lineSeparator()), actualStructure.toString().plus(System.lineSeparator()))
+            }
         }
     } else {
         for (i in actualList.indices) {
@@ -276,8 +306,27 @@ private fun <T : Any> assertBothCollectionsEquivalency(not: Boolean = false, exp
                 actualList[i].toStructuredString(0, actualStructure)
                 expectedList[i].toStructuredString(0, expectedStructure)
             }
-            fail("Are ${if (!not) { "not " } else { "" } }equivalent:", expectedStructure.toString(), actualStructure.toString())
+            if (errorCollector.getCollectionMode() == ErrorCollectionMode.Soft) {
+                try {
+                    fail(EquivalencyExceptionMessage.exceptionMessage(not), expectedStructure.toString().plus(System.lineSeparator()), actualStructure.toString().plus(System.lineSeparator()))
+                } catch (ex: ComparisonFailure) {
+                    errorCollector.pushError(ex)
+                }
+            } else {
+                fail(EquivalencyExceptionMessage.exceptionMessage(not), expectedStructure.toString().plus(System.lineSeparator()), actualStructure.toString().plus(System.lineSeparator()))
+            }
         }
     }
 }
 
+internal object EquivalencyExceptionMessage {
+    fun exceptionMessage(not: Boolean): String {
+        return "Are ${
+            if (!not) {
+                "not "
+            } else {
+                ""
+            }
+        }equivalent: "
+    }
+}

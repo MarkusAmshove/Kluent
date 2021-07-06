@@ -1,6 +1,5 @@
 package org.amshove.kluent.internal
 
-import org.amshove.kluent.hardFail
 import kotlin.reflect.KClass
 
 /** Asserts that a [blockResult] is a failure with the specific exception type being thrown. */
@@ -21,3 +20,6 @@ internal actual fun <T : Throwable> checkResultIsFailure(exceptionClass: KClass<
             }
     )
 }
+
+@PublishedApi
+internal actual fun hardFail(message: String?): Nothing = throw AssertionError(message)

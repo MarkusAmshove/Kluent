@@ -126,6 +126,7 @@ fun <T> assertEquals(expected: T, actual: T, message: String? = null) {
  * @param message the message to report if the assertion fails.
  */
 fun assertEquals(message: String?, expected: Any?, actual: Any?): Unit {
+//    kotlin.test.assertEquals(expected, actual, message)
     assertTrue(actual == expected) { messagePrefix(message) + "Expected <$expected>, actual <$actual>." }
 }
 
