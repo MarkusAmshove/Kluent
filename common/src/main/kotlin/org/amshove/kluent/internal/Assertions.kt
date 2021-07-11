@@ -1,5 +1,8 @@
 package org.amshove.kluent.internal
 
+import org.amshove.kluent.ErrorCollectionMode
+import org.amshove.kluent.collectOrThrow
+import org.amshove.kluent.errorCollector
 import org.amshove.kluent.fail
 import kotlin.jvm.JvmName
 import kotlin.reflect.KClass
@@ -100,11 +103,7 @@ internal fun failCollectionWithDifferentItems(message: String, expected: String?
     |${if (!actual.isNullOrEmpty()) "Items included on the actual collection but not in the expected: $actual" else ""}
 """.trimMargin())
 
-internal fun failFirstSecond(message: String, first: String?, second: String?) = fail("""
-    |$message
-    |   First:      $first
-    |   Second:     $second
-""".trimMargin())
+internal fun failFirstSecond(message: String, first: String?, second: String?) : Nothing = throw ComparisonFailedException(message, first, second)
 
 // TODO: assertSame and notSame currently not implemented in native 0.6
 fun assertSame(expected: Any?, actual: Any?) {
@@ -125,9 +124,10 @@ fun <T> assertEquals(expected: T, actual: T, message: String? = null) {
  *
  * @param message the message to report if the assertion fails.
  */
-fun assertEquals(message: String?, expected: Any?, actual: Any?): Unit {
-//    kotlin.test.assertEquals(expected, actual, message)
-    assertTrue(actual == expected) { messagePrefix(message) + "Expected <$expected>, actual <$actual>." }
+fun assertEquals(message: String?, expected: Any?, actual: Any?) {
+    if (actual != expected) {
+        errorCollector.collectOrThrow(ComparisonFailedException(message, expected, actual))
+    }
 }
 
 /** Asserts that the [actual] value is not equal to the illegal value, with an optional [message]. */
@@ -208,3 +208,12 @@ inline fun <T : Throwable> assertFailsWith(exceptionClass: KClass<T>, block: () 
 @JvmName("assertFailsWithInline")
 inline fun <T : Throwable> assertFailsWith(exceptionClass: KClass<T>, message: String?, block: () -> Unit): T =
         checkResultIsFailure(exceptionClass, message, runCatching(block))
+
+class ComparisonFailedException(val customMessage: String?, val expected: String?, val actual: String?) : RuntimeException(
+    """${customMessage ?: ""}
+        |Expected: <$expected> but was: <$actual>
+    """.trimMargin().trim()
+) {
+    constructor(customMessage: String?, expected: Any?, actual: Any?)
+            : this(customMessage, expected?.toString(), actual?.toString())
+}

@@ -234,19 +234,19 @@ class AssertSoftly {
         } catch (e: Throwable) {
             assertEquals("""
                 |The following 2 assertions failed:
-                |1) Are not equivalent:
-                |Expected:
-                |E
+                |1) Are not equivalent: 
+                |Expected: <E
                 |˪-Flist
                 |˪--F[0] (id = 1, name = name1)
                 |
-                |but was:
-                |E
+                |> but was: <E
                 |˪-Flist
                 |˪--F[0] (id = 1, name = name1)
                 |˪--F[1] (id = 2, name = name2)
+                |
+                |>
                 |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.softEquavalencyTest(AssertSoftly.kt:231)
-                |2) Expected <name2>, actual <name1>.
+                |2) Expected: <name2> but was: <name1>
                 |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.softEquavalencyTest(AssertSoftly.kt:232)
                 |""".trimMargin()
                 .trimMargin(), e.message!!.trimMargin())

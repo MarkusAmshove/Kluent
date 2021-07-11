@@ -3,6 +3,7 @@ package org.amshove.kluent
 inline fun <T> assertSoftly(assertions: () -> T): T {
     // Handle the edge case of nested calls to this function by only calling throwCollectedErrors in the
     // outermost verifyAll block
+    val previousCollectionMode = errorCollector.getCollectionMode()
     if (errorCollector.getCollectionMode() == ErrorCollectionMode.Soft) {
         return assertions()
     }
@@ -13,6 +14,7 @@ inline fun <T> assertSoftly(assertions: () -> T): T {
         errorCollector.pushError(e)
         assertions()
     } finally {
+        errorCollector.setCollectionMode(previousCollectionMode)
         errorCollector.throwCollectedErrors()
     }
 }

@@ -1,6 +1,7 @@
 package org.amshove.kluent.tests.equivalency
 
 import org.amshove.kluent.*
+import org.amshove.kluent.internal.ComparisonFailedException
 import org.amshove.kluent.internal.assertFailsWith
 import org.junit.ComparisonFailure
 import org.junit.Test
@@ -25,7 +26,7 @@ class ShouldBeEquivalentTo {
         }
 
         // assert
-        assertFailsWith(ComparisonFailure::class) {
+        assertFailsWith(ComparisonFailedException::class) {
             team1.shouldBeEquivalentTo(team2)
         }
     }
@@ -105,7 +106,7 @@ class ShouldBeEquivalentTo {
         )
 
         // assert
-        assertFailsWith(ComparisonFailure::class) {
+        assertFailsWith(ComparisonFailedException::class) {
             teams1.shouldBeEquivalentTo(teams2) {
                 it.compareByProperties()
             }
@@ -337,7 +338,7 @@ class ShouldBeEquivalentTo {
         }
 
         // assert
-        assertFailsWith(ComparisonFailure::class) {
+        assertFailsWith(ComparisonFailedException::class) {
             team1.shouldNotBeEquivalentTo(team2) { it.compareByProperties() }
         }
     }
@@ -371,7 +372,7 @@ class ShouldBeEquivalentTo {
         }
 
         // assert
-        assertFailsWith(ComparisonFailure::class) {
+        assertFailsWith(ComparisonFailedException::class) {
             team1.shouldBeEquivalentTo(team2) {
                 it.including(Team::persons)
             }
@@ -475,7 +476,7 @@ class ShouldBeEquivalentTo {
         }
 
         // assert
-        assertFailsWith(ComparisonFailure::class) {
+        assertFailsWith(ComparisonFailedException::class) {
             team1.shouldNotBeEquivalentTo(team2) {
                 it.excluding(Team::persons)
             }
@@ -511,7 +512,7 @@ class ShouldBeEquivalentTo {
         }
 
         // assert
-        assertFailsWith(ComparisonFailure::class) {
+        assertFailsWith(ComparisonFailedException::class) {
             team1.shouldBeEquivalentTo(team2) {
                 it.excluding(Team::persons)
             }
@@ -576,7 +577,7 @@ class ShouldBeEquivalentTo {
         }
 
         // assert
-        assertFailsWith(ComparisonFailure::class) {
+        assertFailsWith(ComparisonFailedException::class) {
             team1.shouldBeEquivalentTo(team2) {
                 it.including(Team::name)
             }
@@ -671,7 +672,7 @@ class ShouldBeEquivalentTo {
         }
 
         // assert
-        assertFailsWith(ComparisonFailure::class) {
+        assertFailsWith(ComparisonFailedException::class) {
             team1.shouldNotBeEquivalentTo(team2) {
                 it.including(Team::persons)
             }
@@ -722,7 +723,7 @@ class ShouldBeEquivalentTo {
         }
 
         // assert
-        assertFailsWith(ComparisonFailure::class) {
+        assertFailsWith(ComparisonFailedException::class) {
             team1.shouldNotBeEquivalentTo(team2) {
                 it.excludingNestedObjects()
             }
@@ -750,7 +751,7 @@ class ShouldBeEquivalentTo {
         }
 
         // assert
-        assertFailsWith(ComparisonFailure::class) {
+        assertFailsWith(ComparisonFailedException::class) {
             team1.shouldBeEquivalentTo(team2) {
                 it.excludingNestedObjects()
             }
@@ -819,7 +820,7 @@ class ShouldBeEquivalentTo {
         }
 
         // assert
-        assertFailsWith(ComparisonFailure::class) {
+        assertFailsWith(ComparisonFailedException::class) {
             a1.shouldNotBeEquivalentTo(a2) {
                 it.maxLevelOfRecursion = 3
                 return@shouldNotBeEquivalentTo it
@@ -995,7 +996,7 @@ class ShouldBeEquivalentTo {
                 it.allowingInfiniteRecursion()
                 return@shouldBeEquivalentTo it
             }
-        } catch (e: ComparisonFailure) {
+        } catch (e: ComparisonFailedException) {
             e.message!!.shouldStartWith("Are not equivalent:")
             e.actual!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo("""
                 A (e = abc, name = name1)
@@ -1099,7 +1100,7 @@ class ShouldBeEquivalentTo {
                 it.allowingInfiniteRecursion()
                 return@shouldBeEquivalentTo it
             }
-        } catch (e: ComparisonFailure) {
+        } catch (e: ComparisonFailedException) {
             e.message!!.shouldStartWith("Are not equivalent:")
             e.actual!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo("""
                 A (e = abc, name = name1)
@@ -1147,7 +1148,7 @@ class ShouldBeEquivalentTo {
         // assert
         try {
             a1.shouldBeEquivalentTo(a2)
-        } catch (e: ComparisonFailure) {
+        } catch (e: ComparisonFailedException) {
             e.message!!.shouldStartWith("Are not equivalent:")
             e.actual!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo("""
                 E

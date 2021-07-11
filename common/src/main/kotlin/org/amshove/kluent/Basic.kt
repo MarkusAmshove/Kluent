@@ -22,7 +22,11 @@ infix fun <T> T.shouldBe(expected: T?): T = this.apply { assertSame(expected, th
 
 infix fun <T> T.shouldNotBe(expected: T?) = this.apply { assertNotSame(expected, this) }
 
-fun Any?.shouldBeNull() = if (this != null) fail("expected value to be null, but was: $this", null, this) else Unit
+fun Any?.shouldBeNull() {
+    if (this != null) {
+        errorCollector.collectOrThrow(ComparisonFailedException("Value should be null", null, this))
+    }
+}
 
 @UseExperimental(ExperimentalContracts::class)
 fun <T : Any> T?.shouldNotBeNull(): T {

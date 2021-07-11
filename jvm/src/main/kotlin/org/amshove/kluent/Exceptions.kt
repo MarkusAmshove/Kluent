@@ -1,5 +1,6 @@
 package org.amshove.kluent
 
+import org.amshove.kluent.internal.ComparisonFailedException
 import org.junit.ComparisonFailure
 import kotlin.reflect.KClass
 
@@ -16,6 +17,7 @@ actual infix fun <T : Throwable> (() -> Any?).shouldThrow(expectedException: KCl
         @Suppress("UNCHECKED_CAST")
         when {
             e.isA(ComparisonFailure::class) -> throw e
+            e.isA(ComparisonFailedException::class) -> throw e
             e.isA(expectedException) -> return ExceptionResult(e as T)
             else -> throw ComparisonFailure("Expected ${expectedException.javaObjectType} to be thrown", "${expectedException.javaObjectType}", "${e.javaClass}")
         }
@@ -31,6 +33,7 @@ suspend infix fun <T : Throwable> (suspend () -> Any?).shouldThrow(expectedExcep
         @Suppress("UNCHECKED_CAST")
         when {
             e.isA(ComparisonFailure::class) -> throw e
+            e.isA(ComparisonFailedException::class) -> throw e
             e.isA(expectedException) -> return ExceptionResult(e as T)
             else -> throw ComparisonFailure("Expected ${expectedException.javaObjectType} to be thrown", "${expectedException.javaObjectType}", "${e.javaClass}")
         }
@@ -125,15 +128,7 @@ internal val noException = Exception("None")
 internal fun Throwable.isA(expected: KClass<out Throwable>) = expected.isAnyException() || expected.java.isAssignableFrom(this.javaClass)
 internal fun <T : Throwable> KClass<T>.isAnyException() = this.javaObjectType == AnyException.javaObjectType
 actual fun fail(message: String, expected: Any?, actual: Any?) {
-    try {
-        throw ComparisonFailure(message, expected?.toString(), actual?.toString())
-    } catch (ex: ComparisonFailure) {
-        if (errorCollector.getCollectionMode() == ErrorCollectionMode.Soft) {
-            errorCollector.pushError(ex)
-        } else {
-            throw ComparisonFailure(ex.message, expected?.toString(), actual?.toString())
-        }
-    }
+    errorCollector.collectOrThrow(ComparisonFailedException(message, expected, actual))
 }
 
 actual fun fail(message: String?) {
@@ -148,17 +143,6 @@ actual fun fail(message: String?) {
     }
 }
 
-//internal fun failSoftly(message: String, expected: String, actual: String) {
-//    if (errorCollector.getCollectionMode() == ErrorCollectionMode.Soft) {
-//        try {
-//            throw kotlin.test.Asserter. ComparisonFailure("Are not equivalent with strict ordering:\n", expected, actual)
-//        } catch (ex: ComparisonFailure) {
-//            errorCollector.pushError(ex)
-//        }
-//    } else {
-//        throw ComparisonFailure("Are not equivalent with strict ordering:", expected, actual)
-//    }
-//}
 internal fun <T> join(theArray: Array<T>): String = theArray.joinToString(", ")
 internal fun <T> join(theIterable: Iterable<T>): String = theIterable.joinToString(", ")
 internal fun <R, T> join(theMap: Map<R, T>): String = theMap.entries.joinToString(", ")
