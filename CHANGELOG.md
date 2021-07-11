@@ -1,4 +1,4 @@
-# 1.68 (WIP)
+# 1.68
 * Move more Assertions to support `assertSoftly` and the IntelliJ Compare window
 * Support diffs in IntelliJ (Compare window) | [Issue](https://github.com/MarkusAmshove/Kluent/issues/200) | [PR](https://github.com/MarkusAmshove/Kluent/pull/202) | thanks to [@drcolombo](https://github.com/drcolombo)
 
