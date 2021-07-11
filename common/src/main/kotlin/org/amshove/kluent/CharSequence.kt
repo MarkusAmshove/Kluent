@@ -7,6 +7,7 @@ import org.amshove.kluent.internal.assertTrue
 import org.amshove.kluent.internal.messagePrefix
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
+import kotlin.math.exp
 
 infix fun <T : CharSequence> T.shouldStartWith(expected: T) = this.apply { assertTrue("Expected the CharSequence $this to start with $expected", this.startsWith(expected)) }
 
@@ -131,11 +132,11 @@ fun <T : CharSequence> T.shouldContainAll(vararg expected: CharSequence) = this.
 fun <T : CharSequence> T.shouldContainAllIgnoringCase(vararg expected: CharSequence) = this.shouldContainAllIgnoringCase(expected.toList())
 
 infix fun <T : CharSequence> T.shouldNotContainAll(items: Iterable<CharSequence>): CharSequence = this.apply {
-    assertFalse("Expected the CharSequence to not contail all items: $items", items.all { this.contains(it) })
+    assertFalse("Expected the CharSequence to not contain all items: $items", items.all { this.contains(it) })
 }
 
 infix fun <T : CharSequence> T.shouldNotContainAllIgnoringCase(items: Iterable<CharSequence>): CharSequence = this.apply {
-    assertFalse("Expected the CharSequence to not contail all items: $items", items.all { this.contains(it, true) })
+    assertFalse("Expected the CharSequence to not contain all items: $items", items.all { this.contains(it, true) })
 }
 
 fun <T : CharSequence> T.shouldNotContainAll(vararg expected: CharSequence) = this.shouldNotContainAll(expected.toList())
@@ -157,18 +158,15 @@ fun assertNotEqualsIgnoringCase(expected: Any, actual: Any, message: String? = n
  *
  * @param message the message to report if the assertion fails.
  */
-fun assertEqualsIgnoringCase(message: String?, expected: Any, actual: Any): Unit {
-    if (actual is CharSequence && expected is CharSequence) {
-        assertTrue(actual.toString().equals(expected.toString(), true)) { messagePrefix(message) + "Expected <$expected>, actual <$actual>." }
+fun assertEqualsIgnoringCase(message: String?, expected: Any, actual: Any) {
+    val checkPassed = when {
+        actual is CharSequence && expected is CharSequence -> actual.toString().equals(expected.toString(), true)
+        actual is Char && expected is Char -> actual.equals(expected, true)
+        actual is String && expected is String -> actual.equals(expected, true)
+        else -> false
     }
-    else if (actual is Char && expected is Char) {
-        assertTrue(actual.equals(expected, true)) { messagePrefix(message) + "Expected <$expected>, actual <$actual>." }
-    }
-    else if (actual is String && expected is String) {
-        assertTrue(actual.equals(expected, true)) { messagePrefix(message) + "Expected <$expected>, actual <$actual>." }
-    }
-    else {
-        assertFails { messagePrefix(message) + "Expected <$expected>, actual <$actual>." }
+    if (!checkPassed) {
+        errorCollector.collectOrThrow(ComparisonFailedException("Case insensitive comparison failed", expected, actual))
     }
 }
 
@@ -177,7 +175,8 @@ fun assertEqualsIgnoringCase(message: String?, expected: Any, actual: Any): Unit
  *
  * @param message the message to report if the assertion fails.
  */
-fun assertNotEqualsIgnoringCase(message: String?, expected: Any, actual: Any): Unit {
+fun assertNotEqualsIgnoringCase(message: String?, expected: Any, actual: Any) {
+
     if (actual is CharSequence && expected is CharSequence) {
         assertTrue(!actual.toString().equals(expected.toString(), true)) { messagePrefix(message) + "Expected <$expected>, actual <$actual>." }
     }

@@ -44,6 +44,11 @@ class EquivalencyAssertionOptions {
         return this
     }
 
+    fun notCompareByProperties(): EquivalencyAssertionOptions {
+        compareByProperties = false
+        return this
+    }
+
     fun excluding(property: KProperty1<*, *>): EquivalencyAssertionOptions {
         excludedProperties.add(property)
         return this

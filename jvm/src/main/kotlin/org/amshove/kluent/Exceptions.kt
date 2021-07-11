@@ -1,5 +1,6 @@
 package org.amshove.kluent
 
+import org.amshove.kluent.internal.ComparisonFailedException
 import org.junit.ComparisonFailure
 import kotlin.reflect.KClass
 
@@ -7,14 +8,16 @@ fun invoking(function: () -> Any?): () -> Any? = function
 
 fun coInvoking(function: suspend () -> Any?): suspend () -> Any? = function
 
-infix fun <T : Throwable> (() -> Any?).shouldThrow(expectedException: KClass<T>): ExceptionResult<T> {
+actual infix fun <T : Throwable> (() -> Any?).shouldThrow(expectedException: KClass<T>): ExceptionResult<T> {
     try {
         this.invoke()
         fail("There was an Exception expected to be thrown, but nothing was thrown", "$expectedException", "None")
+        return ExceptionResult(expectedException as T)
     } catch (e: Throwable) {
         @Suppress("UNCHECKED_CAST")
         when {
             e.isA(ComparisonFailure::class) -> throw e
+            e.isA(ComparisonFailedException::class) -> throw e
             e.isA(expectedException) -> return ExceptionResult(e as T)
             else -> throw ComparisonFailure("Expected ${expectedException.javaObjectType} to be thrown", "${expectedException.javaObjectType}", "${e.javaClass}")
         }
@@ -25,10 +28,12 @@ suspend infix fun <T : Throwable> (suspend () -> Any?).shouldThrow(expectedExcep
     try {
         this.invoke()
         fail("There was an Exception expected to be thrown, but nothing was thrown", "$expectedException", "None")
+        return ExceptionResult(expectedException as T)
     } catch (e: Throwable) {
         @Suppress("UNCHECKED_CAST")
         when {
             e.isA(ComparisonFailure::class) -> throw e
+            e.isA(ComparisonFailedException::class) -> throw e
             e.isA(expectedException) -> return ExceptionResult(e as T)
             else -> throw ComparisonFailure("Expected ${expectedException.javaObjectType} to be thrown", "${expectedException.javaObjectType}", "${e.javaClass}")
         }
@@ -122,7 +127,22 @@ class AnyExceptionType : Throwable()
 internal val noException = Exception("None")
 internal fun Throwable.isA(expected: KClass<out Throwable>) = expected.isAnyException() || expected.java.isAssignableFrom(this.javaClass)
 internal fun <T : Throwable> KClass<T>.isAnyException() = this.javaObjectType == AnyException.javaObjectType
-internal fun fail(message: String, expected: String, actual: String): Nothing = throw ComparisonFailure(message, expected, actual)
+actual fun fail(message: String, expected: Any?, actual: Any?) {
+    errorCollector.collectOrThrow(ComparisonFailedException(message, expected, actual))
+}
+
+actual fun fail(message: String?) {
+    try {
+        throw AssertionError(message)
+    } catch (ex: AssertionError) {
+        if (errorCollector.getCollectionMode() == ErrorCollectionMode.Soft) {
+            errorCollector.pushError(ex)
+        } else {
+            throw assertionError(ex)
+        }
+    }
+}
+
 internal fun <T> join(theArray: Array<T>): String = theArray.joinToString(", ")
 internal fun <T> join(theIterable: Iterable<T>): String = theIterable.joinToString(", ")
 internal fun <R, T> join(theMap: Map<R, T>): String = theMap.entries.joinToString(", ")

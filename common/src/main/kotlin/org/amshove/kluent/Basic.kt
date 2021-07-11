@@ -22,7 +22,11 @@ infix fun <T> T.shouldBe(expected: T?): T = this.apply { assertSame(expected, th
 
 infix fun <T> T.shouldNotBe(expected: T?) = this.apply { assertNotSame(expected, this) }
 
-fun Any?.shouldBeNull() = if (this != null) fail("expected value to be null, but was: $this") else Unit
+fun Any?.shouldBeNull() {
+    if (this != null) {
+        errorCollector.collectOrThrow(ComparisonFailedException("Value should be null", null, this))
+    }
+}
 
 @UseExperimental(ExperimentalContracts::class)
 fun <T : Any> T?.shouldNotBeNull(): T {
@@ -82,31 +86,10 @@ fun <T> T.should(message: String, assertion: T.() -> Boolean): T = also {
         }
     } catch (t: Throwable) {
         fail("""$message
-        |
-        | An exception occured:
-        |   ${t.platformClassName()}: ${t.message}
-        |   ${"\tat "}${t.platformJoinStackTrace()}
-    """.trimMargin())
+            |
+            | An exception occured:
+            |   ${t.platformClassName()}: ${t.message}
+            |   ${"\tat "}${t.platformJoinStackTrace()}
+        """.trimMargin())
     }
 }
-
-/**
- * Provides an assertSoftly-compatible way of reporting a failed assertion
- * All assertions should rely on it for error reporting.
- * Assertions that don't work with assertSoftly (for example shouldNotBeNull) can use hardFail
- */
-fun fail(message: String?) {
-    try {
-        throw AssertionError(message)
-    } catch (ex: AssertionError) {
-        if (errorCollector.getCollectionMode() == ErrorCollectionMode.Soft) {
-            errorCollector.pushError(ex)
-        } else {
-            throw assertionError(ex)
-        }
-    }
-}
-
-/** Use this function in places where a soft fail in assertSoftly would not make sense - for example shouldNotBeNull. */
-@PublishedApi
-internal fun hardFail(message: String?): Nothing = throw AssertionError(message)
