@@ -1,10 +1,5 @@
-package org.amshove.kluent.tests.assertions.softly
-
 import org.amshove.kluent.*
-import org.amshove.kluent.tests.equivalency.ShouldBeEquivalentTo
-import java.lang.RuntimeException
-import kotlin.test.Test
-import kotlin.test.assertEquals
+import kotlin.test.*
 
 class AssertSoftly {
     @Test
@@ -23,9 +18,7 @@ class AssertSoftly {
             assertEquals("""
                 |The following 2 assertions failed:
                 |1) Expected the CharSequence ab1 to contain 2
-                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.failShouldAssertSoftly(AssertSoftly.kt:19)
-                |2) Expected 3 to be greater or equal to 4
-                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.failShouldAssertSoftly(AssertSoftly.kt:20)"""
+                |2) Expected 3 to be greater or equal to 4"""
                 .trimMargin(), e.message!!.trimMargin())
         }
     }
@@ -58,8 +51,7 @@ class AssertSoftly {
         } catch (e: Throwable) {
             assertEquals("""
                 |The following assertion failed:
-                |Expected the CharSequence ab1 to contain 2
-                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.verifyAssertErrorForNonSoftlyAssertions(AssertSoftly.kt:55)"""
+                |Expected the CharSequence ab1 to contain 2"""
                 .trimMargin(), e.message!!.trimMargin())
         }
     }
@@ -79,10 +71,10 @@ class AssertSoftly {
             }
         } catch (e: Throwable) {
             assertEquals("""
+                |
                 |The following assertion failed:
                 |Expected 3 to be greater or equal to 4
-                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.failShouldAssertSoftlyForSeveralObjects(AssertSoftly.kt:78)"""
-                .trimMargin(), e.message!!)
+                |""".trimMargin(), e.message!!)
         }
     }
 
@@ -137,12 +129,12 @@ class AssertSoftly {
 
         // act
         val guests = listOf(
-                Guest("a"),
-                Guest("b"),
-                Guest("c"),
-                Guest("d"),
-                Guest("e"),
-                Guest("f")
+            Guest("a"),
+            Guest("b"),
+            Guest("c"),
+            Guest("d"),
+            Guest("e"),
+            Guest("f")
         )
         val house = House()
         house.host(guests)
@@ -157,9 +149,7 @@ class AssertSoftly {
             e.message!!.trimMargin().shouldBeEqualTo("""
                 The following 2 assertions failed:
                 1) Expected <2>, actual <3>.
-                    at org.amshove.kluent.tests.assertions.softly.AssertSoftly.houseTest(AssertSoftly.kt:150)
                 2) Expected <6>, actual <5>.
-                    at org.amshove.kluent.tests.assertions.softly.AssertSoftly.houseTest(AssertSoftly.kt:151)
                 """.trimMargin())
         }
     }
@@ -200,56 +190,41 @@ class AssertSoftly {
             assertEquals("""
                 |The following 2 assertions failed:
                 |1) Expected collection size to be 2 but was 3
-                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.assertSoftlyCollections(AssertSoftly.kt:196)
                 |2) The collection doesn't have the same items
-                |
-                |Items included on the actual collection but not in the expected: y
-                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.assertSoftlyCollections(AssertSoftly.kt:197)
+                |Items included on the expected collection but not in the actual: []
+                |Items included on the actual collection but not in the expected: [y]
                 """.trimMargin(), e.message!!.trimMargin())
         }
     }
 
-    @ExperimentalStdlibApi
-    @Test
-    fun softEquavalencyTest() {
-        // arrange
-        val a1 = ShouldBeEquivalentTo.E().apply {
-            Flist = listOf(
-                    ShouldBeEquivalentTo.F(1).apply { name = "name1" },
-                    ShouldBeEquivalentTo.F(2).apply { name = "name2" }
-            )
-        }
-        val a2 = ShouldBeEquivalentTo.E().apply {
-            Flist = listOf(
-                    ShouldBeEquivalentTo.F(1).apply { name = "name1" }
-            )
-        }
+    @Suppress("unused")
+    internal class A(val name: String) {
+        var b: B? = null
+        var e: String? = null
+    }
 
-        // assert
-        try {
-            assertSoftly(a1) {
-                shouldBeEquivalentTo(a2)
-                Flist[0].name.shouldBeEqualTo("name2")
-            }
-        } catch (e: Throwable) {
-            assertEquals("""
-                |The following 2 assertions failed:
-                |1) Are not equivalent:
-                |Expected:
-                |E
-                |˪-Flist
-                |˪--F[0] (id = 1, name = name1)
-                |
-                |but was:
-                |E
-                |˪-Flist
-                |˪--F[0] (id = 1, name = name1)
-                |˪--F[1] (id = 2, name = name2)
-                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.softEquavalencyTest(AssertSoftly.kt:231)
-                |2) Expected <name2>, actual <name1>.
-                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.softEquavalencyTest(AssertSoftly.kt:232)
-                |""".trimMargin()
-                .trimMargin(), e.message!!.trimMargin())
-        }
+    @Suppress("unused")
+    internal class B(val name: String) {
+        var c: C? = null
+        var d: D? = null
+    }
+
+    @Suppress("unused")
+    internal class C(val d: D) {
+        var name: String? = null
+    }
+
+    @Suppress("unused")
+    internal class D(val name: String) {
+        var Elist: MutableList<E> = mutableListOf()
+        var name2: String? = null
+    }
+
+    internal class E() {
+        var Flist: List<F> = listOf()
+    }
+
+    internal class F(var id: Int) {
+        var name: String = ""
     }
 }

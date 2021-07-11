@@ -834,7 +834,23 @@ class ShouldBeEquivalentTo {
                 A("name1").apply {
                     b = B("name11").apply {
                         c = C(D("name111").apply { name2 = "name1111" }).apply { name = "name1111" }
-                        d = D("name111").apply { name2 = "name1111" }
+                        d = D("name111").apply {
+                            Elist = mutableListOf(
+                                    E().apply {
+                                        Flist = listOf(
+                                            F(1),
+                                            F(2)
+                                        )
+                                    },
+                                    E().apply {
+                                        Flist = listOf(
+                                            F(3),
+                                            F(4)
+                                        )
+                                    }
+                            )
+                            name2 = "name1111"
+                        }
                     }
                     e = "abc"
                 },
@@ -879,14 +895,45 @@ class ShouldBeEquivalentTo {
                 A("name1").apply {
                     b = B("name11").apply {
                         c = C(D("name111").apply { name2 = "name1111" }).apply { name = "name1111" }
-                        d = D("name111").apply { name2 = "name1111" }
+                        d = D("name111").apply {
+                            Elist = mutableListOf(
+                                E().apply {
+                                    Flist = listOf(
+                                        F(1),
+                                        F(2)
+                                    )
+                                },
+                                E().apply {
+                                    Flist = listOf(
+                                        F(3),
+                                        F(4)
+                                    )
+                                }
+                            )
+                            name2 = "name1111"
+                        }
                     }
                     e = "abc"
                 },
                 A("name2").apply {
                     b = B("name11").apply {
                         c = C(D("name111").apply { name2 = "name2111" }).apply { name = "name1111" }
-                        d = D("name111").apply { name2 = "name1111" }
+                        d = D("name111").apply {
+                            Elist = mutableListOf(
+                                E().apply {
+                                    Flist = listOf(
+                                        F(5),
+                                        F(6)
+                                    )
+                                },
+                                E().apply {
+                                    Flist = listOf(
+                                        F(7)
+                                    )
+                                }
+                            )
+                            name2 = "name1111"
+                        }
                     }
                     e = "abc"
                 }
@@ -895,14 +942,45 @@ class ShouldBeEquivalentTo {
                 A("name1").apply {
                     b = B("name11").apply {
                         c = C(D("name111").apply { name2 = "name1111" }).apply { name = "name1111" }
-                        d = D("name111").apply { name2 = "name1111" }
+                        d = D("name111").apply {
+                            Elist = mutableListOf(
+                                E().apply {
+                                    Flist = listOf(
+                                        F(1),
+                                        F(2)
+                                    )
+                                },
+                                E().apply {
+                                    Flist = listOf(
+                                        F(3),
+                                        F(4)
+                                    )
+                                }
+                            )
+                            name2 = "name1111"
+                        }
                     }
                     e = "abc"
                 },
                 A("name2").apply {
                     b = B("name11").apply {
                         c = C(D("name111").apply { name2 = "name3111" }).apply { name = "name1111" }
-                        d = D("name111").apply { name2 = "name1111" }
+                        d = D("name111").apply {
+                            name2 = "name1111"
+                            Elist = mutableListOf(
+                                E().apply {
+                                    Flist = listOf(
+                                        F(5),
+                                        F(6)
+                                    )
+                                },
+                                E().apply {
+                                    Flist = listOf(
+                                        F(7)
+                                    )
+                                }
+                            )
+                        }
                     }
                     e = "abc"
                 }
@@ -924,24 +1002,62 @@ class ShouldBeEquivalentTo {
                 ˪-B (name = name11)
                 ˪--C (name = name1111)
                 ˪---D (name = name111, name2 = name1111)
+                ˪----Elist
                 ˪--D (name = name111, name2 = name1111)
+                ˪---Elist
+                ˪----E[0]
+                ˪-----Flist
+                ˪------F[0] (id = 1, name = )
+                ˪------F[1] (id = 2, name = )
+                ˪----E[1]
+                ˪-----Flist
+                ˪------F[0] (id = 3, name = )
+                ˪------F[1] (id = 4, name = )
                 A (e = abc, name = name2)
                 ˪-B (name = name11)
                 ˪--C (name = name1111)
                 ˪---D (name = name111, name2 = name2111)
+                ˪----Elist
                 ˪--D (name = name111, name2 = name1111)
+                ˪---Elist
+                ˪----E[0]
+                ˪-----Flist
+                ˪------F[0] (id = 5, name = )
+                ˪------F[1] (id = 6, name = )
+                ˪----E[1]
+                ˪-----Flist
+                ˪------F[0] (id = 7, name = )
             """.replace("\\s+|\\t|\\n".toRegex(), " ").trim())
             e.expected!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo("""
                 A (e = abc, name = name1)
                 ˪-B (name = name11)
                 ˪--C (name = name1111)
                 ˪---D (name = name111, name2 = name1111)
+                ˪----Elist
                 ˪--D (name = name111, name2 = name1111)
+                ˪---Elist
+                ˪----E[0]
+                ˪-----Flist
+                ˪------F[0] (id = 1, name = )
+                ˪------F[1] (id = 2, name = )
+                ˪----E[1]
+                ˪-----Flist
+                ˪------F[0] (id = 3, name = )
+                ˪------F[1] (id = 4, name = )
                 A (e = abc, name = name2)
                 ˪-B (name = name11)
                 ˪--C (name = name1111)
                 ˪---D (name = name111, name2 = name3111)
+                ˪----Elist
                 ˪--D (name = name111, name2 = name1111)
+                ˪---Elist
+                ˪----E[0]
+                ˪-----Flist
+                ˪------F[0] (id = 5, name = )
+                ˪------F[1] (id = 6, name = )
+                ˪----E[1]
+                ˪-----Flist
+                ˪------F[0] (id = 7, name = )
             """.replace("\\s+|\\t|\\n".toRegex(), " ").trim())
         }
     }
@@ -990,19 +1106,25 @@ class ShouldBeEquivalentTo {
                 ˪-B (name = name11)
                 ˪--C (name = name1111)
                 ˪---D (name = name111, name2 = name1111)
+                ˪----Elist
                 ˪--D (name = name111, name2 = name1111)
+                ˪---Elist
                 A (e = abc, name = name2)
                 ˪-B (name = name11)
                 ˪--C (name = name1111)
                 ˪---D (name = name111, name2 = name2111)
+                ˪----Elist
                 ˪--D (name = name111, name2 = name1111)
+                ˪---Elist
             """.replace("\\s+|\\t|\\n".toRegex(), " ").trim())
             e.expected!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo("""
                 A (e = abc, name = name1)
                 ˪-B (name = name11)
                 ˪--C (name = name1111)
                 ˪---D (name = name111, name2 = name1111)
+                ˪----Elist
                 ˪--D (name = name111, name2 = name1111)
+                ˪---Elist
             """.replace("\\s+|\\t|\\n".toRegex(), " ").trim())
         }
     }
@@ -1011,13 +1133,13 @@ class ShouldBeEquivalentTo {
     fun shouldFailAsAmountOfPropertiesIsDifferent() {
         // arrange
         val a1 = E().apply {
-            F = listOf(
+            Flist = listOf(
                     F(1).apply { name = "name1" },
                     F(2).apply { name = "name2" }
             )
         }
         val a2 = E().apply {
-            F = listOf(
+            Flist = listOf(
                     F(1).apply { name = "name1" }
             )
         }
@@ -1029,14 +1151,14 @@ class ShouldBeEquivalentTo {
             e.message!!.shouldStartWith("Are not equivalent:")
             e.actual!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo("""
                 E
-                ˪-F
-                --F[0] (id = 1, name = name1)
-                --F[1] (id = 2, name = name2)
+                ˪-Flist
+                ˪--F[0] (id = 1, name = name1)
+                ˪--F[1] (id = 2, name = name2)
             """.replace("\\s+|\\t|\\n".toRegex(), " ").trim())
             e.expected!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo("""
                 E
-                ˪-F
-                --F[0] (id = 1, name = name1)
+                ˪-Flist
+                ˪--F[0] (id = 1, name = name1)
             """.replace("\\s+|\\t|\\n".toRegex(), " ").trim())
         }
     }
@@ -1075,14 +1197,15 @@ class ShouldBeEquivalentTo {
 
     @Suppress("unused")
     internal class D(val name: String) {
+        var Elist: MutableList<E> = mutableListOf()
         var name2: String? = null
     }
 
     internal class E() {
-        var F: List<F> = listOf()
+        var Flist: List<F> = listOf()
     }
 
     internal class F(var id: Int) {
-        lateinit var name: String
+        var name: String = ""
     }
 }

@@ -1,7 +1,11 @@
 package org.amshove.kluent.internal
 
-import org.amshove.kluent.hardFail
 import kotlin.reflect.KClass
+
+@PublishedApi
+internal actual fun hardFail(message: String?): Nothing {
+    throw AssertionError(message)
+}
 
 @PublishedApi
 internal actual fun <T : Throwable> checkResultIsFailure(exceptionClass: KClass<T>, message: String?, blockResult: Result<Unit>): T {
