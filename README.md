@@ -17,16 +17,16 @@ It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.ht
 
 # Include it via gradle/maven
 
-Kluent is hosted [here at jcenter](https://bintray.com/markusamshove/maven/kluent/view# "jCenter")
+Kluent is hosted [here at mavenCentral](https://mvnrepository.com/artifact/org.amshove.kluent/kluent)
 
-Kluent-Android is hosted [here at jcenter](https://bintray.com/markusamshove/maven/kluent-android/view# "jCenter")
+Kluent-Android is hosted [here at mavenCentral](https://mvnrepository.com/artifact/org.amshove.kluent/kluent-android)
 
 ## Gradle
 Replace {version} with the current version and chose one of the two artifacts, based on your target platform:
 ```groovy
 // Add jcenter as a repository for dependencies
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
