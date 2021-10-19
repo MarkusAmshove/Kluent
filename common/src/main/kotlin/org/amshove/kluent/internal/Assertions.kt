@@ -215,6 +215,7 @@ class ComparisonFailedException(val customMessage: String?, val expected: String
     """.trimMargin().trim()
 ) {
     constructor(customMessage: String?, expected: Any?, actual: Any?)
-            : this(customMessage, if (expected is String) "\"" + expected.toString() + "\"" else expected?.toString(),
-        if (actual is String) "\"" + actual.toString() + "\"" else actual?.toString())
+            : this(customMessage, quoteIfString(expected), quoteIfString(actual))
 }
+
+fun quoteIfString(value: Any?) = if (value is String) """"$value"""" else value?.toString()
