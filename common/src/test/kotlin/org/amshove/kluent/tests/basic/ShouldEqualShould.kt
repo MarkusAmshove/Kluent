@@ -44,10 +44,15 @@ class ShouldEqualShould {
 
     @Test
     fun failWhenComparingDifferentTypes() {
+        assertFails { "hello world" shouldBeEqualTo 5 }
+    }
+
+    @Test
+    fun failWhenComparingIntAndSingleDigitString() {
         try {
             "5" shouldBeEqualTo 5
         } catch (e: ComparisonFailedException) {
-             e.message shouldBeEqualTo  "Expected: <5> but was: <\"5\">"
+             e.message shouldBeEqualTo "Expected: <5> but was: <\"5\">"
         }
     }
 
