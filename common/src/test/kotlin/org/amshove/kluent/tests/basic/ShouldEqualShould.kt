@@ -1,5 +1,6 @@
 package org.amshove.kluent.tests.basic
 
+import org.amshove.kluent.internal.ComparisonFailedException
 import org.amshove.kluent.internal.assertFails
 import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldBeEqualToIgnoringCase
@@ -43,7 +44,11 @@ class ShouldEqualShould {
 
     @Test
     fun failWhenComparingDifferentTypes() {
-        assertFails { "hello world" shouldBeEqualTo 5 }
+        try {
+            "5" shouldBeEqualTo 5
+        } catch (e: ComparisonFailedException) {
+             e.message shouldBeEqualTo  "Expected: <5> but was: <\"5\">"
+        }
     }
 
     @Test
