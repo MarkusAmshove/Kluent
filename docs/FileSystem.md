@@ -19,4 +19,7 @@ file.shouldNotHaveExtension("txt")
 
 file.shouldHaveName("myFile")
 file.shouldNotHaveName("myFile")
+
+file.shouldContainLineWithString("aSampleString")
+file.shouldNotContainLineWithString("aSampleString")
 ```
