@@ -220,5 +220,5 @@ class ComparisonFailedException(customMessage: String?, val expected: String?, v
     """.trimMargin().trim()
 ) {
     constructor(customMessage: String?, expected: Any?, actual: Any?)
-            : this(customMessage, expected?.toString(), actual?.toString())
+        : this(customMessage, expected?.toString(), actual?.toString())
 }

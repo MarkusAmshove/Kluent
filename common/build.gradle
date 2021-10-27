@@ -13,7 +13,7 @@ configurePublishing()
 compileKotlinCommon {
     kotlinOptions {
         freeCompilerArgs += [
-                '-Xuse-experimental=kotlin.Experimental'
+            '-Xuse-experimental=kotlin.Experimental'
         ]
     }
 }

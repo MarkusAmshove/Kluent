@@ -165,7 +165,7 @@ class ShouldThrowShould {
     @Test
     fun passWhenTestingAFunctionWhichThrowsAnExceptionWithMessageAndCause() {
         invoking { throw IllegalArgumentException("hello", IOException()) } shouldThrow
-                IllegalArgumentException::class withCause IOException::class withMessage "hello"
+            IllegalArgumentException::class withCause IOException::class withMessage "hello"
     }
 
     @Test
@@ -175,14 +175,14 @@ class ShouldThrowShould {
             suspendCancellableCoroutine<Any> { throw IllegalArgumentException("hello", IOException()) }
         }
         coInvoking { func() } shouldThrow
-                IllegalArgumentException::class withCause IOException::class withMessage "hello"
+            IllegalArgumentException::class withCause IOException::class withMessage "hello"
     }
 
     @Test
     fun failWhenTestingAFunctionWhichThrowsAnExceptionWithMessageAndCauseExceptingADifferentMessage() {
         assertFails {
             invoking { throw IllegalArgumentException("not hello", IOException()) } shouldThrow
-                    IllegalArgumentException::class withCause IOException::class withMessage "hello"
+                IllegalArgumentException::class withCause IOException::class withMessage "hello"
         }
     }
 
@@ -195,7 +195,7 @@ class ShouldThrowShould {
             }
             assertFails {
                 coInvoking { func() } shouldThrow
-                        IllegalArgumentException::class withCause IOException::class withMessage "hello"
+                    IllegalArgumentException::class withCause IOException::class withMessage "hello"
             }
         }
 
