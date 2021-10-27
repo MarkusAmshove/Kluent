@@ -26,7 +26,9 @@ listOf(10, 15, 20) shouldNotContainAny listOf(5, 7)
 listOf(1, 2, 3) shouldContainSame listOf(3, 1, 2)
 ```
 
-In case of Array or Iterable contain Chars or CharSequences and do not care about the characters case you can use the following assertions:
+In case of Array or Iterable contain Chars or CharSequences and do not care about the characters case you can use the
+following assertions:
+
 ```kt
 listOf('abc', 'cda', 'FGT') shouldContainAllIgnoringCase listOf('AbC', 'cDa', 'fgT')
 listOf('abc', 'cda', 'FGT') shouldNotContainAnyIgnoringCase listOf('ab', 'CD')

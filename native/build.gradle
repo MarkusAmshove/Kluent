@@ -1,5 +1,5 @@
 plugins {
-  id "org.jetbrains.kotlin.platform.native"
+    id "org.jetbrains.kotlin.platform.native"
 }
 
 dependencies {
@@ -36,11 +36,11 @@ bintray {
 }
 
 publishing {
-  repositories {
-    maven {
-        url = 'https://dl.bintray.com/markusamshove/maven'
+    repositories {
+        maven {
+            url = 'https://dl.bintray.com/markusamshove/maven'
+        }
     }
-  }
 }
 
 bintrayUpload.doFirst {

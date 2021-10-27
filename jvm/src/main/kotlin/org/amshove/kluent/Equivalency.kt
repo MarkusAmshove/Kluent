@@ -8,29 +8,44 @@ import kotlin.reflect.KVisibility
 import kotlin.reflect.full.declaredMemberProperties
 
 @ExperimentalStdlibApi
-fun <T : Any> T.shouldBeEquivalentTo(expected: T, config: ((EquivalencyAssertionOptions) -> EquivalencyAssertionOptions)? = null): T = this.apply { assertEquivalency(false, expected, this, config) }
+fun <T : Any> T.shouldBeEquivalentTo(
+    expected: T,
+    config: ((EquivalencyAssertionOptions) -> EquivalencyAssertionOptions)? = null
+): T = this.apply { assertEquivalency(false, expected, this, config) }
 
 @ExperimentalStdlibApi
-fun <T : Any> T.shouldNotBeEquivalentTo(expected: T, config: ((EquivalencyAssertionOptions) -> EquivalencyAssertionOptions)? = null) = this.apply { assertEquivalency(true, expected, this, config) }
+fun <T : Any> T.shouldNotBeEquivalentTo(
+    expected: T,
+    config: ((EquivalencyAssertionOptions) -> EquivalencyAssertionOptions)? = null
+) = this.apply { assertEquivalency(true, expected, this, config) }
 
 @ExperimentalStdlibApi
-fun <T : Any, I : Iterable<T>> I.shouldBeEquivalentTo(expected: Iterable<T>, config: ((EquivalencyAssertionOptions) -> EquivalencyAssertionOptions)? = null): I = assertBothIterablesBeEquivalent(expected.toList(), this.toList(), config)
+fun <T : Any, I : Iterable<T>> I.shouldBeEquivalentTo(
+    expected: Iterable<T>,
+    config: ((EquivalencyAssertionOptions) -> EquivalencyAssertionOptions)? = null
+): I = assertBothIterablesBeEquivalent(expected.toList(), this.toList(), config)
 
 @ExperimentalStdlibApi
-fun <T : Any, I : Iterable<T>> I.shouldNotBeEquivalentTo(expected: Iterable<T>, config: ((EquivalencyAssertionOptions) -> EquivalencyAssertionOptions)? = null): I = assertBothIterablesBeNotEquivalent(expected.toList(), this.toList(), config)
+fun <T : Any, I : Iterable<T>> I.shouldNotBeEquivalentTo(
+    expected: Iterable<T>,
+    config: ((EquivalencyAssertionOptions) -> EquivalencyAssertionOptions)? = null
+): I = assertBothIterablesBeNotEquivalent(expected.toList(), this.toList(), config)
 
 @ExperimentalStdlibApi
 @Throws(NoSuchMethodException::class, InvocationTargetException::class, IllegalAccessException::class)
 @Suppress("UNCHECKED_CAST")
-internal fun <T : Any> areEquivalent(recursionLevel: Int, actual: T, expected: T, equivalencyAssertionOptions: EquivalencyAssertionOptions): Boolean {
+internal fun <T : Any> areEquivalent(
+    recursionLevel: Int,
+    actual: T,
+    expected: T,
+    equivalencyAssertionOptions: EquivalencyAssertionOptions
+): Boolean {
     val currentLevelOfRecursion = recursionLevel + 1
 
-    if (actual is Boolean || actual is Byte || actual is Short || actual is Int || actual is Long || actual is Float || actual is Double || actual is Char)
-    {
+    if (actual is Boolean || actual is Byte || actual is Short || actual is Int || actual is Long || actual is Float || actual is Double || actual is Char) {
         return actual == expected
     }
-    if (actual is CharSequence || actual is String)
-    {
+    if (actual is CharSequence || actual is String) {
         return (actual as String).equals(expected as String, true)
     }
 
@@ -38,9 +53,24 @@ internal fun <T : Any> areEquivalent(recursionLevel: Int, actual: T, expected: T
     val expectedKClass = expected::class
 
     // make the list of properties to compare
-    val propertiesToCompare = actualKClass.declaredMemberProperties.filter { it.visibility != KVisibility.PRIVATE }.toMutableList()
-    equivalencyAssertionOptions.excludedProperties.forEach { excludedProperty -> propertiesToCompare.removeIf { it.name.equals(excludedProperty.name, true) } }
-    equivalencyAssertionOptions.includedProperties.forEach { includedProperty -> propertiesToCompare.removeAll { !it.name.equals(includedProperty.name, true) } }
+    val propertiesToCompare =
+        actualKClass.declaredMemberProperties.filter { it.visibility != KVisibility.PRIVATE }.toMutableList()
+    equivalencyAssertionOptions.excludedProperties.forEach { excludedProperty ->
+        propertiesToCompare.removeIf {
+            it.name.equals(
+                excludedProperty.name,
+                true
+            )
+        }
+    }
+    equivalencyAssertionOptions.includedProperties.forEach { includedProperty ->
+        propertiesToCompare.removeAll {
+            !it.name.equals(
+                includedProperty.name,
+                true
+            )
+        }
+    }
 
     for (mA in propertiesToCompare) {
         val mB = expectedKClass.declaredMemberProperties.single { it.name == mA.name } as KProperty1<Any, *>
@@ -54,12 +84,14 @@ internal fun <T : Any> areEquivalent(recursionLevel: Int, actual: T, expected: T
                 return false
             }
             else -> if (subA != null && subB == null
-                    || subA == null && subB != null) {
+                || subA == null && subB != null
+            ) {
                 return false
             } else if (subA != null && subB != null) {
                 if (subA is Iterable<*>) {
                     if ((currentLevelOfRecursion == equivalencyAssertionOptions.maxLevelOfRecursion && !equivalencyAssertionOptions.allowingInfiniteRecursion)
-                            || equivalencyAssertionOptions.excludingNestedObjects) {
+                        || equivalencyAssertionOptions.excludingNestedObjects
+                    ) {
                         return true
                     }
                     val actualList = subA.toList()
@@ -72,7 +104,12 @@ internal fun <T : Any> areEquivalent(recursionLevel: Int, actual: T, expected: T
                             if (expectedList.size > j) {
                                 equivalencyAssertionOptions.includedProperties.clear()
                                 equivalencyAssertionOptions.excludedProperties.clear()
-                                val deepEquals = areEquivalent(currentLevelOfRecursion, actualList[i]!!, expectedList[j]!!, equivalencyAssertionOptions)
+                                val deepEquals = areEquivalent(
+                                    currentLevelOfRecursion,
+                                    actualList[i]!!,
+                                    expectedList[j]!!,
+                                    equivalencyAssertionOptions
+                                )
                                 if (deepEquals) {
                                     expectedList.removeAt(j)
                                 }
@@ -82,14 +119,20 @@ internal fun <T : Any> areEquivalent(recursionLevel: Int, actual: T, expected: T
                     for (i in expectedList.indices) {
                         equivalencyAssertionOptions.includedProperties.clear()
                         equivalencyAssertionOptions.excludedProperties.clear()
-                        val deepEquals = areEquivalent(currentLevelOfRecursion, actualList[i]!!, expectedList[i]!!, equivalencyAssertionOptions)
+                        val deepEquals = areEquivalent(
+                            currentLevelOfRecursion,
+                            actualList[i]!!,
+                            expectedList[i]!!,
+                            equivalencyAssertionOptions
+                        )
                         if (!deepEquals) {
                             return false
                         }
                     }
                 } else {
                     if ((currentLevelOfRecursion == equivalencyAssertionOptions.maxLevelOfRecursion && !equivalencyAssertionOptions.allowingInfiniteRecursion)
-                            || equivalencyAssertionOptions.excludingNestedObjects) {
+                        || equivalencyAssertionOptions.excludingNestedObjects
+                    ) {
                         return true
                     }
                     equivalencyAssertionOptions.includedProperties.clear()
@@ -105,7 +148,11 @@ internal fun <T : Any> areEquivalent(recursionLevel: Int, actual: T, expected: T
 }
 
 @Suppress("UNCHECKED_CAST")
-private fun <T : Any> T.toStructuredString(recursionLevel: Int, structuredStringBuilder: StringBuilder, writeClassName: Boolean = true) {
+private fun <T : Any> T.toStructuredString(
+    recursionLevel: Int,
+    structuredStringBuilder: StringBuilder,
+    writeClassName: Boolean = true
+) {
     val objClass = this::class
     var className = "${objClass.simpleName}"
     className = className.padStart(className.length + recursionLevel, '-')
@@ -117,10 +164,10 @@ private fun <T : Any> T.toStructuredString(recursionLevel: Int, structuredString
     var primitiveTypesAdded = false
     // enumerate through primitive types
     for (property in objClass.declaredMemberProperties.filter { it.visibility != KVisibility.PRIVATE }
-            .map { it to (it as KProperty1<Any, *>).invoke(this) }
-            .filter {
-                it.second is Number || it.second is Date || it.second is Boolean || it.second is String || it.second is Enum<*>
-            }
+        .map { it to (it as KProperty1<Any, *>).invoke(this) }
+        .filter {
+            it.second is Number || it.second is Date || it.second is Boolean || it.second is String || it.second is Enum<*>
+        }
     ) {
         if (!primitiveTypesAdded) {
             structuredStringBuilder.append(" (")
@@ -144,36 +191,42 @@ private fun <T : Any> T.toStructuredString(recursionLevel: Int, structuredString
 
     // enumerate through complex types
     for (property in objClass.declaredMemberProperties.filter { it.visibility != KVisibility.PRIVATE }
-            .map { it to (it as KProperty1<Any, *>).invoke(this) }
-            .filter {
-                !(it.second is Number || it.second is Date || it.second is Boolean || it.second is String || it.second is Enum<*>) && it.second != null
-            }
-    )
-    try {
-        structuredStringBuilder.append('˪')
-
-        if (property.second!!::class.declaredMemberProperties.all { it.visibility == KVisibility.PRIVATE }) {
-            structuredStringBuilder.append("${property.first.name} = ${property.second!!}")
-        } else {
-            if (property.second is Iterable<*>) {
-                var propertyName = property.first.name
-                propertyName = propertyName.padStart(propertyName.length + recursionLevel + 1, '-')
-                structuredStringBuilder.append("${propertyName}${System.lineSeparator()}")
-                (property.second!! as Iterable<*>).iterableToStructuredString(recursionLevel + 1, structuredStringBuilder)
-            } else {
-                property.second!!.toStructuredString(recursionLevel + 1, structuredStringBuilder)
-            }
+        .map { it to (it as KProperty1<Any, *>).invoke(this) }
+        .filter {
+            !(it.second is Number || it.second is Date || it.second is Boolean || it.second is String || it.second is Enum<*>) && it.second != null
         }
-    } catch (e: NoSuchMethodException) {
-        structuredStringBuilder.append("${property.first.name} = ")
-    } catch (e: InvocationTargetException) {
-        structuredStringBuilder.append("${property.first.name} = ")
-    } catch (e: IllegalAccessException) {
-        structuredStringBuilder.append("${property.first.name} = ")
-    }
+    )
+        try {
+            structuredStringBuilder.append('˪')
+
+            if (property.second!!::class.declaredMemberProperties.all { it.visibility == KVisibility.PRIVATE }) {
+                structuredStringBuilder.append("${property.first.name} = ${property.second!!}")
+            } else {
+                if (property.second is Iterable<*>) {
+                    var propertyName = property.first.name
+                    propertyName = propertyName.padStart(propertyName.length + recursionLevel + 1, '-')
+                    structuredStringBuilder.append("${propertyName}${System.lineSeparator()}")
+                    (property.second!! as Iterable<*>).iterableToStructuredString(
+                        recursionLevel + 1,
+                        structuredStringBuilder
+                    )
+                } else {
+                    property.second!!.toStructuredString(recursionLevel + 1, structuredStringBuilder)
+                }
+            }
+        } catch (e: NoSuchMethodException) {
+            structuredStringBuilder.append("${property.first.name} = ")
+        } catch (e: InvocationTargetException) {
+            structuredStringBuilder.append("${property.first.name} = ")
+        } catch (e: IllegalAccessException) {
+            structuredStringBuilder.append("${property.first.name} = ")
+        }
 }
 
-private fun <T : Iterable<*>> T.iterableToStructuredString(recursionLevel: Int, structuredStringBuilder: StringBuilder) {
+private fun <T : Iterable<*>> T.iterableToStructuredString(
+    recursionLevel: Int,
+    structuredStringBuilder: StringBuilder
+) {
     val list = this.toList()
 
     for (i in list.indices) {
@@ -186,24 +239,37 @@ private fun <T : Iterable<*>> T.iterableToStructuredString(recursionLevel: Int, 
 }
 
 @ExperimentalStdlibApi
-private fun <T : Any> assertEquivalency(not: Boolean = false, expected: T, actual: T, equivalencyAssertionOptions: ((EquivalencyAssertionOptions) -> EquivalencyAssertionOptions)? = null) {
+private fun <T : Any> assertEquivalency(
+    not: Boolean = false,
+    expected: T,
+    actual: T,
+    equivalencyAssertionOptions: ((EquivalencyAssertionOptions) -> EquivalencyAssertionOptions)? = null
+) {
     val actualStructure: StringBuilder = StringBuilder()
     val expectedStructure: StringBuilder = StringBuilder()
 
     val options = equivalencyAssertionOptions?.invoke(EquivalencyAssertionOptions())
-            ?: EquivalencyAssertionOptions()
+        ?: EquivalencyAssertionOptions()
     if (options.compareByProperties) {
         if (!not.xor(areEquivalent(0, actual, expected, options))) {
             actual.toStructuredString(0, actualStructure)
             expected.toStructuredString(0, expectedStructure)
             if (errorCollector.getCollectionMode() == ErrorCollectionMode.Soft) {
                 try {
-                    fail(EquivalencyExceptionMessage.exceptionMessage(not), expectedStructure.toString().plus(System.lineSeparator()), actualStructure.toString().plus(System.lineSeparator()))
+                    fail(
+                        EquivalencyExceptionMessage.exceptionMessage(not),
+                        expectedStructure.toString().plus(System.lineSeparator()),
+                        actualStructure.toString().plus(System.lineSeparator())
+                    )
                 } catch (ex: ComparisonFailure) {
                     errorCollector.pushError(ex)
                 }
             } else {
-                fail(EquivalencyExceptionMessage.exceptionMessage(not), expectedStructure.toString().plus(System.lineSeparator()), actualStructure.toString().plus(System.lineSeparator()))
+                fail(
+                    EquivalencyExceptionMessage.exceptionMessage(not),
+                    expectedStructure.toString().plus(System.lineSeparator()),
+                    actualStructure.toString().plus(System.lineSeparator())
+                )
             }
         }
     } else {
@@ -216,19 +282,32 @@ private fun <T : Any> assertEquivalency(not: Boolean = false, expected: T, actua
 }
 
 @ExperimentalStdlibApi
-private fun <T : Any, C : Any> C.assertBothIterablesBeEquivalent(expected: Iterable<T>, actual: Iterable<T>, equivalencyAssertionOptions: ((EquivalencyAssertionOptions) -> EquivalencyAssertionOptions)? = null): C {
+private fun <T : Any, C : Any> C.assertBothIterablesBeEquivalent(
+    expected: Iterable<T>,
+    actual: Iterable<T>,
+    equivalencyAssertionOptions: ((EquivalencyAssertionOptions) -> EquivalencyAssertionOptions)? = null
+): C {
     assertBothCollectionsEquivalency(false, expected.toList(), actual.toList(), equivalencyAssertionOptions)
     return this
 }
 
 @ExperimentalStdlibApi
-private fun <T : Any, C : Any> C.assertBothIterablesBeNotEquivalent(expected: Iterable<T>, actual: Iterable<T>, equivalencyAssertionOptions: ((EquivalencyAssertionOptions) -> EquivalencyAssertionOptions)? = null): C {
+private fun <T : Any, C : Any> C.assertBothIterablesBeNotEquivalent(
+    expected: Iterable<T>,
+    actual: Iterable<T>,
+    equivalencyAssertionOptions: ((EquivalencyAssertionOptions) -> EquivalencyAssertionOptions)? = null
+): C {
     assertBothCollectionsEquivalency(true, expected.toList(), actual.toList(), equivalencyAssertionOptions)
     return this
 }
 
 @ExperimentalStdlibApi
-private fun <T : Any> assertBothCollectionsEquivalency(not: Boolean = false, expectedList: List<T>, actualList: List<T>, equivalencyAssertionOptions: ((EquivalencyAssertionOptions) -> EquivalencyAssertionOptions)? = null) {
+private fun <T : Any> assertBothCollectionsEquivalency(
+    not: Boolean = false,
+    expectedList: List<T>,
+    actualList: List<T>,
+    equivalencyAssertionOptions: ((EquivalencyAssertionOptions) -> EquivalencyAssertionOptions)? = null
+) {
     val actualStructure: StringBuilder = java.lang.StringBuilder()
     val expectedStructure: StringBuilder = java.lang.StringBuilder()
 
@@ -241,12 +320,20 @@ private fun <T : Any> assertBothCollectionsEquivalency(not: Boolean = false, exp
         }
         if (errorCollector.getCollectionMode() == ErrorCollectionMode.Soft) {
             try {
-                fail(EquivalencyExceptionMessage.exceptionMessage(not), expectedStructure.toString().plus(System.lineSeparator()), actualStructure.toString().plus(System.lineSeparator()))
+                fail(
+                    EquivalencyExceptionMessage.exceptionMessage(not),
+                    expectedStructure.toString().plus(System.lineSeparator()),
+                    actualStructure.toString().plus(System.lineSeparator())
+                )
             } catch (ex: ComparisonFailure) {
                 errorCollector.pushError(ex)
             }
         } else {
-            fail(EquivalencyExceptionMessage.exceptionMessage(not), expectedStructure.toString().plus(System.lineSeparator()), actualStructure.toString().plus(System.lineSeparator()))
+            fail(
+                EquivalencyExceptionMessage.exceptionMessage(not),
+                expectedStructure.toString().plus(System.lineSeparator()),
+                actualStructure.toString().plus(System.lineSeparator())
+            )
         }
     }
 
@@ -256,7 +343,7 @@ private fun <T : Any> assertBothCollectionsEquivalency(not: Boolean = false, exp
     }
 
     val options = equivalencyAssertionOptions?.invoke(EquivalencyAssertionOptions())
-            ?: EquivalencyAssertionOptions()
+        ?: EquivalencyAssertionOptions()
 
     if (options.withStrictOrdering) {
         var areEquivalentWithStrictOrdering = true
@@ -275,12 +362,20 @@ private fun <T : Any> assertBothCollectionsEquivalency(not: Boolean = false, exp
             val exceptionMessage = "Are not equivalent with strict ordering:"
             if (errorCollector.getCollectionMode() == ErrorCollectionMode.Soft) {
                 try {
-                    fail(exceptionMessage, expectedStructure.toString().plus(System.lineSeparator()), actualStructure.toString().plus(System.lineSeparator()))
+                    fail(
+                        exceptionMessage,
+                        expectedStructure.toString().plus(System.lineSeparator()),
+                        actualStructure.toString().plus(System.lineSeparator())
+                    )
                 } catch (ex: ComparisonFailure) {
                     errorCollector.pushError(ex)
                 }
             } else {
-                fail(exceptionMessage, expectedStructure.toString().plus(System.lineSeparator()), actualStructure.toString().plus(System.lineSeparator()))
+                fail(
+                    exceptionMessage,
+                    expectedStructure.toString().plus(System.lineSeparator()),
+                    actualStructure.toString().plus(System.lineSeparator())
+                )
             }
         }
     } else {
@@ -295,7 +390,8 @@ private fun <T : Any> assertBothCollectionsEquivalency(not: Boolean = false, exp
             }
         }
         for (i in remainingItemIndicesOnExpectedList.indices) {
-            val deepEquals = areEquivalent(0, actualList[i], expectedList[remainingItemIndicesOnExpectedList[i]], options)
+            val deepEquals =
+                areEquivalent(0, actualList[i], expectedList[remainingItemIndicesOnExpectedList[i]], options)
             if (deepEquals) {
                 remainingItemIndicesOnExpectedList.remove(i)
             }
@@ -308,12 +404,20 @@ private fun <T : Any> assertBothCollectionsEquivalency(not: Boolean = false, exp
             }
             if (errorCollector.getCollectionMode() == ErrorCollectionMode.Soft) {
                 try {
-                    fail(EquivalencyExceptionMessage.exceptionMessage(not), expectedStructure.toString().plus(System.lineSeparator()), actualStructure.toString().plus(System.lineSeparator()))
+                    fail(
+                        EquivalencyExceptionMessage.exceptionMessage(not),
+                        expectedStructure.toString().plus(System.lineSeparator()),
+                        actualStructure.toString().plus(System.lineSeparator())
+                    )
                 } catch (ex: ComparisonFailure) {
                     errorCollector.pushError(ex)
                 }
             } else {
-                fail(EquivalencyExceptionMessage.exceptionMessage(not), expectedStructure.toString().plus(System.lineSeparator()), actualStructure.toString().plus(System.lineSeparator()))
+                fail(
+                    EquivalencyExceptionMessage.exceptionMessage(not),
+                    expectedStructure.toString().plus(System.lineSeparator()),
+                    actualStructure.toString().plus(System.lineSeparator())
+                )
             }
         }
     }

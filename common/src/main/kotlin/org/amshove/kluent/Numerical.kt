@@ -74,21 +74,29 @@ infix fun Double.shouldNotEqualTo(expected: Double) = this.shouldNotBeEqualTo(ex
 
 infix fun Double.shouldNotBeEqualTo(expected: Double) = this.apply { assertNotEquals(expected, this) }
 
-infix fun <T : Comparable<T>> T.shouldBeGreaterThan(expected: T) = this.apply { assertTrue("Expected $this to be greater than $expected", this > expected) }
+infix fun <T : Comparable<T>> T.shouldBeGreaterThan(expected: T) =
+    this.apply { assertTrue("Expected $this to be greater than $expected", this > expected) }
 
-infix fun <T : Comparable<T>> T.shouldNotBeGreaterThan(expected: T) = this.apply { assertTrue("Expected $this to not be greater than $expected", this <= expected) }
+infix fun <T : Comparable<T>> T.shouldNotBeGreaterThan(expected: T) =
+    this.apply { assertTrue("Expected $this to not be greater than $expected", this <= expected) }
 
-infix fun <T : Comparable<T>> T.shouldBeGreaterOrEqualTo(expected: T) = this.apply { assertTrue("Expected $this to be greater or equal to $expected", this >= expected) }
+infix fun <T : Comparable<T>> T.shouldBeGreaterOrEqualTo(expected: T) =
+    this.apply { assertTrue("Expected $this to be greater or equal to $expected", this >= expected) }
 
-infix fun <T : Comparable<T>> T.shouldNotBeGreaterOrEqualTo(expected: T) = this.apply { assertTrue("Expected $this to be not be greater or equal to $expected", this < expected) }
+infix fun <T : Comparable<T>> T.shouldNotBeGreaterOrEqualTo(expected: T) =
+    this.apply { assertTrue("Expected $this to be not be greater or equal to $expected", this < expected) }
 
-infix fun <T : Comparable<T>> T.shouldBeLessThan(expected: T) = this.apply { assertTrue("Expected $this to be less than $expected", this < expected) }
+infix fun <T : Comparable<T>> T.shouldBeLessThan(expected: T) =
+    this.apply { assertTrue("Expected $this to be less than $expected", this < expected) }
 
-infix fun <T : Comparable<T>> T.shouldNotBeLessThan(expected: T) = this.apply { assertTrue("Expected $this to not be less than $expected", this >= expected) }
+infix fun <T : Comparable<T>> T.shouldNotBeLessThan(expected: T) =
+    this.apply { assertTrue("Expected $this to not be less than $expected", this >= expected) }
 
-infix fun <T : Comparable<T>> T.shouldBeLessOrEqualTo(expected: T) = this.apply { assertTrue("Expected $this to be less or equal to $expected", this <= expected) }
+infix fun <T : Comparable<T>> T.shouldBeLessOrEqualTo(expected: T) =
+    this.apply { assertTrue("Expected $this to be less or equal to $expected", this <= expected) }
 
-infix fun <T : Comparable<T>> T.shouldNotBeLessOrEqualTo(expected: T) = this.apply { assertTrue("Expected $this to not be less or equal to $expected", this > expected) }
+infix fun <T : Comparable<T>> T.shouldNotBeLessOrEqualTo(expected: T) =
+    this.apply { assertTrue("Expected $this to not be less or equal to $expected", this > expected) }
 
 fun Byte.shouldBePositive() = this.apply { assertTrue("Expected $this to be positive", this > 0) }
 
@@ -124,9 +132,19 @@ fun Double.shouldBeNear(expected: Double, delta: Double): Double {
     return shouldBeInRange(expected - delta, expected + delta)
 }
 
-fun <T : Comparable<T>> T.shouldBeInRange(lowerBound: T, upperBound: T) = this.apply { assertTrue("Expected $this to be between (and including) $lowerBound and $upperBound", this >= lowerBound && this <= upperBound) }
+fun <T : Comparable<T>> T.shouldBeInRange(lowerBound: T, upperBound: T) = this.apply {
+    assertTrue(
+        "Expected $this to be between (and including) $lowerBound and $upperBound",
+        this >= lowerBound && this <= upperBound
+    )
+}
 
-fun <T : Comparable<T>> T.shouldNotBeInRange(lowerBound: T, upperBound: T) = this.apply { assertTrue("Expected $this to not be between (and including) $lowerBound and $upperBound", this < lowerBound || this > upperBound) }
+fun <T : Comparable<T>> T.shouldNotBeInRange(lowerBound: T, upperBound: T) = this.apply {
+    assertTrue(
+        "Expected $this to not be between (and including) $lowerBound and $upperBound",
+        this < lowerBound || this > upperBound
+    )
+}
 
 infix fun Byte.shouldBeInRange(range: IntRange) = this.apply { (this.toInt()).shouldBeInRange(range) }
 
@@ -134,7 +152,8 @@ infix fun Short.shouldBeInRange(range: IntRange) = this.apply { (this.toInt()).s
 
 infix fun Int.shouldBeInRange(range: IntRange) = this.apply { this.shouldBeInRange(range.first, range.last) }
 
-infix fun <T : Comparable<T>> T.shouldBeInRange(range: ClosedFloatingPointRange<T>) = this.assertIsInFloatingRange(range)
+infix fun <T : Comparable<T>> T.shouldBeInRange(range: ClosedFloatingPointRange<T>) =
+    this.assertIsInFloatingRange(range)
 
 infix fun <T : Comparable<T>> T.shouldBeInRange(range: ClosedRange<T>) = this.assertIsInFloatingRange(range)
 
@@ -146,12 +165,23 @@ infix fun Short.shouldNotBeInRange(range: IntRange) = this.apply { (this.toInt()
 
 infix fun Int.shouldNotBeInRange(range: IntRange) = this.apply { this.shouldNotBeInRange(range.first, range.last) }
 
-infix fun <T : Comparable<T>> T.shouldNotBeInRange(range: ClosedFloatingPointRange<T>) = this.assertIsNotInFloatingRange(range)
+infix fun <T : Comparable<T>> T.shouldNotBeInRange(range: ClosedFloatingPointRange<T>) =
+    this.assertIsNotInFloatingRange(range)
 
 infix fun <T : Comparable<T>> T.shouldNotBeInRange(range: ClosedRange<T>) = this.assertIsNotInFloatingRange(range)
 
 infix fun Long.shouldNotBeInRange(range: LongRange) = this.apply { this.shouldNotBeInRange(range.first, range.last) }
 
-private fun <T : Comparable<T>> T.assertIsInFloatingRange(range: ClosedRange<T>): T = this.apply { assertTrue("Expected $this to be between (and including) ${range.start} and ${range.endInclusive}", range.contains(this)) }
+private fun <T : Comparable<T>> T.assertIsInFloatingRange(range: ClosedRange<T>): T = this.apply {
+    assertTrue(
+        "Expected $this to be between (and including) ${range.start} and ${range.endInclusive}",
+        range.contains(this)
+    )
+}
 
-private fun <T : Comparable<T>> T.assertIsNotInFloatingRange(range: ClosedRange<T>): T = this.apply { assertTrue("Expected $this to not be between (and including) ${range.start} and ${range.endInclusive}", !range.contains(this)) }
+private fun <T : Comparable<T>> T.assertIsNotInFloatingRange(range: ClosedRange<T>): T = this.apply {
+    assertTrue(
+        "Expected $this to not be between (and including) ${range.start} and ${range.endInclusive}",
+        !range.contains(this)
+    )
+}

@@ -10,7 +10,6 @@ import org.mockito.stubbing.OngoingStubbing
 import kotlin.reflect.KClass
 
 
-
 @Suppress("UNUSED_PARAMETER") // Backward compatibility
 inline fun <reified T : Any> mock(targetClass: KClass<out T>): T = mock()
 
@@ -64,7 +63,8 @@ fun <T> withLastArg(): Answer<T> = returnsLastArg()
 
 private fun <T> ensureMock(obj: T) {
     if (!MockUtil.isMock(obj)) {
-        throw Exception("""
+        throw Exception(
+            """
             $obj is no mock.
 
             Ensure to always determine the mock with the `on` method.
@@ -72,7 +72,8 @@ private fun <T> ensureMock(obj: T) {
                 Verify on myMock that myMock.getPerson() was called
                        /\
                 --------
-            """)
+            """
+        )
     }
 }
 

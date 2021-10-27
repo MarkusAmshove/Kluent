@@ -38,6 +38,7 @@ The following assertions work with every subtype of `CharSequence` (e.g. `String
 ```
 
 In case if you need to assert Char or CharSequence ignoring the characters case, you can use the following assertions:
+
 ```kt
 "name" shouldBeEqualToIgnoringCase "nAmE"
 "name" shouldNotBeEqualToIgnoringCase "abc"

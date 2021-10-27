@@ -10,18 +10,18 @@ abstract class AbstractJavaTimeComparator<T> where T : Comparable<T> {
     internal lateinit var startValue: T
 
     internal fun assertAfter(theOther: T) =
-            when (comparatorType) {
-                ComparatorType.AtLeast -> assertAtLeastAfter(calculateComparedValue(theOther))
-                ComparatorType.Exactly -> assertExactlyAfter(calculateComparedValue(theOther))
-                ComparatorType.AtMost -> assertAtMostAfter(calculateComparedValue(theOther))
-            }
+        when (comparatorType) {
+            ComparatorType.AtLeast -> assertAtLeastAfter(calculateComparedValue(theOther))
+            ComparatorType.Exactly -> assertExactlyAfter(calculateComparedValue(theOther))
+            ComparatorType.AtMost -> assertAtMostAfter(calculateComparedValue(theOther))
+        }
 
     internal fun assertBefore(theOther: T) =
-            when (comparatorType) {
-                ComparatorType.AtLeast -> assertAtLeastBefore(calculateComparedValue(theOther, -1))
-                ComparatorType.Exactly -> assertExactlyBefore(calculateComparedValue(theOther, -1))
-                ComparatorType.AtMost -> assertAtMostBefore(calculateComparedValue(theOther, -1))
-            }
+        when (comparatorType) {
+            ComparatorType.AtLeast -> assertAtLeastBefore(calculateComparedValue(theOther, -1))
+            ComparatorType.Exactly -> assertExactlyBefore(calculateComparedValue(theOther, -1))
+            ComparatorType.AtMost -> assertAtMostBefore(calculateComparedValue(theOther, -1))
+        }
 
     internal fun withStartValue(startValue: T): AbstractJavaTimeComparator<T> {
         this.startValue = startValue
@@ -34,11 +34,17 @@ abstract class AbstractJavaTimeComparator<T> where T : Comparable<T> {
     }
 
     protected fun assertAtLeastAfter(theOther: T) {
-        assertTrue("Expected $startValue to be at least { ${getExpectedOffset()} } after $theOther", startValue >= theOther)
+        assertTrue(
+            "Expected $startValue to be at least { ${getExpectedOffset()} } after $theOther",
+            startValue >= theOther
+        )
     }
 
     protected fun assertAtMostAfter(theOther: T) {
-        assertTrue("Expected $startValue to be at most { ${getExpectedOffset()} } after $theOther", startValue <= theOther)
+        assertTrue(
+            "Expected $startValue to be at most { ${getExpectedOffset()} } after $theOther",
+            startValue <= theOther
+        )
     }
 
     protected fun assertExactlyAfter(theOther: T) {
@@ -50,11 +56,17 @@ abstract class AbstractJavaTimeComparator<T> where T : Comparable<T> {
     }
 
     protected fun assertAtLeastBefore(theOther: T) {
-        assertTrue("Expected $startValue to be at least { ${getExpectedOffset()} } before $theOther", startValue <= theOther)
+        assertTrue(
+            "Expected $startValue to be at least { ${getExpectedOffset()} } before $theOther",
+            startValue <= theOther
+        )
     }
 
     protected fun assertAtMostBefore(theOther: T) {
-        assertTrue("Expected $startValue to be at most { ${getExpectedOffset()} } before $theOther", startValue >= theOther)
+        assertTrue(
+            "Expected $startValue to be at most { ${getExpectedOffset()} } before $theOther",
+            startValue >= theOther
+        )
     }
 
     protected abstract fun calculateComparedValue(currentValue: T, multiplier: Int = 1): T
@@ -62,44 +74,67 @@ abstract class AbstractJavaTimeComparator<T> where T : Comparable<T> {
 
 }
 
-class DateTimeComparator(internal var dateComparator: DateComparator? = null, internal var timeComparator: TimeComparator? = null) : AbstractJavaTimeComparator<LocalDateTime>() {
+class DateTimeComparator(
+    internal var dateComparator: DateComparator? = null,
+    internal var timeComparator: TimeComparator? = null
+) : AbstractJavaTimeComparator<LocalDateTime>() {
 
-    internal fun assertAfter(theDate: LocalDate) = dateComparator!!.withStartValue(startValue.toLocalDate()).withComparatorType(comparatorType).assertAfter(theDate)
-    internal fun assertBefore(theDate: LocalDate) = dateComparator!!.withStartValue(startValue.toLocalDate()).withComparatorType(comparatorType).assertBefore(theDate)
-    internal fun assertAfter(theTime: LocalTime) = timeComparator!!.withStartValue(startValue.toLocalTime()).withComparatorType(comparatorType).assertAfter(theTime)
-    internal fun assertBefore(theTime: LocalTime) = timeComparator!!.withStartValue(startValue.toLocalTime()).withComparatorType(comparatorType).assertBefore(theTime)
+    internal fun assertAfter(theDate: LocalDate) =
+        dateComparator!!.withStartValue(startValue.toLocalDate()).withComparatorType(comparatorType)
+            .assertAfter(theDate)
 
-    override fun getExpectedOffset() = "${dateComparator?.getExpectedOffset()} ${timeComparator?.getExpectedOffset()}".trim()
+    internal fun assertBefore(theDate: LocalDate) =
+        dateComparator!!.withStartValue(startValue.toLocalDate()).withComparatorType(comparatorType)
+            .assertBefore(theDate)
+
+    internal fun assertAfter(theTime: LocalTime) =
+        timeComparator!!.withStartValue(startValue.toLocalTime()).withComparatorType(comparatorType)
+            .assertAfter(theTime)
+
+    internal fun assertBefore(theTime: LocalTime) =
+        timeComparator!!.withStartValue(startValue.toLocalTime()).withComparatorType(comparatorType)
+            .assertBefore(theTime)
+
+    override fun getExpectedOffset() =
+        "${dateComparator?.getExpectedOffset()} ${timeComparator?.getExpectedOffset()}".trim()
 
     override fun calculateComparedValue(currentValue: LocalDateTime, multiplier: Int) =
-            currentValue.plusYears((dateComparator?.addedYears?.toLong() ?: 0) * multiplier)
-                    .plusMonths((dateComparator?.addedMonths?.toLong() ?: 0) * multiplier)
-                    .plusDays((dateComparator?.addedDays?.toLong() ?: 0) * multiplier)
-                    .plusHours((timeComparator?.addedHours?.toLong() ?: 0) * multiplier)
-                    .plusMinutes((timeComparator?.addedMinutes?.toLong() ?: 0) * multiplier)
-                    .plusSeconds((timeComparator?.addedSeconds?.toLong() ?: 0) * multiplier)
+        currentValue.plusYears((dateComparator?.addedYears?.toLong() ?: 0) * multiplier)
+            .plusMonths((dateComparator?.addedMonths?.toLong() ?: 0) * multiplier)
+            .plusDays((dateComparator?.addedDays?.toLong() ?: 0) * multiplier)
+            .plusHours((timeComparator?.addedHours?.toLong() ?: 0) * multiplier)
+            .plusMinutes((timeComparator?.addedMinutes?.toLong() ?: 0) * multiplier)
+            .plusSeconds((timeComparator?.addedSeconds?.toLong() ?: 0) * multiplier)
 
 
 }
 
-class DateComparator(internal val addedYears: Int = 0, internal val addedMonths: Int = 0, internal val addedDays: Int = 0) : AbstractJavaTimeComparator<LocalDate>() {
+class DateComparator(
+    internal val addedYears: Int = 0,
+    internal val addedMonths: Int = 0,
+    internal val addedDays: Int = 0
+) : AbstractJavaTimeComparator<LocalDate>() {
 
     override fun calculateComparedValue(currentValue: LocalDate, multiplier: Int) =
-            currentValue.plusYears(addedYears.toLong() * multiplier)
-                    .plusMonths(addedMonths.toLong() * multiplier)
-                    .plusDays(addedDays.toLong() * multiplier)
+        currentValue.plusYears(addedYears.toLong() * multiplier)
+            .plusMonths(addedMonths.toLong() * multiplier)
+            .plusDays(addedDays.toLong() * multiplier)
 
     override fun getExpectedOffset() = "$addedYears years, $addedMonths months, $addedDays days"
 
 }
 
-class TimeComparator(internal val addedHours: Int = 0, internal val addedMinutes: Int = 0, internal val addedSeconds: Int = 0) : AbstractJavaTimeComparator<LocalTime>() {
+class TimeComparator(
+    internal val addedHours: Int = 0,
+    internal val addedMinutes: Int = 0,
+    internal val addedSeconds: Int = 0
+) : AbstractJavaTimeComparator<LocalTime>() {
     override fun getExpectedOffset() = "$addedHours hours, $addedMinutes minutes, $addedSeconds seconds"
 
     override fun calculateComparedValue(currentValue: LocalTime, multiplier: Int) =
-            currentValue.plusHours(addedHours.toLong() * multiplier)
-                    .plusMinutes(addedMinutes.toLong() * multiplier)
-                    .plusSeconds(addedSeconds.toLong() * multiplier)
+        currentValue.plusHours(addedHours.toLong() * multiplier)
+            .plusMinutes(addedMinutes.toLong() * multiplier)
+            .plusSeconds(addedSeconds.toLong() * multiplier)
 
 }
 

@@ -1,8 +1,8 @@
 package org.amshove.kluent.tests.collections
 
 
-import org.amshove.kluent.*
 import org.amshove.kluent.internal.assertFails
+import org.amshove.kluent.shouldContainAny
 import kotlin.test.Test
 
 class ShouldContainAnyShould {

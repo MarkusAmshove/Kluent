@@ -2,7 +2,9 @@
 
 Kluent is a "Fluent Assertions" library written specifically for Kotlin.
 
-It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.html#infix-notation "Infix-Notation") and [Extension Functions](https://kotlinlang.org/docs/reference/extensions.html#extension-functions "Extension Functions") of Kotlin to provide a fluent wrapper around JUnit-Asserts and Mockito.
+It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.html#infix-notation "Infix-Notation")
+and [Extension Functions](https://kotlinlang.org/docs/reference/extensions.html#extension-functions "Extension Functions")
+of Kotlin to provide a fluent wrapper around JUnit-Asserts and Mockito.
 
 [How to contribute](../CONTRIBUTING.md)
 
@@ -10,8 +12,7 @@ It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.ht
 
 [Changelog](https://github.com/MarkusAmshove/Kluent/blob/master/CHANGELOG.md)
 
-[ ![Download](https://api.bintray.com/packages/markusamshove/maven/kluent/images/download.svg) ](https://bintray.com/markusamshove/maven/Kluent/_latestVersion) 
-
+[ ![Download](https://api.bintray.com/packages/markusamshove/maven/kluent/images/download.svg) ](https://bintray.com/markusamshove/maven/Kluent/_latestVersion)
 
 | Platform  | Status  |
 |     ---       |  ---    |
@@ -49,11 +50,13 @@ Every method that is included in Kluent also has a "backtick version", to make i
 Some examples:
 
 ### assertEquals ##
+
     "hello" shouldBeEqualTo "hello"
     "hello".shouldBeEqualTo("hello")
     "hello" `should be equal to` "hello"
 
 ### assertNotEquals ##
+
     "hello" shouldNotBeEqualTo "world"
     "hello".shouldNotBeEqualTo("world")
     "hello" `should not be equal to` "world"

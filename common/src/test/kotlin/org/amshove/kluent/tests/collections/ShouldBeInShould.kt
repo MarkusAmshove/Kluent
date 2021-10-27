@@ -1,10 +1,10 @@
 package org.amshove.kluent.tests.collections
 
 import org.amshove.kluent.internal.assertFails
-import kotlin.test.Test
-import org.amshove.kluent.tests.Person
 import org.amshove.kluent.shouldBeIn
 import org.amshove.kluent.shouldBeInIgnoringCase
+import org.amshove.kluent.tests.Person
+import kotlin.test.Test
 
 class ShouldBeInShould {
     @Test

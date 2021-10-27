@@ -1,8 +1,9 @@
-#Softly Assertions
+# Softly Assertions
 
 Inspired by [Kotest](https://github.com/kotest/kotest):
 
 Usually if an assertion fails, it throws an exception, so you can immediately note that your test fails:
+
 ```kt
    fun houseTest() {
         // arrange
@@ -75,8 +76,7 @@ As the result:
 *The following assertion failed:*
 *Expected <2>, actual <3>.*
 
-But why is it failed? Why 6 guests occupied 3 rooms?
-Now let's move our assertions into assertSoftly:
+But why is it failed? Why 6 guests occupied 3 rooms? Now let's move our assertions into assertSoftly:
 
 ```kt
    fun houseTest() {
@@ -151,11 +151,12 @@ Now we get all assertions at once:
 *org.amshove.kluent.MultiAssertionError:*
 *The following 2 assertions failed:*
 *1) Expected <2>, actual <3>.*
-	*at org.amshove.kluent.tests.assertions.softly.AssertSoftly.houseTest(AssertSoftly.kt:147)*
+*at org.amshove.kluent.tests.assertions.softly.AssertSoftly.houseTest(AssertSoftly.kt:147)*
 *2) Expected <6>, actual <5>.*
-	*at org.amshove.kluent.tests.assertions.softly.AssertSoftly.houseTest(AssertSoftly.kt:148)*
+*at org.amshove.kluent.tests.assertions.softly.AssertSoftly.houseTest(AssertSoftly.kt:148)*
 
 If you like, you can use a bit different syntax achieving the same result:
+
 ```kt
         assertSoftly(house) {
             rooms.size.shouldBeEqualTo(2)
@@ -164,7 +165,9 @@ If you like, you can use a bit different syntax achieving the same result:
 ```
 
 ## Compatibility note
+
 The following assertions are not compatible with `assertSoftly` and exit the test immediately after failure:
+
 * `assertFails`
 * `shouldNotBeNull`
 * `a.shouldBeInstanceOf<B>()`

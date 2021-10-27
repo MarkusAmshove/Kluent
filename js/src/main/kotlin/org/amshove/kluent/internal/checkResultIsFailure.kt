@@ -8,17 +8,21 @@ internal actual fun hardFail(message: String?): Nothing {
 }
 
 @PublishedApi
-internal actual fun <T : Throwable> checkResultIsFailure(exceptionClass: KClass<T>, message: String?, blockResult: Result<Unit>): T {
+internal actual fun <T : Throwable> checkResultIsFailure(
+    exceptionClass: KClass<T>,
+    message: String?,
+    blockResult: Result<Unit>
+): T {
     blockResult.fold(
-            onSuccess = {
-                hardFail(messagePrefix(message) + "Expected an exception of $exceptionClass to be thrown, but was completed successfully.")
-            },
-            onFailure = { e ->
-                if (exceptionClass.isInstance(e)) {
-                    @Suppress("UNCHECKED_CAST")
-                    return e as T
-                }
-                hardFail(messagePrefix(message) + "Expected an exception of $exceptionClass to be thrown, but was $e")
+        onSuccess = {
+            hardFail(messagePrefix(message) + "Expected an exception of $exceptionClass to be thrown, but was completed successfully.")
+        },
+        onFailure = { e ->
+            if (exceptionClass.isInstance(e)) {
+                @Suppress("UNCHECKED_CAST")
+                return e as T
             }
+            hardFail(messagePrefix(message) + "Expected an exception of $exceptionClass to be thrown, but was $e")
+        }
     )
 }

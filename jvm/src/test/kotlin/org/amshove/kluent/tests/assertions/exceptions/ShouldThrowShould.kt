@@ -188,19 +188,20 @@ class ShouldThrowShould {
 
     @Test
     @ExperimentalCoroutinesApi
-    fun failWhenTestingASuspendFunctionWhichThrowsAnExceptionWithMessageAndCauseExceptingADifferentMessage() = runBlockingTest {
-        suspend fun func() {
-            suspendCancellableCoroutine<Any> { throw IllegalArgumentException("not hello", IOException()) }
+    fun failWhenTestingASuspendFunctionWhichThrowsAnExceptionWithMessageAndCauseExceptingADifferentMessage() =
+        runBlockingTest {
+            suspend fun func() {
+                suspendCancellableCoroutine<Any> { throw IllegalArgumentException("not hello", IOException()) }
+            }
+            assertFails {
+                coInvoking { func() } shouldThrow
+                        IllegalArgumentException::class withCause IOException::class withMessage "hello"
+            }
         }
-        assertFails {
-            coInvoking { func() } shouldThrow
-                    IllegalArgumentException::class withCause IOException::class withMessage "hello"
-        }
-    }
 
     @Test
     fun validatedCustomValuesOfThrownException() {
-        class CustomException(val value: String, val num: Int): Exception(value)
+        class CustomException(val value: String, val num: Int) : Exception(value)
         invoking { throw CustomException("Hello World", 25) } shouldThrow CustomException::class with {
             value shouldBeEqualTo "Hello World"
             num shouldBeEqualTo 25

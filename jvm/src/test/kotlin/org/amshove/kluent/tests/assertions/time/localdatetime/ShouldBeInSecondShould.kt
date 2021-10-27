@@ -1,7 +1,7 @@
 package org.amshove.kluent.tests.assertions.time.localdatetime
 
-import org.amshove.kluent.*
-import java.time.*
+import org.amshove.kluent.shouldBeInSecond
+import java.time.LocalDateTime
 import kotlin.test.Test
 import kotlin.test.assertFails
 

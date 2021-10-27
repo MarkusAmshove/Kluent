@@ -1,8 +1,8 @@
 package org.amshove.kluent.tests.collections
 
 import org.amshove.kluent.internal.assertFails
-import org.amshove.kluent.tests.Person
 import org.amshove.kluent.shouldBeSortedAccordingTo
+import org.amshove.kluent.tests.Person
 import kotlin.random.Random
 import kotlin.test.Test
 

@@ -1,9 +1,9 @@
 package org.amshove.kluent.tests.collections
 
-import kotlin.test.assertFails
-import org.amshove.kluent.tests.Person
 import org.amshove.kluent.shouldNotBeIn
+import org.amshove.kluent.tests.Person
 import kotlin.test.Test
+import kotlin.test.assertFails
 
 class ShouldNotBeInShould {
     @Test

@@ -1,6 +1,6 @@
 package org.amshove.kluent.tests.assertions.time.localtime
 
-import org.amshove.kluent.*
+import org.amshove.kluent.shouldNotBeInSecond
 import java.time.LocalTime
 import kotlin.test.Test
 import kotlin.test.assertFails

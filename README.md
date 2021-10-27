@@ -6,10 +6,11 @@
 
 [Kluent](https://markusamshove.github.io/Kluent/) is a "Fluent Assertions" library written specifically for Kotlin.
 
-It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.html#infix-notation "Infix-Notation") and [Extension Functions](https://kotlinlang.org/docs/reference/extensions.html#extension-functions "Extension Functions") of Kotlin to provide a fluent wrapper around the JUnit-Assertions.
+It uses the [Infix-Notations](https://kotlinlang.org/docs/reference/functions.html#infix-notation "Infix-Notation")
+and [Extension Functions](https://kotlinlang.org/docs/reference/extensions.html#extension-functions "Extension Functions")
+of Kotlin to provide a fluent wrapper around the JUnit-Assertions.
 
 [How to contribute](CONTRIBUTING.md)
-
 
 [ ![Download](https://api.bintray.com/packages/markusamshove/maven/kluent/images/download.svg) ](https://bintray.com/markusamshove/maven/kluent/_latestVersion)
 
@@ -22,7 +23,9 @@ Kluent is hosted [here at mavenCentral](https://mvnrepository.com/artifact/org.a
 Kluent-Android is hosted [here at mavenCentral](https://mvnrepository.com/artifact/org.amshove.kluent/kluent-android)
 
 ## Gradle
+
 Replace {version} with the current version and chose one of the two artifacts, based on your target platform:
+
 ```groovy
 // Add jcenter as a repository for dependencies
 repositories {
@@ -42,6 +45,7 @@ dependencies {
 ```
 
 ## Maven
+
 Replace {version} with the current version
 
 ```xml
@@ -65,7 +69,8 @@ Replace {version} with the current version
 
 # Examples
 
-More examples can be seen on the [Site](https://markusamshove.github.io/Kluent/) or in the [tests](https://github.com/MarkusAmshove/Kluent/tree/master/src/test/kotlin/org/amshove/kluent/tests).
+More examples can be seen on the [Site](https://markusamshove.github.io/Kluent/) or in
+the [tests](https://github.com/MarkusAmshove/Kluent/tree/master/src/test/kotlin/org/amshove/kluent/tests).
 
 ### assertEquals ##
 
@@ -87,6 +92,7 @@ val jon = Person("Jon", "Doe")
 val list = listOf(alice, jon)
 list shouldContain jon
 ```
+
 ## Using backticks
 
 Every method that is included in Kluent also has a "backtick version", to make it feel more like a describing sentence.
@@ -100,6 +106,7 @@ Some examples:
 ```
 
 ### assertNotEquals ##
+
 ```kotlin
 "hello" `should not be equal to` "world"
 ```
@@ -110,13 +117,12 @@ All projects of Kluent are built with [Gradle](http://gradle.org/)
 
 The default `gradlew build` will only build the `common` and `jvm` module, to keep the build times as small as possible.
 
-If you plan to submit a pull request, it is also fine if you just make sure it builds and tests against `common` and `jvm` (which `gradlew build` will make sure of),
-because the rest of the heavy work will be done by Travis and AppVeyor.
-That way you can keep your machine free from NodeJS and Kotlin Native :-)
+If you plan to submit a pull request, it is also fine if you just make sure it builds and tests against `common`
+and `jvm` (which `gradlew build` will make sure of), because the rest of the heavy work will be done by Travis and
+AppVeyor. That way you can keep your machine free from NodeJS and Kotlin Native :-)
 
-To build the Android library, pass the parameter `ANDROID` to Gradle.
-This will build the `common` and `android` artifacts.
-To pass the parameter, type:
+To build the Android library, pass the parameter `ANDROID` to Gradle. This will build the `common` and `android`
+artifacts. To pass the parameter, type:
 
 `gradlew build -PANDROID`
 
@@ -128,8 +134,8 @@ To build native, pass:
 
 `gradlew build -PNATIVE`
 
-In these cases, the JVM module will also be built, because it is our primary target and everything should pass on the JVM.
-To skip the JVM build, e.g. for testing only against Native or JS, pass `SKIPVM`:
+In these cases, the JVM module will also be built, because it is our primary target and everything should pass on the
+JVM. To skip the JVM build, e.g. for testing only against Native or JS, pass `SKIPVM`:
 
 `gradlew build -PJS -PNATIVE -PSKIPJVM`
 
@@ -137,18 +143,26 @@ This command will build `common`, `js`, `native`, but not `jvm`.
 
 ## Where to put new features
 
-If you plan to add a feature (e.g. an Assertion), it would be nice to first try adding it to the `common` module, as it would then be available to all platforms.
-If it uses specific APIs, like classes from the Java standard library, then it needs to go to the `jvm` module.
+If you plan to add a feature (e.g. an Assertion), it would be nice to first try adding it to the `common` module, as it
+would then be available to all platforms. If it uses specific APIs, like classes from the Java standard library, then it
+needs to go to the `jvm` module.
 
-If you're unsure where to put a feature, or if you want to put something in the `common` module which needs platform specific
-implementations, you can have a look [here](https://github.com/MarkusAmshove/Kluent/blob/master/common/src/main/kotlin/org/amshove/kluent/Basic.kt) (`platformIsDigit` or `platformClassName`)
-where a function in the `common` module calls a so called `expect` function, which is defined [here](https://github.com/MarkusAmshove/Kluent/blob/master/common/src/main/kotlin/org/amshove/kluent/internal/Platform.kt)
-in the `common` module and has specific [JVM](https://github.com/MarkusAmshove/Kluent/blob/master/jvm/src/main/kotlin/org/amshove/kluent/internal/Platform.kt),
+If you're unsure where to put a feature, or if you want to put something in the `common` module which needs platform
+specific implementations, you can have a
+look [here](https://github.com/MarkusAmshove/Kluent/blob/master/common/src/main/kotlin/org/amshove/kluent/Basic.kt) (`platformIsDigit`
+or `platformClassName`)
+where a function in the `common` module calls a so called `expect` function, which is
+defined [here](https://github.com/MarkusAmshove/Kluent/blob/master/common/src/main/kotlin/org/amshove/kluent/internal/Platform.kt)
+in the `common` module and has
+specific [JVM](https://github.com/MarkusAmshove/Kluent/blob/master/jvm/src/main/kotlin/org/amshove/kluent/internal/Platform.kt)
+,
 [JS](https://github.com/MarkusAmshove/Kluent/blob/master/js/src/main/kotlin/org/amshove/kluent/internal/Platform.kt)
-and [Native](https://github.com/MarkusAmshove/Kluent/blob/master/native/src/main/kotlin/org/amshove/kluent/internal/Platform.kt) implementation.
+and [Native](https://github.com/MarkusAmshove/Kluent/blob/master/native/src/main/kotlin/org/amshove/kluent/internal/Platform.kt)
+implementation.
 
 If you're still unsure how to make something platform independent, we can have a look together inside the PR :-)
 
 # Attribution
 
-[Parts of the `assertSoftly` feature](https://github.com/MarkusAmshove/Kluent/pull/185#issuecomment-731777949) are based upon the great work of [Kotest](https://github.com/kotest/kotest) under the Apache 2.0 License.
+[Parts of the `assertSoftly` feature](https://github.com/MarkusAmshove/Kluent/pull/185#issuecomment-731777949) are based
+upon the great work of [Kotest](https://github.com/kotest/kotest) under the Apache 2.0 License.

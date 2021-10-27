@@ -2,7 +2,8 @@
 
 Starting with Kluent 1.32, a generic `should` method was added to build domain specific assertions.
 
-When the receiver function passed to `should` returns `false` *or* throws an exception, it will fail with an optional failure message.
+When the receiver function passed to `should` returns `false` *or* throws an exception, it will fail with an optional
+failure message.
 
 ## Example
 

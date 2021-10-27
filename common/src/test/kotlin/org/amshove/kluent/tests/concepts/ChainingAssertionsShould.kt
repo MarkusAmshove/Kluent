@@ -6,16 +6,16 @@ import kotlin.test.Test
 class ChainingAssertionsShould {
     @Test
     fun allowChainingOfCollectionAssertions() {
-       val list = listOf(1, 2, 3, 4, 5, 6, 7, 8)
+        val list = listOf(1, 2, 3, 4, 5, 6, 7, 8)
 
         list
-                .shouldNotBeEmpty()
-                .shouldContain(2)
-                .shouldContain(4)
-                .shouldContainSome(arrayOf(5, 7))
-                .should {
-                    size > 5
-                }
+            .shouldNotBeEmpty()
+            .shouldContain(2)
+            .shouldContain(4)
+            .shouldContainSome(arrayOf(5, 7))
+            .should {
+                size > 5
+            }
     }
 
     @Test
@@ -23,11 +23,11 @@ class ChainingAssertionsShould {
         val number = 42
 
         number
-                .shouldBePositive()
-                .shouldBeGreaterThan(10)
-                .shouldBeLessThan(43)
-                .shouldBeInRange(40..45)
-                .shouldNotBeInRange(45..50)
+            .shouldBePositive()
+            .shouldBeGreaterThan(10)
+            .shouldBeLessThan(43)
+            .shouldBeInRange(40..45)
+            .shouldNotBeInRange(45..50)
     }
 
     @Test
@@ -35,10 +35,10 @@ class ChainingAssertionsShould {
         val sequence = "Hello World!"
 
         sequence
-                .shouldNotBeEmpty()
-                .shouldNotBeBlank()
-                .shouldStartWith("Hello")
-                .shouldEndWith("!")
-                .shouldContainSome("e", "l")
+            .shouldNotBeEmpty()
+            .shouldNotBeBlank()
+            .shouldStartWith("Hello")
+            .shouldEndWith("!")
+            .shouldContainSome("e", "l")
     }
 }

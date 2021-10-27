@@ -2,8 +2,8 @@ package org.amshove.kluent.tests.collections
 
 import org.amshove.kluent.shouldHaveValue
 import org.amshove.kluent.tests.Person
-import kotlin.test.assertFails
 import kotlin.test.Test
+import kotlin.test.assertFails
 
 class ShouldHaveValueShould {
     @Test

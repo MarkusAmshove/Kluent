@@ -15,21 +15,21 @@ buildscript {
 
 ext {
     libs = [
-        // Compile
-        kotlin_stdlib_common    : "org.jetbrains.kotlin:kotlin-stdlib-common:$kotlin_version",
-        kotlin_stdlib_jvm       : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version",
-        kotlin_stdlib_js        : "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version",
-        kotlin_reflect          : "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version",
+            // Compile
+            kotlin_stdlib_common   : "org.jetbrains.kotlin:kotlin-stdlib-common:$kotlin_version",
+            kotlin_stdlib_jvm      : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version",
+            kotlin_stdlib_js       : "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version",
+            kotlin_reflect         : "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version",
 
-        // Tests
-        kotlin_test_common      : "org.jetbrains.kotlin:kotlin-test-common:$kotlin_version",
-        kotlin_test_jvm         : "org.jetbrains.kotlin:kotlin-test:$kotlin_version",
-        kotlin_test_junit       : "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version",
-        kotlin_test_js          : "org.jetbrains.kotlin:kotlin-test-js:$kotlin_version",
-        kotlin_test_annotations : "org.jetbrains.kotlin:kotlin-test-annotations-common:$kotlin_version",
-        kotlinx_coroutines_test : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinx_coroutines_version",
+            // Tests
+            kotlin_test_common     : "org.jetbrains.kotlin:kotlin-test-common:$kotlin_version",
+            kotlin_test_jvm        : "org.jetbrains.kotlin:kotlin-test:$kotlin_version",
+            kotlin_test_junit      : "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version",
+            kotlin_test_js         : "org.jetbrains.kotlin:kotlin-test-js:$kotlin_version",
+            kotlin_test_annotations: "org.jetbrains.kotlin:kotlin-test-annotations-common:$kotlin_version",
+            kotlinx_coroutines_test: "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinx_coroutines_version",
 
-        junit                   : "junit:junit:4.12",
+            junit                  : "junit:junit:4.12",
     ]
 }
 

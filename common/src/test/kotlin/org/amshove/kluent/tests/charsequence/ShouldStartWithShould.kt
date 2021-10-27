@@ -18,11 +18,11 @@ class ShouldStartWithShould {
 
     @Test
     fun failWhenTestingACharSequenceWhichDoesNotStartWithASubSequence() {
-       assertFails { "Bye" shouldStartWith "H" }
+        assertFails { "Bye" shouldStartWith "H" }
     }
 
     @Test
     fun failWhenTestingACharSequenceWhichDoesNotStartWithASubSequenceIgnoringCase() {
-       assertFails { "Bye" shouldStartWithIgnoringCase "H" }
+        assertFails { "Bye" shouldStartWithIgnoringCase "H" }
     }
 }
