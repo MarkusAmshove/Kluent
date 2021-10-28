@@ -3,6 +3,7 @@ package org.amshove.kluent
 import org.amshove.kluent.internal.assertFalse
 import org.amshove.kluent.internal.assertTrue
 import java.io.File
+import java.nio.charset.Charset
 
 fun File.shouldExist() = assertTrue("The file '${this.absolutePath}' should exist, but does not", this.exists())
 fun File.shouldNotExist() = assertFalse("The file '${this.absolutePath}' should not exist, but does", this.exists())
@@ -18,4 +19,7 @@ infix fun File.shouldNotHaveExtension(other: String) = this.extension shouldNotB
 
 infix fun File.shouldHaveName(other: String) = this.name shouldBeEqualTo other
 infix fun File.shouldNotHaveName(other: String) = this.name shouldNotBeEqualTo other
+
+infix fun File.shouldContainLineWithString(other: String) = this.readText(Charset.defaultCharset()) shouldContain other
+infix fun File.shouldNotContainLineWithString(other: String) = this.readText(Charset.defaultCharset()) shouldNotContain other
 

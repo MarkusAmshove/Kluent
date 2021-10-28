@@ -3,10 +3,10 @@ package org.amshove.kluent.tests.assertions.file
 import java.io.File
 
 /**
- * Constructs a directory or a plain file with no content and deletes it after the body has run
+ * Constructs a directory or a plain file with text content and deletes it after the body has run
  */
 fun File.useFile(isDir: Boolean = false, body: (file: File) -> Unit) = try {
-    if (isDir) this.mkdir() else this.writeText("")
+    if (isDir) this.mkdir() else this.writeText("quick brown fox over a lazy dog")
     body(this)
 } finally {
     if (!this.delete()) throw Exception("Could not delete file")
