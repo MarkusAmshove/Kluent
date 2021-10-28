@@ -23,9 +23,9 @@ class AssertSoftly {
                 """
                 |The following 2 assertions failed:
                 |1) Expected the CharSequence ab1 to contain 2
-                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.failShouldAssertSoftly(AssertSoftly.kt:19)
+                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.failShouldAssertSoftly(AssertSoftly.kt:18)
                 |2) Expected 3 to be greater or equal to 4
-                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.failShouldAssertSoftly(AssertSoftly.kt:20)"""
+                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.failShouldAssertSoftly(AssertSoftly.kt:19)"""
                     .trimMargin(), e.message!!.trimMargin()
             )
         }
@@ -61,7 +61,7 @@ class AssertSoftly {
                 """
                 |The following assertion failed:
                 |Expected the CharSequence ab1 to contain 2
-                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.verifyAssertErrorForNonSoftlyAssertions(AssertSoftly.kt:55)"""
+                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.verifyAssertErrorForNonSoftlyAssertions(AssertSoftly.kt:56)"""
                     .trimMargin(), e.message!!.trimMargin()
             )
         }
@@ -85,7 +85,7 @@ class AssertSoftly {
                 """
                 |The following assertion failed:
                 |Expected 3 to be greater or equal to 4
-                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.failShouldAssertSoftlyForSeveralObjects(AssertSoftly.kt:78)"""
+                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.failShouldAssertSoftlyForSeveralObjects(AssertSoftly.kt:81)"""
                     .trimMargin(), e.message!!
             )
         }
@@ -209,11 +209,11 @@ class AssertSoftly {
                 """
                 |The following 2 assertions failed:
                 |1) Expected collection size to be 2 but was 3
-                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.assertSoftlyCollections(AssertSoftly.kt:196)
+                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.assertSoftlyCollections(AssertSoftly.kt:204)
                 |2) The collection doesn't have the same items
                 |
                 |Items included on the actual collection but not in the expected: y
-                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.assertSoftlyCollections(AssertSoftly.kt:197)
+                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.assertSoftlyCollections(AssertSoftly.kt:205)
                 """.trimMargin(), e.message!!.trimMargin()
             )
         }
@@ -256,9 +256,9 @@ class AssertSoftly {
                 |˪--F[1] (id = 2, name = name2)
                 |
                 |>
-                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.softEquavalencyTest(AssertSoftly.kt:231)
+                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.softEquavalencyTest(AssertSoftly.kt:241)
                 |2) Expected: <name2> but was: <name1>
-                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.softEquavalencyTest(AssertSoftly.kt:232)
+                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.softEquavalencyTest(AssertSoftly.kt:242)
                 |""".trimMargin()
                     .trimMargin(), e.message!!.trimMargin()
             )
