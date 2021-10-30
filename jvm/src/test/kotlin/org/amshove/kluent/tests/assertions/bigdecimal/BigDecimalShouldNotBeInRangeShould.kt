@@ -9,13 +9,13 @@ class BigDecimalShouldNotBeInRangeShould {
     @Test
     fun passWhenAValueIsBelowTheLowerBound() {
         BigDecimal("500").shouldNotBeInRange(BigDecimal("600"), BigDecimal("700"))
-        BigDecimal("500").shouldNotBeInRange(BigDecimal("600") .. BigDecimal("700"))
+        BigDecimal("500").shouldNotBeInRange(BigDecimal("600")..BigDecimal("700"))
     }
 
     @Test
     fun passWhenAValueIsAboveTheUpperBound() {
         BigDecimal("800").shouldNotBeInRange(BigDecimal("600"), BigDecimal("700"))
-        BigDecimal("800").shouldNotBeInRange(BigDecimal("600") .. BigDecimal("700"))
+        BigDecimal("800").shouldNotBeInRange(BigDecimal("600")..BigDecimal("700"))
     }
 
     @Test

@@ -1,8 +1,8 @@
 package org.amshove.kluent.tests.collections
 
-import org.amshove.kluent.tests.Person
 import org.amshove.kluent.shouldMatchAllWith
 import org.amshove.kluent.shouldMatchAtLeastOneOf
+import org.amshove.kluent.tests.Person
 import kotlin.test.Test
 import kotlin.test.assertFails
 
@@ -43,9 +43,9 @@ class ShouldMatchPredicateShould {
     fun supportChaining() {
         val list = listOf(Person("Anton", "Chekhov"), Person("Alexander", "Pushkin"), Person("Fyodor", "Dostoevsky"))
         list
-                .shouldMatchAtLeastOneOf { it.name.startsWith("A") }
-                .shouldMatchAtLeastOneOf { it.name.startsWith("F") }
-                .shouldMatchAllWith { it.name.length > 3 }
+            .shouldMatchAtLeastOneOf { it.name.startsWith("A") }
+            .shouldMatchAtLeastOneOf { it.name.startsWith("F") }
+            .shouldMatchAllWith { it.name.length > 3 }
     }
 
     @Test

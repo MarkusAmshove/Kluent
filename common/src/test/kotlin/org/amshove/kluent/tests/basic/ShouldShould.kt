@@ -1,9 +1,9 @@
 package org.amshove.kluent.tests.basic
 
 import org.amshove.kluent.internal.assertFails
-import kotlin.test.Test
 import org.amshove.kluent.should
 import org.amshove.kluent.tests.Person
+import kotlin.test.Test
 
 class ShouldShould {
     @Test
@@ -11,8 +11,8 @@ class ShouldShould {
         val person = Person("Peter", "Pan")
 
         person
-                .should { name.startsWith("P") }
-                .should { surname.startsWith("P") }
+            .should { name.startsWith("P") }
+            .should { surname.startsWith("P") }
     }
 
     @Test
@@ -50,14 +50,17 @@ class ShouldShould {
         fun Person.shouldHaveUppercaseName() = this.should("The name of $this should be uppercase") {
             name[0].toUpperCase() == name[0]
         }
+
         val peter = Person("peter", "pan")
         try {
             peter.shouldHaveUppercaseName()
         } catch (e: AssertionError) {
-            e.message!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().startsWith("""
+            e.message!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().startsWith(
+                """
                 The following assertion failed:
                 The name of $peter should be uppercase"""
-                    .replace("\\s+|\\t|\\n".toRegex(), " ").trim())
+                    .replace("\\s+|\\t|\\n".toRegex(), " ").trim()
+            )
         }
     }
 

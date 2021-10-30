@@ -1,6 +1,5 @@
 package org.amshove.kluent.tests.collections
 
-import org.amshove.kluent.shouldContainFalse
 import org.amshove.kluent.shouldContainTrue
 import kotlin.test.Test
 import kotlin.test.assertFails

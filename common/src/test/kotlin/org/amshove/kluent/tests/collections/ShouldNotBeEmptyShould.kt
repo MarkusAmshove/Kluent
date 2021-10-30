@@ -136,6 +136,7 @@ class ShouldNotBeEmptyShould {
         val theArray = charArrayOf()
         assertFails { theArray.shouldNotBeEmpty() }
     }
+
     @Test
     fun passWhenTestingAPrimitiveBooleanArrayWhichIsNotEmpty() {
         val theArray = booleanArrayOf(true, false, true)

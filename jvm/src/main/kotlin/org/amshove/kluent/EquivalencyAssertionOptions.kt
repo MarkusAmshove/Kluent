@@ -15,18 +15,24 @@ class EquivalencyAssertionOptions {
 
     internal var compareByProperties
         get() = _compareByProperties
-        private set(value) { _compareByProperties = value }
+        private set(value) {
+            _compareByProperties = value
+        }
 
     internal val includedProperties: MutableList<KProperty1<*, *>> = mutableListOf()
     internal val excludedProperties: MutableList<KProperty1<*, *>> = mutableListOf()
 
     internal var excludingNestedObjects
         get() = _excludingNestedObjects
-        private set(value) { _excludingNestedObjects = value }
+        private set(value) {
+            _excludingNestedObjects = value
+        }
 
     internal var allowingInfiniteRecursion
         get() = _allowingInfiniteRecursion
-        private set(value) { _allowingInfiniteRecursion = value }
+        private set(value) {
+            _allowingInfiniteRecursion = value
+        }
 
     internal var maxLevelOfRecursion
         get() = _maxLevelOfRecursion
@@ -36,7 +42,9 @@ class EquivalencyAssertionOptions {
 
     internal var withStrictOrdering
         get() = _withStrictOrdering
-        private set(value) { _withStrictOrdering = value }
+        private set(value) {
+            _withStrictOrdering = value
+        }
 
 
     fun compareByProperties(): EquivalencyAssertionOptions {

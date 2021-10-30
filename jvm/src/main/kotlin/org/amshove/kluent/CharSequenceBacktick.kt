@@ -17,7 +17,8 @@ infix fun <T : CharSequence> T.`should contain`(expected: CharSequence) = this.s
 
 infix fun <T : CharSequence> T.`should not contain`(char: Char) = this.shouldNotContain(char)
 
-infix fun <T : CharSequence> T.`should not contain any`(things: Iterable<CharSequence>) = this.shouldNotContainAny(things)
+infix fun <T : CharSequence> T.`should not contain any`(things: Iterable<CharSequence>) =
+    this.shouldNotContainAny(things)
 
 infix fun <T : CharSequence> T.`should match`(regex: String) = this.shouldMatch(regex)
 
@@ -51,10 +52,10 @@ infix fun <T : CharSequence> T.`should not match`(regex: String) = this.shouldNo
 
 infix fun <T : CharSequence> T.`should not match`(regex: Regex) = this.shouldNotMatch(regex)
 
-fun <T: CharSequence> T.`should not be empty`(): T = this.shouldNotBeEmpty()
+fun <T : CharSequence> T.`should not be empty`(): T = this.shouldNotBeEmpty()
 
 @UseExperimental(ExperimentalContracts::class)
-fun <T: CharSequence> T?.`should not be null or empty`(): T {
+fun <T : CharSequence> T?.`should not be null or empty`(): T {
     contract {
         returns() implies (this@`should not be null or empty` != null)
     }
@@ -62,10 +63,10 @@ fun <T: CharSequence> T?.`should not be null or empty`(): T {
     return this.shouldNotBeNullOrEmpty()
 }
 
-fun <T: CharSequence> T.`should not be blank`(): T = this.shouldNotBeBlank()
+fun <T : CharSequence> T.`should not be blank`(): T = this.shouldNotBeBlank()
 
 @UseExperimental(ExperimentalContracts::class)
-fun <T: CharSequence> T?.`should not be null or blank`(): T {
+fun <T : CharSequence> T?.`should not be null or blank`(): T {
     contract {
         returns() implies (this@`should not be null or blank` != null)
     }
@@ -73,7 +74,8 @@ fun <T: CharSequence> T?.`should not be null or blank`(): T {
     return this.shouldNotBeNullOrBlank()
 }
 
-infix fun <T : CharSequence> T.`should contain all`(items: Iterable<CharSequence>): CharSequence = this.shouldContainAll(items)
+infix fun <T : CharSequence> T.`should contain all`(items: Iterable<CharSequence>): CharSequence =
+    this.shouldContainAll(items)
 
 infix fun <T : CharSequence> T.`should not contain all`(items: Iterable<CharSequence>): CharSequence =
     this.shouldNotContainAll(items)

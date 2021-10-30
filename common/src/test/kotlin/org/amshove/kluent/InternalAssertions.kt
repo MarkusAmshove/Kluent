@@ -4,7 +4,8 @@ fun assertMessage(message: String, func: () -> Unit) {
     try {
         func()
     } catch (e: Throwable) {
-        e.message?.replace("\\s+|\\t|\\n".toRegex(), " ")?.trim().shouldBeEqualTo(message.replace("\\s+|\\t|\\n".toRegex(), " ").trim())
+        e.message?.replace("\\s+|\\t|\\n".toRegex(), " ")?.trim()
+            .shouldBeEqualTo(message.replace("\\s+|\\t|\\n".toRegex(), " ").trim())
     }
 }
 

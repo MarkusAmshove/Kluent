@@ -5,8 +5,7 @@ import org.amshove.kluent.shouldHaveName
 import java.io.File
 import kotlin.test.Test
 
-class ShouldHaveNameShould
-{
+class ShouldHaveNameShould {
     private val name = "thisfilenameisweird.csv"
     private val file = File(name)
 
@@ -17,7 +16,7 @@ class ShouldHaveNameShould
 
     @Test
     fun failWhenTestingAFileWithAnUnexpectedFileName() {
-        file.useFile { assertFails { it shouldHaveName "anothername" }}
+        file.useFile { assertFails { it shouldHaveName "anothername" } }
     }
 }
 

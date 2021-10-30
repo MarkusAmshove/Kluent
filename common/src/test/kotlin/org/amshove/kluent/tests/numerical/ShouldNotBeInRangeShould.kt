@@ -1,8 +1,8 @@
 package org.amshove.kluent.tests.numerical
 
 import org.amshove.kluent.shouldNotBeInRange
-import kotlin.test.assertFails
 import kotlin.test.Test
+import kotlin.test.assertFails
 
 class ShouldNotBeInRangeShould {
     @Test

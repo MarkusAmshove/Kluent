@@ -72,7 +72,7 @@ class ShouldNotThrowShould {
     @Test
     fun passWhenTestingAFunctionThatThrowsAnExceptionWithADifferentMessage() {
         invoking { throw IllegalArgumentException("Actual Message") } shouldNotThrow
-                IllegalAccessException::class withMessage "Expected Message"
+            IllegalAccessException::class withMessage "Expected Message"
     }
 
     @Test
@@ -82,14 +82,14 @@ class ShouldNotThrowShould {
             suspendCancellableCoroutine<Any> { throw IllegalArgumentException("Actual Message") }
         }
         coInvoking { func() } shouldNotThrow
-                IllegalAccessException::class withMessage "Expected Message"
+            IllegalAccessException::class withMessage "Expected Message"
     }
 
     @Test
     fun failWhenTestingAFunctionThatThrowsAnExceptionWithTheSameMessage() {
         assertFails {
             invoking { throw IllegalArgumentException("Actual Message") } shouldNotThrow
-                    IllegalAccessException::class withMessage "Actual Message"
+                IllegalAccessException::class withMessage "Actual Message"
         }
     }
 
@@ -101,7 +101,7 @@ class ShouldNotThrowShould {
         }
         assertFails {
             coInvoking { func() } shouldNotThrow
-                    IllegalAccessException::class withMessage "Actual Message"
+                IllegalAccessException::class withMessage "Actual Message"
         }
     }
 
@@ -109,7 +109,7 @@ class ShouldNotThrowShould {
     fun failWhenTestingAFunctionThatDoesThrowAnExceptionWithTheExpectedCause() {
         assertFails {
             invoking { throw Exception(RuntimeException()) } shouldNotThrow
-                    Exception::class withCause RuntimeException::class
+                Exception::class withCause RuntimeException::class
         }
     }
 
@@ -121,7 +121,7 @@ class ShouldNotThrowShould {
         }
         assertFails {
             coInvoking { func() } shouldNotThrow
-                    Exception::class withCause RuntimeException::class
+                Exception::class withCause RuntimeException::class
         }
     }
 

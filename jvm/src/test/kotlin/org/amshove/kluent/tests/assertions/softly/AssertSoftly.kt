@@ -2,7 +2,6 @@ package org.amshove.kluent.tests.assertions.softly
 
 import org.amshove.kluent.*
 import org.amshove.kluent.tests.equivalency.ShouldBeEquivalentTo
-import java.lang.RuntimeException
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -20,13 +19,15 @@ class AssertSoftly {
                 length.shouldBeGreaterOrEqualTo(4)
             }
         } catch (e: Throwable) {
-            assertEquals("""
+            assertEquals(
+                """
                 |The following 2 assertions failed:
                 |1) Expected the CharSequence ab1 to contain 2
-                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.failShouldAssertSoftly(AssertSoftly.kt:19)
+                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.failShouldAssertSoftly(AssertSoftly.kt:18)
                 |2) Expected 3 to be greater or equal to 4
-                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.failShouldAssertSoftly(AssertSoftly.kt:20)"""
-                .trimMargin(), e.message!!.trimMargin())
+                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.failShouldAssertSoftly(AssertSoftly.kt:19)"""
+                    .trimMargin(), e.message!!.trimMargin()
+            )
         }
     }
 
@@ -56,11 +57,13 @@ class AssertSoftly {
                 length.shouldBeGreaterOrEqualTo(4)
             }
         } catch (e: Throwable) {
-            assertEquals("""
+            assertEquals(
+                """
                 |The following assertion failed:
                 |Expected the CharSequence ab1 to contain 2
-                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.verifyAssertErrorForNonSoftlyAssertions(AssertSoftly.kt:55)"""
-                .trimMargin(), e.message!!.trimMargin())
+                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.verifyAssertErrorForNonSoftlyAssertions(AssertSoftly.kt:56)"""
+                    .trimMargin(), e.message!!.trimMargin()
+            )
         }
     }
 
@@ -78,11 +81,13 @@ class AssertSoftly {
                 a.length.shouldBeGreaterOrEqualTo(4)
             }
         } catch (e: Throwable) {
-            assertEquals("""
+            assertEquals(
+                """
                 |The following assertion failed:
                 |Expected 3 to be greater or equal to 4
-                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.failShouldAssertSoftlyForSeveralObjects(AssertSoftly.kt:78)"""
-                .trimMargin(), e.message!!)
+                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.failShouldAssertSoftlyForSeveralObjects(AssertSoftly.kt:81)"""
+                    .trimMargin(), e.message!!
+            )
         }
     }
 
@@ -106,6 +111,7 @@ class AssertSoftly {
                 return true
             }
         }
+
         class House(val maxGuests: Int = 5) {
             private var _rooms: MutableList<Room> = mutableListOf()
             private var _guests: MutableList<Guest> = mutableListOf()
@@ -137,12 +143,12 @@ class AssertSoftly {
 
         // act
         val guests = listOf(
-                Guest("a"),
-                Guest("b"),
-                Guest("c"),
-                Guest("d"),
-                Guest("e"),
-                Guest("f")
+            Guest("a"),
+            Guest("b"),
+            Guest("c"),
+            Guest("d"),
+            Guest("e"),
+            Guest("f")
         )
         val house = House()
         house.host(guests)
@@ -154,13 +160,15 @@ class AssertSoftly {
                 house.guests.size.shouldBeEqualTo(5)
             }
         } catch (e: Throwable) {
-            e.message!!.trimMargin().shouldBeEqualTo("""
+            e.message!!.trimMargin().shouldBeEqualTo(
+                """
                 The following 2 assertions failed:
                 1) Expected <2>, actual <3>.
                     at org.amshove.kluent.tests.assertions.softly.AssertSoftly.houseTest(AssertSoftly.kt:150)
                 2) Expected <6>, actual <5>.
                     at org.amshove.kluent.tests.assertions.softly.AssertSoftly.houseTest(AssertSoftly.kt:151)
-                """.trimMargin())
+                """.trimMargin()
+            )
         }
     }
 
@@ -197,15 +205,17 @@ class AssertSoftly {
                 list shouldContainSame listOf('x', 'z')
             }
         } catch (e: Throwable) {
-            assertEquals("""
+            assertEquals(
+                """
                 |The following 2 assertions failed:
                 |1) Expected collection size to be 2 but was 3
-                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.assertSoftlyCollections(AssertSoftly.kt:196)
+                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.assertSoftlyCollections(AssertSoftly.kt:204)
                 |2) The collection doesn't have the same items
                 |
                 |Items included on the actual collection but not in the expected: y
-                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.assertSoftlyCollections(AssertSoftly.kt:197)
-                """.trimMargin(), e.message!!.trimMargin())
+                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.assertSoftlyCollections(AssertSoftly.kt:205)
+                """.trimMargin(), e.message!!.trimMargin()
+            )
         }
     }
 
@@ -215,13 +225,13 @@ class AssertSoftly {
         // arrange
         val a1 = ShouldBeEquivalentTo.E().apply {
             Flist = listOf(
-                    ShouldBeEquivalentTo.F(1).apply { name = "name1" },
-                    ShouldBeEquivalentTo.F(2).apply { name = "name2" }
+                ShouldBeEquivalentTo.F(1).apply { name = "name1" },
+                ShouldBeEquivalentTo.F(2).apply { name = "name2" }
             )
         }
         val a2 = ShouldBeEquivalentTo.E().apply {
             Flist = listOf(
-                    ShouldBeEquivalentTo.F(1).apply { name = "name1" }
+                ShouldBeEquivalentTo.F(1).apply { name = "name1" }
             )
         }
 
@@ -232,7 +242,8 @@ class AssertSoftly {
                 Flist[0].name.shouldBeEqualTo("name2")
             }
         } catch (e: Throwable) {
-            assertEquals("""
+            assertEquals(
+                """
                 |The following 2 assertions failed:
                 |1) Are not equivalent: 
                 |Expected: <E
@@ -245,11 +256,12 @@ class AssertSoftly {
                 |˪--F[1] (id = 2, name = name2)
                 |
                 |>
-                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.softEquavalencyTest(AssertSoftly.kt:231)
+                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.softEquavalencyTest(AssertSoftly.kt:241)
                 |2) Expected: <name2> but was: <name1>
-                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.softEquavalencyTest(AssertSoftly.kt:232)
+                |at org.amshove.kluent.tests.assertions.softly.AssertSoftly.softEquavalencyTest(AssertSoftly.kt:242)
                 |""".trimMargin()
-                .trimMargin(), e.message!!.trimMargin())
+                    .trimMargin(), e.message!!.trimMargin()
+            )
         }
     }
 }

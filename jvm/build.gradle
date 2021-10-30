@@ -2,7 +2,7 @@ apply plugin: 'kotlin-platform-jvm'
 apply plugin: 'jacoco'
 
 def isAndroid = project.rootProject.hasProperty("ANDROID")
-if(isAndroid) {
+if (isAndroid) {
     logger.warn("Android build!")
 }
 
@@ -29,7 +29,7 @@ sourceSets {
         kotlin {
             srcDir 'src/main/kotlin'
 
-            if(isAndroid) {
+            if (isAndroid) {
                 exclude '**/*Backtick*'
             }
         }
@@ -38,7 +38,7 @@ sourceSets {
         kotlin {
             srcDir 'src/test/kotlin'
 
-            if(isAndroid) {
+            if (isAndroid) {
                 exclude '**/backtick*/**', '**/*Backtick*'
             }
         }
@@ -50,7 +50,7 @@ tasks.withType(compileKotlin.getClass()) {
         jvmTarget = isAndroid ? '1.6' : '1.8'
 
         freeCompilerArgs += [
-                '-Xuse-experimental=kotlin.Experimental'
+            '-Xuse-experimental=kotlin.Experimental'
         ]
     }
 }

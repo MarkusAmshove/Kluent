@@ -26,6 +26,7 @@ The following assertions work for all subtypes of `Number`(`Int`, `Byte`, `Float
 ```
 
 ## Ranges
+
 ```kt
 5.shouldBeInRange(1, 10)
 5 shouldBeInRange 1..10

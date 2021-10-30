@@ -2,7 +2,6 @@ package org.amshove.kluent.tests.basic
 
 import org.amshove.kluent.internal.assertFails
 import org.amshove.kluent.shouldBeNull
-import org.amshove.kluent.shouldNotBeNull
 import kotlin.test.Test
 
 class ShouldBeNullShould {

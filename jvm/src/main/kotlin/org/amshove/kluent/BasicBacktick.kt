@@ -82,7 +82,9 @@ fun Char.`should be digit`(): Char = this.shouldBeDigit()
 fun Char.`should not be digit`(): Char = this.shouldNotBeDigit()
 
 @ExperimentalStdlibApi
-infix fun <T: Any> T.`should be equivalent to`(expected: Pair<T, ((EquivalencyAssertionOptions) -> EquivalencyAssertionOptions)?>): T = this.shouldBeEquivalentTo(expected.first, expected.second)
+infix fun <T : Any> T.`should be equivalent to`(expected: Pair<T, ((EquivalencyAssertionOptions) -> EquivalencyAssertionOptions)?>): T =
+    this.shouldBeEquivalentTo(expected.first, expected.second)
 
 @ExperimentalStdlibApi
-infix fun <T: Any> T.`should not be equivalent to`(expected: Pair<T, ((EquivalencyAssertionOptions) -> EquivalencyAssertionOptions)?>): T = this.shouldNotBeEquivalentTo(expected.first, expected.second)
+infix fun <T : Any> T.`should not be equivalent to`(expected: Pair<T, ((EquivalencyAssertionOptions) -> EquivalencyAssertionOptions)?>): T =
+    this.shouldNotBeEquivalentTo(expected.first, expected.second)

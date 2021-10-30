@@ -19,7 +19,11 @@ actual infix fun <T : Throwable> (() -> Any?).shouldThrow(expectedException: KCl
             e.isA(ComparisonFailure::class) -> throw e
             e.isA(ComparisonFailedException::class) -> throw e
             e.isA(expectedException) -> return ExceptionResult(e as T)
-            else -> throw ComparisonFailure("Expected ${expectedException.javaObjectType} to be thrown", "${expectedException.javaObjectType}", "${e.javaClass}")
+            else -> throw ComparisonFailure(
+                "Expected ${expectedException.javaObjectType} to be thrown",
+                "${expectedException.javaObjectType}",
+                "${e.javaClass}"
+            )
         }
     }
 }
@@ -35,7 +39,11 @@ suspend infix fun <T : Throwable> (suspend () -> Any?).shouldThrow(expectedExcep
             e.isA(ComparisonFailure::class) -> throw e
             e.isA(ComparisonFailedException::class) -> throw e
             e.isA(expectedException) -> return ExceptionResult(e as T)
-            else -> throw ComparisonFailure("Expected ${expectedException.javaObjectType} to be thrown", "${expectedException.javaObjectType}", "${e.javaClass}")
+            else -> throw ComparisonFailure(
+                "Expected ${expectedException.javaObjectType} to be thrown",
+                "${expectedException.javaObjectType}",
+                "${e.javaClass}"
+            )
         }
     }
 }
@@ -49,7 +57,11 @@ infix fun <T : Throwable> (() -> Any?).shouldNotThrow(expectedException: KClass<
             fail("Expected no Exception to be thrown", "No Exception", "${e.javaClass}")
         }
         if (e.isA(expectedException)) {
-            fail("Expected no Exception of type ${e::class.qualifiedName} to be thrown", "No Exception", e.toInformativeString())
+            fail(
+                "Expected no Exception of type ${e::class.qualifiedName} to be thrown",
+                "No Exception",
+                e.toInformativeString()
+            )
         }
         NotThrowExceptionResult(e)
     }
@@ -64,7 +76,11 @@ suspend infix fun <T : Throwable> (suspend () -> Any?).shouldNotThrow(expectedEx
             fail("Expected no Exception to be thrown", "No Exception", "${e.javaClass}")
         }
         if (e.isA(expectedException)) {
-            fail("Expected no Exception of type ${e::class.qualifiedName} to be thrown", "No Exception", e.toInformativeString())
+            fail(
+                "Expected no Exception of type ${e::class.qualifiedName} to be thrown",
+                "No Exception",
+                e.toInformativeString()
+            )
         }
         NotThrowExceptionResult(e)
     }
@@ -93,10 +109,12 @@ suspend infix fun <T : Throwable> (suspend () -> Any?).shouldThrow(expectedExcep
 }
 
 @Deprecated("Use shouldThrow instead", ReplaceWith("this shouldThrow expectedException"))
-infix fun <T : Throwable> (() -> Any).shouldThrowTheException(expectedException: KClass<T>): ExceptionResult<T> = this shouldThrow expectedException
+infix fun <T : Throwable> (() -> Any).shouldThrowTheException(expectedException: KClass<T>): ExceptionResult<T> =
+    this shouldThrow expectedException
 
 @Deprecated("Use shouldNotThrow instead", ReplaceWith("this shouldNotThrow expectedException"))
-infix fun <T : Throwable> (() -> Any).shouldNotThrowTheException(expectedException: KClass<T>): NotThrowExceptionResult = this.shouldNotThrow(expectedException)
+infix fun <T : Throwable> (() -> Any).shouldNotThrowTheException(expectedException: KClass<T>): NotThrowExceptionResult =
+    this.shouldNotThrow(expectedException)
 
 infix fun <T : Throwable> ExceptionResult<T>.withMessage(theMessage: String): ExceptionResult<T> {
     this.exceptionMessage shouldBeEqualTo theMessage
@@ -118,14 +136,16 @@ infix fun NotThrowExceptionResult.withCause(expectedCause: KClass<out Throwable>
     return this
 }
 
-infix fun <T: Throwable, R> ExceptionResult<T>.with(block: T.() -> R): R = block(exception)
+infix fun <T : Throwable, R> ExceptionResult<T>.with(block: T.() -> R): R = block(exception)
 
 val AnyException = AnyExceptionType::class
 
 class AnyExceptionType : Throwable()
 
 internal val noException = Exception("None")
-internal fun Throwable.isA(expected: KClass<out Throwable>) = expected.isAnyException() || expected.java.isAssignableFrom(this.javaClass)
+internal fun Throwable.isA(expected: KClass<out Throwable>) =
+    expected.isAnyException() || expected.java.isAssignableFrom(this.javaClass)
+
 internal fun <T : Throwable> KClass<T>.isAnyException() = this.javaObjectType == AnyException.javaObjectType
 actual fun fail(message: String, expected: Any?, actual: Any?) {
     errorCollector.collectOrThrow(ComparisonFailedException(message, expected, actual))

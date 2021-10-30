@@ -1,9 +1,11 @@
 package org.amshove.kluent.tests.equivalency
 
-import org.amshove.kluent.*
 import org.amshove.kluent.internal.ComparisonFailedException
 import org.amshove.kluent.internal.assertFailsWith
-import org.junit.ComparisonFailure
+import org.amshove.kluent.shouldBeEqualTo
+import org.amshove.kluent.shouldBeEquivalentTo
+import org.amshove.kluent.shouldNotBeEquivalentTo
+import org.amshove.kluent.shouldStartWith
 import org.junit.Test
 import java.time.LocalDate
 
@@ -14,10 +16,10 @@ class ShouldBeEquivalentTo {
         // arrange
         val team1 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson").apply {
-                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                    },
-                    Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
+                Person("John", "Johnson").apply {
+                    address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                },
+                Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
             )
         }
         val team2 = Team("team1").apply {
@@ -36,16 +38,16 @@ class ShouldBeEquivalentTo {
         // arrange
         val team1 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson").apply {
-                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                    },
-                    Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
+                Person("John", "Johnson").apply {
+                    address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                },
+                Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
             )
         }
         val team2 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson"),
-                    Person("Marc", "Marcson")
+                Person("John", "Johnson"),
+                Person("Marc", "Marcson")
             )
         }
 
@@ -57,52 +59,52 @@ class ShouldBeEquivalentTo {
     fun failShouldBeEquivalentToAsPropertiesAreDifferentForIterables() {
         // arrange
         val teams1 = listOf(
-                Team("team1").apply {
-                    persons = listOf(
-                            Person("John", "Johnson").apply {
-                                address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                            },
-                            Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
-                    )
-                },
-                Team("team2").apply {
-                    persons = listOf(
-                            Person("John", "Johnson"),
-                            Person("Marc", "Marcson")
-                    )
-                },
-                Team("team3").apply {
-                    persons = listOf(
-                            Person("John", "Johnson").apply {
-                                address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                            },
-                            Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
-                    )
-                }
+            Team("team1").apply {
+                persons = listOf(
+                    Person("John", "Johnson").apply {
+                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                    },
+                    Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
+                )
+            },
+            Team("team2").apply {
+                persons = listOf(
+                    Person("John", "Johnson"),
+                    Person("Marc", "Marcson")
+                )
+            },
+            Team("team3").apply {
+                persons = listOf(
+                    Person("John", "Johnson").apply {
+                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                    },
+                    Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
+                )
+            }
         )
         val teams2 = listOf(
-                Team("team1").apply {
-                    persons = listOf(
-                            Person("John", "Johnson").apply {
-                                address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                            },
-                            Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
-                    )
-                },
-                Team("team2").apply {
-                    persons = listOf(
-                            Person("John", "Johnson"),
-                            Person("Marc", "")
-                    )
-                },
-                Team("team3").apply {
-                    persons = listOf(
-                            Person("John", "Johnson").apply {
-                                address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                            },
-                            Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
-                    )
-                }
+            Team("team1").apply {
+                persons = listOf(
+                    Person("John", "Johnson").apply {
+                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                    },
+                    Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
+                )
+            },
+            Team("team2").apply {
+                persons = listOf(
+                    Person("John", "Johnson"),
+                    Person("Marc", "")
+                )
+            },
+            Team("team3").apply {
+                persons = listOf(
+                    Person("John", "Johnson").apply {
+                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                    },
+                    Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
+                )
+            }
         )
 
         // assert
@@ -117,48 +119,48 @@ class ShouldBeEquivalentTo {
     fun passShouldNotBeEquivalentToAsPropertiesAreDifferentForIterables() {
         // arrange
         val teams1 = listOf(
-                Team("team1").apply {
-                    persons = listOf(
-                            Person("John", "Johnson").apply {
-                                address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                            },
-                            Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
-                    )
-                },
-                Team("team2").apply {
-                    persons = listOf(
-                            Person("John", "Johnson"),
-                            Person("Marc", "Marcson")
-                    )
-                },
-                Team("team2").apply {
-                    persons = listOf(
-                            Person("John", "Johnson"),
-                            Person("Marc", "Marcson")
-                    )
-                }
+            Team("team1").apply {
+                persons = listOf(
+                    Person("John", "Johnson").apply {
+                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                    },
+                    Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
+                )
+            },
+            Team("team2").apply {
+                persons = listOf(
+                    Person("John", "Johnson"),
+                    Person("Marc", "Marcson")
+                )
+            },
+            Team("team2").apply {
+                persons = listOf(
+                    Person("John", "Johnson"),
+                    Person("Marc", "Marcson")
+                )
+            }
         )
         val teams2 = listOf(
-                Team("team2").apply {
-                    persons = listOf(
-                            Person("John", "Johnson"),
-                            Person("Marc", "")
-                    )
-                },
-                Team("team1").apply {
-                    persons = listOf(
-                            Person("John", "Johnson").apply {
-                                address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                            },
-                            Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
-                    )
-                },
-                Team("team2").apply {
-                    persons = listOf(
-                            Person("John", "Johnson"),
-                            Person("Marc", "Marcson")
-                    )
-                }
+            Team("team2").apply {
+                persons = listOf(
+                    Person("John", "Johnson"),
+                    Person("Marc", "")
+                )
+            },
+            Team("team1").apply {
+                persons = listOf(
+                    Person("John", "Johnson").apply {
+                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                    },
+                    Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
+                )
+            },
+            Team("team2").apply {
+                persons = listOf(
+                    Person("John", "Johnson"),
+                    Person("Marc", "Marcson")
+                )
+            }
         )
 
         // assert
@@ -169,48 +171,48 @@ class ShouldBeEquivalentTo {
     fun passShouldBeEquivalentToWithStrictOrderingAsPropertiesAreEqualForIterables() {
         // arrange
         val teams1 = listOf(
-                Team("team1").apply {
-                    persons = listOf(
-                            Person("John", "Johnson").apply {
-                                address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                            },
-                            Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
-                    )
-                },
-                Team("team2").apply {
-                    persons = listOf(
-                            Person("John", "Johnson"),
-                            Person("Marc", "")
-                    )
-                },
-                Team("team3").apply {
-                    persons = listOf(
-                            Person("John", "Johnson"),
-                            Person("Marc", "Marcson")
-                    )
-                }
+            Team("team1").apply {
+                persons = listOf(
+                    Person("John", "Johnson").apply {
+                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                    },
+                    Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
+                )
+            },
+            Team("team2").apply {
+                persons = listOf(
+                    Person("John", "Johnson"),
+                    Person("Marc", "")
+                )
+            },
+            Team("team3").apply {
+                persons = listOf(
+                    Person("John", "Johnson"),
+                    Person("Marc", "Marcson")
+                )
+            }
         )
         val teams2 = listOf(
-                Team("team1").apply {
-                    persons = listOf(
-                            Person("John", "Johnson").apply {
-                                address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                            },
-                            Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
-                    )
-                },
-                Team("team2").apply {
-                    persons = listOf(
-                            Person("John", "Johnson"),
-                            Person("Marc", "")
-                    )
-                },
-                Team("team3").apply {
-                    persons = listOf(
-                            Person("John", "Johnson"),
-                            Person("Marc", "Marcson")
-                    )
-                }
+            Team("team1").apply {
+                persons = listOf(
+                    Person("John", "Johnson").apply {
+                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                    },
+                    Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
+                )
+            },
+            Team("team2").apply {
+                persons = listOf(
+                    Person("John", "Johnson"),
+                    Person("Marc", "")
+                )
+            },
+            Team("team3").apply {
+                persons = listOf(
+                    Person("John", "Johnson"),
+                    Person("Marc", "Marcson")
+                )
+            }
         )
 
         // assert
@@ -223,48 +225,48 @@ class ShouldBeEquivalentTo {
     fun passShouldNotBeEquivalentToWithStrictOrderingEvenIfPropertiesAreEqualForIterables() {
         // arrange
         val teams1 = listOf(
-                Team("team1").apply {
-                    persons = listOf(
-                            Person("John", "Johnson").apply {
-                                address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                            },
-                            Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
-                    )
-                },
-                Team("team2").apply {
-                    persons = listOf(
-                            Person("John", "Johnson"),
-                            Person("Marc", "")
-                    )
-                },
-                Team("team3").apply {
-                    persons = listOf(
-                            Person("John", "Johnson"),
-                            Person("Marc", "Marcson")
-                    )
-                }
+            Team("team1").apply {
+                persons = listOf(
+                    Person("John", "Johnson").apply {
+                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                    },
+                    Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
+                )
+            },
+            Team("team2").apply {
+                persons = listOf(
+                    Person("John", "Johnson"),
+                    Person("Marc", "")
+                )
+            },
+            Team("team3").apply {
+                persons = listOf(
+                    Person("John", "Johnson"),
+                    Person("Marc", "Marcson")
+                )
+            }
         )
         val teams2 = listOf(
-                Team("team1").apply {
-                    persons = listOf(
-                            Person("John", "Johnson").apply {
-                                address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                            },
-                            Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
-                    )
-                },
-                Team("team3").apply {
-                    persons = listOf(
-                            Person("John", "Johnson"),
-                            Person("Marc", "Marcson")
-                    )
-                },
-                Team("team2").apply {
-                    persons = listOf(
-                            Person("John", "Johnson"),
-                            Person("Marc", "")
-                    )
-                }
+            Team("team1").apply {
+                persons = listOf(
+                    Person("John", "Johnson").apply {
+                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                    },
+                    Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
+                )
+            },
+            Team("team3").apply {
+                persons = listOf(
+                    Person("John", "Johnson"),
+                    Person("Marc", "Marcson")
+                )
+            },
+            Team("team2").apply {
+                persons = listOf(
+                    Person("John", "Johnson"),
+                    Person("Marc", "")
+                )
+            }
         )
 
         // assert
@@ -278,28 +280,28 @@ class ShouldBeEquivalentTo {
         // arrange
         val team1 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson").apply {
-                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                    },
-                    Person("Marc", "Marcson").apply {
-                        birthDate = LocalDate.of(2020, 2, 1)
-                        address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
-                            address2 = "Islington"
-                        }
+                Person("John", "Johnson").apply {
+                    address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                },
+                Person("Marc", "Marcson").apply {
+                    birthDate = LocalDate.of(2020, 2, 1)
+                    address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
+                        address2 = "Islington"
                     }
+                }
             )
         }
         val team2 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson").apply {
-                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                    },
-                    Person("Marc", "Marcson").apply {
-                        birthDate = LocalDate.of(2020, 2, 1)
-                        address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
-                            address2 = "Islington"
-                        }
+                Person("John", "Johnson").apply {
+                    address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                },
+                Person("Marc", "Marcson").apply {
+                    birthDate = LocalDate.of(2020, 2, 1)
+                    address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
+                        address2 = "Islington"
                     }
+                }
             )
         }
 
@@ -312,28 +314,28 @@ class ShouldBeEquivalentTo {
         // arrange
         val team1 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson").apply {
-                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                    },
-                    Person("Marc", "Marcson").apply {
-                        birthDate = LocalDate.of(2020, 2, 1)
-                        address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
-                            address2 = "Islington"
-                        }
+                Person("John", "Johnson").apply {
+                    address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                },
+                Person("Marc", "Marcson").apply {
+                    birthDate = LocalDate.of(2020, 2, 1)
+                    address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
+                        address2 = "Islington"
                     }
+                }
             )
         }
         val team2 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson").apply {
-                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                    },
-                    Person("Marc", "Marcson").apply {
-                        birthDate = LocalDate.of(2020, 2, 1)
-                        address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
-                            address2 = "Islington"
-                        }
+                Person("John", "Johnson").apply {
+                    address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                },
+                Person("Marc", "Marcson").apply {
+                    birthDate = LocalDate.of(2020, 2, 1)
+                    address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
+                        address2 = "Islington"
                     }
+                }
             )
         }
 
@@ -348,26 +350,26 @@ class ShouldBeEquivalentTo {
         // arrange
         val team1 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson").apply {
-                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                    },
-                    Person("Marc", "Marcson").apply {
-                        birthDate = LocalDate.of(2020, 2, 1)
-                        address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
-                            address2 = "Islington"
-                        }
+                Person("John", "Johnson").apply {
+                    address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                },
+                Person("Marc", "Marcson").apply {
+                    birthDate = LocalDate.of(2020, 2, 1)
+                    address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
+                        address2 = "Islington"
                     }
+                }
             )
         }
         val team2 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson").apply {
-                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                    },
-                    Person("Marc", "Marcson").apply {
-                        birthDate = LocalDate.of(2020, 2, 1)
-                        address = Address("Graham Street", "36", "London", "N1 8GJ", "UK")
-                    }
+                Person("John", "Johnson").apply {
+                    address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                },
+                Person("Marc", "Marcson").apply {
+                    birthDate = LocalDate.of(2020, 2, 1)
+                    address = Address("Graham Street", "36", "London", "N1 8GJ", "UK")
+                }
             )
         }
 
@@ -384,26 +386,26 @@ class ShouldBeEquivalentTo {
         // arrange
         val team1 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson").apply {
-                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                    },
-                    Person("Marc", "Marcson").apply {
-                        birthDate = LocalDate.of(2020, 2, 1)
-                        address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
-                            address2 = "Islington"
-                        }
+                Person("John", "Johnson").apply {
+                    address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                },
+                Person("Marc", "Marcson").apply {
+                    birthDate = LocalDate.of(2020, 2, 1)
+                    address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
+                        address2 = "Islington"
                     }
+                }
             )
         }
         val team2 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson").apply {
-                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                    },
-                    Person("Marc", "Marcson").apply {
-                        birthDate = LocalDate.of(2020, 2, 1)
-                        address = Address("Graham Street", "36", "London", "N1 8GJ", "UK")
-                    }
+                Person("John", "Johnson").apply {
+                    address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                },
+                Person("Marc", "Marcson").apply {
+                    birthDate = LocalDate.of(2020, 2, 1)
+                    address = Address("Graham Street", "36", "London", "N1 8GJ", "UK")
+                }
             )
         }
 
@@ -418,26 +420,26 @@ class ShouldBeEquivalentTo {
         // arrange
         val team1 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson").apply {
-                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                    },
-                    Person("Marc", "Marcson").apply {
-                        birthDate = LocalDate.of(2020, 2, 1)
-                        address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
-                            address2 = "Islington"
-                        }
+                Person("John", "Johnson").apply {
+                    address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                },
+                Person("Marc", "Marcson").apply {
+                    birthDate = LocalDate.of(2020, 2, 1)
+                    address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
+                        address2 = "Islington"
                     }
+                }
             )
         }
         val team2 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson").apply {
-                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                    },
-                    Person("Marc", "Marcson").apply {
-                        birthDate = LocalDate.of(2020, 2, 1)
-                        address = Address("Graham Street", "36", "London", "N1 8GJ", "UK")
-                    }
+                Person("John", "Johnson").apply {
+                    address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                },
+                Person("Marc", "Marcson").apply {
+                    birthDate = LocalDate.of(2020, 2, 1)
+                    address = Address("Graham Street", "36", "London", "N1 8GJ", "UK")
+                }
             )
         }
 
@@ -452,26 +454,26 @@ class ShouldBeEquivalentTo {
         // arrange
         val team1 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson").apply {
-                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                    },
-                    Person("Marc", "Marcson").apply {
-                        birthDate = LocalDate.of(2020, 2, 1)
-                        address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
-                            address2 = "Islington"
-                        }
+                Person("John", "Johnson").apply {
+                    address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                },
+                Person("Marc", "Marcson").apply {
+                    birthDate = LocalDate.of(2020, 2, 1)
+                    address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
+                        address2 = "Islington"
                     }
+                }
             )
         }
         val team2 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson").apply {
-                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                    },
-                    Person("Marc", "Marcson").apply {
-                        birthDate = LocalDate.of(2020, 2, 1)
-                        address = Address("Graham Street", "36", "London", "N1 8GJ", "UK")
-                    }
+                Person("John", "Johnson").apply {
+                    address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                },
+                Person("Marc", "Marcson").apply {
+                    birthDate = LocalDate.of(2020, 2, 1)
+                    address = Address("Graham Street", "36", "London", "N1 8GJ", "UK")
+                }
             )
         }
 
@@ -488,26 +490,26 @@ class ShouldBeEquivalentTo {
         // arrange
         val team1 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson").apply {
-                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                    },
-                    Person("Marc", "Marcson").apply {
-                        birthDate = LocalDate.of(2020, 2, 1)
-                        address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
-                            address2 = "Islington"
-                        }
+                Person("John", "Johnson").apply {
+                    address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                },
+                Person("Marc", "Marcson").apply {
+                    birthDate = LocalDate.of(2020, 2, 1)
+                    address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
+                        address2 = "Islington"
                     }
+                }
             )
         }
         val team2 = Team("team2").apply {
             persons = listOf(
-                    Person("John", "Johnson").apply {
-                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                    },
-                    Person("Marc", "Marcson").apply {
-                        birthDate = LocalDate.of(2020, 2, 1)
-                        address = Address("Graham Street", "36", "London", "N1 8GJ", "UK")
-                    }
+                Person("John", "Johnson").apply {
+                    address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                },
+                Person("Marc", "Marcson").apply {
+                    birthDate = LocalDate.of(2020, 2, 1)
+                    address = Address("Graham Street", "36", "London", "N1 8GJ", "UK")
+                }
             )
         }
 
@@ -524,26 +526,26 @@ class ShouldBeEquivalentTo {
         // arrange
         val team1 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson").apply {
-                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                    },
-                    Person("Marc", "Marcson").apply {
-                        birthDate = LocalDate.of(2020, 2, 1)
-                        address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
-                            address2 = "Islington"
-                        }
+                Person("John", "Johnson").apply {
+                    address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                },
+                Person("Marc", "Marcson").apply {
+                    birthDate = LocalDate.of(2020, 2, 1)
+                    address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
+                        address2 = "Islington"
                     }
+                }
             )
         }
         val team2 = Team("team2").apply {
             persons = listOf(
-                    Person("John", "Johnson").apply {
-                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                    },
-                    Person("Marc", "Marcson").apply {
-                        birthDate = LocalDate.of(2020, 2, 1)
-                        address = Address("Graham Street", "36", "London", "N1 8GJ", "UK")
-                    }
+                Person("John", "Johnson").apply {
+                    address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                },
+                Person("Marc", "Marcson").apply {
+                    birthDate = LocalDate.of(2020, 2, 1)
+                    address = Address("Graham Street", "36", "London", "N1 8GJ", "UK")
+                }
             )
         }
 
@@ -558,21 +560,21 @@ class ShouldBeEquivalentTo {
         // arrange
         val team1 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson").apply {
-                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                    },
-                    Person("Marc", "Marcson").apply {
-                        birthDate = LocalDate.of(2020, 2, 1)
-                        address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
-                            address2 = "Islington"
-                        }
+                Person("John", "Johnson").apply {
+                    address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                },
+                Person("Marc", "Marcson").apply {
+                    birthDate = LocalDate.of(2020, 2, 1)
+                    address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
+                        address2 = "Islington"
                     }
+                }
             )
         }
         val team2 = Team("team2").apply {
             persons = listOf(
-                    Person("John", "Watson"),
-                    Person("Marco", "Polo")
+                Person("John", "Watson"),
+                Person("Marco", "Polo")
             )
         }
 
@@ -589,21 +591,21 @@ class ShouldBeEquivalentTo {
         // arrange
         val team1 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson").apply {
-                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                    },
-                    Person("Marc", "Marcson").apply {
-                        birthDate = LocalDate.of(2020, 2, 1)
-                        address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
-                            address2 = "Islington"
-                        }
+                Person("John", "Johnson").apply {
+                    address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                },
+                Person("Marc", "Marcson").apply {
+                    birthDate = LocalDate.of(2020, 2, 1)
+                    address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
+                        address2 = "Islington"
                     }
+                }
             )
         }
         val team2 = Team("team2").apply {
             persons = listOf(
-                    Person("John", "Watson"),
-                    Person("Marco", "Polo")
+                Person("John", "Watson"),
+                Person("Marco", "Polo")
             )
         }
 
@@ -618,24 +620,24 @@ class ShouldBeEquivalentTo {
         // arrange
         val team1 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson"),
-                    Person("Marc", "Marcson").apply {
-                        birthDate = LocalDate.of(2020, 2, 1)
-                        address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
-                            address2 = "Islington"
-                        }
+                Person("John", "Johnson"),
+                Person("Marc", "Marcson").apply {
+                    birthDate = LocalDate.of(2020, 2, 1)
+                    address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
+                        address2 = "Islington"
                     }
+                }
             )
         }
         val team2 = Team("team2").apply {
             persons = listOf(
-                    Person("John", "Johnson"),
-                    Person("Marc", "Marcson").apply {
-                        birthDate = LocalDate.of(2020, 2, 1)
-                        address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
-                            address2 = "Islington"
-                        }
+                Person("John", "Johnson"),
+                Person("Marc", "Marcson").apply {
+                    birthDate = LocalDate.of(2020, 2, 1)
+                    address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
+                        address2 = "Islington"
                     }
+                }
             )
         }
 
@@ -650,24 +652,24 @@ class ShouldBeEquivalentTo {
         // arrange
         val team1 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson"),
-                    Person("Marc", "Marcson").apply {
-                        birthDate = LocalDate.of(2020, 2, 1)
-                        address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
-                            address2 = "Islington"
-                        }
+                Person("John", "Johnson"),
+                Person("Marc", "Marcson").apply {
+                    birthDate = LocalDate.of(2020, 2, 1)
+                    address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
+                        address2 = "Islington"
                     }
+                }
             )
         }
         val team2 = Team("team2").apply {
             persons = listOf(
-                    Person("John", "Johnson"),
-                    Person("Marc", "Marcson").apply {
-                        birthDate = LocalDate.of(2020, 2, 1)
-                        address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
-                            address2 = "Islington"
-                        }
+                Person("John", "Johnson"),
+                Person("Marc", "Marcson").apply {
+                    birthDate = LocalDate.of(2020, 2, 1)
+                    address = Address("Graham Street", "36", "London", "N1 8GJ", "UK").apply {
+                        address2 = "Islington"
                     }
+                }
             )
         }
 
@@ -684,16 +686,16 @@ class ShouldBeEquivalentTo {
         // arrange
         val team1 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson").apply {
-                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                    },
-                    Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
+                Person("John", "Johnson").apply {
+                    address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                },
+                Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
             )
         }
         val team2 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson"),
-                    Person("Marc", "Marcson")
+                Person("John", "Johnson"),
+                Person("Marc", "Marcson")
             )
         }
 
@@ -709,16 +711,16 @@ class ShouldBeEquivalentTo {
         // arrange
         val team1 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson").apply {
-                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                    },
-                    Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
+                Person("John", "Johnson").apply {
+                    address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                },
+                Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
             )
         }
         val team2 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson"),
-                    Person("Marc", "Marcson")
+                Person("John", "Johnson"),
+                Person("Marc", "Marcson")
             )
         }
 
@@ -735,18 +737,18 @@ class ShouldBeEquivalentTo {
         // arrange
         val team1 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson").apply {
-                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                    },
-                    Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
+                Person("John", "Johnson").apply {
+                    address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                },
+                Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
             )
         }
         val team2 = Team("team2").apply {
             persons = listOf(
-                    Person("John", "Johnson").apply {
-                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                    },
-                    Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
+                Person("John", "Johnson").apply {
+                    address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                },
+                Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
             )
         }
 
@@ -763,18 +765,18 @@ class ShouldBeEquivalentTo {
         // arrange
         val team1 = Team("team1").apply {
             persons = listOf(
-                    Person("John", "Johnson").apply {
-                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                    },
-                    Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
+                Person("John", "Johnson").apply {
+                    address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                },
+                Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
             )
         }
         val team2 = Team("team2").apply {
             persons = listOf(
-                    Person("John", "Johnson").apply {
-                        address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
-                    },
-                    Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
+                Person("John", "Johnson").apply {
+                    address = Address("Mainzerlandstrasse", "200", "Frankfurt am Main", "60327", "Germany")
+                },
+                Person("Marc", "Marcson").apply { birthDate = LocalDate.of(2020, 2, 1) }
             )
         }
 
@@ -832,52 +834,52 @@ class ShouldBeEquivalentTo {
     fun passShouldNotBeEquivalentToAsPropertiesAreDifferentAndAllowingInfiniteRecursion() {
         // arrange
         val a1 = listOf(
-                A("name1").apply {
-                    b = B("name11").apply {
-                        c = C(D("name111").apply { name2 = "name1111" }).apply { name = "name1111" }
-                        d = D("name111").apply {
-                            Elist = mutableListOf(
-                                    E().apply {
-                                        Flist = listOf(
-                                            F(1),
-                                            F(2)
-                                        )
-                                    },
-                                    E().apply {
-                                        Flist = listOf(
-                                            F(3),
-                                            F(4)
-                                        )
-                                    }
-                            )
-                            name2 = "name1111"
-                        }
+            A("name1").apply {
+                b = B("name11").apply {
+                    c = C(D("name111").apply { name2 = "name1111" }).apply { name = "name1111" }
+                    d = D("name111").apply {
+                        Elist = mutableListOf(
+                            E().apply {
+                                Flist = listOf(
+                                    F(1),
+                                    F(2)
+                                )
+                            },
+                            E().apply {
+                                Flist = listOf(
+                                    F(3),
+                                    F(4)
+                                )
+                            }
+                        )
+                        name2 = "name1111"
                     }
-                    e = "abc"
-                },
-                A("name2").apply {
-                    b = B("name11").apply {
-                        c = C(D("name111").apply { name2 = "name2111" }).apply { name = "name1111" }
-                        d = D("name111").apply { name2 = "name1111" }
-                    }
-                    e = "abc"
                 }
+                e = "abc"
+            },
+            A("name2").apply {
+                b = B("name11").apply {
+                    c = C(D("name111").apply { name2 = "name2111" }).apply { name = "name1111" }
+                    d = D("name111").apply { name2 = "name1111" }
+                }
+                e = "abc"
+            }
         )
         val a2 = listOf(
-                A("name1").apply {
-                    b = B("name11").apply {
-                        c = C(D("name111").apply { name2 = "name1111" }).apply { name = "name1111" }
-                        d = D("name111").apply { name2 = "name1111" }
-                    }
-                    e = "abc"
-                },
-                A("name2").apply {
-                    b = B("name11").apply {
-                        c = C(D("name111").apply { name2 = "name3111" }).apply { name = "name1111" }
-                        d = D("name111").apply { name2 = "name1111" }
-                    }
-                    e = "abc"
+            A("name1").apply {
+                b = B("name11").apply {
+                    c = C(D("name111").apply { name2 = "name1111" }).apply { name = "name1111" }
+                    d = D("name111").apply { name2 = "name1111" }
                 }
+                e = "abc"
+            },
+            A("name2").apply {
+                b = B("name11").apply {
+                    c = C(D("name111").apply { name2 = "name3111" }).apply { name = "name1111" }
+                    d = D("name111").apply { name2 = "name1111" }
+                }
+                e = "abc"
+            }
         )
 
         // assert
@@ -893,98 +895,98 @@ class ShouldBeEquivalentTo {
     fun failShouldBeEquivalentToAsPropertiesAreDifferentAndAllowingInfiniteRecursion() {
         // arrange
         val a1 = listOf(
-                A("name1").apply {
-                    b = B("name11").apply {
-                        c = C(D("name111").apply { name2 = "name1111" }).apply { name = "name1111" }
-                        d = D("name111").apply {
-                            Elist = mutableListOf(
-                                E().apply {
-                                    Flist = listOf(
-                                        F(1),
-                                        F(2)
-                                    )
-                                },
-                                E().apply {
-                                    Flist = listOf(
-                                        F(3),
-                                        F(4)
-                                    )
-                                }
-                            )
-                            name2 = "name1111"
-                        }
+            A("name1").apply {
+                b = B("name11").apply {
+                    c = C(D("name111").apply { name2 = "name1111" }).apply { name = "name1111" }
+                    d = D("name111").apply {
+                        Elist = mutableListOf(
+                            E().apply {
+                                Flist = listOf(
+                                    F(1),
+                                    F(2)
+                                )
+                            },
+                            E().apply {
+                                Flist = listOf(
+                                    F(3),
+                                    F(4)
+                                )
+                            }
+                        )
+                        name2 = "name1111"
                     }
-                    e = "abc"
-                },
-                A("name2").apply {
-                    b = B("name11").apply {
-                        c = C(D("name111").apply { name2 = "name2111" }).apply { name = "name1111" }
-                        d = D("name111").apply {
-                            Elist = mutableListOf(
-                                E().apply {
-                                    Flist = listOf(
-                                        F(5),
-                                        F(6)
-                                    )
-                                },
-                                E().apply {
-                                    Flist = listOf(
-                                        F(7)
-                                    )
-                                }
-                            )
-                            name2 = "name1111"
-                        }
-                    }
-                    e = "abc"
                 }
+                e = "abc"
+            },
+            A("name2").apply {
+                b = B("name11").apply {
+                    c = C(D("name111").apply { name2 = "name2111" }).apply { name = "name1111" }
+                    d = D("name111").apply {
+                        Elist = mutableListOf(
+                            E().apply {
+                                Flist = listOf(
+                                    F(5),
+                                    F(6)
+                                )
+                            },
+                            E().apply {
+                                Flist = listOf(
+                                    F(7)
+                                )
+                            }
+                        )
+                        name2 = "name1111"
+                    }
+                }
+                e = "abc"
+            }
         )
         val a2 = listOf(
-                A("name1").apply {
-                    b = B("name11").apply {
-                        c = C(D("name111").apply { name2 = "name1111" }).apply { name = "name1111" }
-                        d = D("name111").apply {
-                            Elist = mutableListOf(
-                                E().apply {
-                                    Flist = listOf(
-                                        F(1),
-                                        F(2)
-                                    )
-                                },
-                                E().apply {
-                                    Flist = listOf(
-                                        F(3),
-                                        F(4)
-                                    )
-                                }
-                            )
-                            name2 = "name1111"
-                        }
+            A("name1").apply {
+                b = B("name11").apply {
+                    c = C(D("name111").apply { name2 = "name1111" }).apply { name = "name1111" }
+                    d = D("name111").apply {
+                        Elist = mutableListOf(
+                            E().apply {
+                                Flist = listOf(
+                                    F(1),
+                                    F(2)
+                                )
+                            },
+                            E().apply {
+                                Flist = listOf(
+                                    F(3),
+                                    F(4)
+                                )
+                            }
+                        )
+                        name2 = "name1111"
                     }
-                    e = "abc"
-                },
-                A("name2").apply {
-                    b = B("name11").apply {
-                        c = C(D("name111").apply { name2 = "name3111" }).apply { name = "name1111" }
-                        d = D("name111").apply {
-                            name2 = "name1111"
-                            Elist = mutableListOf(
-                                E().apply {
-                                    Flist = listOf(
-                                        F(5),
-                                        F(6)
-                                    )
-                                },
-                                E().apply {
-                                    Flist = listOf(
-                                        F(7)
-                                    )
-                                }
-                            )
-                        }
-                    }
-                    e = "abc"
                 }
+                e = "abc"
+            },
+            A("name2").apply {
+                b = B("name11").apply {
+                    c = C(D("name111").apply { name2 = "name3111" }).apply { name = "name1111" }
+                    d = D("name111").apply {
+                        name2 = "name1111"
+                        Elist = mutableListOf(
+                            E().apply {
+                                Flist = listOf(
+                                    F(5),
+                                    F(6)
+                                )
+                            },
+                            E().apply {
+                                Flist = listOf(
+                                    F(7)
+                                )
+                            }
+                        )
+                    }
+                }
+                e = "abc"
+            }
         )
 
         // assert
@@ -998,7 +1000,8 @@ class ShouldBeEquivalentTo {
             }
         } catch (e: ComparisonFailedException) {
             e.message!!.shouldStartWith("Are not equivalent:")
-            e.actual!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo("""
+            e.actual!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo(
+                """
                 A (e = abc, name = name1)
                 ˪-B (name = name11)
                 ˪--C (name = name1111)
@@ -1028,8 +1031,10 @@ class ShouldBeEquivalentTo {
                 ˪----E[1]
                 ˪-----Flist
                 ˪------F[0] (id = 7, name = )
-            """.replace("\\s+|\\t|\\n".toRegex(), " ").trim())
-            e.expected!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo("""
+            """.replace("\\s+|\\t|\\n".toRegex(), " ").trim()
+            )
+            e.expected!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo(
+                """
                 A (e = abc, name = name1)
                 ˪-B (name = name11)
                 ˪--C (name = name1111)
@@ -1059,7 +1064,8 @@ class ShouldBeEquivalentTo {
                 ˪----E[1]
                 ˪-----Flist
                 ˪------F[0] (id = 7, name = )
-            """.replace("\\s+|\\t|\\n".toRegex(), " ").trim())
+            """.replace("\\s+|\\t|\\n".toRegex(), " ").trim()
+            )
         }
     }
 
@@ -1067,29 +1073,29 @@ class ShouldBeEquivalentTo {
     fun failShouldBeEquivalentToAsAmountOfEntitiesIsDifferent() {
         // arrange
         val a1 = listOf(
-                A("name1").apply {
-                    b = B("name11").apply {
-                        c = C(D("name111").apply { name2 = "name1111" }).apply { name = "name1111" }
-                        d = D("name111").apply { name2 = "name1111" }
-                    }
-                    e = "abc"
-                },
-                A("name2").apply {
-                    b = B("name11").apply {
-                        c = C(D("name111").apply { name2 = "name2111" }).apply { name = "name1111" }
-                        d = D("name111").apply { name2 = "name1111" }
-                    }
-                    e = "abc"
+            A("name1").apply {
+                b = B("name11").apply {
+                    c = C(D("name111").apply { name2 = "name1111" }).apply { name = "name1111" }
+                    d = D("name111").apply { name2 = "name1111" }
                 }
+                e = "abc"
+            },
+            A("name2").apply {
+                b = B("name11").apply {
+                    c = C(D("name111").apply { name2 = "name2111" }).apply { name = "name1111" }
+                    d = D("name111").apply { name2 = "name1111" }
+                }
+                e = "abc"
+            }
         )
         val a2 = listOf(
-                A("name1").apply {
-                    b = B("name11").apply {
-                        c = C(D("name111").apply { name2 = "name1111" }).apply { name = "name1111" }
-                        d = D("name111").apply { name2 = "name1111" }
-                    }
-                    e = "abc"
+            A("name1").apply {
+                b = B("name11").apply {
+                    c = C(D("name111").apply { name2 = "name1111" }).apply { name = "name1111" }
+                    d = D("name111").apply { name2 = "name1111" }
                 }
+                e = "abc"
+            }
         )
 
         // assert
@@ -1102,7 +1108,8 @@ class ShouldBeEquivalentTo {
             }
         } catch (e: ComparisonFailedException) {
             e.message!!.shouldStartWith("Are not equivalent:")
-            e.actual!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo("""
+            e.actual!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo(
+                """
                 A (e = abc, name = name1)
                 ˪-B (name = name11)
                 ˪--C (name = name1111)
@@ -1117,8 +1124,10 @@ class ShouldBeEquivalentTo {
                 ˪----Elist
                 ˪--D (name = name111, name2 = name1111)
                 ˪---Elist
-            """.replace("\\s+|\\t|\\n".toRegex(), " ").trim())
-            e.expected!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo("""
+            """.replace("\\s+|\\t|\\n".toRegex(), " ").trim()
+            )
+            e.expected!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo(
+                """
                 A (e = abc, name = name1)
                 ˪-B (name = name11)
                 ˪--C (name = name1111)
@@ -1126,7 +1135,8 @@ class ShouldBeEquivalentTo {
                 ˪----Elist
                 ˪--D (name = name111, name2 = name1111)
                 ˪---Elist
-            """.replace("\\s+|\\t|\\n".toRegex(), " ").trim())
+            """.replace("\\s+|\\t|\\n".toRegex(), " ").trim()
+            )
         }
     }
 
@@ -1135,13 +1145,13 @@ class ShouldBeEquivalentTo {
         // arrange
         val a1 = E().apply {
             Flist = listOf(
-                    F(1).apply { name = "name1" },
-                    F(2).apply { name = "name2" }
+                F(1).apply { name = "name1" },
+                F(2).apply { name = "name2" }
             )
         }
         val a2 = E().apply {
             Flist = listOf(
-                    F(1).apply { name = "name1" }
+                F(1).apply { name = "name1" }
             )
         }
 
@@ -1150,17 +1160,21 @@ class ShouldBeEquivalentTo {
             a1.shouldBeEquivalentTo(a2)
         } catch (e: ComparisonFailedException) {
             e.message!!.shouldStartWith("Are not equivalent:")
-            e.actual!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo("""
+            e.actual!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo(
+                """
                 E
                 ˪-Flist
                 ˪--F[0] (id = 1, name = name1)
                 ˪--F[1] (id = 2, name = name2)
-            """.replace("\\s+|\\t|\\n".toRegex(), " ").trim())
-            e.expected!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo("""
+            """.replace("\\s+|\\t|\\n".toRegex(), " ").trim()
+            )
+            e.expected!!.replace("\\s+|\\t|\\n".toRegex(), " ").trim().shouldBeEqualTo(
+                """
                 E
                 ˪-Flist
                 ˪--F[0] (id = 1, name = name1)
-            """.replace("\\s+|\\t|\\n".toRegex(), " ").trim())
+            """.replace("\\s+|\\t|\\n".toRegex(), " ").trim()
+            )
         }
     }
 
@@ -1175,7 +1189,13 @@ class ShouldBeEquivalentTo {
     }
 
     @Suppress("unused")
-    internal class Address(val street: String, val house: String, val city: String, val zipCode: String, val country: String) {
+    internal class Address(
+        val street: String,
+        val house: String,
+        val city: String,
+        val zipCode: String,
+        val country: String
+    ) {
         var address2: String? = null
     }
 

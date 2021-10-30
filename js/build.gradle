@@ -57,7 +57,7 @@ test.dependsOn runMocha
 compileKotlin2Js {
     kotlinOptions {
         freeCompilerArgs += [
-                '-Xuse-experimental=kotlin.Experimental'
+            '-Xuse-experimental=kotlin.Experimental'
         ]
     }
 }

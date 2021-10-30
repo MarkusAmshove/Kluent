@@ -1,7 +1,7 @@
 package org.amshove.kluent.tests.collections
 
-import org.amshove.kluent.tests.Person
 import org.amshove.kluent.`should match at least one of`
+import org.amshove.kluent.tests.Person
 import kotlin.test.Test
 
 class BackticksShould {

@@ -5,6 +5,7 @@ package org.amshove.kluent
 
 import org.amshove.kluent.internal.assertTrue
 import java.math.BigDecimal
+
 @Deprecated("Use `shouldBeEqualTo`", ReplaceWith("this.shouldBeEqualTo(expected)"))
 infix fun BigDecimal.shouldEqualTo(expected: BigDecimal) = this.shouldBeEqualTo(expected)
 
@@ -42,10 +43,10 @@ infix fun BigDecimal.shouldNotBeLessOrEqualTo(expected: BigDecimal) =
     this.apply { assertTrue("Expected $this to not be less or equal to $expected", this.compareTo(expected) > 0) }
 
 fun BigDecimal.shouldBePositive() =
-    this.apply { assertTrue("Expected $this to be positive", this.compareTo(java.math.BigDecimal.ZERO) > 0) }
+    this.apply { assertTrue("Expected $this to be positive", this.compareTo(BigDecimal.ZERO) > 0) }
 
 fun BigDecimal.shouldBeNegative() =
-    this.apply { assertTrue("Expected $this to be negative", this.compareTo(java.math.BigDecimal.ZERO) < 0) }
+    this.apply { assertTrue("Expected $this to be negative", this.compareTo(BigDecimal.ZERO) < 0) }
 
 fun BigDecimal.shouldBeInRange(lowerBound: BigDecimal, upperBound: BigDecimal) = this.apply {
     assertTrue(

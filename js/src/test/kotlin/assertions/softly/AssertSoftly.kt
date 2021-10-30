@@ -15,11 +15,13 @@ class AssertSoftly {
                 length.shouldBeGreaterOrEqualTo(4)
             }
         } catch (e: Throwable) {
-            assertEquals("""
+            assertEquals(
+                """
                 |The following 2 assertions failed:
                 |1) Expected the CharSequence ab1 to contain 2
                 |2) Expected 3 to be greater or equal to 4"""
-                .trimMargin(), e.message!!.trimMargin())
+                    .trimMargin(), e.message!!.trimMargin()
+            )
         }
     }
 
@@ -49,10 +51,12 @@ class AssertSoftly {
                 length.shouldBeGreaterOrEqualTo(4)
             }
         } catch (e: Throwable) {
-            assertEquals("""
+            assertEquals(
+                """
                 |The following assertion failed:
                 |Expected the CharSequence ab1 to contain 2"""
-                .trimMargin(), e.message!!.trimMargin())
+                    .trimMargin(), e.message!!.trimMargin()
+            )
         }
     }
 
@@ -70,11 +74,13 @@ class AssertSoftly {
                 a.length.shouldBeGreaterOrEqualTo(4)
             }
         } catch (e: Throwable) {
-            assertEquals("""
+            assertEquals(
+                """
                 |
                 |The following assertion failed:
                 |Expected 3 to be greater or equal to 4
-                |""".trimMargin(), e.message!!)
+                |""".trimMargin(), e.message!!
+            )
         }
     }
 
@@ -98,6 +104,7 @@ class AssertSoftly {
                 return true
             }
         }
+
         class House(val maxGuests: Int = 5) {
             private var _rooms: MutableList<Room> = mutableListOf()
             private var _guests: MutableList<Guest> = mutableListOf()
@@ -146,11 +153,13 @@ class AssertSoftly {
                 house.guests.size.shouldBeEqualTo(5)
             }
         } catch (e: Throwable) {
-            e.message!!.trimMargin().shouldBeEqualTo("""
+            e.message!!.trimMargin().shouldBeEqualTo(
+                """
                 The following 2 assertions failed:
                 1) Expected <2>, actual <3>.
                 2) Expected <6>, actual <5>.
-                """.trimMargin())
+                """.trimMargin()
+            )
         }
     }
 
@@ -187,13 +196,15 @@ class AssertSoftly {
                 list shouldContainSame listOf('x', 'z')
             }
         } catch (e: Throwable) {
-            assertEquals("""
+            assertEquals(
+                """
                 |The following 2 assertions failed:
                 |1) Expected collection size to be 2 but was 3
                 |2) The collection doesn't have the same items
                 |Items included on the expected collection but not in the actual: []
                 |Items included on the actual collection but not in the expected: [y]
-                """.trimMargin(), e.message!!.trimMargin())
+                """.trimMargin(), e.message!!.trimMargin()
+            )
         }
     }
 

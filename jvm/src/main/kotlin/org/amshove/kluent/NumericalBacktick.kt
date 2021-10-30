@@ -79,7 +79,8 @@ infix fun <T : Comparable<T>> T.`should not be greater than`(expected: T) = this
 
 infix fun <T : Comparable<T>> T.`should be greater or equal to`(expected: T) = this.shouldBeGreaterOrEqualTo(expected)
 
-infix fun <T : Comparable<T>> T.`should not be greater or equal to`(expected: T) = this.shouldNotBeGreaterOrEqualTo(expected)
+infix fun <T : Comparable<T>> T.`should not be greater or equal to`(expected: T) =
+    this.shouldNotBeGreaterOrEqualTo(expected)
 
 infix fun <T : Comparable<T>> T.`should be less than`(expected: T) = this.shouldBeLessThan(expected)
 
@@ -117,9 +118,11 @@ fun Float.`should be near`(expected: Float, delta: Float) = this.shouldBeNear(ex
 
 fun Double.`should be near`(expected: Double, delta: Double) = this.shouldBeNear(expected, delta)
 
-fun <T : Comparable<T>> T.`should be in range`(lowerBound: T, upperBound: T) = this.shouldBeInRange(lowerBound, upperBound)
+fun <T : Comparable<T>> T.`should be in range`(lowerBound: T, upperBound: T) =
+    this.shouldBeInRange(lowerBound, upperBound)
 
-fun <T : Comparable<T>> T.`should not be in range`(lowerBound: T, upperBound: T) = this.shouldNotBeInRange(lowerBound, upperBound)
+fun <T : Comparable<T>> T.`should not be in range`(lowerBound: T, upperBound: T) =
+    this.shouldNotBeInRange(lowerBound, upperBound)
 
 infix fun Byte.`should be in range`(range: IntRange) = this.shouldBeInRange(range)
 
@@ -140,4 +143,5 @@ infix fun Long.`should not be in range`(range: LongRange) = this.shouldNotBeInRa
 infix fun <T : Comparable<T>> T.`should be in range`(range: ClosedRange<T>) = this.shouldBeInRange(range)
 infix fun <T : Comparable<T>> T.`should not be in range`(range: ClosedRange<T>) = this.shouldNotBeInRange(range)
 infix fun <T : Comparable<T>> T.`should be in range`(range: ClosedFloatingPointRange<T>) = this.shouldBeInRange(range)
-infix fun <T : Comparable<T>> T.`should not be in range`(range: ClosedFloatingPointRange<T>) = this.shouldNotBeInRange(range)
+infix fun <T : Comparable<T>> T.`should not be in range`(range: ClosedFloatingPointRange<T>) =
+    this.shouldNotBeInRange(range)

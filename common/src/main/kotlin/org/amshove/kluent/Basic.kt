@@ -9,9 +9,11 @@ infix fun <T> T.shouldEqual(expected: T?): T = this.shouldBeEqualTo(expected)
 
 infix fun <T> T.shouldBeEqualTo(expected: T?): T = this.apply { assertEquals(expected, this) }
 
-infix fun Char.shouldBeEqualToIgnoringCase(expected: Char): Char = this.apply { assertEqualsIgnoringCase(expected, this) }
+infix fun Char.shouldBeEqualToIgnoringCase(expected: Char): Char =
+    this.apply { assertEqualsIgnoringCase(expected, this) }
 
-infix fun CharSequence.shouldBeEqualToIgnoringCase(expected: CharSequence): CharSequence = this.apply { assertEqualsIgnoringCase(expected, this) }
+infix fun CharSequence.shouldBeEqualToIgnoringCase(expected: CharSequence): CharSequence =
+    this.apply { assertEqualsIgnoringCase(expected, this) }
 
 @Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
 infix fun <T> T.shouldNotEqual(expected: T?) = this.shouldNotBeEqualTo(expected)
@@ -77,7 +79,8 @@ fun Char.shouldBeDigit() = this.apply { assertTrue("Expected '$this' to be a dig
 
 fun Char.shouldNotBeDigit() = this.apply { assertTrue("Expected '$this' to be no digit", !this.platformIsDigit()) }
 
-infix fun <T> T.should(assertion: T.() -> Boolean) = should("Expected the assertion to return true, but returned false", assertion)
+infix fun <T> T.should(assertion: T.() -> Boolean) =
+    should("Expected the assertion to return true, but returned false", assertion)
 
 fun <T> T.should(message: String, assertion: T.() -> Boolean): T = also {
     try {
@@ -85,11 +88,13 @@ fun <T> T.should(message: String, assertion: T.() -> Boolean): T = also {
             fail(message)
         }
     } catch (t: Throwable) {
-        fail("""$message
+        fail(
+            """$message
             |
             | An exception occured:
             |   ${t.platformClassName()}: ${t.message}
             |   ${"\tat "}${t.platformJoinStackTrace()}
-        """.trimMargin())
+        """.trimMargin()
+        )
     }
 }

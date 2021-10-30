@@ -5,40 +5,40 @@ def buildNative = hasProperty("NATIVE")
 def buildJs = hasProperty("JS")
 def skipJVM = hasProperty("SKIPJVM")
 
-if(!buildAndroid) {
+if (!buildAndroid) {
     logger.warn("Kluent Android build not included. Pass -PANDROID to build Android instead of JVM")
 }
 
-if(!buildNative) {
+if (!buildNative) {
     logger.warn("Kluent Native build not included. Pass -PNATIVE to also build native")
 }
 
-if(!buildJs) {
+if (!buildJs) {
     logger.warn("Kluent JS build not included. Pass -PJS to also build JS")
 }
 
-if(skipJVM) {
+if (skipJVM) {
     logger.warn("Skipping JVM build")
 }
 
 include 'common'
 project(':common').name = 'kluent-common'
 
-if(!skipJVM) {
+if (!skipJVM) {
     include 'jvm'
     // TODO(2.0) Rename to kluent-jvm
     def jvmProjectName = buildAndroid ? 'kluent-android' : 'kluent'
-    project(':jvm').name        =    jvmProjectName
+    project(':jvm').name = jvmProjectName
 }
 
-if(buildJs) {
+if (buildJs) {
     include 'js'
-    project(':js').name         =    'kluent-js'
+    project(':js').name = 'kluent-js'
 }
 
 if (buildNative) {
     enableFeaturePreview('GRADLE_METADATA')
     include 'native'
-    project(':native').name     =   'kluent-native'
+    project(':native').name = 'kluent-native'
 }
 
