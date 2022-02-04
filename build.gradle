@@ -29,7 +29,7 @@ ext {
         kotlin_test_annotations: "org.jetbrains.kotlin:kotlin-test-annotations-common:$kotlin_version",
         kotlinx_coroutines_test: "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinx_coroutines_version",
 
-        junit                  : "junit:junit:4.12",
+        junit                  : "junit:junit:4.13.2",
     ]
 }
 
