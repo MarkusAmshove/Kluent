@@ -294,13 +294,13 @@ infix fun BooleanArray.shouldMatchAllWith(predicate: (Boolean) -> Boolean) =
 infix fun ByteArray.shouldEqual(expected: ByteArray) = shouldBeEqualTo(expected)
 
 infix fun ByteArray.shouldBeEqualTo(expected: ByteArray) =
-    apply { assertArrayEquals(this.toTypedArray(), expected.toTypedArray()) }
+    apply { assertArrayEquals(expected.toTypedArray(), this.toTypedArray()) }
 
 @Deprecated("Use `shouldNotBeEqualTo`", ReplaceWith("this.shouldNotBeEqualTo(expected)"))
 infix fun ByteArray.shouldNotEqual(expected: ByteArray) = shouldNotBeEqualTo(expected)
 
 infix fun ByteArray.shouldNotBeEqualTo(expected: ByteArray) =
-    apply { assertArrayNotEquals(this.toTypedArray(), expected.toTypedArray()) }
+    apply { assertArrayNotEquals(expected.toTypedArray(), this.toTypedArray()) }
 
 fun ByteArray.shouldHaveSingleItem() = toList().shouldHaveSingleItem()
 
