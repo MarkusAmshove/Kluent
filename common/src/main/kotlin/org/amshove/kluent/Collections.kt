@@ -847,9 +847,7 @@ infix fun <T, I : Iterable<T>> I.shouldContainNone(expected: Array<T>): I =
 infix fun <T, I : Iterable<T>> I.shouldContainNone(check: (T) -> Boolean): I = apply {
     val result = this.map { it to check.invoke(it) }
 
-    if (result.none { it.second }) {
-        Unit
-    } else {
+    if (result.any { it.second }) {
         val failedItems = result
             .filterNot { it.second }
             .map { it.first }
@@ -902,9 +900,7 @@ infix fun <T, I : Iterable<T>> I.shouldNotContainAny(expected: Array<T>): I =
 infix fun <T, I : Iterable<T>> I.shouldNotContainAny(check: (T) -> Boolean): I = apply {
     val result = this.map { it to check.invoke(it) }
 
-    if (result.none { it.second }) {
-        Unit
-    } else {
+    if (result.any { it.second }) {
         val failedItems = result
             .filterNot { it.second }
             .map { it.first }
