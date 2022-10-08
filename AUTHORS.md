@@ -44,3 +44,4 @@
 38. Piotr Bakalarski: [@piotrb5e3](https://github.com/piotrb5e3) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=piotrb5e3))
 39. Priyank Gupta: [@priyaaank](https://github.com/priyaaank) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=priyaaank))
 40. Sami Samhuri: [@samsonjs](https://github.com/samsonjs) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=samsonjs))
+41. Anders Ullnæss: [@andersu](https://github.com/andersu) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=andersu))
