@@ -3,6 +3,7 @@
 [![Changelog](https://img.shields.io/badge/docs-changelog-blue.svg)](https://github.com/MarkusAmshove/Kluent/blob/master/CHANGELOG.md)
 [![Documentation](https://img.shields.io/badge/docs-documentation-blue.svg)](https://markusamshove.github.io/Kluent/)
 [![Contributors](https://img.shields.io/badge/docs-contributors-blue.svg)](https://github.com/MarkusAmshove/Kluent/blob/master/AUTHORS.md)
+[![Current version](https://img.shields.io/maven-central/v/org.amshove.kluent/kluent?style=flat-square)](https://mvnrepository.com/artifact/org.amshove.kluent)
 
 [Kluent](https://markusamshove.github.io/Kluent/) is a "Fluent Assertions" library written specifically for Kotlin.
 
@@ -11,8 +12,6 @@ and [Extension Functions](https://kotlinlang.org/docs/reference/extensions.html#
 of Kotlin to provide a fluent wrapper around the JUnit-Assertions.
 
 [How to contribute](CONTRIBUTING.md)
-
-[ ![Download](https://api.bintray.com/packages/markusamshove/maven/kluent/images/download.svg) ](https://bintray.com/markusamshove/maven/kluent/_latestVersion)
 
 ----------
 
@@ -49,14 +48,6 @@ dependencies {
 Replace {version} with the current version
 
 ```xml
-<!-- Add jcenter as a repository for dependencies -->
-<repositories>
-    <repository>
-        <id>jcenter</id>
-        <url>https://jcenter.bintray.com/</url>
-    </repository>
-</repositories>
-
 <dependency>
     <groupId>org.amshove.kluent</groupId>
     <artifactId>kluent</artifactId>

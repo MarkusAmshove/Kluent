@@ -10,6 +10,3 @@ echo 'Building Android'
 
 echo 'Building JS'
 ./gradlew clean build -PJS -PSKIPJVM
-
-echo 'Building Native'
-./gradlew clean build -PNATIVE

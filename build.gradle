@@ -2,11 +2,11 @@ buildscript {
     repositories {
         jcenter()
         mavenCentral()
-        maven { url "https://plugins.gradle.org/m2/" }
+        gradlePluginPortal()
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "com.moowork.gradle:gradle-node-plugin:$gradle_node_version"
+        classpath "com.github.node-gradle:gradle-node-plugin:$gradle_node_version"
         classpath "org.jetbrains.kotlin:kotlin-native-gradle-plugin:$kotlin_native_gradle_plugin_version"
         classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.+"
         classpath 'com.adarshr:gradle-test-logger-plugin:1.6.0'
@@ -29,7 +29,7 @@ ext {
         kotlin_test_annotations: "org.jetbrains.kotlin:kotlin-test-annotations-common:$kotlin_version",
         kotlinx_coroutines_test: "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinx_coroutines_version",
 
-        junit                  : "junit:junit:4.12",
+        junit                  : "junit:junit:4.13.2",
     ]
 }
 
@@ -47,19 +47,9 @@ allprojects {
 subprojects {
     ext.configurePublishing = { artifactName = null ->
 
-        apply plugin: 'maven'
+        apply plugin: 'maven-publish'
         apply plugin: 'java'
         apply plugin: 'signing'
-
-        // Comment when publishing
-        tasks.withType(Sign) {
-            onlyIf { gradle.taskGraph.hasTask("publish") }
-        }
-
-        signing {
-            useGpgCmd()
-            sign configurations.archives
-        }
 
         artifactName = artifactName ?: project.name
 
@@ -73,50 +63,67 @@ subprojects {
             from javadoc
         }
 
-        artifacts {
-            archives javadocJar, sourcesJar
+        java {
+            withJavadocJar()
+            withSourcesJar()
         }
 
-        uploadArchives {
+        publishing {
             repositories {
-                mavenDeployer {
-                    beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-
-                    repository(url: 'https://oss.sonatype.org/service/local/staging/deploy/maven2') {
-                        authentication(userName: findProperty('ossrhUsername'), password: findProperty('ossrhPassword'))
+                maven {
+                    url = 'https://oss.sonatype.org/service/local/staging/deploy/maven2'
+                    credentials {
+                        username = findProperty('ossrhUsername')
+                        password = findProperty('ossrhPassword')
                     }
-                    snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-                        authentication(userName: findProperty('ossrhUsername'), password: findProperty('ossrhPassword'))
+                }
+                maven {
+                    url = "https://oss.sonatype.org/content/repositories/snapshots/"
+                    credentials {
+                        username = findProperty('ossrhUsername')
+                        password = findProperty('ossrhPassword')
                     }
+                }
+            }
 
-                    pom.project {
-                        name artifactName
+            publications {
+                mavenJava(MavenPublication) {
+                    artifactId = artifactName
+                    from components.java
+
+                    pom {
+                        name = artifactName
                         packaging 'jar'
-                        description 'Fluent Assertion-Library for Kotlin'
-                        url 'https://github.com/MarkusAmshove/Kluent'
+                        description = 'Fluent Assertion-Library for Kotlin'
+                        url = 'https://github.com/MarkusAmshove/Kluent'
 
                         scm {
-                            connection 'scm:git:git:github.com/MarkusAmshove/Kluent.git'
-                            developerConnection 'scm:git:git:github.com/MarkusAmshove/Kluent.git'
-                            url 'https://github.com/MarkusAmshove/Kluent'
+                            connection = 'scm:git:git:github.com/MarkusAmshove/Kluent.git'
+                            developerConnection = 'scm:git:git:github.com/MarkusAmshove/Kluent.git'
+                            url = 'https://github.com/MarkusAmshove/Kluent'
                         }
 
                         licenses {
                             license {
-                                name 'MIT'
-                                url 'https://github.com/MarkusAmshove/Kluent/blob/master/LICENSE'
+                                name = 'MIT'
+                                url = 'https://github.com/MarkusAmshove/Kluent/blob/master/LICENSE'
                             }
                         }
 
                         developers {
                             developer {
-                                id 'markusamshove'
-                                name 'Markus Amshove'
+                                id = 'markusamshove'
+                                name = 'Markus Amshove'
                             }
                         }
                     }
                 }
             }
+        }
+
+        signing {
+            useGpgCmd()
+            sign publishing.publications.mavenJava
         }
 
         task printArtifactName {
