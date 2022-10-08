@@ -1,5 +1,5 @@
 apply plugin: 'kotlin-platform-js'
-apply plugin: 'com.moowork.node'
+apply plugin: 'com.github.node-gradle.node'
 
 dependencies {
     expectedBy project(':kluent-common')
@@ -48,7 +48,7 @@ task prepareMocha(dependsOn: [compileTestKotlin2Js, populateNodeModules, install
 
 task runMocha(type: NodeTask, dependsOn: prepareMocha) {
     script = file('node_modules/mocha/bin/mocha')
-    args = [compileTestKotlin2Js.outputFile, '--require=source-map-support/register']
+    args = [compileTestKotlin2Js.outputFile.path, '--require=source-map-support/register']
     if (project.hasProperty("teamcity")) args += '--reporter=mocha-teamcity-reporter'
 }
 
