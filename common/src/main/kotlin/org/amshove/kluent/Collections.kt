@@ -844,6 +844,22 @@ infix fun <T : CharSequence, I : Iterable<T>> I.shouldContainNoneIgnoringCase(ex
 infix fun <T, I : Iterable<T>> I.shouldContainNone(expected: Array<T>): I =
     apply { assertTrue("Expected Iterable to contain none of \"$expected\"", this.none { expected.contains(it) }) }
 
+infix fun <T, I : Iterable<T>> I.shouldContainNone(check: (T) -> Boolean): I = apply {
+    val result = this.map { it to check.invoke(it) }
+
+    if (result.any { it.second }) {
+        val failedItems = result
+            .filterNot { it.second }
+            .map { it.first }
+            .joinToString(", ")
+        failExpectedActual(
+            "Iterable does contain \"$failedItems\"",
+            "the Iterable to not contain \"$failedItems\"",
+            join(this)
+        )
+    }
+}
+
 infix fun <T, I : Iterable<T>> I.shouldContainAll(expected: Iterable<T>): I =
     apply { expected.forEach { shouldContain(it) } }
 
@@ -880,6 +896,22 @@ infix fun <T, I : Iterable<T>> I.shouldNotContainAny(expected: Iterable<T>): I =
 
 infix fun <T, I : Iterable<T>> I.shouldNotContainAny(expected: Array<T>): I =
     apply { expected.forEach { shouldNotContain(it) } }
+
+infix fun <T, I : Iterable<T>> I.shouldNotContainAny(check: (T) -> Boolean): I = apply {
+    val result = this.map { it to check.invoke(it) }
+
+    if (result.any { it.second }) {
+        val failedItems = result
+            .filterNot { it.second }
+            .map { it.first }
+            .joinToString(", ")
+        failExpectedActual(
+            "Iterable does contain \"$failedItems\"",
+            "the Iterable to not contain \"$failedItems\"",
+            join(this)
+        )
+    }
+}
 
 @Deprecated("Use `shouldBeEqualTo`", ReplaceWith("this.shouldBeEqualTo(expected)"))
 infix fun <T, I : Iterable<T>> I.shouldEqual(expected: Iterable<T>?): I = shouldBeEqualTo(expected)
