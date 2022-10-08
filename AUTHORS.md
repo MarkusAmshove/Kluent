@@ -43,4 +43,5 @@
 37. Maxim Ivanov: [@drcolombo](https://github.com/drcolombo) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=drcolombo))
 38. Piotr Bakalarski: [@piotrb5e3](https://github.com/piotrb5e3) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=piotrb5e3))
 39. Priyank Gupta: [@priyaaank](https://github.com/priyaaank) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=priyaaank))
-40. Anders Ullnæss: [@andersu](https://github.com/andersu) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=andersu))
+40. Sami Samhuri: [@samsonjs](https://github.com/samsonjs) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=samsonjs))
+41. Anders Ullnæss: [@andersu](https://github.com/andersu) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=andersu))
