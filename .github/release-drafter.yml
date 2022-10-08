@@ -13,6 +13,9 @@ categories:
       - 'bug'
   - title: '🧰 Maintenance'
     label: 'chore'
+  - title: '⬆️  Dependencies'
+    labels:
+      - 'dependencies'
 template: |
   ## What's Changed
 
