@@ -1,3 +1,5 @@
+Changelog has moved to [GitHub releases](https://github.com/MarkusAmshove/Kluent/releases) starting from 1.69.
+
 # 1.69 (WIP)
 * Add support for file assertions `shouldContainLineWithString` and `shouldNotContainLineWithString` | [Issue](https://github.com/MarkusAmshove/Kluent/issues/192) | [PR](https://github.com/MarkusAmshove/Kluent/pull/204) | thanks to [@priyaaank](https://github.com/priyaaank)
 

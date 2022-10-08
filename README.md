@@ -1,6 +1,6 @@
 # Kluent
 
-[![Changelog](https://img.shields.io/badge/docs-changelog-blue.svg)](https://github.com/MarkusAmshove/Kluent/blob/master/CHANGELOG.md)
+[![Changelog](https://img.shields.io/badge/docs-changelog-blue.svg)](https://github.com/MarkusAmshove/Kluent/releases)
 [![Documentation](https://img.shields.io/badge/docs-documentation-blue.svg)](https://markusamshove.github.io/Kluent/)
 [![Contributors](https://img.shields.io/badge/docs-contributors-blue.svg)](https://github.com/MarkusAmshove/Kluent/blob/master/AUTHORS.md)
 [![Current version](https://img.shields.io/maven-central/v/org.amshove.kluent/kluent?style=flat-square)](https://mvnrepository.com/artifact/org.amshove.kluent)
