@@ -77,13 +77,6 @@ subprojects {
                         password = findProperty('ossrhPassword')
                     }
                 }
-                maven {
-                    url = "https://oss.sonatype.org/content/repositories/snapshots/"
-                    credentials {
-                        username = findProperty('ossrhUsername')
-                        password = findProperty('ossrhPassword')
-                    }
-                }
             }
 
             publications {
