@@ -5,8 +5,12 @@ import kotlin.reflect.KClass
 infix fun <T : Throwable> (() -> Any?).`should throw`(expectedException: KClass<T>) =
     this.shouldThrow(expectedException)
 
+suspend infix fun <T : Throwable> (suspend () -> Any?).`should throw`(expectedException: KClass<T>) = this.shouldThrow(expectedException)
+
 infix fun <T : Throwable> (() -> Any?).`should not throw`(expectedException: KClass<T>) =
     this.shouldNotThrow(expectedException)
+
+suspend infix fun <T : Throwable> (suspend () -> Any?).`should not throw`(expectedException: KClass<T>) = this.shouldNotThrow(expectedException)
 
 @Deprecated("Use `should throw` instead", ReplaceWith("this `should throw` expectedException"))
 infix fun <T : Throwable> (() -> Any).`should throw the Exception`(expectedException: KClass<T>) =
@@ -26,3 +30,5 @@ infix fun <T : Throwable> ExceptionResult<T>.`with cause`(expectedCause: KClass<
 infix fun NotThrowExceptionResult.`with cause`(expectedCause: KClass<out Throwable>) = this.withCause(expectedCause)
 
 infix fun <T : Throwable> (() -> Any?).`should throw`(expectedException: T) = this.shouldThrow(expectedException)
+
+suspend infix fun <T : Throwable> (suspend () -> Any?).`should throw`(expectedException: T) = this.shouldThrow(expectedException)
