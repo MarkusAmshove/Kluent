@@ -68,6 +68,10 @@ subprojects {
             withSourcesJar()
         }
 
+        def isAndroid = project.rootProject.hasProperty("ANDROID")
+        sourceCompatibility = isAndroid ? 1.6 : 1.8
+        targetCompatibility = isAndroid ? 1.6 : 1.8
+
         publishing {
             repositories {
                 maven {

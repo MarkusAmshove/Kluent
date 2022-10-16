@@ -10,6 +10,9 @@ dependencies {
 
 configurePublishing()
 
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
 compileKotlinCommon {
     kotlinOptions {
         freeCompilerArgs += [
