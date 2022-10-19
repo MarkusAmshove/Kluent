@@ -35,7 +35,7 @@ ext {
 
 allprojects {
     group 'org.amshove.kluent'
-    version '1.70'
+    version '1.71'
 
     apply plugin: 'com.adarshr.test-logger'
 
@@ -69,8 +69,8 @@ subprojects {
         }
 
         def isAndroid = project.rootProject.hasProperty("ANDROID")
-        sourceCompatibility = isAndroid ? 1.6 : 1.8
-        targetCompatibility = isAndroid ? 1.6 : 1.8
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
 
         publishing {
             repositories {
