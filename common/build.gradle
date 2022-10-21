@@ -21,10 +21,3 @@ compileKotlinCommon {
     }
 }
 
-kotlin {
-    jvm {
-        compilations.main.kotlinOptions {
-            jvmTarget = '1.8'
-        }
-    }
-}
