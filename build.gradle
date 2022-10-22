@@ -51,6 +51,10 @@ subprojects {
         apply plugin: 'java'
         apply plugin: 'signing'
 
+
+        project.tasks['classes'].dependsOn(checkJavaVersion)
+
+
         artifactName = artifactName ?: project.name
 
         task sourcesJar(type: Jar, dependsOn: classes) {
@@ -130,3 +134,14 @@ subprojects {
         }
     }
 }
+
+task checkJavaVersion {
+    doLast {
+        def currentJvm = org.gradle.internal.jvm.Jvm.current()
+        if(!currentJvm.toString().startsWith('1.8'))
+        {
+            throw new RuntimeException("For publishing, JAVA_HOME needs to point to Java 8")
+        }
+    }
+}
+
