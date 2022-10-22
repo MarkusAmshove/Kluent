@@ -12,7 +12,9 @@ categories:
       - 'bugfix'
       - 'bug'
   - title: '🧰 Maintenance'
-    label: 'chore'
+    label:
+      - 'chore'
+      - 'maintenance'
   - title: '⬆️  Dependencies'
     labels:
       - 'dependencies'
