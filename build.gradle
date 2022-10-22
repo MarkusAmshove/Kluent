@@ -51,10 +51,6 @@ subprojects {
         apply plugin: 'java'
         apply plugin: 'signing'
 
-
-        project.tasks['classes'].dependsOn(checkJavaVersion)
-
-
         artifactName = artifactName ?: project.name
 
         task sourcesJar(type: Jar, dependsOn: classes) {
@@ -131,6 +127,10 @@ subprojects {
             doLast {
                 logger.info("artifactName: $artifactName")
             }
+        }
+
+        if(project.tasks.findByName('generateMetadataFileForMavenJavaPublication')) {
+            project.tasks['generateMetadataFileForMavenJavaPublication'].dependsOn(checkJavaVersion)
         }
     }
 }
