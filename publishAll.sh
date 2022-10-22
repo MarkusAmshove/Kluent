@@ -36,6 +36,8 @@ function publish {
 	fi
 }
 
+./gradlew checkJavaVersion
+
 publish
 publish "-PANDROID"
 publish "-PJS"
