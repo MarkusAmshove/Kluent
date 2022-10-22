@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -u
+set -ue
 
 if [ $# != 0 ] && [ $# != 3 ];then
 	echo "Usage:"
