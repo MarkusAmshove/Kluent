@@ -95,8 +95,8 @@ subprojects {
                         url = 'https://github.com/MarkusAmshove/Kluent'
 
                         scm {
-                            connection = 'scm:git:git:github.com/MarkusAmshove/Kluent.git'
-                            developerConnection = 'scm:git:git:github.com/MarkusAmshove/Kluent.git'
+                            connection = 'scm:git:https://github.com/MarkusAmshove/Kluent.git'
+                            developerConnection = 'scm:git:git@github.com/MarkusAmshove/Kluent.git'
                             url = 'https://github.com/MarkusAmshove/Kluent'
                         }
 
