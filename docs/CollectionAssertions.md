@@ -16,6 +16,7 @@ arrayOf(4, 5, 6) shouldNotBeEqualTo arrayOf(7, 8, 9)
 
 theIntArray.shouldBeEmpty()
 theIntArray.shouldNotBeEmpty()
+theIntArray `should be` Empty
 
 2 shouldBeIn arrayOf(1, 2, 3)
 2 shouldNotBeIn arrayOf(4, 5, 6)
@@ -51,4 +52,5 @@ theMap shouldNotContain ("Age" to 10)
 
 theMap.shouldBeEmpty()
 theMap.shouldNotBeEmpty()
+theMap `should be` Empty
 ```

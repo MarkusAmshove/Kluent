@@ -40,4 +40,7 @@ The following assertions work for all subtypes of `Number`(`Int`, `Byte`, `Float
 ```kt
 2.shouldBePositive()
 (-2).shouldBeNegative()
+
+2 `should be` Positive
+-2 `should be` Negative
 ```
