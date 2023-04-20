@@ -22,7 +22,11 @@ infix fun <T> Array<T>?.`should be equal to`(expected: Array<T>?) = this.shouldB
 
 fun <T> Array<T>.`should be empty`() = this.shouldBeEmpty()
 
+infix fun <T> Array<T>.`should be`(@Suppress("UNUSED_PARAMETER") empty: Empty) = this.shouldBeEmpty()
+
 fun <T> Array<T>.`should not be empty`() = this.shouldNotBeEmpty()
+
+infix fun <T> Array<T>.`should not be`(@Suppress("UNUSED_PARAMETER") empty: Empty) = this.shouldNotBeEmpty()
 
 @Deprecated("Use `should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
 infix fun IntArray.`should equal`(expected: IntArray) = this.`should be equal to`(expected)
@@ -31,7 +35,11 @@ infix fun IntArray.`should be equal to`(expected: IntArray) = this.shouldBeEqual
 
 fun IntArray.`should be empty`() = this.shouldBeEmpty()
 
+infix fun IntArray.`should be`(@Suppress("UNUSED_PARAMETER") empty: Empty) = this.shouldBeEmpty()
+
 fun IntArray.`should not be empty`() = this.shouldNotBeEmpty()
+
+infix fun IntArray.`should not be`(@Suppress("UNUSED_PARAMETER") empty: Empty) = this.shouldNotBeEmpty()
 
 infix fun IntArray.`should contain`(expected: Int) = this.shouldContain(expected)
 
@@ -65,7 +73,11 @@ infix fun BooleanArray.`should be sorted according to`(comparator: Comparator<Bo
 
 fun BooleanArray.`should be empty`() = this.shouldBeEmpty()
 
+infix fun BooleanArray.`should be`(@Suppress("UNUSED_PARAMETER") empty: Empty) = this.shouldBeEmpty()
+
 fun BooleanArray.`should not be empty`() = this.shouldNotBeEmpty()
+
+infix fun BooleanArray.`should not be`(@Suppress("UNUSED_PARAMETER") empty: Empty) = this.shouldNotBeEmpty()
 
 infix fun BooleanArray.`should contain`(expected: Boolean) = this.shouldContain(expected)
 
@@ -94,7 +106,11 @@ infix fun ByteArray.`should be equal to`(expected: ByteArray) = this.shouldBeEqu
 
 fun ByteArray.`should be empty`() = this.shouldBeEmpty()
 
+infix fun ByteArray.`should be`(@Suppress("UNUSED_PARAMETER") empty: Empty) = this.shouldBeEmpty()
+
 fun ByteArray.`should not be empty`() = this.shouldNotBeEmpty()
+
+infix fun ByteArray.`should not be`(@Suppress("UNUSED_PARAMETER") empty: Empty) = this.shouldNotBeEmpty()
 
 infix fun ByteArray.`should contain`(expected: Byte) = this.shouldContain(expected)
 
@@ -125,7 +141,11 @@ infix fun CharArray.`should be equal to`(expected: CharArray) = this.shouldBeEqu
 
 fun CharArray.`should be empty`() = this.shouldBeEmpty()
 
+infix fun CharArray.`should be`(@Suppress("UNUSED_PARAMETER") empty: Empty) = this.shouldBeEmpty()
+
 fun CharArray.`should not be empty`() = this.shouldNotBeEmpty()
+
+infix fun CharArray.`should not be`(@Suppress("UNUSED_PARAMETER") empty: Empty) = this.shouldNotBeEmpty()
 
 infix fun CharArray.`should contain`(expected: Char) = this.shouldContain(expected)
 
@@ -156,7 +176,11 @@ infix fun DoubleArray.`should be equal to`(expected: DoubleArray) = this.shouldB
 
 fun DoubleArray.`should be empty`() = this.shouldBeEmpty()
 
+infix fun DoubleArray.`should be`(@Suppress("UNUSED_PARAMETER") empty: Empty) = this.shouldBeEmpty()
+
 fun DoubleArray.`should not be empty`() = this.shouldNotBeEmpty()
+
+infix fun DoubleArray.`should not be`(@Suppress("UNUSED_PARAMETER") empty: Empty) = this.shouldNotBeEmpty()
 
 infix fun DoubleArray.`should be sorted according to`(comparator: Comparator<Double>) =
     this.shouldBeSortedAccordingTo(comparator)
@@ -187,7 +211,11 @@ infix fun FloatArray.`should be equal to`(expected: FloatArray) = this.shouldBeE
 
 fun FloatArray.`should be empty`() = this.shouldBeEmpty()
 
+infix fun FloatArray.`should be`(@Suppress("UNUSED_PARAMETER") empty: Empty) = this.shouldBeEmpty()
+
 fun FloatArray.`should not be empty`() = this.shouldNotBeEmpty()
+
+infix fun FloatArray.`should not be`(@Suppress("UNUSED_PARAMETER") empty: Empty) = this.shouldNotBeEmpty()
 
 infix fun FloatArray.`should contain`(expected: Float) = this.shouldContain(expected)
 
@@ -218,7 +246,11 @@ infix fun LongArray.`should be equal to`(expected: LongArray) = this.shouldBeEqu
 
 fun LongArray.`should be empty`() = this.shouldBeEmpty()
 
+infix fun LongArray.`should be`(@Suppress("UNUSED_PARAMETER") empty: Empty) = this.shouldBeEmpty()
+
 fun LongArray.`should not be empty`() = this.shouldNotBeEmpty()
+
+infix fun LongArray.`should not be`(@Suppress("UNUSED_PARAMETER") empty: Empty) = this.shouldNotBeEmpty()
 
 infix fun LongArray.`should contain`(expected: Long) = this.shouldContain(expected)
 
@@ -249,7 +281,11 @@ infix fun ShortArray.`should be equal to`(expected: ShortArray) = this.shouldBeE
 
 fun ShortArray.`should be empty`() = this.shouldBeEmpty()
 
+infix fun ShortArray.`should be`(@Suppress("UNUSED_PARAMETER") empty: Empty) = this.shouldBeEmpty()
+
 fun ShortArray.`should not be empty`() = this.shouldNotBeEmpty()
+
+infix fun ShortArray.`should not be`(@Suppress("UNUSED_PARAMETER") empty: Empty) = this.shouldNotBeEmpty()
 
 infix fun ShortArray.`should contain`(expected: Short) = this.shouldContain(expected)
 
@@ -304,7 +340,11 @@ infix fun <T, I : Iterable<T>> I.`should be equal to`(expected: Iterable<T>?): I
 
 fun <I : Iterable<*>> I.`should be empty`(): I = this.shouldBeEmpty()
 
+infix fun <I : Iterable<*>> I.`should be`(@Suppress("UNUSED_PARAMETER") empty: Empty): I = this.shouldBeEmpty()
+
 fun <I : Iterable<*>> I.`should not be empty`(): I = this.shouldNotBeEmpty()
+
+infix fun <I : Iterable<*>> I.`should not be`(@Suppress("UNUSED_PARAMETER") empty: Empty): I = this.shouldNotBeEmpty()
 
 infix fun <T, I : Iterable<T>> I.`should be sorted according to`(comparator: Comparator<T>) =
     this.shouldBeSortedAccordingTo(comparator)
@@ -327,7 +367,11 @@ infix fun <K, V, M : Map<K, V>> M.`should not contain any`(expected: M): M = thi
 
 fun <M : Map<*, *>> M.`should be empty`(): M = this.shouldBeEmpty()
 
+infix fun <M : Map<*, *>> M.`should be`(@Suppress("UNUSED_PARAMETER") empty: Empty): M = this.shouldBeEmpty()
+
 fun <M : Map<*, *>> M.`should not be empty`(): M = this.shouldNotBeEmpty()
+
+infix fun <M : Map<*, *>> M.`should not be`(@Suppress("UNUSED_PARAMETER") empty: Empty): M = this.shouldNotBeEmpty()
 
 infix fun <T> Any?.`should not be in`(array: Array<T>) = this.shouldNotBeIn(array)
 

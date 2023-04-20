@@ -102,6 +102,18 @@ fun Float.`should be positive`() = this.shouldBePositive()
 
 fun Double.`should be positive`() = this.shouldBePositive()
 
+infix fun Byte.`should be`(@Suppress("UNUSED_PARAMETER") positive: Positive) = this.shouldBePositive()
+
+infix fun Short.`should be`(@Suppress("UNUSED_PARAMETER") positive: Positive) = this.shouldBePositive()
+
+infix fun Int.`should be`(@Suppress("UNUSED_PARAMETER") positive: Positive) = this.shouldBePositive()
+
+infix fun Long.`should be`(@Suppress("UNUSED_PARAMETER") positive: Positive) = this.shouldBePositive()
+
+infix fun Float.`should be`(@Suppress("UNUSED_PARAMETER") positive: Positive) = this.shouldBePositive()
+
+infix fun Double.`should be`(@Suppress("UNUSED_PARAMETER") positive: Positive) = this.shouldBePositive()
+
 fun Byte.`should be negative`() = this.shouldBeNegative()
 
 fun Short.`should be negative`() = this.shouldBeNegative()
@@ -113,6 +125,18 @@ fun Long.`should be negative`() = this.shouldBeNegative()
 fun Float.`should be negative`() = this.shouldBeNegative()
 
 fun Double.`should be negative`() = this.shouldBeNegative()
+
+infix fun Byte.`should be`(@Suppress("UNUSED_PARAMETER") negative: Negative) = this.shouldBeNegative()
+
+infix fun Short.`should be`(@Suppress("UNUSED_PARAMETER") negative: Negative) = this.shouldBeNegative()
+
+infix fun Int.`should be`(@Suppress("UNUSED_PARAMETER") negative: Negative) = this.shouldBeNegative()
+
+infix fun Long.`should be`(@Suppress("UNUSED_PARAMETER") negative: Negative) = this.shouldBeNegative()
+
+infix fun Float.`should be`(@Suppress("UNUSED_PARAMETER") negative: Negative) = this.shouldBeNegative()
+
+infix fun Double.`should be`(@Suppress("UNUSED_PARAMETER") negative: Negative) = this.shouldBeNegative()
 
 fun Float.`should be near`(expected: Float, delta: Float) = this.shouldBeNear(expected, delta)
 

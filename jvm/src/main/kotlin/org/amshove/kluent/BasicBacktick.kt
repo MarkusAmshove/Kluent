@@ -79,7 +79,11 @@ fun Boolean.`should not be false`(): Boolean {
 
 fun Char.`should be digit`(): Char = this.shouldBeDigit()
 
+infix fun Char.`should be`(@Suppress("UNUSED_PARAMETER") digit: Digit): Char = this.shouldBeDigit()
+
 fun Char.`should not be digit`(): Char = this.shouldNotBeDigit()
+
+infix fun Char.`should not be`(@Suppress("UNUSED_PARAMETER") digit: Digit): Char = this.shouldNotBeDigit()
 
 @ExperimentalStdlibApi
 infix fun <T : Any> T.`should be equivalent to`(expected: Pair<T, ((EquivalencyAssertionOptions) -> EquivalencyAssertionOptions)?>): T =

@@ -1,5 +1,7 @@
 package org.amshove.kluent.tests.assertions.file
 
+import org.amshove.kluent.Dir
+import org.amshove.kluent.`should not be`
 import org.amshove.kluent.shouldNotBeDir
 import org.junit.Before
 import org.junit.Test
@@ -24,5 +26,15 @@ class ShouldNotBeDirShould {
     @Test
     fun failWhenTestingADir() {
         file.useDir { assertFails { it.shouldNotBeDir() } }
+    }
+
+    @Test
+    fun passWhenTestingAFileBacktick() {
+        dir.useFile { it `should not be` Dir }
+    }
+
+    @Test
+    fun failWhenTestingADirBacktick() {
+        file.useDir { assertFails { it `should not be` Dir } }
     }
 }

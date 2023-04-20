@@ -26,11 +26,21 @@ infix fun <T : CharSequence> T.`should match`(regex: Regex) = this.shouldMatch(r
 
 fun <T : CharSequence> T.`should be empty`() = this.shouldBeEmpty()
 
+infix fun <T : CharSequence> T.`should be`(@Suppress("UNUSED_PARAMETER") empty: Empty) = this.shouldBeEmpty()
+
 fun <T : CharSequence> T?.`should be null or empty`() = this.shouldBeNullOrEmpty()
+
+infix fun <T : CharSequence> T?.`should be`(@Suppress("UNUSED_PARAMETER") nullOrEmpty: NullOrEmpty) =
+    this.shouldBeNullOrEmpty()
 
 fun <T : CharSequence> T.`should be blank`() = this.shouldBeBlank()
 
+infix fun <T : CharSequence> T.`should be`(@Suppress("UNUSED_PARAMETER") blank: Blank) = this.shouldBeBlank()
+
 fun <T : CharSequence> T?.`should be null or blank`() = this.shouldBeNullOrBlank()
+
+infix fun <T : CharSequence> T?.`should be`(@Suppress("UNUSED_PARAMETER") nullOrBlank: NullOrBlank) =
+    this.shouldBeNullOrBlank()
 
 @Deprecated("Use #`should be equal to`", ReplaceWith("this.`should be equal to`(expected)"))
 infix fun String.`should equal to`(expected: String) = this.`should be equal to`(expected)
@@ -54,6 +64,8 @@ infix fun <T : CharSequence> T.`should not match`(regex: Regex) = this.shouldNot
 
 fun <T : CharSequence> T.`should not be empty`(): T = this.shouldNotBeEmpty()
 
+infix fun <T : CharSequence> T.`should not be`(@Suppress("UNUSED_PARAMETER") empty: Empty): T = this.shouldNotBeEmpty()
+
 @UseExperimental(ExperimentalContracts::class)
 fun <T : CharSequence> T?.`should not be null or empty`(): T {
     contract {
@@ -63,12 +75,32 @@ fun <T : CharSequence> T?.`should not be null or empty`(): T {
     return this.shouldNotBeNullOrEmpty()
 }
 
+@UseExperimental(ExperimentalContracts::class)
+infix fun <T : CharSequence> T?.`should not be`(@Suppress("UNUSED_PARAMETER") nullOrEmpty: NullOrEmpty): T {
+    contract {
+        returns() implies (this@`should not be` != null)
+    }
+
+    return this.shouldNotBeNullOrEmpty()
+}
+
 fun <T : CharSequence> T.`should not be blank`(): T = this.shouldNotBeBlank()
+
+infix fun <T : CharSequence> T.`should not be`(@Suppress("UNUSED_PARAMETER") blank: Blank): T = this.shouldNotBeBlank()
 
 @UseExperimental(ExperimentalContracts::class)
 fun <T : CharSequence> T?.`should not be null or blank`(): T {
     contract {
         returns() implies (this@`should not be null or blank` != null)
+    }
+
+    return this.shouldNotBeNullOrBlank()
+}
+
+@UseExperimental(ExperimentalContracts::class)
+infix fun <T : CharSequence> T?.`should not be`(@Suppress("UNUSED_PARAMETER") nullOrBlank: NullOrBlank): T {
+    contract {
+        returns() implies (this@`should not be` != null)
     }
 
     return this.shouldNotBeNullOrBlank()

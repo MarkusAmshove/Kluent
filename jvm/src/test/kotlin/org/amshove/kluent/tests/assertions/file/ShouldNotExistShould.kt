@@ -1,5 +1,7 @@
 package org.amshove.kluent.tests.assertions.file
 
+import org.amshove.kluent.Exist
+import org.amshove.kluent.`should not`
 import org.amshove.kluent.shouldNotExist
 import org.junit.Test
 import java.io.File
@@ -17,5 +19,16 @@ class ShouldNotExistShould {
     @Test
     fun failWhenTestingAFileThatExists() {
         assertFails { file.useFile { it.shouldNotExist() } }
+    }
+
+
+    @Test
+    fun passWhenTestingAFileThatDoesNotExistBacktick() {
+        file `should not` Exist
+    }
+
+    @Test
+    fun failWhenTestingAFileThatExistsBacktick() {
+        assertFails { file.useFile { it `should not` Exist } }
     }
 }
