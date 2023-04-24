@@ -5,7 +5,7 @@ import java.io.File
 import kotlin.test.Test
 import kotlin.test.assertFails
 
-class ShouldBeAFileShould {
+class ShouldBeFileShould {
     private val file = File("isFile")
     private val dir = File("isDir")
 
