@@ -5,7 +5,7 @@ import org.amshove.kluent.`should be`
 import org.amshove.kluent.`should not be`
 import kotlin.test.Test
 
-class BackticksEmpty {
+class ShouldBeEmptyBacktick {
     @Test
     fun `Array should be empty in an infix style`() {
         val array = arrayOf<Int>()

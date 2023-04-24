@@ -1,7 +1,5 @@
 package org.amshove.kluent.tests.assertions.file
 
-import org.amshove.kluent.aFile
-import org.amshove.kluent.`should be`
 import org.amshove.kluent.shouldBeFile
 import java.io.File
 import kotlin.test.Test
@@ -19,16 +17,6 @@ class ShouldBeAFileShould {
     @Test
     fun failWhenTestingAFileThatIsNotAFile() {
         dir.useDir { assertFails { it.shouldBeFile() } }
-    }
-
-    @Test
-    fun passWhenTestingAFileThatIsAFileBacktick() {
-        file.useFile { it `should be` aFile }
-    }
-
-    @Test
-    fun failWhenTestingAFileThatIsNotAFileBacktick() {
-        dir.useDir { assertFails { it `should be` aFile } }
     }
 }
 
