@@ -8,7 +8,6 @@ import kotlin.test.assertFails
 class ShouldNotExistShould {
     val file = File("test")
 
-
     @Test
     fun passWhenTestingAFileThatDoesNotExist() {
         file.shouldNotExist()

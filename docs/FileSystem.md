@@ -7,12 +7,15 @@ val file = ... // of type java.io.File
 
 file.shouldExist()
 file.shouldNotExist()
+file should Exist
 
 file.shouldBeDir()
 file.shouldNotBeDir()
+file `should be` Dir
 
 file.shouldBeFile()
 file.shouldNotBeFile()
+file `should be` aFile
 
 file.shouldHaveExtension("txt")
 file.shouldNotHaveExtension("txt")

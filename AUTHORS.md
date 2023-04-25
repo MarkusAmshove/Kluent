@@ -46,3 +46,4 @@
 40. Sami Samhuri: [@samsonjs](https://github.com/samsonjs) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=samsonjs))
 41. Anders Ullnæss: [@andersu](https://github.com/andersu) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=andersu))
 42. Urs Joss: [@ursjoss](https://github.com/ursjoss) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=ursjoss))
+43. Highlander Paiva: [@hvpaiva](https://github.com/hvpaiva) ([Contributions](https://github.com/MarkusAmshove/Kluent/commits?author=hvpaiva))

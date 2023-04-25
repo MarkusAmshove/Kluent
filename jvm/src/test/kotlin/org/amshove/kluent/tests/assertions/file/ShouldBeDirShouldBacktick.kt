@@ -1,12 +1,13 @@
 package org.amshove.kluent.tests.assertions.file
 
+import org.amshove.kluent.Dir
 import org.amshove.kluent.internal.assertFails
-import org.amshove.kluent.shouldBeDir
+import org.amshove.kluent.`should be`
 import org.junit.Before
 import org.junit.Test
 import java.io.File
 
-class ShouldBeDirShould {
+class ShouldBeDirShouldBacktick {
     lateinit var dir: File
     lateinit var file: File
 
@@ -17,12 +18,12 @@ class ShouldBeDirShould {
     }
 
     @Test
-    fun passWhenTestingADirectory() {
-        dir.useDir { it.shouldBeDir() }
+    fun passWhenTestingADirectoryBacktick() {
+        dir.useDir { it `should be` Dir }
     }
 
     @Test
-    fun passWhenTestingAFile() {
-        file.useFile { assertFails { it.shouldBeDir() } }
+    fun passWhenTestingAFileBacktick() {
+        file.useFile { assertFails { it `should be` Dir } }
     }
 }

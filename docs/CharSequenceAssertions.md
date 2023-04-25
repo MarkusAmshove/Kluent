@@ -26,15 +26,23 @@ The following assertions work with every subtype of `CharSequence` (e.g. `String
 
 "".shouldBeEmpty()
 "name".shouldNotBeEmpty()
+"" `should be` Empty
+"name" `should not be` Empty
 
 "".shouldBeNullOrEmpty()
 "name".shouldNotBeNullOrEmpty()
+"" `should be` NullOrEmpty
+"name" `should not be` NullOrEmpty
 
 " ".shouldBeBlank()
 "name".shouldNotBeBlank()
+" " `should be` Blank
+"name" `should not be` Blank
 
 " ".shouldBeNullOrBlank()
 "".shouldNotBeNullOrBlank()
+" " `should be` NullOrBlank
+"" `should not be` NullOrBlank
 ```
 
 In case if you need to assert Char or CharSequence ignoring the characters case, you can use the following assertions:
